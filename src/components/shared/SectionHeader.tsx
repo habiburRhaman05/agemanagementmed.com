@@ -1,7 +1,7 @@
 import type * as React from 'react'
 
 import { Eyebrow } from '@/components/shared/Eyebrow'
-import { Reveal } from '@/components/shared/Reveal'
+import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 import { cn } from '@/lib/utils'
 
 interface SectionHeaderProps {
@@ -24,6 +24,11 @@ const sizes = {
   sm: 'text-display-sm',
 }
 
+/**
+ * Replaces the previous single-Reveal wrapper with a StaggerGroup so
+ * eyebrow → title → lead resolve in sequence — the premium "editorial
+ * cascade" used on Apple, Linear, and Stripe landing pages.
+ */
 export function SectionHeader({
   eyebrow,
   title,
@@ -38,7 +43,7 @@ export function SectionHeader({
   const inverse = tone === 'inverse'
 
   return (
-    <Reveal>
+    <StaggerGroup stagger={0.1}>
       <div
         className={cn(
           'flex flex-col',
@@ -47,29 +52,39 @@ export function SectionHeader({
         )}
       >
         {eyebrow ? (
-          <Eyebrow tone={inverse ? 'inverse' : 'default'} className="mb-5">
-            {eyebrow}
-          </Eyebrow>
+          <StaggerItem>
+            <Eyebrow tone={inverse ? 'inverse' : 'default'} className="mb-5">
+              {eyebrow}
+            </Eyebrow>
+          </StaggerItem>
         ) : null}
 
-        <Heading className={cn(sizes[size], inverse && 'text-canvas-50', 'max-w-[20ch]')}>
-          {title}
-        </Heading>
+        <StaggerItem>
+          <Heading className={cn(sizes[size], inverse && 'text-canvas-50', 'max-w-[20ch]')}>
+            {title}
+          </Heading>
+        </StaggerItem>
 
         {lead ? (
-          <p
-            className={cn(
-              'mt-6 text-body-lg prose-measure',
-              inverse ? 'text-canvas-50/75' : 'text-canvas-600',
-              align === 'center' && 'mx-auto',
-            )}
-          >
-            {lead}
-          </p>
+          <StaggerItem>
+            <p
+              className={cn(
+                'mt-6 text-body-lg prose-measure',
+                inverse ? 'text-canvas-50/75' : 'text-canvas-600',
+                align === 'center' && 'mx-auto',
+              )}
+            >
+              {lead}
+            </p>
+          </StaggerItem>
         ) : null}
 
-        {children ? <div className="mt-8">{children}</div> : null}
+        {children ? (
+          <StaggerItem>
+            <div className="mt-8">{children}</div>
+          </StaggerItem>
+        ) : null}
       </div>
-    </Reveal>
+    </StaggerGroup>
   )
 }

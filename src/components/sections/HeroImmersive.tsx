@@ -100,7 +100,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           {/* Booking Modal */}
           <Dialog>
             <DialogTrigger asChild>
-              <Button size="lg" variant="primary">
+              <Button size="lg" variant="primary" className="bg-[#008080]">
                 Schedule a consultation
               </Button>
             </DialogTrigger>

@@ -1,10 +1,10 @@
 import { type Metadata } from 'next'
 
 import { Header } from '@/components/layout/Header'
-import { AdvancedBookingForm } from '@/components/shared/AdvancedBookingForm'
 import { Container } from '@/components/shared/Container'
 import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Reveal } from '@/components/shared/Reveal'
+import { UnifiedBookingForm } from '@/components/shared/UnifiedBookingForm'
 
 export const metadata: Metadata = {
   title: 'Book a Consultation | SAMM',
@@ -17,9 +17,9 @@ export default function BookPage() {
     <>
       <Header overlay />
       <main className="bg-canvas-100">
+        {/* Dark hero header */}
         <section className="relative isolate overflow-hidden bg-ink-950 pb-16 pt-36 lg:pb-20 lg:pt-44">
           <div className="absolute inset-0 bg-mesh-navy" aria-hidden />
-
           <Container className="relative text-center">
             <Reveal>
               <Eyebrow tone="inverse" className="mx-auto">
@@ -34,9 +34,10 @@ export default function BookPage() {
           </Container>
         </section>
 
-        <section className="py-20 lg:py-28">
+        {/* Unified form */}
+        <section className="py-16 lg:py-24">
           <Container>
-            <AdvancedBookingForm />
+            <UnifiedBookingForm />
           </Container>
         </section>
       </main>

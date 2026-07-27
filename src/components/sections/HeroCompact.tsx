@@ -1,9 +1,11 @@
+'use client'
+
+import { motion, useReducedMotion } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 
 import { Container } from '@/components/shared/Container'
 import { Eyebrow } from '@/components/shared/Eyebrow'
-import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
 
 interface Crumb {
@@ -16,39 +18,76 @@ interface HeroCompactProps {
   title: string
   lead?: string
   breadcrumbs?: Crumb[]
+  /** Use for legal/policy pages — tighter bottom padding and slightly smaller h1. */
+  compact?: boolean
 }
 
-/** Type-only hero for utility pages — financing, policies, contact, journal. */
-export function HeroCompact({ eyebrow, title, lead, breadcrumbs }: HeroCompactProps) {
+/**
+ * Type-only hero for utility pages — financing, policies, contact, journal.
+ *
+ * Sub-elements now stagger on mount (breadcrumbs → eyebrow → h1 → lead)
+ * instead of a single flat Reveal, giving even utility pages a premium entrance.
+ *
+ * Bottom padding is intentionally tighter than other heroes so the content
+ * section below (LegalDocument, forms, etc.) feels connected, not floating.
+ */
+export function HeroCompact({ eyebrow, title, lead, breadcrumbs, compact }: HeroCompactProps) {
+  const reduceMotion = useReducedMotion()
+
+  const fadeUp = (delay: number, distance = 16) => ({
+    initial: { opacity: 0, y: reduceMotion ? 0 : distance },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
+  })
+
+  const blurUp = (delay: number) => ({
+    initial: {
+      opacity: 0,
+      y: reduceMotion ? 0 : 20,
+      filter: reduceMotion ? 'blur(0px)' : 'blur(6px)',
+    },
+    animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
+    transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
+  })
+
   return (
-    <Section spacing="none" className="relative overflow-hidden pt-36 pb-16 lg:pt-48 lg:pb-20">
+    <Section spacing="none" className="relative overflow-hidden pt-36 pb-10 lg:pt-44 lg:pb-12">
       <div className="absolute inset-0 bg-mesh-warm" aria-hidden />
       <Container className="relative">
-        <Reveal>
-          <div className="max-w-3xl">
-            {breadcrumbs?.length ? (
-              <nav aria-label="Breadcrumb" className="mb-8">
-                <ol className="flex flex-wrap items-center gap-1.5 text-body-sm text-canvas-600">
-                  {breadcrumbs.map((crumb, i) => (
-                    <li key={crumb.href} className="flex items-center gap-1.5">
-                      {i > 0 ? (
-                        <ChevronRight className="size-3.5 text-canvas-300" aria-hidden />
-                      ) : null}
-                      <Link href={crumb.href} className="transition-colors hover:text-sage-700">
-                        {crumb.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            ) : null}
+        <div className="max-w-3xl">
+          {breadcrumbs?.length ? (
+            <motion.nav aria-label="Breadcrumb" className="mb-6" {...fadeUp(0.05, 8)}>
+              <ol className="flex flex-wrap items-center gap-1.5 text-body-sm text-canvas-600">
+                {breadcrumbs.map((crumb, i) => (
+                  <li key={crumb.href} className="flex items-center gap-1.5">
+                    {i > 0 ? (
+                      <ChevronRight className="size-3.5 text-canvas-300" aria-hidden />
+                    ) : null}
+                    <Link href={crumb.href} className="transition-colors hover:text-sage-700">
+                      {crumb.label}
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </motion.nav>
+          ) : null}
 
-            {eyebrow ? <Eyebrow className="mb-6">{eyebrow}</Eyebrow> : null}
+          {eyebrow ? (
+            <motion.div className="mb-4" {...fadeUp(0.12)}>
+              <Eyebrow>{eyebrow}</Eyebrow>
+            </motion.div>
+          ) : null}
 
-            <h1 className="text-display-lg">{title}</h1>
-            {lead ? <p className="mt-6 text-body-lg text-canvas-600">{lead}</p> : null}
-          </div>
-        </Reveal>
+          <motion.h1 className={compact ? 'text-display-md' : 'text-display-md lg:text-display-lg'} {...blurUp(0.2)}>
+            {title}
+          </motion.h1>
+
+          {lead ? (
+            <motion.p className="mt-5 text-body-lg text-canvas-600" {...fadeUp(0.34)}>
+              {lead}
+            </motion.p>
+          ) : null}
+        </div>
       </Container>
     </Section>
   )

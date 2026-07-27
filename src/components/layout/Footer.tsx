@@ -1,27 +1,36 @@
+'use client'
+
 import { Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { Container } from '@/components/shared/Container'
+import { Reveal } from '@/components/shared/Reveal'
 import { footerNav, megaMenu } from '@/content/navigation'
 import { locations, site } from '@/content/site'
 
 function FooterIcon({ children }: { children: React.ReactNode }) {
   return (
-    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-sage-600/15 text-sage-400">
+    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-sage-600/15 text-sage-400 transition-colors duration-200 group-hover:bg-sage-600/30">
       {children}
     </span>
   )
 }
 
-/** Server Component — the footer ships zero JavaScript. */
+/**
+ * Footer with staggered column reveals — each column fades up at 60ms intervals
+ * so the footer unfolds left-to-right as it enters the viewport, consistent
+ * with the StaggerGroup pattern used throughout the app.
+ */
 export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/5 bg-ink-900 text-canvas-50">
       <div className="absolute inset-0 bg-mesh-navy opacity-60" aria-hidden />
       <Container className="relative">
         <div className="grid gap-12 pt-20 pb-12 lg:grid-cols-12 lg:gap-8 lg:pt-24 lg:pb-16">
-          <div className="lg:col-span-4">
+
+          {/* Brand column */}
+          <Reveal delay={0} className="lg:col-span-4">
             <Image
               src="/images/samm-logo.webp"
               alt={site.name}
@@ -36,7 +45,7 @@ export function Footer() {
             <div className="mt-8 space-y-3">
               <a
                 href={site.phoneHref}
-                className="flex items-center gap-3 text-body-sm text-canvas-50/80 transition-colors hover:text-canvas-50"
+                className="group flex items-center gap-3 text-body-sm text-canvas-50/80 transition-colors hover:text-canvas-50"
               >
                 <FooterIcon>
                   <Phone className="size-3.5" aria-hidden />
@@ -45,7 +54,7 @@ export function Footer() {
               </a>
               <a
                 href={site.emailHref}
-                className="flex items-center gap-3 text-body-sm text-canvas-50/80 transition-colors hover:text-canvas-50"
+                className="group flex items-center gap-3 text-body-sm text-canvas-50/80 transition-colors hover:text-canvas-50"
               >
                 <FooterIcon>
                   <Mail className="size-3.5" aria-hidden />
@@ -53,51 +62,58 @@ export function Footer() {
                 {site.email}
               </a>
             </div>
-          </div>
+          </Reveal>
 
-          <nav className="lg:col-span-3" aria-label="Treatments">
-            <h2 className="text-label font-sans font-semibold uppercase text-canvas-200">
-              Treatments
-            </h2>
-            <ul className="mt-6 space-y-3">
-              {megaMenu.map((column) => (
-                <li key={column.href}>
+          {/* Treatments nav */}
+          <Reveal delay={60} className="lg:col-span-3">
+            <nav aria-label="Treatments">
+              <h2 className="text-label font-sans font-semibold uppercase text-canvas-200">
+                Treatments
+              </h2>
+              <ul className="mt-6 space-y-3">
+                {megaMenu.map((column) => (
+                  <li key={column.href}>
+                    <Link
+                      href={column.href}
+                      className="text-body-sm text-canvas-50/70 transition-colors hover:text-canvas-50"
+                    >
+                      {column.title}
+                    </Link>
+                  </li>
+                ))}
+                <li>
                   <Link
-                    href={column.href}
+                    href="/aesthetics"
                     className="text-body-sm text-canvas-50/70 transition-colors hover:text-canvas-50"
                   >
-                    {column.title}
+                    Medical Aesthetics
                   </Link>
                 </li>
-              ))}
-              <li>
-                <Link
-                  href="/aesthetics"
-                  className="text-body-sm text-canvas-50/70 transition-colors hover:text-canvas-50"
-                >
-                  Medical Aesthetics
-                </Link>
-              </li>
-            </ul>
-          </nav>
+              </ul>
+            </nav>
+          </Reveal>
 
-          <nav className="lg:col-span-2" aria-label="Practice">
-            <h2 className="text-label font-sans font-semibold uppercase text-canvas-200">Practice</h2>
-            <ul className="mt-6 space-y-3">
-              {footerNav.practice.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-body-sm text-canvas-50/70 transition-colors hover:text-canvas-50"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* Practice nav */}
+          <Reveal delay={120} className="lg:col-span-2">
+            <nav aria-label="Practice">
+              <h2 className="text-label font-sans font-semibold uppercase text-canvas-200">Practice</h2>
+              <ul className="mt-6 space-y-3">
+                {footerNav.practice.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-body-sm text-canvas-50/70 transition-colors hover:text-canvas-50"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </Reveal>
 
-          <div className="lg:col-span-3">
+          {/* Locations */}
+          <Reveal delay={180} className="lg:col-span-3">
             <h2 className="text-label font-sans font-semibold uppercase text-canvas-200">
               Locations
             </h2>
@@ -126,7 +142,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         </div>
 
         <div className="flex flex-col gap-4 border-t border-canvas-50/10 pt-6 pb-4 text-body-sm text-canvas-50/50 sm:flex-row sm:items-center sm:justify-between">

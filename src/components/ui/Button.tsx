@@ -27,7 +27,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-gradient-to-br from-sage-600 to-ink-900 text-canvas-50 shadow-glow hover:shadow-glow-lg hover:brightness-110',
+          'bg-[#008080] text-canvas-50 shadow-glow hover:shadow-glow-lg hover:bg-[#00555A]',
         secondary:
           'border border-ink-900/15 bg-white/50 text-ink-900 backdrop-blur-sm hover:border-ink-900 hover:bg-ink-900 hover:text-canvas-50',
         accent: 'bg-gradient-to-br from-rose-600 to-rose-700 text-canvas-50 shadow-md hover:brightness-110',

@@ -36,6 +36,7 @@ export const metadata: Metadata = {
   icons: { icon: '/favicon.ico' },
 }
 
+import { PageTransition } from '@/components/shared/PageTransition'
 import { ScrollFeatures } from '@/components/layout/ScrollFeatures'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -48,7 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <main id="main">{children}</main>
+        <PageTransition>
+          <main id="main">{children}</main>
+        </PageTransition>
         <Footer />
         <ScrollFeatures />
       </body>

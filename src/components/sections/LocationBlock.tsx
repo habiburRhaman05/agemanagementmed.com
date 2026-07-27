@@ -19,7 +19,7 @@ interface LocationBlockProps {
 
 function IconBadge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700">
+    <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700 transition-all duration-300 group-hover:bg-sage-600 group-hover:text-canvas-50">
       {children}
     </span>
   )
@@ -40,9 +40,11 @@ export function LocationBlock({
 
         <div className="mt-16 grid gap-8 md:grid-cols-2">
           {locations.map((location, index) => (
-            <Reveal key={location.slug} delay={index * 80}>
-              <article className="glass flex h-full flex-col rounded-3xl p-8 shadow-md lg:p-10">
-                <h3 className="text-display-sm">{location.name}</h3>
+            <Reveal key={location.slug} delay={index * 80} side={index % 2 === 0 ? 'left' : 'right'}>
+              <article className="group glass flex h-full flex-col rounded-3xl p-8 shadow-md transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-xl lg:p-10">
+                <h3 className="text-display-sm transition-colors duration-300 group-hover:text-sage-700">
+                  {location.name}
+                </h3>
 
                 <address className="mt-6 space-y-4 not-italic">
                   <p className="flex gap-3 text-body text-canvas-600">
