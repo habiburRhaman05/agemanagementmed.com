@@ -22,8 +22,9 @@ export const hairRestorationMen: Treatment = {
     title: 'Restore your confidence with natural hair restoration',
     lead: "Our advanced PRP therapy harnesses your body's own healing mechanisms to combat hair loss and promote thicker, healthier hair.",
     image: {
-      src: '/images/hero-11-bg.jpg',
-      alt: 'A person laughing outdoors, representing renewed confidence',
+      src: '/images/treatments/hair-restoration-men/hero.jpg',
+      alt: 'A confident man with a full, healthy head of hair',
+      focalPoint: 'center 30%',
     },
     ctas: [
       { label: 'Schedule a consultation', href: '/book' },

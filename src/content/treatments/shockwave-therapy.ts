@@ -26,8 +26,9 @@ export const shockwaveTherapy: Treatment = {
     title: "Shockwave Therapy for Men's Sexual Function",
     lead: 'A non-invasive acoustic wave treatment that supports improved blood flow, encourages new vessel growth, and helps restore natural erectile function - without injections or surgery.',
     image: {
-      src: '/images/treatments/shockwave-therapy/banner-32-bg.jpg',
-      alt: "Shockwave Therapy for Men's Sexual Function",
+      src: '/images/treatments/shockwave-therapy/hero.jpg',
+      alt: 'An athletic man in a gym, representing restored strength and vitality',
+      focalPoint: 'center 30%',
     },
     ctas: [{ label: 'Book a consultation', href: '/book' }],
   },

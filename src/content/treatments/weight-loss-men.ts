@@ -22,8 +22,9 @@ export const weightLossMen: Treatment = {
     title: 'Achieve sustainable weight loss with personalized care',
     lead: "If you've tried to lose weight before and nothing seems to stick, you're not alone. Most programs focus on calories and workouts but miss what's actually going on in your body. Our program uses lab testing, body composition data, and ongoing monitoring to build a plan that works for you.",
     image: {
-      src: '/images/services/image-4.png',
-      alt: 'A patient measuring their waist during a body composition check',
+      src: '/images/treatments/weight-loss-men/hero.jpg',
+      alt: 'An active man building strength in the gym',
+      focalPoint: 'center 25%',
     },
     ctas: [
       { label: 'Schedule a consultation', href: '/book' },

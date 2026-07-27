@@ -28,8 +28,8 @@ export const aesthetics: Treatment = {
     title: 'Redefining beauty with precision and care',
     lead: 'Experience the transformative power of science-backed beauty treatments designed to rejuvenate your skin and enhance your confidence.',
     image: {
-      src: '/images/services/image-1.png',
-      alt: 'A couple embracing and smiling outdoors',
+      src: '/images/treatments/aesthetics/hero.jpg',
+      alt: 'A clinical team performing a precise medical aesthetics treatment',
     },
     ctas: [
       { label: 'Book appointment', href: '/book' },

@@ -21,8 +21,9 @@ export const glp1MicrodosingWomen: Treatment = {
     title: 'GLP-1 Microdosing:Precision Metabolic Optimization',
     lead: 'A low-dose therapy to mute food noise, reduce inflammation, and enhance metabolic flexibility while minimizing GLP-1 side effects.',
     image: {
-      src: '/themes/default/assets/images/banner-37-bg.jpg',
-      alt: 'GLP-1 Microdosing:Precision Metabolic Optimization'
+      src: '/images/treatments/glp1-microdosing-women/hero.jpg',
+      alt: 'An active woman staying hydrated outdoors',
+      focalPoint: '65% 25%',
     },
     ctas: [
       { label: 'Book a consultation', href: '/book' }

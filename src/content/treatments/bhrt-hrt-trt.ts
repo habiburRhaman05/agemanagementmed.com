@@ -26,8 +26,8 @@ export const bhrtHrtTrt: Treatment = {
     title: 'Difference between BHRT, HRT & TRT and why it matters',
     lead: "Are you struggling with low energy, stubborn weight, or feeling like you're not quite yourself? You might be a great candidate for hormone or testosterone replacement therapy.",
     image: {
-      src: '/images/treatments/bhrt-hrt-trt/banner-21-bg.jpg',
-      alt: 'Difference between BHRT, HRT & TRT',
+      src: '/images/treatments/bhrt-hrt-trt/hero.jpg',
+      alt: 'A provider reviewing a hormone therapy plan with a patient',
     },
     ctas: [{ label: 'Learn more', href: '#what-is-hrt' }],
   },

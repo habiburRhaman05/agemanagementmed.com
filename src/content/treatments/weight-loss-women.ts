@@ -21,8 +21,8 @@ export const weightLossWomen: Treatment = {
     title: 'Achieve Sustainable Weight Losswith Personalized Care',
     lead: 'If you\'ve tried to lose weight before and nothing seems to stick, you\'re not alone. Most programs focus on calories and workouts, but miss what\'s actually going on in your body. Our concierge medical weight loss program in Savannah is different. Instead of guessing, we use lab testing, body composition data, and ongoing monitoring to build a plan that works for you. You\'ll work directly with an expert provider who looks at your metabolism, hormones, and overall health to create a plan based on real data, not trends.',
     image: {
-      src: '/themes/default/assets/images/banner-13-bg.jpg',
-      alt: 'Achieve Sustainable Weight Losswith Personalized Care'
+      src: '/images/services/image-4.png',
+      alt: 'A patient measuring their waist during a body composition check',
     },
     ctas: [
       { label: 'Book a consultation', href: '/book' }

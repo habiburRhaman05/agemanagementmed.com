@@ -22,8 +22,9 @@ export const sexualWellnessMen: Treatment = {
     title: 'Reclaim your confidence with advanced sexual health treatments',
     lead: "If you're experiencing erectile dysfunction, low libido, or declining sexual performance, you're not alone. Our medical therapies help restore circulation, hormone balance, and sexual confidence without surgery or downtime.",
     image: {
-      src: '/images/services/image-3.png',
-      alt: 'A couple embracing, representing renewed intimacy and confidence',
+      src: '/images/treatments/sexual-wellness-men/hero.jpg',
+      alt: 'A confident, distinguished middle-aged man',
+      focalPoint: 'center 25%',
     },
     ctas: [
       { label: 'Schedule a consultation', href: '/book' },

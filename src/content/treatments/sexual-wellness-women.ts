@@ -21,8 +21,8 @@ export const sexualWellnessWomen: Treatment = {
     title: 'Restore Comfort, Confidence, And Sexual Wellness For Women',
     lead: 'Hormonal changes, childbirth, and aging can affect vaginal health, sexual pleasure, and confidence. Our advanced treatments help restore tissue health, sensitivity, and overall feminine wellness.',
     image: {
-      src: '/themes/default/assets/images/banner-30-bg.jpg',
-      alt: 'Restore Comfort, Confidence, And Sexual Wellness For Women'
+      src: '/images/treatments/sexual-wellness-women/hero.jpg',
+      alt: 'A close, tender moment between a couple',
     },
     ctas: [
       { label: 'Book a consultation', href: '/book' }

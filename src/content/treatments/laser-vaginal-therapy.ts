@@ -21,8 +21,9 @@ export const laserVaginalTherapy: Treatment = {
     title: 'Laser Vaginal Therapy',
     lead: 'Restore sensation, strength, comfort, and intimacy with this non-surgical, in-office therapy.',
     image: {
-      src: '/themes/default/assets/images/banner-31-bg.jpg',
-      alt: 'Laser Vaginal Therapy'
+      src: '/images/treatments/laser-vaginal-therapy/hero.jpg',
+      alt: 'A couple embracing warmly outdoors',
+      focalPoint: 'center 35%',
     },
     ctas: [
       { label: 'Book a consultation', href: '/book' }
