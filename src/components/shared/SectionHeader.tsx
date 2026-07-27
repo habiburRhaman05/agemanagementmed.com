@@ -1,5 +1,6 @@
 import type * as React from 'react'
 
+import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Reveal } from '@/components/shared/Reveal'
 import { cn } from '@/lib/utils'
 
@@ -41,19 +42,14 @@ export function SectionHeader({
       <div
         className={cn(
           'flex flex-col',
-          align === 'center' && 'items-center text-center',
+          align === 'center' ? 'items-center text-center' : 'items-start',
           className,
         )}
       >
         {eyebrow ? (
-          <span
-            className={cn(
-              'mb-5 font-sans text-label font-semibold uppercase',
-              inverse ? 'text-sage-400' : 'text-sage-700',
-            )}
-          >
+          <Eyebrow tone={inverse ? 'inverse' : 'default'} className="mb-5">
             {eyebrow}
-          </span>
+          </Eyebrow>
         ) : null}
 
         <Heading className={cn(sizes[size], inverse && 'text-canvas-50', 'max-w-[20ch]')}>

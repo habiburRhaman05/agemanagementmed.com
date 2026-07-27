@@ -1,8 +1,8 @@
 import { ContentCard } from '@/components/features/ContentCard'
 import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
+import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 import type { ContentSummary } from '@/types/content'
 
 interface ContentGridProps {
@@ -28,19 +28,19 @@ export function ContentGrid({
       <Container>
         <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
 
-        <ul
-          className={`mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 ${
+        <StaggerGroup
+          as="ul"
+          stagger={0.08}
+          className={`mt-14 grid gap-5 sm:grid-cols-2 sm:gap-6 ${
             columns === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
           }`}
         >
-          {items.map((item, index) => (
-            <li key={item.href}>
-              <Reveal delay={(index % 3) * 70}>
-                <ContentCard item={item} />
-              </Reveal>
-            </li>
+          {items.map((item) => (
+            <StaggerItem as="li" key={item.href} className="h-full">
+              <ContentCard item={item} />
+            </StaggerItem>
           ))}
-        </ul>
+        </StaggerGroup>
       </Container>
     </Section>
   )

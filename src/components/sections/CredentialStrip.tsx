@@ -33,7 +33,7 @@ export function CredentialStrip({
                 alt={award.alt}
                 width={110}
                 height={110}
-                className="h-16 w-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
+                className="h-20 w-auto opacity-90  transition-all hover:opacity-100 "
               />
             </li>
           ))}

@@ -35,7 +35,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
   const reduceMotion = useReducedMotion()
 
   return (
-    <section className="relative isolate flex min-h-screen items-center overflow-hidden bg-ink-950 pt-28 pb-24 lg:pt-32">
+    <section className="relative isolate flex min-h-screen items-center overflow-hidden bg-ink-950 pt-28 pb-24 lg:pt-32 ">
       <motion.div
         className="absolute inset-0"
         initial={{ scale: 1 }}

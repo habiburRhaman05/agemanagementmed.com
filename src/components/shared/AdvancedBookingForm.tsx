@@ -50,7 +50,7 @@ export function AdvancedBookingForm() {
 
   if (isSuccess) {
     return (
-      <div className="mx-auto flex w-full max-w-2xl flex-col items-center justify-center rounded-2xl bg-white p-12 text-center shadow-md ring-1 ring-ink-900/5">
+      <div className="mx-auto flex w-full max-w-2xl flex-col items-center justify-center rounded-3xl border border-canvas-300/60 bg-canvas-50 p-12 text-center shadow-lg">
         <div className="mb-6 flex size-20 items-center justify-center rounded-full bg-sage-100">
           <CheckCircle2 className="size-10 text-sage-700" aria-hidden />
         </div>
@@ -67,10 +67,10 @@ export function AdvancedBookingForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
-      <div className="space-y-8">
+    <form onSubmit={handleSubmit} className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-2">
+      <div className="space-y-8 rounded-3xl border border-canvas-300/60 bg-canvas-50 p-6 shadow-md sm:p-8">
         <div>
-          <h2 className="text-display-sm text-ink-900">Your Details</h2>
+          <h2 className="text-title-lg text-ink-900">Your Details</h2>
           <p className="mt-2 text-body-sm text-canvas-600">
             Provide your information so we can confirm your appointment.
           </p>
@@ -79,17 +79,17 @@ export function AdvancedBookingForm() {
         <div className="space-y-5">
           <div className="space-y-2">
             <Label htmlFor="name">Full Name</Label>
-            <Input id="name" required placeholder="Jane Doe" className="bg-canvas-50" />
+            <Input id="name" required placeholder="Jane Doe" className="bg-white" />
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="email">Email Address</Label>
-              <Input id="email" type="email" required placeholder="jane@example.com" className="bg-canvas-50" />
+              <Input id="email" type="email" required placeholder="jane@example.com" className="bg-white" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone">Phone Number</Label>
-              <Input id="phone" type="tel" required placeholder="(912) 555-0123" className="bg-canvas-50" />
+              <Input id="phone" type="tel" required placeholder="(912) 555-0123" className="bg-white" />
             </div>
           </div>
 
@@ -97,7 +97,7 @@ export function AdvancedBookingForm() {
             <Label htmlFor="location">Preferred Location</Label>
             <select
               id="location"
-              className="flex h-10 w-full rounded-md border border-canvas-300 bg-canvas-50 px-3 py-2 text-sm ring-offset-canvas-50 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-canvas-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex h-14 w-full rounded-xl border border-canvas-300 bg-white px-4 text-body text-canvas-900 focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-sage-600 disabled:cursor-not-allowed disabled:opacity-50"
               required
             >
               <option value="">Select a clinic location...</option>
@@ -108,7 +108,7 @@ export function AdvancedBookingForm() {
         </div>
       </div>
 
-      <div className="space-y-8 rounded-2xl bg-white p-6 shadow-md ring-1 ring-ink-900/5 sm:p-8">
+      <div className="space-y-8 rounded-3xl border border-canvas-300/60 bg-canvas-50 p-6 shadow-md sm:p-8">
         <div>
           <h2 className="text-title-lg text-ink-900">Date & Time</h2>
           <p className="mt-1 text-body-sm text-canvas-600">
@@ -124,7 +124,7 @@ export function AdvancedBookingForm() {
                 <Button
                   variant="secondary"
                   className={cn(
-                    'w-full justify-start text-left font-normal bg-canvas-50',
+                    'w-full justify-start bg-white text-left font-normal',
                     !date && 'text-canvas-600',
                   )}
                 >
@@ -132,7 +132,7 @@ export function AdvancedBookingForm() {
                   {date ? format(date, 'PPP') : <span>Pick a date</span>}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
+              <PopoverContent className="w-auto rounded-2xl p-0" align="start">
                 <Calendar
                   mode="single"
                   selected={date}
@@ -158,25 +158,25 @@ export function AdvancedBookingForm() {
                   type="button"
                   onClick={() => setTime(slot)}
                   className={cn(
-                    'rounded-md border py-2 text-sm transition-colors hover:bg-sage-100 hover:text-ink-900',
+                    'rounded-xl border py-2.5 text-body-sm font-medium transition-all duration-200 hover:-translate-y-0.5',
                     time === slot
-                      ? 'border-sage-600 bg-sage-600 text-white hover:bg-sage-700 hover:text-white'
-                      : 'border-canvas-300 bg-canvas-50 text-ink-900',
+                      ? 'border-sage-600 bg-sage-600 text-white shadow-glow hover:bg-sage-700'
+                      : 'border-canvas-300 bg-white text-ink-900 hover:border-sage-600/50 hover:text-sage-700',
                   )}
                 >
                   {slot}
                 </button>
               ))}
             </div>
-            {!time && <p className="text-xs text-canvas-600">Please pick a time slot.</p>}
+            {!time && <p className="text-body-sm text-canvas-600">Please pick a time slot.</p>}
           </div>
         </div>
 
         <div className="pt-4">
-          <Button type="submit" size="lg" variant="primary" className="w-full !bg-sage-600 hover:!bg-ink-900 !text-white" disabled={isSubmitting}>
+          <Button type="submit" size="lg" variant="primary" className="w-full" disabled={isSubmitting}>
             {isSubmitting ? 'Confirming...' : 'Confirm Appointment'}
           </Button>
-          <p className="mt-4 text-center text-xs text-canvas-600">
+          <p className="mt-4 text-center text-body-sm text-canvas-600">
             By submitting, you agree to receive communications regarding this booking.
           </p>
         </div>

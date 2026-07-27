@@ -1,24 +1,26 @@
 import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
+import { HeroCompact } from '@/components/sections/HeroCompact'
+import { LegalDocument } from '@/components/sections/LegalDocument'
 import { privacyPolicyHtml } from '@/content/privacy-policy'
+import { buildMetadata } from '@/lib/seo'
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: 'Privacy Policy | SAMM',
-}
+  description:
+    'How Savannah Age Management Medicine collects, uses, and protects your personal information.',
+  canonical: '/privacy-policy',
+})
 
 export default function Page() {
   return (
     <>
       <Header />
-      <main className="py-24 sm:py-32 bg-surface-page">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
-          <div className="prose prose-lg prose-slate max-w-none prose-a:text-sage-700 hover:prose-a:text-sage-800">
-            <h1>Privacy Policy</h1>
-            <div dangerouslySetInnerHTML={{ __html: privacyPolicyHtml }} />
-          </div>
-        </div>
-      </main>
-      
+      <HeroCompact
+        eyebrow="Legal"
+        title="Privacy Policy"
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy', href: '/privacy-policy' }]}
+      />
+      <LegalDocument html={privacyPolicyHtml} />
     </>
   )
 }

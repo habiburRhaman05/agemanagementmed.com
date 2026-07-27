@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Quote, Star } from 'lucide-react'
 import { useState } from 'react'
 
 import { Container } from '@/components/shared/Container'
+import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
 import type { Testimonial } from '@/types/content'
@@ -46,11 +47,7 @@ export function TestimonialSet({
       <Container>
         <Reveal>
           <div className="flex flex-col items-center text-center">
-            {eyebrow ? (
-              <span className="mb-4 block text-label font-bold uppercase tracking-widest text-sage-600">
-                {eyebrow}
-              </span>
-            ) : null}
+            {eyebrow ? <Eyebrow className="mb-4">{eyebrow}</Eyebrow> : null}
             <h2 className="text-display-sm sm:text-display-md text-ink-950 w-full mb-12">
               {title}
             </h2>

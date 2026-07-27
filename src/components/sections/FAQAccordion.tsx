@@ -53,13 +53,16 @@ export function FAQAccordion({
                       aria-expanded={isOpen}
                       aria-controls={panelId}
                       onClick={() => setOpen(isOpen ? null : index)}
-                      className="flex w-full items-start justify-between gap-8 py-7 text-left"
+                      className="group flex w-full items-start justify-between gap-8 py-7 text-left"
                     >
-                      <span className="text-title-md font-display text-ink-900">
+                      <span className="text-title-md font-display text-ink-900 transition-colors group-hover:text-sage-700">
                         {item.question}
                       </span>
-                      <span className="mt-0.5 shrink-0 text-sage-700" aria-hidden>
-                        {isOpen ? <Minus className="size-5" /> : <Plus className="size-5" />}
+                      <span
+                        className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700 transition-transform duration-300"
+                        aria-hidden
+                      >
+                        {isOpen ? <Minus className="size-4" /> : <Plus className="size-4" />}
                       </span>
                     </button>
                   </dt>

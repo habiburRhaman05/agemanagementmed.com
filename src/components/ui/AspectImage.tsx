@@ -50,7 +50,7 @@ export function AspectImage({
     <div
       className={cn(
         'relative overflow-hidden',
-        !cutout && 'bg-canvas-200',
+        !cutout && '',
         ratios[ratio],
         rounded && !cutout && 'rounded-lg',
         className,

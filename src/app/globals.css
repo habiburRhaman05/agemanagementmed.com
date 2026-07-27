@@ -24,7 +24,12 @@
   --color-sage-700: #0e6b55;
   --color-sage-600: #16916f;
   --color-sage-400: #62b79b;
+  --color-sage-200: #cdeadb;
   --color-sage-100: #e1f2ea;
+  /* Warm sage-mist — replaces a second warm-neutral tier for section rhythm.
+     Alternating ivory/beige reads flat; ivory/pale-sage reads intentional
+     and stays on-brand instead of fighting it with an unrelated hue. */
+  --color-sage-50: #eef4ee;
 
   /* ---- Palette: ROSE (brand mauve — rare tertiary accent) ---- */
   --color-rose-700: #a66e80;
@@ -34,7 +39,7 @@
 
   /* ---- Palette: CANVAS (warm neutrals — was cool grey-mist) ---- */
   --color-canvas-50: #fffdf8;
-  --color-canvas-100: #faf6ee;
+  --color-canvas-100: #f5f5f5;
   --color-canvas-200: #f3eedf;
   --color-canvas-300: #e5dcc8;
   --color-canvas-600: #6c6455;
@@ -282,4 +287,9 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+
+.bg-canvas-100 {
+    background-color: #f5f5f5;
 }

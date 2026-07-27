@@ -42,6 +42,7 @@ export function TreatmentTemplate({ treatment, testimonials }: TreatmentTemplate
     <>
       <HeroEditorial
         {...treatment.hero}
+        fullHeight
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },
@@ -49,9 +50,9 @@ export function TreatmentTemplate({ treatment, testimonials }: TreatmentTemplate
         ]}
       />
 
-      {treatment.statement ? (
+      {/* {treatment.statement ? (
         <StatementBand text={treatment.statement} background="alt" />
-      ) : null}
+      ) : null} */}
 
       {treatment.symptoms ? <BenefitList {...treatment.symptoms} /> : null}
 

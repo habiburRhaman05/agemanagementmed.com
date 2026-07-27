@@ -1,24 +1,29 @@
 import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
+import { HeroCompact } from '@/components/sections/HeroCompact'
+import { LegalDocument } from '@/components/sections/LegalDocument'
 import { officePoliciesHtml } from '@/content/office-policies'
+import { buildMetadata } from '@/lib/seo'
 
-export const metadata = {
-  title: 'Terms & Conditions (Office Policies) | SAMM',
-}
+export const metadata = buildMetadata({
+  title: 'Terms & Conditions | SAMM',
+  description:
+    'Office policies and terms and conditions for patients of Savannah Age Management Medicine.',
+  canonical: '/terms-and-conditions',
+})
 
 export default function Page() {
   return (
     <>
       <Header />
-      <main className="py-24 sm:py-32 bg-surface-page">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
-          <div className="prose prose-lg prose-slate max-w-none prose-a:text-sage-700 hover:prose-a:text-sage-800">
-            <h1>Terms & Conditions</h1>
-            <div dangerouslySetInnerHTML={{ __html: officePoliciesHtml }} />
-          </div>
-        </div>
-      </main>
-      <Footer />
+      <HeroCompact
+        eyebrow="Legal"
+        title="Terms & Conditions"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Terms & Conditions', href: '/terms-and-conditions' },
+        ]}
+      />
+      <LegalDocument html={officePoliciesHtml} />
     </>
   )
 }

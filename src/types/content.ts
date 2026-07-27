@@ -19,6 +19,8 @@ export interface Media {
   width?: number
   height?: number
   caption?: string
+  /** CSS object-position value (e.g. '70% 30%', 'top'). Defaults to 'center' — override per-photo when the subject isn't centered. */
+  focalPoint?: string
 }
 
 export interface Seo {

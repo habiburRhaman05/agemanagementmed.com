@@ -7,7 +7,9 @@ type Spacing = 'none' | 'sm' | 'md' | 'lg' | 'xl'
 
 const backgrounds: Record<Background, string> = {
   page: 'bg-canvas-100 text-canvas-900',
-  alt: 'bg-canvas-200 text-canvas-900',
+  // Pale sage mist, not a second beige — ties section rhythm to the brand
+  // accent instead of an unrelated warm-neutral tier. See globals.css.
+  alt: 'bg-sage-50 text-canvas-900',
   raised: 'bg-canvas-50 text-canvas-900',
   accent: 'bg-sage-100 text-canvas-900',
   // Dark bands are the emphasis device — headings invert too.

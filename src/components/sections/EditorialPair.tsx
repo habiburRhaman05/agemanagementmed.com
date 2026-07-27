@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { Container } from '@/components/shared/Container'
+import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Parallax } from '@/components/shared/Parallax'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
@@ -41,11 +42,7 @@ export function EditorialPair({
               imageSide === 'left' ? 'lg:order-2' : 'lg:order-1',
             )}
           >
-            {eyebrow ? (
-              <span className="mb-5 inline-flex items-center rounded-full bg-sage-100 px-4 py-1.5 text-label font-semibold uppercase text-sage-700">
-                {eyebrow}
-              </span>
-            ) : null}
+            {eyebrow ? <Eyebrow className="mb-5">{eyebrow}</Eyebrow> : null}
 
             <h2 className="text-display-md">{title}</h2>
 
