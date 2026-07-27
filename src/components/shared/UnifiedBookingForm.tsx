@@ -21,18 +21,40 @@ import type { LocationSlug } from '@/types/content'
 /* ── Validation schema ─────────────────────────────────────────────────── */
 
 const schema = z.object({
-  name: z.string().min(2, 'Please enter your full name'),
-  email: z.string().email('Please enter a valid email address'),
-  phone: z.string().min(7, 'Please enter a valid phone number'),
-  location: z.enum(['savannah-pooler', 'statesboro'], {
-    errorMap: () => ({ message: 'Please select a clinic location' }),
+  name: z
+    .string()
+    .min(2, "Please enter your full name"),
+
+  email: z
+    .string()
+    .email("Please enter a valid email address"),
+
+  phone: z
+    .string()
+    .min(7, "Please enter a valid phone number"),
+
+  location: z.enum(
+    ["savannah-pooler", "statesboro"],
+    {
+      message: "Please select a clinic location",
+    }
+  ),
+
+  date: z.coerce.date({
+    message: "Please select a date",
   }),
-  date: z.date({ required_error: 'Please select a date' }),
-  time: z.string().min(1, 'Please select a time slot'),
-  consent: z.literal(true, {
-    errorMap: () => ({ message: 'Consent is required to submit this form' }),
-  }),
-})
+
+  time: z
+    .string()
+    .min(1, "Please select a time slot"),
+
+  consent: z
+    .boolean()
+    .refine((v) => v === true, {
+      message: "Consent is required to submit this form",
+    }),
+});
+
 
 type FormValues = z.infer<typeof schema>
 
@@ -90,7 +112,7 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
     watch,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema as any),
     defaultValues: { location: defaultLocation ?? 'savannah-pooler' },
   })
 
