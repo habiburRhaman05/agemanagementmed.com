@@ -1,5 +1,6 @@
 import type * as React from 'react'
 
+import { Reveal } from '@/components/shared/Reveal'
 import { cn } from '@/lib/utils'
 
 interface SectionHeaderProps {
@@ -36,41 +37,43 @@ export function SectionHeader({
   const inverse = tone === 'inverse'
 
   return (
-    <div
-      className={cn(
-        'flex flex-col',
-        align === 'center' && 'items-center text-center',
-        className,
-      )}
-    >
-      {eyebrow ? (
-        <span
-          className={cn(
-            'mb-5 font-sans text-label font-semibold uppercase',
-            inverse ? 'text-sage-400' : 'text-sage-700',
-          )}
-        >
-          {eyebrow}
-        </span>
-      ) : null}
+    <Reveal>
+      <div
+        className={cn(
+          'flex flex-col',
+          align === 'center' && 'items-center text-center',
+          className,
+        )}
+      >
+        {eyebrow ? (
+          <span
+            className={cn(
+              'mb-5 font-sans text-label font-semibold uppercase',
+              inverse ? 'text-sage-400' : 'text-sage-700',
+            )}
+          >
+            {eyebrow}
+          </span>
+        ) : null}
 
-      <Heading className={cn(sizes[size], inverse && 'text-canvas-50', 'max-w-[20ch]')}>
-        {title}
-      </Heading>
+        <Heading className={cn(sizes[size], inverse && 'text-canvas-50', 'max-w-[20ch]')}>
+          {title}
+        </Heading>
 
-      {lead ? (
-        <p
-          className={cn(
-            'mt-6 text-body-lg prose-measure',
-            inverse ? 'text-canvas-50/75' : 'text-canvas-600',
-            align === 'center' && 'mx-auto',
-          )}
-        >
-          {lead}
-        </p>
-      ) : null}
+        {lead ? (
+          <p
+            className={cn(
+              'mt-6 text-body-lg prose-measure',
+              inverse ? 'text-canvas-50/75' : 'text-canvas-600',
+              align === 'center' && 'mx-auto',
+            )}
+          >
+            {lead}
+          </p>
+        ) : null}
 
-      {children ? <div className="mt-8">{children}</div> : null}
-    </div>
+        {children ? <div className="mt-8">{children}</div> : null}
+      </div>
+    </Reveal>
   )
 }

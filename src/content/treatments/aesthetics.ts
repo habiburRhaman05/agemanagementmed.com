@@ -32,7 +32,7 @@ export const aesthetics: Treatment = {
       alt: 'A couple embracing and smiling outdoors',
     },
     ctas: [
-      { label: 'Book appointment', href: '/contact-us' },
+      { label: 'Book appointment', href: '/book' },
       { label: 'Meet our experts', href: '/our-experts' },
     ],
   },
@@ -78,7 +78,7 @@ export const aesthetics: Treatment = {
   closingCta: {
     title: 'Elevate and enhance',
     body: 'Start your journey toward a more radiant, youthful appearance.',
-    cta: { label: 'Book appointment', href: '/contact-us' },
+    cta: { label: 'Book appointment', href: '/book' },
   },
 
   seo: {

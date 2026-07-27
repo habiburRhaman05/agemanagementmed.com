@@ -13,7 +13,7 @@ interface StatementBandProps {
  */
 export function StatementBand({ text, background = 'page' }: StatementBandProps) {
   return (
-    <Section background={background} spacing="lg">
+    <Section background={background} spacing="none" className="py-4 lg:py-6">
       <Container width="prose">
         <Reveal>
           <p className="text-center font-display text-display-md text-balance">{text}</p>

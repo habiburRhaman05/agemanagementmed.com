@@ -25,7 +25,7 @@ export const glp1MicrodosingWomen: Treatment = {
       alt: 'GLP-1 Microdosing:Precision Metabolic Optimization'
     },
     ctas: [
-      { label: 'Book a consultation', href: '/contact-us' }
+      { label: 'Book a consultation', href: '/book' }
     ]
   },
 
@@ -71,7 +71,7 @@ export const glp1MicrodosingWomen: Treatment = {
   closingCta: {
     title: 'Ready to take the next step?',
     body: 'Start with a consultation.',
-    cta: { label: 'Book a consultation', href: '/contact-us' }
+    cta: { label: 'Book a consultation', href: '/book' }
   },
 
   seo: {

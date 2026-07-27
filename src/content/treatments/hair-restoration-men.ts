@@ -26,7 +26,7 @@ export const hairRestorationMen: Treatment = {
       alt: 'A person laughing outdoors, representing renewed confidence',
     },
     ctas: [
-      { label: 'Schedule a consultation', href: '/contact-us' },
+      { label: 'Schedule a consultation', href: '/book' },
       { label: 'View financing options', href: '/financing-options' },
     ],
   },
@@ -154,7 +154,7 @@ export const hairRestorationMen: Treatment = {
   closingCta: {
     title: 'Restore your hair naturally',
     body: 'Take the first step toward thicker, healthier hair with PRP therapy.',
-    cta: { label: 'Schedule a consultation', href: '/contact-us' },
+    cta: { label: 'Schedule a consultation', href: '/book' },
   },
 
   seo: {

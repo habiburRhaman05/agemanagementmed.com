@@ -80,7 +80,7 @@ export function MegaMenu({ inverse = false }: { inverse?: boolean }) {
       <div
         id="treatments-menu"
         hidden={!open}
-        className="fixed inset-x-0 top-20 border-y border-canvas-300/60 bg-canvas-50 shadow-lg lg:top-24"
+        className="fixed container mx-auto inset-x-0 top-20 border-y border-canvas-300/60 bg-white shadow-lg lg:top-24"
       >
         <Container>
           <div className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-5">

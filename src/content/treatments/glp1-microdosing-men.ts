@@ -26,7 +26,7 @@ export const glp1MicrodosingMen: Treatment = {
       alt: 'A clinician holding a blood sample for lab testing',
     },
     ctas: [
-      { label: 'Schedule a consultation', href: '/contact-us' },
+      { label: 'Schedule a consultation', href: '/book' },
       { label: 'View financing options', href: '/financing-options' },
     ],
   },
@@ -149,7 +149,7 @@ export const glp1MicrodosingMen: Treatment = {
   closingCta: {
     title: 'Ready to feel like yourself again?',
     body: 'Take the next step toward personalized hormone optimization and long-term wellness.',
-    cta: { label: 'Schedule a consultation', href: '/contact-us' },
+    cta: { label: 'Schedule a consultation', href: '/book' },
   },
 
   seo: {

@@ -80,8 +80,10 @@ export function Header({ overlay = false }: HeaderProps) {
               <a
                 href={site.phoneHref}
                 className={cn(
-                  'hidden items-center gap-2 text-body-sm font-medium transition-opacity hover:opacity-60 xl:flex',
-                  solid ? 'text-ink-900' : 'text-canvas-50',
+                  'hidden items-center gap-2 rounded-full px-4 py-2 text-body-sm font-medium transition-colors xl:flex',
+                  solid
+                    ? 'bg-sage-100 text-ink-900 hover:bg-sage-600 hover:text-white'
+                    : 'bg-white/10 text-canvas-50 hover:bg-sage-600 hover:text-white',
                 )}
               >
                 <Phone className="size-4" aria-hidden />
@@ -92,7 +94,7 @@ export function Header({ overlay = false }: HeaderProps) {
                 asChild
                 size="sm"
                 variant={solid ? 'primary' : 'inverse'}
-                className="hidden sm:inline-flex"
+                className="hidden sm:inline-flex bg-sage-600 !text-white hover:bg-sage-700"
               >
                 <Link href={site.bookingHref}>Book consultation</Link>
               </Button>

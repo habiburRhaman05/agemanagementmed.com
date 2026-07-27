@@ -25,7 +25,7 @@ export const sexualWellnessWomen: Treatment = {
       alt: 'Restore Comfort, Confidence, And Sexual Wellness For Women'
     },
     ctas: [
-      { label: 'Book a consultation', href: '/contact-us' }
+      { label: 'Book a consultation', href: '/book' }
     ]
   },
 
@@ -83,7 +83,7 @@ export const sexualWellnessWomen: Treatment = {
   closingCta: {
     title: 'Ready to take the next step?',
     body: 'Start with a consultation.',
-    cta: { label: 'Book a consultation', href: '/contact-us' }
+    cta: { label: 'Book a consultation', href: '/book' }
   },
 
   seo: {

@@ -156,7 +156,7 @@ export const bhrtHrtTrt: Treatment = {
   closingCta: {
     title: 'Ready to Optimize Your Hormonal Health?',
     body: "Don't let hormonal imbalances hold you back. Discover the Savannah Age Management difference right here in Pooler, GA.",
-    cta: { label: 'Schedule a consultation', href: '/contact-us' },
+    cta: { label: 'Schedule a consultation', href: '/book' },
   },
 
   seo: {

@@ -26,7 +26,7 @@ export const sexualWellnessMen: Treatment = {
       alt: 'A couple embracing, representing renewed intimacy and confidence',
     },
     ctas: [
-      { label: 'Schedule a consultation', href: '/contact-us' },
+      { label: 'Schedule a consultation', href: '/book' },
       { label: 'View financing options', href: '/financing-options' },
     ],
   },
@@ -140,7 +140,7 @@ export const sexualWellnessMen: Treatment = {
   closingCta: {
     title: 'Ready to take control of your sexual health?',
     body: 'Our treatments are discreet, effective, and personalized to meet your needs.',
-    cta: { label: 'Schedule a consultation', href: '/contact-us' },
+    cta: { label: 'Schedule a consultation', href: '/book' },
   },
 
   seo: {

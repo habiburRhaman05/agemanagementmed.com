@@ -29,7 +29,7 @@ export const shockwaveTherapy: Treatment = {
       src: '/images/treatments/shockwave-therapy/banner-32-bg.jpg',
       alt: "Shockwave Therapy for Men's Sexual Function",
     },
-    ctas: [{ label: 'Book a consultation', href: '/contact-us' }],
+    ctas: [{ label: 'Book a consultation', href: '/book' }],
   },
 
   sections: [
@@ -134,7 +134,7 @@ export const shockwaveTherapy: Treatment = {
   closingCta: {
     title: 'Get Started',
     body: 'Schedule Your Shockwave Therapy Consultation in Savannah. Private, discreet appointments with licensed providers at Savannah Age Management Medicine. Serving Savannah, Bluffton, Hilton Head, and Coastal Georgia.',
-    cta: { label: 'Book a consultation', href: '/contact-us' },
+    cta: { label: 'Book a consultation', href: '/book' },
   },
 
   seo: {

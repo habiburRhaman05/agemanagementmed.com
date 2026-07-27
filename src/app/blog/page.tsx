@@ -21,7 +21,7 @@ export default function BlogIndexPage() {
       <ClosingCTA
         title="Ready to transform your health?"
         body="Take the first step towards a healthier, more vibrant you."
-        cta={{ label: 'Schedule a consultation', href: '/contact-us' }}
+        cta={{ label: 'Schedule a consultation', href: '/book' }}
       />
     </>
   )

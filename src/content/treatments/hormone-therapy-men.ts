@@ -31,7 +31,7 @@ export const hormoneTherapyMen: Treatment = {
       alt: 'A man in natural light, representing restored strength and vitality',
     },
     ctas: [
-      { label: 'Book a consultation', href: '/contact-us' },
+      { label: 'Book a consultation', href: '/book' },
       { label: 'How BHRT works', href: '/bhrt-hrt-trt' },
     ],
   },
@@ -157,7 +157,7 @@ export const hormoneTherapyMen: Treatment = {
   closingCta: {
     title: 'Ready to feel stronger, sharper, and more like yourself?',
     body: 'Start with a consultation. We will look at your symptoms and your labs, and build a plan from there.',
-    cta: { label: 'Book a consultation', href: '/contact-us' },
+    cta: { label: 'Book a consultation', href: '/book' },
   },
 
   seo: {

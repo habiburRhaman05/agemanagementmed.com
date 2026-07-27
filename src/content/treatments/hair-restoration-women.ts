@@ -25,7 +25,7 @@ export const hairRestorationWomen: Treatment = {
       alt: 'Restore Your Confidence With Natural Hair Restoration'
     },
     ctas: [
-      { label: 'Book a consultation', href: '/contact-us' }
+      { label: 'Book a consultation', href: '/book' }
     ]
   },
 
@@ -75,7 +75,7 @@ export const hairRestorationWomen: Treatment = {
   closingCta: {
     title: 'Ready to take the next step?',
     body: 'Start with a consultation.',
-    cta: { label: 'Book a consultation', href: '/contact-us' }
+    cta: { label: 'Book a consultation', href: '/book' }
   },
 
   seo: {

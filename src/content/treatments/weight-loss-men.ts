@@ -26,7 +26,7 @@ export const weightLossMen: Treatment = {
       alt: 'A patient measuring their waist during a body composition check',
     },
     ctas: [
-      { label: 'Schedule a consultation', href: '/contact-us' },
+      { label: 'Schedule a consultation', href: '/book' },
       { label: 'View financing options', href: '/financing-options' },
     ],
   },
@@ -172,7 +172,7 @@ export const weightLossMen: Treatment = {
   closingCta: {
     title: 'Start your personalized weight loss plan today',
     body: "You don't have to figure this out on your own.",
-    cta: { label: 'Schedule a consultation', href: '/contact-us' },
+    cta: { label: 'Schedule a consultation', href: '/book' },
   },
 
   seo: {

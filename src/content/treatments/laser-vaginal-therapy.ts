@@ -25,7 +25,7 @@ export const laserVaginalTherapy: Treatment = {
       alt: 'Laser Vaginal Therapy'
     },
     ctas: [
-      { label: 'Book a consultation', href: '/contact-us' }
+      { label: 'Book a consultation', href: '/book' }
     ]
   },
 
@@ -75,7 +75,7 @@ export const laserVaginalTherapy: Treatment = {
   closingCta: {
     title: 'Ready to take the next step?',
     body: 'Start with a consultation.',
-    cta: { label: 'Book a consultation', href: '/contact-us' }
+    cta: { label: 'Book a consultation', href: '/book' }
   },
 
   seo: {

@@ -66,9 +66,8 @@ export const megaMenu: MegaMenuColumn[] = [
 export const primaryNav: NavLink[] = [
   { label: 'Treatments', href: '/bioidentical-hormone-replacement-therapy' },
   { label: 'Our Experts', href: '/our-experts' },
-  { label: 'Results', href: '/results' },
-  { label: 'Locations', href: '/locations' },
-  { label: 'Journal', href: '/blog' },
+  { label: 'Blogs', href: '/blog' },
+  { label: 'Contact Us', href: '/contact-us' },
 ]
 
 export const footerNav = {
@@ -76,17 +75,12 @@ export const footerNav = {
     { label: 'Our Experts', href: '/our-experts' },
     { label: 'Patient Results', href: '/results' },
     { label: 'In The News', href: '/in-the-news' },
-    { label: 'Journal', href: '/blog' },
-    { label: 'Wellness Specials', href: '/specials' },
-    { label: 'Financing Options', href: '/financing-options' },
+    { label: 'Blogs', href: '/blog' },
+
   ] satisfies NavLink[],
   locations: [
-    { label: 'Savannah / Pooler', href: '/locations/savannah-pooler' },
-    { label: 'Statesboro', href: '/statesboro' },
-    { label: 'Contact Us', href: '/contact-us' },
   ] satisfies NavLink[],
   legal: [
-    { label: 'Office Policies', href: '/office-policies' },
     { label: 'Privacy Policy', href: '/privacy-policy' },
   ] satisfies NavLink[],
 }
