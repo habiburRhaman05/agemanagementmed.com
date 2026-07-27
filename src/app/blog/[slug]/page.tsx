@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -21,20 +22,25 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = await getPostBySlug(slug)
 
-  if (!post) {
+  try {
+    const post = await getPostBySlug(slug)
+
+    if (!post) {
+      return buildMetadata({ title: 'Not Found', description: '', canonical: '' })
+    }
+
+    return buildMetadata({
+      title: `${post.title} | Savannah Age Management Medicine`,
+      description: post.excerpt || '',
+      canonical: `/blog/${post.slug}`,
+      ogImage: post.featuredImage
+        ? { src: post.featuredImage, alt: post.title }
+        : undefined,
+    })
+  } catch {
     return buildMetadata({ title: 'Not Found', description: '', canonical: '' })
   }
-
-  return buildMetadata({
-    title: `${post.title} | Savannah Age Management Medicine`,
-    description: post.excerpt || '',
-    canonical: `/blog/${post.slug}`,
-    ogImage: post.featuredImage
-      ? { src: post.featuredImage, alt: post.title }
-      : undefined,
-  })
 }
 
 /* ── Reading progress bar ─────────────────────────────────────────── */
@@ -124,7 +130,7 @@ function processArticleHtml(html: string): string {
   // Add IDs to h2/h3 tags for table of contents linking
   return html.replace(
     /<h([23])([^>]*)>(.*?)<\/h([23])>/g,
-    (_match, level, attrs, text, _closingLevel, offset) => {
+    (_match, level, attrs, text, _closingLevel) => {
       const id = text
         .replace(/<[^>]*>/g, '')
         .toLowerCase()
@@ -134,24 +140,9 @@ function processArticleHtml(html: string): string {
   )
 }
 
-/* ── Page ─────────────────────────────────────────────────────────── */
+/* ── Related Posts (wrapped in Suspense) ──────────────────────────── */
 
-export default async function BlogPostPage({ params }: Props) {
-  const { slug } = await params
-
-  let post
-  try {
-    post = await getPostBySlug(slug)
-  } catch (err) {
-    console.error('[BlogPostPage] DB error for slug:', slug, err)
-    notFound()
-  }
-
-  if (!post) {
-    notFound()
-  }
-
-  // Fetch related posts
+async function RelatedPosts({ currentSlug }: { currentSlug: string }) {
   let related
   try {
     related = await getPosts({
@@ -163,40 +154,82 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   const relatedPosts = related.posts
-    .filter((p) => p.slug !== post.slug)
+    .filter((p) => p.slug !== currentSlug)
     .slice(0, 3)
 
+  if (relatedPosts.length === 0) return null
+
+  return (
+    <section className="border-t border-gray-100 bg-gray-50/50 py-16">
+      <Container>
+        <div className="mb-8">
+          <h2 className="font-display text-2xl font-bold text-gray-900">
+            Related Articles
+          </h2>
+          <p className="mt-1 text-gray-500">
+            Continue reading from our journal
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedPosts.map((rp) => {
+            const date = rp.publishedAt
+              ? format(new Date(rp.publishedAt), 'MMM d, yyyy')
+              : ''
+
+            return (
+              <Link
+                key={rp.id}
+                href={`/blog/${rp.slug}`}
+                className="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+              >
+                {rp.featuredImage && (
+                  <div className="relative -mx-5 -mt-5 mb-4 aspect-[16/9] overflow-hidden rounded-t-xl">
+                    <Image
+                      src={rp.featuredImage}
+                      alt={rp.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                )}
+                <h3 className="font-semibold text-gray-900 transition-colors group-hover:text-emerald-700 line-clamp-2">
+                  {rp.title}
+                </h3>
+                {rp.excerpt && (
+                  <p className="mt-1.5 text-sm leading-relaxed text-gray-500 line-clamp-2">
+                    {rp.excerpt}
+                  </p>
+                )}
+                {date && (
+                  <p className="mt-3 text-xs text-gray-400">{date}</p>
+                )}
+              </Link>
+            )
+          })}
+        </div>
+      </Container>
+    </section>
+  )
+}
+
+/* ── Post content section ─────────────────────────────────────────── */
+
+function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof getPostBySlug>>> }) {
   const postDate = post.publishedAt
     ? format(new Date(post.publishedAt), 'MMMM d, yyyy')
     : ''
 
   const authorName = post.author?.name || 'SAMM Team'
-  const processedHtml = processArticleHtml(post.contentHtml || '')
+  const processedHtml = post.contentHtml
+    ? processArticleHtml(post.contentHtml)
+    : ''
   const readingTime = post.readingTime || Math.ceil((post.contentHtml?.split(/\s+/).length || 0) / 200)
   const canonicalUrl = `${site.url}/blog/${post.slug}`
 
   return (
     <>
-      {/* Reading progress bar - client component would be better here, but this is SSR */}
-      <ReadingProgressBar />
-
-      <Header />
-
-      {/* Progress bar script */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.addEventListener('scroll', function() {
-              const scrollTop = window.scrollY
-              const docHeight = document.documentElement.scrollHeight - window.innerHeight
-              const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0
-              const bar = document.getElementById('reading-progress')
-              if (bar) bar.style.width = progress + '%'
-            })
-          `,
-        }}
-      />
-
       {/* ── Hero Section ────────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
         {/* Background image */}
@@ -245,10 +278,12 @@ export default async function BlogPostPage({ params }: Props) {
 
             {/* Meta */}
             <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/70">
-              <span className="inline-flex items-center gap-1.5">
-                <CalendarDays className="h-4 w-4" />
-                {postDate}
-              </span>
+              {postDate && (
+                <span className="inline-flex items-center gap-1.5">
+                  <CalendarDays className="h-4 w-4" />
+                  {postDate}
+                </span>
+              )}
               <span className="inline-flex items-center gap-1.5">
                 <Clock className="h-4 w-4" />
                 {readingTime} min read
@@ -350,48 +385,56 @@ export default async function BlogPostPage({ params }: Props) {
               )}
 
               {/* Content */}
-              <div
-                className={[
-                  'prose prose-lg max-w-none',
-                  // Headings
-                  'prose-headings:font-display prose-headings:font-semibold prose-headings:text-gray-900 prose-headings:scroll-mt-24',
-                  'prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-gray-100',
-                  'prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3',
-                  // Paragraphs
-                  'prose-p:text-gray-600 prose-p:leading-8 prose-p:mb-5',
-                  // Links
-                  'prose-a:text-emerald-700 prose-a:font-medium prose-a:no-underline hover:prose-a:underline hover:prose-a:decoration-emerald-500 hover:prose-a:decoration-2',
-                  // Images
-                  'prose-img:rounded-2xl prose-img:shadow-md prose-img:my-8',
-                  // Bold
-                  'prose-strong:text-gray-900 prose-strong:font-semibold',
-                  // Blockquote
-                  'prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50/50 prose-blockquote:py-2 prose-blockquote:pl-6 prose-blockquote:pr-4 prose-blockquote:rounded-r-xl prose-blockquote:not-italic',
-                  'prose-blockquote:font-normal prose-blockquote:text-gray-600 prose-blockquote:text-lg',
-                  // Lists
-                  'prose-ul:list-disc prose-ul:pl-6 prose-ul:text-gray-600 prose-li:my-1',
-                  'prose-ol:list-decimal prose-ol:pl-6 prose-ol:text-gray-600',
-                  // Code
-                  'prose-code:rounded-lg prose-code:bg-gray-100 prose-code:px-2 prose-code:py-0.5 prose-code:text-sm prose-code:font-normal prose-code:text-emerald-800',
-                  'prose-pre:rounded-xl prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:shadow-md prose-pre:my-6',
-                  // Horizontal rule
-                  'prose-hr:border-gray-200 prose-hr:my-10',
-                  // Tables
-                  'prose-table:border-collapse prose-table:rounded-xl prose-table:overflow-hidden prose-table:shadow-sm',
-                  'prose-th:bg-gray-50 prose-th:px-4 prose-th:py-3 prose-th:text-xs prose-th:font-semibold prose-th:uppercase prose-th:tracking-wider prose-th:text-gray-500',
-                  'prose-td:px-4 prose-td:py-3 prose-td:text-sm prose-td:border-t prose-td:border-gray-100',
-                  // Embedded CTA buttons
-                  '[&_.btn-arrow-right]:inline-flex [&_.btn-arrow-right]:items-center [&_.btn-arrow-right]:gap-2',
-                  '[&_.btn-arrow-right]:rounded-full [&_.btn-arrow-right]:bg-gradient-to-br [&_.btn-arrow-right]:from-emerald-600 [&_.btn-arrow-right]:to-teal-700',
-                  '[&_.btn-arrow-right]:px-7 [&_.btn-arrow-right]:py-3.5 [&_.btn-arrow-right]:font-semibold',
-                  '[&_.btn-arrow-right]:text-white [&_.btn-arrow-right]:no-underline [&_.btn-arrow-right]:shadow-md',
-                  '[&_.btn-arrow-right]:hover:shadow-lg [&_.btn-arrow-right]:hover:from-emerald-700 [&_.btn-arrow-right]:hover:to-teal-800',
-                  '[&_.btn-arrow-right]:transition-all [&_.btn-arrow-right]:duration-200',
-                  // First letter drop cap for first paragraph
-                  '[&>p:first-of-type]:first-letter:text-4xl [&>p:first-of-type]:first-letter:font-bold [&>p:first-of-type]:first-letter:text-emerald-700 [&>p:first-of-type]:first-letter:float-left [&>p:first-of-type]:first-letter:mr-3 [&>p:first-of-type]:first-letter:mt-1',
-                ].join(' ')}
-                dangerouslySetInnerHTML={{ __html: processedHtml }}
-              />
+              {processedHtml ? (
+                <div
+                  className={[
+                    'prose prose-lg max-w-none',
+                    // Headings
+                    'prose-headings:font-display prose-headings:font-semibold prose-headings:text-gray-900 prose-headings:scroll-mt-24',
+                    'prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-gray-100',
+                    'prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3',
+                    // Paragraphs
+                    'prose-p:text-gray-600 prose-p:leading-8 prose-p:mb-5',
+                    // Links
+                    'prose-a:text-emerald-700 prose-a:font-medium prose-a:no-underline hover:prose-a:underline hover:prose-a:decoration-emerald-500 hover:prose-a:decoration-2',
+                    // Images
+                    'prose-img:rounded-2xl prose-img:shadow-md prose-img:my-8',
+                    // Bold
+                    'prose-strong:text-gray-900 prose-strong:font-semibold',
+                    // Blockquote
+                    'prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50/50 prose-blockquote:py-2 prose-blockquote:pl-6 prose-blockquote:pr-4 prose-blockquote:rounded-r-xl prose-blockquote:not-italic',
+                    'prose-blockquote:font-normal prose-blockquote:text-gray-600 prose-blockquote:text-lg',
+                    // Lists
+                    'prose-ul:list-disc prose-ul:pl-6 prose-ul:text-gray-600 prose-li:my-1',
+                    'prose-ol:list-decimal prose-ol:pl-6 prose-ol:text-gray-600',
+                    // Code
+                    'prose-code:rounded-lg prose-code:bg-gray-100 prose-code:px-2 prose-code:py-0.5 prose-code:text-sm prose-code:font-normal prose-code:text-emerald-800',
+                    'prose-pre:rounded-xl prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:shadow-md prose-pre:my-6',
+                    // Horizontal rule
+                    'prose-hr:border-gray-200 prose-hr:my-10',
+                    // Tables
+                    'prose-table:border-collapse prose-table:rounded-xl prose-table:overflow-hidden prose-table:shadow-sm',
+                    'prose-th:bg-gray-50 prose-th:px-4 prose-th:py-3 prose-th:text-xs prose-th:font-semibold prose-th:uppercase prose-th:tracking-wider prose-th:text-gray-500',
+                    'prose-td:px-4 prose-td:py-3 prose-td:text-sm prose-td:border-t prose-td:border-gray-100',
+                    // Embedded CTA buttons
+                    '[&_.btn-arrow-right]:inline-flex [&_.btn-arrow-right]:items-center [&_.btn-arrow-right]:gap-2',
+                    '[&_.btn-arrow-right]:rounded-full [&_.btn-arrow-right]:bg-gradient-to-br [&_.btn-arrow-right]:from-emerald-600 [&_.btn-arrow-right]:to-teal-700',
+                    '[&_.btn-arrow-right]:px-7 [&_.btn-arrow-right]:py-3.5 [&_.btn-arrow-right]:font-semibold',
+                    '[&_.btn-arrow-right]:text-white [&_.btn-arrow-right]:no-underline [&_.btn-arrow-right]:shadow-md',
+                    '[&_.btn-arrow-right]:hover:shadow-lg [&_.btn-arrow-right]:hover:from-emerald-700 [&_.btn-arrow-right]:hover:to-teal-800',
+                    '[&_.btn-arrow-right]:transition-all [&_.btn-arrow-right]:duration-200',
+                    // First letter drop cap for first paragraph
+                    '[&>p:first-of-type]:first-letter:text-4xl [&>p:first-of-type]:first-letter:font-bold [&>p:first-of-type]:first-letter:text-emerald-700 [&>p:first-of-type]:first-letter:float-left [&>p:first-of-type]:first-letter:mr-3 [&>p:first-of-type]:first-letter:mt-1',
+                  ].join(' ')}
+                  dangerouslySetInnerHTML={{ __html: processedHtml }}
+                />
+              ) : (
+                <div className="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center">
+                  <p className="text-gray-500">
+                    This article content is being prepared. Please check back soon.
+                  </p>
+                </div>
+              )}
 
               {/* Article footer */}
               <div className="mt-12 border-t border-gray-100 pt-8">
@@ -456,61 +499,79 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </Container>
       </section>
+    </>
+  )
+}
 
-      {/* ── Related Posts ───────────────────────────────────────────── */}
-      {relatedPosts.length > 0 && (
-        <section className="border-t border-gray-100 bg-gray-50/50 py-16">
-          <Container>
-            <div className="mb-8">
-              <h2 className="font-display text-2xl font-bold text-gray-900">
-                Related Articles
-              </h2>
-              <p className="mt-1 text-gray-500">
-                Continue reading from our journal
-              </p>
-            </div>
+/* ── Page ─────────────────────────────────────────────────────────── */
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {relatedPosts.map((rp) => {
-                const date = rp.publishedAt
-                  ? format(new Date(rp.publishedAt), 'MMM d, yyyy')
-                  : ''
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params
 
-                return (
-                  <Link
-                    key={rp.id}
-                    href={`/blog/${rp.slug}`}
-                    className="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+  let post
+  try {
+    post = await getPostBySlug(slug)
+  } catch (err) {
+    console.error('[BlogPostPage] DB error for slug:', slug, err)
+    // Don't show notFound for DB errors — let error.tsx handle it gracefully
+    throw new Error('Failed to load article. Please try again.', { cause: err })
+  }
+
+  if (!post) {
+    notFound()
+  }
+
+  return (
+    <>
+      <ReadingProgressBar />
+      <Header />
+
+      {/* Progress bar script */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.addEventListener('scroll', function() {
+              const scrollTop = window.scrollY
+              const docHeight = document.documentElement.scrollHeight - window.innerHeight
+              const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0
+              const bar = document.getElementById('reading-progress')
+              if (bar) bar.style.width = progress + '%'
+            })
+          `,
+        }}
+      />
+
+      {/* Main article content */}
+      <ArticleContent post={post} />
+
+      {/* Related Posts (streamed via Suspense) */}
+      <Suspense
+        fallback={
+          <section className="border-t border-gray-100 bg-gray-50/50 py-16">
+            <Container>
+              <div className="mb-8">
+                <div className="h-7 w-48 rounded bg-gray-200 animate-pulse" />
+                <div className="mt-1 h-4 w-64 rounded bg-gray-100 animate-pulse" />
+              </div>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: 3 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="animate-pulse rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
                   >
-                    {rp.featuredImage && (
-                      <div className="relative -mx-5 -mt-5 mb-4 aspect-[16/9] overflow-hidden rounded-t-xl">
-                        <Image
-                          src={rp.featuredImage}
-                          alt={rp.title}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                        />
-                      </div>
-                    )}
-                    <h3 className="font-semibold text-gray-900 transition-colors group-hover:text-emerald-700 line-clamp-2">
-                      {rp.title}
-                    </h3>
-                    {rp.excerpt && (
-                      <p className="mt-1.5 text-sm leading-relaxed text-gray-500 line-clamp-2">
-                        {rp.excerpt}
-                      </p>
-                    )}
-                    {date && (
-                      <p className="mt-3 text-xs text-gray-400">{date}</p>
-                    )}
-                  </Link>
-                )
-              })}
-            </div>
-          </Container>
-        </section>
-      )}
+                    <div className="-mx-5 -mt-5 mb-4 aspect-[16/9] rounded-t-xl bg-gray-200" />
+                    <div className="mb-2 h-5 w-full rounded bg-gray-200" />
+                    <div className="mb-2 h-5 w-3/4 rounded bg-gray-200" />
+                    <div className="h-3 w-20 rounded bg-gray-100" />
+                  </div>
+                ))}
+              </div>
+            </Container>
+          </section>
+        }
+      >
+        <RelatedPosts currentSlug={slug} />
+      </Suspense>
 
       <ClosingCTA
         title="Ready to transform your health?"
