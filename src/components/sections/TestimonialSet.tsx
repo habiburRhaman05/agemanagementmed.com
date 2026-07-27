@@ -73,20 +73,12 @@ export function TestimonialSet({
                 {eyebrow}
               </span>
             ) : null}
-            <h2 className="text-display-sm sm:text-display-md text-ink-950 max-w-2xl mb-16">
+            <h2 className="text-display-sm sm:text-display-md text-ink-950 w-full mb-16">
               {title}
             </h2>
 
             {/* Slider Track */}
-            <div className="relative w-full max-w-4xl min-h-[22rem] flex flex-col items-center justify-center">
-              {/* Decorative Background Quote */}
-              <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-serif text-[24rem] leading-none text-sage-200/30 -z-10"
-                aria-hidden
-              >
-                “
-              </div>
-
+            <div className="relative w-full  min-h-[22rem] flex flex-col items-center justify-center">
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={index}
@@ -101,14 +93,20 @@ export function TestimonialSet({
                     filter: { duration: 0.4 },
                     scale: { duration: 0.4 },
                   }}
-                  className="flex flex-col items-center"
+                  className="flex flex-col items-center justify-center bg-white rounded-[2.5rem] p-10 sm:p-16 md:p-24 shadow-[0_8px_40px_rgb(0,0,0,0.04)] border border-sage-100 w-full relative overflow-hidden min-h-[30rem]"
                 >
-                  <blockquote className="font-display text-2xl sm:text-3xl md:text-4xl leading-relaxed text-ink-900 max-w-3xl px-4">
+                  <div
+                    className="absolute -top-16 left-0 sm:left-12 select-none font-serif text-[30rem] leading-none text-sage-50/80 pointer-events-none z-0"
+                    aria-hidden
+                  >
+                    “
+                  </div>
+                  <blockquote className="font-display text-2xl sm:text-4xl md:text-5xl leading-tight text-ink-900 max-w-4xl px-4 relative z-10">
                     “{current.quote}”
                   </blockquote>
 
-                  <div className="mt-10 flex flex-col items-center">
-                    <div className="mb-4 flex gap-1 text-sage-500">
+                  <div className="mt-12 flex flex-col items-center relative z-10">
+                    <div className="mb-5 flex gap-1.5 text-sage-500">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="size-5 fill-current" />
                       ))}

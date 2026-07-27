@@ -34,7 +34,7 @@ export function HomeTemplate({ content }: { content: typeof homeContent }) {
 
       <EditorialPair {...content.origin} background="alt" />
 
-      <ProofBand {...content.proof} />
+      {/* <ProofBand {...content.proof} /> */}
 
       <ProcessSteps {...content.journey} background="page" />
 
