@@ -1,5 +1,6 @@
 'use client'
 
+import { bookAppointment, type ActionResult } from '@/actions/appointment'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { format } from 'date-fns'
 import { AlertCircle, Calendar as CalendarIcon, CheckCircle2, Clock, MapPin, User } from 'lucide-react'
@@ -119,9 +120,24 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
   const selectedDate = watch('date')
   const selectedTime = watch('time')
 
+  const [bookingState, setBookingState] = useState<ActionResult | null>(null)
+
   const onSubmit = async () => {
-    await new Promise((r) => setTimeout(r, 600))
-    router.push('/thank-you')
+    const formData = new FormData()
+    formData.append('name', watch('name'))
+    formData.append('email', watch('email'))
+    formData.append('phone', watch('phone'))
+    formData.append('service', `Consultation at ${watch('location') === 'savannah-pooler' ? 'Savannah/Pooler' : 'Statesboro'}`)
+    formData.append('preferredDate', watch('date')?.toISOString() || '')
+    formData.append('preferredTime', watch('time'))
+    formData.append('message', `Location: ${watch('location') === 'savannah-pooler' ? 'Savannah/Pooler' : 'Statesboro'}`)
+
+    const result = await bookAppointment(null, formData)
+    if (result.success) {
+      router.push('/thank-you')
+    } else {
+      setBookingState(result)
+    }
   }
 
   return (
@@ -344,6 +360,13 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
             </div>
           </div>
         </div>
+
+        {/* Booking error */}
+        {bookingState && !bookingState.success && (
+          <div className="mx-8 mb-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
+            {bookingState.error}
+          </div>
+        )}
 
         {/* Footer / submit */}
         <div className="flex flex-col items-center gap-4 border-t border-canvas-300/60 bg-canvas-100/60 px-8 py-6 sm:flex-row sm:justify-between sm:px-10">

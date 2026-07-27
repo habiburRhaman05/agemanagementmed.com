@@ -1,7 +1,8 @@
 'use client'
 
+import { bookAppointment, type ActionResult } from '@/actions/appointment'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { CheckCircle2 } from 'lucide-react'
+import { AlertCircle, CheckCircle2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -47,15 +48,35 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
     defaultValues: { location: defaultLocation ?? 'savannah-pooler' },
   })
 
+  const [bookingState, setBookingState] = useState<ActionResult | null>(null)
+
   return (
     <form
-      onSubmit={handleSubmit(async () => {
-        await new Promise((r) => setTimeout(r, 400))
-        router.push('/thank-you')
+      onSubmit={handleSubmit(async (data) => {
+        const formData = new FormData()
+        formData.append('name', data.name)
+        formData.append('email', data.email)
+        formData.append('phone', data.phone)
+        formData.append('service', `Consultation at ${data.location === 'savannah-pooler' ? 'Savannah/Pooler' : 'Statesboro'}`)
+        formData.append('preferredTime', data.preferredDate)
+        formData.append('message', `Location: ${data.location}`)
+
+        const result = await bookAppointment(null, formData)
+        if (result.success) {
+          router.push('/thank-you')
+        } else {
+          setBookingState(result)
+        }
       })}
       className="space-y-6"
       noValidate
     >
+      {bookingState && !bookingState.success && (
+        <div className="flex items-center gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
+          <AlertCircle className="h-4 w-4 shrink-0" />
+          {bookingState.error}
+        </div>
+      )}
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <Label htmlFor="name">Full name</Label>

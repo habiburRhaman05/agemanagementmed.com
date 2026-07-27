@@ -1,0 +1,112 @@
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "binary"
+  output     = "../src/lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String // bcrypt hash
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+}
+
+model Session {
+  id         String   @id @default(cuid())
+  adminId    String?
+  adminToken String? // for session-less token tracking
+  token      String   @unique
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+}
+
+model Post {
+  id            String    @id @default(cuid())
+  title         String
+  slug          String    @unique
+  excerpt       String?
+  content       String? // TipTap JSON output
+  contentHtml   String? // Pre-rendered HTML for public display
+  featuredImage String?
+  status        String    @default("draft") // draft | published | archived
+  publishedAt   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+  readingTime   Int? // minutes
+
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id])
+  authorId   String?
+  author     Admin?    @relation(fields: [authorId], references: [id])
+  tags       BlogTag[]
+  seo        PostSeo?
+}
+
+model PostSeo {
+  id        String  @id @default(cuid())
+  postId    String  @unique
+  post      Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  metaTitle String?
+  metaDesc  String?
+  ogImage   String?
+  canonical String?
+  noindex   Boolean @default(false)
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  posts     Post[]
+}
+
+model Tag {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  slug      String    @unique
+  createdAt DateTime  @default(now())
+  posts     BlogTag[]
+}
+
+model BlogTag {
+  postId String
+  tagId  String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+}
+
+model Appointment {
+  id            String    @id @default(cuid())
+  name          String
+  email         String
+  phone         String?
+  service       String?
+  message       String?
+  preferredDate DateTime?
+  preferredTime String?
+  status        String    @default("pending") // pending | confirmed | completed | cancelled
+  notes         String? // admin notes
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  filename  String
+  url       String
+  mimeType  String
+  size      Int?
+  createdAt DateTime @default(now())
+}

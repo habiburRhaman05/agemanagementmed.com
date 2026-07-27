@@ -1,73 +1,64 @@
 'use client'
 
 import { format } from 'date-fns'
-import { Calendar as CalendarIcon, CheckCircle2 } from 'lucide-react'
-import { useState } from 'react'
+import { Calendar as CalendarIcon, CheckCircle2, AlertCircle } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useState, useRef } from 'react'
 
 import { Button } from '@/components/ui/Button'
 import { Calendar } from '@/components/ui/calendar'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { bookAppointment, type ActionResult } from '@/actions/appointment'
 import { cn } from '@/lib/utils'
 
 const timeSlots = [
-  '9:00 AM',
-  '9:30 AM',
-  '10:00 AM',
-  '10:30 AM',
-  '11:00 AM',
-  '11:30 AM',
-  '1:00 PM',
-  '1:30 PM',
-  '2:00 PM',
-  '2:30 PM',
-  '3:00 PM',
-  '3:30 PM',
-  '4:00 PM',
+  '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM',
+  '11:00 AM', '11:30 AM', '1:00 PM', '1:30 PM',
+  '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM',
 ]
 
 export function AdvancedBookingForm() {
+  const router = useRouter()
   const [date, setDate] = useState<Date>()
   const [time, setTime] = useState<string>()
   const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const formRef = useRef<HTMLFormElement>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setError(null)
+
     if (!date || !time) {
-      alert('Please select both a date and a time for your appointment.')
+      setError('Please select both a date and a time for your appointment.')
       return
     }
 
-    setIsSubmitting(true)
-    // Simulate API call for booking
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    setIsSuccess(true)
-  }
+    const form = e.currentTarget
+    const formData = new FormData()
+    formData.append('name', (form.elements.namedItem('name') as HTMLInputElement)?.value || '')
+    formData.append('email', (form.elements.namedItem('email') as HTMLInputElement)?.value || '')
+    formData.append('phone', (form.elements.namedItem('phone') as HTMLInputElement)?.value || '')
+    formData.append('service', `Consultation at ${(form.elements.namedItem('location') as HTMLSelectElement)?.value === 'statesboro' ? 'Statesboro' : 'Savannah/Pooler'}`)
+    formData.append('preferredDate', date.toISOString())
+    formData.append('preferredTime', time)
+    formData.append('message', `Location: ${(form.elements.namedItem('location') as HTMLSelectElement)?.value === 'statesboro' ? 'Statesboro' : 'Savannah/Pooler'}`)
 
-  if (isSuccess) {
-    return (
-      <div className="mx-auto flex w-full max-w-2xl flex-col items-center justify-center rounded-3xl border border-canvas-300/60 bg-canvas-50 p-12 text-center shadow-lg">
-        <div className="mb-6 flex size-20 items-center justify-center rounded-full bg-sage-100">
-          <CheckCircle2 className="size-10 text-sage-700" aria-hidden />
-        </div>
-        <h2 className="mb-4 text-display-sm text-ink-900">Request received</h2>
-        <p className="mb-8 max-w-md text-body text-canvas-600">
-          Thank you for reaching out. Our team will contact you shortly to confirm your
-          consultation details.
-        </p>
-        <Button onClick={() => window.location.href = '/'} size="lg" variant="primary">
-          Return to home
-        </Button>
-      </div>
-    )
+    setIsSubmitting(true)
+    const result = await bookAppointment(null, formData)
+    setIsSubmitting(false)
+
+    if (result.success) {
+      router.push('/thank-you')
+    } else {
+      setError(result.error)
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-2">
+    <form ref={formRef} onSubmit={handleSubmit} className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-2">
       <div className="space-y-8 rounded-3xl border border-canvas-300/60 bg-canvas-50 p-6 shadow-md sm:p-8">
         <div>
           <h2 className="text-title-lg text-ink-900">Your Details</h2>
@@ -79,17 +70,17 @@ export function AdvancedBookingForm() {
         <div className="space-y-5">
           <div className="space-y-2">
             <Label htmlFor="name">Full Name</Label>
-            <Input id="name" required placeholder="Jane Doe" className="bg-white" />
+            <Input id="name" name="name" required placeholder="Jane Doe" className="bg-white" />
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="email">Email Address</Label>
-              <Input id="email" type="email" required placeholder="jane@example.com" className="bg-white" />
+              <Input id="email" name="email" type="email" required placeholder="jane@example.com" className="bg-white" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone">Phone Number</Label>
-              <Input id="phone" type="tel" required placeholder="(912) 555-0123" className="bg-white" />
+              <Input id="phone" name="phone" type="tel" required placeholder="(912) 555-0123" className="bg-white" />
             </div>
           </div>
 
@@ -97,6 +88,7 @@ export function AdvancedBookingForm() {
             <Label htmlFor="location">Preferred Location</Label>
             <select
               id="location"
+              name="location"
               className="flex h-14 w-full rounded-xl border border-canvas-300 bg-white px-4 text-body text-canvas-900 focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-sage-600 disabled:cursor-not-allowed disabled:opacity-50"
               required
             >
@@ -140,7 +132,6 @@ export function AdvancedBookingForm() {
                   disabled={(date) => {
                     const today = new Date()
                     today.setHours(0, 0, 0, 0)
-                    // Disable past days and weekends
                     return date < today || date.getDay() === 0 || date.getDay() === 6
                   }}
                   initialFocus
@@ -168,9 +159,15 @@ export function AdvancedBookingForm() {
                 </button>
               ))}
             </div>
-            {!time && <p className="text-body-sm text-canvas-600">Please pick a time slot.</p>}
           </div>
         </div>
+
+        {error && (
+          <div className="flex items-center gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
+            <AlertCircle className="h-4 w-4 shrink-0" />
+            {error}
+          </div>
+        )}
 
         <div className="pt-4">
           <Button type="submit" size="lg" variant="primary" className="w-full" disabled={isSubmitting}>
