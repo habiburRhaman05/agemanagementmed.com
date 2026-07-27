@@ -6,11 +6,20 @@ import { Container } from '@/components/shared/Container'
 import { footerNav, megaMenu } from '@/content/navigation'
 import { locations, site } from '@/content/site'
 
+function FooterIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-sage-600/15 text-sage-400">
+      {children}
+    </span>
+  )
+}
+
 /** Server Component — the footer ships zero JavaScript. */
 export function Footer() {
   return (
-    <footer className="bg-sage-700 text-canvas-50">
-      <Container>
+    <footer className="relative overflow-hidden border-t border-white/5 bg-ink-900 text-canvas-50">
+      <div className="absolute inset-0 bg-mesh-navy opacity-60" aria-hidden />
+      <Container className="relative">
         <div className="grid gap-12 pt-20 pb-12 lg:grid-cols-12 lg:gap-8 lg:pt-24 lg:pb-16">
           <div className="lg:col-span-4">
             <Image
@@ -29,14 +38,18 @@ export function Footer() {
                 href={site.phoneHref}
                 className="flex items-center gap-3 text-body-sm text-canvas-50/80 transition-colors hover:text-canvas-50"
               >
-                <Phone className="size-4 shrink-0 text-canvas-200" aria-hidden />
+                <FooterIcon>
+                  <Phone className="size-3.5" aria-hidden />
+                </FooterIcon>
                 {site.phone}
               </a>
               <a
                 href={site.emailHref}
                 className="flex items-center gap-3 text-body-sm text-canvas-50/80 transition-colors hover:text-canvas-50"
               >
-                <Mail className="size-4 shrink-0 text-canvas-200" aria-hidden />
+                <FooterIcon>
+                  <Mail className="size-3.5" aria-hidden />
+                </FooterIcon>
                 {site.email}
               </a>
             </div>
@@ -93,14 +106,16 @@ export function Footer() {
                 <li key={location.slug}>
                   <p className="font-display text-title-md text-canvas-50">{location.name}</p>
                   <p className="mt-2 flex gap-3 text-body-sm text-canvas-50/70">
-                    <MapPin className="mt-1 size-4 shrink-0 text-canvas-200" aria-hidden />
-                    <span>
+                    <FooterIcon>
+                      <MapPin className="size-3.5" aria-hidden />
+                    </FooterIcon>
+                    <span className="pt-1">
                       {location.addressLine}
                       <br />
                       {location.city}, {location.state} {location.zip}
                     </span>
                   </p>
-                  <dl className="mt-3 space-y-1 pl-7 text-body-sm text-canvas-50/60">
+                  <dl className="mt-3 space-y-1 pl-11 text-body-sm text-canvas-50/60">
                     {location.hours.map((h) => (
                       <div key={h.days} className="flex gap-2">
                         <dt className="w-20 shrink-0">{h.days}</dt>

@@ -37,14 +37,19 @@ export function Header({ overlay = false }: HeaderProps) {
 
   return (
     <>
-      <header
-        className={cn(
-          'fixed inset-x-0 top-0 z-50 transition-colors duration-300',
-          solid ? 'border-b border-canvas-300/60 bg-canvas-100/95 backdrop-blur-sm' : 'bg-transparent',
-        )}
-      >
-        <Container>
-          <div className="flex h-20 items-center justify-between gap-8 lg:h-24">
+      <header className="fixed inset-x-0 top-0 z-50 px-0 pt-0 transition-[padding] duration-500 lg:px-4 lg:pt-4">
+        <Container
+          className={cn(
+            'transition-all duration-500',
+            // Near-opaque, not translucent glass — a hero tall enough to still
+            // be visible behind the bar after a small scroll must not bleed
+            // its headline through the nav. `backdrop-blur` alone gives the
+            // soft glass edge without sacrificing legibility.
+            solid &&
+              'bg-canvas-50/95 shadow-md backdrop-blur-xl lg:max-w-304 lg:rounded-full lg:border lg:border-white/60 lg:shadow-lg',
+          )}
+        >
+          <div className="flex h-20 items-center justify-between gap-8 lg:h-20">
             <Link
               href="/"
               className="relative z-10 shrink-0"
@@ -56,7 +61,7 @@ export function Header({ overlay = false }: HeaderProps) {
                 width={168}
                 height={48}
                 priority
-                className={cn('h-10 w-auto lg:h-12', !solid && 'brightness-0 invert')}
+                className={cn('h-9 w-auto transition-all duration-300 lg:h-10', !solid && 'brightness-0 invert')}
               />
             </Link>
 
@@ -67,8 +72,8 @@ export function Header({ overlay = false }: HeaderProps) {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    'text-body-sm font-medium transition-opacity hover:opacity-60',
-                    solid ? 'text-ink-900' : 'text-canvas-50',
+                    'relative text-body-sm font-medium transition-colors',
+                    solid ? 'text-ink-900 hover:text-sage-700' : 'text-canvas-50 hover:text-sage-400',
                   )}
                 >
                   {item.label}
@@ -94,7 +99,7 @@ export function Header({ overlay = false }: HeaderProps) {
                 asChild
                 size="sm"
                 variant={solid ? 'primary' : 'inverse'}
-                className="hidden sm:inline-flex bg-sage-600 !text-white hover:bg-sage-700"
+                className="hidden sm:inline-flex"
               >
                 <Link href={site.bookingHref}>Book consultation</Link>
               </Button>

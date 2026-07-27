@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { Container } from '@/components/shared/Container'
+import { Parallax } from '@/components/shared/Parallax'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
 import { AspectImage } from '@/components/ui/AspectImage'
@@ -14,8 +15,9 @@ interface EditorialPairProps extends EditorialPairData {
 
 /**
  * The workhorse block — replaces every image+text section on the site (~20
- * pages). Clean image, no decorative color panel behind it — the structure
- * comes from generous whitespace and the offset grid, not a color block.
+ * pages). A 7/5 asymmetric split (not an even half-half) plus a soft blurred
+ * color field behind the image are what keep it from reading as a template,
+ * even repeated dozens of times across the site.
  */
 export function EditorialPair({
   eyebrow,
@@ -24,21 +26,23 @@ export function EditorialPair({
   bullets,
   image,
   imageSide = 'right',
+  imageTreatment = 'framed',
   cta,
   background = 'page',
 }: EditorialPairProps) {
+  const cutout = imageTreatment === 'cutout'
   return (
-    <Section background={background} spacing="lg">
+    <Section background={background} spacing="lg" className="overflow-hidden">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-20">
+        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
           <Reveal
             className={cn(
-              'lg:col-span-6',
+              'lg:col-span-7',
               imageSide === 'left' ? 'lg:order-2' : 'lg:order-1',
             )}
           >
             {eyebrow ? (
-              <span className="mb-5 block text-label font-semibold uppercase text-sage-700">
+              <span className="mb-5 inline-flex items-center rounded-full bg-sage-100 px-4 py-1.5 text-label font-semibold uppercase text-sage-700">
                 {eyebrow}
               </span>
             ) : null}
@@ -72,17 +76,30 @@ export function EditorialPair({
           </Reveal>
 
           <Reveal
-            delay={80}
+            delay={100}
             className={cn(
-              'lg:col-span-6',
+              'relative lg:col-span-5',
               imageSide === 'left' ? 'lg:order-1' : 'lg:order-2',
             )}
           >
-            <AspectImage
-              media={image}
-              ratio="landscape"
-              sizes="(min-width: 1024px) 46vw, 100vw"
+            <div
+              className={cn(
+                'absolute -z-10 aspect-square w-4/5 rounded-full bg-sage-100/60 blur-2xl',
+                imageSide === 'left' ? '-left-10 -top-10' : '-right-10 -top-10',
+              )}
+              aria-hidden
             />
+
+            <Parallax strength={28}>
+              <AspectImage
+                media={image}
+                ratio={cutout ? 'square' : 'landscape'}
+                fit={cutout ? 'cutout' : 'cover'}
+                sizes="(min-width: 1024px) 38vw, 100vw"
+                className={cutout ? undefined : 'rounded-3xl shadow-lg'}
+                imageClassName={cutout ? undefined : 'rounded-3xl'}
+              />
+            </Parallax>
           </Reveal>
         </div>
       </Container>

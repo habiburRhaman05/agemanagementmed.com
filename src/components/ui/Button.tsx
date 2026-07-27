@@ -8,32 +8,32 @@ import type * as React from 'react'
 import { cn } from '@/lib/utils'
 
 /**
- * Six typed variants replace the source site's single uppercase pill.
+ * Six typed variants. `primary` is an emerald→navy gradient with an ambient
+ * glow shadow — the brand's one "expensive" fill; every other variant stays
+ * quieter so the primary action keeps its weight on the page.
  *
- * `primary` fills with ink-900 (navy) — not the brand teal. Teal is an accent
- * color only (labels, links, icon strokes); as a button fill it read flat and
- * dated, not premium. See docs/02-DESIGN-DIRECTION.md §2.3 (superseded).
- *
- * The hover shine is a `before:` pseudo-element, not a sibling span — `Slot`
- * (used for `asChild`) clones props onto a single child and can't tolerate an
- * injected sibling, which is what a wrapping Fragment would produce.
+ * Hover is deliberately restrained: a small scale and a brightness lift,
+ * nothing that tracks the pointer or sweeps across the fill — that read as
+ * gimmicky rather than premium.
  */
 const buttonVariants = cva(
   [
-    'group relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-full cursor-pointer',
+    'inline-flex items-center justify-center gap-2 rounded-full cursor-pointer',
     'font-sans font-semibold whitespace-nowrap',
-    'transition-[background-color,color,border-color,opacity] duration-200 ease-out',
+    'transition-[background-color,color,border-color,box-shadow,filter] duration-200 ease-out',
     'disabled:pointer-events-none disabled:opacity-50',
   ],
   {
     variants: {
       variant: {
-        primary: 'bg-ink-900 text-canvas-50 hover:bg-ink-800',
-        secondary: 'border border-ink-900 text-ink-900 hover:bg-ink-900 hover:text-canvas-50',
-        accent: 'bg-rose-600 text-canvas-50 hover:bg-rose-700',
-        inverse: 'bg-canvas-50 text-ink-900 hover:bg-canvas-200',
+        primary:
+          'bg-gradient-to-br from-sage-600 to-ink-900 text-canvas-50 shadow-glow hover:shadow-glow-lg hover:brightness-110',
+        secondary:
+          'border border-ink-900/15 bg-white/50 text-ink-900 backdrop-blur-sm hover:border-ink-900 hover:bg-ink-900 hover:text-canvas-50',
+        accent: 'bg-gradient-to-br from-rose-600 to-rose-700 text-canvas-50 shadow-md hover:brightness-110',
+        inverse: 'bg-canvas-50 text-ink-900 shadow-md hover:bg-canvas-200',
         outlineInverse:
-          'border border-canvas-50/40 text-canvas-50 hover:border-canvas-50 hover:bg-canvas-50 hover:text-ink-900',
+          'border border-canvas-50/30 bg-canvas-50/5 text-canvas-50 backdrop-blur-sm hover:border-canvas-50/60 hover:bg-canvas-50 hover:text-ink-900',
         ghost: 'text-ink-900 hover:bg-ink-900/5',
         link: 'text-sage-700 underline-offset-4 hover:underline',
       },
@@ -42,25 +42,13 @@ const buttonVariants = cva(
         md: 'h-12 px-7 text-body',
         lg: 'h-14 px-9 text-body',
       },
-      shine: {
-        true: [
-          'before:pointer-events-none before:absolute before:inset-0 before:z-10',
-          'before:-translate-x-full before:bg-linear-to-r before:from-transparent before:via-white/25 before:to-transparent',
-          'before:transition-transform before:duration-700 before:ease-out before:content-[\'\']',
-          'group-hover:before:translate-x-full',
-        ],
-        false: '',
-      },
     },
     compoundVariants: [
       { variant: 'link', size: ['sm', 'md', 'lg'], class: 'h-auto rounded-none px-0' },
     ],
-    defaultVariants: { variant: 'primary', size: 'md', shine: false },
+    defaultVariants: { variant: 'primary', size: 'md' },
   },
 )
-
-/** Variants that get the light-sweep shine on hover — solid fills only. */
-const SHINE_VARIANTS = new Set(['primary', 'accent', 'inverse'])
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -72,18 +60,16 @@ const MotionSlot = motion.create(Slot)
 
 export function Button({ className, variant, size, asChild = false, ...props }: ButtonProps) {
   const reduceMotion = useReducedMotion()
-  const resolvedVariant = variant ?? 'primary'
-  const shine = !reduceMotion && SHINE_VARIANTS.has(resolvedVariant)
 
   const motionProps = reduceMotion
     ? {}
     : {
-        whileHover: { scale: 1.025 },
-        whileTap: { scale: 0.97 },
-        transition: { type: 'spring' as const, stiffness: 420, damping: 22 },
+        whileHover: { scale: 1.015 },
+        whileTap: { scale: 0.98 },
+        transition: { type: 'spring' as const, stiffness: 420, damping: 26 },
       }
 
-  const classes = cn(buttonVariants({ variant, size, shine }), className)
+  const classes = cn(buttonVariants({ variant, size }), className)
 
   if (asChild) {
     // @ts-expect-error framer-motion event typings conflict with standard HTML button typings

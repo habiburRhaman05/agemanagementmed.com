@@ -9,6 +9,8 @@ interface RevealProps {
   className?: string
   /** Larger rise + slight scale — for hero-adjacent, higher-drama moments. */
   strong?: boolean
+  /** Adds a blur-to-sharp resolve on top of the rise — for editorial, cinematic moments. */
+  blur?: boolean
 }
 
 /**
@@ -18,7 +20,7 @@ interface RevealProps {
  * `useReducedMotion` collapses to a plain fade — no transform — for users
  * who've asked for it.
  */
-export function Reveal({ children, delay = 0, className, strong = false }: RevealProps) {
+export function Reveal({ children, delay = 0, className, strong = false, blur = false }: RevealProps) {
   const reduceMotion = useReducedMotion()
 
   const distance = reduceMotion ? 0 : strong ? 40 : 24
@@ -27,8 +29,8 @@ export function Reveal({ children, delay = 0, className, strong = false }: Revea
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: distance, scale }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: distance, scale, filter: blur && !reduceMotion ? 'blur(10px)' : 'blur(0px)' }}
+      whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: '0px 0px -80px 0px' }}
       transition={{
         type: 'spring',

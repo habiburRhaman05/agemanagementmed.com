@@ -1,5 +1,6 @@
 'use client'
 
+import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown, Phone, X } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
@@ -55,112 +56,130 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
     }
   }, [open, onClose])
 
-  if (!open) return null
-
   return (
-    <div className="fixed inset-0 z-[60] lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
-      <button
-        type="button"
-        aria-label="Close menu"
-        onClick={onClose}
-        className="absolute inset-0 bg-ink-950/40"
-      />
-
-      <div
-        ref={panelRef}
-        className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-canvas-100 shadow-lg"
-      >
-        <div className="flex h-20 shrink-0 items-center justify-between border-b border-canvas-300/60 px-6">
-          <span className="font-display text-title-md text-ink-900">Menu</span>
-          <button
-            ref={closeRef}
+    <AnimatePresence>
+      {open ? (
+        <div className="fixed inset-0 z-60 lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
+          <motion.button
             type="button"
-            onClick={onClose}
             aria-label="Close menu"
-            className="inline-flex size-11 items-center justify-center rounded-full text-ink-900 hover:bg-ink-900/5"
+            onClick={onClose}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="absolute inset-0 bg-ink-950/50 backdrop-blur-sm"
+          />
+
+          <motion.div
+            ref={panelRef}
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', stiffness: 320, damping: 34 }}
+            className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-canvas-50 shadow-xl"
           >
-            <X className="size-6" aria-hidden />
-          </button>
+            <div className="flex h-20 shrink-0 items-center justify-between border-b border-canvas-300/60 px-6">
+              <span className="font-display text-title-md text-ink-900">Menu</span>
+              <button
+                ref={closeRef}
+                type="button"
+                onClick={onClose}
+                aria-label="Close menu"
+                className="inline-flex size-11 items-center justify-center rounded-full bg-canvas-200/70 text-ink-900 transition-colors hover:bg-ink-900 hover:text-canvas-50"
+              >
+                <X className="size-5" aria-hidden />
+              </button>
+            </div>
+
+            <nav className="flex-1 overflow-y-auto px-6 py-6" aria-label="Mobile">
+              <ul className="space-y-1">
+                {megaMenu.map((column) => {
+                  const isOpen = expanded === column.href
+                  return (
+                    <li key={column.href} className="border-b border-canvas-300/50">
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        onClick={() => setExpanded(isOpen ? null : column.href)}
+                        className="flex w-full items-center justify-between py-4 text-left font-display text-title-md text-ink-900"
+                      >
+                        {column.title}
+                        <ChevronDown
+                          className={cn(
+                            'size-5 text-sage-600 transition-transform duration-300',
+                            isOpen && 'rotate-180',
+                          )}
+                          aria-hidden
+                        />
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {isOpen ? (
+                          <motion.ul
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25, ease: 'easeOut' }}
+                            className="space-y-3 overflow-hidden pb-5 pl-1"
+                          >
+                            <li>
+                              <Link href={column.href} className="text-body-sm font-medium text-sage-700">
+                                Overview
+                              </Link>
+                            </li>
+                            {column.links.map((link) => (
+                              <li key={link.href}>
+                                <Link href={link.href} className="text-body-sm text-canvas-600">
+                                  {link.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </motion.ul>
+                        ) : null}
+                      </AnimatePresence>
+                    </li>
+                  )
+                })}
+
+                {primaryNav.slice(1).map((item) => (
+                  <li key={item.href} className="border-b border-canvas-300/50">
+                    <Link
+                      href={item.href}
+                      className="block py-4 font-display text-title-md text-ink-900"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <ul className="mt-8 space-y-3">
+                {footerNav.practice.slice(3).map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="text-body-sm text-canvas-600">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Booking stays thumb-reachable — the phone call is the conversion. */}
+            <div className="shrink-0 space-y-3 border-t border-canvas-300/60 bg-canvas-100 px-6 py-5">
+              <Button asChild className="w-full">
+                <Link href={site.bookingHref}>Book consultation</Link>
+              </Button>
+              <a
+                href={site.phoneHref}
+                className="flex items-center justify-center gap-2 py-2 text-body-sm font-medium text-ink-900"
+              >
+                <Phone className="size-4 text-sage-600" aria-hidden />
+                {site.phone}
+              </a>
+            </div>
+          </motion.div>
         </div>
-
-        <nav className="flex-1 overflow-y-auto px-6 py-6" aria-label="Mobile">
-          <ul className="space-y-1">
-            {megaMenu.map((column) => {
-              const isOpen = expanded === column.href
-              return (
-                <li key={column.href} className="border-b border-canvas-300/50">
-                  <button
-                    type="button"
-                    aria-expanded={isOpen}
-                    onClick={() => setExpanded(isOpen ? null : column.href)}
-                    className="flex w-full items-center justify-between py-4 text-left font-display text-title-md text-ink-900"
-                  >
-                    {column.title}
-                    <ChevronDown
-                      className={cn('size-5 transition-transform', isOpen && 'rotate-180')}
-                      aria-hidden
-                    />
-                  </button>
-                  {isOpen ? (
-                    <ul className="space-y-3 pb-5 pl-1">
-                      <li>
-                        <Link
-                          href={column.href}
-                          className="text-body-sm font-medium text-sage-700"
-                        >
-                          Overview
-                        </Link>
-                      </li>
-                      {column.links.map((link) => (
-                        <li key={link.href}>
-                          <Link href={link.href} className="text-body-sm text-canvas-600">
-                            {link.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </li>
-              )
-            })}
-
-            {primaryNav.slice(1).map((item) => (
-              <li key={item.href} className="border-b border-canvas-300/50">
-                <Link
-                  href={item.href}
-                  className="block py-4 font-display text-title-md text-ink-900"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <ul className="mt-8 space-y-3">
-            {footerNav.practice.slice(3).map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="text-body-sm text-canvas-600">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Booking stays thumb-reachable — the phone call is the conversion. */}
-        <div className="shrink-0 space-y-3 border-t border-canvas-300/60 bg-canvas-50 px-6 py-5">
-          <Button asChild className="w-full">
-            <Link href={site.bookingHref}>Book consultation</Link>
-          </Button>
-          <a
-            href={site.phoneHref}
-            className="flex items-center justify-center gap-2 py-2 text-body-sm font-medium text-ink-900"
-          >
-            <Phone className="size-4" aria-hidden />
-            {site.phone}
-          </a>
-        </div>
-      </div>
-    </div>
+      ) : null}
+    </AnimatePresence>
   )
 }

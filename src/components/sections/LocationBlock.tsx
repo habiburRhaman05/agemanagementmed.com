@@ -17,6 +17,14 @@ interface LocationBlockProps {
   background?: 'page' | 'alt' | 'raised'
 }
 
+function IconBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700">
+      {children}
+    </span>
+  )
+}
+
 export function LocationBlock({
   eyebrow,
   title,
@@ -33,29 +41,35 @@ export function LocationBlock({
         <div className="mt-16 grid gap-8 md:grid-cols-2">
           {locations.map((location, index) => (
             <Reveal key={location.slug} delay={index * 80}>
-              <article className="flex h-full flex-col rounded-lg border border-canvas-300 bg-canvas-50 p-8 lg:p-10">
+              <article className="glass flex h-full flex-col rounded-3xl p-8 shadow-md lg:p-10">
                 <h3 className="text-display-sm">{location.name}</h3>
 
                 <address className="mt-6 space-y-4 not-italic">
                   <p className="flex gap-3 text-body text-canvas-600">
-                    <MapPin className="mt-1 size-4 shrink-0 text-sage-600" aria-hidden />
-                    <span>
+                    <IconBadge>
+                      <MapPin className="size-4" aria-hidden />
+                    </IconBadge>
+                    <span className="pt-1.5">
                       {location.addressLine}
                       <br />
                       {location.city}, {location.state} {location.zip}
                     </span>
                   </p>
-                  <p className="flex gap-3 text-body text-canvas-600">
-                    <Phone className="mt-1 size-4 shrink-0 text-sage-600" aria-hidden />
+                  <p className="flex items-center gap-3 text-body text-canvas-600">
+                    <IconBadge>
+                      <Phone className="size-4" aria-hidden />
+                    </IconBadge>
                     <a href={site.phoneHref} className="hover:text-sage-700">
                       {site.phone}
                     </a>
                   </p>
                 </address>
 
-                <div className="mt-6 flex gap-3 border-t border-canvas-300 pt-6">
-                  <Clock className="mt-1 size-4 shrink-0 text-sage-600" aria-hidden />
-                  <dl className="space-y-1.5">
+                <div className="mt-6 flex gap-3 border-t border-canvas-300/70 pt-6">
+                  <IconBadge>
+                    <Clock className="size-4" aria-hidden />
+                  </IconBadge>
+                  <dl className="space-y-1.5 pt-1.5">
                     {location.hours.map((h) => (
                       <div key={h.days} className="flex gap-4 text-body-sm">
                         <dt className="w-24 shrink-0 text-canvas-600">{h.days}</dt>
@@ -71,7 +85,7 @@ export function LocationBlock({
                     title={`Map of ${location.name}`}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="mt-8 h-56 w-full rounded-md border border-canvas-300"
+                    className="mt-8 h-56 w-full rounded-2xl border border-canvas-300"
                   />
                 ) : null}
 

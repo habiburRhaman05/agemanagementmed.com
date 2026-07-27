@@ -11,9 +11,10 @@ import type { ClosingCtaData } from '@/types/content'
 /** Dark band that ends every page. */
 export function ClosingCTA({ title, body, cta }: ClosingCtaData) {
   return (
-    <Section background="inverse" spacing="xl" className="!bg-ink-950">
-      <Container width="prose">
-        <Reveal>
+    <Section background="inverse" spacing="xl" className="bg-ink-950! relative overflow-hidden">
+      <div className="absolute inset-0 bg-mesh-navy" aria-hidden />
+      <Container width="prose" className="relative">
+        <Reveal blur strong>
           <div className="text-center">
             <h2 className="text-display-md text-canvas-50">{title}</h2>
             <p className="mx-auto mt-6 max-w-lg text-body-lg text-canvas-50/70">{body}</p>

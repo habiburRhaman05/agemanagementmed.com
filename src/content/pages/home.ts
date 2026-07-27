@@ -83,6 +83,7 @@ export const homeContent = {
       alt: 'Dr. Harry Collins, founder and medical director of Savannah Age Management Medicine',
     },
     imageSide: 'left',
+    imageTreatment: 'cutout',
     cta: { label: 'Our experts', href: '/our-experts' },
   } satisfies EditorialPairData,
 

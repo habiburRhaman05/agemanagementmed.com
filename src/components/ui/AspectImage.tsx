@@ -22,6 +22,12 @@ interface AspectImageProps {
   rounded?: boolean
   className?: string
   imageClassName?: string
+  /**
+   * `cover` crops to fill the frame — the right choice for real photography.
+   * `cutout` is for transparent-background PNGs (a person cut out of their
+   * background): no crop, no filler-color box behind the subject.
+   */
+  fit?: 'cover' | 'cutout'
 }
 
 /**
@@ -36,13 +42,17 @@ export function AspectImage({
   rounded = true,
   className,
   imageClassName,
+  fit = 'cover',
 }: AspectImageProps) {
+  const cutout = fit === 'cutout'
+
   return (
     <div
       className={cn(
-        'relative overflow-hidden bg-canvas-200',
+        'relative overflow-hidden',
+        !cutout && 'bg-canvas-200',
         ratios[ratio],
-        rounded && 'rounded-lg',
+        rounded && !cutout && 'rounded-lg',
         className,
       )}
     >
@@ -53,7 +63,7 @@ export function AspectImage({
         sizes={sizes}
         priority={priority}
         loading={priority ? undefined : 'lazy'}
-        className={cn('object-cover', imageClassName)}
+        className={cn(cutout ? 'object-contain' : 'object-cover', imageClassName)}
       />
     </div>
   )

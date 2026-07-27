@@ -38,6 +38,8 @@ export interface EditorialPairData {
   bullets?: string[]
   image: Media
   imageSide?: 'left' | 'right'
+  /** `cutout` is for a transparent-background PNG (person cut out of their background) — no crop, no card frame. */
+  imageTreatment?: 'framed' | 'cutout'
   cta?: Cta
 }
 

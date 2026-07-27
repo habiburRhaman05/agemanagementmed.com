@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
 import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
+import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 import { AspectImage } from '@/components/ui/AspectImage'
 import { Button } from '@/components/ui/Button'
 import type { Cta, Person } from '@/types/content'
@@ -30,30 +30,35 @@ export function PeopleGrid({
       <Container>
         <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
 
-        <ul className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-          {people.map((person, index) => (
-            <li key={person.slug}>
-              <Reveal delay={(index % 4) * 60}>
+        <StaggerGroup as="ul" stagger={0.07} className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {people.map((person) => (
+            <StaggerItem
+              as="li"
+              key={person.slug}
+              className="group rounded-2xl border border-canvas-300 bg-white p-6 text-center shadow-sm transition-shadow duration-300 hover:shadow-md"
+            >
+              <div className="mx-auto size-32 sm:size-36">
                 <AspectImage
                   media={person.portrait}
-                  ratio="portrait"
-                  sizes="(min-width: 1024px) 22vw, (min-width: 640px) 46vw, 100vw"
-                  imageClassName="grayscale transition-all duration-500 hover:grayscale-0"
+                  ratio="square"
+                  sizes="180px"
+                  className="rounded-full"
+                  imageClassName="grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-[1.03]"
                 />
-                <h3 className="mt-6 text-title-md font-display">
-                  {person.name}
-                  {person.credentials ? (
-                    <span className="text-canvas-600">, {person.credentials}</span>
-                  ) : null}
-                </h3>
-                <p className="mt-2 text-body-sm text-sage-700">{person.role}</p>
-              </Reveal>
-            </li>
+              </div>
+              <h3 className="mt-5 text-title-md font-display">
+                {person.name}
+                {person.credentials ? (
+                  <span className="text-canvas-600">, {person.credentials}</span>
+                ) : null}
+              </h3>
+              <p className="mt-1.5 text-body-sm text-sage-700">{person.role}</p>
+            </StaggerItem>
           ))}
-        </ul>
+        </StaggerGroup>
 
         {cta ? (
-          <div className="mt-14">
+          <div className="mt-14 flex justify-center">
             <Button asChild variant="secondary">
               <Link href={cta.href}>{cta.label}</Link>
             </Button>
