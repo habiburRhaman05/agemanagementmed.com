@@ -16,6 +16,7 @@ export default function Page() {
     <>
       <Header />
       <HeroCompact
+      align='center'
         eyebrow="Legal"
         title="Privacy Policy"
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy', href: '/privacy-policy' }]}

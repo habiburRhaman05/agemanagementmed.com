@@ -153,15 +153,9 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
                 ))}
               </ul>
 
-              <ul className="mt-8 space-y-3">
-                {footerNav.practice.slice(3).map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="text-body-sm text-canvas-600">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+             
+
+              
             </nav>
 
             {/* Booking stays thumb-reachable — the phone call is the conversion. */}

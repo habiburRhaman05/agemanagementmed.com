@@ -15,6 +15,7 @@ import { locations } from '@/content/site'
 import { getAllTreatmentSummaries } from '@/content/treatments'
 import { CredentialStrip } from '../sections/CredentialStrip'
 import { expertsContent } from '@/content/pages/experts'
+import { features } from '@/content/feature'
 
 /**
  * Section order is the funnel from docs/01-INFORMATION-ARCHITECTURE.md §5:
@@ -22,7 +23,7 @@ import { expertsContent } from '@/content/pages/experts'
  * Two dark bands (ProofBand, ClosingCTA) give the page its rhythm.
  */
 export async function HomeTemplate({ content }: { content: typeof homeContent }) {
-  const treatments = await getAllTreatmentSummaries()
+  
 
   return (
     <>
@@ -34,7 +35,7 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
         eyebrow="Our services"
         title="Your best life starts now"
         lead="We connect you with the latest in bioidentical hormone therapy and other cutting-edge treatments designed to support your well-being."
-        treatments={treatments}
+        treatments={features as any}
       />
 
       <EditorialPair {...content.origin} background="alt" />

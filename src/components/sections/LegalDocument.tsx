@@ -12,14 +12,14 @@ import { Section } from '@/components/shared/Section'
  */
 export function LegalDocument({ html }: { html: string }) {
   return (
-    <Section spacing="lg" background="page">
+    <Section spacing="lg" background="page" className='container w-full mx-auto'>
       <Container width="prose">
         <Reveal>
           {/* Subtle left-accent line — same device as blockquotes in ProofBand */}
-          <div className="border-l-2 border-sage-600/30 pl-8 sm:pl-10">
+          <div className="border-l-2 border-sage-600/30 pl-8 sm:pl-10 w-full">
             <div
               className={[
-                'prose prose-lg max-w-none',
+                'prose prose-lg w-full',
                 // Headings
                 'prose-headings:font-display prose-headings:text-ink-900 prose-headings:tracking-tight',
                 'prose-h1:text-display-md prose-h1:mb-6',

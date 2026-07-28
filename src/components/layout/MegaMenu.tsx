@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
@@ -131,10 +131,42 @@ export function MegaMenu({ inverse = false }: { inverse?: boolean }) {
                       )
                     })}
                   </ul>
+
                 </div>
               )
             })}
+            
           </div>
+          <div className="border-t border-canvas-300/70 bg-gradient-to-r from-sage-50/60 via-white to-sage-50/60">
+  <Container>
+    <div className="flex flex-col items-center justify-between gap-6 py-7 text-center lg:flex-row lg:text-left">
+      <div>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-sage-600">
+          Partner Clinic
+        </p>
+
+        <h3 className="mt-2 text-lg font-display text-ink-900">
+          Medical Aesthetics Services
+        </h3>
+
+        <p className="mt-1 max-w-2xl text-body-sm text-canvas-600">
+          Botox, dermal fillers, laser treatments, skin rejuvenation and advanced
+          aesthetic care from our trusted partner clinic.
+        </p>
+      </div>
+
+      <Link
+        href="https://www.savannahskinmed.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group inline-flex items-center gap-3 rounded-full border border-sage-300 bg-white px-6 py-3 font-medium text-sage-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-sage-500 hover:bg-sage-600 hover:text-white hover:shadow-lg"
+      >
+        Visit Savannah SkinMed
+        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+      </Link>
+    </div>
+  </Container>
+</div>
         </Container>
       </div>
     </div>

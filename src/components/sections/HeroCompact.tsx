@@ -20,18 +20,18 @@ interface HeroCompactProps {
   breadcrumbs?: Crumb[]
   /** Use for legal/policy pages — tighter bottom padding and slightly smaller h1. */
   compact?: boolean
+  /** Alignment of content: 'left' (default) or 'center' */
+  align?: 'left' | 'center'
 }
 
-/**
- * Type-only hero for utility pages — financing, policies, contact, journal.
- *
- * Sub-elements now stagger on mount (breadcrumbs → eyebrow → h1 → lead)
- * instead of a single flat Reveal, giving even utility pages a premium entrance.
- *
- * Bottom padding is intentionally tighter than other heroes so the content
- * section below (LegalDocument, forms, etc.) feels connected, not floating.
- */
-export function HeroCompact({ eyebrow, title, lead, breadcrumbs, compact }: HeroCompactProps) {
+export function HeroCompact({
+  eyebrow,
+  title,
+  lead,
+  breadcrumbs,
+  compact,
+  align = 'left',
+}: HeroCompactProps) {
   const reduceMotion = useReducedMotion()
 
   const fadeUp = (delay: number, distance = 16) => ({
@@ -50,14 +50,29 @@ export function HeroCompact({ eyebrow, title, lead, breadcrumbs, compact }: Hero
     transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
   })
 
+  const isCentered = align === 'center'
+
   return (
     <Section spacing="none" className="relative overflow-hidden pt-36 pb-10 lg:pt-44 lg:pb-12">
       <div className="absolute inset-0 bg-mesh-warm" aria-hidden />
       <Container className="relative">
-        <div className="max-w-3xl">
+        <div
+          className={`
+            ${isCentered ? 'mx-auto max-w-2xl text-center' : 'max-w-3xl'}
+          `}
+        >
           {breadcrumbs?.length ? (
-            <motion.nav aria-label="Breadcrumb" className="mb-6" {...fadeUp(0.05, 8)}>
-              <ol className="flex flex-wrap items-center gap-1.5 text-body-sm text-canvas-600">
+            <motion.nav
+              aria-label="Breadcrumb"
+              className={`mb-6 ${isCentered ? 'flex justify-center' : ''}`}
+              {...fadeUp(0.05, 8)}
+            >
+              <ol
+                className={`
+                  flex flex-wrap items-center gap-1.5 text-body-sm text-canvas-600
+                  ${isCentered ? 'justify-center' : ''}
+                `}
+              >
                 {breadcrumbs.map((crumb, i) => (
                   <li key={crumb.href} className="flex items-center gap-1.5">
                     {i > 0 ? (
@@ -78,12 +93,18 @@ export function HeroCompact({ eyebrow, title, lead, breadcrumbs, compact }: Hero
             </motion.div>
           ) : null}
 
-          <motion.h1 className={compact ? 'text-display-md' : 'text-display-md lg:text-display-lg'} {...blurUp(0.2)}>
+          <motion.h1
+            className={compact ? 'text-display-md' : 'text-display-md lg:text-display-lg'}
+            {...blurUp(0.2)}
+          >
             {title}
           </motion.h1>
 
           {lead ? (
-            <motion.p className="mt-5 text-body-lg text-canvas-600" {...fadeUp(0.34)}>
+            <motion.p
+              className={`mt-5 text-body-lg text-canvas-600 ${isCentered ? 'mx-auto max-w-prose' : ''}`}
+              {...fadeUp(0.34)}
+            >
               {lead}
             </motion.p>
           ) : null}

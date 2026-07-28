@@ -11,6 +11,8 @@ export interface MegaMenuColumn {
   title: string
   href: string
   links: NavLink[]
+  extranalLink:{label: string
+  href: string}
 }
 
 export const megaMenu: MegaMenuColumn[] = [
@@ -18,42 +20,102 @@ export const megaMenu: MegaMenuColumn[] = [
     title: 'Hormone Therapy',
     href: '/bioidentical-hormone-replacement-therapy',
     links: [
-      { label: 'For Men', href: '/bioidentical-hormone-replacement-therapy/male' },
-      { label: 'For Women', href: '/bioidentical-hormone-replacement-therapy/female' },
-      { label: 'Perimenopause & Menopause', href: '/perimenopause-menopause' },
-      { label: 'BHRT vs HRT vs TRT', href: '/bhrt-hrt-trt' },
+      {
+        label: 'Hormone Therapy For Men',
+        href: '/bioidentical-hormone-replacement-therapy/male',
+      },
+      {
+        label: 'Hormone Therapy For Women',
+        href: '/bioidentical-hormone-replacement-therapy/female',
+      },
+      {
+        label: 'Perimenopause & Menopause',
+        href: '/perimenopause-menopause',
+      },
     ],
+    extranalLink: {
+      label: 'Medical Aesthetics Services',
+      href: 'https://www.savannahskinmed.com/',
+    },
   },
+
   {
     title: 'Weight Loss',
     href: '/concierge-medical-weight-loss',
     links: [
-      { label: 'For Men', href: '/concierge-medical-weight-loss/male' },
-      { label: 'For Women', href: '/concierge-medical-weight-loss/female' },
-      { label: 'GLP-1 Microdosing — Men', href: '/glp-1-microdosing/male' },
-      { label: 'GLP-1 Microdosing — Women', href: '/glp-1-microdosing/female' },
+      {
+        label: 'Concierge Medical Weight For Loss Man',
+        href: '/concierge-medical-weight-loss/male',
+      },
+      {
+        label: 'Concierge Medical Weight Loss For Female',
+        href: '/concierge-medical-weight-loss/female',
+      },
+      {
+        label: 'GLP-1 Microdosing For Men',
+        href: '/glp-1-microdosing/male',
+      },
+      {
+        label: 'GLP-1 Microdosing For Women',
+        href: '/glp-1-microdosing/female',
+      },
     ],
+    extranalLink: {
+      label: 'Medical Aesthetics Services',
+      href: 'https://www.savannahskinmed.com/',
+    },
   },
+
   {
     title: 'Sexual Wellness',
     href: '/rejuvenation-enhancement',
     links: [
-      { label: 'For Men', href: '/rejuvenation-enhancement/male' },
-      { label: 'For Women', href: '/rejuvenation-enhancement/female' },
-      { label: 'Shockwave Therapy', href: '/shockwave-therapy' },
-      { label: 'Laser Vaginal Therapy', href: '/laser-vaginal-therapy' },
+      {
+        label: 'Sexual Drive For Men',
+        href: '/rejuvenation-enhancement/male',
+      },
+      {
+        label: 'Sexual Satisfaction For Women',
+        href: '/rejuvenation-enhancement/female',
+      },
+      {
+        label: 'Shockwave Therapy',
+        href: '/shockwave-therapy',
+      },
+      {
+        label: 'Laser Vaginal Therapy',
+        href: '/laser-vaginal-therapy',
+      },
     ],
+    extranalLink: {
+      label: 'Medical Aesthetics Services',
+      href: 'https://www.savannahskinmed.com/',
+    },
   },
+
   {
     title: 'Hair Restoration',
     href: '/platelet-rich-plasma-hair',
     links: [
-      { label: 'For Men', href: '/platelet-rich-plasma-hair/male' },
-      { label: 'For Women', href: '/platelet-rich-plasma-hair/female' },
-      { label: 'Medical Aesthetics', href: '/aesthetics' },
+      {
+        label: 'Hair Restoration',
+        href: '/platelet-rich-plasma-hair/male',
+      },
+      {
+        label: 'Hair Restoration',
+        href: '/platelet-rich-plasma-hair/female',
+      },
+      {
+        label: 'Medical Aesthetics Services',
+        href: '/aesthetics',
+      },
     ],
+    extranalLink: {
+      label: 'Medical Aesthetics Services',
+      href: 'https://www.savannahskinmed.com/',
+    },
   },
-]
+];
 
 /** Six items, down from sixteen across two gendered dropdowns. */
 export const primaryNav: NavLink[] = [
