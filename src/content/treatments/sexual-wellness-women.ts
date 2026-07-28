@@ -2,7 +2,7 @@ import type { Treatment } from '@/types/content'
 
 export const sexualWellnessWomen: Treatment = {
   slug: 'sexual-wellness-women',
-  href: '/sexual-wellness-women', // simplified
+  href: '/rejuvenation-enhancement/female',
   pillar: 'sexual-wellness',
   audience: 'women',
   kind: 'variant',
@@ -11,10 +11,10 @@ export const sexualWellnessWomen: Treatment = {
   shortName: 'Sexual Wellness for Women',
   summary: 'Explore women\'s sexual wellness treatments in Savannah for vaginal dryness, painful intercourse, low libido, sensitivity concerns, and confidence.',
   cardImage: {
-    src: '/themes/default/assets/images/banner-30-bg.jpg',
-    alt: 'Rejuvenation & Enhancement for Women'
+    src: '/images/treatments/sexual-wellness-women/hero.jpg',
+    alt: 'A close, tender moment between a couple',
   },
-  cardBenefits: ['Benefit 1', 'Benefit 2', 'Benefit 3'],
+  cardBenefits: ['Non-invasive options', 'Minimal downtime', 'Personalized care'],
 
   hero: {
     eyebrow: 'sexual wellness',
@@ -31,7 +31,44 @@ export const sexualWellnessWomen: Treatment = {
 
   statement: 'Treatment plans designed around your symptoms, lifestyle, and goals.',
 
-  sections: [],
+  sections: [
+    {
+      eyebrow: 'Treatment options',
+      title: 'CO2 laser vaginal rejuvenation',
+      body: [
+        'Changes in female sexual wellness are often related to hormonal shifts, aging, childbirth, or menopause - affecting vaginal tissue, lubrication, sensitivity, and overall comfort during intimacy.',
+        'CO2 laser therapy helps stimulate collagen production in vaginal tissue, which can improve lubrication, elasticity, and overall tissue health. Many women notice reduced dryness and increased comfort during intimacy after treatment.',
+      ],
+      image: {
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/female/Safety.jpg',
+        alt: 'A SAMM provider reviewing a treatment plan with a patient',
+      },
+    },
+    {
+      eyebrow: 'Treatment options',
+      title: 'PRP therapy (the O-Shot)',
+      body: [
+        'PRP therapy, often referred to as the O-Shot, uses platelet-rich plasma from your own blood to stimulate tissue regeneration and improve circulation in areas involved in sexual response. This may help improve sensitivity, arousal, and orgasm quality for some women.',
+        'Most treatments require little to no downtime, and patients typically resume normal activities immediately.',
+      ],
+      image: {
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/female/Monitoring.jpg',
+        alt: "A SAMM clinician reviewing a patient's lab and treatment notes",
+      },
+      imageSide: 'left',
+    },
+    {
+      type: 'reviewer-bio',
+      id: 'reviewed-by',
+      subheading: 'Dr. Harry S. Collins, DO, FACOG, Medical Director',
+      content: [
+        'Age Management Medicine Specialist',
+        'Dr. Harry Collins is a Life Fellow of the American College of Obstetricians and Gynecologists and is certified in Age Management Medicine through the Cenegenics Medical Institute. He trained under Dr. David Matlock at The Laser Vaginal Rejuvenation Institute of Los Angeles, and has dedicated his career to hormone optimization and age management medicine.',
+        'Today, Dr. Collins brings his extensive expertise in laser vaginal rejuvenation and bio-identical hormone optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
+      ],
+      images: [{ src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' }],
+    },
+  ],
 
   pricing: {
     eyebrow: 'What it costs',
@@ -89,7 +126,7 @@ export const sexualWellnessWomen: Treatment = {
   seo: {
     title: 'Women\'s Sexual Wellness in Savannah, GA | SAMM',
     description: 'Explore women\'s sexual wellness treatments in Savannah for vaginal dryness, painful intercourse, low libido, sensitivity concerns, and confidence.',
-    canonical: '/sexual-wellness-women'
+    canonical: '/rejuvenation-enhancement/female'
   }
 }
 

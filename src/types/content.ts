@@ -45,6 +45,35 @@ export interface EditorialPairData {
   cta?: Cta
 }
 
+/**
+ * A generic, JSON-driven content block for the middle of a treatment page.
+ * Deliberately loose ("content bag") rather than a closed per-type interface —
+ * `SectionRenderer` owns interpreting `cards`/`content`/`images` per `type`.
+ * New section kinds are added by registering a component against a new
+ * `type` string; this shape and the renderer never need to change.
+ */
+export interface TreatmentBlockData {
+  type: string
+  id?: string
+  eyebrow?: string
+  heading?: string | null
+  subheading?: string | null
+  /** Plain paragraphs, or a labeled sub-list (e.g. a symptom category with its own bullets). */
+  content?: Array<string | { subheading?: string; description?: string; list?: string[] }>
+  cards?: Array<Record<string, unknown>>
+  images?: Media[]
+  buttons?: Cta[]
+}
+
+/**
+ * An item with no `type` key is the legacy shape (`EditorialPairData`) and
+ * renders exactly as it always has. An item with `type` is a `TreatmentBlockData`
+ * dispatched through the `SectionRenderer` registry. This is how the schema
+ * evolves without a parallel field or a breaking change to the 13 pages
+ * already on the legacy-only shape.
+ */
+export type TreatmentSection = EditorialPairData | TreatmentBlockData
+
 export interface BenefitItem {
   title: string
   body?: string
@@ -182,7 +211,7 @@ export interface Treatment extends TreatmentSummary {
   }
   statement?: string
   symptoms?: BenefitListData
-  sections?: EditorialPairData[]
+  sections?: TreatmentSection[]
   process?: ProcessStepsData
   pricing?: PricingData
   candidacy?: BenefitListData

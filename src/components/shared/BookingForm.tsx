@@ -2,7 +2,7 @@
 
 import { bookAppointment, type ActionResult } from '@/actions/appointment'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AlertCircle, CheckCircle2 } from 'lucide-react'
+import { AlertCircle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -38,6 +38,7 @@ type FormValues = z.infer<typeof schema>
  */
 export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlug }) {
   const router = useRouter()
+
   const {
     register,
     control,
@@ -45,7 +46,9 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { location: defaultLocation ?? 'savannah-pooler' },
+    defaultValues: {
+      location: defaultLocation ?? 'savannah-pooler',
+    },
   })
 
   const [bookingState, setBookingState] = useState<ActionResult | null>(null)
@@ -54,30 +57,40 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
     <form
       onSubmit={handleSubmit(async (data) => {
         const formData = new FormData()
+
         formData.append('name', data.name)
         formData.append('email', data.email)
         formData.append('phone', data.phone)
-        formData.append('service', `Consultation at ${data.location === 'savannah-pooler' ? 'Savannah/Pooler' : 'Statesboro'}`)
+        formData.append(
+          'service',
+          `Consultation at ${
+            data.location === 'savannah-pooler'
+              ? 'Savannah/Pooler'
+              : 'Statesboro'
+          }`
+        )
         formData.append('preferredTime', data.preferredDate)
         formData.append('message', `Location: ${data.location}`)
 
         const result = await bookAppointment(null, formData)
+
         if (result.success) {
           router.push('/thank-you')
         } else {
           setBookingState(result)
         }
       })}
-      className="space-y-6"
+      className="space-y-5 sm:space-y-6"
       noValidate
     >
       {bookingState && !bookingState.success && (
-        <div className="flex items-center gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
-          <AlertCircle className="h-4 w-4 shrink-0" />
-          {bookingState.error}
+        <div className="flex items-start gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+          <span className="break-words">{bookingState.error}</span>
         </div>
       )}
-      <div className="grid gap-6 sm:grid-cols-2">
+
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
         <div>
           <Label htmlFor="name">Full name</Label>
           <Input
@@ -88,7 +101,10 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
             aria-describedby={errors.name ? 'name-error' : undefined}
             {...register('name')}
           />
-          <FieldError id="name-error" message={errors.name?.message} />
+          <FieldError
+            id="name-error"
+            message={errors.name?.message}
+          />
         </div>
 
         <div>
@@ -102,7 +118,10 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
             aria-describedby={errors.phone ? 'phone-error' : undefined}
             {...register('phone')}
           />
-          <FieldError id="phone-error" message={errors.phone?.message} />
+          <FieldError
+            id="phone-error"
+            message={errors.phone?.message}
+          />
         </div>
       </div>
 
@@ -117,10 +136,13 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
           aria-describedby={errors.email ? 'email-error' : undefined}
           {...register('email')}
         />
-        <FieldError id="email-error" message={errors.email?.message} />
+        <FieldError
+          id="email-error"
+          message={errors.email?.message}
+        />
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
         <div>
           <Label htmlFor="location">Which location?</Label>
           <select
@@ -134,7 +156,9 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
         </div>
 
         <div>
-          <Label htmlFor="preferredDate">When would you like to come in?</Label>
+          <Label htmlFor="preferredDate">
+            When would you like to come in?
+          </Label>
           <Input
             id="preferredDate"
             className="mt-2"
@@ -143,7 +167,10 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
             aria-describedby={errors.preferredDate ? 'date-error' : undefined}
             {...register('preferredDate')}
           />
-          <FieldError id="date-error" message={errors.preferredDate?.message} />
+          <FieldError
+            id="date-error"
+            message={errors.preferredDate?.message}
+          />
         </div>
       </div>
 
@@ -155,7 +182,7 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
             render={({ field }) => (
               <Checkbox
                 id="consent"
-                className="mt-0.5"
+                className="mt-0.5 shrink-0"
                 checked={field.value ?? false}
                 onCheckedChange={field.onChange}
                 aria-invalid={Boolean(errors.consent)}
@@ -163,14 +190,28 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
               />
             )}
           />
-          <Label htmlFor="consent" id="consent-text" className="text-body-sm leading-relaxed text-canvas-600">
+
+          <Label
+            htmlFor="consent"
+            id="consent-text"
+            className="flex-1 text-body-sm leading-relaxed text-canvas-600"
+          >
             {site.legal.smsConsent}
           </Label>
         </div>
-        <FieldError id="consent-error" message={errors.consent?.message as string | undefined} />
+
+        <FieldError
+          id="consent-error"
+          message={errors.consent?.message as string | undefined}
+        />
       </div>
 
-      <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:w-auto">
+      <Button
+        type="submit"
+        size="lg"
+        disabled={isSubmitting}
+        className="w-full sm:min-w-[240px] sm:w-auto"
+      >
         {isSubmitting ? 'Submitting…' : 'Schedule a consultation'}
       </Button>
     </form>

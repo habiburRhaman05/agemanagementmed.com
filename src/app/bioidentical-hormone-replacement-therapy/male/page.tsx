@@ -12,7 +12,7 @@ export default function Page() {
       <Header />
       <TreatmentTemplate
         treatment={hormoneTherapyMen}
-        testimonials={getTestimonials(['david-p', 'wesley-y', 'mike-d'])}
+        testimonials={getTestimonials(['david-p'])}
       />
     </>
   )

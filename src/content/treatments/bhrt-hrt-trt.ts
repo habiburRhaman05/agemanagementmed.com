@@ -12,8 +12,11 @@ export const bhrtHrtTrt: Treatment = {
   summary:
     'Compare BHRT, HRT, and TRT, including how each works, who may benefit, and why SAMM takes a broader hormone optimization approach.',
   cardImage: {
-    src: '/images/treatments/bhrt-hrt-trt/banner-21-bg.jpg',
-    alt: 'Difference between BHRT, HRT & TRT and why it matters',
+    // No dedicated bhrt-hrt-trt card photo exists locally (the original export
+    // pointed at a banner-21-bg.jpg that was never downloaded). Reusing the
+    // page's own real hero photo rather than a broken path.
+    src: '/images/treatments/bhrt-hrt-trt/hero.jpg',
+    alt: 'A provider reviewing a hormone therapy plan with a patient',
   },
   cardBenefits: [
     'Understand hormone optimization',
@@ -39,8 +42,8 @@ export const bhrtHrtTrt: Treatment = {
         "Hormone Replacement Therapy (HRT) is more than just a medical treatment - it's a pathway to renewed health and energy. Whether you're seeking Testosterone Replacement Therapy (TRT) or experiencing disruptive hormonal imbalances, our comprehensive approach ensures you receive the most advanced, personalized care possible. Below, we'll review the differences between HRT, TRT, and BHRT, and why our team uses BHRT to treat our patients."
       ],
       image: {
-        src: '/images/treatments/bhrt-hrt-trt/photo-content-21-img.jpg',
-        alt: 'What is Hormone Replacement Therapy?',
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-73-img.jpg',
+        alt: 'A clinician holding a blood sample for hormone lab testing',
       },
     },
     {
@@ -50,8 +53,8 @@ export const bhrtHrtTrt: Treatment = {
         'An umbrella term referring to the broader approach to hormonal balance that addresses various hormonal needs across different life stages. This approach may or may not be bioidentical.'
       ],
       image: {
-        src: '/images/treatments/bhrt-hrt-trt/photo-content-22-img.jpg',
-        alt: 'Hormone Replacement Therapy',
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/patient-benifit.jpg',
+        alt: 'A SAMM provider greeting a patient',
       },
       imageSide: 'left',
     },
@@ -61,8 +64,8 @@ export const bhrtHrtTrt: Treatment = {
         'Testosterone replacement therapy (TRT) is designed for individuals experiencing low testosterone and can significantly improve quality of life. However, for men, a protocol that includes only testosterone is often incomplete, as proper hormone balance typically requires addressing other key hormones as well. Similarly, for women, a hormone optimization plan that excludes testosterone may not fully support overall well-being. A truly effective approach considers the broader hormonal picture to ensure optimal health and symptom relief.'
       ],
       image: {
-        src: '/images/treatments/bhrt-hrt-trt/photo-content-23-img.jpg',
-        alt: 'Testosterone Replacement Therapy',
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/safety.jpg',
+        alt: 'A SAMM provider reviewing a treatment plan with a patient',
       },
     },
     {
@@ -71,8 +74,8 @@ export const bhrtHrtTrt: Treatment = {
         'The most advanced and synchronous approach to hormone optimization. Unlike synthetic hormone treatments, bioidentical hormones are molecularly identical to the hormones naturally produced by your body. These are the hormones that we leverage at Savannah Age Management Medicine to get the best results for our patients.'
       ],
       image: {
-        src: '/images/treatments/bhrt-hrt-trt/photo-content-24-img.jpg',
-        alt: 'Bioidentical Hormone Replacement Therapy',
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-img.png',
+        alt: 'The BHRT evaluation and treatment process',
       },
       imageSide: 'left',
     },
@@ -89,8 +92,8 @@ export const bhrtHrtTrt: Treatment = {
         'Mood fluctuations',
       ],
       image: {
-        src: '/images/treatments/bhrt-hrt-trt/photo-content-25-img.jpg',
-        alt: 'Signs You Might Need Hormone Replacement Therapy',
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/female/Symptoms.jpg',
+        alt: 'A woman resting outdoors, representing restored energy and balance',
       },
     },
     {
@@ -106,8 +109,8 @@ export const bhrtHrtTrt: Treatment = {
         'Holistic Health Optimization',
       ],
       image: {
-        src: '/images/treatments/bhrt-hrt-trt/photo-content-26-img.jpg',
-        alt: 'Our Comprehensive Approach in Pooler, GA',
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-2-img.png',
+        alt: 'A SAMM provider explaining a personalized treatment plan',
       },
       imageSide: 'left',
     },
@@ -125,8 +128,8 @@ export const bhrtHrtTrt: Treatment = {
         'Hands-on testosterone injection training',
       ],
       image: {
-        src: '/images/treatments/bhrt-hrt-trt/photo-content-27-img.jpg',
-        alt: 'Our Unique Consultation Process',
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-3-img.png',
+        alt: 'A comprehensive consultation appointment',
       },
     },
     {
@@ -144,8 +147,8 @@ export const bhrtHrtTrt: Treatment = {
         'Better sleep quality',
       ],
       image: {
-        src: '/images/treatments/bhrt-hrt-trt/photo-content-28-img.jpg',
-        alt: 'Potential Benefits of Hormone Replacement Therapy',
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/female/Monitoring.jpg',
+        alt: "A SAMM clinician reviewing a patient's lab and treatment notes",
       },
       imageSide: 'left',
     },
@@ -163,6 +166,6 @@ export const bhrtHrtTrt: Treatment = {
     title: "BHRT vs HRT vs TRT: What's the Difference? | SAMM",
     description:
       'Compare BHRT, HRT, and TRT, including how each works, who may benefit, and why SAMM takes a broader hormone optimization approach.',
-    canonical: '/bhrt-hrt-trt/',
+    canonical: '/bhrt-hrt-trt',
   },
 }

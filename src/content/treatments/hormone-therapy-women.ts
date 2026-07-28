@@ -132,6 +132,42 @@ export const hormoneTherapyWomen: Treatment = {
         alt: "A SAMM clinician reviewing a patient's lab and treatment notes",
       },
     },
+    {
+      type: 'feature-list',
+      id: 'treatment-support',
+      heading: 'Treatment may support:',
+      cards: [
+        { title: 'Energy and sleep quality' },
+        { title: 'Sexual wellness and vaginal health' },
+        { title: 'Mood stability and mental clarity' },
+        { title: 'Menopause and perimenopause symptom relief' },
+        { title: 'Metabolic balance and body composition' },
+      ],
+    },
+    {
+      type: 'notice',
+      id: 'billing-note',
+      content: [
+        'Some medications, specialty testing, or compounded prescriptions may be billed separately. Insurance coverage varies, and many patients use flexible payment or financing options when available.',
+      ],
+    },
+    {
+      // The source export's female reviewer-bio was a thin stub ("Reviewed By... SAMM
+      // focuses on personalized care"), while the male page's export carries Dr.
+      // Collins's full credentials and background. Reusing the fuller bio here since
+      // he is the medical director reviewing both pages — see Phase 1 report for
+      // this conflict being called out explicitly rather than resolved silently.
+      type: 'reviewer-bio',
+      id: 'reviewed-by',
+      subheading: 'Dr. Harry S. Collins, DO, FACOG, Medical Director',
+      content: [
+        'Age Management Medicine Specialist',
+        'Dr. Harry Collins is a Life Fellow of the American College of Obstetricians and Gynecologists and is certified in Age Management Medicine through the Cenegenics Medical Institute. He earned his BA in biology from the University of Colorado (Denver) with distinction before receiving his Doctor of Osteopathic Medicine from Kansas City University of Medicine and Biosciences.',
+        'After completing his residency in obstetrics and gynecology at Walter Reed Army Medical Center, Dr. Collins served as Command Physician during Operation Urgent Fury in Grenada, retiring from the U.S. Army Medical Corps as a Lt. Colonel. He trained under Dr. David Matlock at The Laser Vaginal Rejuvenation Institute of Los Angeles and has dedicated his career to hormone optimization and age management medicine.',
+        'Today, Dr. Collins brings his extensive expertise in bio-identical hormone optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
+      ],
+      images: [{ src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' }],
+    },
   ],
 
   pricing: {

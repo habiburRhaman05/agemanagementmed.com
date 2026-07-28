@@ -12,8 +12,9 @@ export const shockwaveTherapy: Treatment = {
   summary:
     'A non-invasive acoustic wave treatment that supports improved blood flow, encourages new vessel growth, and helps restore natural erectile function - without injections or surgery.',
   cardImage: {
-    src: '/images/treatments/shockwave-therapy/banner-32-bg.jpg',
-    alt: "Shockwave Therapy for Men's Sexual Function",
+    src: '/images/treatments/shockwave-therapy/hero.jpg',
+    alt: 'An athletic man in a gym, representing restored strength and vitality',
+    focalPoint: 'center 30%',
   },
   cardBenefits: [
     'Supports blood flow',
@@ -42,8 +43,8 @@ export const shockwaveTherapy: Treatment = {
         'Treatments are performed in-clinic by a licensed provider, using a medical acoustic sound wave device.'
       ],
       image: {
-        src: '/images/treatments/shockwave-therapy/photo-content-70-img.jpg',
-        alt: 'Low-Intensity Shockwave Therapy',
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-img.png',
+        alt: 'A SAMM provider preparing an in-clinic treatment',
       },
       imageSide: 'right',
     },
@@ -60,8 +61,8 @@ export const shockwaveTherapy: Treatment = {
         'May support improved response for men who have experienced reduced effectiveness with PDE5 inhibitors',
       ],
       image: {
-        src: '/images/treatments/shockwave-therapy/photo-content-50-img.jpg',
-        alt: 'Treatment Benefits',
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/patient-benifit.jpg',
+        alt: 'A SAMM provider greeting a male patient',
       },
       imageSide: 'left',
     },

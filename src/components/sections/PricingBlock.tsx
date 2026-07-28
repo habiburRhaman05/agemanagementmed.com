@@ -32,10 +32,10 @@ export function PricingBlock({ eyebrow, title, lead, included, note, cta }: Pric
 
           <div className="lg:col-span-7">
             <StaggerGroup stagger={0.06}>
-              <ul className="grid gap-x-10 gap-y-4 sm:grid-cols-2">
+              <ul className="grid gap-3 sm:grid-cols-2">
                 {included.map((item) => (
                   <StaggerItem key={item}>
-                    <li className="group flex items-start gap-3 text-body">
+                    <li className="group flex h-full items-start gap-3 rounded-xl border border-canvas-300/50 bg-canvas-50 p-4 text-body shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-sage-600/30 hover:shadow-md">
                       <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700 transition-all duration-300 group-hover:bg-sage-600 group-hover:text-canvas-50">
                         <Check className="size-3" aria-hidden />
                       </span>

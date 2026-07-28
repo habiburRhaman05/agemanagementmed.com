@@ -72,8 +72,6 @@ export const treatments: TreatmentSummary[] = [
   },
   {
     slug: 'weight-loss',
-    // TODO: point at a /concierge-medical-weight-loss hub once built; the
-    // male variant is real today, the bare hub path is not.
     href: '/concierge-medical-weight-loss/male',
     pillar: 'weight-loss',
     audience: 'all',
@@ -82,14 +80,13 @@ export const treatments: TreatmentSummary[] = [
     summary:
       'Expert, personalized weight management guided by body composition scans and labwork.',
     cardImage: {
-      src: '/images/services/image-4.png',
+      src: '/images/services/loss-weight.png',
       alt: 'A patient measuring their waist during a body composition check',
     },
     cardBenefits: ['Safe & sustainable', 'Expert-guided', 'Comprehensive program'],
   },
   {
     slug: 'sexual-wellness',
-    // TODO: point at a /rejuvenation-enhancement hub once built.
     href: '/rejuvenation-enhancement/male',
     pillar: 'sexual-wellness',
     audience: 'all',
@@ -127,7 +124,7 @@ export const treatments: TreatmentSummary[] = [
     shortName: 'Medical Aesthetics',
     summary: 'Medical-grade aesthetic services personalized to your skin care goals.',
     cardImage: {
-      src: '/images/services/image-1.png',
+      src: '/images/services/medical-image.png',
       alt: 'A couple embracing and smiling outdoors',
     },
     cardBenefits: ['Clinician-delivered', 'Natural results', 'Personalized plans'],

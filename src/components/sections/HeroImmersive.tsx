@@ -104,7 +104,19 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
                 Schedule a consultation
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-xl">
+            <DialogContent
+  className="
+    w-[calc(100%-1rem)]
+    max-w-2xl
+    max-h-[90dvh]
+    overflow-y-auto
+    rounded-[28px]
+    p-5
+    sm:w-full
+    sm:rounded-[40px]
+    sm:p-10
+  "
+>
               <DialogHeader>
                 <DialogTitle className="text-2xl font-display text-ink-900">
                   Book Your Consultation

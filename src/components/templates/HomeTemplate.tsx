@@ -38,7 +38,7 @@ export function HomeTemplate({ content }: { content: typeof homeContent }) {
 
       <ProcessSteps {...content.journey} background="page" />
 
-      <EditorialPair {...content.philosophy} />
+      {/* <EditorialPair {...content.philosophy} /> */}
 
       <PeopleGrid
         eyebrow="Our experts"

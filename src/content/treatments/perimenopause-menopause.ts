@@ -2,7 +2,7 @@ import type { Treatment } from '@/types/content'
 
 export const perimenopauseMenopause: Treatment = {
   slug: 'perimenopause-menopause',
-  href: '/perimenopause-menopause', // simplified
+  href: '/perimenopause-menopause',
   pillar: 'hormone-therapy',
   audience: 'women',
   kind: 'variant',
@@ -11,18 +11,18 @@ export const perimenopauseMenopause: Treatment = {
   shortName: 'Menopause Relief',
   summary: 'Struggling with hot flashes, fatigue, or brain fog? SAMM offers personalized menopause treatment in Savannah with hormone testing.',
   cardImage: {
-    src: '/themes/default/assets/images/banner-33-bg.jpg',
-    alt: 'Perimenopause & Menopause'
+    src: '/images/treatments/perimenopause-menopause/hero.jpg',
+    alt: 'An active mature woman, strength training',
   },
-  cardBenefits: ['Benefit 1', 'Benefit 2', 'Benefit 3'],
+  cardBenefits: ['Personalized lab testing', 'Symptom tracking', 'Data-driven care'],
 
   hero: {
     eyebrow: 'hormone therapy',
     title: 'Perimenopause & Menopause Relief Solutions',
     lead: 'Perimenopause and menopause can affect nearly every part of your day to day life. For some women, symptoms show up gradually. For others, they seem to appear overnight. Hot flashes may be the most talked about symptom, but hormonal changes can also affect your energy, mood, sleep, metabolism, focus, libido, and overall sense of well being. At Savannah Age Management Medicine, we take a personalized and data driven approach to menopause care. Instead of offering generic advice, we use detailed lab testing, symptom tracking, and ongoing evaluations to understand what your body actually needs. Our goal is to help you feel more like yourself again with treatment plans designed around your symptoms, lifestyle, and long term health goals.',
     image: {
-      src: '/themes/default/assets/images/banner-33-bg.jpg',
-      alt: 'Perimenopause & Menopause Relief Solutions'
+      src: '/images/treatments/perimenopause-menopause/hero.jpg',
+      alt: 'An active mature woman, strength training',
     },
     ctas: [
       { label: 'Book a consultation', href: '/book' }
@@ -31,7 +31,37 @@ export const perimenopauseMenopause: Treatment = {
 
   statement: 'Treatment plans designed around your symptoms, lifestyle, and goals.',
 
-  sections: [],
+  sections: [
+    {
+      eyebrow: 'Recognising the pattern',
+      title: 'Perimenopause vs. menopause',
+      body: [
+        'Perimenopause is the transition phase leading up to menopause, when hormone levels begin fluctuating. Menopause officially begins after 12 consecutive months without a menstrual cycle.',
+        'Early symptoms may include irregular periods, mood changes, fatigue, sleep issues, brain fog, low libido, and hot flashes - and hormonal changes can affect metabolism, muscle mass, and insulin sensitivity, making weight management more difficult for some women.',
+      ],
+      bullets: [
+        'Comprehensive lab testing before any treatment plan',
+        'Hormone levels, thyroid function, and metabolic markers reviewed together',
+        'Treatment plans personalized to your labwork and symptoms',
+      ],
+      image: {
+        src: '/images/treatments/bioidentical-hormone-replacement-therapy/female/Symptoms.jpg',
+        alt: 'A woman resting outdoors, representing restored energy and balance',
+      },
+    },
+    {
+      type: 'reviewer-bio',
+      id: 'reviewed-by',
+      subheading: 'Dr. Harry S. Collins, DO, FACOG, Medical Director',
+      content: [
+        'Age Management Medicine Specialist',
+        'Dr. Harry Collins is a Life Fellow of the American College of Obstetricians and Gynecologists and is certified in Age Management Medicine through the Cenegenics Medical Institute. He earned his BA in biology from the University of Colorado (Denver) with distinction before receiving his Doctor of Osteopathic Medicine from Kansas City University of Medicine and Biosciences.',
+        'After completing his residency in obstetrics and gynecology at Walter Reed Army Medical Center, Dr. Collins served as Command Physician during Operation Urgent Fury in Grenada, retiring from the U.S. Army Medical Corps as a Lt. Colonel. He has dedicated his career to hormone optimization and age management medicine.',
+        'Today, Dr. Collins brings his extensive expertise in bio-identical hormone optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
+      ],
+      images: [{ src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' }],
+    },
+  ],
 
   pricing: {
     eyebrow: 'What it costs',
