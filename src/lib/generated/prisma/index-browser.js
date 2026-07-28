@@ -251,6 +251,21 @@ exports.Prisma.PageSeoScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.TestimonialScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  roleLabel: 'roleLabel',
+  treatment: 'treatment',
+  quote: 'quote',
+  rating: 'rating',
+  photoUrl: 'photoUrl',
+  featured: 'featured',
+  status: 'status',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SiteSettingsScalarFieldEnum = {
   id: 'id',
   siteName: 'siteName',
@@ -313,6 +328,7 @@ exports.Prisma.ModelName = {
   Media: 'Media',
   Treatment: 'Treatment',
   PageSeo: 'PageSeo',
+  Testimonial: 'Testimonial',
   SiteSettings: 'SiteSettings'
 };
 

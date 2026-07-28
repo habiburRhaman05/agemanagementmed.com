@@ -9,8 +9,10 @@ import {
   CalendarCheck,
   Inbox,
   Stethoscope,
+  Quote,
   Search,
   Settings,
+  ShieldCheck,
   LogOut,
   Menu,
   X,
@@ -23,6 +25,7 @@ interface NavItem {
   label: string
   href: string
   icon: LucideIcon
+  superadminOnly?: boolean
 }
 
 const navItems: NavItem[] = [
@@ -31,11 +34,17 @@ const navItems: NavItem[] = [
   { label: 'Appointments', href: '/admin/appointments', icon: CalendarCheck },
   { label: 'Leads', href: '/admin/leads', icon: Inbox },
   { label: 'Treatments', href: '/admin/treatments', icon: Stethoscope },
+  { label: 'Testimonials', href: '/admin/testimonials', icon: Quote },
   { label: 'SEO', href: '/admin/seo', icon: Search },
   { label: 'Settings', href: '/admin/settings', icon: Settings },
+  { label: 'Admins', href: '/admin/admins', icon: ShieldCheck, superadminOnly: true },
 ]
 
-export function Sidebar() {
+interface SidebarProps {
+  admin: { name: string; email: string; role: string }
+}
+
+export function Sidebar({ admin }: SidebarProps) {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -43,6 +52,14 @@ export function Sidebar() {
     await logout()
     window.location.href = '/admin/login'
   }
+
+  const visibleItems = navItems.filter((item) => !item.superadminOnly || admin.role === 'superadmin')
+  const initials = admin.name
+    .split(' ')
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase()
 
   const NavLink = ({ item }: { item: NavItem }) => {
     const isActive = pathname.startsWith(item.href)
@@ -53,13 +70,13 @@ export function Sidebar() {
         className={cn(
           'group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all',
           isActive
-            ? 'bg-white/10 text-white'
-            : 'text-slate-400 hover:bg-white/5 hover:text-white'
+            ? 'bg-white/[0.08] text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]'
+            : 'text-slate-400 hover:bg-white/[0.04] hover:text-white'
         )}
       >
         <span
           className={cn(
-            'absolute left-0 top-1/2 h-5 -translate-y-1/2 rounded-r-full bg-emerald-400 transition-all',
+            'absolute left-0 top-1/2 h-5 -translate-y-1/2 rounded-r-full bg-sage-400 shadow-[0_0_12px_rgba(98,183,155,0.7)] transition-all',
             isActive ? 'w-1 opacity-100' : 'w-0 opacity-0'
           )}
           aria-hidden
@@ -67,7 +84,7 @@ export function Sidebar() {
         <item.icon
           className={cn(
             'h-5 w-5 shrink-0 transition-colors',
-            isActive ? 'text-emerald-400' : 'text-slate-500 group-hover:text-emerald-400'
+            isActive ? 'text-sage-400' : 'text-slate-500 group-hover:text-sage-400'
           )}
         />
         {item.label}
@@ -81,7 +98,7 @@ export function Sidebar() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed left-4 top-4 z-50 rounded-lg border border-slate-800 bg-slate-900 p-2 text-white shadow-sm lg:hidden"
+        className="fixed left-4 top-4 z-50 rounded-lg bg-ink-950 p-2 text-white shadow-lg lg:hidden"
         aria-label="Toggle menu"
       >
         {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -90,7 +107,7 @@ export function Sidebar() {
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-30 bg-ink-950/60 backdrop-blur-sm lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -98,13 +115,13 @@ export function Sidebar() {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-slate-900 transition-transform lg:static lg:translate-x-0',
+          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-linear-to-b from-ink-950 via-ink-950 to-[#081029] transition-transform lg:static lg:translate-x-0',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
         {/* Logo */}
-        <div className="flex h-16 items-center gap-3 border-b border-white/5 px-6">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-emerald-400 to-teal-600 text-sm font-bold text-white shadow-lg shadow-emerald-900/30">
+        <div className="flex h-16 items-center gap-3 border-b border-white/[0.06] px-6">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-sage-400 to-sage-700 text-sm font-bold text-white shadow-lg shadow-sage-900/40">
             S
           </div>
           <div>
@@ -115,13 +132,22 @@ export function Sidebar() {
 
         {/* Nav items */}
         <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
-          {navItems.map((item) => (
+          {visibleItems.map((item) => (
             <NavLink key={item.href} item={item} />
           ))}
         </nav>
 
-        {/* Logout */}
-        <div className="border-t border-white/5 px-3 py-4">
+        {/* Account + logout */}
+        <div className="space-y-1 border-t border-white/[0.06] px-3 py-4">
+          <div className="flex items-center gap-3 rounded-xl px-3 py-2">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-sage-300">
+              {initials || 'A'}
+            </div>
+            <div className="min-w-0">
+              <p className="truncate text-sm font-medium text-white">{admin.name}</p>
+              <p className="truncate text-xs capitalize text-slate-500">{admin.role}</p>
+            </div>
+          </div>
           <button
             type="button"
             onClick={handleLogout}

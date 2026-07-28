@@ -32,7 +32,7 @@ export default async function AppointmentsPage({ searchParams }: Props) {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Appointments</h1>
+        <h1 className="text-2xl font-bold text-ink-950">Appointments</h1>
         <p className="mt-1 text-sm text-gray-500">
           Manage patient appointment requests
         </p>
@@ -52,8 +52,8 @@ export default async function AppointmentsPage({ searchParams }: Props) {
                 }
                 className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
                   (s === 'all' && !status) || s === status
-                    ? 'bg-emerald-50 text-emerald-700'
-                    : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                    ? 'bg-sage-50 text-sage-700'
+                    : 'text-gray-500 hover:bg-canvas-50 hover:text-gray-700'
                 }`}
               >
                 {s.charAt(0).toUpperCase() + s.slice(1)}
@@ -68,7 +68,7 @@ export default async function AppointmentsPage({ searchParams }: Props) {
             name="search"
             defaultValue={search || ''}
             placeholder="Search by name, email..."
-            className="w-full rounded-lg border border-gray-300 py-2 pl-4 pr-4 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+            className="w-full rounded-lg border border-canvas-300 py-2 pl-4 pr-4 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
           />
         </form>
       </div>
@@ -84,9 +84,9 @@ export default async function AppointmentsPage({ searchParams }: Props) {
           search={search}
         />
       ) : (
-        <div className="rounded-2xl border border-gray-100 bg-white py-16 text-center shadow-sm">
-          <CalendarCheck className="mx-auto h-12 w-12 text-gray-300" />
-          <h3 className="mt-4 text-base font-semibold text-gray-900">
+        <div className="rounded-2xl bg-white py-16 text-center shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+          <CalendarCheck className="mx-auto h-12 w-12 text-canvas-300" />
+          <h3 className="mt-4 text-base font-semibold text-ink-950">
             No appointments found
           </h3>
           <p className="mt-1 text-sm text-gray-500">

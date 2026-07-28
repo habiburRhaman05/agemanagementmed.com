@@ -174,21 +174,21 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Status + order */}
-      <div className="flex flex-wrap items-end gap-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+      <div className="flex flex-wrap items-end gap-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <div>
           <p className="text-xs font-medium text-gray-500">Slug (fixed)</p>
-          <p className="mt-1 font-mono text-sm text-gray-900">{treatment.slug}</p>
+          <p className="mt-1 font-mono text-sm text-ink-950">{treatment.slug}</p>
         </div>
         <div>
           <p className="text-xs font-medium text-gray-500">Route (fixed)</p>
-          <p className="mt-1 font-mono text-sm text-gray-900">{treatment.href}</p>
+          <p className="mt-1 font-mono text-sm text-ink-950">{treatment.href}</p>
         </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">Status</label>
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="mt-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+            className="mt-1 rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
           >
             <option value="draft">Draft</option>
             <option value="published">Published</option>
@@ -200,7 +200,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
             type="number"
             value={order}
             onChange={(e) => setOrder(Number(e.target.value))}
-            className="mt-1 w-24 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+            className="mt-1 w-24 rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
           />
         </div>
         {status === 'draft' ? (
@@ -211,68 +211,68 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
       </div>
 
       {/* Card / summary */}
-      <div className="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-        <h2 className="text-sm font-semibold text-gray-900">Card &amp; summary</h2>
+      <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+        <h2 className="text-sm font-semibold text-ink-950">Card &amp; summary</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="block text-xs font-medium text-gray-500">Name</label>
-            <input value={name} onChange={(e) => setName(e.target.value)} className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+            <input value={name} onChange={(e) => setName(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
           </div>
           <div>
             <label className="block text-xs font-medium text-gray-500">Short name</label>
-            <input value={shortName} onChange={(e) => setShortName(e.target.value)} className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+            <input value={shortName} onChange={(e) => setShortName(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
           </div>
         </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">Summary</label>
-          <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={2} className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+          <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={2} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="block text-xs font-medium text-gray-500">Card image URL</label>
-            <input value={cardImageSrc} onChange={(e) => setCardImageSrc(e.target.value)} className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+            <input value={cardImageSrc} onChange={(e) => setCardImageSrc(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
           </div>
           <div>
             <label className="block text-xs font-medium text-gray-500">Card image alt</label>
-            <input value={cardImageAlt} onChange={(e) => setCardImageAlt(e.target.value)} className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+            <input value={cardImageAlt} onChange={(e) => setCardImageAlt(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
           </div>
         </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">Card benefits (comma-separated)</label>
-          <input value={cardBenefits} onChange={(e) => setCardBenefits(e.target.value)} className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+          <input value={cardBenefits} onChange={(e) => setCardBenefits(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         </div>
       </div>
 
       {/* Hero */}
-      <div className="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-        <h2 className="text-sm font-semibold text-gray-900">Hero</h2>
+      <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+        <h2 className="text-sm font-semibold text-ink-950">Hero</h2>
         <div>
           <label className="block text-xs font-medium text-gray-500">Eyebrow</label>
-          <input value={heroEyebrow} onChange={(e) => setHeroEyebrow(e.target.value)} className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+          <input value={heroEyebrow} onChange={(e) => setHeroEyebrow(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">Title</label>
-          <input value={heroTitle} onChange={(e) => setHeroTitle(e.target.value)} required className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+          <input value={heroTitle} onChange={(e) => setHeroTitle(e.target.value)} required className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">Lead</label>
-          <textarea value={heroLead} onChange={(e) => setHeroLead(e.target.value)} required rows={3} className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+          <textarea value={heroLead} onChange={(e) => setHeroLead(e.target.value)} required rows={3} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="block text-xs font-medium text-gray-500">Hero image URL</label>
-            <input value={heroImageSrc} onChange={(e) => setHeroImageSrc(e.target.value)} required className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+            <input value={heroImageSrc} onChange={(e) => setHeroImageSrc(e.target.value)} required className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
           </div>
           <div>
             <label className="block text-xs font-medium text-gray-500">Hero image alt</label>
-            <input value={heroImageAlt} onChange={(e) => setHeroImageAlt(e.target.value)} required className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+            <input value={heroImageAlt} onChange={(e) => setHeroImageAlt(e.target.value)} required className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
           </div>
         </div>
 
         <div>
           <div className="flex items-center justify-between">
             <label className="block text-xs font-medium text-gray-500">Buttons</label>
-            <button type="button" onClick={() => setHeroCtas([...heroCtas, { label: '', href: '' }])} className="inline-flex items-center gap-1 text-xs font-medium text-emerald-700 hover:text-emerald-800">
+            <button type="button" onClick={() => setHeroCtas([...heroCtas, { label: '', href: '' }])} className="inline-flex items-center gap-1 text-xs font-medium text-sage-700 hover:text-sage-700">
               <Plus className="size-3.5" /> Add button
             </button>
           </div>
@@ -283,13 +283,13 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
                   value={cta.label}
                   onChange={(e) => setHeroCtas(heroCtas.map((c, j) => (j === i ? { ...c, label: e.target.value } : c)))}
                   placeholder="Label"
-                  className="block w-1/2 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="block w-1/2 rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                 />
                 <input
                   value={cta.href}
                   onChange={(e) => setHeroCtas(heroCtas.map((c, j) => (j === i ? { ...c, href: e.target.value } : c)))}
                   placeholder="/book"
-                  className="block w-1/2 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="block w-1/2 rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                 />
                 <button type="button" onClick={() => setHeroCtas(heroCtas.filter((_, j) => j !== i))} className="shrink-0 rounded-lg p-2 text-gray-400 hover:bg-red-50 hover:text-red-600">
                   <Trash2 className="size-4" />
@@ -301,30 +301,30 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
       </div>
 
       {/* FAQs */}
-      <div className="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+      <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-900">FAQs</h2>
-          <button type="button" onClick={() => setFaqs([...faqs, { question: '', answer: '' }])} className="inline-flex items-center gap-1 text-xs font-medium text-emerald-700 hover:text-emerald-800">
+          <h2 className="text-sm font-semibold text-ink-950">FAQs</h2>
+          <button type="button" onClick={() => setFaqs([...faqs, { question: '', answer: '' }])} className="inline-flex items-center gap-1 text-xs font-medium text-sage-700 hover:text-sage-700">
             <Plus className="size-3.5" /> Add FAQ
           </button>
         </div>
         <div className="space-y-3">
           {faqs.map((faq, i) => (
-            <div key={i} className="rounded-lg border border-gray-200 p-3">
+            <div key={i} className="rounded-lg border border-canvas-200 p-3">
               <div className="flex items-start gap-2">
                 <div className="flex-1 space-y-2">
                   <input
                     value={faq.question}
                     onChange={(e) => setFaqs(faqs.map((f, j) => (j === i ? { ...f, question: e.target.value } : f)))}
                     placeholder="Question"
-                    className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm font-medium focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   />
                   <textarea
                     value={faq.answer}
                     onChange={(e) => setFaqs(faqs.map((f, j) => (j === i ? { ...f, answer: e.target.value } : f)))}
                     placeholder="Answer"
                     rows={2}
-                    className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   />
                 </div>
                 <button type="button" onClick={() => setFaqs(faqs.filter((_, j) => j !== i))} className="shrink-0 rounded-lg p-2 text-gray-400 hover:bg-red-50 hover:text-red-600">
@@ -338,44 +338,44 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
 
       {/* Pricing */}
       {treatment.data.pricing ? (
-        <div className="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-          <h2 className="text-sm font-semibold text-gray-900">Pricing</h2>
-          <input value={pricingTitle} onChange={(e) => setPricingTitle(e.target.value)} placeholder="Title" className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
-          <input value={pricingLead} onChange={(e) => setPricingLead(e.target.value)} placeholder="Lead" className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+        <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+          <h2 className="text-sm font-semibold text-ink-950">Pricing</h2>
+          <input value={pricingTitle} onChange={(e) => setPricingTitle(e.target.value)} placeholder="Title" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+          <input value={pricingLead} onChange={(e) => setPricingLead(e.target.value)} placeholder="Lead" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
           <div>
             <label className="block text-xs font-medium text-gray-500">Included (one per line)</label>
-            <textarea value={pricingIncluded} onChange={(e) => setPricingIncluded(e.target.value)} rows={4} className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+            <textarea value={pricingIncluded} onChange={(e) => setPricingIncluded(e.target.value)} rows={4} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
           </div>
-          <input value={pricingNote} onChange={(e) => setPricingNote(e.target.value)} placeholder="Note" className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+          <input value={pricingNote} onChange={(e) => setPricingNote(e.target.value)} placeholder="Note" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         </div>
       ) : null}
 
       {/* Closing CTA */}
-      <div className="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-        <h2 className="text-sm font-semibold text-gray-900">Closing CTA</h2>
-        <input value={closingTitle} onChange={(e) => setClosingTitle(e.target.value)} placeholder="Title" required className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
-        <textarea value={closingBody} onChange={(e) => setClosingBody(e.target.value)} placeholder="Body" required rows={2} className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+      <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+        <h2 className="text-sm font-semibold text-ink-950">Closing CTA</h2>
+        <input value={closingTitle} onChange={(e) => setClosingTitle(e.target.value)} placeholder="Title" required className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+        <textarea value={closingBody} onChange={(e) => setClosingBody(e.target.value)} placeholder="Body" required rows={2} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         <div className="flex gap-2">
-          <input value={closingCtaLabel} onChange={(e) => setClosingCtaLabel(e.target.value)} placeholder="Button label" required className="block w-1/2 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
-          <input value={closingCtaHref} onChange={(e) => setClosingCtaHref(e.target.value)} placeholder="/book" required className="block w-1/2 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+          <input value={closingCtaLabel} onChange={(e) => setClosingCtaLabel(e.target.value)} placeholder="Button label" required className="block w-1/2 rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+          <input value={closingCtaHref} onChange={(e) => setClosingCtaHref(e.target.value)} placeholder="/book" required className="block w-1/2 rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         </div>
       </div>
 
       {/* SEO */}
-      <div className="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-        <h2 className="text-sm font-semibold text-gray-900">SEO</h2>
-        <input value={seoTitle} onChange={(e) => setSeoTitle(e.target.value)} placeholder="Meta title" maxLength={70} className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
-        <textarea value={seoDescription} onChange={(e) => setSeoDescription(e.target.value)} placeholder="Meta description" maxLength={300} rows={2} className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
-        <input value={seoCanonical} onChange={(e) => setSeoCanonical(e.target.value)} placeholder="Canonical" className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20" />
+      <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+        <h2 className="text-sm font-semibold text-ink-950">SEO</h2>
+        <input value={seoTitle} onChange={(e) => setSeoTitle(e.target.value)} placeholder="Meta title" maxLength={70} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+        <textarea value={seoDescription} onChange={(e) => setSeoDescription(e.target.value)} placeholder="Meta description" maxLength={300} rows={2} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+        <input value={seoCanonical} onChange={(e) => setSeoCanonical(e.target.value)} placeholder="Canonical" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         <label className="flex items-center gap-2">
-          <input type="checkbox" checked={seoNoindex} onChange={(e) => setSeoNoindex(e.target.checked)} className="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" />
+          <input type="checkbox" checked={seoNoindex} onChange={(e) => setSeoNoindex(e.target.checked)} className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600" />
           <span className="text-xs text-gray-600">No index</span>
         </label>
       </div>
 
       {/* Advanced JSON */}
-      <div className="space-y-2 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-        <h2 className="text-sm font-semibold text-gray-900">Advanced (symptoms, sections, process, candidacy, providers, related)</h2>
+      <div className="space-y-2 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+        <h2 className="text-sm font-semibold text-ink-950">Advanced (symptoms, sections, process, candidacy, providers, related)</h2>
         <p className="text-xs text-gray-500">
           Raw JSON for the section types the generic renderer already knows how to draw — validated before save.
           Leave keys out entirely to skip that section on the page.
@@ -384,7 +384,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           value={advancedJson}
           onChange={(e) => setAdvancedJson(e.target.value)}
           rows={16}
-          className="block w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-xs focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+          className="block w-full rounded-lg border border-canvas-300 px-3 py-2 font-mono text-xs focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
         />
       </div>
 
@@ -395,7 +395,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         </div>
       ) : null}
       {saveStatus === 'success' ? (
-        <div className="flex items-center gap-2 rounded-lg bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+        <div className="flex items-center gap-2 rounded-lg bg-sage-50 px-4 py-3 text-sm text-sage-700">
           <CheckCircle2 className="size-4 shrink-0" />
           Saved — the live page updates now (or on next visit if cached).
         </div>
@@ -405,7 +405,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         <button
           type="submit"
           disabled={saveStatus === 'loading'}
-          className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-700 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {saveStatus === 'loading' ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />}
           {saveStatus === 'loading' ? 'Saving...' : 'Save changes'}

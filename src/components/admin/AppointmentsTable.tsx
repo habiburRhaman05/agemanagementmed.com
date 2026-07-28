@@ -39,7 +39,7 @@ const statusConfig: Record<
   },
   confirmed: {
     icon: CheckCircle2,
-    color: 'text-emerald-600 bg-emerald-50',
+    color: 'text-sage-600 bg-sage-50',
     label: 'Confirmed',
   },
   completed: {
@@ -74,10 +74,10 @@ export function AppointmentsTable({
 
   return (
     <>
-      <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <table className="min-w-full divide-y">
           <thead>
-            <tr className="bg-gray-50">
+            <tr className="bg-canvas-50">
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                 Name
               </th>
@@ -103,11 +103,11 @@ export function AppointmentsTable({
               return (
                 <tr
                   key={apt.id}
-                  className="hover:bg-gray-50/50"
+                  className="hover:bg-canvas-50/50"
                 >
                   <td className="px-6 py-4">
                     <div>
-                      <p className="text-sm font-medium text-gray-900">
+                      <p className="text-sm font-medium text-ink-950">
                         {apt.name}
                       </p>
                       <p className="text-xs text-gray-500">{apt.email}</p>
@@ -138,7 +138,7 @@ export function AppointmentsTable({
                     <button
                       type="button"
                       onClick={() => setSelected(apt)}
-                      className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
+                      className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-medium text-sage-600 transition-colors hover:bg-sage-50"
                     >
                       <Eye className="h-4 w-4" />
                       View
@@ -161,7 +161,7 @@ export function AppointmentsTable({
             {currentPage > 1 && (
               <a
                 href={buildPaginationUrl(currentPage - 1)}
-                className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-50"
+                className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-canvas-50"
               >
                 Previous
               </a>
@@ -169,7 +169,7 @@ export function AppointmentsTable({
             {currentPage < totalPages && (
               <a
                 href={buildPaginationUrl(currentPage + 1)}
-                className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-50"
+                className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-canvas-50"
               >
                 Next
               </a>

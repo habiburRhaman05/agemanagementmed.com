@@ -29,7 +29,7 @@ export default async function SeoPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">SEO</h1>
+        <h1 className="text-2xl font-bold text-ink-950">SEO</h1>
         <p className="text-sm text-gray-500">
           Title, description, canonical, OG image, robots, and structured-data override — per page, across the whole site.
         </p>

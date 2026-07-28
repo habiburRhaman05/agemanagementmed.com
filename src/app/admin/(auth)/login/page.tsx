@@ -3,7 +3,7 @@
 import { useActionState, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { login, type ActionResult } from '@/actions/auth'
-import { Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff, Loader2 } from 'lucide-react'
 
 export default function AdminLoginPage() {
   const router = useRouter()
@@ -21,23 +21,31 @@ export default function AdminLoginPage() {
   }, [state, router])
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-emerald-50 via-white to-teal-50 p-4">
-      <div className="w-full max-w-md">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-linear-to-br from-ink-950 via-ink-900 to-ink-800 p-4">
+      <div
+        className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-sage-400/20 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-rose-300/10 blur-3xl"
+        aria-hidden
+      />
+      <div className="relative w-full max-w-md">
         {/* Logo */}
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-600 shadow-lg shadow-emerald-200">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br from-sage-400 to-sage-700 shadow-lg shadow-sage-900/40">
             <span className="text-2xl font-bold text-white">S</span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-white">
             SAMM Admin Panel
           </h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-slate-400">
             Savannah Age Management Medicine
           </p>
         </div>
 
         {/* Form */}
-        <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+        <div className="rounded-2xl bg-white p-8 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_24px_60px_-24px_rgba(6,11,33,0.6)] ring-1 ring-white/10">
           <form action={formAction} className="space-y-5">
             <div>
               <label
@@ -53,7 +61,7 @@ export default function AdminLoginPage() {
                 required
                 autoComplete="email"
                 autoFocus
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                className="mt-1 block w-full rounded-lg border border-canvas-300 px-4 py-2.5 text-sm text-ink-950 placeholder-gray-400 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                 placeholder="admin@samm.com"
               />
             </div>
@@ -72,7 +80,7 @@ export default function AdminLoginPage() {
                   name="password"
                   required
                   autoComplete="current-password"
-                  className="block w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-10 text-sm text-gray-900 placeholder-gray-400 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="block w-full rounded-lg border border-canvas-300 px-4 py-2.5 pr-10 text-sm text-ink-950 placeholder-gray-400 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   placeholder="Enter your password"
                 />
                 <button
@@ -99,14 +107,15 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={pending}
-              className="w-full rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-sage-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-700 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
             >
+              {pending ? <Loader2 className="size-4 animate-spin" /> : null}
               {pending ? 'Signing in...' : 'Sign in'}
             </button>
           </form>
         </div>
 
-        <p className="mt-6 text-center text-xs text-gray-400">
+        <p className="mt-6 text-center text-xs text-slate-500">
           Secure admin access only
         </p>
       </div>

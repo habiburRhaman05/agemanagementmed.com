@@ -29,8 +29,8 @@ interface Props {
 const STATUS_STYLES: Record<string, string> = {
   new: 'bg-amber-50 text-amber-700',
   contacted: 'bg-blue-50 text-blue-700',
-  converted: 'bg-emerald-50 text-emerald-700',
-  archived: 'bg-gray-100 text-gray-600',
+  converted: 'bg-sage-50 text-sage-700',
+  archived: 'bg-canvas-100 text-gray-600',
 }
 
 export function LeadsTable({ leads, currentPage, totalPages, total, status, search }: Props) {
@@ -52,10 +52,10 @@ export function LeadsTable({ leads, currentPage, totalPages, total, status, sear
 
   return (
     <>
-      <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <table className="min-w-full divide-y">
           <thead>
-            <tr className="bg-gray-50">
+            <tr className="bg-canvas-50">
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Contact</th>
               <th className="hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 lg:table-cell">Message</th>
               <th className="hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:table-cell">Source</th>
@@ -65,9 +65,9 @@ export function LeadsTable({ leads, currentPage, totalPages, total, status, sear
           </thead>
           <tbody className="divide-y">
             {leads.map((lead) => (
-              <tr key={lead.id} className="hover:bg-gray-50/50">
+              <tr key={lead.id} className="hover:bg-canvas-50/50">
                 <td className="px-6 py-4">
-                  <p className="text-sm font-medium text-gray-900">{lead.name}</p>
+                  <p className="text-sm font-medium text-ink-950">{lead.name}</p>
                   <p className="text-xs text-gray-500">{lead.email}</p>
                   {lead.phone ? <p className="text-xs text-gray-400">{lead.phone}</p> : null}
                 </td>
@@ -83,7 +83,7 @@ export function LeadsTable({ leads, currentPage, totalPages, total, status, sear
                       value={lead.status}
                       onChange={(e) => handleStatusChange(lead.id, e.target.value)}
                       disabled={updatingId === lead.id}
-                      className={`rounded-full border-0 px-2.5 py-0.5 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500/30 ${STATUS_STYLES[lead.status] ?? STATUS_STYLES.new}`}
+                      className={`rounded-full border-0 px-2.5 py-0.5 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-sage-600/30 ${STATUS_STYLES[lead.status] ?? STATUS_STYLES.new}`}
                     >
                       <option value="new">New</option>
                       <option value="contacted">Contacted</option>
@@ -109,12 +109,12 @@ export function LeadsTable({ leads, currentPage, totalPages, total, status, sear
           </p>
           <div className="flex gap-2">
             {currentPage > 1 ? (
-              <a href={buildPaginationUrl(currentPage - 1)} className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-50">
+              <a href={buildPaginationUrl(currentPage - 1)} className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-canvas-50">
                 Previous
               </a>
             ) : null}
             {currentPage < totalPages ? (
-              <a href={buildPaginationUrl(currentPage + 1)} className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-50">
+              <a href={buildPaginationUrl(currentPage + 1)} className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-canvas-50">
                 Next
               </a>
             ) : null}

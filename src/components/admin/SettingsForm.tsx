@@ -50,7 +50,7 @@ function Field({
           maxLength={maxLength}
           rows={4}
           placeholder={placeholder}
-          className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-xs text-gray-900 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+          className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 font-mono text-xs text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
         />
       ) : (
         <input
@@ -59,7 +59,7 @@ function Field({
           onChange={(e) => onChange(e.target.value)}
           maxLength={maxLength}
           placeholder={placeholder}
-          className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+          className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
         />
       )}
       {maxLength ? (
@@ -139,8 +139,8 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-          <h2 className="text-sm font-semibold text-gray-900">Brand</h2>
+        <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+          <h2 className="text-sm font-semibold text-ink-950">Brand</h2>
           <Field label="Site name" value={siteName} onChange={setSiteName} />
           <Field label="Tagline" value={tagline} onChange={setTagline} />
           <Field label="Logo URL (light background)" value={logoUrl} onChange={setLogoUrl} placeholder="/images/samm-blue-logo.png" />
@@ -150,8 +150,8 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
           <Field label="Email" value={email} onChange={setEmail} />
         </div>
 
-        <div className="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-          <h2 className="text-sm font-semibold text-gray-900">Social links</h2>
+        <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+          <h2 className="text-sm font-semibold text-ink-950">Social links</h2>
           <p className="text-xs text-gray-500">Leave blank to hide that icon in the footer.</p>
           <Field label="Facebook" value={facebook} onChange={setFacebook} placeholder="https://facebook.com/..." />
           <Field label="Instagram" value={instagram} onChange={setInstagram} placeholder="https://instagram.com/..." />
@@ -160,8 +160,8 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
           <Field label="TikTok" value={tiktok} onChange={setTiktok} placeholder="https://tiktok.com/..." />
         </div>
 
-        <div className="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-          <h2 className="text-sm font-semibold text-gray-900">Default SEO</h2>
+        <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+          <h2 className="text-sm font-semibold text-ink-950">Default SEO</h2>
           <p className="text-xs text-gray-500">
             Used site-wide when a specific page doesn't set its own SEO in the SEO tab.
           </p>
@@ -176,8 +176,8 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
           <Field label="Default OG image URL" value={defaultOgImageUrl} onChange={setDefaultOgImageUrl} />
         </div>
 
-        <div className="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-          <h2 className="text-sm font-semibold text-gray-900">Tracking scripts</h2>
+        <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+          <h2 className="text-sm font-semibold text-ink-950">Tracking scripts</h2>
           <p className="text-xs text-gray-500">
             Raw HTML/JS (e.g. GTM, Meta Pixel). Injected as-is — admin-only, never rendered from public input.
           </p>
@@ -194,7 +194,7 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
       ) : null}
 
       {status === 'success' ? (
-        <div className="flex items-center gap-2 rounded-lg bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+        <div className="flex items-center gap-2 rounded-lg bg-sage-50 px-4 py-3 text-sm text-sage-700">
           <CheckCircle2 className="size-4 shrink-0" />
           Settings saved — changes are live now.
         </div>
@@ -204,7 +204,7 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-700 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === 'loading' ? (
             <>

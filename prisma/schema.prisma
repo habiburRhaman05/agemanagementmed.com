@@ -161,6 +161,25 @@ model PageSeo {
   updatedAt    DateTime @updatedAt
 }
 
+// Admin-managed testimonials shown on the marketing site. Separate from the
+// curated static `src/content/shared/testimonials.ts` list (sourced from
+// Google reviews) — this table is the editable pool admins add to directly
+// from the dashboard, with richer per-entry detail than the static shape.
+model Testimonial {
+  id        String    @id @default(cuid())
+  name      String
+  roleLabel String? // e.g. "Patient", "Verified Patient", a job title
+  treatment String? // which treatment/service this testimonial references
+  quote     String
+  rating    Int       @default(5) // 1-5
+  photoUrl  String?
+  featured  Boolean   @default(false) // pinned to the top of the public list
+  status    String    @default("published") // draft | published
+  order     Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
 // Singleton — one row, id fixed to "singleton". Logo, favicon, socials, tracking scripts.
 model SiteSettings {
   id                    String   @id @default("singleton")

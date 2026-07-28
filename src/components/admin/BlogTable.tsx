@@ -43,10 +43,10 @@ export function BlogTable({ posts }: Props) {
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
       <table className="min-w-full divide-y">
         <thead>
-          <tr className="bg-gray-50">
+          <tr className="bg-canvas-50">
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
               Title
             </th>
@@ -66,11 +66,11 @@ export function BlogTable({ posts }: Props) {
         </thead>
         <tbody className="divide-y">
           {posts.map((post) => (
-            <tr key={post.id} className="hover:bg-gray-50/50">
+            <tr key={post.id} className="hover:bg-canvas-50/50">
               <td className="px-6 py-4">
                 <div className="flex items-center gap-3">
                   <div>
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-sm font-medium text-ink-950">
                       {post.title}
                     </p>
                     <p className="mt-0.5 text-xs text-gray-500">
@@ -85,10 +85,10 @@ export function BlogTable({ posts }: Props) {
                   onClick={() => handleToggleStatus(post.id, post.status)}
                   className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors ${
                     post.status === 'published'
-                      ? 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
+                      ? 'bg-sage-50 text-sage-700 hover:bg-sage-100'
                       : post.status === 'draft'
                         ? 'bg-amber-50 text-amber-700 hover:bg-amber-100'
-                        : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                        : 'bg-canvas-50 text-gray-600 hover:bg-canvas-100'
                   }`}
                   title="Click to toggle"
                 >
@@ -108,14 +108,14 @@ export function BlogTable({ posts }: Props) {
                   <Link
                     href={`/blog/${post.slug}`}
                     target="_blank"
-                    className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+                    className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-canvas-100 hover:text-gray-600"
                     title="View on site"
                   >
                     <ExternalLink className="h-4 w-4" />
                   </Link>
                   <Link
                     href={`/admin/blog/${post.id}/edit`}
-                    className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-blue-600"
+                    className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-canvas-100 hover:text-blue-600"
                     title="Edit"
                   >
                     <Edit className="h-4 w-4" />

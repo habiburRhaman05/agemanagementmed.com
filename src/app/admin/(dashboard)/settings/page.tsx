@@ -23,7 +23,7 @@ export default async function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Site Settings</h1>
+        <h1 className="text-2xl font-bold text-ink-950">Site Settings</h1>
         <p className="text-sm text-gray-500">
           Logo, favicon, social links, default SEO, and tracking scripts — used across the whole site.
         </p>

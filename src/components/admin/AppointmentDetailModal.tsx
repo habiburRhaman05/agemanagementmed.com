@@ -27,7 +27,7 @@ interface Props {
 
 const statusColors: Record<string, string> = {
   pending: 'bg-amber-100 text-amber-800 border-amber-200',
-  confirmed: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+  confirmed: 'bg-sage-100 text-sage-700 border-sage-200',
   completed: 'bg-blue-100 text-blue-800 border-blue-200',
   cancelled: 'bg-red-100 text-red-800 border-red-200',
 }
@@ -53,7 +53,7 @@ export function AppointmentDetailModal({ appointment, onClose }: Props) {
         {/* Header */}
         <div className="flex items-center justify-between border-b px-6 py-4">
           <div>
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-ink-950">
               {appointment.name}
             </h2>
             <p className="text-sm text-gray-500">
@@ -64,7 +64,7 @@ export function AppointmentDetailModal({ appointment, onClose }: Props) {
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+            className="rounded-lg p-2 text-gray-400 hover:bg-canvas-100 hover:text-gray-600"
           >
             <X className="h-5 w-5" />
           </button>
@@ -75,7 +75,7 @@ export function AppointmentDetailModal({ appointment, onClose }: Props) {
           {/* Status */}
           <div className="flex items-center gap-2">
             <span
-              className={`rounded-full border px-3 py-1 text-xs font-medium ${statusColors[appointment.status] || 'bg-gray-100 text-gray-800'}`}
+              className={`rounded-full border px-3 py-1 text-xs font-medium ${statusColors[appointment.status] || 'bg-canvas-100 text-gray-800'}`}
             >
               {appointment.status.charAt(0).toUpperCase() +
                 appointment.status.slice(1)}
@@ -83,13 +83,13 @@ export function AppointmentDetailModal({ appointment, onClose }: Props) {
           </div>
 
           {/* Details */}
-          <div className="space-y-3 rounded-lg bg-gray-50 p-4">
+          <div className="space-y-3 rounded-lg bg-canvas-50 p-4">
             <div className="grid grid-cols-2 gap-3 text-sm">
               <div>
                 <p className="text-xs font-medium text-gray-500">Email</p>
                 <a
                   href={`mailto:${appointment.email}`}
-                  className="text-gray-900 hover:text-emerald-600"
+                  className="text-ink-950 hover:text-sage-600"
                 >
                   {appointment.email}
                 </a>
@@ -99,7 +99,7 @@ export function AppointmentDetailModal({ appointment, onClose }: Props) {
                   <p className="text-xs font-medium text-gray-500">Phone</p>
                   <a
                     href={`tel:${appointment.phone}`}
-                    className="text-gray-900 hover:text-emerald-600"
+                    className="text-ink-950 hover:text-sage-600"
                   >
                     {appointment.phone}
                   </a>
@@ -108,7 +108,7 @@ export function AppointmentDetailModal({ appointment, onClose }: Props) {
               {appointment.service && (
                 <div className="col-span-2">
                   <p className="text-xs font-medium text-gray-500">Service</p>
-                  <p className="text-gray-900">{appointment.service}</p>
+                  <p className="text-ink-950">{appointment.service}</p>
                 </div>
               )}
               {appointment.preferredDate && (
@@ -116,7 +116,7 @@ export function AppointmentDetailModal({ appointment, onClose }: Props) {
                   <p className="text-xs font-medium text-gray-500">
                     Preferred Date
                   </p>
-                  <p className="text-gray-900">
+                  <p className="text-ink-950">
                     {format(
                       new Date(appointment.preferredDate),
                       'MMMM d, yyyy'
@@ -129,7 +129,7 @@ export function AppointmentDetailModal({ appointment, onClose }: Props) {
                   <p className="text-xs font-medium text-gray-500">
                     Preferred Time
                   </p>
-                  <p className="text-gray-900">{appointment.preferredTime}</p>
+                  <p className="text-ink-950">{appointment.preferredTime}</p>
                 </div>
               )}
             </div>
@@ -171,7 +171,7 @@ export function AppointmentDetailModal({ appointment, onClose }: Props) {
                     disabled={updating}
                     className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-50 ${
                       status === 'confirmed'
-                        ? 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
+                        ? 'bg-sage-50 text-sage-700 hover:bg-sage-100'
                         : status === 'completed'
                           ? 'bg-blue-50 text-blue-700 hover:bg-blue-100'
                           : status === 'cancelled'

@@ -75,8 +75,8 @@ function ToolbarButton({
       className={cn(
         'rounded-md p-1.5 transition-colors',
         active
-          ? 'bg-emerald-100 text-emerald-700'
-          : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'
+          ? 'bg-sage-100 text-sage-700'
+          : 'text-gray-500 hover:bg-canvas-100 hover:text-gray-700'
       )}
     >
       <Icon className="h-4 w-4" />
@@ -87,7 +87,7 @@ function ToolbarButton({
 /* ── Divider ───────────────────────────────────────────────────────── */
 
 function ToolbarDivider() {
-  return <div className="mx-0.5 h-5 w-px bg-gray-200" />
+  return <div className="mx-0.5 h-5 w-px bg-canvas-200" />
 }
 
 /* ── Main component ───────────────────────────────────────────────── */
@@ -115,7 +115,7 @@ export function TipTapEditor({
       Link.configure({
         openOnClick: true,
         HTMLAttributes: {
-          class: 'text-emerald-600 underline underline-offset-2 hover:text-emerald-700',
+          class: 'text-sage-600 underline underline-offset-2 hover:text-sage-700',
         },
       }),
       Placeholder.configure({ placeholder }),
@@ -128,7 +128,7 @@ export function TipTapEditor({
       HorizontalRule,
       Dropcursor,
       Gapcursor,
-      Focus.configure({ className: 'ring-2 ring-emerald-200 rounded-lg' }),
+      Focus.configure({ className: 'ring-2 ring-sage-200 rounded-lg' }),
       TaskList,
       TaskItem.configure({ nested: true }),
       CharacterCount,
@@ -229,7 +229,7 @@ export function TipTapEditor({
 
   if (!isMounted || !editor) {
     return (
-      <div className="min-h-[400px] animate-pulse rounded-lg border bg-gray-50" />
+      <div className="min-h-[400px] animate-pulse rounded-lg border bg-canvas-50" />
     )
   }
 
@@ -239,7 +239,7 @@ export function TipTapEditor({
   return (
     <div className="rounded-lg border bg-white shadow-sm">
       {/* Toolbar */}
-      <div className="flex flex-wrap items-center gap-0.5 border-b bg-gray-50/50 px-3 py-2">
+      <div className="flex flex-wrap items-center gap-0.5 border-b bg-canvas-50/50 px-3 py-2">
         {/* History */}
         <ToolbarButton icon={Undo} onClick={() => editor.chain().focus().undo().run()} label="Undo" />
         <ToolbarButton icon={Redo} onClick={() => editor.chain().focus().redo().run()} label="Redo" />
@@ -390,7 +390,7 @@ export function TipTapEditor({
                     key={c}
                     type="button"
                     onClick={() => setColor(c)}
-                    className="h-6 w-6 rounded border border-gray-200 hover:scale-110"
+                    className="h-6 w-6 rounded border border-canvas-200 hover:scale-110"
                     style={{ backgroundColor: c }}
                     aria-label={`Color ${c}`}
                   />
@@ -416,13 +416,13 @@ export function TipTapEditor({
             value={linkUrl}
             onChange={(e) => setLinkUrl(e.target.value)}
             placeholder="https://..."
-            className="flex-1 rounded border px-3 py-1.5 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+            className="flex-1 rounded border px-3 py-1.5 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
             autoFocus
           />
           <button
             type="button"
             onClick={setLink}
-            className="rounded bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-700"
+            className="rounded bg-sage-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-sage-700"
           >
             {editor?.getAttributes('link').href ? 'Update' : 'Add'}
           </button>
@@ -444,7 +444,7 @@ export function TipTapEditor({
       <EditorContent editor={editor} />
 
       {/* Character count */}
-      <div className="flex items-center justify-between border-t bg-gray-50/50 px-4 py-1.5">
+      <div className="flex items-center justify-between border-t bg-canvas-50/50 px-4 py-1.5">
         <p className="text-xs text-gray-400">{charCount} characters</p>
         <p className="text-xs text-gray-400">{wordCount} words</p>
       </div>

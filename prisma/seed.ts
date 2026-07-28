@@ -20,7 +20,7 @@ async function main() {
       email: 'admin@samm.com',
       name: 'Admin',
       password: hashedPassword,
-      role: 'admin',
+      role: 'superadmin',
     },
   })
   console.log(`  ✓ Admin created: ${admin.email}`)

@@ -69,7 +69,7 @@ function EditRow({ page }: { page: PageEntry }) {
   }
 
   return (
-    <div className="space-y-4 border-t bg-gray-50/50 px-6 py-5">
+    <div className="space-y-4 border-t bg-canvas-50/50 px-6 py-5">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label className="block text-xs font-medium text-gray-500">Title</label>
@@ -78,7 +78,7 @@ function EditRow({ page }: { page: PageEntry }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             maxLength={70}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+            className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
           />
           <p className="mt-0.5 text-xs text-gray-400">{title.length}/70</p>
         </div>
@@ -88,7 +88,7 @@ function EditRow({ page }: { page: PageEntry }) {
             type="text"
             value={canonical}
             onChange={(e) => setCanonical(e.target.value)}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+            className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
           />
         </div>
       </div>
@@ -100,7 +100,7 @@ function EditRow({ page }: { page: PageEntry }) {
           onChange={(e) => setDescription(e.target.value)}
           maxLength={300}
           rows={2}
-          className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+          className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
         />
         <p className="mt-0.5 text-xs text-gray-400">{description.length}/300</p>
       </div>
@@ -112,7 +112,7 @@ function EditRow({ page }: { page: PageEntry }) {
             type="text"
             value={ogImageUrl}
             onChange={(e) => setOgImageUrl(e.target.value)}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+            className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
           />
         </div>
         <label className="mt-6 flex items-center gap-2">
@@ -120,7 +120,7 @@ function EditRow({ page }: { page: PageEntry }) {
             type="checkbox"
             checked={noindex}
             onChange={(e) => setNoindex(e.target.checked)}
-            className="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+            className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600"
           />
           <span className="text-xs text-gray-600">No index (hide from search engines)</span>
         </label>
@@ -135,7 +135,7 @@ function EditRow({ page }: { page: PageEntry }) {
           onChange={(e) => setSchemaJsonLd(e.target.value)}
           rows={4}
           placeholder='{"@context":"https://schema.org","@type":"MedicalWebPage",...}'
-          className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-xs focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+          className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 font-mono text-xs focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
         />
         <p className="mt-0.5 text-xs text-gray-400">
           Leave blank to use the automatic schema (MedicalBusiness / FAQPage) already generated for this page.
@@ -149,7 +149,7 @@ function EditRow({ page }: { page: PageEntry }) {
         </div>
       ) : null}
       {status === 'success' ? (
-        <div className="flex items-center gap-2 rounded-lg bg-emerald-50 px-4 py-2 text-sm text-emerald-700">
+        <div className="flex items-center gap-2 rounded-lg bg-sage-50 px-4 py-2 text-sm text-sage-700">
           <CheckCircle2 className="size-4 shrink-0" />
           Saved.
         </div>
@@ -160,7 +160,7 @@ function EditRow({ page }: { page: PageEntry }) {
           type="button"
           onClick={handleSave}
           disabled={status === 'loading'}
-          className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-sage-700 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === 'loading' ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />}
           Save
@@ -174,10 +174,10 @@ export function SeoTable({ pages }: { pages: PageEntry[] }) {
   const [expanded, setExpanded] = useState<string | null>(null)
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
       <table className="min-w-full divide-y">
         <thead>
-          <tr className="bg-gray-50">
+          <tr className="bg-canvas-50">
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
               Page
             </th>
@@ -193,9 +193,9 @@ export function SeoTable({ pages }: { pages: PageEntry[] }) {
         <tbody className="divide-y">
           {pages.map((page) => (
             <>
-              <tr key={page.path} className="hover:bg-gray-50">
+              <tr key={page.path} className="hover:bg-canvas-50">
                 <td className="px-6 py-4">
-                  <p className="text-sm font-medium text-gray-900">{page.label}</p>
+                  <p className="text-sm font-medium text-ink-950">{page.label}</p>
                   <p className="text-xs text-gray-400">{page.path}</p>
                 </td>
                 <td className="hidden px-6 py-4 text-sm text-gray-600 md:table-cell">
@@ -203,11 +203,11 @@ export function SeoTable({ pages }: { pages: PageEntry[] }) {
                 </td>
                 <td className="px-6 py-4">
                   {page.seo ? (
-                    <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700">
+                    <span className="inline-flex items-center rounded-full bg-sage-50 px-2.5 py-0.5 text-xs font-medium text-sage-700">
                       Configured
                     </span>
                   ) : (
-                    <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600">
+                    <span className="inline-flex items-center rounded-full bg-canvas-100 px-2.5 py-0.5 text-xs font-medium text-gray-600">
                       Using defaults
                     </span>
                   )}
@@ -216,7 +216,7 @@ export function SeoTable({ pages }: { pages: PageEntry[] }) {
                   <button
                     type="button"
                     onClick={() => setExpanded(expanded === page.path ? null : page.path)}
-                    className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-medium text-emerald-700 hover:bg-emerald-50"
+                    className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-medium text-sage-700 hover:bg-sage-50"
                   >
                     {expanded === page.path ? 'Close' : 'Edit'}
                     {expanded === page.path ? (

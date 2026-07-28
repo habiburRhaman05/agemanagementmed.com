@@ -32,7 +32,7 @@ export function SocialLinks({ links, className }: SocialLinksProps) {
 
   return (
     <div className={className}>
-      
+
       {entries.map(({ key, href }) => (
         <a
           key={key}
@@ -40,9 +40,9 @@ export function SocialLinks({ links, className }: SocialLinksProps) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={key}
-          className="flex size-8 shrink-0 items-center justify-center rounded-full bg-sage-600/15 text-sage-400 transition-colors duration-200 hover:bg-sage-600/30"
+          className="flex size-10 shrink-0 items-center justify-center rounded-full bg-sage-100/15 text-sage-400 transition-colors duration-200 hover:bg-sage-200/30"
         >
-          <svg viewBox="0 0 24 24" className="size-3.5" fill="currentColor" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="size-5" fill="currentColor" aria-hidden="true">
             <path d={ICON_PATHS[key]} />
           </svg>
         </a>

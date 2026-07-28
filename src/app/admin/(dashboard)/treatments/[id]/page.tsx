@@ -14,10 +14,10 @@ export default async function EditTreatmentPage({ params }: { params: Promise<{ 
   return (
     <div className="space-y-6">
       <div>
-        <Link href="/admin/treatments" className="text-sm text-emerald-700 hover:underline">
+        <Link href="/admin/treatments" className="text-sm text-sage-700 hover:underline">
           ← Back to treatments
         </Link>
-        <h1 className="mt-2 text-2xl font-bold text-gray-900">Edit treatment</h1>
+        <h1 className="mt-2 text-2xl font-bold text-ink-950">Edit treatment</h1>
         <p className="text-sm text-gray-500">{row.href}</p>
       </div>
       <TreatmentForm

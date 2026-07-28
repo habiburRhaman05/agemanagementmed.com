@@ -131,12 +131,12 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
         <div className="flex items-center gap-4">
           <Link
             href="/admin/blog"
-            className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+            className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-canvas-100 hover:text-gray-600"
           >
             <ArrowLeft className="h-5 w-5" />
           </Link>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-2xl font-bold text-ink-950">
               {mode === 'create' ? 'New Post' : 'Edit Post'}
             </h1>
             <p className="text-sm text-gray-500">
@@ -153,7 +153,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
           {/* Main content */}
           <div className="space-y-6 lg:col-span-2">
             {/* Title */}
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
               <label
                 htmlFor="title"
                 className="block text-sm font-medium text-gray-700"
@@ -166,13 +166,13 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                 value={title}
                 onChange={handleTitleChange}
                 required
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-lg font-semibold text-gray-900 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                className="mt-1 block w-full rounded-lg border border-canvas-300 px-4 py-2.5 text-lg font-semibold text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                 placeholder="Post title..."
               />
             </div>
 
             {/* Slug */}
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="slug"
@@ -186,7 +186,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                       type="checkbox"
                       checked={autoSlug}
                       onChange={(e) => setAutoSlug(e.target.checked)}
-                      className="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                      className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600"
                     />
                     Auto-generate
                   </label>
@@ -203,14 +203,14 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                     setAutoSlug(false)
                   }}
                   required
-                  className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                 />
               </div>
             </div>
 
             {/* Content / Rich text with TipTap */}
-            <div className="rounded-2xl border border-gray-100 bg-white shadow-sm">
-              <div className="border-b bg-gray-50/50 px-6 py-3">
+            <div className="rounded-2xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+              <div className="border-b bg-canvas-50/50 px-6 py-3">
                 <label className="block text-sm font-medium text-gray-700">
                   Content
                 </label>
@@ -226,7 +226,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* Excerpt */}
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
               <label
                 htmlFor="excerpt"
                 className="block text-sm font-medium text-gray-700"
@@ -239,7 +239,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                 onChange={(e) => setExcerpt(e.target.value)}
                 rows={3}
                 maxLength={500}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-900 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                className="mt-1 block w-full rounded-lg border border-canvas-300 px-4 py-2.5 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                 placeholder="Brief summary for preview cards..."
               />
               <p className="mt-1 text-xs text-gray-400">
@@ -251,7 +251,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Status */}
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
               <label className="block text-sm font-medium text-gray-700">
                 Status
               </label>
@@ -264,7 +264,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                       value={s}
                       checked={status === s}
                       onChange={(e) => setStatus(e.target.value)}
-                      className="border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                      className="border-canvas-300 text-sage-600 focus:ring-sage-600"
                     />
                     <span className="text-sm capitalize text-gray-700">
                       {s}
@@ -275,7 +275,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* Featured Image */}
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
               <label className="block text-sm font-medium text-gray-700">
                 Featured Image URL
               </label>
@@ -283,7 +283,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                 type="url"
                 value={featuredImage}
                 onChange={(e) => setFeaturedImage(e.target.value)}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                 placeholder="https://..."
               />
               {featuredImage && (
@@ -299,7 +299,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* Category */}
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
               <label
                 htmlFor="category"
                 className="block text-sm font-medium text-gray-700"
@@ -310,7 +310,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                 id="category"
                 value={categoryId}
                 onChange={(e) => setCategoryId(e.target.value)}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
               >
                 <option value="">No category</option>
                 {categories.map((cat) => (
@@ -322,7 +322,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* Tags */}
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
               <label className="block text-sm font-medium text-gray-700">
                 Tags
               </label>
@@ -334,8 +334,8 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                     onClick={() => toggleTag(tag.id)}
                     className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                       selectedTags.includes(tag.id)
-                        ? 'bg-emerald-100 text-emerald-700'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                        ? 'bg-sage-100 text-sage-700'
+                        : 'bg-canvas-100 text-gray-600 hover:bg-canvas-200'
                     }`}
                   >
                     {tag.name}
@@ -345,7 +345,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* SEO */}
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
               <h3 className="text-sm font-medium text-gray-700">
                 SEO Settings
               </h3>
@@ -359,7 +359,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                     value={metaTitle}
                     onChange={(e) => setMetaTitle(e.target.value)}
                     maxLength={70}
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   />
                   <p className="mt-0.5 text-xs text-gray-400">
                     {metaTitle.length}/70
@@ -374,7 +374,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                     onChange={(e) => setMetaDesc(e.target.value)}
                     maxLength={160}
                     rows={2}
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   />
                   <p className="mt-0.5 text-xs text-gray-400">
                     {metaDesc.length}/160
@@ -388,7 +388,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                     type="url"
                     value={ogImage}
                     onChange={(e) => setOgImage(e.target.value)}
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   />
                 </div>
                 <div>
@@ -399,7 +399,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                     type="url"
                     value={canonical}
                     onChange={(e) => setCanonical(e.target.value)}
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   />
                 </div>
                 <label className="flex items-center gap-2">
@@ -407,7 +407,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                     type="checkbox"
                     checked={noindex}
                     onChange={(e) => setNoindex(e.target.checked)}
-                    className="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600"
                   />
                   <span className="text-xs text-gray-600">
                     No index (hide from search engines)
@@ -429,14 +429,14 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
         <div className="flex items-center justify-end gap-3 border-t pt-6">
           <Link
             href="/admin/blog"
-            className="rounded-lg border px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="rounded-lg border px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-canvas-50"
           >
             Cancel
           </Link>
           <button
             type="submit"
             disabled={pending}
-            className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-700 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {pending ? (
               <>
