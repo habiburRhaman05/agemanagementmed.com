@@ -12,6 +12,7 @@ import {
   X,
 } from 'lucide-react'
 import { useMemo, useState } from 'react'
+import { ImageUploader } from '@/components/admin/ImageUploader'
 
 interface Testimonial {
   id: string
@@ -203,12 +204,12 @@ function TestimonialModal({
               <StarPicker value={form.rating} onChange={(v) => setForm({ ...form, rating: v })} />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-500">Photo URL (optional)</label>
-              <input
+              <ImageUploader
+                label="Photo"
+                hint="Upload a patient photo or paste a URL"
                 value={form.photoUrl}
-                onChange={(e) => setForm({ ...form, photoUrl: e.target.value })}
-                placeholder="/images/testimonials/jane.jpg"
-                className={inputClass}
+                onChange={(url) => setForm({ ...form, photoUrl: url })}
+                folder="testimonials"
               />
             </div>
           </div>

@@ -121,7 +121,7 @@ export const megaMenu: MegaMenuColumn[] = [
 export const primaryNav: NavLink[] = [
   { label: 'Treatments', href: '/bioidentical-hormone-replacement-therapy' },
   { label: 'Our Experts', href: '/our-experts' },
-  { label: 'Blogs', href: '/blog' },
+  // { label: 'Blogs', href: '/blog' },
   { label: 'Contact Us', href: '/contact-us' },
 ]
 

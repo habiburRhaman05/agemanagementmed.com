@@ -7,6 +7,7 @@ import type { ActionResult } from '@/actions/blog'
 import Link from 'next/link'
 import { ArrowLeft, Save, Loader2 } from 'lucide-react'
 import { TipTapEditor } from '@/components/admin/TipTapEditor'
+import { ImageUploader } from '@/components/admin/ImageUploader'
 
 interface CategoryType {
   id: string
@@ -276,26 +277,13 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
 
             {/* Featured Image */}
             <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-              <label className="block text-sm font-medium text-gray-700">
-                Featured Image URL
-              </label>
-              <input
-                type="url"
+              <ImageUploader
+                label="Featured Image"
+                hint="Upload a featured image or paste a URL"
                 value={featuredImage}
-                onChange={(e) => setFeaturedImage(e.target.value)}
-                className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
-                placeholder="https://..."
+                onChange={setFeaturedImage}
+                folder="blog"
               />
-              {featuredImage && (
-                <img
-                  src={featuredImage}
-                  alt="Preview"
-                  className="mt-3 h-32 w-full rounded-lg object-cover"
-                  onError={(e) => {
-                    ;(e.target as HTMLImageElement).style.display = 'none'
-                  }}
-                />
-              )}
             </div>
 
             {/* Category */}
@@ -381,14 +369,12 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                   </p>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-500">
-                    OG Image URL
-                  </label>
-                  <input
-                    type="url"
+                  <ImageUploader
+                    label="OG Image"
+                    hint="Social sharing image (open graph)"
                     value={ogImage}
-                    onChange={(e) => setOgImage(e.target.value)}
-                    className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+                    onChange={setOgImage}
+                    folder="blog/og"
                   />
                 </div>
                 <div>

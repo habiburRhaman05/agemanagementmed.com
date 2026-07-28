@@ -19,7 +19,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { useState } from 'react'
-import { logout } from '@/actions/auth'
+
 
 interface NavItem {
   label: string
@@ -49,7 +49,12 @@ export function Sidebar({ admin }: SidebarProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleLogout = async () => {
-    await logout()
+    try {
+      await fetch('/api/admin/auth/logout', { method: 'POST' })
+    } catch (err) {
+      console.error('Logout error:', err)
+      // Best-effort — redirect regardless
+    }
     window.location.href = '/admin/login'
   }
 
