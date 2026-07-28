@@ -3,6 +3,7 @@ import type {
   Award,
   ClosingCtaData,
   EditorialPairData,
+  FaqItem,
   ProcessStepsData,
   Seo,
 } from '@/types/content'
@@ -111,6 +112,33 @@ export const homeContent = {
     'robert-f',
     'mike-d',
   ]),
+
+  faqs: [
+    {
+      question: 'What treatments does SAMM offer?',
+      answer:
+        'Bioidentical hormone replacement therapy, concierge medical weight loss, sexual wellness treatments, PRP hair restoration, and medical aesthetics — each built from your labs, symptoms, and health history rather than a standard package.',
+    },
+    {
+      question: 'Where are your locations?',
+      answer:
+        'Savannah Age Management Medicine sees patients in Pooler, GA and Statesboro, GA, serving Savannah, Bluffton, Hilton Head, and coastal Georgia.',
+    },
+    {
+      question: 'Are virtual consultations available?',
+      answer: 'Yes. Many consultations are available in person or virtually, depending on the treatment.',
+    },
+    {
+      question: 'Do you accept insurance?',
+      answer:
+        'Coverage varies by plan and treatment — insurance commonly covers lab work but may not cover hormone medications or elective services. Flexible financing options are available, and costs are always discussed openly before you start.',
+    },
+    {
+      question: 'How do I get started?',
+      answer:
+        'Book a consultation online. We start by reviewing your labs and symptoms, not by fitting you into a pre-set package, then build a treatment plan from there.',
+    },
+  ] satisfies FaqItem[],
 
   closingCta: {
     title: 'Ready to transform your health?',

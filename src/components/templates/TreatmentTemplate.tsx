@@ -37,14 +37,14 @@ interface TreatmentTemplateProps {
  *
  * See docs/03-COMPONENT-ARCHITECTURE.md §7.
  */
-export function TreatmentTemplate({ treatment, testimonials }: TreatmentTemplateProps) {
+export async function TreatmentTemplate({ treatment, testimonials }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
 
   const providers = (treatment.providers ?? [])
     .map(getPerson)
     .filter((p): p is Person => Boolean(p))
 
-  const related = getTreatments(treatment.related ?? [])
+  const related = await getTreatments(treatment.related ?? [])
 
   return (
     <>

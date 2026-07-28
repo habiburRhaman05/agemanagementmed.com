@@ -84,7 +84,7 @@ export default async function AppointmentsPage({ searchParams }: Props) {
           search={search}
         />
       ) : (
-        <div className="rounded-xl border bg-white py-16 text-center shadow-sm">
+        <div className="rounded-2xl border border-gray-100 bg-white py-16 text-center shadow-sm">
           <CalendarCheck className="mx-auto h-12 w-12 text-gray-300" />
           <h3 className="mt-4 text-base font-semibold text-gray-900">
             No appointments found

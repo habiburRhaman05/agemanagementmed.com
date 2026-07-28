@@ -3,8 +3,8 @@ import { Bodoni_Moda, Manrope } from 'next/font/google'
 
 import './globals.css'
 
-import { Footer } from '@/components/layout/Footer'
 import { site } from '@/content/site'
+import { getSiteSettings } from '@/lib/settings'
 
 /**
  * Bodoni Moda replaces the source site's Bodoni-72: the original is an Apple
@@ -25,35 +25,49 @@ const manrope = Manrope({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
-  title: {
-    default: 'Hormone Therapy & Weight Loss Clinic in Savannah, GA | SAMM',
-    template: `%s | ${site.shortName}`,
-  },
-  description:
-    'Savannah Age Management Medicine offers hormone therapy, medical weight loss, PRP, sexual wellness, and age management care in Pooler and Statesboro, GA.',
-  icons: { icon: '/favicon.ico' },
+const FALLBACK_TITLE = 'Hormone Therapy & Weight Loss Clinic in Savannah, GA | SAMM'
+const FALLBACK_DESCRIPTION =
+  'Savannah Age Management Medicine offers hormone therapy, medical weight loss, PRP, sexual wellness, and age management care in Pooler and Statesboro, GA.'
+
+/** Site-wide default metadata — admin-editable via SiteSettings, same hardcoded values as fallback. */
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings()
+
+  return {
+    metadataBase: new URL(site.url),
+    title: {
+      default: settings.defaultSeoTitle ?? FALLBACK_TITLE,
+      template: `%s | ${site.shortName}`,
+    },
+    description: settings.defaultSeoDescription ?? FALLBACK_DESCRIPTION,
+    icons: { icon: settings.faviconUrl ?? '/favicon.ico' },
+    openGraph: settings.defaultOgImageUrl
+      ? { images: [{ url: settings.defaultOgImageUrl }] }
+      : undefined,
+  }
 }
 
-import { PageTransition } from '@/components/shared/PageTransition'
-import { ScrollFeatures } from '@/components/layout/ScrollFeatures'
+/**
+ * Truly universal only: html shell, fonts, sitewide metadata, tracking
+ * scripts. The marketing chrome (Footer, page-transition animation, scroll
+ * features, skip link, Organization JSON-LD) lives in
+ * `(marketing)/layout.tsx` instead — `admin/` and `api/` are siblings of
+ * that group, so they render under this root layout only and never pick up
+ * the public site's footer/animations.
+ */
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const settings = await getSiteSettings()
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${bodoni.variable} ${manrope.variable}`}>
+      {settings.headerScripts ? (
+        <head dangerouslySetInnerHTML={{ __html: settings.headerScripts }} />
+      ) : null}
       <body className="font-sans antialiased">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-6 focus:z-[100] focus:rounded-full focus:bg-ink-900 focus:px-6 focus:py-3 focus:text-canvas-50"
-        >
-          Skip to content
-        </a>
-        <PageTransition>
-          <main id="main">{children}</main>
-        </PageTransition>
-        <Footer />
-        <ScrollFeatures />
+        {children}
+        {settings.footerScripts ? (
+          <div dangerouslySetInnerHTML={{ __html: settings.footerScripts }} />
+        ) : null}
       </body>
     </html>
   )

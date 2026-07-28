@@ -1,5 +1,6 @@
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { EditorialPair } from '@/components/sections/EditorialPair'
+import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroImmersive } from '@/components/sections/HeroImmersive'
 import { LocationBlock } from '@/components/sections/LocationBlock'
 import { PeopleGrid } from '@/components/sections/PeopleGrid'
@@ -11,7 +12,7 @@ import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import type { homeContent } from '@/content/pages/home'
 import { providers } from '@/content/people'
 import { locations } from '@/content/site'
-import { treatments } from '@/content/treatments'
+import { getAllTreatmentSummaries } from '@/content/treatments'
 import { CredentialStrip } from '../sections/CredentialStrip'
 import { expertsContent } from '@/content/pages/experts'
 
@@ -20,7 +21,9 @@ import { expertsContent } from '@/content/pages/experts'
  * land → understand → treatments → trust → process → people → proof → book.
  * Two dark bands (ProofBand, ClosingCTA) give the page its rhythm.
  */
-export function HomeTemplate({ content }: { content: typeof homeContent }) {
+export async function HomeTemplate({ content }: { content: typeof homeContent }) {
+  const treatments = await getAllTreatmentSummaries()
+
   return (
     <>
       <HeroImmersive {...content.hero} />
@@ -67,6 +70,12 @@ export function HomeTemplate({ content }: { content: typeof homeContent }) {
         eyebrow="Visit us"
         title="Two clinics across coastal Georgia"
         locations={locations}
+      />
+
+      <FAQAccordion
+        eyebrow="Frequently asked"
+        title="Common questions"
+        items={content.faqs}
       />
 
       <ClosingCTA {...content.closingCta} />

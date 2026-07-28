@@ -153,12 +153,14 @@ export async function updateAppointmentStatus(
 /* ── Dashboard stats ──────────────────────────────────────────────── */
 
 export async function getDashboardStats() {
-  const [totalPosts, publishedPosts, draftPosts, totalAppointments] =
+  const [totalPosts, publishedPosts, draftPosts, totalAppointments, totalLeads, newLeads] =
     await Promise.all([
       prisma.post.count({ where: { deletedAt: null } }),
       prisma.post.count({ where: { status: 'published', deletedAt: null } }),
       prisma.post.count({ where: { status: 'draft', deletedAt: null } }),
       prisma.appointment.count(),
+      prisma.lead.count(),
+      prisma.lead.count({ where: { status: 'new' } }),
     ])
 
   const [recentPosts, recentAppointments] = await Promise.all([
@@ -185,6 +187,8 @@ export async function getDashboardStats() {
     publishedPosts,
     draftPosts,
     totalAppointments,
+    totalLeads,
+    newLeads,
     recentPosts,
     recentAppointments,
   }

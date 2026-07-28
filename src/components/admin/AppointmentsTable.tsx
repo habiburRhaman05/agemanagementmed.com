@@ -74,7 +74,7 @@ export function AppointmentsTable({
 
   return (
     <>
-      <div className="overflow-hidden rounded-xl border bg-white shadow-sm">
+      <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
         <table className="min-w-full divide-y">
           <thead>
             <tr className="bg-gray-50">

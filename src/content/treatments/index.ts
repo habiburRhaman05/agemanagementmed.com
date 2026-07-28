@@ -1,5 +1,5 @@
-import { treatments as allTreatments } from '@/content/treatments/main'
-import type { Pillar, TreatmentSummary } from '@/types/content'
+import { getAllTreatments } from '@/content/treatments/main'
+import type { Pillar, Treatment, TreatmentSummary } from '@/types/content'
 
 /**
  * Pillar-level metadata (nav labels, hub hrefs, blurbs) - not treatment data,
@@ -36,15 +36,19 @@ export const pillars: Record<Pillar, { label: string; href: string; blurb: strin
 }
 
 /**
- * Card-level summary for every treatment - derived from `main.ts`, the single
- * source of truth, rather than duplicated here. `Treatment` extends
- * `TreatmentSummary`, so this is a type view, not a copy.
+ * Card-level summary for every treatment - derived from `main.ts`'s DB-backed
+ * `getAllTreatments()` rather than duplicated here. `Treatment` extends
+ * `TreatmentSummary`, so this is a type view, not a copy. Cached/tagged inside
+ * `getAllTreatments` itself; nothing extra to cache here.
  */
-export const treatments: TreatmentSummary[] = allTreatments
+export async function getAllTreatmentSummaries(): Promise<TreatmentSummary[]> {
+  return getAllTreatments()
+}
 
-export function getTreatments(slugs: string[]): TreatmentSummary[] {
+export async function getTreatments(slugs: string[]): Promise<TreatmentSummary[]> {
+  const all = await getAllTreatments()
   return slugs
-    .map((s) => treatments.find((t) => t.slug === s))
-    .filter((t): t is TreatmentSummary => Boolean(t))
+    .map((s) => all.find((t) => t.slug === s))
+    .filter((t): t is Treatment => Boolean(t))
 }
 

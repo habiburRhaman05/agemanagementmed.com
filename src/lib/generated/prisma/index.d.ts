@@ -54,10 +54,30 @@ export type BlogTag = $Result.DefaultSelection<Prisma.$BlogTagPayload>
  */
 export type Appointment = $Result.DefaultSelection<Prisma.$AppointmentPayload>
 /**
+ * Model Lead
+ * 
+ */
+export type Lead = $Result.DefaultSelection<Prisma.$LeadPayload>
+/**
  * Model Media
  * 
  */
 export type Media = $Result.DefaultSelection<Prisma.$MediaPayload>
+/**
+ * Model Treatment
+ * 
+ */
+export type Treatment = $Result.DefaultSelection<Prisma.$TreatmentPayload>
+/**
+ * Model PageSeo
+ * 
+ */
+export type PageSeo = $Result.DefaultSelection<Prisma.$PageSeoPayload>
+/**
+ * Model SiteSettings
+ * 
+ */
+export type SiteSettings = $Result.DefaultSelection<Prisma.$SiteSettingsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -261,6 +281,16 @@ export class PrismaClient<
   get appointment(): Prisma.AppointmentDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.lead`: Exposes CRUD operations for the **Lead** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Leads
+    * const leads = await prisma.lead.findMany()
+    * ```
+    */
+  get lead(): Prisma.LeadDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.media`: Exposes CRUD operations for the **Media** model.
     * Example usage:
     * ```ts
@@ -269,6 +299,36 @@ export class PrismaClient<
     * ```
     */
   get media(): Prisma.MediaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.treatment`: Exposes CRUD operations for the **Treatment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Treatments
+    * const treatments = await prisma.treatment.findMany()
+    * ```
+    */
+  get treatment(): Prisma.TreatmentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pageSeo`: Exposes CRUD operations for the **PageSeo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PageSeos
+    * const pageSeos = await prisma.pageSeo.findMany()
+    * ```
+    */
+  get pageSeo(): Prisma.PageSeoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.siteSettings`: Exposes CRUD operations for the **SiteSettings** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SiteSettings
+    * const siteSettings = await prisma.siteSettings.findMany()
+    * ```
+    */
+  get siteSettings(): Prisma.SiteSettingsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -724,7 +784,11 @@ export namespace Prisma {
     Tag: 'Tag',
     BlogTag: 'BlogTag',
     Appointment: 'Appointment',
-    Media: 'Media'
+    Lead: 'Lead',
+    Media: 'Media',
+    Treatment: 'Treatment',
+    PageSeo: 'PageSeo',
+    SiteSettings: 'SiteSettings'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -740,7 +804,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "admin" | "session" | "post" | "postSeo" | "category" | "tag" | "blogTag" | "appointment" | "media"
+      modelProps: "admin" | "session" | "post" | "postSeo" | "category" | "tag" | "blogTag" | "appointment" | "lead" | "media" | "treatment" | "pageSeo" | "siteSettings"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1336,6 +1400,80 @@ export namespace Prisma {
           }
         }
       }
+      Lead: {
+        payload: Prisma.$LeadPayload<ExtArgs>
+        fields: Prisma.LeadFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LeadFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LeadFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
+          }
+          findFirst: {
+            args: Prisma.LeadFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LeadFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
+          }
+          findMany: {
+            args: Prisma.LeadFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>[]
+          }
+          create: {
+            args: Prisma.LeadCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
+          }
+          createMany: {
+            args: Prisma.LeadCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LeadCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>[]
+          }
+          delete: {
+            args: Prisma.LeadDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
+          }
+          update: {
+            args: Prisma.LeadUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
+          }
+          deleteMany: {
+            args: Prisma.LeadDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LeadUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LeadUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>[]
+          }
+          upsert: {
+            args: Prisma.LeadUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
+          }
+          aggregate: {
+            args: Prisma.LeadAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLead>
+          }
+          groupBy: {
+            args: Prisma.LeadGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LeadGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LeadCountArgs<ExtArgs>
+            result: $Utils.Optional<LeadCountAggregateOutputType> | number
+          }
+        }
+      }
       Media: {
         payload: Prisma.$MediaPayload<ExtArgs>
         fields: Prisma.MediaFieldRefs
@@ -1407,6 +1545,228 @@ export namespace Prisma {
           count: {
             args: Prisma.MediaCountArgs<ExtArgs>
             result: $Utils.Optional<MediaCountAggregateOutputType> | number
+          }
+        }
+      }
+      Treatment: {
+        payload: Prisma.$TreatmentPayload<ExtArgs>
+        fields: Prisma.TreatmentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TreatmentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TreatmentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TreatmentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TreatmentPayload>
+          }
+          findFirst: {
+            args: Prisma.TreatmentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TreatmentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TreatmentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TreatmentPayload>
+          }
+          findMany: {
+            args: Prisma.TreatmentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TreatmentPayload>[]
+          }
+          create: {
+            args: Prisma.TreatmentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TreatmentPayload>
+          }
+          createMany: {
+            args: Prisma.TreatmentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TreatmentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TreatmentPayload>[]
+          }
+          delete: {
+            args: Prisma.TreatmentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TreatmentPayload>
+          }
+          update: {
+            args: Prisma.TreatmentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TreatmentPayload>
+          }
+          deleteMany: {
+            args: Prisma.TreatmentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TreatmentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TreatmentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TreatmentPayload>[]
+          }
+          upsert: {
+            args: Prisma.TreatmentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TreatmentPayload>
+          }
+          aggregate: {
+            args: Prisma.TreatmentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTreatment>
+          }
+          groupBy: {
+            args: Prisma.TreatmentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TreatmentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TreatmentCountArgs<ExtArgs>
+            result: $Utils.Optional<TreatmentCountAggregateOutputType> | number
+          }
+        }
+      }
+      PageSeo: {
+        payload: Prisma.$PageSeoPayload<ExtArgs>
+        fields: Prisma.PageSeoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PageSeoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PageSeoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          findFirst: {
+            args: Prisma.PageSeoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PageSeoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          findMany: {
+            args: Prisma.PageSeoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>[]
+          }
+          create: {
+            args: Prisma.PageSeoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          createMany: {
+            args: Prisma.PageSeoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PageSeoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>[]
+          }
+          delete: {
+            args: Prisma.PageSeoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          update: {
+            args: Prisma.PageSeoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          deleteMany: {
+            args: Prisma.PageSeoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PageSeoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PageSeoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>[]
+          }
+          upsert: {
+            args: Prisma.PageSeoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          aggregate: {
+            args: Prisma.PageSeoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePageSeo>
+          }
+          groupBy: {
+            args: Prisma.PageSeoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PageSeoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PageSeoCountArgs<ExtArgs>
+            result: $Utils.Optional<PageSeoCountAggregateOutputType> | number
+          }
+        }
+      }
+      SiteSettings: {
+        payload: Prisma.$SiteSettingsPayload<ExtArgs>
+        fields: Prisma.SiteSettingsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SiteSettingsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SiteSettingsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SiteSettingsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SiteSettingsPayload>
+          }
+          findFirst: {
+            args: Prisma.SiteSettingsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SiteSettingsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SiteSettingsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SiteSettingsPayload>
+          }
+          findMany: {
+            args: Prisma.SiteSettingsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SiteSettingsPayload>[]
+          }
+          create: {
+            args: Prisma.SiteSettingsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SiteSettingsPayload>
+          }
+          createMany: {
+            args: Prisma.SiteSettingsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SiteSettingsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SiteSettingsPayload>[]
+          }
+          delete: {
+            args: Prisma.SiteSettingsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SiteSettingsPayload>
+          }
+          update: {
+            args: Prisma.SiteSettingsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SiteSettingsPayload>
+          }
+          deleteMany: {
+            args: Prisma.SiteSettingsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SiteSettingsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SiteSettingsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SiteSettingsPayload>[]
+          }
+          upsert: {
+            args: Prisma.SiteSettingsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SiteSettingsPayload>
+          }
+          aggregate: {
+            args: Prisma.SiteSettingsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSiteSettings>
+          }
+          groupBy: {
+            args: Prisma.SiteSettingsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SiteSettingsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SiteSettingsCountArgs<ExtArgs>
+            result: $Utils.Optional<SiteSettingsCountAggregateOutputType> | number
           }
         }
       }
@@ -1541,7 +1901,11 @@ export namespace Prisma {
     tag?: TagOmit
     blogTag?: BlogTagOmit
     appointment?: AppointmentOmit
+    lead?: LeadOmit
     media?: MediaOmit
+    treatment?: TreatmentOmit
+    pageSeo?: PageSeoOmit
+    siteSettings?: SiteSettingsOmit
   }
 
   /* Types for Logging */
@@ -10522,6 +10886,1071 @@ export namespace Prisma {
 
 
   /**
+   * Model Lead
+   */
+
+  export type AggregateLead = {
+    _count: LeadCountAggregateOutputType | null
+    _min: LeadMinAggregateOutputType | null
+    _max: LeadMaxAggregateOutputType | null
+  }
+
+  export type LeadMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    email: string | null
+    phone: string | null
+    message: string | null
+    sourcePath: string | null
+    status: string | null
+    notes: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LeadMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    email: string | null
+    phone: string | null
+    message: string | null
+    sourcePath: string | null
+    status: string | null
+    notes: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LeadCountAggregateOutputType = {
+    id: number
+    name: number
+    email: number
+    phone: number
+    message: number
+    sourcePath: number
+    status: number
+    notes: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type LeadMinAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phone?: true
+    message?: true
+    sourcePath?: true
+    status?: true
+    notes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LeadMaxAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phone?: true
+    message?: true
+    sourcePath?: true
+    status?: true
+    notes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LeadCountAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phone?: true
+    message?: true
+    sourcePath?: true
+    status?: true
+    notes?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type LeadAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Lead to aggregate.
+     */
+    where?: LeadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Leads to fetch.
+     */
+    orderBy?: LeadOrderByWithRelationInput | LeadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LeadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Leads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Leads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Leads
+    **/
+    _count?: true | LeadCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LeadMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LeadMaxAggregateInputType
+  }
+
+  export type GetLeadAggregateType<T extends LeadAggregateArgs> = {
+        [P in keyof T & keyof AggregateLead]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLead[P]>
+      : GetScalarType<T[P], AggregateLead[P]>
+  }
+
+
+
+
+  export type LeadGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LeadWhereInput
+    orderBy?: LeadOrderByWithAggregationInput | LeadOrderByWithAggregationInput[]
+    by: LeadScalarFieldEnum[] | LeadScalarFieldEnum
+    having?: LeadScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LeadCountAggregateInputType | true
+    _min?: LeadMinAggregateInputType
+    _max?: LeadMaxAggregateInputType
+  }
+
+  export type LeadGroupByOutputType = {
+    id: string
+    name: string
+    email: string
+    phone: string | null
+    message: string | null
+    sourcePath: string | null
+    status: string
+    notes: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: LeadCountAggregateOutputType | null
+    _min: LeadMinAggregateOutputType | null
+    _max: LeadMaxAggregateOutputType | null
+  }
+
+  type GetLeadGroupByPayload<T extends LeadGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LeadGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LeadGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LeadGroupByOutputType[P]>
+            : GetScalarType<T[P], LeadGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LeadSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phone?: boolean
+    message?: boolean
+    sourcePath?: boolean
+    status?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["lead"]>
+
+  export type LeadSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phone?: boolean
+    message?: boolean
+    sourcePath?: boolean
+    status?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["lead"]>
+
+  export type LeadSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phone?: boolean
+    message?: boolean
+    sourcePath?: boolean
+    status?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["lead"]>
+
+  export type LeadSelectScalar = {
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phone?: boolean
+    message?: boolean
+    sourcePath?: boolean
+    status?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type LeadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "message" | "sourcePath" | "status" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["lead"]>
+
+  export type $LeadPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Lead"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      email: string
+      phone: string | null
+      message: string | null
+      sourcePath: string | null
+      status: string
+      notes: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["lead"]>
+    composites: {}
+  }
+
+  type LeadGetPayload<S extends boolean | null | undefined | LeadDefaultArgs> = $Result.GetResult<Prisma.$LeadPayload, S>
+
+  type LeadCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LeadFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LeadCountAggregateInputType | true
+    }
+
+  export interface LeadDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Lead'], meta: { name: 'Lead' } }
+    /**
+     * Find zero or one Lead that matches the filter.
+     * @param {LeadFindUniqueArgs} args - Arguments to find a Lead
+     * @example
+     * // Get one Lead
+     * const lead = await prisma.lead.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LeadFindUniqueArgs>(args: SelectSubset<T, LeadFindUniqueArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Lead that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LeadFindUniqueOrThrowArgs} args - Arguments to find a Lead
+     * @example
+     * // Get one Lead
+     * const lead = await prisma.lead.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LeadFindUniqueOrThrowArgs>(args: SelectSubset<T, LeadFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lead that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeadFindFirstArgs} args - Arguments to find a Lead
+     * @example
+     * // Get one Lead
+     * const lead = await prisma.lead.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LeadFindFirstArgs>(args?: SelectSubset<T, LeadFindFirstArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lead that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeadFindFirstOrThrowArgs} args - Arguments to find a Lead
+     * @example
+     * // Get one Lead
+     * const lead = await prisma.lead.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LeadFindFirstOrThrowArgs>(args?: SelectSubset<T, LeadFindFirstOrThrowArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Leads that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeadFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Leads
+     * const leads = await prisma.lead.findMany()
+     * 
+     * // Get first 10 Leads
+     * const leads = await prisma.lead.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const leadWithIdOnly = await prisma.lead.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LeadFindManyArgs>(args?: SelectSubset<T, LeadFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Lead.
+     * @param {LeadCreateArgs} args - Arguments to create a Lead.
+     * @example
+     * // Create one Lead
+     * const Lead = await prisma.lead.create({
+     *   data: {
+     *     // ... data to create a Lead
+     *   }
+     * })
+     * 
+     */
+    create<T extends LeadCreateArgs>(args: SelectSubset<T, LeadCreateArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Leads.
+     * @param {LeadCreateManyArgs} args - Arguments to create many Leads.
+     * @example
+     * // Create many Leads
+     * const lead = await prisma.lead.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LeadCreateManyArgs>(args?: SelectSubset<T, LeadCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Leads and returns the data saved in the database.
+     * @param {LeadCreateManyAndReturnArgs} args - Arguments to create many Leads.
+     * @example
+     * // Create many Leads
+     * const lead = await prisma.lead.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Leads and only return the `id`
+     * const leadWithIdOnly = await prisma.lead.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LeadCreateManyAndReturnArgs>(args?: SelectSubset<T, LeadCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Lead.
+     * @param {LeadDeleteArgs} args - Arguments to delete one Lead.
+     * @example
+     * // Delete one Lead
+     * const Lead = await prisma.lead.delete({
+     *   where: {
+     *     // ... filter to delete one Lead
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LeadDeleteArgs>(args: SelectSubset<T, LeadDeleteArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Lead.
+     * @param {LeadUpdateArgs} args - Arguments to update one Lead.
+     * @example
+     * // Update one Lead
+     * const lead = await prisma.lead.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LeadUpdateArgs>(args: SelectSubset<T, LeadUpdateArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Leads.
+     * @param {LeadDeleteManyArgs} args - Arguments to filter Leads to delete.
+     * @example
+     * // Delete a few Leads
+     * const { count } = await prisma.lead.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LeadDeleteManyArgs>(args?: SelectSubset<T, LeadDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Leads.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeadUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Leads
+     * const lead = await prisma.lead.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LeadUpdateManyArgs>(args: SelectSubset<T, LeadUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Leads and returns the data updated in the database.
+     * @param {LeadUpdateManyAndReturnArgs} args - Arguments to update many Leads.
+     * @example
+     * // Update many Leads
+     * const lead = await prisma.lead.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Leads and only return the `id`
+     * const leadWithIdOnly = await prisma.lead.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LeadUpdateManyAndReturnArgs>(args: SelectSubset<T, LeadUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Lead.
+     * @param {LeadUpsertArgs} args - Arguments to update or create a Lead.
+     * @example
+     * // Update or create a Lead
+     * const lead = await prisma.lead.upsert({
+     *   create: {
+     *     // ... data to create a Lead
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Lead we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LeadUpsertArgs>(args: SelectSubset<T, LeadUpsertArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Leads.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeadCountArgs} args - Arguments to filter Leads to count.
+     * @example
+     * // Count the number of Leads
+     * const count = await prisma.lead.count({
+     *   where: {
+     *     // ... the filter for the Leads we want to count
+     *   }
+     * })
+    **/
+    count<T extends LeadCountArgs>(
+      args?: Subset<T, LeadCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LeadCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Lead.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeadAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LeadAggregateArgs>(args: Subset<T, LeadAggregateArgs>): Prisma.PrismaPromise<GetLeadAggregateType<T>>
+
+    /**
+     * Group by Lead.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeadGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LeadGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LeadGroupByArgs['orderBy'] }
+        : { orderBy?: LeadGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LeadGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLeadGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Lead model
+   */
+  readonly fields: LeadFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Lead.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LeadClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Lead model
+   */
+  interface LeadFieldRefs {
+    readonly id: FieldRef<"Lead", 'String'>
+    readonly name: FieldRef<"Lead", 'String'>
+    readonly email: FieldRef<"Lead", 'String'>
+    readonly phone: FieldRef<"Lead", 'String'>
+    readonly message: FieldRef<"Lead", 'String'>
+    readonly sourcePath: FieldRef<"Lead", 'String'>
+    readonly status: FieldRef<"Lead", 'String'>
+    readonly notes: FieldRef<"Lead", 'String'>
+    readonly createdAt: FieldRef<"Lead", 'DateTime'>
+    readonly updatedAt: FieldRef<"Lead", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Lead findUnique
+   */
+  export type LeadFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+    /**
+     * Filter, which Lead to fetch.
+     */
+    where: LeadWhereUniqueInput
+  }
+
+  /**
+   * Lead findUniqueOrThrow
+   */
+  export type LeadFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+    /**
+     * Filter, which Lead to fetch.
+     */
+    where: LeadWhereUniqueInput
+  }
+
+  /**
+   * Lead findFirst
+   */
+  export type LeadFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+    /**
+     * Filter, which Lead to fetch.
+     */
+    where?: LeadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Leads to fetch.
+     */
+    orderBy?: LeadOrderByWithRelationInput | LeadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Leads.
+     */
+    cursor?: LeadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Leads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Leads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Leads.
+     */
+    distinct?: LeadScalarFieldEnum | LeadScalarFieldEnum[]
+  }
+
+  /**
+   * Lead findFirstOrThrow
+   */
+  export type LeadFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+    /**
+     * Filter, which Lead to fetch.
+     */
+    where?: LeadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Leads to fetch.
+     */
+    orderBy?: LeadOrderByWithRelationInput | LeadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Leads.
+     */
+    cursor?: LeadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Leads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Leads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Leads.
+     */
+    distinct?: LeadScalarFieldEnum | LeadScalarFieldEnum[]
+  }
+
+  /**
+   * Lead findMany
+   */
+  export type LeadFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+    /**
+     * Filter, which Leads to fetch.
+     */
+    where?: LeadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Leads to fetch.
+     */
+    orderBy?: LeadOrderByWithRelationInput | LeadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Leads.
+     */
+    cursor?: LeadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Leads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Leads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Leads.
+     */
+    distinct?: LeadScalarFieldEnum | LeadScalarFieldEnum[]
+  }
+
+  /**
+   * Lead create
+   */
+  export type LeadCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Lead.
+     */
+    data: XOR<LeadCreateInput, LeadUncheckedCreateInput>
+  }
+
+  /**
+   * Lead createMany
+   */
+  export type LeadCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Leads.
+     */
+    data: LeadCreateManyInput | LeadCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Lead createManyAndReturn
+   */
+  export type LeadCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+    /**
+     * The data used to create many Leads.
+     */
+    data: LeadCreateManyInput | LeadCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Lead update
+   */
+  export type LeadUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Lead.
+     */
+    data: XOR<LeadUpdateInput, LeadUncheckedUpdateInput>
+    /**
+     * Choose, which Lead to update.
+     */
+    where: LeadWhereUniqueInput
+  }
+
+  /**
+   * Lead updateMany
+   */
+  export type LeadUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Leads.
+     */
+    data: XOR<LeadUpdateManyMutationInput, LeadUncheckedUpdateManyInput>
+    /**
+     * Filter which Leads to update
+     */
+    where?: LeadWhereInput
+    /**
+     * Limit how many Leads to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Lead updateManyAndReturn
+   */
+  export type LeadUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+    /**
+     * The data used to update Leads.
+     */
+    data: XOR<LeadUpdateManyMutationInput, LeadUncheckedUpdateManyInput>
+    /**
+     * Filter which Leads to update
+     */
+    where?: LeadWhereInput
+    /**
+     * Limit how many Leads to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Lead upsert
+   */
+  export type LeadUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Lead to update in case it exists.
+     */
+    where: LeadWhereUniqueInput
+    /**
+     * In case the Lead found by the `where` argument doesn't exist, create a new Lead with this data.
+     */
+    create: XOR<LeadCreateInput, LeadUncheckedCreateInput>
+    /**
+     * In case the Lead was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LeadUpdateInput, LeadUncheckedUpdateInput>
+  }
+
+  /**
+   * Lead delete
+   */
+  export type LeadDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+    /**
+     * Filter which Lead to delete.
+     */
+    where: LeadWhereUniqueInput
+  }
+
+  /**
+   * Lead deleteMany
+   */
+  export type LeadDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Leads to delete
+     */
+    where?: LeadWhereInput
+    /**
+     * Limit how many Leads to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Lead without action
+   */
+  export type LeadDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lead
+     */
+    select?: LeadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lead
+     */
+    omit?: LeadOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model Media
    */
 
@@ -11569,6 +12998,3318 @@ export namespace Prisma {
 
 
   /**
+   * Model Treatment
+   */
+
+  export type AggregateTreatment = {
+    _count: TreatmentCountAggregateOutputType | null
+    _avg: TreatmentAvgAggregateOutputType | null
+    _sum: TreatmentSumAggregateOutputType | null
+    _min: TreatmentMinAggregateOutputType | null
+    _max: TreatmentMaxAggregateOutputType | null
+  }
+
+  export type TreatmentAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type TreatmentSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type TreatmentMinAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    href: string | null
+    pillar: string | null
+    audience: string | null
+    kind: string | null
+    status: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type TreatmentMaxAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    href: string | null
+    pillar: string | null
+    audience: string | null
+    kind: string | null
+    status: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type TreatmentCountAggregateOutputType = {
+    id: number
+    slug: number
+    href: number
+    pillar: number
+    audience: number
+    kind: number
+    status: number
+    order: number
+    data: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    _all: number
+  }
+
+
+  export type TreatmentAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type TreatmentSumAggregateInputType = {
+    order?: true
+  }
+
+  export type TreatmentMinAggregateInputType = {
+    id?: true
+    slug?: true
+    href?: true
+    pillar?: true
+    audience?: true
+    kind?: true
+    status?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type TreatmentMaxAggregateInputType = {
+    id?: true
+    slug?: true
+    href?: true
+    pillar?: true
+    audience?: true
+    kind?: true
+    status?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type TreatmentCountAggregateInputType = {
+    id?: true
+    slug?: true
+    href?: true
+    pillar?: true
+    audience?: true
+    kind?: true
+    status?: true
+    order?: true
+    data?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    _all?: true
+  }
+
+  export type TreatmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Treatment to aggregate.
+     */
+    where?: TreatmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Treatments to fetch.
+     */
+    orderBy?: TreatmentOrderByWithRelationInput | TreatmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TreatmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Treatments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Treatments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Treatments
+    **/
+    _count?: true | TreatmentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TreatmentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TreatmentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TreatmentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TreatmentMaxAggregateInputType
+  }
+
+  export type GetTreatmentAggregateType<T extends TreatmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateTreatment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTreatment[P]>
+      : GetScalarType<T[P], AggregateTreatment[P]>
+  }
+
+
+
+
+  export type TreatmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TreatmentWhereInput
+    orderBy?: TreatmentOrderByWithAggregationInput | TreatmentOrderByWithAggregationInput[]
+    by: TreatmentScalarFieldEnum[] | TreatmentScalarFieldEnum
+    having?: TreatmentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TreatmentCountAggregateInputType | true
+    _avg?: TreatmentAvgAggregateInputType
+    _sum?: TreatmentSumAggregateInputType
+    _min?: TreatmentMinAggregateInputType
+    _max?: TreatmentMaxAggregateInputType
+  }
+
+  export type TreatmentGroupByOutputType = {
+    id: string
+    slug: string
+    href: string
+    pillar: string
+    audience: string | null
+    kind: string
+    status: string
+    order: number
+    data: JsonValue
+    createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    _count: TreatmentCountAggregateOutputType | null
+    _avg: TreatmentAvgAggregateOutputType | null
+    _sum: TreatmentSumAggregateOutputType | null
+    _min: TreatmentMinAggregateOutputType | null
+    _max: TreatmentMaxAggregateOutputType | null
+  }
+
+  type GetTreatmentGroupByPayload<T extends TreatmentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TreatmentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TreatmentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TreatmentGroupByOutputType[P]>
+            : GetScalarType<T[P], TreatmentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TreatmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    href?: boolean
+    pillar?: boolean
+    audience?: boolean
+    kind?: boolean
+    status?: boolean
+    order?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }, ExtArgs["result"]["treatment"]>
+
+  export type TreatmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    href?: boolean
+    pillar?: boolean
+    audience?: boolean
+    kind?: boolean
+    status?: boolean
+    order?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }, ExtArgs["result"]["treatment"]>
+
+  export type TreatmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    href?: boolean
+    pillar?: boolean
+    audience?: boolean
+    kind?: boolean
+    status?: boolean
+    order?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }, ExtArgs["result"]["treatment"]>
+
+  export type TreatmentSelectScalar = {
+    id?: boolean
+    slug?: boolean
+    href?: boolean
+    pillar?: boolean
+    audience?: boolean
+    kind?: boolean
+    status?: boolean
+    order?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }
+
+  export type TreatmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "href" | "pillar" | "audience" | "kind" | "status" | "order" | "data" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["treatment"]>
+
+  export type $TreatmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Treatment"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      slug: string
+      href: string
+      pillar: string
+      audience: string | null
+      kind: string
+      status: string
+      order: number
+      data: Prisma.JsonValue
+      createdAt: Date
+      updatedAt: Date
+      deletedAt: Date | null
+    }, ExtArgs["result"]["treatment"]>
+    composites: {}
+  }
+
+  type TreatmentGetPayload<S extends boolean | null | undefined | TreatmentDefaultArgs> = $Result.GetResult<Prisma.$TreatmentPayload, S>
+
+  type TreatmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TreatmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TreatmentCountAggregateInputType | true
+    }
+
+  export interface TreatmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Treatment'], meta: { name: 'Treatment' } }
+    /**
+     * Find zero or one Treatment that matches the filter.
+     * @param {TreatmentFindUniqueArgs} args - Arguments to find a Treatment
+     * @example
+     * // Get one Treatment
+     * const treatment = await prisma.treatment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TreatmentFindUniqueArgs>(args: SelectSubset<T, TreatmentFindUniqueArgs<ExtArgs>>): Prisma__TreatmentClient<$Result.GetResult<Prisma.$TreatmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Treatment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TreatmentFindUniqueOrThrowArgs} args - Arguments to find a Treatment
+     * @example
+     * // Get one Treatment
+     * const treatment = await prisma.treatment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TreatmentFindUniqueOrThrowArgs>(args: SelectSubset<T, TreatmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TreatmentClient<$Result.GetResult<Prisma.$TreatmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Treatment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TreatmentFindFirstArgs} args - Arguments to find a Treatment
+     * @example
+     * // Get one Treatment
+     * const treatment = await prisma.treatment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TreatmentFindFirstArgs>(args?: SelectSubset<T, TreatmentFindFirstArgs<ExtArgs>>): Prisma__TreatmentClient<$Result.GetResult<Prisma.$TreatmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Treatment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TreatmentFindFirstOrThrowArgs} args - Arguments to find a Treatment
+     * @example
+     * // Get one Treatment
+     * const treatment = await prisma.treatment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TreatmentFindFirstOrThrowArgs>(args?: SelectSubset<T, TreatmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__TreatmentClient<$Result.GetResult<Prisma.$TreatmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Treatments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TreatmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Treatments
+     * const treatments = await prisma.treatment.findMany()
+     * 
+     * // Get first 10 Treatments
+     * const treatments = await prisma.treatment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const treatmentWithIdOnly = await prisma.treatment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TreatmentFindManyArgs>(args?: SelectSubset<T, TreatmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TreatmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Treatment.
+     * @param {TreatmentCreateArgs} args - Arguments to create a Treatment.
+     * @example
+     * // Create one Treatment
+     * const Treatment = await prisma.treatment.create({
+     *   data: {
+     *     // ... data to create a Treatment
+     *   }
+     * })
+     * 
+     */
+    create<T extends TreatmentCreateArgs>(args: SelectSubset<T, TreatmentCreateArgs<ExtArgs>>): Prisma__TreatmentClient<$Result.GetResult<Prisma.$TreatmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Treatments.
+     * @param {TreatmentCreateManyArgs} args - Arguments to create many Treatments.
+     * @example
+     * // Create many Treatments
+     * const treatment = await prisma.treatment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TreatmentCreateManyArgs>(args?: SelectSubset<T, TreatmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Treatments and returns the data saved in the database.
+     * @param {TreatmentCreateManyAndReturnArgs} args - Arguments to create many Treatments.
+     * @example
+     * // Create many Treatments
+     * const treatment = await prisma.treatment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Treatments and only return the `id`
+     * const treatmentWithIdOnly = await prisma.treatment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TreatmentCreateManyAndReturnArgs>(args?: SelectSubset<T, TreatmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TreatmentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Treatment.
+     * @param {TreatmentDeleteArgs} args - Arguments to delete one Treatment.
+     * @example
+     * // Delete one Treatment
+     * const Treatment = await prisma.treatment.delete({
+     *   where: {
+     *     // ... filter to delete one Treatment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TreatmentDeleteArgs>(args: SelectSubset<T, TreatmentDeleteArgs<ExtArgs>>): Prisma__TreatmentClient<$Result.GetResult<Prisma.$TreatmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Treatment.
+     * @param {TreatmentUpdateArgs} args - Arguments to update one Treatment.
+     * @example
+     * // Update one Treatment
+     * const treatment = await prisma.treatment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TreatmentUpdateArgs>(args: SelectSubset<T, TreatmentUpdateArgs<ExtArgs>>): Prisma__TreatmentClient<$Result.GetResult<Prisma.$TreatmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Treatments.
+     * @param {TreatmentDeleteManyArgs} args - Arguments to filter Treatments to delete.
+     * @example
+     * // Delete a few Treatments
+     * const { count } = await prisma.treatment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TreatmentDeleteManyArgs>(args?: SelectSubset<T, TreatmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Treatments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TreatmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Treatments
+     * const treatment = await prisma.treatment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TreatmentUpdateManyArgs>(args: SelectSubset<T, TreatmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Treatments and returns the data updated in the database.
+     * @param {TreatmentUpdateManyAndReturnArgs} args - Arguments to update many Treatments.
+     * @example
+     * // Update many Treatments
+     * const treatment = await prisma.treatment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Treatments and only return the `id`
+     * const treatmentWithIdOnly = await prisma.treatment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TreatmentUpdateManyAndReturnArgs>(args: SelectSubset<T, TreatmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TreatmentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Treatment.
+     * @param {TreatmentUpsertArgs} args - Arguments to update or create a Treatment.
+     * @example
+     * // Update or create a Treatment
+     * const treatment = await prisma.treatment.upsert({
+     *   create: {
+     *     // ... data to create a Treatment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Treatment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TreatmentUpsertArgs>(args: SelectSubset<T, TreatmentUpsertArgs<ExtArgs>>): Prisma__TreatmentClient<$Result.GetResult<Prisma.$TreatmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Treatments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TreatmentCountArgs} args - Arguments to filter Treatments to count.
+     * @example
+     * // Count the number of Treatments
+     * const count = await prisma.treatment.count({
+     *   where: {
+     *     // ... the filter for the Treatments we want to count
+     *   }
+     * })
+    **/
+    count<T extends TreatmentCountArgs>(
+      args?: Subset<T, TreatmentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TreatmentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Treatment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TreatmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TreatmentAggregateArgs>(args: Subset<T, TreatmentAggregateArgs>): Prisma.PrismaPromise<GetTreatmentAggregateType<T>>
+
+    /**
+     * Group by Treatment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TreatmentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TreatmentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TreatmentGroupByArgs['orderBy'] }
+        : { orderBy?: TreatmentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TreatmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTreatmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Treatment model
+   */
+  readonly fields: TreatmentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Treatment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TreatmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Treatment model
+   */
+  interface TreatmentFieldRefs {
+    readonly id: FieldRef<"Treatment", 'String'>
+    readonly slug: FieldRef<"Treatment", 'String'>
+    readonly href: FieldRef<"Treatment", 'String'>
+    readonly pillar: FieldRef<"Treatment", 'String'>
+    readonly audience: FieldRef<"Treatment", 'String'>
+    readonly kind: FieldRef<"Treatment", 'String'>
+    readonly status: FieldRef<"Treatment", 'String'>
+    readonly order: FieldRef<"Treatment", 'Int'>
+    readonly data: FieldRef<"Treatment", 'Json'>
+    readonly createdAt: FieldRef<"Treatment", 'DateTime'>
+    readonly updatedAt: FieldRef<"Treatment", 'DateTime'>
+    readonly deletedAt: FieldRef<"Treatment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Treatment findUnique
+   */
+  export type TreatmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+    /**
+     * Filter, which Treatment to fetch.
+     */
+    where: TreatmentWhereUniqueInput
+  }
+
+  /**
+   * Treatment findUniqueOrThrow
+   */
+  export type TreatmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+    /**
+     * Filter, which Treatment to fetch.
+     */
+    where: TreatmentWhereUniqueInput
+  }
+
+  /**
+   * Treatment findFirst
+   */
+  export type TreatmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+    /**
+     * Filter, which Treatment to fetch.
+     */
+    where?: TreatmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Treatments to fetch.
+     */
+    orderBy?: TreatmentOrderByWithRelationInput | TreatmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Treatments.
+     */
+    cursor?: TreatmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Treatments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Treatments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Treatments.
+     */
+    distinct?: TreatmentScalarFieldEnum | TreatmentScalarFieldEnum[]
+  }
+
+  /**
+   * Treatment findFirstOrThrow
+   */
+  export type TreatmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+    /**
+     * Filter, which Treatment to fetch.
+     */
+    where?: TreatmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Treatments to fetch.
+     */
+    orderBy?: TreatmentOrderByWithRelationInput | TreatmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Treatments.
+     */
+    cursor?: TreatmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Treatments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Treatments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Treatments.
+     */
+    distinct?: TreatmentScalarFieldEnum | TreatmentScalarFieldEnum[]
+  }
+
+  /**
+   * Treatment findMany
+   */
+  export type TreatmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+    /**
+     * Filter, which Treatments to fetch.
+     */
+    where?: TreatmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Treatments to fetch.
+     */
+    orderBy?: TreatmentOrderByWithRelationInput | TreatmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Treatments.
+     */
+    cursor?: TreatmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Treatments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Treatments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Treatments.
+     */
+    distinct?: TreatmentScalarFieldEnum | TreatmentScalarFieldEnum[]
+  }
+
+  /**
+   * Treatment create
+   */
+  export type TreatmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Treatment.
+     */
+    data: XOR<TreatmentCreateInput, TreatmentUncheckedCreateInput>
+  }
+
+  /**
+   * Treatment createMany
+   */
+  export type TreatmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Treatments.
+     */
+    data: TreatmentCreateManyInput | TreatmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Treatment createManyAndReturn
+   */
+  export type TreatmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+    /**
+     * The data used to create many Treatments.
+     */
+    data: TreatmentCreateManyInput | TreatmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Treatment update
+   */
+  export type TreatmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Treatment.
+     */
+    data: XOR<TreatmentUpdateInput, TreatmentUncheckedUpdateInput>
+    /**
+     * Choose, which Treatment to update.
+     */
+    where: TreatmentWhereUniqueInput
+  }
+
+  /**
+   * Treatment updateMany
+   */
+  export type TreatmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Treatments.
+     */
+    data: XOR<TreatmentUpdateManyMutationInput, TreatmentUncheckedUpdateManyInput>
+    /**
+     * Filter which Treatments to update
+     */
+    where?: TreatmentWhereInput
+    /**
+     * Limit how many Treatments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Treatment updateManyAndReturn
+   */
+  export type TreatmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+    /**
+     * The data used to update Treatments.
+     */
+    data: XOR<TreatmentUpdateManyMutationInput, TreatmentUncheckedUpdateManyInput>
+    /**
+     * Filter which Treatments to update
+     */
+    where?: TreatmentWhereInput
+    /**
+     * Limit how many Treatments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Treatment upsert
+   */
+  export type TreatmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Treatment to update in case it exists.
+     */
+    where: TreatmentWhereUniqueInput
+    /**
+     * In case the Treatment found by the `where` argument doesn't exist, create a new Treatment with this data.
+     */
+    create: XOR<TreatmentCreateInput, TreatmentUncheckedCreateInput>
+    /**
+     * In case the Treatment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TreatmentUpdateInput, TreatmentUncheckedUpdateInput>
+  }
+
+  /**
+   * Treatment delete
+   */
+  export type TreatmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+    /**
+     * Filter which Treatment to delete.
+     */
+    where: TreatmentWhereUniqueInput
+  }
+
+  /**
+   * Treatment deleteMany
+   */
+  export type TreatmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Treatments to delete
+     */
+    where?: TreatmentWhereInput
+    /**
+     * Limit how many Treatments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Treatment without action
+   */
+  export type TreatmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Treatment
+     */
+    select?: TreatmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Treatment
+     */
+    omit?: TreatmentOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PageSeo
+   */
+
+  export type AggregatePageSeo = {
+    _count: PageSeoCountAggregateOutputType | null
+    _min: PageSeoMinAggregateOutputType | null
+    _max: PageSeoMaxAggregateOutputType | null
+  }
+
+  export type PageSeoMinAggregateOutputType = {
+    id: string | null
+    path: string | null
+    title: string | null
+    description: string | null
+    ogImageUrl: string | null
+    canonical: string | null
+    noindex: boolean | null
+    schemaJsonLd: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PageSeoMaxAggregateOutputType = {
+    id: string | null
+    path: string | null
+    title: string | null
+    description: string | null
+    ogImageUrl: string | null
+    canonical: string | null
+    noindex: boolean | null
+    schemaJsonLd: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PageSeoCountAggregateOutputType = {
+    id: number
+    path: number
+    title: number
+    description: number
+    ogImageUrl: number
+    canonical: number
+    noindex: number
+    schemaJsonLd: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PageSeoMinAggregateInputType = {
+    id?: true
+    path?: true
+    title?: true
+    description?: true
+    ogImageUrl?: true
+    canonical?: true
+    noindex?: true
+    schemaJsonLd?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PageSeoMaxAggregateInputType = {
+    id?: true
+    path?: true
+    title?: true
+    description?: true
+    ogImageUrl?: true
+    canonical?: true
+    noindex?: true
+    schemaJsonLd?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PageSeoCountAggregateInputType = {
+    id?: true
+    path?: true
+    title?: true
+    description?: true
+    ogImageUrl?: true
+    canonical?: true
+    noindex?: true
+    schemaJsonLd?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PageSeoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PageSeo to aggregate.
+     */
+    where?: PageSeoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSeos to fetch.
+     */
+    orderBy?: PageSeoOrderByWithRelationInput | PageSeoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PageSeoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSeos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSeos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PageSeos
+    **/
+    _count?: true | PageSeoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PageSeoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PageSeoMaxAggregateInputType
+  }
+
+  export type GetPageSeoAggregateType<T extends PageSeoAggregateArgs> = {
+        [P in keyof T & keyof AggregatePageSeo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePageSeo[P]>
+      : GetScalarType<T[P], AggregatePageSeo[P]>
+  }
+
+
+
+
+  export type PageSeoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageSeoWhereInput
+    orderBy?: PageSeoOrderByWithAggregationInput | PageSeoOrderByWithAggregationInput[]
+    by: PageSeoScalarFieldEnum[] | PageSeoScalarFieldEnum
+    having?: PageSeoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PageSeoCountAggregateInputType | true
+    _min?: PageSeoMinAggregateInputType
+    _max?: PageSeoMaxAggregateInputType
+  }
+
+  export type PageSeoGroupByOutputType = {
+    id: string
+    path: string
+    title: string | null
+    description: string | null
+    ogImageUrl: string | null
+    canonical: string | null
+    noindex: boolean
+    schemaJsonLd: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: PageSeoCountAggregateOutputType | null
+    _min: PageSeoMinAggregateOutputType | null
+    _max: PageSeoMaxAggregateOutputType | null
+  }
+
+  type GetPageSeoGroupByPayload<T extends PageSeoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PageSeoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PageSeoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PageSeoGroupByOutputType[P]>
+            : GetScalarType<T[P], PageSeoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PageSeoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    path?: boolean
+    title?: boolean
+    description?: boolean
+    ogImageUrl?: boolean
+    canonical?: boolean
+    noindex?: boolean
+    schemaJsonLd?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["pageSeo"]>
+
+  export type PageSeoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    path?: boolean
+    title?: boolean
+    description?: boolean
+    ogImageUrl?: boolean
+    canonical?: boolean
+    noindex?: boolean
+    schemaJsonLd?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["pageSeo"]>
+
+  export type PageSeoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    path?: boolean
+    title?: boolean
+    description?: boolean
+    ogImageUrl?: boolean
+    canonical?: boolean
+    noindex?: boolean
+    schemaJsonLd?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["pageSeo"]>
+
+  export type PageSeoSelectScalar = {
+    id?: boolean
+    path?: boolean
+    title?: boolean
+    description?: boolean
+    ogImageUrl?: boolean
+    canonical?: boolean
+    noindex?: boolean
+    schemaJsonLd?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PageSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "path" | "title" | "description" | "ogImageUrl" | "canonical" | "noindex" | "schemaJsonLd" | "createdAt" | "updatedAt", ExtArgs["result"]["pageSeo"]>
+
+  export type $PageSeoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PageSeo"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      path: string
+      title: string | null
+      description: string | null
+      ogImageUrl: string | null
+      canonical: string | null
+      noindex: boolean
+      schemaJsonLd: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["pageSeo"]>
+    composites: {}
+  }
+
+  type PageSeoGetPayload<S extends boolean | null | undefined | PageSeoDefaultArgs> = $Result.GetResult<Prisma.$PageSeoPayload, S>
+
+  type PageSeoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PageSeoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PageSeoCountAggregateInputType | true
+    }
+
+  export interface PageSeoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PageSeo'], meta: { name: 'PageSeo' } }
+    /**
+     * Find zero or one PageSeo that matches the filter.
+     * @param {PageSeoFindUniqueArgs} args - Arguments to find a PageSeo
+     * @example
+     * // Get one PageSeo
+     * const pageSeo = await prisma.pageSeo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PageSeoFindUniqueArgs>(args: SelectSubset<T, PageSeoFindUniqueArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PageSeo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PageSeoFindUniqueOrThrowArgs} args - Arguments to find a PageSeo
+     * @example
+     * // Get one PageSeo
+     * const pageSeo = await prisma.pageSeo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PageSeoFindUniqueOrThrowArgs>(args: SelectSubset<T, PageSeoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PageSeo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoFindFirstArgs} args - Arguments to find a PageSeo
+     * @example
+     * // Get one PageSeo
+     * const pageSeo = await prisma.pageSeo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PageSeoFindFirstArgs>(args?: SelectSubset<T, PageSeoFindFirstArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PageSeo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoFindFirstOrThrowArgs} args - Arguments to find a PageSeo
+     * @example
+     * // Get one PageSeo
+     * const pageSeo = await prisma.pageSeo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PageSeoFindFirstOrThrowArgs>(args?: SelectSubset<T, PageSeoFindFirstOrThrowArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PageSeos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PageSeos
+     * const pageSeos = await prisma.pageSeo.findMany()
+     * 
+     * // Get first 10 PageSeos
+     * const pageSeos = await prisma.pageSeo.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pageSeoWithIdOnly = await prisma.pageSeo.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PageSeoFindManyArgs>(args?: SelectSubset<T, PageSeoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PageSeo.
+     * @param {PageSeoCreateArgs} args - Arguments to create a PageSeo.
+     * @example
+     * // Create one PageSeo
+     * const PageSeo = await prisma.pageSeo.create({
+     *   data: {
+     *     // ... data to create a PageSeo
+     *   }
+     * })
+     * 
+     */
+    create<T extends PageSeoCreateArgs>(args: SelectSubset<T, PageSeoCreateArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PageSeos.
+     * @param {PageSeoCreateManyArgs} args - Arguments to create many PageSeos.
+     * @example
+     * // Create many PageSeos
+     * const pageSeo = await prisma.pageSeo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PageSeoCreateManyArgs>(args?: SelectSubset<T, PageSeoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PageSeos and returns the data saved in the database.
+     * @param {PageSeoCreateManyAndReturnArgs} args - Arguments to create many PageSeos.
+     * @example
+     * // Create many PageSeos
+     * const pageSeo = await prisma.pageSeo.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PageSeos and only return the `id`
+     * const pageSeoWithIdOnly = await prisma.pageSeo.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PageSeoCreateManyAndReturnArgs>(args?: SelectSubset<T, PageSeoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PageSeo.
+     * @param {PageSeoDeleteArgs} args - Arguments to delete one PageSeo.
+     * @example
+     * // Delete one PageSeo
+     * const PageSeo = await prisma.pageSeo.delete({
+     *   where: {
+     *     // ... filter to delete one PageSeo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PageSeoDeleteArgs>(args: SelectSubset<T, PageSeoDeleteArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PageSeo.
+     * @param {PageSeoUpdateArgs} args - Arguments to update one PageSeo.
+     * @example
+     * // Update one PageSeo
+     * const pageSeo = await prisma.pageSeo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PageSeoUpdateArgs>(args: SelectSubset<T, PageSeoUpdateArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PageSeos.
+     * @param {PageSeoDeleteManyArgs} args - Arguments to filter PageSeos to delete.
+     * @example
+     * // Delete a few PageSeos
+     * const { count } = await prisma.pageSeo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PageSeoDeleteManyArgs>(args?: SelectSubset<T, PageSeoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PageSeos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PageSeos
+     * const pageSeo = await prisma.pageSeo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PageSeoUpdateManyArgs>(args: SelectSubset<T, PageSeoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PageSeos and returns the data updated in the database.
+     * @param {PageSeoUpdateManyAndReturnArgs} args - Arguments to update many PageSeos.
+     * @example
+     * // Update many PageSeos
+     * const pageSeo = await prisma.pageSeo.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PageSeos and only return the `id`
+     * const pageSeoWithIdOnly = await prisma.pageSeo.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PageSeoUpdateManyAndReturnArgs>(args: SelectSubset<T, PageSeoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PageSeo.
+     * @param {PageSeoUpsertArgs} args - Arguments to update or create a PageSeo.
+     * @example
+     * // Update or create a PageSeo
+     * const pageSeo = await prisma.pageSeo.upsert({
+     *   create: {
+     *     // ... data to create a PageSeo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PageSeo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PageSeoUpsertArgs>(args: SelectSubset<T, PageSeoUpsertArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PageSeos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoCountArgs} args - Arguments to filter PageSeos to count.
+     * @example
+     * // Count the number of PageSeos
+     * const count = await prisma.pageSeo.count({
+     *   where: {
+     *     // ... the filter for the PageSeos we want to count
+     *   }
+     * })
+    **/
+    count<T extends PageSeoCountArgs>(
+      args?: Subset<T, PageSeoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PageSeoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PageSeo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PageSeoAggregateArgs>(args: Subset<T, PageSeoAggregateArgs>): Prisma.PrismaPromise<GetPageSeoAggregateType<T>>
+
+    /**
+     * Group by PageSeo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PageSeoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PageSeoGroupByArgs['orderBy'] }
+        : { orderBy?: PageSeoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PageSeoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPageSeoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PageSeo model
+   */
+  readonly fields: PageSeoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PageSeo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PageSeoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PageSeo model
+   */
+  interface PageSeoFieldRefs {
+    readonly id: FieldRef<"PageSeo", 'String'>
+    readonly path: FieldRef<"PageSeo", 'String'>
+    readonly title: FieldRef<"PageSeo", 'String'>
+    readonly description: FieldRef<"PageSeo", 'String'>
+    readonly ogImageUrl: FieldRef<"PageSeo", 'String'>
+    readonly canonical: FieldRef<"PageSeo", 'String'>
+    readonly noindex: FieldRef<"PageSeo", 'Boolean'>
+    readonly schemaJsonLd: FieldRef<"PageSeo", 'String'>
+    readonly createdAt: FieldRef<"PageSeo", 'DateTime'>
+    readonly updatedAt: FieldRef<"PageSeo", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PageSeo findUnique
+   */
+  export type PageSeoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Filter, which PageSeo to fetch.
+     */
+    where: PageSeoWhereUniqueInput
+  }
+
+  /**
+   * PageSeo findUniqueOrThrow
+   */
+  export type PageSeoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Filter, which PageSeo to fetch.
+     */
+    where: PageSeoWhereUniqueInput
+  }
+
+  /**
+   * PageSeo findFirst
+   */
+  export type PageSeoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Filter, which PageSeo to fetch.
+     */
+    where?: PageSeoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSeos to fetch.
+     */
+    orderBy?: PageSeoOrderByWithRelationInput | PageSeoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PageSeos.
+     */
+    cursor?: PageSeoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSeos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSeos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageSeos.
+     */
+    distinct?: PageSeoScalarFieldEnum | PageSeoScalarFieldEnum[]
+  }
+
+  /**
+   * PageSeo findFirstOrThrow
+   */
+  export type PageSeoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Filter, which PageSeo to fetch.
+     */
+    where?: PageSeoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSeos to fetch.
+     */
+    orderBy?: PageSeoOrderByWithRelationInput | PageSeoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PageSeos.
+     */
+    cursor?: PageSeoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSeos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSeos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageSeos.
+     */
+    distinct?: PageSeoScalarFieldEnum | PageSeoScalarFieldEnum[]
+  }
+
+  /**
+   * PageSeo findMany
+   */
+  export type PageSeoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Filter, which PageSeos to fetch.
+     */
+    where?: PageSeoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSeos to fetch.
+     */
+    orderBy?: PageSeoOrderByWithRelationInput | PageSeoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PageSeos.
+     */
+    cursor?: PageSeoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSeos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSeos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageSeos.
+     */
+    distinct?: PageSeoScalarFieldEnum | PageSeoScalarFieldEnum[]
+  }
+
+  /**
+   * PageSeo create
+   */
+  export type PageSeoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * The data needed to create a PageSeo.
+     */
+    data: XOR<PageSeoCreateInput, PageSeoUncheckedCreateInput>
+  }
+
+  /**
+   * PageSeo createMany
+   */
+  export type PageSeoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PageSeos.
+     */
+    data: PageSeoCreateManyInput | PageSeoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PageSeo createManyAndReturn
+   */
+  export type PageSeoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * The data used to create many PageSeos.
+     */
+    data: PageSeoCreateManyInput | PageSeoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PageSeo update
+   */
+  export type PageSeoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * The data needed to update a PageSeo.
+     */
+    data: XOR<PageSeoUpdateInput, PageSeoUncheckedUpdateInput>
+    /**
+     * Choose, which PageSeo to update.
+     */
+    where: PageSeoWhereUniqueInput
+  }
+
+  /**
+   * PageSeo updateMany
+   */
+  export type PageSeoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PageSeos.
+     */
+    data: XOR<PageSeoUpdateManyMutationInput, PageSeoUncheckedUpdateManyInput>
+    /**
+     * Filter which PageSeos to update
+     */
+    where?: PageSeoWhereInput
+    /**
+     * Limit how many PageSeos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PageSeo updateManyAndReturn
+   */
+  export type PageSeoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * The data used to update PageSeos.
+     */
+    data: XOR<PageSeoUpdateManyMutationInput, PageSeoUncheckedUpdateManyInput>
+    /**
+     * Filter which PageSeos to update
+     */
+    where?: PageSeoWhereInput
+    /**
+     * Limit how many PageSeos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PageSeo upsert
+   */
+  export type PageSeoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * The filter to search for the PageSeo to update in case it exists.
+     */
+    where: PageSeoWhereUniqueInput
+    /**
+     * In case the PageSeo found by the `where` argument doesn't exist, create a new PageSeo with this data.
+     */
+    create: XOR<PageSeoCreateInput, PageSeoUncheckedCreateInput>
+    /**
+     * In case the PageSeo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PageSeoUpdateInput, PageSeoUncheckedUpdateInput>
+  }
+
+  /**
+   * PageSeo delete
+   */
+  export type PageSeoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Filter which PageSeo to delete.
+     */
+    where: PageSeoWhereUniqueInput
+  }
+
+  /**
+   * PageSeo deleteMany
+   */
+  export type PageSeoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PageSeos to delete
+     */
+    where?: PageSeoWhereInput
+    /**
+     * Limit how many PageSeos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PageSeo without action
+   */
+  export type PageSeoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SiteSettings
+   */
+
+  export type AggregateSiteSettings = {
+    _count: SiteSettingsCountAggregateOutputType | null
+    _min: SiteSettingsMinAggregateOutputType | null
+    _max: SiteSettingsMaxAggregateOutputType | null
+  }
+
+  export type SiteSettingsMinAggregateOutputType = {
+    id: string | null
+    siteName: string | null
+    tagline: string | null
+    logoUrl: string | null
+    logoDarkUrl: string | null
+    faviconUrl: string | null
+    phone: string | null
+    email: string | null
+    defaultSeoTitle: string | null
+    defaultSeoDescription: string | null
+    defaultOgImageUrl: string | null
+    headerScripts: string | null
+    footerScripts: string | null
+    updatedAt: Date | null
+  }
+
+  export type SiteSettingsMaxAggregateOutputType = {
+    id: string | null
+    siteName: string | null
+    tagline: string | null
+    logoUrl: string | null
+    logoDarkUrl: string | null
+    faviconUrl: string | null
+    phone: string | null
+    email: string | null
+    defaultSeoTitle: string | null
+    defaultSeoDescription: string | null
+    defaultOgImageUrl: string | null
+    headerScripts: string | null
+    footerScripts: string | null
+    updatedAt: Date | null
+  }
+
+  export type SiteSettingsCountAggregateOutputType = {
+    id: number
+    siteName: number
+    tagline: number
+    logoUrl: number
+    logoDarkUrl: number
+    faviconUrl: number
+    phone: number
+    email: number
+    socialLinks: number
+    defaultSeoTitle: number
+    defaultSeoDescription: number
+    defaultOgImageUrl: number
+    headerScripts: number
+    footerScripts: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SiteSettingsMinAggregateInputType = {
+    id?: true
+    siteName?: true
+    tagline?: true
+    logoUrl?: true
+    logoDarkUrl?: true
+    faviconUrl?: true
+    phone?: true
+    email?: true
+    defaultSeoTitle?: true
+    defaultSeoDescription?: true
+    defaultOgImageUrl?: true
+    headerScripts?: true
+    footerScripts?: true
+    updatedAt?: true
+  }
+
+  export type SiteSettingsMaxAggregateInputType = {
+    id?: true
+    siteName?: true
+    tagline?: true
+    logoUrl?: true
+    logoDarkUrl?: true
+    faviconUrl?: true
+    phone?: true
+    email?: true
+    defaultSeoTitle?: true
+    defaultSeoDescription?: true
+    defaultOgImageUrl?: true
+    headerScripts?: true
+    footerScripts?: true
+    updatedAt?: true
+  }
+
+  export type SiteSettingsCountAggregateInputType = {
+    id?: true
+    siteName?: true
+    tagline?: true
+    logoUrl?: true
+    logoDarkUrl?: true
+    faviconUrl?: true
+    phone?: true
+    email?: true
+    socialLinks?: true
+    defaultSeoTitle?: true
+    defaultSeoDescription?: true
+    defaultOgImageUrl?: true
+    headerScripts?: true
+    footerScripts?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SiteSettingsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SiteSettings to aggregate.
+     */
+    where?: SiteSettingsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SiteSettings to fetch.
+     */
+    orderBy?: SiteSettingsOrderByWithRelationInput | SiteSettingsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SiteSettingsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SiteSettings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SiteSettings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SiteSettings
+    **/
+    _count?: true | SiteSettingsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SiteSettingsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SiteSettingsMaxAggregateInputType
+  }
+
+  export type GetSiteSettingsAggregateType<T extends SiteSettingsAggregateArgs> = {
+        [P in keyof T & keyof AggregateSiteSettings]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSiteSettings[P]>
+      : GetScalarType<T[P], AggregateSiteSettings[P]>
+  }
+
+
+
+
+  export type SiteSettingsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SiteSettingsWhereInput
+    orderBy?: SiteSettingsOrderByWithAggregationInput | SiteSettingsOrderByWithAggregationInput[]
+    by: SiteSettingsScalarFieldEnum[] | SiteSettingsScalarFieldEnum
+    having?: SiteSettingsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SiteSettingsCountAggregateInputType | true
+    _min?: SiteSettingsMinAggregateInputType
+    _max?: SiteSettingsMaxAggregateInputType
+  }
+
+  export type SiteSettingsGroupByOutputType = {
+    id: string
+    siteName: string | null
+    tagline: string | null
+    logoUrl: string | null
+    logoDarkUrl: string | null
+    faviconUrl: string | null
+    phone: string | null
+    email: string | null
+    socialLinks: JsonValue | null
+    defaultSeoTitle: string | null
+    defaultSeoDescription: string | null
+    defaultOgImageUrl: string | null
+    headerScripts: string | null
+    footerScripts: string | null
+    updatedAt: Date
+    _count: SiteSettingsCountAggregateOutputType | null
+    _min: SiteSettingsMinAggregateOutputType | null
+    _max: SiteSettingsMaxAggregateOutputType | null
+  }
+
+  type GetSiteSettingsGroupByPayload<T extends SiteSettingsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SiteSettingsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SiteSettingsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SiteSettingsGroupByOutputType[P]>
+            : GetScalarType<T[P], SiteSettingsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SiteSettingsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    siteName?: boolean
+    tagline?: boolean
+    logoUrl?: boolean
+    logoDarkUrl?: boolean
+    faviconUrl?: boolean
+    phone?: boolean
+    email?: boolean
+    socialLinks?: boolean
+    defaultSeoTitle?: boolean
+    defaultSeoDescription?: boolean
+    defaultOgImageUrl?: boolean
+    headerScripts?: boolean
+    footerScripts?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["siteSettings"]>
+
+  export type SiteSettingsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    siteName?: boolean
+    tagline?: boolean
+    logoUrl?: boolean
+    logoDarkUrl?: boolean
+    faviconUrl?: boolean
+    phone?: boolean
+    email?: boolean
+    socialLinks?: boolean
+    defaultSeoTitle?: boolean
+    defaultSeoDescription?: boolean
+    defaultOgImageUrl?: boolean
+    headerScripts?: boolean
+    footerScripts?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["siteSettings"]>
+
+  export type SiteSettingsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    siteName?: boolean
+    tagline?: boolean
+    logoUrl?: boolean
+    logoDarkUrl?: boolean
+    faviconUrl?: boolean
+    phone?: boolean
+    email?: boolean
+    socialLinks?: boolean
+    defaultSeoTitle?: boolean
+    defaultSeoDescription?: boolean
+    defaultOgImageUrl?: boolean
+    headerScripts?: boolean
+    footerScripts?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["siteSettings"]>
+
+  export type SiteSettingsSelectScalar = {
+    id?: boolean
+    siteName?: boolean
+    tagline?: boolean
+    logoUrl?: boolean
+    logoDarkUrl?: boolean
+    faviconUrl?: boolean
+    phone?: boolean
+    email?: boolean
+    socialLinks?: boolean
+    defaultSeoTitle?: boolean
+    defaultSeoDescription?: boolean
+    defaultOgImageUrl?: boolean
+    headerScripts?: boolean
+    footerScripts?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SiteSettingsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "siteName" | "tagline" | "logoUrl" | "logoDarkUrl" | "faviconUrl" | "phone" | "email" | "socialLinks" | "defaultSeoTitle" | "defaultSeoDescription" | "defaultOgImageUrl" | "headerScripts" | "footerScripts" | "updatedAt", ExtArgs["result"]["siteSettings"]>
+
+  export type $SiteSettingsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SiteSettings"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      siteName: string | null
+      tagline: string | null
+      logoUrl: string | null
+      logoDarkUrl: string | null
+      faviconUrl: string | null
+      phone: string | null
+      email: string | null
+      socialLinks: Prisma.JsonValue | null
+      defaultSeoTitle: string | null
+      defaultSeoDescription: string | null
+      defaultOgImageUrl: string | null
+      headerScripts: string | null
+      footerScripts: string | null
+      updatedAt: Date
+    }, ExtArgs["result"]["siteSettings"]>
+    composites: {}
+  }
+
+  type SiteSettingsGetPayload<S extends boolean | null | undefined | SiteSettingsDefaultArgs> = $Result.GetResult<Prisma.$SiteSettingsPayload, S>
+
+  type SiteSettingsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SiteSettingsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SiteSettingsCountAggregateInputType | true
+    }
+
+  export interface SiteSettingsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SiteSettings'], meta: { name: 'SiteSettings' } }
+    /**
+     * Find zero or one SiteSettings that matches the filter.
+     * @param {SiteSettingsFindUniqueArgs} args - Arguments to find a SiteSettings
+     * @example
+     * // Get one SiteSettings
+     * const siteSettings = await prisma.siteSettings.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SiteSettingsFindUniqueArgs>(args: SelectSubset<T, SiteSettingsFindUniqueArgs<ExtArgs>>): Prisma__SiteSettingsClient<$Result.GetResult<Prisma.$SiteSettingsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SiteSettings that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SiteSettingsFindUniqueOrThrowArgs} args - Arguments to find a SiteSettings
+     * @example
+     * // Get one SiteSettings
+     * const siteSettings = await prisma.siteSettings.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SiteSettingsFindUniqueOrThrowArgs>(args: SelectSubset<T, SiteSettingsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SiteSettingsClient<$Result.GetResult<Prisma.$SiteSettingsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SiteSettings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SiteSettingsFindFirstArgs} args - Arguments to find a SiteSettings
+     * @example
+     * // Get one SiteSettings
+     * const siteSettings = await prisma.siteSettings.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SiteSettingsFindFirstArgs>(args?: SelectSubset<T, SiteSettingsFindFirstArgs<ExtArgs>>): Prisma__SiteSettingsClient<$Result.GetResult<Prisma.$SiteSettingsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SiteSettings that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SiteSettingsFindFirstOrThrowArgs} args - Arguments to find a SiteSettings
+     * @example
+     * // Get one SiteSettings
+     * const siteSettings = await prisma.siteSettings.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SiteSettingsFindFirstOrThrowArgs>(args?: SelectSubset<T, SiteSettingsFindFirstOrThrowArgs<ExtArgs>>): Prisma__SiteSettingsClient<$Result.GetResult<Prisma.$SiteSettingsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SiteSettings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SiteSettingsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SiteSettings
+     * const siteSettings = await prisma.siteSettings.findMany()
+     * 
+     * // Get first 10 SiteSettings
+     * const siteSettings = await prisma.siteSettings.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const siteSettingsWithIdOnly = await prisma.siteSettings.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SiteSettingsFindManyArgs>(args?: SelectSubset<T, SiteSettingsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SiteSettingsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SiteSettings.
+     * @param {SiteSettingsCreateArgs} args - Arguments to create a SiteSettings.
+     * @example
+     * // Create one SiteSettings
+     * const SiteSettings = await prisma.siteSettings.create({
+     *   data: {
+     *     // ... data to create a SiteSettings
+     *   }
+     * })
+     * 
+     */
+    create<T extends SiteSettingsCreateArgs>(args: SelectSubset<T, SiteSettingsCreateArgs<ExtArgs>>): Prisma__SiteSettingsClient<$Result.GetResult<Prisma.$SiteSettingsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SiteSettings.
+     * @param {SiteSettingsCreateManyArgs} args - Arguments to create many SiteSettings.
+     * @example
+     * // Create many SiteSettings
+     * const siteSettings = await prisma.siteSettings.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SiteSettingsCreateManyArgs>(args?: SelectSubset<T, SiteSettingsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SiteSettings and returns the data saved in the database.
+     * @param {SiteSettingsCreateManyAndReturnArgs} args - Arguments to create many SiteSettings.
+     * @example
+     * // Create many SiteSettings
+     * const siteSettings = await prisma.siteSettings.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SiteSettings and only return the `id`
+     * const siteSettingsWithIdOnly = await prisma.siteSettings.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SiteSettingsCreateManyAndReturnArgs>(args?: SelectSubset<T, SiteSettingsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SiteSettingsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SiteSettings.
+     * @param {SiteSettingsDeleteArgs} args - Arguments to delete one SiteSettings.
+     * @example
+     * // Delete one SiteSettings
+     * const SiteSettings = await prisma.siteSettings.delete({
+     *   where: {
+     *     // ... filter to delete one SiteSettings
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SiteSettingsDeleteArgs>(args: SelectSubset<T, SiteSettingsDeleteArgs<ExtArgs>>): Prisma__SiteSettingsClient<$Result.GetResult<Prisma.$SiteSettingsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SiteSettings.
+     * @param {SiteSettingsUpdateArgs} args - Arguments to update one SiteSettings.
+     * @example
+     * // Update one SiteSettings
+     * const siteSettings = await prisma.siteSettings.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SiteSettingsUpdateArgs>(args: SelectSubset<T, SiteSettingsUpdateArgs<ExtArgs>>): Prisma__SiteSettingsClient<$Result.GetResult<Prisma.$SiteSettingsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SiteSettings.
+     * @param {SiteSettingsDeleteManyArgs} args - Arguments to filter SiteSettings to delete.
+     * @example
+     * // Delete a few SiteSettings
+     * const { count } = await prisma.siteSettings.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SiteSettingsDeleteManyArgs>(args?: SelectSubset<T, SiteSettingsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SiteSettings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SiteSettingsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SiteSettings
+     * const siteSettings = await prisma.siteSettings.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SiteSettingsUpdateManyArgs>(args: SelectSubset<T, SiteSettingsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SiteSettings and returns the data updated in the database.
+     * @param {SiteSettingsUpdateManyAndReturnArgs} args - Arguments to update many SiteSettings.
+     * @example
+     * // Update many SiteSettings
+     * const siteSettings = await prisma.siteSettings.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SiteSettings and only return the `id`
+     * const siteSettingsWithIdOnly = await prisma.siteSettings.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SiteSettingsUpdateManyAndReturnArgs>(args: SelectSubset<T, SiteSettingsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SiteSettingsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SiteSettings.
+     * @param {SiteSettingsUpsertArgs} args - Arguments to update or create a SiteSettings.
+     * @example
+     * // Update or create a SiteSettings
+     * const siteSettings = await prisma.siteSettings.upsert({
+     *   create: {
+     *     // ... data to create a SiteSettings
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SiteSettings we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SiteSettingsUpsertArgs>(args: SelectSubset<T, SiteSettingsUpsertArgs<ExtArgs>>): Prisma__SiteSettingsClient<$Result.GetResult<Prisma.$SiteSettingsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SiteSettings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SiteSettingsCountArgs} args - Arguments to filter SiteSettings to count.
+     * @example
+     * // Count the number of SiteSettings
+     * const count = await prisma.siteSettings.count({
+     *   where: {
+     *     // ... the filter for the SiteSettings we want to count
+     *   }
+     * })
+    **/
+    count<T extends SiteSettingsCountArgs>(
+      args?: Subset<T, SiteSettingsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SiteSettingsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SiteSettings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SiteSettingsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SiteSettingsAggregateArgs>(args: Subset<T, SiteSettingsAggregateArgs>): Prisma.PrismaPromise<GetSiteSettingsAggregateType<T>>
+
+    /**
+     * Group by SiteSettings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SiteSettingsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SiteSettingsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SiteSettingsGroupByArgs['orderBy'] }
+        : { orderBy?: SiteSettingsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SiteSettingsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSiteSettingsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SiteSettings model
+   */
+  readonly fields: SiteSettingsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SiteSettings.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SiteSettingsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SiteSettings model
+   */
+  interface SiteSettingsFieldRefs {
+    readonly id: FieldRef<"SiteSettings", 'String'>
+    readonly siteName: FieldRef<"SiteSettings", 'String'>
+    readonly tagline: FieldRef<"SiteSettings", 'String'>
+    readonly logoUrl: FieldRef<"SiteSettings", 'String'>
+    readonly logoDarkUrl: FieldRef<"SiteSettings", 'String'>
+    readonly faviconUrl: FieldRef<"SiteSettings", 'String'>
+    readonly phone: FieldRef<"SiteSettings", 'String'>
+    readonly email: FieldRef<"SiteSettings", 'String'>
+    readonly socialLinks: FieldRef<"SiteSettings", 'Json'>
+    readonly defaultSeoTitle: FieldRef<"SiteSettings", 'String'>
+    readonly defaultSeoDescription: FieldRef<"SiteSettings", 'String'>
+    readonly defaultOgImageUrl: FieldRef<"SiteSettings", 'String'>
+    readonly headerScripts: FieldRef<"SiteSettings", 'String'>
+    readonly footerScripts: FieldRef<"SiteSettings", 'String'>
+    readonly updatedAt: FieldRef<"SiteSettings", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SiteSettings findUnique
+   */
+  export type SiteSettingsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+    /**
+     * Filter, which SiteSettings to fetch.
+     */
+    where: SiteSettingsWhereUniqueInput
+  }
+
+  /**
+   * SiteSettings findUniqueOrThrow
+   */
+  export type SiteSettingsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+    /**
+     * Filter, which SiteSettings to fetch.
+     */
+    where: SiteSettingsWhereUniqueInput
+  }
+
+  /**
+   * SiteSettings findFirst
+   */
+  export type SiteSettingsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+    /**
+     * Filter, which SiteSettings to fetch.
+     */
+    where?: SiteSettingsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SiteSettings to fetch.
+     */
+    orderBy?: SiteSettingsOrderByWithRelationInput | SiteSettingsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SiteSettings.
+     */
+    cursor?: SiteSettingsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SiteSettings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SiteSettings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SiteSettings.
+     */
+    distinct?: SiteSettingsScalarFieldEnum | SiteSettingsScalarFieldEnum[]
+  }
+
+  /**
+   * SiteSettings findFirstOrThrow
+   */
+  export type SiteSettingsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+    /**
+     * Filter, which SiteSettings to fetch.
+     */
+    where?: SiteSettingsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SiteSettings to fetch.
+     */
+    orderBy?: SiteSettingsOrderByWithRelationInput | SiteSettingsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SiteSettings.
+     */
+    cursor?: SiteSettingsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SiteSettings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SiteSettings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SiteSettings.
+     */
+    distinct?: SiteSettingsScalarFieldEnum | SiteSettingsScalarFieldEnum[]
+  }
+
+  /**
+   * SiteSettings findMany
+   */
+  export type SiteSettingsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+    /**
+     * Filter, which SiteSettings to fetch.
+     */
+    where?: SiteSettingsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SiteSettings to fetch.
+     */
+    orderBy?: SiteSettingsOrderByWithRelationInput | SiteSettingsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SiteSettings.
+     */
+    cursor?: SiteSettingsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SiteSettings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SiteSettings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SiteSettings.
+     */
+    distinct?: SiteSettingsScalarFieldEnum | SiteSettingsScalarFieldEnum[]
+  }
+
+  /**
+   * SiteSettings create
+   */
+  export type SiteSettingsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+    /**
+     * The data needed to create a SiteSettings.
+     */
+    data: XOR<SiteSettingsCreateInput, SiteSettingsUncheckedCreateInput>
+  }
+
+  /**
+   * SiteSettings createMany
+   */
+  export type SiteSettingsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SiteSettings.
+     */
+    data: SiteSettingsCreateManyInput | SiteSettingsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SiteSettings createManyAndReturn
+   */
+  export type SiteSettingsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+    /**
+     * The data used to create many SiteSettings.
+     */
+    data: SiteSettingsCreateManyInput | SiteSettingsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SiteSettings update
+   */
+  export type SiteSettingsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+    /**
+     * The data needed to update a SiteSettings.
+     */
+    data: XOR<SiteSettingsUpdateInput, SiteSettingsUncheckedUpdateInput>
+    /**
+     * Choose, which SiteSettings to update.
+     */
+    where: SiteSettingsWhereUniqueInput
+  }
+
+  /**
+   * SiteSettings updateMany
+   */
+  export type SiteSettingsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SiteSettings.
+     */
+    data: XOR<SiteSettingsUpdateManyMutationInput, SiteSettingsUncheckedUpdateManyInput>
+    /**
+     * Filter which SiteSettings to update
+     */
+    where?: SiteSettingsWhereInput
+    /**
+     * Limit how many SiteSettings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SiteSettings updateManyAndReturn
+   */
+  export type SiteSettingsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+    /**
+     * The data used to update SiteSettings.
+     */
+    data: XOR<SiteSettingsUpdateManyMutationInput, SiteSettingsUncheckedUpdateManyInput>
+    /**
+     * Filter which SiteSettings to update
+     */
+    where?: SiteSettingsWhereInput
+    /**
+     * Limit how many SiteSettings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SiteSettings upsert
+   */
+  export type SiteSettingsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+    /**
+     * The filter to search for the SiteSettings to update in case it exists.
+     */
+    where: SiteSettingsWhereUniqueInput
+    /**
+     * In case the SiteSettings found by the `where` argument doesn't exist, create a new SiteSettings with this data.
+     */
+    create: XOR<SiteSettingsCreateInput, SiteSettingsUncheckedCreateInput>
+    /**
+     * In case the SiteSettings was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SiteSettingsUpdateInput, SiteSettingsUncheckedUpdateInput>
+  }
+
+  /**
+   * SiteSettings delete
+   */
+  export type SiteSettingsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+    /**
+     * Filter which SiteSettings to delete.
+     */
+    where: SiteSettingsWhereUniqueInput
+  }
+
+  /**
+   * SiteSettings deleteMany
+   */
+  export type SiteSettingsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SiteSettings to delete
+     */
+    where?: SiteSettingsWhereInput
+    /**
+     * Limit how many SiteSettings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SiteSettings without action
+   */
+  export type SiteSettingsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SiteSettings
+     */
+    select?: SiteSettingsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SiteSettings
+     */
+    omit?: SiteSettingsOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -11687,6 +16428,22 @@ export namespace Prisma {
   export type AppointmentScalarFieldEnum = (typeof AppointmentScalarFieldEnum)[keyof typeof AppointmentScalarFieldEnum]
 
 
+  export const LeadScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    phone: 'phone',
+    message: 'message',
+    sourcePath: 'sourcePath',
+    status: 'status',
+    notes: 'notes',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type LeadScalarFieldEnum = (typeof LeadScalarFieldEnum)[keyof typeof LeadScalarFieldEnum]
+
+
   export const MediaScalarFieldEnum: {
     id: 'id',
     filename: 'filename',
@@ -11699,12 +16456,82 @@ export namespace Prisma {
   export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
 
 
+  export const TreatmentScalarFieldEnum: {
+    id: 'id',
+    slug: 'slug',
+    href: 'href',
+    pillar: 'pillar',
+    audience: 'audience',
+    kind: 'kind',
+    status: 'status',
+    order: 'order',
+    data: 'data',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+  };
+
+  export type TreatmentScalarFieldEnum = (typeof TreatmentScalarFieldEnum)[keyof typeof TreatmentScalarFieldEnum]
+
+
+  export const PageSeoScalarFieldEnum: {
+    id: 'id',
+    path: 'path',
+    title: 'title',
+    description: 'description',
+    ogImageUrl: 'ogImageUrl',
+    canonical: 'canonical',
+    noindex: 'noindex',
+    schemaJsonLd: 'schemaJsonLd',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PageSeoScalarFieldEnum = (typeof PageSeoScalarFieldEnum)[keyof typeof PageSeoScalarFieldEnum]
+
+
+  export const SiteSettingsScalarFieldEnum: {
+    id: 'id',
+    siteName: 'siteName',
+    tagline: 'tagline',
+    logoUrl: 'logoUrl',
+    logoDarkUrl: 'logoDarkUrl',
+    faviconUrl: 'faviconUrl',
+    phone: 'phone',
+    email: 'email',
+    socialLinks: 'socialLinks',
+    defaultSeoTitle: 'defaultSeoTitle',
+    defaultSeoDescription: 'defaultSeoDescription',
+    defaultOgImageUrl: 'defaultOgImageUrl',
+    headerScripts: 'headerScripts',
+    footerScripts: 'footerScripts',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SiteSettingsScalarFieldEnum = (typeof SiteSettingsScalarFieldEnum)[keyof typeof SiteSettingsScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -11721,6 +16548,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -11774,6 +16610,20 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -12328,6 +17178,83 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Appointment"> | Date | string
   }
 
+  export type LeadWhereInput = {
+    AND?: LeadWhereInput | LeadWhereInput[]
+    OR?: LeadWhereInput[]
+    NOT?: LeadWhereInput | LeadWhereInput[]
+    id?: StringFilter<"Lead"> | string
+    name?: StringFilter<"Lead"> | string
+    email?: StringFilter<"Lead"> | string
+    phone?: StringNullableFilter<"Lead"> | string | null
+    message?: StringNullableFilter<"Lead"> | string | null
+    sourcePath?: StringNullableFilter<"Lead"> | string | null
+    status?: StringFilter<"Lead"> | string
+    notes?: StringNullableFilter<"Lead"> | string | null
+    createdAt?: DateTimeFilter<"Lead"> | Date | string
+    updatedAt?: DateTimeFilter<"Lead"> | Date | string
+  }
+
+  export type LeadOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    sourcePath?: SortOrderInput | SortOrder
+    status?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LeadWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: LeadWhereInput | LeadWhereInput[]
+    OR?: LeadWhereInput[]
+    NOT?: LeadWhereInput | LeadWhereInput[]
+    name?: StringFilter<"Lead"> | string
+    email?: StringFilter<"Lead"> | string
+    phone?: StringNullableFilter<"Lead"> | string | null
+    message?: StringNullableFilter<"Lead"> | string | null
+    sourcePath?: StringNullableFilter<"Lead"> | string | null
+    status?: StringFilter<"Lead"> | string
+    notes?: StringNullableFilter<"Lead"> | string | null
+    createdAt?: DateTimeFilter<"Lead"> | Date | string
+    updatedAt?: DateTimeFilter<"Lead"> | Date | string
+  }, "id">
+
+  export type LeadOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    sourcePath?: SortOrderInput | SortOrder
+    status?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: LeadCountOrderByAggregateInput
+    _max?: LeadMaxOrderByAggregateInput
+    _min?: LeadMinOrderByAggregateInput
+  }
+
+  export type LeadScalarWhereWithAggregatesInput = {
+    AND?: LeadScalarWhereWithAggregatesInput | LeadScalarWhereWithAggregatesInput[]
+    OR?: LeadScalarWhereWithAggregatesInput[]
+    NOT?: LeadScalarWhereWithAggregatesInput | LeadScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Lead"> | string
+    name?: StringWithAggregatesFilter<"Lead"> | string
+    email?: StringWithAggregatesFilter<"Lead"> | string
+    phone?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    message?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    sourcePath?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    status?: StringWithAggregatesFilter<"Lead"> | string
+    notes?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Lead"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Lead"> | Date | string
+  }
+
   export type MediaWhereInput = {
     AND?: MediaWhereInput | MediaWhereInput[]
     OR?: MediaWhereInput[]
@@ -12385,6 +17312,274 @@ export namespace Prisma {
     mimeType?: StringWithAggregatesFilter<"Media"> | string
     size?: IntNullableWithAggregatesFilter<"Media"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Media"> | Date | string
+  }
+
+  export type TreatmentWhereInput = {
+    AND?: TreatmentWhereInput | TreatmentWhereInput[]
+    OR?: TreatmentWhereInput[]
+    NOT?: TreatmentWhereInput | TreatmentWhereInput[]
+    id?: StringFilter<"Treatment"> | string
+    slug?: StringFilter<"Treatment"> | string
+    href?: StringFilter<"Treatment"> | string
+    pillar?: StringFilter<"Treatment"> | string
+    audience?: StringNullableFilter<"Treatment"> | string | null
+    kind?: StringFilter<"Treatment"> | string
+    status?: StringFilter<"Treatment"> | string
+    order?: IntFilter<"Treatment"> | number
+    data?: JsonFilter<"Treatment">
+    createdAt?: DateTimeFilter<"Treatment"> | Date | string
+    updatedAt?: DateTimeFilter<"Treatment"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Treatment"> | Date | string | null
+  }
+
+  export type TreatmentOrderByWithRelationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    href?: SortOrder
+    pillar?: SortOrder
+    audience?: SortOrderInput | SortOrder
+    kind?: SortOrder
+    status?: SortOrder
+    order?: SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+  }
+
+  export type TreatmentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    href?: string
+    AND?: TreatmentWhereInput | TreatmentWhereInput[]
+    OR?: TreatmentWhereInput[]
+    NOT?: TreatmentWhereInput | TreatmentWhereInput[]
+    pillar?: StringFilter<"Treatment"> | string
+    audience?: StringNullableFilter<"Treatment"> | string | null
+    kind?: StringFilter<"Treatment"> | string
+    status?: StringFilter<"Treatment"> | string
+    order?: IntFilter<"Treatment"> | number
+    data?: JsonFilter<"Treatment">
+    createdAt?: DateTimeFilter<"Treatment"> | Date | string
+    updatedAt?: DateTimeFilter<"Treatment"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Treatment"> | Date | string | null
+  }, "id" | "slug" | "href">
+
+  export type TreatmentOrderByWithAggregationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    href?: SortOrder
+    pillar?: SortOrder
+    audience?: SortOrderInput | SortOrder
+    kind?: SortOrder
+    status?: SortOrder
+    order?: SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    _count?: TreatmentCountOrderByAggregateInput
+    _avg?: TreatmentAvgOrderByAggregateInput
+    _max?: TreatmentMaxOrderByAggregateInput
+    _min?: TreatmentMinOrderByAggregateInput
+    _sum?: TreatmentSumOrderByAggregateInput
+  }
+
+  export type TreatmentScalarWhereWithAggregatesInput = {
+    AND?: TreatmentScalarWhereWithAggregatesInput | TreatmentScalarWhereWithAggregatesInput[]
+    OR?: TreatmentScalarWhereWithAggregatesInput[]
+    NOT?: TreatmentScalarWhereWithAggregatesInput | TreatmentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Treatment"> | string
+    slug?: StringWithAggregatesFilter<"Treatment"> | string
+    href?: StringWithAggregatesFilter<"Treatment"> | string
+    pillar?: StringWithAggregatesFilter<"Treatment"> | string
+    audience?: StringNullableWithAggregatesFilter<"Treatment"> | string | null
+    kind?: StringWithAggregatesFilter<"Treatment"> | string
+    status?: StringWithAggregatesFilter<"Treatment"> | string
+    order?: IntWithAggregatesFilter<"Treatment"> | number
+    data?: JsonWithAggregatesFilter<"Treatment">
+    createdAt?: DateTimeWithAggregatesFilter<"Treatment"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Treatment"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Treatment"> | Date | string | null
+  }
+
+  export type PageSeoWhereInput = {
+    AND?: PageSeoWhereInput | PageSeoWhereInput[]
+    OR?: PageSeoWhereInput[]
+    NOT?: PageSeoWhereInput | PageSeoWhereInput[]
+    id?: StringFilter<"PageSeo"> | string
+    path?: StringFilter<"PageSeo"> | string
+    title?: StringNullableFilter<"PageSeo"> | string | null
+    description?: StringNullableFilter<"PageSeo"> | string | null
+    ogImageUrl?: StringNullableFilter<"PageSeo"> | string | null
+    canonical?: StringNullableFilter<"PageSeo"> | string | null
+    noindex?: BoolFilter<"PageSeo"> | boolean
+    schemaJsonLd?: StringNullableFilter<"PageSeo"> | string | null
+    createdAt?: DateTimeFilter<"PageSeo"> | Date | string
+    updatedAt?: DateTimeFilter<"PageSeo"> | Date | string
+  }
+
+  export type PageSeoOrderByWithRelationInput = {
+    id?: SortOrder
+    path?: SortOrder
+    title?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    ogImageUrl?: SortOrderInput | SortOrder
+    canonical?: SortOrderInput | SortOrder
+    noindex?: SortOrder
+    schemaJsonLd?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PageSeoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    path?: string
+    AND?: PageSeoWhereInput | PageSeoWhereInput[]
+    OR?: PageSeoWhereInput[]
+    NOT?: PageSeoWhereInput | PageSeoWhereInput[]
+    title?: StringNullableFilter<"PageSeo"> | string | null
+    description?: StringNullableFilter<"PageSeo"> | string | null
+    ogImageUrl?: StringNullableFilter<"PageSeo"> | string | null
+    canonical?: StringNullableFilter<"PageSeo"> | string | null
+    noindex?: BoolFilter<"PageSeo"> | boolean
+    schemaJsonLd?: StringNullableFilter<"PageSeo"> | string | null
+    createdAt?: DateTimeFilter<"PageSeo"> | Date | string
+    updatedAt?: DateTimeFilter<"PageSeo"> | Date | string
+  }, "id" | "path">
+
+  export type PageSeoOrderByWithAggregationInput = {
+    id?: SortOrder
+    path?: SortOrder
+    title?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    ogImageUrl?: SortOrderInput | SortOrder
+    canonical?: SortOrderInput | SortOrder
+    noindex?: SortOrder
+    schemaJsonLd?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PageSeoCountOrderByAggregateInput
+    _max?: PageSeoMaxOrderByAggregateInput
+    _min?: PageSeoMinOrderByAggregateInput
+  }
+
+  export type PageSeoScalarWhereWithAggregatesInput = {
+    AND?: PageSeoScalarWhereWithAggregatesInput | PageSeoScalarWhereWithAggregatesInput[]
+    OR?: PageSeoScalarWhereWithAggregatesInput[]
+    NOT?: PageSeoScalarWhereWithAggregatesInput | PageSeoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PageSeo"> | string
+    path?: StringWithAggregatesFilter<"PageSeo"> | string
+    title?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    description?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    ogImageUrl?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    canonical?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    noindex?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    schemaJsonLd?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"PageSeo"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PageSeo"> | Date | string
+  }
+
+  export type SiteSettingsWhereInput = {
+    AND?: SiteSettingsWhereInput | SiteSettingsWhereInput[]
+    OR?: SiteSettingsWhereInput[]
+    NOT?: SiteSettingsWhereInput | SiteSettingsWhereInput[]
+    id?: StringFilter<"SiteSettings"> | string
+    siteName?: StringNullableFilter<"SiteSettings"> | string | null
+    tagline?: StringNullableFilter<"SiteSettings"> | string | null
+    logoUrl?: StringNullableFilter<"SiteSettings"> | string | null
+    logoDarkUrl?: StringNullableFilter<"SiteSettings"> | string | null
+    faviconUrl?: StringNullableFilter<"SiteSettings"> | string | null
+    phone?: StringNullableFilter<"SiteSettings"> | string | null
+    email?: StringNullableFilter<"SiteSettings"> | string | null
+    socialLinks?: JsonNullableFilter<"SiteSettings">
+    defaultSeoTitle?: StringNullableFilter<"SiteSettings"> | string | null
+    defaultSeoDescription?: StringNullableFilter<"SiteSettings"> | string | null
+    defaultOgImageUrl?: StringNullableFilter<"SiteSettings"> | string | null
+    headerScripts?: StringNullableFilter<"SiteSettings"> | string | null
+    footerScripts?: StringNullableFilter<"SiteSettings"> | string | null
+    updatedAt?: DateTimeFilter<"SiteSettings"> | Date | string
+  }
+
+  export type SiteSettingsOrderByWithRelationInput = {
+    id?: SortOrder
+    siteName?: SortOrderInput | SortOrder
+    tagline?: SortOrderInput | SortOrder
+    logoUrl?: SortOrderInput | SortOrder
+    logoDarkUrl?: SortOrderInput | SortOrder
+    faviconUrl?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    socialLinks?: SortOrderInput | SortOrder
+    defaultSeoTitle?: SortOrderInput | SortOrder
+    defaultSeoDescription?: SortOrderInput | SortOrder
+    defaultOgImageUrl?: SortOrderInput | SortOrder
+    headerScripts?: SortOrderInput | SortOrder
+    footerScripts?: SortOrderInput | SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SiteSettingsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SiteSettingsWhereInput | SiteSettingsWhereInput[]
+    OR?: SiteSettingsWhereInput[]
+    NOT?: SiteSettingsWhereInput | SiteSettingsWhereInput[]
+    siteName?: StringNullableFilter<"SiteSettings"> | string | null
+    tagline?: StringNullableFilter<"SiteSettings"> | string | null
+    logoUrl?: StringNullableFilter<"SiteSettings"> | string | null
+    logoDarkUrl?: StringNullableFilter<"SiteSettings"> | string | null
+    faviconUrl?: StringNullableFilter<"SiteSettings"> | string | null
+    phone?: StringNullableFilter<"SiteSettings"> | string | null
+    email?: StringNullableFilter<"SiteSettings"> | string | null
+    socialLinks?: JsonNullableFilter<"SiteSettings">
+    defaultSeoTitle?: StringNullableFilter<"SiteSettings"> | string | null
+    defaultSeoDescription?: StringNullableFilter<"SiteSettings"> | string | null
+    defaultOgImageUrl?: StringNullableFilter<"SiteSettings"> | string | null
+    headerScripts?: StringNullableFilter<"SiteSettings"> | string | null
+    footerScripts?: StringNullableFilter<"SiteSettings"> | string | null
+    updatedAt?: DateTimeFilter<"SiteSettings"> | Date | string
+  }, "id">
+
+  export type SiteSettingsOrderByWithAggregationInput = {
+    id?: SortOrder
+    siteName?: SortOrderInput | SortOrder
+    tagline?: SortOrderInput | SortOrder
+    logoUrl?: SortOrderInput | SortOrder
+    logoDarkUrl?: SortOrderInput | SortOrder
+    faviconUrl?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    socialLinks?: SortOrderInput | SortOrder
+    defaultSeoTitle?: SortOrderInput | SortOrder
+    defaultSeoDescription?: SortOrderInput | SortOrder
+    defaultOgImageUrl?: SortOrderInput | SortOrder
+    headerScripts?: SortOrderInput | SortOrder
+    footerScripts?: SortOrderInput | SortOrder
+    updatedAt?: SortOrder
+    _count?: SiteSettingsCountOrderByAggregateInput
+    _max?: SiteSettingsMaxOrderByAggregateInput
+    _min?: SiteSettingsMinOrderByAggregateInput
+  }
+
+  export type SiteSettingsScalarWhereWithAggregatesInput = {
+    AND?: SiteSettingsScalarWhereWithAggregatesInput | SiteSettingsScalarWhereWithAggregatesInput[]
+    OR?: SiteSettingsScalarWhereWithAggregatesInput[]
+    NOT?: SiteSettingsScalarWhereWithAggregatesInput | SiteSettingsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SiteSettings"> | string
+    siteName?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    tagline?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    logoUrl?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    logoDarkUrl?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    faviconUrl?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    email?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    socialLinks?: JsonNullableWithAggregatesFilter<"SiteSettings">
+    defaultSeoTitle?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    defaultSeoDescription?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    defaultOgImageUrl?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    headerScripts?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    footerScripts?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    updatedAt?: DateTimeWithAggregatesFilter<"SiteSettings"> | Date | string
   }
 
   export type AdminCreateInput = {
@@ -12970,6 +18165,97 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LeadCreateInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    message?: string | null
+    sourcePath?: string | null
+    status?: string
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LeadUncheckedCreateInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    message?: string | null
+    sourcePath?: string | null
+    status?: string
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LeadUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sourcePath?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LeadUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sourcePath?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LeadCreateManyInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    message?: string | null
+    sourcePath?: string | null
+    status?: string
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LeadUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sourcePath?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LeadUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sourcePath?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type MediaCreateInput = {
     id?: string
     filename: string
@@ -13031,6 +18317,328 @@ export namespace Prisma {
     mimeType?: StringFieldUpdateOperationsInput | string
     size?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TreatmentCreateInput = {
+    id?: string
+    slug: string
+    href: string
+    pillar: string
+    audience?: string | null
+    kind: string
+    status?: string
+    order?: number
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type TreatmentUncheckedCreateInput = {
+    id?: string
+    slug: string
+    href: string
+    pillar: string
+    audience?: string | null
+    kind: string
+    status?: string
+    order?: number
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type TreatmentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    href?: StringFieldUpdateOperationsInput | string
+    pillar?: StringFieldUpdateOperationsInput | string
+    audience?: NullableStringFieldUpdateOperationsInput | string | null
+    kind?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type TreatmentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    href?: StringFieldUpdateOperationsInput | string
+    pillar?: StringFieldUpdateOperationsInput | string
+    audience?: NullableStringFieldUpdateOperationsInput | string | null
+    kind?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type TreatmentCreateManyInput = {
+    id?: string
+    slug: string
+    href: string
+    pillar: string
+    audience?: string | null
+    kind: string
+    status?: string
+    order?: number
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type TreatmentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    href?: StringFieldUpdateOperationsInput | string
+    pillar?: StringFieldUpdateOperationsInput | string
+    audience?: NullableStringFieldUpdateOperationsInput | string | null
+    kind?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type TreatmentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    href?: StringFieldUpdateOperationsInput | string
+    pillar?: StringFieldUpdateOperationsInput | string
+    audience?: NullableStringFieldUpdateOperationsInput | string | null
+    kind?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PageSeoCreateInput = {
+    id?: string
+    path: string
+    title?: string | null
+    description?: string | null
+    ogImageUrl?: string | null
+    canonical?: string | null
+    noindex?: boolean
+    schemaJsonLd?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PageSeoUncheckedCreateInput = {
+    id?: string
+    path: string
+    title?: string | null
+    description?: string | null
+    ogImageUrl?: string | null
+    canonical?: string | null
+    noindex?: boolean
+    schemaJsonLd?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PageSeoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical?: NullableStringFieldUpdateOperationsInput | string | null
+    noindex?: BoolFieldUpdateOperationsInput | boolean
+    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageSeoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical?: NullableStringFieldUpdateOperationsInput | string | null
+    noindex?: BoolFieldUpdateOperationsInput | boolean
+    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageSeoCreateManyInput = {
+    id?: string
+    path: string
+    title?: string | null
+    description?: string | null
+    ogImageUrl?: string | null
+    canonical?: string | null
+    noindex?: boolean
+    schemaJsonLd?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PageSeoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical?: NullableStringFieldUpdateOperationsInput | string | null
+    noindex?: BoolFieldUpdateOperationsInput | boolean
+    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageSeoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical?: NullableStringFieldUpdateOperationsInput | string | null
+    noindex?: BoolFieldUpdateOperationsInput | boolean
+    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SiteSettingsCreateInput = {
+    id?: string
+    siteName?: string | null
+    tagline?: string | null
+    logoUrl?: string | null
+    logoDarkUrl?: string | null
+    faviconUrl?: string | null
+    phone?: string | null
+    email?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    defaultSeoTitle?: string | null
+    defaultSeoDescription?: string | null
+    defaultOgImageUrl?: string | null
+    headerScripts?: string | null
+    footerScripts?: string | null
+    updatedAt?: Date | string
+  }
+
+  export type SiteSettingsUncheckedCreateInput = {
+    id?: string
+    siteName?: string | null
+    tagline?: string | null
+    logoUrl?: string | null
+    logoDarkUrl?: string | null
+    faviconUrl?: string | null
+    phone?: string | null
+    email?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    defaultSeoTitle?: string | null
+    defaultSeoDescription?: string | null
+    defaultOgImageUrl?: string | null
+    headerScripts?: string | null
+    footerScripts?: string | null
+    updatedAt?: Date | string
+  }
+
+  export type SiteSettingsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    siteName?: NullableStringFieldUpdateOperationsInput | string | null
+    tagline?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    logoDarkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    faviconUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    defaultSeoTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultSeoDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultOgImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerScripts?: NullableStringFieldUpdateOperationsInput | string | null
+    footerScripts?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SiteSettingsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    siteName?: NullableStringFieldUpdateOperationsInput | string | null
+    tagline?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    logoDarkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    faviconUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    defaultSeoTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultSeoDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultOgImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerScripts?: NullableStringFieldUpdateOperationsInput | string | null
+    footerScripts?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SiteSettingsCreateManyInput = {
+    id?: string
+    siteName?: string | null
+    tagline?: string | null
+    logoUrl?: string | null
+    logoDarkUrl?: string | null
+    faviconUrl?: string | null
+    phone?: string | null
+    email?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    defaultSeoTitle?: string | null
+    defaultSeoDescription?: string | null
+    defaultOgImageUrl?: string | null
+    headerScripts?: string | null
+    footerScripts?: string | null
+    updatedAt?: Date | string
+  }
+
+  export type SiteSettingsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    siteName?: NullableStringFieldUpdateOperationsInput | string | null
+    tagline?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    logoDarkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    faviconUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    defaultSeoTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultSeoDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultOgImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerScripts?: NullableStringFieldUpdateOperationsInput | string | null
+    footerScripts?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SiteSettingsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    siteName?: NullableStringFieldUpdateOperationsInput | string | null
+    tagline?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    logoDarkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    faviconUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    defaultSeoTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultSeoDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultOgImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerScripts?: NullableStringFieldUpdateOperationsInput | string | null
+    footerScripts?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -13495,6 +19103,45 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type LeadCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    message?: SortOrder
+    sourcePath?: SortOrder
+    status?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LeadMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    message?: SortOrder
+    sourcePath?: SortOrder
+    status?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LeadMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    message?: SortOrder
+    sourcePath?: SortOrder
+    status?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type MediaCountOrderByAggregateInput = {
     id?: SortOrder
     filename?: SortOrder
@@ -13528,6 +19175,273 @@ export namespace Prisma {
 
   export type MediaSumOrderByAggregateInput = {
     size?: SortOrder
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+  export type JsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type TreatmentCountOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    href?: SortOrder
+    pillar?: SortOrder
+    audience?: SortOrder
+    kind?: SortOrder
+    status?: SortOrder
+    order?: SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type TreatmentAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type TreatmentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    href?: SortOrder
+    pillar?: SortOrder
+    audience?: SortOrder
+    kind?: SortOrder
+    status?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type TreatmentMinOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    href?: SortOrder
+    pillar?: SortOrder
+    audience?: SortOrder
+    kind?: SortOrder
+    status?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type TreatmentSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type PageSeoCountOrderByAggregateInput = {
+    id?: SortOrder
+    path?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    ogImageUrl?: SortOrder
+    canonical?: SortOrder
+    noindex?: SortOrder
+    schemaJsonLd?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PageSeoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    path?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    ogImageUrl?: SortOrder
+    canonical?: SortOrder
+    noindex?: SortOrder
+    schemaJsonLd?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PageSeoMinOrderByAggregateInput = {
+    id?: SortOrder
+    path?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    ogImageUrl?: SortOrder
+    canonical?: SortOrder
+    noindex?: SortOrder
+    schemaJsonLd?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type SiteSettingsCountOrderByAggregateInput = {
+    id?: SortOrder
+    siteName?: SortOrder
+    tagline?: SortOrder
+    logoUrl?: SortOrder
+    logoDarkUrl?: SortOrder
+    faviconUrl?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    socialLinks?: SortOrder
+    defaultSeoTitle?: SortOrder
+    defaultSeoDescription?: SortOrder
+    defaultOgImageUrl?: SortOrder
+    headerScripts?: SortOrder
+    footerScripts?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SiteSettingsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    siteName?: SortOrder
+    tagline?: SortOrder
+    logoUrl?: SortOrder
+    logoDarkUrl?: SortOrder
+    faviconUrl?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    defaultSeoTitle?: SortOrder
+    defaultSeoDescription?: SortOrder
+    defaultOgImageUrl?: SortOrder
+    headerScripts?: SortOrder
+    footerScripts?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SiteSettingsMinOrderByAggregateInput = {
+    id?: SortOrder
+    siteName?: SortOrder
+    tagline?: SortOrder
+    logoUrl?: SortOrder
+    logoDarkUrl?: SortOrder
+    faviconUrl?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    defaultSeoTitle?: SortOrder
+    defaultSeoDescription?: SortOrder
+    defaultOgImageUrl?: SortOrder
+    headerScripts?: SortOrder
+    footerScripts?: SortOrder
+    updatedAt?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type PostCreateNestedManyWithoutAuthorInput = {
@@ -13832,6 +19746,14 @@ export namespace Prisma {
     update?: XOR<XOR<TagUpdateToOneWithWhereWithoutPostsInput, TagUpdateWithoutPostsInput>, TagUncheckedUpdateWithoutPostsInput>
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -14004,6 +19926,79 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+  export type NestedJsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type PostCreateWithoutAuthorInput = {

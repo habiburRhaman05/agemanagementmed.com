@@ -13,7 +13,7 @@ export const people: Person[] = [
     name: 'Harry S. Collins',
     credentials: 'DO, FACOG',
     role: 'Medical Director · Age Management Medicine Specialist',
-    portrait: { src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' },
+    portrait: { src: '/images/teams/teamf-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' },
     summary:
       'Founder of SAMM and a Life Fellow of the American College of Obstetricians and Gynecologists, certified in Age Management Medicine.',
     bio: [

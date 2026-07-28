@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 import type { Cta, Media } from '@/types/content'
 import { BookingForm } from '../shared/BookingForm'
+import { LeadForm } from '../shared/LeadForm'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog'
 
 interface Crumb {
@@ -23,6 +24,7 @@ interface Crumb {
 /** Registry of forms that can be rendered inside the form modal, keyed by `formSource`. */
 const FORM_COMPONENTS = {
   booking: BookingForm,
+  lead: LeadForm,
 } as const
 
 interface HeroActions {

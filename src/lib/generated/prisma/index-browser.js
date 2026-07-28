@@ -201,6 +201,19 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.LeadScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  message: 'message',
+  sourcePath: 'sourcePath',
+  status: 'status',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.MediaScalarFieldEnum = {
   id: 'id',
   filename: 'filename',
@@ -210,9 +223,64 @@ exports.Prisma.MediaScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.TreatmentScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  href: 'href',
+  pillar: 'pillar',
+  audience: 'audience',
+  kind: 'kind',
+  status: 'status',
+  order: 'order',
+  data: 'data',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.PageSeoScalarFieldEnum = {
+  id: 'id',
+  path: 'path',
+  title: 'title',
+  description: 'description',
+  ogImageUrl: 'ogImageUrl',
+  canonical: 'canonical',
+  noindex: 'noindex',
+  schemaJsonLd: 'schemaJsonLd',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SiteSettingsScalarFieldEnum = {
+  id: 'id',
+  siteName: 'siteName',
+  tagline: 'tagline',
+  logoUrl: 'logoUrl',
+  logoDarkUrl: 'logoDarkUrl',
+  faviconUrl: 'faviconUrl',
+  phone: 'phone',
+  email: 'email',
+  socialLinks: 'socialLinks',
+  defaultSeoTitle: 'defaultSeoTitle',
+  defaultSeoDescription: 'defaultSeoDescription',
+  defaultOgImageUrl: 'defaultOgImageUrl',
+  headerScripts: 'headerScripts',
+  footerScripts: 'footerScripts',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -225,6 +293,12 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
 
 exports.Prisma.ModelName = {
   Admin: 'Admin',
@@ -235,7 +309,11 @@ exports.Prisma.ModelName = {
   Tag: 'Tag',
   BlogTag: 'BlogTag',
   Appointment: 'Appointment',
-  Media: 'Media'
+  Lead: 'Lead',
+  Media: 'Media',
+  Treatment: 'Treatment',
+  PageSeo: 'PageSeo',
+  SiteSettings: 'SiteSettings'
 };
 
 /**

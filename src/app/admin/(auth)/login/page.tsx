@@ -37,7 +37,7 @@ export default function AdminLoginPage() {
         </div>
 
         {/* Form */}
-        <div className="rounded-xl border bg-white p-8 shadow-sm">
+        <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
           <form action={formAction} className="space-y-5">
             <div>
               <label

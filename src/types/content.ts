@@ -208,14 +208,15 @@ export interface Treatment extends TreatmentSummary {
     lead: string
     image: Media
     ctas: Cta[],
-    actions?:{
-      videoModal:boolean,
-     formModal:boolean,
-     videoSource:string,
-     formSource:"booking" | "lead"
+    actions?: {
+      videoModal?: boolean
+      formModal?: boolean
+      videoSource?: string
+      /** Matches `HeroEditorial`'s `FORM_COMPONENTS` registry. 'booking' -> full scheduling form (Appointment); 'lead' -> quick-inquiry form (Lead). */
+      formSource?: 'booking' | 'lead'
     }
   }
-customsSection?:any
+  customsSection?: any
   statement?: string
   symptoms?: BenefitListData
   sections?: TreatmentSection[]

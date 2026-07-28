@@ -153,7 +153,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
           {/* Main content */}
           <div className="space-y-6 lg:col-span-2">
             {/* Title */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <label
                 htmlFor="title"
                 className="block text-sm font-medium text-gray-700"
@@ -172,7 +172,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* Slug */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="slug"
@@ -209,7 +209,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* Content / Rich text with TipTap */}
-            <div className="rounded-xl border bg-white shadow-sm">
+            <div className="rounded-2xl border border-gray-100 bg-white shadow-sm">
               <div className="border-b bg-gray-50/50 px-6 py-3">
                 <label className="block text-sm font-medium text-gray-700">
                   Content
@@ -226,7 +226,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* Excerpt */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <label
                 htmlFor="excerpt"
                 className="block text-sm font-medium text-gray-700"
@@ -251,7 +251,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Status */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <label className="block text-sm font-medium text-gray-700">
                 Status
               </label>
@@ -275,7 +275,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* Featured Image */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <label className="block text-sm font-medium text-gray-700">
                 Featured Image URL
               </label>
@@ -299,7 +299,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* Category */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <label
                 htmlFor="category"
                 className="block text-sm font-medium text-gray-700"
@@ -322,7 +322,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* Tags */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <label className="block text-sm font-medium text-gray-700">
                 Tags
               </label>
@@ -345,7 +345,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
             </div>
 
             {/* SEO */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <h3 className="text-sm font-medium text-gray-700">
                 SEO Settings
               </h3>

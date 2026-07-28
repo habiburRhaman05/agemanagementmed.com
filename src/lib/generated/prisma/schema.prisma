@@ -102,6 +102,23 @@ model Appointment {
   updatedAt     DateTime  @updatedAt
 }
 
+// Lightweight lead capture — deliberately separate from `Appointment`
+// (which represents an actual scheduling intent with preferred date/time).
+// A `Lead` is a simpler "contact me" / newsletter-style submission, e.g. the
+// `formSource: 'lead'` variant of the hero CTA form.
+model Lead {
+  id         String   @id @default(cuid())
+  name       String
+  email      String
+  phone      String?
+  message    String?
+  sourcePath String? // which page/form this came from, e.g. '/aesthetics'
+  status     String   @default("new") // new | contacted | converted | archived
+  notes      String? // admin notes
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
 model Media {
   id        String   @id @default(cuid())
   filename  String
@@ -109,4 +126,56 @@ model Media {
   mimeType  String
   size      Int?
   createdAt DateTime @default(now())
+}
+
+model Treatment {
+  id        String    @id @default(cuid())
+  slug      String    @unique // matches current Treatment.slug in main.ts
+  href      String    @unique // matches current Treatment.href (the route path)
+  pillar    String
+  audience  String?
+  kind      String // 'variant' | 'hub' | 'modality'
+  status    String    @default("published") // draft | published
+  order     Int       @default(0)
+  data      Json // everything else on the Treatment object (hero, symptoms, sections,
+  // process, pricing, candidacy, faqs, closingCta, related, providers,
+  // customsSection) as one JSON blob — the TS `Treatment` shape and every
+  // existing component prop never has to change.
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+// Generic — reused for EVERY page on the site, not just treatments: home, contact-us,
+// our-experts, blog index, aesthetics, etc. One model, one admin screen, all SEO.
+model PageSeo {
+  id           String   @id @default(cuid())
+  path         String   @unique // '/', '/contact-us', '/bioidentical-hormone-replacement-therapy/male'
+  title        String?
+  description  String?
+  ogImageUrl   String?
+  canonical    String?
+  noindex      Boolean  @default(false)
+  schemaJsonLd String? // optional raw JSON-LD override, admin-editable, validated as JSON
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Singleton — one row, id fixed to "singleton". Logo, favicon, socials, tracking scripts.
+model SiteSettings {
+  id                    String   @id @default("singleton")
+  siteName              String?
+  tagline               String?
+  logoUrl               String?
+  logoDarkUrl           String?
+  faviconUrl            String?
+  phone                 String?
+  email                 String?
+  socialLinks           Json? // { facebook?, instagram?, youtube?, linkedin?, tiktok? }
+  defaultSeoTitle       String?
+  defaultSeoDescription String?
+  defaultOgImageUrl     String?
+  headerScripts         String? // raw HTML injected just before </head> — GTM, meta pixel, etc.
+  footerScripts         String? // raw HTML injected just before </body>
+  updatedAt             DateTime @updatedAt
 }

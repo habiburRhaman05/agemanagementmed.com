@@ -31,13 +31,13 @@ export function PillarGrid({
         <StaggerGroup
           as="ul"
           stagger={0.08}
-          className="mt-14 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3"
+          className="mt-14 grid items-stretch gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3"
         >
           {treatments.map((treatment) => (
-            <StaggerItem as="li" key={treatment.slug} className="h-full">
+            <StaggerItem as="li" key={treatment.slug} className="flex h-full">
               <Link
                 href={treatment.href}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-canvas-300/60 bg-canvas-50 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-sage-600/30 hover:shadow-lg"
+                className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-canvas-300/60 bg-canvas-50 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-sage-600/30 hover:shadow-lg"
               >
                 <AspectImage
                   media={treatment.cardImage}
@@ -66,7 +66,10 @@ export function PillarGrid({
                     ))}
                   </ul>
 
-                  <span className="mt-5 inline-flex items-center gap-2 text-body-sm font-semibold text-sage-700">
+                  {/* `mt-auto` pins this to the card's bottom edge regardless of how much
+                      title/description text is above it, so "Learn more" lines up across
+                      every card in the row even when one card's copy runs longer. */}
+                  <span className="mt-auto inline-flex items-center gap-2 pt-5 text-body-sm font-semibold text-sage-700">
                     Learn more
                     <ArrowRight
                       className="size-4 transition-transform duration-200 group-hover:translate-x-1"

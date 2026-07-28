@@ -85,7 +85,7 @@ export default async function BlogListPage({ searchParams }: Props) {
       {result.posts.length > 0 ? (
         <BlogTable posts={serializedPosts} />
       ) : (
-        <div className="rounded-xl border bg-white py-16 text-center shadow-sm">
+        <div className="rounded-2xl border border-gray-100 bg-white py-16 text-center shadow-sm">
           <FileText className="mx-auto h-12 w-12 text-gray-300" />
           <h3 className="mt-4 text-base font-semibold text-gray-900">
             No posts found
