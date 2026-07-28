@@ -524,7 +524,7 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <>
       <ReadingProgressBar />
-      <Header />
+      
 
       {/* Progress bar script */}
       <script

@@ -12,6 +12,8 @@ import type { homeContent } from '@/content/pages/home'
 import { providers } from '@/content/people'
 import { locations } from '@/content/site'
 import { treatments } from '@/content/treatments'
+import { CredentialStrip } from '../sections/CredentialStrip'
+import { expertsContent } from '@/content/pages/experts'
 
 /**
  * Section order is the funnel from docs/01-INFORMATION-ARCHITECTURE.md §5:
@@ -34,8 +36,14 @@ export function HomeTemplate({ content }: { content: typeof homeContent }) {
 
       <EditorialPair {...content.origin} background="alt" />
 
-      {/* <ProofBand {...content.proof} /> */}
-
+      {/* <ProofBand {...content.proof} />
+       */}
+      <CredentialStrip
+        eyebrow="Recognized for excellence"
+        title="Recognized in Savannah & beyond"
+        lead="These recognitions reflect our commitment to delivering high-quality aesthetic and wellness services in the Savannah area."
+        awards={expertsContent.awards}
+      />
       <ProcessSteps {...content.journey} background="page" />
 
       {/* <EditorialPair {...content.philosophy} /> */}

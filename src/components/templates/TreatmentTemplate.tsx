@@ -12,6 +12,7 @@ import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import { getPerson } from '@/content/people'
 import { getTreatments, pillars } from '@/content/treatments'
 import type { Person, Testimonial, Treatment, TreatmentBlockData, TreatmentSection } from '@/types/content'
+import { TreatmentProcess } from '../sections/custom/hormone therapy woman/treatMnetProcess'
 
 function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
   return 'type' in section
@@ -73,23 +74,16 @@ export function TreatmentTemplate({ treatment, testimonials }: TreatmentTemplate
 
       {treatment.candidacy ? <BenefitList {...treatment.candidacy} background="page" /> : null}
 
-      {related.length ? (
-        <PillarGrid
-          eyebrow="Related care"
-          title="Other ways we can help"
-          treatments={related}
-          background="alt"
-        />
-      ) : null}
+     
 
-      {providers.length ? (
+      {/* {providers.length ? (
         <PeopleGrid
           eyebrow="Your care team"
           title="Who you will be working with"
           people={providers}
           cta={{ label: 'Meet the full team', href: '/our-experts' }}
         />
-      ) : null}
+      ) : null} */}
 
       {testimonials.length ? (
         <TestimonialSet
@@ -99,6 +93,19 @@ export function TreatmentTemplate({ treatment, testimonials }: TreatmentTemplate
           background="alt"
         />
       ) : null}
+
+       {related.length ? (
+        <PillarGrid
+          eyebrow="Related care"
+          title="Other ways we can help"
+          treatments={related}
+          background="alt"
+        />
+      ) : null}
+
+      {
+        treatment.customsSection?.treatmentsPorcess > 0 && <TreatmentProcess  title='The PRP Hair Treatment Process' steps={treatment.customsSection.treatmentsPorcess}/>
+      }
 
       {treatment.faqs.length ? (
         <FAQAccordion

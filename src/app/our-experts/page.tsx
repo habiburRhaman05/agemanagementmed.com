@@ -1,7 +1,6 @@
 import { Header } from '@/components/layout/Header'
 import { BenefitList } from '@/components/sections/BenefitList'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
-import { ContentGrid } from '@/components/sections/ContentGrid'
 import { CredentialStrip } from '@/components/sections/CredentialStrip'
 import { EditorialPair } from '@/components/sections/EditorialPair'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
@@ -25,12 +24,7 @@ export default function ExpertsPage() {
 
       <BenefitList {...expertsContent.whyChooseUs} />
 
-      <CredentialStrip
-        eyebrow="Recognized for excellence"
-        title="Recognized in Savannah & beyond"
-        lead="These recognitions reflect our commitment to delivering high-quality aesthetic and wellness services in the Savannah area."
-        awards={expertsContent.awards}
-      />
+
 
       <PeopleGrid
         eyebrow="Meet our experts"
@@ -39,7 +33,7 @@ export default function ExpertsPage() {
         people={people}
       />
 
-      <ContentGrid eyebrow="As seen on" title="In the news" items={expertsContent.press} columns={2} />
+    
 
       <ClosingCTA
         title="Ready to transform your health?"

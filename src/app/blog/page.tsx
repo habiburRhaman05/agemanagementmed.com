@@ -245,9 +245,9 @@ export default async function BlogIndexPage({
       </Suspense>
 
       {/* ── Latest Blog section (below pagination) ──────────────────────── */}
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <LatestPostsContent />
-      </Suspense>
+      </Suspense> */}
 
       {/* ── Closing CTA — exactly as original ──────────────────────────── */}
       <ClosingCTA

@@ -1,11 +1,4 @@
-/**
- * Nav trees. Header, mega menu, mobile drawer, footer and sitemap all derive
- * from here — the routes exist in exactly one place.
- *
- * URLs match the live site (docs/01-INFORMATION-ARCHITECTURE.md §4, Option A):
- * the practice ranks locally on these paths, so the redesign changes the
- * navigation model without changing the URLs.
- */
+
 
 export interface NavLink {
   label: string

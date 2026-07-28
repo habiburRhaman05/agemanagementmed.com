@@ -14,7 +14,7 @@ export const expertsContent = {
     title: 'The foundation of age management medicine in Savannah, GA',
     lead: 'Savannah Age Management Medicine was founded by Dr. Harry Collins, a leader in hormone optimization, age management medicine, and functional wellness in Savannah, Georgia. His vision was to create a practice focused on helping patients improve energy, restore balance, and achieve long-term health — not just treat symptoms.',
     image: {
-      src: '/images/teams/team-1-img.png',
+      src: '/images/teams/banner-bg.jpg',
       alt: 'Dr. Harry Collins, founder of Savannah Age Management Medicine',
     },
   },
@@ -60,9 +60,13 @@ export const expertsContent = {
 
   awards: [
     { src: '/images/award-11-img.png', alt: 'Best of Savannah award' },
-    { src: '/images/award-13-img.png', alt: 'Regional excellence award' },
-    { src: '/images/award-15-img.png', alt: 'Best of Savannah Doctors award' },
-    { src: '/images/award-17-img.png', alt: 'Community recognition award' },
+    { src: '/images/award-12-img.png', alt: 'Regional excellence award' },
+    { src: '/images/award-13-img.png', alt: 'Best of Savannah Doctors award' },
+    { src: '/images/award-14-img.png', alt: 'Community recognition award' },
+    { src: '/images/award-15-img.png', alt: 'Wellness practice award' },
+    { src: '/images/award-16-img.png', alt: 'Wellness practice award' },
+    { src: '/images/award-17-img.png', alt: 'Wellness practice award' },
+    { src: '/images/award-18-img.png', alt: 'Wellness practice award' },
     { src: '/images/award-19-img.png', alt: 'Wellness practice award' },
   ] satisfies Award[],
 

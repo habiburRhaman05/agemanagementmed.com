@@ -1,17 +1,23 @@
+import { notFound } from 'next/navigation'
+
 import { Header } from '@/components/layout/Header'
 import { TreatmentTemplate } from '@/components/templates/TreatmentTemplate'
 import { getTestimonials } from '@/content/shared/testimonials'
-import { perimenopauseMenopause } from '@/content/treatments/perimenopause-menopause'
+import { getTreatmentBySlug } from '@/content/treatments/main'
 import { buildMetadata } from '@/lib/seo'
 
-export const metadata = buildMetadata(perimenopauseMenopause.seo)
+const treatment = getTreatmentBySlug('perimenopause-menopause')
+
+export const metadata = buildMetadata(treatment!.seo)
 
 export default function Page() {
+  if (!treatment) notFound()
+
   return (
     <>
       <Header />
       <TreatmentTemplate
-        treatment={perimenopauseMenopause}
+        treatment={treatment}
         testimonials={getTestimonials(['jennifer-c', 'christina-t', 'christine-w'])}
       />
     </>

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { Container } from '@/components/shared/Container'
@@ -19,6 +20,14 @@ interface EditorialPairProps extends EditorialPairData {
  * pages). A 7/5 asymmetric split (not an even half-half) plus a soft blurred
  * color field behind the image are what keep it from reading as a template,
  * even repeated dozens of times across the site.
+ *
+ * For `imageTreatment="framed"` (the default) the image fills 100% of its
+ * column's width AND height rather than being locked to a fixed aspect
+ * ratio — it stretches to match whatever height the text column establishes
+ * on desktop, and falls back to a fixed min-height on mobile where there's
+ * no sibling column to match. `cutout` images keep a fixed square ratio,
+ * since those are usually irregular transparent PNGs, not photos meant to
+ * bleed edge-to-edge.
  */
 export function EditorialPair({
   eyebrow,
@@ -32,17 +41,21 @@ export function EditorialPair({
   background = 'page',
 }: EditorialPairProps) {
   const cutout = imageTreatment === 'cutout'
+
   return (
     <Section background={background} spacing="lg" className="overflow-hidden">
       <Container>
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+        {/* items-stretch (not items-center) so both columns share the row's
+            height — required for the image column to have a real height to
+            fill on desktop. */}
+        <div className="grid items-stretch gap-14 lg:grid-cols-12 lg:gap-16">
           <Reveal
             className={cn(
-              'lg:col-span-7',
+              'flex flex-col justify-center lg:col-span-7',
               imageSide === 'left' ? 'lg:order-2' : 'lg:order-1',
             )}
           >
-            {eyebrow ? <Eyebrow className="mb-5">{eyebrow}</Eyebrow> : null}
+            {eyebrow ? <Eyebrow className="mb-5 self-start">{eyebrow}</Eyebrow> : null}
 
             <h2 className="text-display-md">{title}</h2>
 
@@ -75,7 +88,7 @@ export function EditorialPair({
           <Reveal
             delay={100}
             className={cn(
-              'relative lg:col-span-5',
+              'relative min-h-96 lg:col-span-5 lg:min-h-0',
               imageSide === 'left' ? 'lg:order-1' : 'lg:order-2',
             )}
           >
@@ -87,15 +100,26 @@ export function EditorialPair({
               aria-hidden
             />
 
-            <Parallax strength={28}>
-              <AspectImage
-                media={image}
-                ratio={cutout ? 'square' : 'landscape'}
-                fit={cutout ? 'cutout' : 'cover'}
-                sizes="(min-width: 1024px) 38vw, 100vw"
-                className={cutout ? undefined : 'rounded-3xl shadow-lg'}
-                imageClassName={cutout ? undefined : 'rounded-3xl'}
-              />
+            <Parallax strength={28} className="h-full w-full">
+              {cutout ? (
+                <AspectImage
+                  media={image}
+                  ratio="square"
+                  fit="cutout"
+                  sizes="(min-width: 1024px) 38vw, 100vw"
+                />
+              ) : (
+                <div className="relative h-full w-full min-h-96 overflow-hidden rounded-3xl shadow-lg lg:min-h-0">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(min-width: 1024px) 38vw, 100vw"
+                    className="rounded-3xl object-cover"
+                    style={{ objectPosition: image.focalPoint ?? 'center' }}
+                  />
+                </div>
+              )}
             </Parallax>
           </Reveal>
         </div>

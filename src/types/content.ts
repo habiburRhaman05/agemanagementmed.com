@@ -207,8 +207,15 @@ export interface Treatment extends TreatmentSummary {
     title: string
     lead: string
     image: Media
-    ctas: Cta[]
+    ctas: Cta[],
+    actions?:{
+      videoModal:boolean,
+     formModal:boolean,
+     videoSource:string,
+     formSource:"booking" | "lead"
+    }
   }
+customsSection?:any
   statement?: string
   symptoms?: BenefitListData
   sections?: TreatmentSection[]
@@ -216,7 +223,14 @@ export interface Treatment extends TreatmentSummary {
   pricing?: PricingData
   candidacy?: BenefitListData
   providers?: string[]
-  related?: string[]
+  related?: string[],
+  testimonials?:{
+    name:string,
+    source:string
+    text:string
+    rating:number
+  } [],
+  disclaimer?:string
   faqs: FaqItem[]
   closingCta: ClosingCtaData
   seo: Seo

@@ -1,17 +1,23 @@
+import { notFound } from 'next/navigation'
+
 import { Header } from '@/components/layout/Header'
 import { TreatmentTemplate } from '@/components/templates/TreatmentTemplate'
 import { getTestimonials } from '@/content/shared/testimonials'
-import { weightLossMen } from '@/content/treatments/weight-loss-men'
+import { getTreatmentBySlug } from '@/content/treatments/main'
 import { buildMetadata } from '@/lib/seo'
 
-export const metadata = buildMetadata(weightLossMen.seo)
+const treatment = getTreatmentBySlug('weight-loss-men')
+
+export const metadata = buildMetadata(treatment!.seo)
 
 export default function Page() {
+  if (!treatment) notFound()
+
   return (
     <>
       <Header />
       <TreatmentTemplate
-        treatment={weightLossMen}
+        treatment={treatment}
         testimonials={getTestimonials(['david-p', 'robert-f', 'wesley-y'])}
       />
     </>

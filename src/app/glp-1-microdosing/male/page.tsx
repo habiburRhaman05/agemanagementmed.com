@@ -1,17 +1,23 @@
+import { notFound } from 'next/navigation'
+
 import { Header } from '@/components/layout/Header'
 import { TreatmentTemplate } from '@/components/templates/TreatmentTemplate'
 import { getTestimonials } from '@/content/shared/testimonials'
-import { glp1MicrodosingMen } from '@/content/treatments/glp1-microdosing-men'
+import { getTreatmentBySlug } from '@/content/treatments/main'
 import { buildMetadata } from '@/lib/seo'
 
-export const metadata = buildMetadata(glp1MicrodosingMen.seo)
+const treatment = getTreatmentBySlug('glp1-microdosing-men')
+
+export const metadata = buildMetadata(treatment!.seo)
 
 export default function Page() {
+  if (!treatment) notFound()
+
   return (
     <>
       <Header />
       <TreatmentTemplate
-        treatment={glp1MicrodosingMen}
+        treatment={treatment}
         testimonials={getTestimonials(['david-p', 'mike-d'])}
       />
     </>
