@@ -5,6 +5,8 @@ import { verifyToken } from '@/lib/auth'
 const ADMIN_ROUTES = ['/admin']
 const PUBLIC_ADMIN_ROUTES = ['/admin/login']
 const API_ROUTES = ['/api']
+// Public API routes that don't require authentication (login, logout, etc.)
+const PUBLIC_API_ROUTES = ['/api/admin/auth/login', '/api/admin/auth/logout', '/api/upload']
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
@@ -15,13 +17,21 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith(route)
   )
   const isApiRoute = API_ROUTES.some((route) => pathname.startsWith(route))
+  const isPublicApiRoute = PUBLIC_API_ROUTES.some((route) =>
+    pathname.startsWith(route)
+  )
 
   if (!isAdminRoute && !isApiRoute) {
     return NextResponse.next()
   }
 
-  // Allow public admin routes (login page)
+  // Allow public admin routes (login page, etc.)
   if (isPublicAdminRoute) {
+    return NextResponse.next()
+  }
+
+  // Allow public API routes (login endpoint, upload endpoint, etc.)
+  if (isPublicApiRoute) {
     return NextResponse.next()
   }
 

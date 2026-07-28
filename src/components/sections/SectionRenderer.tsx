@@ -2,10 +2,11 @@ import type { ReactNode } from 'react'
 
 import { BeforeAfterShowcase } from '@/components/sections/BeforeAfterShowcase'
 import { BenefitList } from '@/components/sections/BenefitList'
+import { ContentSlider } from '@/components/sections/ContentSlider'
 import { EditorialPair } from '@/components/sections/EditorialPair'
 import { Notice } from '@/components/sections/Notice'
 import { ReviewerBio } from '@/components/sections/ReviewerBio'
-import type { BenefitItem, Media, TreatmentBlockData, TreatmentSection } from '@/types/content'
+import type { BenefitItem, IconSpec, Media, TreatmentBlockData, TreatmentSection } from '@/types/content'
 
 function isTypedBlock(section: TreatmentSection): section is TreatmentBlockData {
   return typeof (section as TreatmentBlockData).type === 'string'
@@ -15,6 +16,23 @@ function paragraphsOf(content: TreatmentBlockData['content']): string[] {
   return (content ?? []).filter((item): item is string => typeof item === 'string')
 }
 
+/** Resolve a stable section id for `data-section-id` attribute. */
+function sectionId(section: TreatmentBlockData, index: number): string {
+  return section.id ?? `${section.type}-${index}`
+}
+
+/**
+ * Adapt a loose `cards[]` item to `BenefitItem`, preserving icon data.
+ */
+function toBenefitItem(card: Record<string, unknown>): BenefitItem {
+  return {
+    title: String(card.title ?? ''),
+    body: card.description ? String(card.description) : undefined,
+    items: Array.isArray(card.items) ? (card.items as string[]) : undefined,
+    icon: card.icon ? (card.icon as IconSpec) : undefined,
+  }
+}
+
 /**
  * type -> adapter. Each adapter's only job is reshaping the loose JSON block
  * into props for an existing, pure presentational component — no business
@@ -22,6 +40,8 @@ function paragraphsOf(content: TreatmentBlockData['content']): string[] {
  * are unchanged). A future section kind is one new entry here plus, if no
  * existing component fits, one new small component — the registry and this
  * file's structure never need to change.
+ *
+ * Every adapter receives the section's `design` and `id` for CSS override.
  */
 const registry: Record<string, (section: TreatmentBlockData, index: number) => ReactNode> = {
   'feature-list': (section, index) => (
@@ -31,13 +51,10 @@ const registry: Record<string, (section: TreatmentBlockData, index: number) => R
       lead={paragraphsOf(section.content)[0]}
       columns={3}
       cardStyle
-      items={(section.cards ?? []).map(
-        (card): BenefitItem => ({
-          title: String(card.title ?? ''),
-          body: card.description ? String(card.description) : undefined,
-        }),
-      )}
+      items={(section.cards ?? []).map(toBenefitItem)}
       background={index % 2 === 0 ? 'alt' : 'page'}
+      design={section.design}
+      sectionId={sectionId(section, index)}
     />
   ),
 
@@ -75,6 +92,67 @@ const registry: Record<string, (section: TreatmentBlockData, index: number) => R
       />
     )
   },
+
+  /* ── NEW: Icon Card Grid ──────────────────────────────────────── */
+  'icon-card-list': (section, index) => {
+    const items = (section.cards ?? []).map(toBenefitItem)
+    return (
+      <BenefitList
+        key={section.id}
+        title={section.heading ?? ''}
+        lead={paragraphsOf(section.content)[0]}
+        columns={3}
+        cardStyle
+        items={items}
+        background={index % 2 === 0 ? 'alt' : 'page'}
+        design={section.design}
+        sectionId={sectionId(section, index)}
+      />
+    )
+  },
+
+  /* ── NEW: Icon Feature List (ruled rows with icons) ───────────── */
+  'icon-feature-list': (section, index) => {
+    const items = (section.cards ?? []).map(toBenefitItem)
+    return (
+      <BenefitList
+        key={section.id}
+        title={section.heading ?? ''}
+        lead={paragraphsOf(section.content)[0]}
+        columns={2}
+        numbered={false}
+        items={items}
+        background={index % 2 === 0 ? 'alt' : 'page'}
+        design={section.design}
+        sectionId={sectionId(section, index)}
+      />
+    )
+  },
+
+  /* ── NEW: Content Slider / Carousel ────────────────────────────── */
+  'content-slider': (section, index) => {
+    const cards = (section.cards ?? []).map((card) => ({
+      title: String(card.title ?? ''),
+      description: card.description ? String(card.description) : undefined,
+      icon: card.icon ? (card.icon as IconSpec) : undefined,
+      image: card.image as { src: string; alt: string } | undefined,
+      href: card.href ? String(card.href) : undefined,
+    }))
+
+    return (
+      <ContentSlider
+        key={section.id}
+        eyebrow={section.eyebrow}
+        title={section.heading ?? 'Featured'}
+        lead={paragraphsOf(section.content)[0]}
+        cards={cards}
+        background={index % 2 === 0 ? 'alt' : 'page'}
+        design={section.design}
+        sectionId={sectionId(section, index)}
+        autoplayInterval={5000}
+      />
+    )
+  },
 }
 
 // A block type composed of the same shape as another — register once, alias here.
@@ -97,14 +175,25 @@ export function SectionRenderer({ section, index }: SectionRendererProps) {
   if (!isTypedBlock(section)) {
     const side = index % 2 === 0 ? 'right' : 'left'
     return (
-      <EditorialPair
-        {...section}
-        imageSide={section.imageSide ?? side}
-        background={index % 2 === 0 ? 'alt' : 'page'}
-      />
+      <div data-section-id={`legacy-${index}`} data-section-type="editorial-pair">
+        <EditorialPair
+          {...section}
+          imageSide={section.imageSide ?? side}
+          background={index % 2 === 0 ? 'alt' : 'page'}
+        />
+      </div>
     )
   }
 
   const render = registry[section.type]
-  return render ? <>{render(section, index)}</> : null
+  if (!render) return null
+
+  return (
+    <div
+      data-section-id={sectionId(section, index)}
+      data-section-type={section.type}
+    >
+      {render(section, index)}
+    </div>
+  )
 }

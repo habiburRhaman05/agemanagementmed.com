@@ -15,11 +15,11 @@ export default async function DashboardLayout({
   const identity = { name: admin.name, email: admin.email, role: admin.role }
 
   return (
-    <div className="flex min-h-screen bg-canvas-50/60">
+    <div className="flex h-screen bg-canvas-50/60">
       <Sidebar admin={identity} />
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
         <Topbar admin={identity} />
-        <main className="flex-1 overflow-auto">
+        <main className="flex-1 overflow-y-auto">
           <div className="mx-auto max-w-7xl p-6 lg:p-10">{children}</div>
         </main>
       </div>

@@ -293,3 +293,9 @@
 .bg-canvas-100 {
     background-color: #f5f5f5;
 }
+
+/* ==========================================================================
+   Section-specific overrides — target via [data-section-id="..."]
+   Edit src/app/overrides.css for custom per-section CSS tweaks.
+   ========================================================================== */
+@import "./overrides.css";

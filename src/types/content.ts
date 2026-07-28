@@ -31,6 +31,76 @@ export interface Seo {
   noindex?: boolean
 }
 
+/* ── Design Override System ────────────────────────────────────────── */
+
+/**
+ * Per-section design override. Every field is optional — when absent the
+ * component uses its default styling. `className` merges with the base via
+ * `cn()` (tailwind-merge), so conflicting Tailwind utilities resolve
+ * predictably. `vars` are CSS custom properties applied as inline style,
+ * enabling deep overrides (hover, pseudo, animation) that className alone
+ * cannot reach.
+ *
+ * @example
+ * ```json
+ * {
+ *   "design": {
+ *     "className": "bg-ink-900",
+ *     "cardClassName": "border-2 border-gold",
+ *     "vars": { "--card-radius": "24px", "--icon-size": "48px" }
+ *   }
+ * }
+ * ```
+ */
+export interface DesignOverride {
+  /** Root section element — overrides the component's outer container. */
+  className?: string
+  /** Section heading — applied to the `<h2>` / title element. */
+  titleClassName?: string
+  /** Each card / item wrapper — cards in grids, items in lists. */
+  cardClassName?: string
+  /** Image element — section or card images. */
+  imageClassName?: string
+  /** Content / body text wrapper. */
+  contentClassName?: string
+  /** Inner container (e.g. max-width wrapper). */
+  containerClassName?: string
+  /**
+   * CSS custom properties — enables deep overrides without touching
+   * component code. E.g. `{ "--gap": "3rem", "--card-bg": "#fff" }`.
+   */
+  vars?: Record<string, string>
+}
+
+/* ── Icon System ────────────────────────────────────────────────────── */
+
+/**
+ * Universal icon specification. Every component that renders icons
+ * accepts `IconSpec` — one renderer (`IconRenderer`) handles all kinds.
+ *
+ * - `lucide`: a Lucide icon name, e.g. `"Sparkles"`. The renderer
+ *   dynamically resolves it from `lucide-react`.
+ * - `image`: a raster or SVG image URL.
+ * - `inline-svg`: raw SVG markup (use sparingly — sanitized via
+ *   `dangerouslySetInnerHTML` in a `<span>`).
+ * - `font-class`: a font-icon class string, e.g. `"fas fa-star"`.
+ * - `emoji`: a plain emoji character.
+ */
+export type IconKind = 'lucide' | 'image' | 'inline-svg' | 'font-class' | 'emoji'
+
+export interface IconSpec {
+  kind: IconKind
+  value: string
+  /** Alt text / aria-label — required for `image` kind, optional otherwise. */
+  label?: string
+  /** Additional class names for the icon wrapper or element. */
+  className?: string
+  /** Pixel dimension — applies width/height for image icons, font-size for others. Default 24. */
+  size?: number
+  /** Fill color — applies `color` or `fill` depending on kind. */
+  color?: string
+}
+
 /* ── Section payloads ───────────────────────────────────────────────── */
 
 export interface EditorialPairData {
@@ -63,6 +133,18 @@ export interface TreatmentBlockData {
   cards?: Array<Record<string, unknown>>
   images?: Media[]
   buttons?: Cta[]
+  /**
+   * Per-section design override. All fields optional — absent means
+   * "use component defaults". When present, merges via `cn()` and inline
+   * CSS variables.
+   */
+  design?: DesignOverride
+  /**
+   * Icons used within this section — for section-level icon references
+   * (e.g. a decorative background icon). Card-level icons go on the
+   * individual card object.
+   */
+  icons?: IconSpec[]
 }
 
 /**
@@ -78,6 +160,8 @@ export interface BenefitItem {
   title: string
   body?: string
   items?: string[]
+  /** Optional icon — renders at the top of each card / start of each row. */
+  icon?: IconSpec
 }
 
 export interface BenefitListData {

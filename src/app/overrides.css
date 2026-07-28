@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Section Override Stylesheet
+   ==========================================================================
+   Target specific sections by their `data-section-id` attribute (set
+   automatically by SectionRenderer from the section's `id` field).
+   
+   Usage in JSON:
+   ```json
+   {
+     "type": "icon-card-list",
+     "id": "hero-benefits",
+     "design": {
+       "className": "bg-ink-900",
+       "cardClassName": "border-gold",
+       "vars": { "--card-radius": "24px" }
+     }
+   }
+   ```
+   
+   Then override deeper styles here:
+   ```css
+   [data-section-id="hero-benefits"] .card { ... }
+   ```
+   
+   This is the "manual override" layer — for things Tailwind classes
+   can't express (pseudo-elements, complex animations, etc.).
+   ========================================================================== */
+
+/* ── Example: Dark section with gold accents ────────────────────────── */
+/*
+[data-section-id="hero-benefits"] {
+  --gradient-from: #0a1f3d;
+  --gradient-to: #162d50;
+}
+
+[data-section-id="hero-benefits"] h2,
+[data-section-id="hero-benefits"] h3 {
+  color: #d4af37;
+}
+
+[data-section-id="hero-benefits"] .card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+*/
+
+/* ── Example: Full-width image treatment ────────────────────────────── */
+/*
+[data-section-id="about-image"] img {
+  object-position: 70% 30%;
+  border-radius: 0;
+}
+
+[data-section-id="about-image"] {
+  padding: 0;
+}
+*/
+
+/* ── Example: Custom hover animation for icon cards ─────────────────── */
+/*
+[data-section-id="service-highlights"] .group:hover {
+  transform: translateY(-4px) scale(1.01);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-section-id="service-highlights"] .group:hover .icon {
+  transform: scale(1.15) rotate(-5deg);
+  transition: transform 0.3s ease;
+}
+*/

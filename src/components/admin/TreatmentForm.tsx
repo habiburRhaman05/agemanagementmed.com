@@ -1,7 +1,9 @@
 'use client'
 
 import { AlertCircle, CheckCircle2, Loader2, Plus, Save, Trash2 } from 'lucide-react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+
+import { SectionBuilder } from '@/components/admin/SectionBuilder'
 
 interface Cta {
   label: string
@@ -91,6 +93,27 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
   const [closingCtaHref, setClosingCtaHref] = useState(treatment.data.closingCta?.cta?.href ?? '')
 
   const [advancedJson, setAdvancedJson] = useState(JSON.stringify(pickAdvanced(treatment.data), null, 2))
+  const advancedTextareaRef = useRef<HTMLTextAreaElement>(null)
+
+  const handleSectionInsert = (json: string) => {
+    // Insert the generated section JSON into the advanced editor
+    // If the current content is empty or just '{}', replace it
+    const current = advancedJson.trim()
+    if (!current || current === '{}') {
+      setAdvancedJson(`{"sections": [\n${json}\n]}`)
+    } else {
+      // Try to find "sections" array and insert into it
+      try {
+        const parsed = JSON.parse(current)
+        if (!parsed.sections) parsed.sections = []
+        parsed.sections.push(JSON.parse(json))
+        setAdvancedJson(JSON.stringify(parsed, null, 2))
+      } catch {
+        // Fallback: show the generated JSON and let user manually place it
+        setAdvancedJson(current + '\n\n// Paste this section JSON into your sections array:\n' + json)
+      }
+    }
+  }
 
   const [seoTitle, setSeoTitle] = useState(seo?.title ?? '')
   const [seoDescription, setSeoDescription] = useState(seo?.description ?? '')
@@ -373,14 +396,19 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         </label>
       </div>
 
+      {/* Section Builder — visual JSON generator */}
+      <SectionBuilder onInsert={handleSectionInsert} />
+
       {/* Advanced JSON */}
       <div className="space-y-2 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <h2 className="text-sm font-semibold text-ink-950">Advanced (symptoms, sections, process, candidacy, providers, related)</h2>
         <p className="text-xs text-gray-500">
           Raw JSON for the section types the generic renderer already knows how to draw — validated before save.
+          Use the <strong>Section Builder</strong> above to visually create sections with design overrides and icons, then insert them here.
           Leave keys out entirely to skip that section on the page.
         </p>
         <textarea
+          ref={advancedTextareaRef}
           value={advancedJson}
           onChange={(e) => setAdvancedJson(e.target.value)}
           rows={16}

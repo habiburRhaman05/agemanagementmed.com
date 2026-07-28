@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
-import { ChevronRight, Play } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ChevronRight, Play } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -97,7 +97,7 @@ export function HeroEditorial({
   return (
     <section
       className={cn(
-        'relative isolate flex flex-col justify-end overflow-hidden pb-16 pt-32 lg:pb-24 lg:pt-44',
+        'relative isolate flex flex-col justify-center overflow-hidden ',
         fullHeight ? 'min-h-screen' : 'min-h-128 lg:min-h-168',
       )}
     >
@@ -145,20 +145,39 @@ export function HeroEditorial({
             {lead}
           </motion.p>
 
-          {/* {ctas?.length ? (
+          { !showFormButton && !showVideoButton ? (
             <motion.div className="mt-10 flex flex-wrap gap-4" {...fadeUp(0.5)}>
-              {ctas.map((cta, i) => (
-                <Button
-                  key={cta.href}
-                  asChild
-                  size="lg"
-                  variant={cta.variant ?? (i === 0 ? 'primary' : 'outlineInverse')}
-                >
-                  <Link href={cta.href}>{cta.label}</Link>
-                </Button>
-              ))}
+             <Dialog>
+                  <DialogTrigger asChild>
+                    <Button size="lg" variant="primary" className="bg-[#008080]">
+                      Schedule a consultation <span><ArrowRight></ArrowRight></span>
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent
+                    className="
+                      w-[calc(100%-1rem)]
+                      max-w-2xl
+                      max-h-[90dvh]
+                      overflow-y-auto
+                      rounded-[28px]
+                      p-5
+                      sm:w-full
+                      sm:rounded-[40px]
+                      sm:p-10
+                    "
+                  >
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-display text-ink-900">
+                        Book Your Consultation
+                      </DialogTitle>
+                    </DialogHeader>
+                    <div className="mt-4">{FormComponent ? <FormComponent /> : null}</div>
+                  </DialogContent>
+                </Dialog>
             </motion.div>
-          ) : null} */}
+          ) : null}
+
+
 
           {showFormButton || showVideoButton ? (
             <motion.div
@@ -168,8 +187,8 @@ export function HeroEditorial({
               {showFormButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" variant="primary" className="bg-[#008080]">
-                      Schedule a consultation
+                   <Button size="lg" variant="primary" className="bg-[#008080]">
+                      Schedule a consultation <span><ArrowRight></ArrowRight></span>
                     </Button>
                   </DialogTrigger>
                   <DialogContent

@@ -2,7 +2,9 @@
 
 import { AlertCircle, Loader2, Plus, Save, Trash2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+
+import { SectionBuilder } from '@/components/admin/SectionBuilder'
 
 interface Cta {
   label: string
@@ -54,6 +56,23 @@ export function NewTreatmentForm() {
   const [seoDescription, setSeoDescription] = useState('')
 
   const [advancedJson, setAdvancedJson] = useState('{}')
+  const advancedTextareaRef = useRef<HTMLTextAreaElement>(null)
+
+  const handleSectionInsert = (json: string) => {
+    const current = advancedJson.trim()
+    if (!current || current === '{}') {
+      setAdvancedJson(`{\n  "sections": [\n${json}\n]\n}`)
+    } else {
+      try {
+        const parsed = JSON.parse(current)
+        if (!parsed.sections) parsed.sections = []
+        parsed.sections.push(JSON.parse(json))
+        setAdvancedJson(JSON.stringify(parsed, null, 2))
+      } catch {
+        setAdvancedJson(current + '\n\n// Paste this section into your sections array:\n' + json)
+      }
+    }
+  }
 
   const [saveStatus, setSaveStatus] = useState<'idle' | 'loading' | 'error'>('idle')
   const [error, setError] = useState('')
@@ -379,6 +398,9 @@ export function NewTreatmentForm() {
         <textarea value={seoDescription} onChange={(e) => setSeoDescription(e.target.value)} placeholder="Meta description (defaults to summary)" maxLength={300} rows={2} className={inputClass} />
       </div>
 
+      {/* Section Builder — visual section JSON generator */}
+      <SectionBuilder onInsert={handleSectionInsert} />
+
       {/* Advanced JSON */}
       <div className={cardClass.replace('space-y-4', 'space-y-2')}>
         <h2 className="text-sm font-semibold text-ink-950">
@@ -387,9 +409,12 @@ export function NewTreatmentForm() {
         <p className="text-xs text-gray-500">
           Add <code>symptoms</code>, <code>sections</code>, <code>process</code>, <code>candidacy</code>,{' '}
           <code>pricing</code>, <code>providers</code>, or <code>related</code> as raw JSON — the page renderer
-          already knows these shapes. Leave as <code>{'{}'}</code> to skip and add later from the edit screen.
+          already knows these shapes. Use the <strong>Section Builder</strong> above to visually create
+          sections with design overrides and icons.
+          Leave as <code>{'{}'}</code> to skip and add later from the edit screen.
         </p>
         <textarea
+          ref={advancedTextareaRef}
           value={advancedJson}
           onChange={(e) => setAdvancedJson(e.target.value)}
           rows={10}

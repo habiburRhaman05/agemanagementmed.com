@@ -1,15 +1,20 @@
 import { Container } from '@/components/shared/Container'
+import { IconRenderer } from '@/components/shared/IconRenderer'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
 import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 import { cn } from '@/lib/utils'
-import type { BenefitListData } from '@/types/content'
+import type { BenefitListData, DesignOverride } from '@/types/content'
 
 interface BenefitListProps extends BenefitListData {
   background?: 'page' | 'alt' | 'raised' | 'accent'
   /** When true, renders each item as a premium aesthetic card instead of a ruled row. */
   cardStyle?: boolean
+  /** Per-section design override — className, vars, etc. */
+  design?: DesignOverride
+  /** Stable section id for targeting via `data-section-id` + overrides.css. */
+  sectionId?: string
 }
 
 /**
@@ -30,15 +35,28 @@ export function BenefitList({
   numbered = false,
   background = 'page',
   cardStyle,
+  design,
+  sectionId,
 }: BenefitListProps) {
   // Auto-enable card style for 2-col, non-numbered grids (the "Why choose us" pattern)
   const useCards = cardStyle ?? (columns === 2 && !numbered)
 
   if (useCards) {
     return (
-      <Section background={background} spacing="lg">
-        <Container>
-          <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
+      <Section
+        background={background}
+        spacing="lg"
+        className={design?.className}
+        data-section-id={sectionId}
+        style={design?.vars as React.CSSProperties}
+      >
+        <Container className={design?.containerClassName}>
+          <SectionHeader
+            eyebrow={eyebrow}
+            title={title}
+            lead={lead}
+            className={design?.titleClassName}
+          />
 
           <StaggerGroup
             as="ul"
@@ -47,12 +65,16 @@ export function BenefitList({
               'mt-16 grid gap-6',
               columns === 2 && 'md:grid-cols-2',
               columns === 3 && 'md:grid-cols-2 lg:grid-cols-3',
+              design?.cardClassName,
             )}
           >
             {items.map((item, index) => (
               <StaggerItem as="li" key={item.title}>
                 {/* Premium card with layered bg, mesh gradient, glass border and ambient shadow */}
-                <div className="group relative h-full overflow-hidden rounded-3xl border border-canvas-300/60 bg-canvas-50 p-8 shadow-md transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-sage-600/30 hover:shadow-xl lg:p-10">
+                <div className={cn(
+                  'group relative h-full overflow-hidden rounded-3xl border border-canvas-300/60 bg-canvas-50 p-8 shadow-md transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-sage-600/30 hover:shadow-xl lg:p-10',
+                  design?.cardClassName,
+                )} style={design?.vars as React.CSSProperties}>
 
                   {/* Soft ambient mesh glow — unique per card using nth-position hue shift */}
                   <div
@@ -88,10 +110,16 @@ export function BenefitList({
                     aria-hidden
                   />
 
-                  {/* Card number badge */}
-                  <span className="relative mb-6 inline-flex size-10 items-center justify-center rounded-2xl bg-gradient-to-br from-sage-100 to-sage-200 font-display text-body font-medium text-sage-700 shadow-sm ring-1 ring-sage-200/80 transition-all duration-300 group-hover:from-sage-600 group-hover:to-sage-700 group-hover:text-canvas-50 group-hover:ring-sage-600/40 group-hover:shadow-glow">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
+                  {/* Icon or number badge */}
+                  {item.icon ? (
+                    <div className="relative mb-6">
+                      <IconRenderer icon={item.icon} className="text-sage-600" />
+                    </div>
+                  ) : (
+                    <span className="relative mb-6 inline-flex size-10 items-center justify-center rounded-2xl bg-gradient-to-br from-sage-100 to-sage-200 font-display text-body font-medium text-sage-700 shadow-sm ring-1 ring-sage-200/80 transition-all duration-300 group-hover:from-sage-600 group-hover:to-sage-700 group-hover:text-canvas-50 group-hover:ring-sage-600/40 group-hover:shadow-glow">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  )}
 
                   <div className="relative">
                     <h3 className="text-title-lg transition-colors duration-300 group-hover:text-sage-700">
@@ -129,21 +157,40 @@ export function BenefitList({
 
   // Original ruled-row layout (treatment pages, numbered lists, etc.)
   return (
-    <Section background={background} spacing="lg">
-      <Container>
-        <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
+    <Section
+      background={background}
+      spacing="lg"
+      className={design?.className}
+      data-section-id={sectionId}
+      style={design?.vars as React.CSSProperties}
+    >
+      <Container className={design?.containerClassName}>
+        <SectionHeader
+          eyebrow={eyebrow}
+          title={title}
+          lead={lead}
+          className={design?.titleClassName}
+        />
 
         <ul
           className={cn(
             'mt-16 grid gap-x-16 gap-y-12',
             columns === 2 && 'md:grid-cols-2',
             columns === 3 && 'md:grid-cols-2 lg:grid-cols-3',
+            design?.cardClassName,
           )}
         >
           {items.map((item, index) => (
             <li key={item.title}>
               <Reveal delay={(index % 3) * 70}>
-                <div className="border-t border-canvas-300 pt-6">
+                <div className={cn('border-t border-canvas-300 pt-6', design?.cardClassName)}>
+                  {/* Icon row for ruled layout */}
+                  {item.icon ? (
+                    <div className="mb-4">
+                      <IconRenderer icon={item.icon} className="text-sage-600" />
+                    </div>
+                  ) : null}
+
                   {numbered ? (
                     <span className="mb-4 block font-display text-title-lg text-sage-600 tabular">
                       {String(index + 1).padStart(2, '0')}
