@@ -18,6 +18,7 @@ export default async function ExpertsPage() {
     <>
       <Header />
       <HeroEditorial
+      fullHeight
         {...expertsContent.hero}
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Our Experts', href: '/our-experts' }]}
       />
