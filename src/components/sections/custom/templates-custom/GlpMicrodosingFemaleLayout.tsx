@@ -15,7 +15,7 @@ interface TreatmentTemplateProps {
 
 /** Shared across the men's/women's light card per the source design — same asset, no gendered variant. */
 const DATA_DRIVEN_IMAGE = {
-  src: 'https://picsum.photos/seed/glp-microdosing-data/1200/900',
+  src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341630/photo-content-86-img_vh2zio.jpg',
   alt: 'Hands preparing a precision peptide injection pen',
 }
 
@@ -37,7 +37,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
       <MetabolicOverviewCards
         darkCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341609/A_Sophisticated_Approach_To_Sustainable_Metabolic_Health_t0butq.jpg',
+            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785346975/microdosing_xm7d8c.jpg',
             alt: 'A woman measuring her waist to track metabolic progress',
           },
           heading: 'A Sophisticated Approach To Sustainable Metabolic Health',
@@ -140,7 +140,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
 
       <FitCheckCallout
         image={{
-          src: 'https://picsum.photos/seed/glp-female-fit/1200/900',
+          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338093/why-woman-chose-samm_g7evxb.jpg',
           alt: 'A woman smiling during a consultation walk outdoors',
         }}
         heading="Is Microdosing The Right Fit For You?"
