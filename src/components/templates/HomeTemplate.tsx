@@ -51,7 +51,7 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
     <>
       <HeroImmersive {...content.hero} />
 
-      {/* <StatementBand text={content.statement} /> */}
+    
 
       <PillarGrid
         eyebrow="Our services"

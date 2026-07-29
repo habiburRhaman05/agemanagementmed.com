@@ -14,6 +14,7 @@ import PersonalizedMan from '../compontents-custom/weight-loss/male/Personalized
 import WhatsIncluded from '../compontents-custom/weight-loss/male/WhatsIncluded'
 import WhoThisProgramIsFor from '../compontents-custom/weight-loss/male/WhoThisProgramIsFor'
 import WhyThisApproachWorks from '../compontents-custom/weight-loss/male/WhyThisApproachWorks'
+import { LabworkGuidanceSection } from '../compontents-custom/weight-loss/male/LabworkGuidanceSection'
 
 
 function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
@@ -47,9 +48,11 @@ export async function WeightLossMaleLayout({ treatment }: TreatmentTemplateProps
       />
 
       <PersonalizedMan/>
+      <LabworkGuidanceSection/>
       <WhatsIncluded/>
       <WhoThisProgramIsFor/>
       <WhyThisApproachWorks/>
+
 
 
       {treatment.faqs.length ? (

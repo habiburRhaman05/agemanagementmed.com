@@ -25,7 +25,7 @@ export const treatments: Treatment[] = [
         alt: 'A man in natural light, representing restored strength and vitality',
       },
       ctas: [
-        { label: 'Book a consultation', href: '/book' },
+        { label: 'Book a consultation', href: '/book-appointment' },
         { label: 'How BHRT works', href: '/bhrt-hrt-trt' },
       ],
       actions:{
@@ -299,7 +299,7 @@ export const treatments: Treatment[] = [
     closingCta: {
       title: 'Ready to feel stronger, sharper, and more like yourself?',
       body: 'Start with a consultation. We will look at your symptoms and your labs, and build a plan from there.',
-      cta: { label: 'Book a consultation', href: '/book' },
+      cta: { label: 'Book a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -335,7 +335,7 @@ export const treatments: Treatment[] = [
         alt: 'A mother and daughter embracing outdoors, representing restored balance and wellbeing',
       },
       ctas: [
-        { label: 'Book a consultation', href: '/book' },
+        { label: 'Book a consultation', href: '/book-appointment' },
         { label: 'How BHRT works', href: '/bhrt-hrt-trt' },
       ],
        actions:{
@@ -523,7 +523,7 @@ export const treatments: Treatment[] = [
     closingCta: {
       title: 'Ready to feel balanced, energized, and supported again?',
       body: 'Start with a consultation. We will look at your symptoms and your labs, and build a plan from there.',
-      cta: { label: 'Book a consultation', href: '/book' },
+      cta: { label: 'Book a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -560,7 +560,7 @@ export const treatments: Treatment[] = [
         focalPoint: 'center 25%',
       },
       ctas: [
-        { label: 'Schedule a consultation', href: '/book' },
+        { label: 'Schedule a consultation', href: '/book-appointment' },
         { label: 'View financing options', href: '/financing-options' },
       ],
     },
@@ -706,7 +706,7 @@ export const treatments: Treatment[] = [
     closingCta: {
       title: 'Start your personalized weight loss plan today',
       body: "You don't have to figure this out on your own.",
-      cta: { label: 'Schedule a consultation', href: '/book' },
+      cta: { label: 'Schedule a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -743,7 +743,7 @@ export const treatments: Treatment[] = [
         alt: 'A patient measuring their waist during a body composition check',
       },
       ctas: [
-        { label: 'Book a consultation', href: '/book' },
+        { label: 'Book a consultation', href: '/book-appointment' },
         { label: 'View financing options', href: '/financing-options' },
       ],
     },
@@ -899,7 +899,7 @@ export const treatments: Treatment[] = [
     closingCta: {
       title: 'Ready to take the next step?',
       body: 'Start with a consultation.',
-      cta: { label: 'Book a consultation', href: '/book' },
+      cta: { label: 'Book a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -935,7 +935,7 @@ export const treatments: Treatment[] = [
         alt: 'A clinical team performing a precise medical aesthetics treatment',
       },
       ctas: [
-        { label: 'Book appointment', href: '/book' },
+        { label: 'Book appointment', href: '/book-appointment' },
         { label: 'Meet our experts', href: '/our-experts' },
       ],
     },
@@ -981,7 +981,7 @@ export const treatments: Treatment[] = [
     closingCta: {
       title: 'Elevate and enhance',
       body: 'Start your journey toward a more radiant, youthful appearance.',
-      cta: { label: 'Book appointment', href: '/book' },
+      cta: { label: 'Book appointment', href: '/book-appointment' },
     },
 
     seo: {
@@ -1146,7 +1146,7 @@ export const treatments: Treatment[] = [
     closingCta: {
       title: 'Ready to Optimize Your Hormonal Health?',
       body: "Don't let hormonal imbalances hold you back. Discover the Savannah Age Management difference right here in Pooler, GA.",
-      cta: { label: 'Schedule a consultation', href: '/book' },
+      cta: { label: 'Schedule a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -1182,7 +1182,7 @@ export const treatments: Treatment[] = [
         alt: 'A clinician holding a blood sample for lab testing',
       },
       ctas: [
-        { label: 'Schedule a consultation', href: '/book' },
+        { label: 'Schedule a consultation', href: '/book-appointment' },
         { label: 'View financing options', href: '/financing-options' },
       ],
     },
@@ -1305,7 +1305,7 @@ export const treatments: Treatment[] = [
     closingCta: {
       title: 'Ready to feel like yourself again?',
       body: 'Take the next step toward personalized hormone optimization and long-term wellness.',
-      cta: { label: 'Schedule a consultation', href: '/book' },
+      cta: { label: 'Schedule a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -1344,7 +1344,7 @@ export const treatments: Treatment[] = [
         focalPoint: '65% 25%',
       },
       ctas: [
-        { label: 'Schedule a consultation', href: '/book' },
+        { label: 'Schedule a consultation', href: '/book-appointment' },
         { label: 'View financing options', href: '/financing-options' },
       ],
     },
@@ -1479,7 +1479,7 @@ export const treatments: Treatment[] = [
     closingCta: {
       title: 'Ready to feel like yourself again?',
       body: 'Take the next step toward personalized hormone optimization and long-term wellness.',
-      cta: { label: 'Schedule a consultation', href: '/book' },
+      cta: { label: 'Schedule a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -1517,7 +1517,7 @@ export const treatments: Treatment[] = [
         focalPoint: 'center 30%',
       },
       ctas: [
-        { label: 'Schedule a consultation', href: '/book' },
+        { label: 'Schedule a consultation', href: '/book-appointment' },
         { label: 'View financing options', href: '/financing-options' },
       ],
     },
@@ -1706,7 +1706,7 @@ treatmentsPorcess:
     closingCta: {
       title: 'Restore your hair naturally',
       body: 'Take the first step toward thicker, healthier hair with PRP therapy.',
-      cta: { label: 'Schedule a consultation', href: '/book' },
+      cta: { label: 'Schedule a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -1745,7 +1745,7 @@ treatmentsPorcess:
         focalPoint: 'center 25%',
       },
       ctas: [
-        { label: 'Schedule a consultation', href: '/book' },
+        { label: 'Schedule a consultation', href: '/book-appointment' },
         { label: 'View financing options', href: '/financing-options' },
       ],
     },
@@ -1885,7 +1885,7 @@ treatmentsPorcess:
     closingCta: {
       title: 'Ready to take the next step?',
       body: 'Start with a consultation.',
-      cta: { label: 'Book a consultation', href: '/book' },
+      cta: { label: 'Book a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -1923,7 +1923,7 @@ treatmentsPorcess:
         alt: 'A couple embracing warmly outdoors',
         focalPoint: 'center 35%',
       },
-      ctas: [{ label: 'Request a consultation', href: '/book' }],
+      ctas: [{ label: 'Request a consultation', href: '/book-appointment' }],
     },
 
     statement: 'Treatment plans designed around your symptoms, lifestyle, and goals.',
@@ -1956,7 +1956,7 @@ treatmentsPorcess:
           src: '/images/treatments/laser-vaginal-therapy/benefits.jpg',
           alt: 'Woman feeling confident and comfortable',
         },
-        cta: { label: 'Request a consultation', href: '/book' },
+        cta: { label: 'Request a consultation', href: '/book-appointment' },
       },
       {
         type: 'feature-list',
@@ -2037,7 +2037,7 @@ treatmentsPorcess:
     closingCta: {
       title: 'Ready to love the way you feel again?',
       body: 'Schedule a private consultation for a confidential conversation of your symptoms and goals.',
-      cta: { label: 'Schedule a consultation', href: '/book' },
+      cta: { label: 'Schedule a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -2071,7 +2071,7 @@ treatmentsPorcess:
         src: '/images/treatments/perimenopause-menopause/hero.jpg',
         alt: 'An active mature woman, strength training',
       },
-      ctas: [{ label: 'Book a consultation', href: '/book' }],
+      ctas: [{ label: 'Book a consultation', href: '/book-appointment' }],
     },
 
     statement: 'Treatment plans designed around your symptoms, lifestyle, and goals.',
@@ -2273,7 +2273,7 @@ treatmentsPorcess:
     closingCta: {
       title: 'Ready to take the next step?',
       body: 'Start with a consultation.',
-      cta: { label: 'Book a consultation', href: '/book' },
+      cta: { label: 'Book a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -2310,7 +2310,7 @@ treatmentsPorcess:
         focalPoint: 'center 25%',
       },
       ctas: [
-        { label: 'Schedule a consultation', href: '/book' },
+        { label: 'Schedule a consultation', href: '/book-appointment' },
         { label: 'View financing options', href: '/financing-options' },
       ],
     },
@@ -2424,7 +2424,7 @@ treatmentsPorcess:
     closingCta: {
       title: 'Ready to take control of your sexual health?',
       body: 'Our treatments are discreet, effective, and personalized to meet your needs.',
-      cta: { label: 'Schedule a consultation', href: '/book' },
+      cta: { label: 'Schedule a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -2460,7 +2460,7 @@ treatmentsPorcess:
         src: '/images/treatments/sexual-wellness-women/hero.jpg',
         alt: 'A close, tender moment between a couple',
       },
-      ctas: [{ label: 'Book a consultation', href: '/book' }],
+      ctas: [{ label: 'Book a consultation', href: '/book-appointment' }],
     },
 
     statement: 'Treatment plans designed around your symptoms, lifestyle, and goals.',
@@ -2561,7 +2561,7 @@ treatmentsPorcess:
     closingCta: {
       title: 'Ready to take the next step?',
       body: 'Start with a consultation.',
-      cta: { label: 'Book a consultation', href: '/book' },
+      cta: { label: 'Book a consultation', href: '/book-appointment' },
     },
 
     seo: {
@@ -2599,7 +2599,7 @@ treatmentsPorcess:
         alt: 'An athletic man in a gym, representing restored strength and vitality',
         focalPoint: 'center 30%',
       },
-      ctas: [{ label: 'Book a consultation', href: '/book' }],
+      ctas: [{ label: 'Book a consultation', href: '/book-appointment' }],
     },
 
     sections: [
@@ -2704,7 +2704,7 @@ treatmentsPorcess:
     closingCta: {
       title: 'Get Started',
       body: 'Schedule Your Shockwave Therapy Consultation in Savannah. Private, discreet appointments with licensed providers at Savannah Age Management Medicine. Serving Savannah, Bluffton, Hilton Head, and Coastal Georgia.',
-      cta: { label: 'Book a consultation', href: '/book' },
+      cta: { label: 'Book a consultation', href: '/book-appointment' },
     },
 
     seo: {

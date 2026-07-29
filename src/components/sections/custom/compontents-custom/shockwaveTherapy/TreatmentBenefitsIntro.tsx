@@ -78,7 +78,7 @@ export function TreatmentBenefitsIntro({ darkCard, lightCard }: TreatmentBenefit
 
               <div className="mt-7">
                 <Button asChild size="lg">
-                  <Link href={lightCard.ctaHref ?? '/book'}>{lightCard.ctaLabel ?? 'Request a consultation'}</Link>
+                  <Link href={lightCard.ctaHref ?? '/book-appointment'}>{lightCard.ctaLabel ?? 'Request a consultation'}</Link>
                 </Button>
               </div>
             </div>

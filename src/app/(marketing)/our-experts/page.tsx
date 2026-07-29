@@ -41,7 +41,7 @@ export default async function ExpertsPage() {
       <ClosingCTA
         title="Ready to transform your health?"
         body="Take the first step towards a healthier, more vibrant you."
-        cta={{ label: 'Schedule a consultation', href: '/book' }}
+        cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
       />
     </>
   )

@@ -19,7 +19,7 @@ const STATIC_PAGES = [
   { path: '/our-experts', label: 'Our Experts' },
   { path: '/blog', label: 'Blog' },
   { path: '/news', label: 'News' },
-  { path: '/book', label: 'Book' },
+  { path: '/book-appointment', label: 'Book' },
   { path: '/privacy-policy', label: 'Privacy Policy' },
   { path: '/terms-and-conditions', label: 'Terms and Conditions' },
   { path: '/thank-you', label: 'Thank You' },

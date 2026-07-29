@@ -116,9 +116,9 @@ File: `src/app/(marketing)/in-the-news/page.tsx`
 - Add `export const metadata = buildMetadata({...})` following the same pattern as `our-experts/page.tsx`. Write a real title/description about press mentions, not a placeholder.
 - Add `{ path: '/in-the-news', changeFrequency: 'monthly', priority: 0.5 }` to `STATIC_ROUTES` in `src/app/sitemap.ts`.
 
-### Task 3.2 — Add canonical to `/book`
-File: `src/app/(marketing)/book/page.tsx`
-- Replace the manual `metadata: Metadata = {...}` object with `buildMetadata({ title, description, canonical: '/book' })` so it gets canonical + OG + robots automatically like every other page.
+### Task 3.2 — Add canonical to `/book-appointment`
+File: `src/app/(marketing)/book-appointment/page.tsx`
+- Replace the manual `metadata: Metadata = {...}` object with `buildMetadata({ title, description, canonical: '/book-appointment' })` so it gets canonical + OG + robots automatically like every other page.
 
 ### Task 3.3 — Noindex `/thank-you`
 File: `src/app/(marketing)/thank-you/page.tsx`
@@ -139,7 +139,7 @@ This is not a code task — it's a launch-day checklist item, since GA4/GTM/Meta
 - [ ] Confirm GA4 measurement ID is pasted into `headerScripts` in the admin panel (`/admin` → Settings)
 - [ ] Confirm GTM container (if used) fires — check via GTM Preview mode
 - [ ] Confirm Meta Pixel (if used) fires — check via Meta Pixel Helper browser extension
-- [ ] Confirm form submissions (`/book`, contact form) actually push a conversion event — check `src/actions/` for the form submit handlers and whether they call `gtag('event', ...)` / `dataLayer.push(...)` on success. If not, add a client-side event fire on successful submission.
+- [ ] Confirm form submissions (`/book-appointment`, contact form) actually push a conversion event — check `src/actions/` for the form submit handlers and whether they call `gtag('event', ...)` / `dataLayer.push(...)` on success. If not, add a client-side event fire on successful submission.
 - [ ] Confirm phone number click tracking (`tel:` links in Header/Footer) fires an event if call tracking is required.
 
 ### Task 4.3 — Keyword/meta description QA pass

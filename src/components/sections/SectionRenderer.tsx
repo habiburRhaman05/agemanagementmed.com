@@ -150,7 +150,7 @@ const registry: Record<string, (section: TreatmentBlockData, index: number) => R
         lead={paragraphsOf(section.content)[0]}
         included={included}
         note={paragraphsOf(section.content).slice(1).join(' ')}
-        cta={cta ?? { label: 'Schedule a consultation', href: '/book' }}
+        cta={cta ?? { label: 'Schedule a consultation', href: '/book-appointment' }}
       />
     )
   },
@@ -163,7 +163,7 @@ const registry: Record<string, (section: TreatmentBlockData, index: number) => R
         key={section.id}
         title={section.heading ?? ''}
         body={paragraphsOf(section.content).join(' ')}
-        cta={cta ?? { label: 'Get started', href: '/book' }}
+        cta={cta ?? { label: 'Get started', href: '/book-appointment' }}
       />
     )
   },

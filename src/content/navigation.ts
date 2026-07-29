@@ -124,15 +124,15 @@ export const primaryNav: NavLink[] = [
 export const footerNav = {
   practice: [
     { label: 'Our Experts', href: '/our-experts' },
-    { label: 'Patient Results', href: '/results' },
+    { label: 'Patients Review', href: '/reviews' },
     { label: 'In The News', href: '/in-the-news' },
     { label: 'Blogs', href: '/blog' },
-    { label: 'Office Policy', href: '/office-policy' },
-    { label: 'Book Appointment', href: '/book' },
+    { label: 'Book Appointment', href: '/book-appointment' },
   ] satisfies NavLink[],
   locations: [
   ] satisfies NavLink[],
   legal: [
+    { label: 'Office Policy', href: '/office-policy' },
     { label: 'Privacy Policy', href: '/privacy-policy' },
   ] satisfies NavLink[],
 }

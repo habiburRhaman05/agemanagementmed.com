@@ -320,7 +320,7 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
                     Our providers can help with your specific health concerns.
                   </p>
                   <Link
-                    href="/book"
+                    href="/book-appointment-appointment"
                     className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-emerald-700"
                   >
                     Book a consultation
@@ -576,7 +576,7 @@ export default async function BlogPostPage({ params }: Props) {
       <ClosingCTA
         title="Ready to transform your health?"
         body="Take the first step towards a healthier, more vibrant you."
-        cta={{ label: 'Schedule a consultation', href: '/book' }}
+        cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
       />
     </>
   )

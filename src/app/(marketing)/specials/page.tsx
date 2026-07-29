@@ -21,7 +21,7 @@ export default function SpecialsPage() {
       <ClosingCTA
         title="Ready to learn more or schedule an appointment?"
         body="Contact us today to speak with our team."
-        cta={{ label: 'Schedule a consultation', href: '/book' }}
+        cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
       />
     </>
   )

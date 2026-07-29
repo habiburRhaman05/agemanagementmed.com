@@ -41,9 +41,10 @@ export function ProgramStepsTimeline({ eyebrow, title, steps, stepImages }: Prog
                     sizes="96px"
                     className="object-cover"
                   />
-                  <span className="absolute -bottom-1 -right-1 flex size-8 items-center justify-center rounded-full bg-sage-600 font-display text-body-sm font-semibold text-canvas-50 ring-4 ring-canvas-50">
-                    {index + 1}
-                  </span>
+               {/* Fix: Change -bottom-1 -right-1 to bottom-1 right-1 */}
+<span className="absolute bottom-1 right-1 flex size-8 items-center justify-center rounded-full bg-sage-600 font-display text-body-sm font-semibold text-canvas-50 ring-4 ring-canvas-50">
+  {index + 1}
+</span>
                 </div>
 
                 <div>

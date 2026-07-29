@@ -338,7 +338,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
                 <input
                   value={cta.href}
                   onChange={(e) => setHeroCtas(heroCtas.map((c, j) => (j === i ? { ...c, href: e.target.value } : c)))}
-                  placeholder="/book"
+                  placeholder="/book-appointment"
                   className="block w-1/2 rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                 />
                 <button type="button" onClick={() => setHeroCtas(heroCtas.filter((_, j) => j !== i))} className="shrink-0 rounded-lg p-2 text-gray-400 hover:bg-red-50 hover:text-red-600">
@@ -412,7 +412,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
             <FieldError message={errors.closingCtaLabel?.message} />
           </div>
           <div className="w-1/2">
-            <input {...register('closingCtaHref')} placeholder="/book" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+            <input {...register('closingCtaHref')} placeholder="/book-appointment" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
             <FieldError message={errors.closingCtaHref?.message} />
           </div>
         </div>

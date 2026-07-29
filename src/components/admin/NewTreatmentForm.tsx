@@ -38,7 +38,7 @@ export function NewTreatmentForm() {
   const [status, setStatus] = useState<'draft' | 'published'>('draft')
   const [order, setOrder] = useState(0)
 
-  const [heroCtas, setHeroCtas] = useState<Cta[]>([{ label: 'Book a Consultation', href: '/book' }])
+  const [heroCtas, setHeroCtas] = useState<Cta[]>([{ label: 'Book a Consultation', href: '/book-appointment' }])
   const [faqs, setFaqs] = useState<{ question: string; answer: string }[]>([])
 
   const [advancedJson, setAdvancedJson] = useState('{}')
@@ -85,7 +85,7 @@ export function NewTreatmentForm() {
       closingTitle: '',
       closingBody: '',
       closingCtaLabel: 'Book a Consultation',
-      closingCtaHref: '/book',
+      closingCtaHref: '/book-appointment',
       seoTitle: '',
       seoDescription: '',
     },
@@ -347,7 +347,7 @@ export function NewTreatmentForm() {
                 <input
                   value={cta.href}
                   onChange={(e) => setHeroCtas(heroCtas.map((c, j) => (j === i ? { ...c, href: e.target.value } : c)))}
-                  placeholder="/book"
+                  placeholder="/book-appointment"
                   className={`${inputClass} w-1/2`}
                 />
                 <button
@@ -419,7 +419,7 @@ export function NewTreatmentForm() {
             <FieldError message={errors.closingCtaLabel?.message} />
           </div>
           <div className="w-1/2">
-            <input {...register('closingCtaHref')} placeholder="/book" className={inputClass} />
+            <input {...register('closingCtaHref')} placeholder="/book-appointment" className={inputClass} />
             <FieldError message={errors.closingCtaHref?.message} />
           </div>
         </div>

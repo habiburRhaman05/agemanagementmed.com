@@ -20,7 +20,7 @@ export function ClosingCTA({ title, body, cta }: ClosingCtaData) {
             <p className="mx-auto mt-6 max-w-lg text-body-lg text-canvas-50/70">{body}</p>
 
             <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-              <Button asChild size="lg" variant="inverse">
+              <Button asChild size="lg" variant="primary">
                 <Link href={cta.href}>{cta.label}</Link>
               </Button>
               <Button asChild size="lg" variant="outlineInverse">

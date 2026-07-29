@@ -15,7 +15,7 @@ export const site = {
   email: 'info@agemanagementmed.com',
   emailHref: 'mailto:info@agemanagementmed.com',
   tagline: 'Optimize your health. Optimize your life.',
-  bookingHref: '/book',
+  bookingHref: '/book-appointment',
   legal: {
     copyright: `Copyright © ${new Date().getFullYear()} Savannah Age Management Medicine. All Rights Reserved.`,
     /**

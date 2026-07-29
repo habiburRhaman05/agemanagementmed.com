@@ -44,7 +44,7 @@ export function SexualHealthConcerns({
   featuresParagraphs,
   features,
   ctaLabel = 'Schedule a consultation',
-  ctaHref = '/book',
+  ctaHref = '/book-appointment',
 }: SexualHealthConcernsProps) {
   return (
     <Section background="page" spacing="md">

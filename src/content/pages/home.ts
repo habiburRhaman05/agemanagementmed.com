@@ -29,7 +29,7 @@ export const homeContent = {
       alt: 'A family together outdoors, representing sustained health and vitality',
     },
     ctas: [
-      { label: 'Book a consultation', href: '/book' },
+      { label: 'Book a consultation', href: '/book-appointment' },
       { label: 'Explore treatments', href: '/bioidentical-hormone-replacement-therapy' },
     ],
     meta: 'Pooler · Statesboro · Since 2010',
@@ -143,6 +143,6 @@ export const homeContent = {
   closingCta: {
     title: 'Ready to transform your health?',
     body: 'Take the first step towards a healthier, more vibrant you.',
-    cta: { label: 'Schedule a consultation', href: '/book' },
+    cta: { label: 'Schedule a consultation', href: '/book-appointment' },
   } satisfies ClosingCtaData,
 }

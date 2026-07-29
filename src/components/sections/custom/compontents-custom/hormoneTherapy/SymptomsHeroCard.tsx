@@ -31,7 +31,7 @@ export function SymptomsHeroCard({
   groups,
   closingNote,
   ctaLabel = 'Schedule a consultation',
-  ctaHref = '/book',
+  ctaHref = '/book-appointment',
 }: SymptomsHeroCardProps) {
   return (
     <Section background="page" spacing="md">

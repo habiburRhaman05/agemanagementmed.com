@@ -61,7 +61,7 @@ export function SymptomsIntroCards({ darkCard, lightCard }: SymptomsIntroCardsPr
 
               <div className="mt-7">
                 <Button asChild size="lg">
-                  <Link href={darkCard.ctaHref ?? '/book'}>{darkCard.ctaLabel ?? 'Schedule a consultation'}</Link>
+                  <Link href={darkCard.ctaHref ?? '/book-appointment'}>{darkCard.ctaLabel ?? 'Schedule a consultation'}</Link>
                 </Button>
               </div>
             </div>

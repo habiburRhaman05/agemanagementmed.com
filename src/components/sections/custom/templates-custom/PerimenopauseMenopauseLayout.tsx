@@ -33,7 +33,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
       <SymptomsIntroCards
         darkCard={{
           image: {
-            src: 'https://picsum.photos/seed/menopause-ignore/1200/900',
+            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785337975/donnt-ignorre-sympth_j7eqyv.jpg',
             alt: 'A woman speaking with her provider about her symptoms',
           },
           heading: "Don't Ignore Your Symptoms",
@@ -41,12 +41,12 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
             "You don't have to push through exhaustion, brain fog, mood swings, or stubborn weight gain alone. Our team can help you understand what's happening and build a treatment plan that supports your health now and long term.",
           ],
           ctaLabel: 'Schedule a consultation',
-          ctaHref: '/book',
+          ctaHref: '/book-appointment',
         }}
         lightCard={{
           image: {
-            src: 'https://picsum.photos/seed/menopause-symptoms/1200/900',
-            alt: 'A woman outdoors feeling confident and well',
+            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338006/under-symptth_rcghu3.jpg',
+            alt: 'Common Symptoms Of Perimenopause And Menopause',
           },
           heading: 'Common Symptoms Of Perimenopause And Menopause',
           paragraphs: [
@@ -72,7 +72,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
       <LifestyleAndEvaluation
         lifestylePanel={{
           image: {
-            src: 'https://picsum.photos/seed/menopause-lifestyle/900/1125',
+            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338030/why-life-chnage_jjgcsr.jpg',
             alt: 'A woman practicing a healthy, active lifestyle',
           },
           heading: "Why Lifestyle Changes Aren't Always Enough",
@@ -84,7 +84,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         }}
         evaluationPanel={{
           image: {
-            src: 'https://picsum.photos/seed/menopause-evaluation/1200/900',
+            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338054/photo-content-92-img_nitez0.jpg',
             alt: 'A provider reviewing lab results with a patient',
           },
           heading: 'How We Evaluate And Treat Menopausal Hormonal Imbalance',
@@ -149,7 +149,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
 
       <TextImagePanel
         image={{
-          src: 'https://picsum.photos/seed/menopause-choose-samm/1000/750',
+          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338093/why-woman-chose-samm_g7evxb.jpg',
           alt: 'A patient consulting with her SAMM provider',
         }}
         imageSide="left"
@@ -166,7 +166,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
 
       <TextImagePanel
         image={{
-          src: 'https://picsum.photos/seed/menopause-notice/1000/1250',
+          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338393/What_Patients_Often_vuuuis.jpg',
           alt: 'A woman enjoying renewed energy and confidence',
         }}
         imageSide="right"

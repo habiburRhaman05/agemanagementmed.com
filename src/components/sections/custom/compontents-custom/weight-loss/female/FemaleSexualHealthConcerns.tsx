@@ -162,7 +162,7 @@ const FemaleSexualHealthConcerns: React.FC = () => {
 
         <div className="mt-10 text-center">
           <Button asChild size="lg">
-            <Link href="/book">
+            <Link href="/book-appointment">
               Schedule a consultation
               <ArrowRight className="size-4" aria-hidden />
             </Link>

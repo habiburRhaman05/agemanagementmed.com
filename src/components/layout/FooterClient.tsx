@@ -24,11 +24,7 @@ interface FooterClientProps {
   socialLinks: SiteSettingsData['socialLinks']
 }
 
-/**
- * Footer with staggered column reveals — each column fades up at 60ms intervals
- * so the footer unfolds left-to-right as it enters the viewport, consistent
- * with the StaggerGroup pattern used throughout the app.
- */
+
 export function FooterClient({ logoUrl, socialLinks }: FooterClientProps) {
   return (
     <footer className="relative overflow-hidden border-t border-white/5 bg-ink-900 text-canvas-50">

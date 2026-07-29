@@ -146,9 +146,9 @@ Current behavior in `SocialLinks.tsx`: it filters out any platform without a URL
 File: `src/content/navigation.ts` — `footerNav.practice` array currently has Our Experts, Patient Results, In The News, Blogs. Add:
 ```ts
 { label: 'Office Policy', href: '/office-policy' },
-{ label: 'Book Appointment', href: '/book' },
+{ label: 'Book Appointment', href: '/book-appointment' },
 ```
-Confirm both routes actually exist (`src/app/(marketing)/office-policy/page.tsx` and `src/app/(marketing)/book/page.tsx` — both already exist per the current codebase, this is a content-array change only, no new pages needed).
+Confirm both routes actually exist (`src/app/(marketing)/office-policy/page.tsx` and `src/app/(marketing)/book-appointment/page.tsx` — both already exist per the current codebase, this is a content-array change only, no new pages needed).
 
 ### 4.3 — Cleanup (do this, it's one line and directly in the file you're already touching)
 `src/components/layout/Footer.tsx` has a stray `console.log(settings)` — remove it. Nothing else in this file changes.

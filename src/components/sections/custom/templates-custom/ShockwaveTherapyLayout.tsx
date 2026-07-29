@@ -87,7 +87,7 @@ export async function ShockwaveTherapyLayout({ treatment }: TreatmentTemplatePro
             'May support improved response for men who have experienced reduced effectiveness with PDE5 inhibitors',
           ],
           ctaLabel: 'Request a consultation',
-          ctaHref: '/book',
+          ctaHref: '/book-appointment',
         }}
       />
 

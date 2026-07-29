@@ -123,7 +123,7 @@ function PersonModal({ person, onClose }: { person: Person; onClose: () => void 
               {/* CTA */}
               <div className="mt-8 pt-6 border-t border-canvas-300">
                 <Button asChild size="md" variant="primary">
-                  <Link href="/book">Book a consultation</Link>
+                  <Link href="/book-appointment">Book a consultation</Link>
                 </Button>
               </div>
             </div>
@@ -156,40 +156,32 @@ export function PeopleGrid({
                 <div className="group relative flex h-full flex-col items-center rounded-2xl border border-canvas-300 bg-white p-6 pb-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-sage-600/30 hover:shadow-lg">
 
                   {/* Portrait with hover overlay */}
-                  <button
-                    type="button"
-                    onClick={() => setActivePerson(person)}
-                    aria-label={`View details for ${person.name}`}
-                    className="relative mx-auto block size-32 shrink-0 sm:size-36 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:ring-offset-2 rounded-full"
-                  >
-                    {/* Photo */}
-                    <div className="relative size-full overflow-hidden rounded-full">
-                      <Image
-                        src={person.portrait.src}
-                        alt={person.portrait.alt}
-                        fill
-                        sizes="160px"
-                        className={cn(
-                          'object-cover object-top transition-all duration-500',
-                          'group-hover:scale-[1.04]',
-                        )}
-                      />
+<button
+  type="button"
+  onClick={() => setActivePerson(person)}
+  title={`View profile: ${person.name}`} // Simple tooltip fallback
+  className="relative mx-auto block size-32 shrink-0 sm:size-36 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:ring-offset-2 rounded-full"
+>
+  {/* Photo */}
+  <div className="relative size-full overflow-hidden rounded-full bg-sage-50">
+    <Image
+      src={person.portrait.src}
+      alt={person.portrait.alt}
+      fill
+      sizes="160px"
+      className={cn(
+        'object-cover object-top transition-all duration-500',
+        'group-hover:scale-[1.04]',
+      )}
+    />
+  </div>
 
-                      {/* Hover overlay */}
-                      <div className="absolute inset-0 flex flex-col items-center justify-center rounded-full bg-ink-950/55 opacity-0 transition-all duration-300 group-hover:opacity-100">
-                        <ZoomIn className="size-7 text-canvas-50 drop-shadow-md" />
-                        <span className="mt-1.5 text-label font-semibold uppercase tracking-wider text-canvas-50/90">
-                          View
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Sage ring that grows on hover */}
-                    <span
-                      className="pointer-events-none absolute inset-0 rounded-full ring-0 ring-sage-600/40 transition-all duration-300 group-hover:ring-4"
-                      aria-hidden
-                    />
-                  </button>
+  {/* Sage ring that grows on hover */}
+  <span
+    className="pointer-events-none absolute inset-0 rounded-full ring-0 ring-sage-600/40 transition-all duration-300 group-hover:ring-4"
+    aria-hidden
+  />
+</button>
 
                   {/* Name & role — pushed to bottom so cards align */}
                   <div className="mt-5 flex flex-1 flex-col justify-end">
@@ -197,7 +189,7 @@ export function PeopleGrid({
                       className="cursor-pointer text-title-md font-display transition-colors duration-300 group-hover:text-sage-700"
                       onClick={() => setActivePerson(person)}
                     >
-                      {person.name}
+                      {person.name} <br/>
                       {person.credentials ? (
                         <span className="text-canvas-600">, {person.credentials}</span>
                       ) : null}
@@ -225,4 +217,4 @@ export function PeopleGrid({
       ) : null}
     </>
   )
-}
+};

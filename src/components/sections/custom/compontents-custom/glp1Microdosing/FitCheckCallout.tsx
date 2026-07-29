@@ -24,7 +24,7 @@ export function FitCheckCallout({
   lead,
   points,
   ctaLabel = 'Schedule a consultation',
-  ctaHref = '/book',
+  ctaHref = '/book-appointment',
 }: FitCheckCalloutProps) {
   return (
     <Section background="page" spacing="md">

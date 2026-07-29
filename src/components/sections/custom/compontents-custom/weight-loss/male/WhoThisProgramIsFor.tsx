@@ -76,6 +76,7 @@ const WhoThisProgramIsFor: React.FC = () => {
     <Section background="alt" spacing="lg">
       <Container width="wide">
         <div className="space-y-8">
+        
           <EditorialCard
             eyebrow="Is this you?"
             title="Who This Program Is For"
