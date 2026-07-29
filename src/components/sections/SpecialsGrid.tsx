@@ -7,11 +7,12 @@ import { Container } from '@/components/shared/Container'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
 import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
-import { BookingForm } from '@/components/shared/book-appointmentingForm'
+
 import { Button } from '@/components/ui/Button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import type { Special, SpecialLocation } from '@/content/pages/specials'
 import { cn } from '@/lib/utils'
+import { BookingForm } from '../shared/BookingForm'
 
 interface LocationTab {
   id: 'all' | SpecialLocation

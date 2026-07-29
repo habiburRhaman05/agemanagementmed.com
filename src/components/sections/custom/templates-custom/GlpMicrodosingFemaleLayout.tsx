@@ -37,7 +37,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
       <MetabolicOverviewCards
         darkCard={{
           image: {
-            src: 'https://picsum.photos/seed/glp-female-overview/1200/900',
+            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341609/A_Sophisticated_Approach_To_Sustainable_Metabolic_Health_t0butq.jpg',
             alt: 'A woman measuring her waist to track metabolic progress',
           },
           heading: 'A Sophisticated Approach To Sustainable Metabolic Health',
