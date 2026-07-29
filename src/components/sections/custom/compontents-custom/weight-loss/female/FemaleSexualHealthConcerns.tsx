@@ -82,7 +82,7 @@ const FemaleSexualHealthConcerns: React.FC = () => {
           <div className="grid overflow-hidden rounded-3xl bg-ink-950 shadow-xl lg:grid-cols-[42%_58%]">
             <div className="relative min-h-64 lg:min-h-full">
               <Image
-                src="https://www.agemanagementmed.com/themes/default/assets/images/photo-content-46-img.jpg"
+                src="https://res.cloudinary.com/khs2rcsr/image/upload/v1785348763/sexual-wellniess_j4jzp4.jpg"
                 alt="A woman reflecting on changes to her intimacy and wellness"
                 fill
                 sizes="(min-width: 1024px) 42vw, 100vw"

@@ -12,6 +12,7 @@ import { AuthorityTrustCard } from '../compontents-custom/hormoneTherapy/Authori
 import { CostIncludedGrid } from '../compontents-custom/hormoneTherapy/CostIncludedGrid'
 import { SafetyAndCandidacy } from '../compontents-custom/hormoneTherapy/SafetyAndCandidacy'
 import { SymptomsHeroBanner } from '../compontents-custom/hormoneTherapy/SymptomsHeroBanner'
+import { BhrtHowItWorksSection } from '../compontents-custom/hormoneTherapy/BhrtHowItWorksSection'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
@@ -38,7 +39,7 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
 
       {treatment.symptoms ? (
         <SymptomsHeroBanner
-          image={treatment.hero.image}
+          image={{...treatment.hero.image,src:"https://res.cloudinary.com/khs2rcsr/image/upload/v1785352037/column-box-7-img_ks0u8m.jpg"}}
           heading={treatment.symptoms.title}
           lead={treatment.symptoms.lead ?? ''}
           groups={treatment.symptoms.items}
@@ -52,9 +53,24 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
         <SectionRenderer key={index} section={section} index={index} />
       ))} */}
 
+  <BhrtHowItWorksSection
+  eyebrow="BHRT"
+  title="How Bioidentical Hormone Therapy For Women Works"
+  description="BHRT uses plant-derived hormones designed to closely match the body's natural hormones. At SAMM, therapy plans are personalized using detailed lab testing combined with symptom evaluation and health history review."
+  supportLabel="Treatment May Support:"
+  benefits={[
+    { icon: 'energy', label: 'Energy and Sleep Quality' },
+    { icon: 'wellness', label: 'Sexual Wellness and Vaginal Health' },
+    { icon: 'mood', label: 'Mood Stability and Mental Clarity' },
+    { icon: 'menopause', label: 'Menopause and Perimenopause Symptom Relief' },
+    { icon: 'metabolic', label: 'Metabolic Balance and Body Composition' },
+  ]}
+/>
+
       <SafetyAndCandidacy
+      bg=''
         image={{
-          src: 'https://picsum.photos/seed/bhrt-women-safety/1000/750',
+          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785352168/photo-content-43-img_caanhm.jpg',
           alt: 'A provider reviewing treatment safety and candidacy with a patient',
         }}
         imageSide="left"

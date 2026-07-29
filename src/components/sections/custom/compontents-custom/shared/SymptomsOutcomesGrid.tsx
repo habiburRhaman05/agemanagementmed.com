@@ -15,14 +15,15 @@ export interface SymptomsOutcomesGridProps {
   title: string
   lead?: string
   items: SymptomOutcomeItem[]
+  align?:"left" | "center"
 }
 
 /** Reusable "symptoms & outcomes" grid — icon-left cards, two columns. Content-driven. */
-export function SymptomsOutcomesGrid({ title, lead, items }: SymptomsOutcomesGridProps) {
+export function SymptomsOutcomesGrid({ title, lead, items,align="left" }: SymptomsOutcomesGridProps) {
   return (
     <Section background="alt" spacing="md">
       <Container>
-        <SectionHeader title={title} lead={lead} align="left" size="md" />
+        <SectionHeader title={title} lead={lead} align={align} size="md" />
 
         <StaggerGroup as="ul" stagger={0.06} className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {items.map((item) => (

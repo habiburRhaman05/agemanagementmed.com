@@ -12,6 +12,7 @@ import { CostIncludedGrid } from '../compontents-custom/hormoneTherapy/CostInclu
 import { ProgramStepsTimeline } from '../compontents-custom/hormoneTherapy/ProgramStepsTimeline'
 import { SafetyAndCandidacy } from '../compontents-custom/hormoneTherapy/SafetyAndCandidacy'
 import { SymptomsHeroCard } from '../compontents-custom/hormoneTherapy/SymptomsHeroCard'
+import { BeforeAfterSliderSection } from '../compontents-custom/hormoneTherapy/BeforeAfterSliderSection'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
@@ -62,8 +63,33 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
       ) : null}
 
       <SafetyAndCandidacy
+      bg='bg-sage-100'
         image={{
-          src: 'https://picsum.photos/seed/bhrt-men-safety/1000/750',
+          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350545/photo-content-38-img_lxshmc.jpg',
+          alt: 'A provider reviewing treatment safety with a male patient',
+        }}
+        imageSide="left"
+        heading="Monitoring & Adjustments:
+How We Track Progress"
+        paragraphs={[
+          'At Savannah Age Management Medicine, we continuously monitor both lab values and symptom improvement to ensure your treatment remains safe, effective, and aligned with your goals. Your plan may be adjusted over time based on:',
+        ]}
+        questionsLabel="Common patient questions we address:"
+        questions={[
+          'Follow-up lab results',
+          'Symptom changes',
+          'Lifestyle, training, or health changes',
+
+        ]}
+        closingParagraph="Follow-up cadence and lab intervals will be confirmed with the clinical team prior to publishing final timelines."
+        disclaimer="
+
+"
+      />
+      <SafetyAndCandidacy
+      bg=''
+        image={{
+          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350494/safety-img_xtu6j4.jpg',
           alt: 'A provider reviewing treatment safety with a male patient',
         }}
         imageSide="right"
@@ -102,6 +128,25 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
         ]}
         note="Insurance commonly covers lab work but may not cover hormone medications. Flexible financing options are available through PatientFi to help make treatment more accessible."
         cta={treatment.pricing?.cta}
+      />
+
+      <BeforeAfterSliderSection 
+
+        title="Real Results, Real Confidence" 
+        description="Explore the actual transformations achieved through our advanced treatments. These are real patient outcomes, showing the power of our technology and expertise."
+        slides={[
+          {
+            beforeImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351204/before-img_jzflom.jpg",
+            afterImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351203/after-img_uwehcq.jpg",
+            alt: "Hair restoration patient"
+          },
+          {
+            beforeImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351203/after-img_uwehcq.jpg",
+            afterImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351203/after-img_uwehcq.jpg",
+            alt: "Skin rejuvenation patient"
+          },
+         
+        ]}
       />
 
       {testimonials.length ? (

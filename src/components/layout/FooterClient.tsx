@@ -150,18 +150,33 @@ export function FooterClient({ logoUrl, socialLinks }: FooterClientProps) {
           </Reveal>
         </div>
 
-        <div className="flex flex-col gap-4 border-t border-canvas-50/10 pt-6 pb-4 text-body-sm text-canvas-50/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>{site.legal.copyright}</p>
-          <ul className="flex gap-6">
-            {footerNav.legal.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="transition-colors hover:text-canvas-50">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+     <div className="flex flex-col gap-4 border-t border-canvas-50/10 pt-6 pb-4 text-body-sm text-canvas-50/50 sm:flex-row sm:items-center sm:justify-between">
+  {/* Left Side: Copyright + Company Mark */}
+  <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+    {site.legal.copyright}
+    
+  </p>
+
+  {/* Right Side: Legal Links + Developer Attribution */}
+  <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+    <ul className="flex flex-wrap gap-x-6 gap-y-2">
+      {footerNav.legal.map((item) => (
+        <li key={item.href}>
+          <Link href={item.href} className="transition-colors hover:text-canvas-50">
+            {item.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+    <span className="whitespace-nowrap">
+      Developed by <span className="font-medium text-canvas-50 hover:text-white transition-colors  ml-2">
+      <a href='https://ghlprime.com' target='_blank'>
+        GHLPrime
+      </a>
+      </span>
+    </span>
+  </div>
+</div>
       </Container>
     </footer>
   )

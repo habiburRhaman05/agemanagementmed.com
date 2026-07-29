@@ -87,7 +87,8 @@ export function TreatmentBenefitsIntro({ darkCard, lightCard }: TreatmentBenefit
               <Image
                 src={lightCard.image.src}
                 alt={lightCard.image.alt}
-                fill
+                width={500000000}
+                height={500000000}
                 sizes="(min-width: 1024px) 42vw, 100vw"
                 className="object-cover"
                 style={{ objectPosition: lightCard.image.focalPoint ?? 'center' }}

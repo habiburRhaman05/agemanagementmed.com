@@ -19,7 +19,7 @@ function isTypedSection(section: TreatmentSection): section is TreatmentBlockDat
 }
 
 /** Legacy items key off `title`; typed blocks key off `id` (falling back to index either way). */
-function sectionKey(section: TreatmentSection, index: number): string | number {
+export function sectionKey(section: TreatmentSection, index: number): string | number {
   if (isTypedSection(section)) return section.id ?? `${section.type}-${index}`
   return section.title ?? index
 }

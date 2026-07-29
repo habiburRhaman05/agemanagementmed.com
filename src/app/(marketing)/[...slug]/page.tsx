@@ -19,6 +19,7 @@ import { ShockwaveTherapyLayout } from '@/components/sections/custom/templates-c
 import { PerimenopauseMenopauseLayout } from '@/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout'
 import { HormoneTherapyMenLayout } from '@/components/sections/custom/templates-custom/HormoneTherapyMenLayout'
 import { HormoneTherapyWomenLayout } from '@/components/sections/custom/templates-custom/HormoneTherapyWomenLayout'
+import { LaserTreatMentLayout } from '@/components/sections/custom/templates-custom/LaserTreatmentLayout'
 
 /**
  * Single dynamic route serving every treatment page — replaces the 15
@@ -117,6 +118,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
           return <HormoneTherapyMenLayout treatment={treatment}/>
         case "hormone-therapy-women":
           return <HormoneTherapyWomenLayout treatment={treatment}/>
+        case "laser-vaginal-therapy":
+          return <LaserTreatMentLayout treatment={treatment}/>
       default:
        return <TreatmentTemplate
         treatment={treatment}

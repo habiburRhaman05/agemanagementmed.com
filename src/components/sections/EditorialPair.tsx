@@ -79,7 +79,7 @@ export function EditorialPair({
             ) : null}
 
             {cta ? (
-              <Button asChild variant="secondary" className="mt-10">
+              <Button asChild variant="secondary" className="mt-10 max-w-content">
                 <Link href={cta.href}>{cta.label}</Link>
               </Button>
             ) : null}

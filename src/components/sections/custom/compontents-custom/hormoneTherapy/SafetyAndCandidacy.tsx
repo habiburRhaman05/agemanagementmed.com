@@ -16,6 +16,7 @@ export interface SafetyAndCandidacyProps {
   closingParagraph?: string
   disclaimerLabel?: string
   disclaimer: string
+  bg: string
 }
 
 /** Plain image + text safety/candidacy panel, no card chrome — ends in a medical disclaimer. */
@@ -29,6 +30,7 @@ export function SafetyAndCandidacy({
   closingParagraph,
   disclaimerLabel = 'Medical Disclaimer:',
   disclaimer,
+  bg
 }: SafetyAndCandidacyProps) {
   const textContent = (
     <div>
@@ -68,7 +70,8 @@ export function SafetyAndCandidacy({
       <Image
         src={image.src}
         alt={image.alt}
-        fill
+        width={50000}
+        height={50000}
         sizes="(min-width: 1024px) 42vw, 100vw"
         className="object-cover"
         style={{ objectPosition: image.focalPoint ?? 'center' }}
@@ -77,7 +80,7 @@ export function SafetyAndCandidacy({
   )
 
   return (
-    <Section background="page" spacing="md">
+    <Section background="page" spacing="md" className={bg}>
       <Container>
         <Reveal>
           <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
