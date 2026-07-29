@@ -36,7 +36,15 @@ type FormValues = z.infer<typeof schema>
  * ⚠ Submission is not wired to a backend yet — it validates and shows a
  * confirmation state. Needs a real endpoint (email/CRM) before launch.
  */
-export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlug }) {
+interface BookingFormProps {
+  defaultLocation?: LocationSlug
+  /** Overrides the "Consultation at ..." service label — e.g. to tag a claimed special. */
+  serviceLabel?: string
+  /** Overrides the submit button's default "Schedule a consultation" label. */
+  submitLabel?: string
+}
+
+export function BookingForm({ defaultLocation, serviceLabel, submitLabel }: BookingFormProps) {
   const router = useRouter()
 
   const {
@@ -63,11 +71,12 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
         formData.append('phone', data.phone)
         formData.append(
           'service',
-          `Consultation at ${
-            data.location === 'savannah-pooler'
-              ? 'Savannah/Pooler'
-              : 'Statesboro'
-          }`
+          serviceLabel ??
+            `Consultation at ${
+              data.location === 'savannah-pooler'
+                ? 'Savannah/Pooler'
+                : 'Statesboro'
+            }`
         )
         formData.append('preferredTime', data.preferredDate)
         formData.append('message', `Location: ${data.location}`)
@@ -212,7 +221,7 @@ export function BookingForm({ defaultLocation }: { defaultLocation?: LocationSlu
         disabled={isSubmitting}
         className="w-full sm:min-w-[240px] sm:w-auto"
       >
-        {isSubmitting ? 'Submitting…' : 'Schedule a consultation'}
+        {isSubmitting ? 'Submitting…' : (submitLabel ?? 'Schedule a consultation')}
       </Button>
     </form>
   )
