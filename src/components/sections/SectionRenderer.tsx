@@ -3,10 +3,16 @@ import type { ReactNode } from 'react'
 import { BeforeAfterShowcase } from '@/components/sections/BeforeAfterShowcase'
 import { BenefitList } from '@/components/sections/BenefitList'
 import { ContentSlider } from '@/components/sections/ContentSlider'
+import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { EditorialPair } from '@/components/sections/EditorialPair'
+import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { Notice } from '@/components/sections/Notice'
+import { PricingBlock } from '@/components/sections/PricingBlock'
+import { ProcessSteps } from '@/components/sections/ProcessSteps'
 import { ReviewerBio } from '@/components/sections/ReviewerBio'
-import type { BenefitItem, IconSpec, Media, TreatmentBlockData, TreatmentSection } from '@/types/content'
+import { StatementBand } from '@/components/sections/StatementBand'
+import { TestimonialSet } from '@/components/sections/TestimonialSet'
+import type { BenefitItem, FaqItem, IconSpec, Media, TreatmentBlockData, TreatmentSection } from '@/types/content'
 
 function isTypedBlock(section: TreatmentSection): section is TreatmentBlockData {
   return typeof (section as TreatmentBlockData).type === 'string'
@@ -34,16 +40,13 @@ function toBenefitItem(card: Record<string, unknown>): BenefitItem {
 }
 
 /**
- * type -> adapter. Each adapter's only job is reshaping the loose JSON block
- * into props for an existing, pure presentational component — no business
- * logic lives in the components themselves (BenefitList, EditorialPair, etc.
- * are unchanged). A future section kind is one new entry here plus, if no
- * existing component fits, one new small component — the registry and this
- * file's structure never need to change.
- *
- * Every adapter receives the section's `design` and `id` for CSS override.
+ * type -> adapter. Each adapter reshapes the loose JSON block into props
+ * for an existing presentational component. New section kinds = one new
+ * entry here + optionally one new component.
  */
 const registry: Record<string, (section: TreatmentBlockData, index: number) => ReactNode> = {
+
+  /* ── Feature / Benefit List ─────────────────────────────────── */
   'feature-list': (section, index) => (
     <BenefitList
       key={section.id}
@@ -58,13 +61,14 @@ const registry: Record<string, (section: TreatmentBlockData, index: number) => R
     />
   ),
 
+  /* ── Notice / Callout ───────────────────────────────────────── */
   notice: (section) => <Notice key={section.id} text={paragraphsOf(section.content).join(' ')} />,
 
+  /* ── Reviewer Bio ───────────────────────────────────────────── */
   'reviewer-bio': (section, index) => {
     const portrait = section.images?.[0]
     const bio = paragraphsOf(section.content)
     if (!portrait || !bio.length) return null
-
     return (
       <ReviewerBio
         key={section.id}
@@ -76,12 +80,12 @@ const registry: Record<string, (section: TreatmentBlockData, index: number) => R
     )
   },
 
+  /* ── Before/After Slider ────────────────────────────────────── */
   'before-after-slider': (section, index) => {
     const pairs = (section.cards ?? [])
       .map((card) => card as { before?: Media; after?: Media })
       .filter((card): card is { before: Media; after: Media } => Boolean(card.before && card.after))
     if (!pairs.length) return null
-
     return (
       <BeforeAfterShowcase
         key={section.id}
@@ -93,43 +97,124 @@ const registry: Record<string, (section: TreatmentBlockData, index: number) => R
     )
   },
 
-  /* ── NEW: Icon Card Grid ──────────────────────────────────────── */
-  'icon-card-list': (section, index) => {
-    const items = (section.cards ?? []).map(toBenefitItem)
+  /* ── Editorial / Two-Column ─────────────────────────────────── */
+  'editorial': (section, index) => {
+    const bodyArray = paragraphsOf(section.content)
+    const image = section.images?.[0]
+    if (!bodyArray.length && !section.heading) return null
+    if (!image) return null
     return (
-      <BenefitList
+      <EditorialPair
         key={section.id}
+        eyebrow={section.eyebrow}
         title={section.heading ?? ''}
-        lead={paragraphsOf(section.content)[0]}
-        columns={3}
-        cardStyle
-        items={items}
+        body={bodyArray}
+        bullets={section.cards?.map((c) => String(c.title ?? c.description ?? ''))}
+        image={{ src: image.src, alt: image.alt }}
+        imageSide={index % 2 === 0 ? 'right' : 'left'}
         background={index % 2 === 0 ? 'alt' : 'page'}
-        design={section.design}
-        sectionId={sectionId(section, index)}
       />
     )
   },
 
-  /* ── NEW: Icon Feature List (ruled rows with icons) ───────────── */
-  'icon-feature-list': (section, index) => {
-    const items = (section.cards ?? []).map(toBenefitItem)
+  /* ── FAQ Section ────────────────────────────────────────────── */
+  'faq': (section, index) => {
+    const faqs = (section.cards ?? [])
+      .map((card) => ({
+        question: String(card.title ?? ''),
+        answer: String(card.description ?? card.body ?? ''),
+      }))
+      .filter((faq): faq is FaqItem => Boolean(faq.question && faq.answer))
+    if (!faqs.length) return null
     return (
-      <BenefitList
+      <FAQAccordion
         key={section.id}
-        title={section.heading ?? ''}
+        eyebrow={section.eyebrow}
+        title={section.heading ?? 'Frequently Asked Questions'}
         lead={paragraphsOf(section.content)[0]}
-        columns={2}
-        numbered={false}
-        items={items}
-        background={index % 2 === 0 ? 'alt' : 'page'}
-        design={section.design}
-        sectionId={sectionId(section, index)}
+        items={faqs}
+        background={index % 2 === 0 ? 'page' : 'alt'}
       />
     )
   },
 
-  /* ── NEW: Content Slider / Carousel ────────────────────────────── */
+  /* ── Pricing Block ──────────────────────────────────────────── */
+  'pricing': (section) => {
+    const included = (section.cards ?? []).map((card) => String(card.title ?? ''))
+    const cta = section.buttons?.[0]
+    return (
+      <PricingBlock
+        key={section.id}
+        eyebrow={section.eyebrow}
+        title={section.heading ?? ''}
+        lead={paragraphsOf(section.content)[0]}
+        included={included}
+        note={paragraphsOf(section.content).slice(1).join(' ')}
+        cta={cta ?? { label: 'Schedule a consultation', href: '/book' }}
+      />
+    )
+  },
+
+  /* ── Closing CTA ────────────────────────────────────────────── */
+  'closing-cta': (section) => {
+    const cta = section.buttons?.[0]
+    return (
+      <ClosingCTA
+        key={section.id}
+        title={section.heading ?? ''}
+        body={paragraphsOf(section.content).join(' ')}
+        cta={cta ?? { label: 'Get started', href: '/book' }}
+      />
+    )
+  },
+
+  /* ── Statement Band ─────────────────────────────────────────── */
+  'statement': (section) => {
+    const text = section.heading || paragraphsOf(section.content).join(' ')
+    if (!text) return null
+    return <StatementBand key={section.id} text={text} background="alt" />
+  },
+
+  /* ── Process Steps ──────────────────────────────────────────── */
+  'process': (section, index) => {
+    const steps = (section.cards ?? []).map((card) => ({
+      title: String(card.title ?? ''),
+      body: String(card.description ?? card.body ?? ''),
+    }))
+    if (!steps.length) return null
+    return (
+      <ProcessSteps
+        key={section.id}
+        eyebrow={section.eyebrow}
+        title={section.heading ?? ''}
+        lead={paragraphsOf(section.content)[0]}
+        steps={steps}
+        background={index % 2 === 0 ? 'page' : 'alt'}
+      />
+    )
+  },
+
+  /* ── Testimonial Set ────────────────────────────────────────── */
+  'testimonials': (section, index) => {
+    const testimonials = (section.cards ?? []).map((card, i) => ({
+      id: String(card.id ?? `testimonial-${i}`),
+      quote: String(card.text ?? card.description ?? card.body ?? ''),
+      author: String(card.name ?? card.title ?? 'Anonymous'),
+      source: (card.source === 'google' ? 'google' : 'site') as 'google' | 'site',
+    }))
+    if (!testimonials.length) return null
+    return (
+      <TestimonialSet
+        key={section.id}
+        eyebrow={section.eyebrow}
+        title={section.heading ?? 'What our patients say'}
+        testimonials={testimonials}
+        background={index % 2 === 0 ? 'alt' : 'page'}
+      />
+    )
+  },
+
+  /* ── Content Slider / Carousel ──────────────────────────────── */
   'content-slider': (section, index) => {
     const cards = (section.cards ?? []).map((card) => ({
       title: String(card.title ?? ''),
@@ -138,7 +223,6 @@ const registry: Record<string, (section: TreatmentBlockData, index: number) => R
       image: card.image as { src: string; alt: string } | undefined,
       href: card.href ? String(card.href) : undefined,
     }))
-
     return (
       <ContentSlider
         key={section.id}
@@ -155,9 +239,17 @@ const registry: Record<string, (section: TreatmentBlockData, index: number) => R
   },
 }
 
-// A block type composed of the same shape as another — register once, alias here.
+/* ── Aliases ──────────────────────────────────────────────────── */
+// Register once, alias by alternate names used in existing content.
+registry['icon-card-list'] = registry['feature-list']
+registry['icon-feature-list'] = registry['feature-list']
 registry['feature-grid-with-intro'] = registry['feature-list']
 registry['content-with-feature-list'] = registry['feature-list']
+registry['before-after'] = registry['before-after-slider']
+registry['two-column'] = registry['editorial']
+registry['content-section'] = registry['editorial']
+
+/* ── Exports ──────────────────────────────────────────────────── */
 
 interface SectionRendererProps {
   section: TreatmentSection

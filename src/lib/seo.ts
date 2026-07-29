@@ -8,15 +8,43 @@ import type { FaqItem, Seo } from '@/types/content'
  * Turns a content `Seo` object into Next metadata. No page hand-writes
  * metadata — it always derives from the same object the page renders from.
  */
-export function buildMetadata(seo: Seo): Metadata {
+export function buildMetadata(
+  seo: Seo,
+  options?: {
+    /** Additional images (e.g. hero) to include in OG/Twitter cards. */
+    additionalImages?: Array<{ url: string; alt?: string }>
+    /** Page-specific keywords. */
+    keywords?: string
+  }
+): Metadata {
   const url = new URL(seo.canonical, site.url).toString()
-  const images = seo.ogImage ? [{ url: seo.ogImage.src, alt: seo.ogImage.alt }] : undefined
+  const ogImages = seo.ogImage
+    ? [{ url: seo.ogImage.src, alt: seo.ogImage.alt }]
+    : options?.additionalImages ?? []
+
+  // Combine OG images with any additional images for Twitter
+  const twitterImages = [
+    ...(seo.ogImage ? [seo.ogImage.src] : []),
+    ...(options?.additionalImages?.map((i) => i.url) ?? []),
+  ]
 
   return {
     title: seo.title,
     description: seo.description,
+    keywords: options?.keywords || 'hormone therapy, weight loss, age management, bioidentical hormones, Savannah GA',
     alternates: { canonical: url },
-    robots: seo.noindex ? { index: false, follow: false } : undefined,
+    robots: seo.noindex
+      ? { index: false, follow: false }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
+        },
     openGraph: {
       title: seo.title,
       description: seo.description,
@@ -24,13 +52,16 @@ export function buildMetadata(seo: Seo): Metadata {
       siteName: site.name,
       locale: 'en_US',
       type: 'website',
-      images,
+      images: ogImages.length > 0 ? ogImages : undefined,
     },
     twitter: {
       card: 'summary_large_image',
       title: seo.title,
       description: seo.description,
-      images: images?.map((i) => i.url),
+      images: twitterImages.length > 0 ? twitterImages : undefined,
+    },
+    other: {
+      publisher: site.name,
     },
   }
 }

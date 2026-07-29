@@ -41,9 +41,22 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: settings.defaultSeoDescription ?? FALLBACK_DESCRIPTION,
     icons: { icon: settings.faviconUrl ?? '/favicon.ico' },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     openGraph: settings.defaultOgImageUrl
       ? { images: [{ url: settings.defaultOgImageUrl }] }
       : undefined,
+    other: {
+      publisher: site.name,
+    },
   }
 }
 

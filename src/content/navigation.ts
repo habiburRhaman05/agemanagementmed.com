@@ -104,11 +104,7 @@ export const megaMenu: MegaMenuColumn[] = [
       {
         label: 'Hair Restoration',
         href: '/platelet-rich-plasma-hair/female',
-      },
-      {
-        label: 'Medical Aesthetics Services',
-        href: '/aesthetics',
-      },
+      }
     ],
     extranalLink: {
       label: 'Medical Aesthetics Services',

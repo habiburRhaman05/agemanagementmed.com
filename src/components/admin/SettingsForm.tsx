@@ -2,6 +2,7 @@
 
 import { AlertCircle, CheckCircle2, Loader2, Save } from 'lucide-react'
 import { useState } from 'react'
+import { IconUploader } from '@/components/admin/IconUploader'
 
 interface SettingsData {
   siteName: string | null
@@ -145,7 +146,12 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
           <Field label="Tagline" value={tagline} onChange={setTagline} />
           <Field label="Logo URL (light background)" value={logoUrl} onChange={setLogoUrl} placeholder="/images/samm-blue-logo.png" />
           <Field label="Logo URL (dark background / footer)" value={logoDarkUrl} onChange={setLogoDarkUrl} placeholder="/images/samm-logo.webp" />
-          <Field label="Favicon URL" value={faviconUrl} onChange={setFaviconUrl} placeholder="/favicon.ico" />
+          <IconUploader
+            value={faviconUrl}
+            onChange={setFaviconUrl}
+            label="Favicon"
+            hint="Upload an ICO, PNG, SVG, or paste a URL. Recommended: 32x32 or 16x16 ICO/PNG."
+          />
           <Field label="Phone" value={phone} onChange={setPhone} />
           <Field label="Email" value={email} onChange={setEmail} />
         </div>

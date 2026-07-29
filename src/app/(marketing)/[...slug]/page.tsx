@@ -54,7 +54,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const treatment = await getTreatmentByHref(hrefFromSlug(slug))
   if (!treatment) return {}
-  return buildMetadata(treatment.seo)
+  
+  // Pass hero image as additional image for OG/Twitter cards
+  const additionalImages = treatment.hero?.image?.src
+    ? [{ url: treatment.hero.image.src, alt: treatment.hero.image.alt }]
+    : undefined
+  
+  // Build keywords from treatment name and default terms
+  const keywords = `${treatment.name}, hormone therapy, weight loss, age management, Savannah GA`
+  
+  return buildMetadata(treatment.seo, { additionalImages, keywords })
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string[] }> }) {
