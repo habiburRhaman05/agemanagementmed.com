@@ -50,7 +50,7 @@ export const homeContent = {
       alt: 'Two patients embracing and laughing outdoors',
     },
     imageSide: 'right',
-    cta: { label: 'Meet our team', href: '/our-experts' },
+    // cta: { label: 'Meet our team', href: '/our-experts' },
   } satisfies EditorialPairData,
 
   journey: {

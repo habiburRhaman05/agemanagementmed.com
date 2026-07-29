@@ -6,12 +6,14 @@ import { EditorialPair } from '@/components/sections/EditorialPair'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { PeopleGrid } from '@/components/sections/PeopleGrid'
 import { expertsContent } from '@/content/pages/experts'
-import { people } from '@/content/people'
+import { getAllPeople } from '@/content/people'
 import { buildMetadata } from '@/lib/seo'
 
 export const metadata = buildMetadata(expertsContent.seo)
 
-export default function ExpertsPage() {
+export default async function ExpertsPage() {
+  const people = await getAllPeople()
+
   return (
     <>
       <Header />

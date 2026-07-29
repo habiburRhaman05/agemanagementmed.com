@@ -23,6 +23,10 @@ interface NewsRow {
   title: string
   thumbnailUrl: string
   newsLink: string
+  source: string | null
+  publishedLabel: string | null
+  description: string | null
+  type: string
   order: number
   published: boolean
 }
@@ -55,6 +59,10 @@ function EditNewsModal({
       title: item.title,
       thumbnailUrl: item.thumbnailUrl,
       newsLink: item.newsLink,
+      source: item.source ?? '',
+      publishedLabel: item.publishedLabel ?? '',
+      description: item.description ?? '',
+      type: (item.type as 'article' | 'video') ?? 'article',
       order: item.order,
       published: item.published,
     },
@@ -120,7 +128,28 @@ function EditNewsModal({
             <input {...register('newsLink')} placeholder="https://..." className={inputClass} />
             <FieldError message={errors.newsLink?.message} />
           </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="block text-xs font-medium text-gray-500">Source / publication</label>
+              <input {...register('source')} placeholder="Savannah Business Journal" className={inputClass} />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-500">Published date</label>
+              <input {...register('publishedLabel')} placeholder="February 19, 2026" className={inputClass} />
+            </div>
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-gray-500">Description (optional)</label>
+            <textarea {...register('description')} rows={2} className={inputClass} />
+          </div>
           <div className="flex flex-wrap items-center gap-6">
+            <div>
+              <label className="block text-xs font-medium text-gray-500">Type</label>
+              <select {...register('type')} className={`${inputClass} w-auto`}>
+                <option value="article">Article</option>
+                <option value="video">Video</option>
+              </select>
+            </div>
             <div>
               <label className="block text-xs font-medium text-gray-500">Display order</label>
               <input type="number" {...register('order', { valueAsNumber: true })} className={`${inputClass} w-24`} />
@@ -241,6 +270,9 @@ export function NewsManager({ initial }: { initial: NewsRow[] }) {
                       <img src={item.thumbnailUrl} alt="" className="size-10 rounded-lg object-cover ring-1 ring-dash-border" />
                       <div>
                         <p className="text-sm font-medium text-dash-text">{item.title}</p>
+                        <p className="text-xs text-dash-text-muted">
+                          {[item.source, item.publishedLabel].filter(Boolean).join(' · ') || item.newsLink}
+                        </p>
                         <a
                           href={item.newsLink}
                           target="_blank"

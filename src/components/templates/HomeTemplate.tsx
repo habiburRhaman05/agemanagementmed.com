@@ -10,7 +10,7 @@ import { ProofBand } from '@/components/sections/ProofBand'
 import { StatementBand } from '@/components/sections/StatementBand'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import type { homeContent } from '@/content/pages/home'
-import { providers } from '@/content/people'
+import { getFeaturedPeople } from '@/content/people'
 import { locations } from '@/content/site'
 import { getAllTreatmentSummaries } from '@/content/treatments'
 import { CredentialStrip } from '../sections/CredentialStrip'
@@ -23,7 +23,7 @@ import { features } from '@/content/feature'
  * Two dark bands (ProofBand, ClosingCTA) give the page its rhythm.
  */
 export async function HomeTemplate({ content }: { content: typeof homeContent }) {
-  
+  const providers = await getFeaturedPeople()
 
   return (
     <>

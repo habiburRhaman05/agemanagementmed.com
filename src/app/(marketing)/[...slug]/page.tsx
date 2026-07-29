@@ -6,6 +6,11 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { getTestimonials } from '@/content/shared/testimonials'
 import { getAllTreatments, getTreatmentByHref } from '@/content/treatments/main'
 import { buildFaqSchema, buildMetadata, buildTreatmentSchema, getSchemaOverride } from '@/lib/seo'
+import TreatLayout from '@/components/TreatLayout'
+import { WeightLossMaleLayout } from '@/components/sections/custom/templates-custom/WeightLossMaleLayout'
+import { WeightLossFeMaleLayout } from '@/components/sections/custom/templates-custom/WeightLossFemaleLayout'
+import { HairRestoreFemaleLayout } from '@/components/sections/custom/templates-custom/HairRestoreFemale'
+import { HairRestoreMaleLayout } from '@/components/sections/custom/templates-custom/HairRestoreMaleLayout'
 
 /**
  * Single dynamic route serving every treatment page — replaces the 15
@@ -73,7 +78,25 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
   if (!treatment) notFound()
 
   const schemaOverride = await getSchemaOverride(href)
-  const faqSchema = buildFaqSchema(treatment.faqs)
+  const faqSchema = buildFaqSchema(treatment.faqs);
+
+  const renderTemplate = (slug: string) =>{
+    switch (slug) {
+      case "weight-loss-men":
+        return <WeightLossMaleLayout
+        treatment={treatment}
+        />
+    
+        case "weight-loss-women":
+          return <WeightLossFeMaleLayout treatment={treatment}/>
+        case "hair-restoration-women":
+          return <HairRestoreFemaleLayout treatment={treatment}/>
+        case "hair-restoration-men":
+          return <HairRestoreMaleLayout treatment={treatment}/>
+      default:
+        break;
+    }
+  }
 
   return (
     <>
@@ -91,10 +114,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
       )}
       {!schemaOverride && faqSchema ? <JsonLd data={faqSchema} /> : null}
       <Header />
-      <TreatmentTemplate
+
+{treatment.slug}
+      {/* <TreatmentTemplate
         treatment={treatment}
         testimonials={getTestimonials(TESTIMONIALS_BY_SLUG[treatment.slug] ?? [])}
-      />
+      /> */}
+
+     {renderTemplate(treatment.slug)}
+
     </>
   )
 }

@@ -243,8 +243,30 @@ exports.Prisma.NewsItemScalarFieldEnum = {
   title: 'title',
   thumbnailUrl: 'thumbnailUrl',
   newsLink: 'newsLink',
+  source: 'source',
+  publishedLabel: 'publishedLabel',
+  description: 'description',
+  type: 'type',
   order: 'order',
   published: 'published',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PersonScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  credentials: 'credentials',
+  role: 'role',
+  portraitSrc: 'portraitSrc',
+  portraitAlt: 'portraitAlt',
+  summary: 'summary',
+  bio: 'bio',
+  specialties: 'specialties',
+  featured: 'featured',
+  status: 'status',
+  order: 'order',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -339,6 +361,7 @@ exports.Prisma.ModelName = {
   Media: 'Media',
   Treatment: 'Treatment',
   NewsItem: 'NewsItem',
+  Person: 'Person',
   PageSeo: 'PageSeo',
   Testimonial: 'Testimonial',
   SiteSettings: 'SiteSettings'

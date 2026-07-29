@@ -35,6 +35,10 @@ export function NewsForm() {
       title: '',
       thumbnailUrl: '',
       newsLink: '',
+      source: '',
+      publishedLabel: '',
+      description: '',
+      type: 'article',
       order: 0,
       published: true,
     },
@@ -93,7 +97,28 @@ export function NewsForm() {
           <input {...register('newsLink')} placeholder="https://www.example.com/article" className={inputClass} />
           <FieldError message={errors.newsLink?.message} />
         </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label className="block text-xs font-medium text-gray-500">Source / publication</label>
+            <input {...register('source')} placeholder="Savannah Business Journal" className={inputClass} />
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-gray-500">Published date</label>
+            <input {...register('publishedLabel')} placeholder="February 19, 2026" className={inputClass} />
+          </div>
+        </div>
+        <div>
+          <label className="block text-xs font-medium text-gray-500">Description (optional)</label>
+          <textarea {...register('description')} rows={2} placeholder="Short excerpt shown on the public card" className={inputClass} />
+        </div>
         <div className="flex flex-wrap items-center gap-6">
+          <div>
+            <label className="block text-xs font-medium text-gray-500">Type</label>
+            <select {...register('type')} className={`${inputClass} w-auto`}>
+              <option value="article">Article</option>
+              <option value="video">Video</option>
+            </select>
+          </div>
           <div>
             <label className="block text-xs font-medium text-gray-500">Display order</label>
             <input type="number" {...register('order', { valueAsNumber: true })} className={`${inputClass} w-24`} />

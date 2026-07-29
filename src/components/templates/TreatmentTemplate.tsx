@@ -9,9 +9,9 @@ import { ProcessSteps } from '@/components/sections/ProcessSteps'
 import { SectionRenderer } from '@/components/sections/SectionRenderer'
 import { StatementBand } from '@/components/sections/StatementBand'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
-import { getPerson } from '@/content/people'
+import { getPeopleBySlugs } from '@/content/people'
 import { getTreatments, pillars } from '@/content/treatments'
-import type { Person, Testimonial, Treatment, TreatmentBlockData, TreatmentSection } from '@/types/content'
+import type { Testimonial, Treatment, TreatmentBlockData, TreatmentSection } from '@/types/content'
 import { TreatmentProcess } from '../sections/custom/hormone therapy woman/treatMnetProcess'
 
 function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
@@ -40,9 +40,7 @@ interface TreatmentTemplateProps {
 export async function TreatmentTemplate({ treatment, testimonials }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
 
-  const providers = (treatment.providers ?? [])
-    .map(getPerson)
-    .filter((p): p is Person => Boolean(p))
+  const providers = await getPeopleBySlugs(treatment.providers ?? [])
 
   const related = await getTreatments(treatment.related ?? [])
 

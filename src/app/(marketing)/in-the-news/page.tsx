@@ -22,6 +22,9 @@ export default async function NewsPage() {
     title: item.title,
     image: { src: item.thumbnailUrl, alt: item.title },
     external: true,
+    eyebrow: item.source ?? undefined,
+    date: item.publishedLabel ?? undefined,
+    excerpt: item.description ?? undefined,
   }))
 
   return (

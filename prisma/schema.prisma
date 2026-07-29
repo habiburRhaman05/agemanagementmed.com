@@ -149,16 +149,44 @@ model Treatment {
 // Press coverage shown on the public /in-the-news page — replaces the
 // previously-hardcoded `expertsContent.press` list in src/content/pages/experts.ts.
 model NewsItem {
-  id           String   @id @default(cuid())
-  title        String
-  thumbnailUrl String
-  newsLink     String
-  order        Int      @default(0)
-  published    Boolean  @default(true)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id             String   @id @default(cuid())
+  title          String
+  thumbnailUrl   String
+  newsLink       String
+  source         String? // publication name, e.g. "Savannah Business Journal"
+  publishedLabel String? // free-text date as given by the source, e.g. "February 19, 2026"
+  description    String? // short excerpt shown on the public card
+  type           String   @default("article") // article | video
+  order          Int      @default(0)
+  published      Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   @@index([published, order])
+}
+
+// Providers and staff shown on /our-experts, the homepage team teaser, and as
+// per-treatment "your care team" credits. Replaces the static
+// `src/content/people/index.ts` array — same shape (`Person` in
+// src/types/content.ts), now admin-editable.
+model Person {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  credentials String?
+  role        String
+  portraitSrc String
+  portraitAlt String
+  summary     String
+  bio         Json // string[] — one paragraph per entry
+  specialties Json? // string[] | null
+  featured    Boolean  @default(false) // shown in the homepage team teaser (first 4, historically)
+  status      String   @default("published") // draft | published
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([status, order])
 }
 
 // Generic — reused for EVERY page on the site, not just treatments: home, contact-us,

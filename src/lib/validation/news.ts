@@ -5,6 +5,10 @@ export const newsFormSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   thumbnailUrl: z.string().min(1, 'Thumbnail image is required').url('Thumbnail must be a valid URL'),
   newsLink: z.string().min(1, 'News link is required').url('News link must be a valid URL'),
+  source: z.string().optional(),
+  publishedLabel: z.string().optional(),
+  description: z.string().optional(),
+  type: z.enum(['article', 'video']),
   order: z.number().int(),
   published: z.boolean(),
 })

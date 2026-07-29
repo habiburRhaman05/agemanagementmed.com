@@ -9,6 +9,10 @@ const UpdateNewsSchema = z.object({
   title: z.string().min(1).optional(),
   thumbnailUrl: z.string().min(1).url('Thumbnail must be a valid URL').optional(),
   newsLink: z.string().min(1).url('News link must be a valid URL').optional(),
+  source: z.string().optional(),
+  publishedLabel: z.string().optional(),
+  description: z.string().optional(),
+  type: z.enum(['article', 'video']).optional(),
   order: z.number().int().optional(),
   published: z.boolean().optional(),
 })

@@ -74,6 +74,11 @@ export type Treatment = $Result.DefaultSelection<Prisma.$TreatmentPayload>
  */
 export type NewsItem = $Result.DefaultSelection<Prisma.$NewsItemPayload>
 /**
+ * Model Person
+ * 
+ */
+export type Person = $Result.DefaultSelection<Prisma.$PersonPayload>
+/**
  * Model PageSeo
  * 
  */
@@ -329,6 +334,16 @@ export class PrismaClient<
     * ```
     */
   get newsItem(): Prisma.NewsItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.person`: Exposes CRUD operations for the **Person** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more People
+    * const people = await prisma.person.findMany()
+    * ```
+    */
+  get person(): Prisma.PersonDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.pageSeo`: Exposes CRUD operations for the **PageSeo** model.
@@ -818,6 +833,7 @@ export namespace Prisma {
     Media: 'Media',
     Treatment: 'Treatment',
     NewsItem: 'NewsItem',
+    Person: 'Person',
     PageSeo: 'PageSeo',
     Testimonial: 'Testimonial',
     SiteSettings: 'SiteSettings'
@@ -836,7 +852,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "admin" | "session" | "post" | "postSeo" | "category" | "tag" | "blogTag" | "appointment" | "lead" | "media" | "treatment" | "newsItem" | "pageSeo" | "testimonial" | "siteSettings"
+      modelProps: "admin" | "session" | "post" | "postSeo" | "category" | "tag" | "blogTag" | "appointment" | "lead" | "media" | "treatment" | "newsItem" | "person" | "pageSeo" | "testimonial" | "siteSettings"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1728,6 +1744,80 @@ export namespace Prisma {
           }
         }
       }
+      Person: {
+        payload: Prisma.$PersonPayload<ExtArgs>
+        fields: Prisma.PersonFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PersonFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PersonFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          findFirst: {
+            args: Prisma.PersonFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PersonFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          findMany: {
+            args: Prisma.PersonFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>[]
+          }
+          create: {
+            args: Prisma.PersonCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          createMany: {
+            args: Prisma.PersonCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PersonCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>[]
+          }
+          delete: {
+            args: Prisma.PersonDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          update: {
+            args: Prisma.PersonUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          deleteMany: {
+            args: Prisma.PersonDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PersonUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PersonUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>[]
+          }
+          upsert: {
+            args: Prisma.PersonUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          aggregate: {
+            args: Prisma.PersonAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePerson>
+          }
+          groupBy: {
+            args: Prisma.PersonGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PersonGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PersonCountArgs<ExtArgs>
+            result: $Utils.Optional<PersonCountAggregateOutputType> | number
+          }
+        }
+      }
       PageSeo: {
         payload: Prisma.$PageSeoPayload<ExtArgs>
         fields: Prisma.PageSeoFieldRefs
@@ -2085,6 +2175,7 @@ export namespace Prisma {
     media?: MediaOmit
     treatment?: TreatmentOmit
     newsItem?: NewsItemOmit
+    person?: PersonOmit
     pageSeo?: PageSeoOmit
     testimonial?: TestimonialOmit
     siteSettings?: SiteSettingsOmit
@@ -14325,6 +14416,10 @@ export namespace Prisma {
     title: string | null
     thumbnailUrl: string | null
     newsLink: string | null
+    source: string | null
+    publishedLabel: string | null
+    description: string | null
+    type: string | null
     order: number | null
     published: boolean | null
     createdAt: Date | null
@@ -14336,6 +14431,10 @@ export namespace Prisma {
     title: string | null
     thumbnailUrl: string | null
     newsLink: string | null
+    source: string | null
+    publishedLabel: string | null
+    description: string | null
+    type: string | null
     order: number | null
     published: boolean | null
     createdAt: Date | null
@@ -14347,6 +14446,10 @@ export namespace Prisma {
     title: number
     thumbnailUrl: number
     newsLink: number
+    source: number
+    publishedLabel: number
+    description: number
+    type: number
     order: number
     published: number
     createdAt: number
@@ -14368,6 +14471,10 @@ export namespace Prisma {
     title?: true
     thumbnailUrl?: true
     newsLink?: true
+    source?: true
+    publishedLabel?: true
+    description?: true
+    type?: true
     order?: true
     published?: true
     createdAt?: true
@@ -14379,6 +14486,10 @@ export namespace Prisma {
     title?: true
     thumbnailUrl?: true
     newsLink?: true
+    source?: true
+    publishedLabel?: true
+    description?: true
+    type?: true
     order?: true
     published?: true
     createdAt?: true
@@ -14390,6 +14501,10 @@ export namespace Prisma {
     title?: true
     thumbnailUrl?: true
     newsLink?: true
+    source?: true
+    publishedLabel?: true
+    description?: true
+    type?: true
     order?: true
     published?: true
     createdAt?: true
@@ -14488,6 +14603,10 @@ export namespace Prisma {
     title: string
     thumbnailUrl: string
     newsLink: string
+    source: string | null
+    publishedLabel: string | null
+    description: string | null
+    type: string
     order: number
     published: boolean
     createdAt: Date
@@ -14518,6 +14637,10 @@ export namespace Prisma {
     title?: boolean
     thumbnailUrl?: boolean
     newsLink?: boolean
+    source?: boolean
+    publishedLabel?: boolean
+    description?: boolean
+    type?: boolean
     order?: boolean
     published?: boolean
     createdAt?: boolean
@@ -14529,6 +14652,10 @@ export namespace Prisma {
     title?: boolean
     thumbnailUrl?: boolean
     newsLink?: boolean
+    source?: boolean
+    publishedLabel?: boolean
+    description?: boolean
+    type?: boolean
     order?: boolean
     published?: boolean
     createdAt?: boolean
@@ -14540,6 +14667,10 @@ export namespace Prisma {
     title?: boolean
     thumbnailUrl?: boolean
     newsLink?: boolean
+    source?: boolean
+    publishedLabel?: boolean
+    description?: boolean
+    type?: boolean
     order?: boolean
     published?: boolean
     createdAt?: boolean
@@ -14551,13 +14682,17 @@ export namespace Prisma {
     title?: boolean
     thumbnailUrl?: boolean
     newsLink?: boolean
+    source?: boolean
+    publishedLabel?: boolean
+    description?: boolean
+    type?: boolean
     order?: boolean
     published?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type NewsItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnailUrl" | "newsLink" | "order" | "published" | "createdAt" | "updatedAt", ExtArgs["result"]["newsItem"]>
+  export type NewsItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnailUrl" | "newsLink" | "source" | "publishedLabel" | "description" | "type" | "order" | "published" | "createdAt" | "updatedAt", ExtArgs["result"]["newsItem"]>
 
   export type $NewsItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "NewsItem"
@@ -14567,6 +14702,10 @@ export namespace Prisma {
       title: string
       thumbnailUrl: string
       newsLink: string
+      source: string | null
+      publishedLabel: string | null
+      description: string | null
+      type: string
       order: number
       published: boolean
       createdAt: Date
@@ -14998,6 +15137,10 @@ export namespace Prisma {
     readonly title: FieldRef<"NewsItem", 'String'>
     readonly thumbnailUrl: FieldRef<"NewsItem", 'String'>
     readonly newsLink: FieldRef<"NewsItem", 'String'>
+    readonly source: FieldRef<"NewsItem", 'String'>
+    readonly publishedLabel: FieldRef<"NewsItem", 'String'>
+    readonly description: FieldRef<"NewsItem", 'String'>
+    readonly type: FieldRef<"NewsItem", 'String'>
     readonly order: FieldRef<"NewsItem", 'Int'>
     readonly published: FieldRef<"NewsItem", 'Boolean'>
     readonly createdAt: FieldRef<"NewsItem", 'DateTime'>
@@ -15370,6 +15513,1162 @@ export namespace Prisma {
      * Omit specific fields from the NewsItem
      */
     omit?: NewsItemOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Person
+   */
+
+  export type AggregatePerson = {
+    _count: PersonCountAggregateOutputType | null
+    _avg: PersonAvgAggregateOutputType | null
+    _sum: PersonSumAggregateOutputType | null
+    _min: PersonMinAggregateOutputType | null
+    _max: PersonMaxAggregateOutputType | null
+  }
+
+  export type PersonAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type PersonSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type PersonMinAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    name: string | null
+    credentials: string | null
+    role: string | null
+    portraitSrc: string | null
+    portraitAlt: string | null
+    summary: string | null
+    featured: boolean | null
+    status: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PersonMaxAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    name: string | null
+    credentials: string | null
+    role: string | null
+    portraitSrc: string | null
+    portraitAlt: string | null
+    summary: string | null
+    featured: boolean | null
+    status: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PersonCountAggregateOutputType = {
+    id: number
+    slug: number
+    name: number
+    credentials: number
+    role: number
+    portraitSrc: number
+    portraitAlt: number
+    summary: number
+    bio: number
+    specialties: number
+    featured: number
+    status: number
+    order: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PersonAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type PersonSumAggregateInputType = {
+    order?: true
+  }
+
+  export type PersonMinAggregateInputType = {
+    id?: true
+    slug?: true
+    name?: true
+    credentials?: true
+    role?: true
+    portraitSrc?: true
+    portraitAlt?: true
+    summary?: true
+    featured?: true
+    status?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PersonMaxAggregateInputType = {
+    id?: true
+    slug?: true
+    name?: true
+    credentials?: true
+    role?: true
+    portraitSrc?: true
+    portraitAlt?: true
+    summary?: true
+    featured?: true
+    status?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PersonCountAggregateInputType = {
+    id?: true
+    slug?: true
+    name?: true
+    credentials?: true
+    role?: true
+    portraitSrc?: true
+    portraitAlt?: true
+    summary?: true
+    bio?: true
+    specialties?: true
+    featured?: true
+    status?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PersonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Person to aggregate.
+     */
+    where?: PersonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of People to fetch.
+     */
+    orderBy?: PersonOrderByWithRelationInput | PersonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PersonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` People from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` People.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned People
+    **/
+    _count?: true | PersonCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PersonAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PersonSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PersonMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PersonMaxAggregateInputType
+  }
+
+  export type GetPersonAggregateType<T extends PersonAggregateArgs> = {
+        [P in keyof T & keyof AggregatePerson]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePerson[P]>
+      : GetScalarType<T[P], AggregatePerson[P]>
+  }
+
+
+
+
+  export type PersonGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PersonWhereInput
+    orderBy?: PersonOrderByWithAggregationInput | PersonOrderByWithAggregationInput[]
+    by: PersonScalarFieldEnum[] | PersonScalarFieldEnum
+    having?: PersonScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PersonCountAggregateInputType | true
+    _avg?: PersonAvgAggregateInputType
+    _sum?: PersonSumAggregateInputType
+    _min?: PersonMinAggregateInputType
+    _max?: PersonMaxAggregateInputType
+  }
+
+  export type PersonGroupByOutputType = {
+    id: string
+    slug: string
+    name: string
+    credentials: string | null
+    role: string
+    portraitSrc: string
+    portraitAlt: string
+    summary: string
+    bio: JsonValue
+    specialties: JsonValue | null
+    featured: boolean
+    status: string
+    order: number
+    createdAt: Date
+    updatedAt: Date
+    _count: PersonCountAggregateOutputType | null
+    _avg: PersonAvgAggregateOutputType | null
+    _sum: PersonSumAggregateOutputType | null
+    _min: PersonMinAggregateOutputType | null
+    _max: PersonMaxAggregateOutputType | null
+  }
+
+  type GetPersonGroupByPayload<T extends PersonGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PersonGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PersonGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PersonGroupByOutputType[P]>
+            : GetScalarType<T[P], PersonGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PersonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    credentials?: boolean
+    role?: boolean
+    portraitSrc?: boolean
+    portraitAlt?: boolean
+    summary?: boolean
+    bio?: boolean
+    specialties?: boolean
+    featured?: boolean
+    status?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["person"]>
+
+  export type PersonSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    credentials?: boolean
+    role?: boolean
+    portraitSrc?: boolean
+    portraitAlt?: boolean
+    summary?: boolean
+    bio?: boolean
+    specialties?: boolean
+    featured?: boolean
+    status?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["person"]>
+
+  export type PersonSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    credentials?: boolean
+    role?: boolean
+    portraitSrc?: boolean
+    portraitAlt?: boolean
+    summary?: boolean
+    bio?: boolean
+    specialties?: boolean
+    featured?: boolean
+    status?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["person"]>
+
+  export type PersonSelectScalar = {
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    credentials?: boolean
+    role?: boolean
+    portraitSrc?: boolean
+    portraitAlt?: boolean
+    summary?: boolean
+    bio?: boolean
+    specialties?: boolean
+    featured?: boolean
+    status?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PersonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "name" | "credentials" | "role" | "portraitSrc" | "portraitAlt" | "summary" | "bio" | "specialties" | "featured" | "status" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["person"]>
+
+  export type $PersonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Person"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      slug: string
+      name: string
+      credentials: string | null
+      role: string
+      portraitSrc: string
+      portraitAlt: string
+      summary: string
+      bio: Prisma.JsonValue
+      specialties: Prisma.JsonValue | null
+      featured: boolean
+      status: string
+      order: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["person"]>
+    composites: {}
+  }
+
+  type PersonGetPayload<S extends boolean | null | undefined | PersonDefaultArgs> = $Result.GetResult<Prisma.$PersonPayload, S>
+
+  type PersonCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PersonFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PersonCountAggregateInputType | true
+    }
+
+  export interface PersonDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Person'], meta: { name: 'Person' } }
+    /**
+     * Find zero or one Person that matches the filter.
+     * @param {PersonFindUniqueArgs} args - Arguments to find a Person
+     * @example
+     * // Get one Person
+     * const person = await prisma.person.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PersonFindUniqueArgs>(args: SelectSubset<T, PersonFindUniqueArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Person that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PersonFindUniqueOrThrowArgs} args - Arguments to find a Person
+     * @example
+     * // Get one Person
+     * const person = await prisma.person.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PersonFindUniqueOrThrowArgs>(args: SelectSubset<T, PersonFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Person that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonFindFirstArgs} args - Arguments to find a Person
+     * @example
+     * // Get one Person
+     * const person = await prisma.person.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PersonFindFirstArgs>(args?: SelectSubset<T, PersonFindFirstArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Person that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonFindFirstOrThrowArgs} args - Arguments to find a Person
+     * @example
+     * // Get one Person
+     * const person = await prisma.person.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PersonFindFirstOrThrowArgs>(args?: SelectSubset<T, PersonFindFirstOrThrowArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more People that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all People
+     * const people = await prisma.person.findMany()
+     * 
+     * // Get first 10 People
+     * const people = await prisma.person.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const personWithIdOnly = await prisma.person.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PersonFindManyArgs>(args?: SelectSubset<T, PersonFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Person.
+     * @param {PersonCreateArgs} args - Arguments to create a Person.
+     * @example
+     * // Create one Person
+     * const Person = await prisma.person.create({
+     *   data: {
+     *     // ... data to create a Person
+     *   }
+     * })
+     * 
+     */
+    create<T extends PersonCreateArgs>(args: SelectSubset<T, PersonCreateArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many People.
+     * @param {PersonCreateManyArgs} args - Arguments to create many People.
+     * @example
+     * // Create many People
+     * const person = await prisma.person.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PersonCreateManyArgs>(args?: SelectSubset<T, PersonCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many People and returns the data saved in the database.
+     * @param {PersonCreateManyAndReturnArgs} args - Arguments to create many People.
+     * @example
+     * // Create many People
+     * const person = await prisma.person.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many People and only return the `id`
+     * const personWithIdOnly = await prisma.person.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PersonCreateManyAndReturnArgs>(args?: SelectSubset<T, PersonCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Person.
+     * @param {PersonDeleteArgs} args - Arguments to delete one Person.
+     * @example
+     * // Delete one Person
+     * const Person = await prisma.person.delete({
+     *   where: {
+     *     // ... filter to delete one Person
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PersonDeleteArgs>(args: SelectSubset<T, PersonDeleteArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Person.
+     * @param {PersonUpdateArgs} args - Arguments to update one Person.
+     * @example
+     * // Update one Person
+     * const person = await prisma.person.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PersonUpdateArgs>(args: SelectSubset<T, PersonUpdateArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more People.
+     * @param {PersonDeleteManyArgs} args - Arguments to filter People to delete.
+     * @example
+     * // Delete a few People
+     * const { count } = await prisma.person.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PersonDeleteManyArgs>(args?: SelectSubset<T, PersonDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more People.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many People
+     * const person = await prisma.person.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PersonUpdateManyArgs>(args: SelectSubset<T, PersonUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more People and returns the data updated in the database.
+     * @param {PersonUpdateManyAndReturnArgs} args - Arguments to update many People.
+     * @example
+     * // Update many People
+     * const person = await prisma.person.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more People and only return the `id`
+     * const personWithIdOnly = await prisma.person.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PersonUpdateManyAndReturnArgs>(args: SelectSubset<T, PersonUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Person.
+     * @param {PersonUpsertArgs} args - Arguments to update or create a Person.
+     * @example
+     * // Update or create a Person
+     * const person = await prisma.person.upsert({
+     *   create: {
+     *     // ... data to create a Person
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Person we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PersonUpsertArgs>(args: SelectSubset<T, PersonUpsertArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of People.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonCountArgs} args - Arguments to filter People to count.
+     * @example
+     * // Count the number of People
+     * const count = await prisma.person.count({
+     *   where: {
+     *     // ... the filter for the People we want to count
+     *   }
+     * })
+    **/
+    count<T extends PersonCountArgs>(
+      args?: Subset<T, PersonCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PersonCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Person.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PersonAggregateArgs>(args: Subset<T, PersonAggregateArgs>): Prisma.PrismaPromise<GetPersonAggregateType<T>>
+
+    /**
+     * Group by Person.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PersonGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PersonGroupByArgs['orderBy'] }
+        : { orderBy?: PersonGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PersonGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPersonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Person model
+   */
+  readonly fields: PersonFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Person.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PersonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Person model
+   */
+  interface PersonFieldRefs {
+    readonly id: FieldRef<"Person", 'String'>
+    readonly slug: FieldRef<"Person", 'String'>
+    readonly name: FieldRef<"Person", 'String'>
+    readonly credentials: FieldRef<"Person", 'String'>
+    readonly role: FieldRef<"Person", 'String'>
+    readonly portraitSrc: FieldRef<"Person", 'String'>
+    readonly portraitAlt: FieldRef<"Person", 'String'>
+    readonly summary: FieldRef<"Person", 'String'>
+    readonly bio: FieldRef<"Person", 'Json'>
+    readonly specialties: FieldRef<"Person", 'Json'>
+    readonly featured: FieldRef<"Person", 'Boolean'>
+    readonly status: FieldRef<"Person", 'String'>
+    readonly order: FieldRef<"Person", 'Int'>
+    readonly createdAt: FieldRef<"Person", 'DateTime'>
+    readonly updatedAt: FieldRef<"Person", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Person findUnique
+   */
+  export type PersonFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Filter, which Person to fetch.
+     */
+    where: PersonWhereUniqueInput
+  }
+
+  /**
+   * Person findUniqueOrThrow
+   */
+  export type PersonFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Filter, which Person to fetch.
+     */
+    where: PersonWhereUniqueInput
+  }
+
+  /**
+   * Person findFirst
+   */
+  export type PersonFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Filter, which Person to fetch.
+     */
+    where?: PersonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of People to fetch.
+     */
+    orderBy?: PersonOrderByWithRelationInput | PersonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for People.
+     */
+    cursor?: PersonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` People from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` People.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of People.
+     */
+    distinct?: PersonScalarFieldEnum | PersonScalarFieldEnum[]
+  }
+
+  /**
+   * Person findFirstOrThrow
+   */
+  export type PersonFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Filter, which Person to fetch.
+     */
+    where?: PersonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of People to fetch.
+     */
+    orderBy?: PersonOrderByWithRelationInput | PersonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for People.
+     */
+    cursor?: PersonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` People from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` People.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of People.
+     */
+    distinct?: PersonScalarFieldEnum | PersonScalarFieldEnum[]
+  }
+
+  /**
+   * Person findMany
+   */
+  export type PersonFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Filter, which People to fetch.
+     */
+    where?: PersonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of People to fetch.
+     */
+    orderBy?: PersonOrderByWithRelationInput | PersonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing People.
+     */
+    cursor?: PersonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` People from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` People.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of People.
+     */
+    distinct?: PersonScalarFieldEnum | PersonScalarFieldEnum[]
+  }
+
+  /**
+   * Person create
+   */
+  export type PersonCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Person.
+     */
+    data: XOR<PersonCreateInput, PersonUncheckedCreateInput>
+  }
+
+  /**
+   * Person createMany
+   */
+  export type PersonCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many People.
+     */
+    data: PersonCreateManyInput | PersonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Person createManyAndReturn
+   */
+  export type PersonCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * The data used to create many People.
+     */
+    data: PersonCreateManyInput | PersonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Person update
+   */
+  export type PersonUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Person.
+     */
+    data: XOR<PersonUpdateInput, PersonUncheckedUpdateInput>
+    /**
+     * Choose, which Person to update.
+     */
+    where: PersonWhereUniqueInput
+  }
+
+  /**
+   * Person updateMany
+   */
+  export type PersonUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update People.
+     */
+    data: XOR<PersonUpdateManyMutationInput, PersonUncheckedUpdateManyInput>
+    /**
+     * Filter which People to update
+     */
+    where?: PersonWhereInput
+    /**
+     * Limit how many People to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Person updateManyAndReturn
+   */
+  export type PersonUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * The data used to update People.
+     */
+    data: XOR<PersonUpdateManyMutationInput, PersonUncheckedUpdateManyInput>
+    /**
+     * Filter which People to update
+     */
+    where?: PersonWhereInput
+    /**
+     * Limit how many People to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Person upsert
+   */
+  export type PersonUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Person to update in case it exists.
+     */
+    where: PersonWhereUniqueInput
+    /**
+     * In case the Person found by the `where` argument doesn't exist, create a new Person with this data.
+     */
+    create: XOR<PersonCreateInput, PersonUncheckedCreateInput>
+    /**
+     * In case the Person was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PersonUpdateInput, PersonUncheckedUpdateInput>
+  }
+
+  /**
+   * Person delete
+   */
+  export type PersonDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Filter which Person to delete.
+     */
+    where: PersonWhereUniqueInput
+  }
+
+  /**
+   * Person deleteMany
+   */
+  export type PersonDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which People to delete
+     */
+    where?: PersonWhereInput
+    /**
+     * Limit how many People to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Person without action
+   */
+  export type PersonDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
   }
 
 
@@ -18863,6 +20162,10 @@ export namespace Prisma {
     title: 'title',
     thumbnailUrl: 'thumbnailUrl',
     newsLink: 'newsLink',
+    source: 'source',
+    publishedLabel: 'publishedLabel',
+    description: 'description',
+    type: 'type',
     order: 'order',
     published: 'published',
     createdAt: 'createdAt',
@@ -18870,6 +20173,27 @@ export namespace Prisma {
   };
 
   export type NewsItemScalarFieldEnum = (typeof NewsItemScalarFieldEnum)[keyof typeof NewsItemScalarFieldEnum]
+
+
+  export const PersonScalarFieldEnum: {
+    id: 'id',
+    slug: 'slug',
+    name: 'name',
+    credentials: 'credentials',
+    role: 'role',
+    portraitSrc: 'portraitSrc',
+    portraitAlt: 'portraitAlt',
+    summary: 'summary',
+    bio: 'bio',
+    specialties: 'specialties',
+    featured: 'featured',
+    status: 'status',
+    order: 'order',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PersonScalarFieldEnum = (typeof PersonScalarFieldEnum)[keyof typeof PersonScalarFieldEnum]
 
 
   export const PageSeoScalarFieldEnum: {
@@ -19827,6 +21151,10 @@ export namespace Prisma {
     title?: StringFilter<"NewsItem"> | string
     thumbnailUrl?: StringFilter<"NewsItem"> | string
     newsLink?: StringFilter<"NewsItem"> | string
+    source?: StringNullableFilter<"NewsItem"> | string | null
+    publishedLabel?: StringNullableFilter<"NewsItem"> | string | null
+    description?: StringNullableFilter<"NewsItem"> | string | null
+    type?: StringFilter<"NewsItem"> | string
     order?: IntFilter<"NewsItem"> | number
     published?: BoolFilter<"NewsItem"> | boolean
     createdAt?: DateTimeFilter<"NewsItem"> | Date | string
@@ -19838,6 +21166,10 @@ export namespace Prisma {
     title?: SortOrder
     thumbnailUrl?: SortOrder
     newsLink?: SortOrder
+    source?: SortOrderInput | SortOrder
+    publishedLabel?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    type?: SortOrder
     order?: SortOrder
     published?: SortOrder
     createdAt?: SortOrder
@@ -19852,6 +21184,10 @@ export namespace Prisma {
     title?: StringFilter<"NewsItem"> | string
     thumbnailUrl?: StringFilter<"NewsItem"> | string
     newsLink?: StringFilter<"NewsItem"> | string
+    source?: StringNullableFilter<"NewsItem"> | string | null
+    publishedLabel?: StringNullableFilter<"NewsItem"> | string | null
+    description?: StringNullableFilter<"NewsItem"> | string | null
+    type?: StringFilter<"NewsItem"> | string
     order?: IntFilter<"NewsItem"> | number
     published?: BoolFilter<"NewsItem"> | boolean
     createdAt?: DateTimeFilter<"NewsItem"> | Date | string
@@ -19863,6 +21199,10 @@ export namespace Prisma {
     title?: SortOrder
     thumbnailUrl?: SortOrder
     newsLink?: SortOrder
+    source?: SortOrderInput | SortOrder
+    publishedLabel?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    type?: SortOrder
     order?: SortOrder
     published?: SortOrder
     createdAt?: SortOrder
@@ -19882,10 +21222,118 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"NewsItem"> | string
     thumbnailUrl?: StringWithAggregatesFilter<"NewsItem"> | string
     newsLink?: StringWithAggregatesFilter<"NewsItem"> | string
+    source?: StringNullableWithAggregatesFilter<"NewsItem"> | string | null
+    publishedLabel?: StringNullableWithAggregatesFilter<"NewsItem"> | string | null
+    description?: StringNullableWithAggregatesFilter<"NewsItem"> | string | null
+    type?: StringWithAggregatesFilter<"NewsItem"> | string
     order?: IntWithAggregatesFilter<"NewsItem"> | number
     published?: BoolWithAggregatesFilter<"NewsItem"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"NewsItem"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"NewsItem"> | Date | string
+  }
+
+  export type PersonWhereInput = {
+    AND?: PersonWhereInput | PersonWhereInput[]
+    OR?: PersonWhereInput[]
+    NOT?: PersonWhereInput | PersonWhereInput[]
+    id?: StringFilter<"Person"> | string
+    slug?: StringFilter<"Person"> | string
+    name?: StringFilter<"Person"> | string
+    credentials?: StringNullableFilter<"Person"> | string | null
+    role?: StringFilter<"Person"> | string
+    portraitSrc?: StringFilter<"Person"> | string
+    portraitAlt?: StringFilter<"Person"> | string
+    summary?: StringFilter<"Person"> | string
+    bio?: JsonFilter<"Person">
+    specialties?: JsonNullableFilter<"Person">
+    featured?: BoolFilter<"Person"> | boolean
+    status?: StringFilter<"Person"> | string
+    order?: IntFilter<"Person"> | number
+    createdAt?: DateTimeFilter<"Person"> | Date | string
+    updatedAt?: DateTimeFilter<"Person"> | Date | string
+  }
+
+  export type PersonOrderByWithRelationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    credentials?: SortOrderInput | SortOrder
+    role?: SortOrder
+    portraitSrc?: SortOrder
+    portraitAlt?: SortOrder
+    summary?: SortOrder
+    bio?: SortOrder
+    specialties?: SortOrderInput | SortOrder
+    featured?: SortOrder
+    status?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PersonWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: PersonWhereInput | PersonWhereInput[]
+    OR?: PersonWhereInput[]
+    NOT?: PersonWhereInput | PersonWhereInput[]
+    name?: StringFilter<"Person"> | string
+    credentials?: StringNullableFilter<"Person"> | string | null
+    role?: StringFilter<"Person"> | string
+    portraitSrc?: StringFilter<"Person"> | string
+    portraitAlt?: StringFilter<"Person"> | string
+    summary?: StringFilter<"Person"> | string
+    bio?: JsonFilter<"Person">
+    specialties?: JsonNullableFilter<"Person">
+    featured?: BoolFilter<"Person"> | boolean
+    status?: StringFilter<"Person"> | string
+    order?: IntFilter<"Person"> | number
+    createdAt?: DateTimeFilter<"Person"> | Date | string
+    updatedAt?: DateTimeFilter<"Person"> | Date | string
+  }, "id" | "slug">
+
+  export type PersonOrderByWithAggregationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    credentials?: SortOrderInput | SortOrder
+    role?: SortOrder
+    portraitSrc?: SortOrder
+    portraitAlt?: SortOrder
+    summary?: SortOrder
+    bio?: SortOrder
+    specialties?: SortOrderInput | SortOrder
+    featured?: SortOrder
+    status?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PersonCountOrderByAggregateInput
+    _avg?: PersonAvgOrderByAggregateInput
+    _max?: PersonMaxOrderByAggregateInput
+    _min?: PersonMinOrderByAggregateInput
+    _sum?: PersonSumOrderByAggregateInput
+  }
+
+  export type PersonScalarWhereWithAggregatesInput = {
+    AND?: PersonScalarWhereWithAggregatesInput | PersonScalarWhereWithAggregatesInput[]
+    OR?: PersonScalarWhereWithAggregatesInput[]
+    NOT?: PersonScalarWhereWithAggregatesInput | PersonScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Person"> | string
+    slug?: StringWithAggregatesFilter<"Person"> | string
+    name?: StringWithAggregatesFilter<"Person"> | string
+    credentials?: StringNullableWithAggregatesFilter<"Person"> | string | null
+    role?: StringWithAggregatesFilter<"Person"> | string
+    portraitSrc?: StringWithAggregatesFilter<"Person"> | string
+    portraitAlt?: StringWithAggregatesFilter<"Person"> | string
+    summary?: StringWithAggregatesFilter<"Person"> | string
+    bio?: JsonWithAggregatesFilter<"Person">
+    specialties?: JsonNullableWithAggregatesFilter<"Person">
+    featured?: BoolWithAggregatesFilter<"Person"> | boolean
+    status?: StringWithAggregatesFilter<"Person"> | string
+    order?: IntWithAggregatesFilter<"Person"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Person"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Person"> | Date | string
   }
 
   export type PageSeoWhereInput = {
@@ -21003,6 +22451,10 @@ export namespace Prisma {
     title: string
     thumbnailUrl: string
     newsLink: string
+    source?: string | null
+    publishedLabel?: string | null
+    description?: string | null
+    type?: string
     order?: number
     published?: boolean
     createdAt?: Date | string
@@ -21014,6 +22466,10 @@ export namespace Prisma {
     title: string
     thumbnailUrl: string
     newsLink: string
+    source?: string | null
+    publishedLabel?: string | null
+    description?: string | null
+    type?: string
     order?: number
     published?: boolean
     createdAt?: Date | string
@@ -21025,6 +22481,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
     newsLink?: StringFieldUpdateOperationsInput | string
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     published?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21036,6 +22496,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
     newsLink?: StringFieldUpdateOperationsInput | string
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     published?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21047,6 +22511,10 @@ export namespace Prisma {
     title: string
     thumbnailUrl: string
     newsLink: string
+    source?: string | null
+    publishedLabel?: string | null
+    description?: string | null
+    type?: string
     order?: number
     published?: boolean
     createdAt?: Date | string
@@ -21058,6 +22526,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
     newsLink?: StringFieldUpdateOperationsInput | string
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     published?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21069,8 +22541,138 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
     newsLink?: StringFieldUpdateOperationsInput | string
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     published?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PersonCreateInput = {
+    id?: string
+    slug: string
+    name: string
+    credentials?: string | null
+    role: string
+    portraitSrc: string
+    portraitAlt: string
+    summary: string
+    bio: JsonNullValueInput | InputJsonValue
+    specialties?: NullableJsonNullValueInput | InputJsonValue
+    featured?: boolean
+    status?: string
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PersonUncheckedCreateInput = {
+    id?: string
+    slug: string
+    name: string
+    credentials?: string | null
+    role: string
+    portraitSrc: string
+    portraitAlt: string
+    summary: string
+    bio: JsonNullValueInput | InputJsonValue
+    specialties?: NullableJsonNullValueInput | InputJsonValue
+    featured?: boolean
+    status?: string
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PersonUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    credentials?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    portraitSrc?: StringFieldUpdateOperationsInput | string
+    portraitAlt?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    bio?: JsonNullValueInput | InputJsonValue
+    specialties?: NullableJsonNullValueInput | InputJsonValue
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PersonUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    credentials?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    portraitSrc?: StringFieldUpdateOperationsInput | string
+    portraitAlt?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    bio?: JsonNullValueInput | InputJsonValue
+    specialties?: NullableJsonNullValueInput | InputJsonValue
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PersonCreateManyInput = {
+    id?: string
+    slug: string
+    name: string
+    credentials?: string | null
+    role: string
+    portraitSrc: string
+    portraitAlt: string
+    summary: string
+    bio: JsonNullValueInput | InputJsonValue
+    specialties?: NullableJsonNullValueInput | InputJsonValue
+    featured?: boolean
+    status?: string
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PersonUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    credentials?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    portraitSrc?: StringFieldUpdateOperationsInput | string
+    portraitAlt?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    bio?: JsonNullValueInput | InputJsonValue
+    specialties?: NullableJsonNullValueInput | InputJsonValue
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PersonUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    credentials?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    portraitSrc?: StringFieldUpdateOperationsInput | string
+    portraitAlt?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    bio?: JsonNullValueInput | InputJsonValue
+    specialties?: NullableJsonNullValueInput | InputJsonValue
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22065,6 +23667,10 @@ export namespace Prisma {
     title?: SortOrder
     thumbnailUrl?: SortOrder
     newsLink?: SortOrder
+    source?: SortOrder
+    publishedLabel?: SortOrder
+    description?: SortOrder
+    type?: SortOrder
     order?: SortOrder
     published?: SortOrder
     createdAt?: SortOrder
@@ -22080,6 +23686,10 @@ export namespace Prisma {
     title?: SortOrder
     thumbnailUrl?: SortOrder
     newsLink?: SortOrder
+    source?: SortOrder
+    publishedLabel?: SortOrder
+    description?: SortOrder
+    type?: SortOrder
     order?: SortOrder
     published?: SortOrder
     createdAt?: SortOrder
@@ -22091,6 +23701,10 @@ export namespace Prisma {
     title?: SortOrder
     thumbnailUrl?: SortOrder
     newsLink?: SortOrder
+    source?: SortOrder
+    publishedLabel?: SortOrder
+    description?: SortOrder
+    type?: SortOrder
     order?: SortOrder
     published?: SortOrder
     createdAt?: SortOrder
@@ -22099,6 +23713,113 @@ export namespace Prisma {
 
   export type NewsItemSumOrderByAggregateInput = {
     order?: SortOrder
+  }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type PersonCountOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    credentials?: SortOrder
+    role?: SortOrder
+    portraitSrc?: SortOrder
+    portraitAlt?: SortOrder
+    summary?: SortOrder
+    bio?: SortOrder
+    specialties?: SortOrder
+    featured?: SortOrder
+    status?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PersonAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type PersonMaxOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    credentials?: SortOrder
+    role?: SortOrder
+    portraitSrc?: SortOrder
+    portraitAlt?: SortOrder
+    summary?: SortOrder
+    featured?: SortOrder
+    status?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PersonMinOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    credentials?: SortOrder
+    role?: SortOrder
+    portraitSrc?: SortOrder
+    portraitAlt?: SortOrder
+    summary?: SortOrder
+    featured?: SortOrder
+    status?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PersonSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type PageSeoCountOrderByAggregateInput = {
@@ -22194,29 +23915,6 @@ export namespace Prisma {
     rating?: SortOrder
     order?: SortOrder
   }
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type SiteSettingsCountOrderByAggregateInput = {
     id?: SortOrder
@@ -22268,32 +23966,6 @@ export namespace Prisma {
     headerScripts?: SortOrder
     footerScripts?: SortOrder
     updatedAt?: SortOrder
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type PostCreateNestedManyWithoutAuthorInput = {
