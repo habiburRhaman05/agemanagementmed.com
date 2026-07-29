@@ -17,36 +17,54 @@ const ICON_PATHS: Record<string, string> = {
     'M16.6 4h-2.9v11.2a2.6 2.6 0 1 1-1.8-2.5v-3a5.6 5.6 0 1 0 4.7 5.5V9.8a7.4 7.4 0 0 0 4.4 1.5V8.4a4.5 4.5 0 0 1-4.4-4.4Z',
 }
 
+// Always shown in the footer, connected or not — a muted/disabled icon signals
+// "not connected yet" rather than the platform not existing. YouTube and
+// TikTok stay opt-in (rendered only when a URL is set) since the requirement
+// only called out these three for the always-visible treatment.
+const ALWAYS_VISIBLE: (keyof typeof ICON_PATHS)[] = ['facebook', 'instagram', 'linkedin']
+
 interface SocialLinksProps {
   links: SiteSettingsData['socialLinks']
   className?: string
 }
 
-/** Only renders icons for platforms that are actually set — never a row of dead links. */
 export function SocialLinks({ links, className }: SocialLinksProps) {
-  const entries = (Object.keys(ICON_PATHS) as (keyof typeof ICON_PATHS)[])
-    .map((key) => ({ key, href: links[key as keyof SiteSettingsData['socialLinks']] }))
-    .filter((entry): entry is { key: string; href: string } => Boolean(entry.href))
+  const allKeys = Object.keys(ICON_PATHS) as (keyof typeof ICON_PATHS)[]
+  const entries = allKeys
+    .map((key) => ({ key, href: links[key as keyof SiteSettingsData['socialLinks']] || null }))
+    .filter((entry) => ALWAYS_VISIBLE.includes(entry.key) || Boolean(entry.href))
 
   if (!entries.length) return null
 
   return (
     <div className={className}>
-
-      {entries.map(({ key, href }) => (
-        <a
-          key={key}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={key}
-          className="flex size-10 shrink-0 items-center justify-center rounded-full bg-sage-100/15 text-sage-400 transition-colors duration-200 hover:bg-sage-200/30"
-        >
-          <svg viewBox="0 0 24 24" className="size-5" fill="currentColor" aria-hidden="true">
-            <path d={ICON_PATHS[key]} />
-          </svg>
-        </a>
-      ))}
+      {entries.map(({ key, href }) =>
+        href ? (
+          <a
+            key={key}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={key}
+            className="flex size-10 shrink-0 items-center justify-center rounded-full bg-sage-100/15 text-sage-400 transition-colors duration-200 hover:bg-sage-200/30"
+          >
+            <svg viewBox="0 0 24 24" className="size-5" fill="currentColor" aria-hidden="true">
+              <path d={ICON_PATHS[key]} />
+            </svg>
+          </a>
+        ) : (
+          <span
+            key={key}
+            aria-disabled="true"
+            aria-label={`${key} (not connected)`}
+            className="flex size-10 shrink-0 cursor-not-allowed items-center justify-center rounded-full bg-sage-100/5 text-sage-400/30"
+          >
+            <svg viewBox="0 0 24 24" className="size-5" fill="currentColor" aria-hidden="true">
+              <path d={ICON_PATHS[key]} />
+            </svg>
+          </span>
+        ),
+      )}
     </div>
   )
 }

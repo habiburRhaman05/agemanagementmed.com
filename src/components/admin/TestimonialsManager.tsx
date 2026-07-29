@@ -12,7 +12,11 @@ import {
   X,
 } from 'lucide-react'
 import { useMemo, useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
 import { ImageUploader } from '@/components/admin/ImageUploader'
+import { testimonialFormSchema, type TestimonialFormValues } from '@/lib/validation/testimonial'
 
 interface Testimonial {
   id: string
@@ -28,28 +32,9 @@ interface Testimonial {
   updatedAt: string
 }
 
-interface FormState {
-  name: string
-  roleLabel: string
-  treatment: string
-  quote: string
-  rating: number
-  photoUrl: string
-  featured: boolean
-  status: 'draft' | 'published'
-  order: number
-}
-
-const EMPTY_FORM: FormState = {
-  name: '',
-  roleLabel: '',
-  treatment: '',
-  quote: '',
-  rating: 5,
-  photoUrl: '',
-  featured: false,
-  status: 'published',
-  order: 0,
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null
+  return <p className="mt-1 text-xs text-red-600">{message}</p>
 }
 
 const inputClass =
@@ -86,8 +71,14 @@ function TestimonialModal({
   onClose: () => void
   onSaved: (t: Testimonial) => void
 }) {
-  const [form, setForm] = useState<FormState>(
-    initial
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<TestimonialFormValues>({
+    resolver: zodResolver(testimonialFormSchema),
+    defaultValues: initial
       ? {
           name: initial.name,
           roleLabel: initial.roleLabel ?? '',
@@ -99,15 +90,23 @@ function TestimonialModal({
           status: initial.status as 'draft' | 'published',
           order: initial.order,
         }
-      : EMPTY_FORM,
-  )
-  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle')
-  const [error, setError] = useState('')
+      : {
+          name: '',
+          roleLabel: '',
+          treatment: '',
+          quote: '',
+          rating: 5,
+          photoUrl: '',
+          featured: false,
+          status: 'published',
+          order: 0,
+        },
+  })
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus('loading')
-    setError('')
+  const [submitError, setSubmitError] = useState('')
+
+  const onValid = async (data: TestimonialFormValues) => {
+    setSubmitError('')
 
     try {
       const url = initial ? `/api/admin/testimonials/${initial.id}` : '/api/admin/testimonials'
@@ -116,30 +115,36 @@ function TestimonialModal({
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: form.name,
-          roleLabel: form.roleLabel || null,
-          treatment: form.treatment || null,
-          quote: form.quote,
-          rating: form.rating,
-          photoUrl: form.photoUrl || null,
-          featured: form.featured,
-          status: form.status,
-          order: form.order,
+          name: data.name,
+          roleLabel: data.roleLabel || null,
+          treatment: data.treatment || null,
+          quote: data.quote,
+          rating: data.rating,
+          photoUrl: data.photoUrl || null,
+          featured: data.featured,
+          status: data.status,
+          order: data.order,
         }),
       })
       const json = await res.json()
       if (!res.ok) throw new Error(json.error || 'Failed to save testimonial')
 
+      toast.success(initial ? 'Testimonial updated.' : 'Testimonial added.')
       onSaved(json.testimonial)
     } catch (err) {
-      setStatus('error')
-      setError(err instanceof Error ? err.message : 'Failed to save testimonial')
+      const message = err instanceof Error ? err.message : 'Failed to save testimonial'
+      setSubmitError(message)
+      toast.error(message)
     }
+  }
+
+  const onInvalid = () => {
+    toast.error('Please fix the highlighted fields before saving.')
   }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/50 p-4 backdrop-blur-sm">
-      <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white shadow-[0_24px_60px_-24px_rgba(6,11,33,0.5)] ring-1 ring-ink-950/[0.06]">
+      <div className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-white shadow-[0_24px_60px_-24px_rgba(6,11,33,0.5)] ring-1 ring-ink-950/[0.06]">
         <div className="flex items-center justify-between border-b border-canvas-200 px-6 py-4">
           <h2 className="text-base font-semibold text-ink-950">
             {initial ? 'Edit testimonial' : 'Add testimonial'}
@@ -153,63 +158,57 @@ function TestimonialModal({
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4 px-6 py-5">
+        <form onSubmit={handleSubmit(onValid, onInvalid)} className="space-y-4 px-6 py-5">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="block text-xs font-medium text-gray-500">Patient name</label>
-              <input
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                required
-                placeholder="Jane D."
-                className={inputClass}
-              />
+              <input {...register('name')} placeholder="Jane D." className={inputClass} />
+              <FieldError message={errors.name?.message} />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-500">Role / label</label>
-              <input
-                value={form.roleLabel}
-                onChange={(e) => setForm({ ...form, roleLabel: e.target.value })}
-                placeholder="Verified Patient"
-                className={inputClass}
-              />
+              <input {...register('roleLabel')} placeholder="Verified Patient" className={inputClass} />
             </div>
           </div>
 
           <div>
             <label className="block text-xs font-medium text-gray-500">Treatment (optional)</label>
-            <input
-              value={form.treatment}
-              onChange={(e) => setForm({ ...form, treatment: e.target.value })}
-              placeholder="Hormone Replacement Therapy"
-              className={inputClass}
-            />
+            <input {...register('treatment')} placeholder="Hormone Replacement Therapy" className={inputClass} />
           </div>
 
           <div>
             <label className="block text-xs font-medium text-gray-500">Quote</label>
             <textarea
-              value={form.quote}
-              onChange={(e) => setForm({ ...form, quote: e.target.value })}
-              required
+              {...register('quote')}
               rows={4}
               placeholder="Share what the patient said…"
               className={inputClass}
             />
+            <FieldError message={errors.quote?.message} />
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-1">
             <div>
               <label className="block text-xs font-medium text-gray-500">Rating</label>
-              <StarPicker value={form.rating} onChange={(v) => setForm({ ...form, rating: v })} />
+              <Controller
+                name="rating"
+                control={control}
+                render={({ field }) => <StarPicker value={field.value} onChange={field.onChange} />}
+              />
             </div>
             <div>
-              <ImageUploader
-                label="Photo"
-                hint="Upload a patient photo or paste a URL"
-                value={form.photoUrl}
-                onChange={(url) => setForm({ ...form, photoUrl: url })}
-                folder="testimonials"
+              <Controller
+                name="photoUrl"
+                control={control}
+                render={({ field }) => (
+                  <ImageUploader
+                    label="Photo"
+                    hint="Upload a patient photo or paste a URL"
+                    value={field.value || ''}
+                    onChange={field.onChange}
+                    folder="testimonials"
+                  />
+                )}
               />
             </div>
           </div>
@@ -217,11 +216,7 @@ function TestimonialModal({
           <div className="flex flex-wrap items-center gap-6">
             <div>
               <label className="block text-xs font-medium text-gray-500">Status</label>
-              <select
-                value={form.status}
-                onChange={(e) => setForm({ ...form, status: e.target.value as 'draft' | 'published' })}
-                className={`${inputClass} w-auto`}
-              >
+              <select {...register('status')} className={`${inputClass} w-auto`}>
                 <option value="draft">Draft</option>
                 <option value="published">Published</option>
               </select>
@@ -230,26 +225,24 @@ function TestimonialModal({
               <label className="block text-xs font-medium text-gray-500">Display order</label>
               <input
                 type="number"
-                value={form.order}
-                onChange={(e) => setForm({ ...form, order: Number(e.target.value) })}
+                {...register('order', { valueAsNumber: true })}
                 className={`${inputClass} w-24`}
               />
             </div>
             <label className="mt-5 flex items-center gap-2">
               <input
                 type="checkbox"
-                checked={form.featured}
-                onChange={(e) => setForm({ ...form, featured: e.target.checked })}
+                {...register('featured')}
                 className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600"
               />
               <span className="text-xs text-gray-600">Feature this testimonial</span>
             </label>
           </div>
 
-          {status === 'error' ? (
+          {submitError ? (
             <div className="flex items-center gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
               <AlertCircle className="size-4 shrink-0" />
-              {error}
+              {submitError}
             </div>
           ) : null}
 
@@ -263,10 +256,10 @@ function TestimonialModal({
             </button>
             <button
               type="submit"
-              disabled={status === 'loading'}
-              className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-700 disabled:cursor-not-allowed disabled:opacity-60"
+              disabled={isSubmitting}
+              className="inline-flex items-center gap-2 rounded-lg bg-dash-action px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-dash-action-hover disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {status === 'loading' ? <Loader2 className="size-4 animate-spin" /> : null}
+              {isSubmitting ? <Loader2 className="size-4 animate-spin" /> : null}
               {initial ? 'Save changes' : 'Add testimonial'}
             </button>
           </div>
@@ -377,7 +370,7 @@ export function TestimonialsManager({ initial }: { initial: Testimonial[] }) {
         <button
           type="button"
           onClick={openCreate}
-          className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-700"
+          className="inline-flex items-center gap-2 rounded-lg bg-dash-action px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-dash-action-hover"
         >
           <Plus className="size-4" />
           Add testimonial

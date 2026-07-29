@@ -15,7 +15,7 @@ export default async function DashboardLayout({
   const identity = { name: admin.name, email: admin.email, role: admin.role }
 
   return (
-    <div className="flex h-screen bg-canvas-50/60">
+    <div className="flex h-screen bg-dash-bg">
       <Sidebar admin={identity} />
       <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
         <Topbar admin={identity} />

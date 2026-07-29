@@ -117,7 +117,7 @@ function CreateAdminModal({
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-700 disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex items-center gap-2 rounded-lg bg-dash-action px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-dash-action-hover disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === 'loading' ? <Loader2 className="size-4 animate-spin" /> : null}
               Create admin
@@ -196,7 +196,7 @@ function ResetPasswordModal({
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-700 disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex items-center gap-2 rounded-lg bg-dash-action px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-dash-action-hover disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === 'loading' ? <Loader2 className="size-4 animate-spin" /> : null}
               Reset password
@@ -270,7 +270,7 @@ export function AdminsManager({ initial, currentAdminId }: { initial: AdminRow[]
         <button
           type="button"
           onClick={() => setCreateOpen(true)}
-          className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-700"
+          className="inline-flex items-center gap-2 rounded-lg bg-dash-action px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-dash-action-hover"
         >
           <Plus className="size-4" />
           Add admin

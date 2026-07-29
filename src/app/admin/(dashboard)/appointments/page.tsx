@@ -1,6 +1,7 @@
 import { getAppointments } from '@/actions/appointment'
 import { AppointmentsTable } from '@/components/admin/AppointmentsTable'
-import { CalendarCheck } from 'lucide-react'
+import { TableSkeleton } from '@/components/admin/TableSkeleton'
+import { Suspense } from 'react'
 
 interface Props {
   searchParams: Promise<{
@@ -10,12 +11,15 @@ interface Props {
   }>
 }
 
-export default async function AppointmentsPage({ searchParams }: Props) {
-  const params = await searchParams
-  const status = params.status || undefined
-  const search = params.search || undefined
-  const page = Number(params.page) || 1
-
+async function AppointmentsTableSection({
+  status,
+  search,
+  page,
+}: {
+  status?: string
+  search?: string
+  page: number
+}) {
   const result = await getAppointments({ status, search, page })
 
   // Convert Date objects to strings for serialization
@@ -27,6 +31,24 @@ export default async function AppointmentsPage({ searchParams }: Props) {
     createdAt: apt.createdAt.toISOString(),
     updatedAt: apt.updatedAt.toISOString(),
   }))
+
+  return (
+    <AppointmentsTable
+      appointments={serializedAppointments}
+      currentPage={result.currentPage}
+      totalPages={result.totalPages}
+      total={result.total}
+      status={status}
+      search={search}
+    />
+  )
+}
+
+export default async function AppointmentsPage({ searchParams }: Props) {
+  const params = await searchParams
+  const status = params.status || undefined
+  const search = params.search || undefined
+  const page = Number(params.page) || 1
 
   return (
     <div className="space-y-6">
@@ -74,28 +96,9 @@ export default async function AppointmentsPage({ searchParams }: Props) {
       </div>
 
       {/* Table */}
-      {result.appointments.length > 0 ? (
-        <AppointmentsTable
-          appointments={serializedAppointments}
-          currentPage={result.currentPage}
-          totalPages={result.totalPages}
-          total={result.total}
-          status={status}
-          search={search}
-        />
-      ) : (
-        <div className="rounded-2xl bg-white py-16 text-center shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-          <CalendarCheck className="mx-auto h-12 w-12 text-canvas-300" />
-          <h3 className="mt-4 text-base font-semibold text-ink-950">
-            No appointments found
-          </h3>
-          <p className="mt-1 text-sm text-gray-500">
-            {search
-              ? 'Try a different search term.'
-              : 'No appointments have been booked yet.'}
-          </p>
-        </div>
-      )}
+      <Suspense key={`${status}-${search}-${page}`} fallback={<TableSkeleton columns={4} />}>
+        <AppointmentsTableSection status={status} search={search} page={page} />
+      </Suspense>
     </div>
   )
 }

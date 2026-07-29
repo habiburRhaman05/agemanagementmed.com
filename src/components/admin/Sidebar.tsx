@@ -10,6 +10,7 @@ import {
   Inbox,
   Stethoscope,
   Quote,
+  Newspaper,
   Search,
   Settings,
   ShieldCheck,
@@ -19,7 +20,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { useState } from 'react'
-
+import { logout } from '@/actions/auth'
 
 interface NavItem {
   label: string
@@ -35,6 +36,7 @@ const navItems: NavItem[] = [
   { label: 'Leads', href: '/admin/leads', icon: Inbox },
   { label: 'Treatments', href: '/admin/treatments', icon: Stethoscope },
   { label: 'Testimonials', href: '/admin/testimonials', icon: Quote },
+  { label: 'News', href: '/admin/news', icon: Newspaper },
   { label: 'SEO', href: '/admin/seo', icon: Search },
   { label: 'Settings', href: '/admin/settings', icon: Settings },
   { label: 'Admins', href: '/admin/admins', icon: ShieldCheck, superadminOnly: true },
@@ -49,12 +51,7 @@ export function Sidebar({ admin }: SidebarProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleLogout = async () => {
-    try {
-      await fetch('/api/admin/auth/logout', { method: 'POST' })
-    } catch (err) {
-      console.error('Logout error:', err)
-      // Best-effort — redirect regardless
-    }
+    await logout()
     window.location.href = '/admin/login'
   }
 
@@ -76,7 +73,7 @@ export function Sidebar({ admin }: SidebarProps) {
           'group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all',
           isActive
             ? 'bg-white/[0.08] text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]'
-            : 'text-slate-400 hover:bg-white/[0.04] hover:text-white'
+            : 'text-dash-slate-400 hover:bg-white/[0.04] hover:text-white'
         )}
       >
         <span
@@ -89,7 +86,7 @@ export function Sidebar({ admin }: SidebarProps) {
         <item.icon
           className={cn(
             'h-5 w-5 shrink-0 transition-colors',
-            isActive ? 'text-sage-400' : 'text-slate-500 group-hover:text-sage-400'
+            isActive ? 'text-sage-400' : 'text-dash-slate-400/70 group-hover:text-sage-400'
           )}
         />
         {item.label}
@@ -103,7 +100,7 @@ export function Sidebar({ admin }: SidebarProps) {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed left-4 top-4 z-50 rounded-lg bg-ink-950 p-2 text-white shadow-lg lg:hidden"
+        className="fixed left-4 top-4 z-50 rounded-lg bg-dash-navy-950 p-2 text-white shadow-lg lg:hidden"
         aria-label="Toggle menu"
       >
         {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -112,7 +109,7 @@ export function Sidebar({ admin }: SidebarProps) {
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-30 bg-ink-950/60 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-30 bg-dash-navy-950/60 backdrop-blur-sm lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -120,18 +117,18 @@ export function Sidebar({ admin }: SidebarProps) {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-linear-to-b from-ink-950 via-ink-950 to-[#081029] transition-transform lg:sticky lg:top-0 lg:h-screen lg:translate-x-0',
+          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-linear-to-b from-dash-navy-950 via-dash-navy-900 to-dash-navy-800 transition-transform lg:static lg:translate-x-0',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
         {/* Logo */}
         <div className="flex h-16 items-center gap-3 border-b border-white/[0.06] px-6">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-sage-400 to-sage-700 text-sm font-bold text-white shadow-lg shadow-sage-900/40">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-sage-400 to-sage-700 text-sm font-bold text-white shadow-lg shadow-sage-700/40">
             S
           </div>
           <div>
             <p className="text-sm font-semibold text-white">SAMM Admin</p>
-            <p className="text-xs text-slate-500">Age Management Med</p>
+            <p className="text-xs text-dash-slate-400">Age Management Med</p>
           </div>
         </div>
 
@@ -145,18 +142,18 @@ export function Sidebar({ admin }: SidebarProps) {
         {/* Account + logout */}
         <div className="space-y-1 border-t border-white/[0.06] px-3 py-4">
           <div className="flex items-center gap-3 rounded-xl px-3 py-2">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-sage-300">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-sage-400">
               {initials || 'A'}
             </div>
             <div className="min-w-0">
               <p className="truncate text-sm font-medium text-white">{admin.name}</p>
-              <p className="truncate text-xs capitalize text-slate-500">{admin.role}</p>
+              <p className="truncate text-xs capitalize text-dash-slate-400">{admin.role}</p>
             </div>
           </div>
           <button
             type="button"
             onClick={handleLogout}
-            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors hover:bg-red-500/10 hover:text-red-400"
+            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-dash-slate-400 transition-colors hover:bg-red-500/10 hover:text-red-400"
           >
             <LogOut className="h-5 w-5 shrink-0" />
             Sign out

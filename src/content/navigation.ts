@@ -98,11 +98,11 @@ export const megaMenu: MegaMenuColumn[] = [
     href: '/platelet-rich-plasma-hair',
     links: [
       {
-        label: 'Hair Restoration',
+        label: 'Hair Restoration For Man',
         href: '/platelet-rich-plasma-hair/male',
       },
       {
-        label: 'Hair Restoration',
+        label: 'Hair Restoration For Female',
         href: '/platelet-rich-plasma-hair/female',
       }
     ],
@@ -119,7 +119,7 @@ export const primaryNav: NavLink[] = [
   { label: 'Our Experts', href: '/our-experts' },
   // { label: 'Blogs', href: '/blog' },
   { label: 'Contact Us', href: '/contact-us' },
-]
+];
 
 export const footerNav = {
   practice: [
@@ -127,7 +127,8 @@ export const footerNav = {
     { label: 'Patient Results', href: '/results' },
     { label: 'In The News', href: '/in-the-news' },
     { label: 'Blogs', href: '/blog' },
-
+    { label: 'Office Policy', href: '/office-policy' },
+    { label: 'Book Appointment', href: '/book' },
   ] satisfies NavLink[],
   locations: [
   ] satisfies NavLink[],

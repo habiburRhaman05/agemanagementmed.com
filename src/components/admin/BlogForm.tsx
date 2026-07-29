@@ -1,13 +1,16 @@
 'use client'
 
-import { useActionState, useEffect, useState, useCallback } from 'react'
+import { useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
 import { createPost, updatePost, generateSlugFromTitle } from '@/actions/blog'
-import type { ActionResult } from '@/actions/blog'
 import Link from 'next/link'
 import { ArrowLeft, Save, Loader2 } from 'lucide-react'
 import { TipTapEditor } from '@/components/admin/TipTapEditor'
 import { ImageUploader } from '@/components/admin/ImageUploader'
+import { blogFormSchema, type BlogFormValues } from '@/lib/validation/blog'
 
 interface CategoryType {
   id: string
@@ -44,85 +47,112 @@ interface Props {
   tags: TagType[]
 }
 
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null
+  return <p className="mt-1 text-xs text-red-600">{message}</p>
+}
+
 export function BlogForm({ mode, post, categories, tags }: Props) {
   const router = useRouter()
-  const [title, setTitle] = useState(post?.title || '')
-  const [slug, setSlug] = useState(post?.slug || '')
   const [autoSlug, setAutoSlug] = useState(!post?.slug)
   const [contentHtml, setContentHtml] = useState(post?.contentHtml || '')
-  const [contentJson, setContentJson] = useState(post?.content || '')
-  const [excerpt, setExcerpt] = useState(post?.excerpt || '')
-  const [featuredImage, setFeaturedImage] = useState(post?.featuredImage || '')
-  const [status, setStatus] = useState(post?.status || 'draft')
-  const [categoryId, setCategoryId] = useState(post?.categoryId || '')
-  const [selectedTags, setSelectedTags] = useState<string[]>(
-    post?.tags.map((t) => t.tag.id) || []
-  )
-  const [metaTitle, setMetaTitle] = useState(post?.seo?.metaTitle || '')
-  const [metaDesc, setMetaDesc] = useState(post?.seo?.metaDesc || '')
-  const [ogImage, setOgImage] = useState(post?.seo?.ogImage || '')
-  const [canonical, setCanonical] = useState(post?.seo?.canonical || '')
-  const [noindex, setNoindex] = useState(post?.seo?.noindex || false)
 
-  const handleTitleChange = useCallback(
-    async (e: React.ChangeEvent<HTMLInputElement>) => {
-      const newTitle = e.target.value
-      setTitle(newTitle)
-      if (autoSlug && mode === 'create') {
-        const generated = await generateSlugFromTitle(newTitle)
-        setSlug(generated)
-      }
-    },
-    [autoSlug, mode]
-  )
-
-  const wrapAction = async (
-    prevState: ActionResult | null,
-    formData: FormData
-  ): Promise<ActionResult | null> => {
-    const data = {
-      title,
-      slug,
-      excerpt: excerpt || null,
-      content: contentJson || null,
-      contentHtml: contentHtml || null,
-      featuredImage: featuredImage || null,
-      status,
-      categoryId: categoryId || null,
-      tagIds: selectedTags,
+  const {
+    register,
+    control,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm<BlogFormValues>({
+    resolver: zodResolver(blogFormSchema),
+    defaultValues: {
+      title: post?.title || '',
+      slug: post?.slug || '',
+      content: post?.content || '',
+      contentHtml: post?.contentHtml || '',
+      excerpt: post?.excerpt || '',
+      featuredImage: post?.featuredImage || '',
+      status: (post?.status as BlogFormValues['status']) || 'draft',
+      categoryId: post?.categoryId || '',
+      tagIds: post?.tags.map((t) => t.tag.id) || [],
       seo: {
-        metaTitle: metaTitle || null,
-        metaDesc: metaDesc || null,
-        ogImage: ogImage || null,
-        canonical: canonical || null,
-        noindex,
+        metaTitle: post?.seo?.metaTitle || '',
+        metaDesc: post?.seo?.metaDesc || '',
+        ogImage: post?.seo?.ogImage || '',
+        canonical: post?.seo?.canonical || '',
+        noindex: post?.seo?.noindex || false,
+      },
+    },
+  })
+
+  const title = watch('title')
+  const slug = watch('slug')
+  const selectedTags = watch('tagIds')
+  const excerpt = watch('excerpt') ?? ''
+  const metaTitle = watch('seo.metaTitle') ?? ''
+  const metaDesc = watch('seo.metaDesc') ?? ''
+  const status = watch('status')
+
+  const handleTitleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newTitle = e.target.value
+    setValue('title', newTitle, { shouldValidate: true })
+    if (autoSlug && mode === 'create') {
+      const generated = await generateSlugFromTitle(newTitle)
+      setValue('slug', generated, { shouldValidate: true })
+    }
+  }
+
+  const toggleTag = (tagId: string) => {
+    const next = selectedTags.includes(tagId)
+      ? selectedTags.filter((id) => id !== tagId)
+      : [...selectedTags, tagId]
+    setValue('tagIds', next)
+  }
+
+  const onValid = async (data: BlogFormValues) => {
+    const payload = {
+      title: data.title,
+      slug: data.slug,
+      excerpt: data.excerpt || null,
+      content: data.content || null,
+      contentHtml: contentHtml || null,
+      featuredImage: data.featuredImage || null,
+      status: data.status,
+      categoryId: data.categoryId || null,
+      tagIds: data.tagIds,
+      seo: {
+        metaTitle: data.seo.metaTitle || null,
+        metaDesc: data.seo.metaDesc || null,
+        ogImage: data.seo.ogImage || null,
+        canonical: data.seo.canonical || null,
+        noindex: data.seo.noindex,
       },
     }
 
     const newFormData = new FormData()
-    newFormData.append('data', JSON.stringify(data))
+    newFormData.append('data', JSON.stringify(payload))
 
-    if (mode === 'create') {
-      return createPost(prevState, newFormData)
+    try {
+      const result =
+        mode === 'create'
+          ? await createPost(null, newFormData)
+          : await updatePost(post!.id, null, newFormData)
+
+      if (result.success) {
+        toast.success(mode === 'create' ? 'Post created.' : 'Post updated.')
+        router.push('/admin/blog')
+        router.refresh()
+      } else {
+        toast.error(result.error || 'Something went wrong — please try again.')
+      }
+    } catch {
+      toast.error('Something went wrong — please try again.')
     }
-    return updatePost(post!.id, prevState, newFormData)
   }
 
-  const [state, formAction, pending] = useActionState(wrapAction, null)
-
-  useEffect(() => {
-    if (state?.success) {
-      router.push('/admin/blog')
-      router.refresh()
-    }
-  }, [state, router])
-
-  const toggleTag = (tagId: string) => {
-    setSelectedTags((prev) =>
-      prev.includes(tagId)
-        ? prev.filter((id) => id !== tagId)
-        : [...prev, tagId]
-    )
+  const onInvalid = () => {
+    toast.error('Please fix the highlighted fields before saving.')
   }
 
   return (
@@ -149,7 +179,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
         </div>
       </div>
 
-      <form action={formAction} className="space-y-6">
+      <form onSubmit={handleSubmit(onValid, onInvalid)} className="space-y-6">
         <div className="grid gap-6 lg:grid-cols-3">
           {/* Main content */}
           <div className="space-y-6 lg:col-span-2">
@@ -166,10 +196,10 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                 id="title"
                 value={title}
                 onChange={handleTitleChange}
-                required
                 className="mt-1 block w-full rounded-lg border border-canvas-300 px-4 py-2.5 text-lg font-semibold text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                 placeholder="Post title..."
               />
+              <FieldError message={errors.title?.message} />
             </div>
 
             {/* Slug */}
@@ -200,13 +230,13 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                   id="slug"
                   value={slug}
                   onChange={(e) => {
-                    setSlug(e.target.value)
+                    setValue('slug', e.target.value, { shouldValidate: true })
                     setAutoSlug(false)
                   }}
-                  required
                   className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                 />
               </div>
+              <FieldError message={errors.slug?.message} />
             </div>
 
             {/* Content / Rich text with TipTap */}
@@ -216,14 +246,25 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                   Content
                 </label>
               </div>
-              <TipTapEditor
-                content={contentHtml}
-                onChange={(html, json) => {
-                  setContentHtml(html)
-                  if (json) setContentJson(JSON.stringify(json))
-                }}
-                placeholder="Start writing your blog post..."
+              <Controller
+                name="content"
+                control={control}
+                render={({ field }) => (
+                  <TipTapEditor
+                    content={contentHtml}
+                    onChange={(html, json) => {
+                      setContentHtml(html)
+                      if (json) field.onChange(JSON.stringify(json))
+                    }}
+                    placeholder="Start writing your blog post..."
+                  />
+                )}
               />
+              {errors.content?.message ? (
+                <div className="px-6 pb-4">
+                  <FieldError message={errors.content?.message} />
+                </div>
+              ) : null}
             </div>
 
             {/* Excerpt */}
@@ -236,8 +277,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
               </label>
               <textarea
                 id="excerpt"
-                value={excerpt}
-                onChange={(e) => setExcerpt(e.target.value)}
+                {...register('excerpt')}
                 rows={3}
                 maxLength={500}
                 className="mt-1 block w-full rounded-lg border border-canvas-300 px-4 py-2.5 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
@@ -246,6 +286,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
               <p className="mt-1 text-xs text-gray-400">
                 {excerpt.length}/500 characters
               </p>
+              <FieldError message={errors.excerpt?.message} />
             </div>
           </div>
 
@@ -257,14 +298,13 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                 Status
               </label>
               <div className="mt-2 space-y-2">
-                {['draft', 'published', 'archived'].map((s) => (
+                {(['draft', 'published', 'archived'] as const).map((s) => (
                   <label key={s} className="flex items-center gap-2">
                     <input
                       type="radio"
-                      name="status"
                       value={s}
                       checked={status === s}
-                      onChange={(e) => setStatus(e.target.value)}
+                      onChange={() => setValue('status', s)}
                       className="border-canvas-300 text-sage-600 focus:ring-sage-600"
                     />
                     <span className="text-sm capitalize text-gray-700">
@@ -277,12 +317,18 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
 
             {/* Featured Image */}
             <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-              <ImageUploader
-                label="Featured Image"
-                hint="Upload a featured image or paste a URL"
-                value={featuredImage}
-                onChange={setFeaturedImage}
-                folder="blog"
+              <Controller
+                name="featuredImage"
+                control={control}
+                render={({ field }) => (
+                  <ImageUploader
+                    label="Featured Image"
+                    hint="Upload a featured image or paste a URL"
+                    value={field.value || ''}
+                    onChange={field.onChange}
+                    folder="blog"
+                  />
+                )}
               />
             </div>
 
@@ -296,8 +342,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
               </label>
               <select
                 id="category"
-                value={categoryId}
-                onChange={(e) => setCategoryId(e.target.value)}
+                {...register('categoryId')}
                 className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
               >
                 <option value="">No category</option>
@@ -344,22 +389,21 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                   </label>
                   <input
                     type="text"
-                    value={metaTitle}
-                    onChange={(e) => setMetaTitle(e.target.value)}
+                    {...register('seo.metaTitle')}
                     maxLength={70}
                     className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   />
                   <p className="mt-0.5 text-xs text-gray-400">
                     {metaTitle.length}/70
                   </p>
+                  <FieldError message={errors.seo?.metaTitle?.message} />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-500">
                     Meta Description
                   </label>
                   <textarea
-                    value={metaDesc}
-                    onChange={(e) => setMetaDesc(e.target.value)}
+                    {...register('seo.metaDesc')}
                     maxLength={160}
                     rows={2}
                     className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
@@ -367,14 +411,21 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                   <p className="mt-0.5 text-xs text-gray-400">
                     {metaDesc.length}/160
                   </p>
+                  <FieldError message={errors.seo?.metaDesc?.message} />
                 </div>
                 <div>
-                  <ImageUploader
-                    label="OG Image"
-                    hint="Social sharing image (open graph)"
-                    value={ogImage}
-                    onChange={setOgImage}
-                    folder="blog/og"
+                  <Controller
+                    name="seo.ogImage"
+                    control={control}
+                    render={({ field }) => (
+                      <ImageUploader
+                        label="OG Image"
+                        hint="Social sharing image (open graph)"
+                        value={field.value || ''}
+                        onChange={field.onChange}
+                        folder="blog/og"
+                      />
+                    )}
                   />
                 </div>
                 <div>
@@ -383,16 +434,14 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                   </label>
                   <input
                     type="url"
-                    value={canonical}
-                    onChange={(e) => setCanonical(e.target.value)}
+                    {...register('seo.canonical')}
                     className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   />
                 </div>
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    checked={noindex}
-                    onChange={(e) => setNoindex(e.target.checked)}
+                    {...register('seo.noindex')}
                     className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600"
                   />
                   <span className="text-xs text-gray-600">
@@ -404,13 +453,6 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
           </div>
         </div>
 
-        {/* Error state */}
-        {state && !state.success && (
-          <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
-            {state.error}
-          </div>
-        )}
-
         {/* Submit */}
         <div className="flex items-center justify-end gap-3 border-t pt-6">
           <Link
@@ -421,10 +463,10 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
           </Link>
           <button
             type="submit"
-            disabled={pending}
-            className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-700 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+            disabled={isSubmitting}
+            className="inline-flex items-center gap-2 rounded-lg bg-dash-action px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-dash-action-hover focus:outline-none focus:ring-2 focus:ring-dash-action focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {pending ? (
+            {isSubmitting ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
                 Saving...

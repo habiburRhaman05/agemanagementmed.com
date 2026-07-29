@@ -238,6 +238,17 @@ exports.Prisma.TreatmentScalarFieldEnum = {
   deletedAt: 'deletedAt'
 };
 
+exports.Prisma.NewsItemScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  thumbnailUrl: 'thumbnailUrl',
+  newsLink: 'newsLink',
+  order: 'order',
+  published: 'published',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.PageSeoScalarFieldEnum = {
   id: 'id',
   path: 'path',
@@ -327,6 +338,7 @@ exports.Prisma.ModelName = {
   Lead: 'Lead',
   Media: 'Media',
   Treatment: 'Treatment',
+  NewsItem: 'NewsItem',
   PageSeo: 'PageSeo',
   Testimonial: 'Testimonial',
   SiteSettings: 'SiteSettings'

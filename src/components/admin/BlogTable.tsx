@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { format } from 'date-fns'
-import { Edit, Trash2, ExternalLink, MoreHorizontal } from 'lucide-react'
+import { Edit, Trash2, ExternalLink, FileText } from 'lucide-react'
 import { deletePost, togglePostStatus } from '@/actions/blog'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -21,9 +21,10 @@ interface BlogPost {
 
 interface Props {
   posts: BlogPost[]
+  search?: string
 }
 
-export function BlogTable({ posts }: Props) {
+export function BlogTable({ posts, search }: Props) {
   const router = useRouter()
   const [deleting, setDeleting] = useState<string | null>(null)
 
@@ -42,38 +43,50 @@ export function BlogTable({ posts }: Props) {
     router.refresh()
   }
 
+  if (posts.length === 0) {
+    return (
+      <div className="rounded-2xl bg-dash-surface py-16 text-center shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+        <FileText className="mx-auto h-10 w-10 text-dash-border" />
+        <h3 className="mt-4 text-base font-semibold text-dash-text">No posts found</h3>
+        <p className="mt-1 text-sm text-dash-text-muted">
+          {search ? 'Try a different search term.' : 'Get started by creating your first blog post.'}
+        </p>
+      </div>
+    )
+  }
+
   return (
-    <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-      <table className="min-w-full divide-y">
-        <thead>
-          <tr className="bg-canvas-50">
-            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+    <div className="max-h-[70vh] overflow-auto rounded-2xl bg-dash-surface shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+      <table className="min-w-full divide-y divide-dash-border">
+        <thead className="sticky top-0 z-10 bg-dash-bg">
+          <tr>
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-dash-text-muted">
               Title
             </th>
-            <th className="hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:table-cell">
+            <th className="hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-dash-text-muted md:table-cell">
               Status
             </th>
-            <th className="hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 lg:table-cell">
+            <th className="hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-dash-text-muted lg:table-cell">
               Category
             </th>
-            <th className="hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 lg:table-cell">
+            <th className="hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-dash-text-muted lg:table-cell">
               Date
             </th>
-            <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-dash-text-muted">
               Actions
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y">
+        <tbody className="divide-y divide-dash-border">
           {posts.map((post) => (
-            <tr key={post.id} className="hover:bg-canvas-50/50">
+            <tr key={post.id} className="transition-colors hover:bg-dash-bg">
               <td className="px-6 py-4">
                 <div className="flex items-center gap-3">
                   <div>
-                    <p className="text-sm font-medium text-ink-950">
+                    <p className="text-sm font-medium text-dash-text">
                       {post.title}
                     </p>
-                    <p className="mt-0.5 text-xs text-gray-500">
+                    <p className="mt-0.5 text-xs text-dash-text-muted">
                       /blog/{post.slug}
                     </p>
                   </div>
@@ -88,17 +101,17 @@ export function BlogTable({ posts }: Props) {
                       ? 'bg-sage-50 text-sage-700 hover:bg-sage-100'
                       : post.status === 'draft'
                         ? 'bg-amber-50 text-amber-700 hover:bg-amber-100'
-                        : 'bg-canvas-50 text-gray-600 hover:bg-canvas-100'
+                        : 'bg-dash-bg text-dash-text-muted hover:bg-dash-border'
                   }`}
                   title="Click to toggle"
                 >
                   {post.status}
                 </button>
               </td>
-              <td className="hidden px-6 py-4 text-sm text-gray-500 lg:table-cell">
+              <td className="hidden px-6 py-4 text-sm text-dash-text-muted lg:table-cell">
                 {post.category?.name || '—'}
               </td>
-              <td className="hidden px-6 py-4 text-sm text-gray-500 lg:table-cell">
+              <td className="hidden px-6 py-4 text-sm text-dash-text-muted lg:table-cell">
                 {post.publishedAt
                   ? format(new Date(post.publishedAt), 'MMM d, yyyy')
                   : format(new Date(post.createdAt), 'MMM d, yyyy')}
@@ -108,14 +121,14 @@ export function BlogTable({ posts }: Props) {
                   <Link
                     href={`/blog/${post.slug}`}
                     target="_blank"
-                    className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-canvas-100 hover:text-gray-600"
+                    className="rounded-lg p-2 text-dash-text-muted transition-colors hover:bg-dash-bg hover:text-dash-text"
                     title="View on site"
                   >
                     <ExternalLink className="h-4 w-4" />
                   </Link>
                   <Link
                     href={`/admin/blog/${post.id}/edit`}
-                    className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-canvas-100 hover:text-blue-600"
+                    className="rounded-lg p-2 text-dash-text-muted transition-colors hover:bg-dash-bg hover:text-dash-text"
                     title="Edit"
                   >
                     <Edit className="h-4 w-4" />
@@ -124,7 +137,7 @@ export function BlogTable({ posts }: Props) {
                     type="button"
                     onClick={() => handleDelete(post.id)}
                     disabled={deleting === post.id}
-                    className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-red-50 hover:text-red-600 disabled:opacity-50"
+                    className="rounded-lg p-2 text-dash-text-muted transition-colors hover:bg-red-50 hover:text-red-600 disabled:opacity-50"
                     title="Delete"
                   >
                     <Trash2 className="h-4 w-4" />

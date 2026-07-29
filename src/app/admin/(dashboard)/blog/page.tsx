@@ -1,7 +1,9 @@
 import { getPosts } from '@/actions/blog'
 import Link from 'next/link'
-import { Plus, Search, FileText } from 'lucide-react'
+import { Plus, Search } from 'lucide-react'
+import { Suspense } from 'react'
 import { BlogTable } from '@/components/admin/BlogTable'
+import { TableSkeleton } from '@/components/admin/TableSkeleton'
 
 interface Props {
   searchParams: Promise<{
@@ -11,12 +13,15 @@ interface Props {
   }>
 }
 
-export default async function BlogListPage({ searchParams }: Props) {
-  const params = await searchParams
-  const status = params.status || undefined
-  const search = params.search || undefined
-  const page = Number(params.page) || 1
-
+async function BlogTableSection({
+  status,
+  search,
+  page,
+}: {
+  status?: string
+  search?: string
+  page: number
+}) {
   const result = await getPosts({ status, search, page })
 
   // Convert Date objects to strings for serialization
@@ -27,6 +32,47 @@ export default async function BlogListPage({ searchParams }: Props) {
       : null,
     createdAt: post.createdAt.toISOString(),
   }))
+
+  return (
+    <>
+      <BlogTable posts={serializedPosts} search={search} />
+
+      {/* Pagination */}
+      {result.totalPages > 1 && (
+        <div className="flex items-center justify-between border-t pt-4">
+          <p className="text-sm text-gray-500">
+            Page {result.currentPage} of {result.totalPages} ({result.total}{' '}
+            total)
+          </p>
+          <div className="flex gap-2">
+            {result.currentPage > 1 && (
+              <Link
+                href={`/admin/blog?page=${result.currentPage - 1}${status ? `&status=${status}` : ''}${search ? `&search=${search}` : ''}`}
+                className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-canvas-50"
+              >
+                Previous
+              </Link>
+            )}
+            {result.currentPage < result.totalPages && (
+              <Link
+                href={`/admin/blog?page=${result.currentPage + 1}${status ? `&status=${status}` : ''}${search ? `&search=${search}` : ''}`}
+                className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-canvas-50"
+              >
+                Next
+              </Link>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
+
+export default async function BlogListPage({ searchParams }: Props) {
+  const params = await searchParams
+  const status = params.status || undefined
+  const search = params.search || undefined
+  const page = Number(params.page) || 1
 
   return (
     <div className="space-y-6">
@@ -82,58 +128,9 @@ export default async function BlogListPage({ searchParams }: Props) {
       </div>
 
       {/* Table */}
-      {result.posts.length > 0 ? (
-        <BlogTable posts={serializedPosts} />
-      ) : (
-        <div className="rounded-2xl bg-white py-16 text-center shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-          <FileText className="mx-auto h-12 w-12 text-canvas-300" />
-          <h3 className="mt-4 text-base font-semibold text-ink-950">
-            No posts found
-          </h3>
-          <p className="mt-1 text-sm text-gray-500">
-            {search
-              ? 'Try a different search term.'
-              : 'Get started by creating your first blog post.'}
-          </p>
-          {!search && (
-            <Link
-              href="/admin/blog/create"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-sage-600 hover:text-sage-700"
-            >
-              <Plus className="h-4 w-4" />
-              Create post
-            </Link>
-          )}
-        </div>
-      )}
-
-      {/* Pagination */}
-      {result.totalPages > 1 && (
-        <div className="flex items-center justify-between border-t pt-4">
-          <p className="text-sm text-gray-500">
-            Page {result.currentPage} of {result.totalPages} ({result.total}{' '}
-            total)
-          </p>
-          <div className="flex gap-2">
-            {result.currentPage > 1 && (
-              <Link
-                href={`/admin/blog?page=${result.currentPage - 1}${status ? `&status=${status}` : ''}${search ? `&search=${search}` : ''}`}
-                className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-canvas-50"
-              >
-                Previous
-              </Link>
-            )}
-            {result.currentPage < result.totalPages && (
-              <Link
-                href={`/admin/blog?page=${result.currentPage + 1}${status ? `&status=${status}` : ''}${search ? `&search=${search}` : ''}`}
-                className="rounded-lg border px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-canvas-50"
-              >
-                Next
-              </Link>
-            )}
-          </div>
-        </div>
-      )}
+      <Suspense key={`${status}-${search}-${page}`} fallback={<TableSkeleton columns={4} />}>
+        <BlogTableSection status={status} search={search} page={page} />
+      </Suspense>
     </div>
   )
 }

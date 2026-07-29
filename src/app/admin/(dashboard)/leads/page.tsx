@@ -1,6 +1,7 @@
 import { getLeads } from '@/actions/lead'
 import { LeadsTable } from '@/components/admin/LeadsTable'
-import { Inbox } from 'lucide-react'
+import { TableSkeleton } from '@/components/admin/TableSkeleton'
+import { Suspense } from 'react'
 
 interface Props {
   searchParams: Promise<{
@@ -10,18 +11,39 @@ interface Props {
   }>
 }
 
-export default async function LeadsPage({ searchParams }: Props) {
-  const params = await searchParams
-  const status = params.status || undefined
-  const search = params.search || undefined
-  const page = Number(params.page) || 1
-
+async function LeadsTableSection({
+  status,
+  search,
+  page,
+}: {
+  status?: string
+  search?: string
+  page: number
+}) {
   const result = await getLeads({ status, search, page })
 
   const serializedLeads = result.leads.map((lead) => ({
     ...lead,
     createdAt: lead.createdAt.toISOString(),
   }))
+
+  return (
+    <LeadsTable
+      leads={serializedLeads}
+      currentPage={result.currentPage}
+      totalPages={result.totalPages}
+      total={result.total}
+      status={status}
+      search={search}
+    />
+  )
+}
+
+export default async function LeadsPage({ searchParams }: Props) {
+  const params = await searchParams
+  const status = params.status || undefined
+  const search = params.search || undefined
+  const page = Number(params.page) || 1
 
   return (
     <div className="space-y-6">
@@ -60,24 +82,9 @@ export default async function LeadsPage({ searchParams }: Props) {
         </form>
       </div>
 
-      {result.leads.length > 0 ? (
-        <LeadsTable
-          leads={serializedLeads}
-          currentPage={result.currentPage}
-          totalPages={result.totalPages}
-          total={result.total}
-          status={status}
-          search={search}
-        />
-      ) : (
-        <div className="rounded-2xl bg-white py-16 text-center shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-          <Inbox className="mx-auto h-12 w-12 text-canvas-300" />
-          <h3 className="mt-4 text-base font-semibold text-ink-950">No leads found</h3>
-          <p className="mt-1 text-sm text-gray-500">
-            {search ? 'Try a different search term.' : 'No inquiries have been submitted yet.'}
-          </p>
-        </div>
-      )}
+      <Suspense key={`${status}-${search}-${page}`} fallback={<TableSkeleton columns={5} />}>
+        <LeadsTableSection status={status} search={search} page={page} />
+      </Suspense>
     </div>
   )
 }

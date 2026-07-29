@@ -146,6 +146,21 @@ model Treatment {
   deletedAt DateTime?
 }
 
+// Press coverage shown on the public /in-the-news page — replaces the
+// previously-hardcoded `expertsContent.press` list in src/content/pages/experts.ts.
+model NewsItem {
+  id           String   @id @default(cuid())
+  title        String
+  thumbnailUrl String
+  newsLink     String
+  order        Int      @default(0)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([published, order])
+}
+
 // Generic — reused for EVERY page on the site, not just treatments: home, contact-us,
 // our-experts, blog index, aesthetics, etc. One model, one admin screen, all SEO.
 model PageSeo {

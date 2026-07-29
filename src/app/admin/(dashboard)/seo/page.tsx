@@ -1,4 +1,7 @@
+import { Suspense } from 'react'
+
 import { SeoTable } from '@/components/admin/SeoTable'
+import { TableSkeleton } from '@/components/admin/TableSkeleton'
 import { getAllTreatments } from '@/content/treatments/main'
 import { prisma } from '@/lib/prisma'
 
@@ -14,7 +17,7 @@ const STATIC_PAGES = [
   { path: '/thank-you', label: 'Thank You' },
 ]
 
-export default async function SeoPage() {
+async function SeoTableSection() {
   const [treatments, seoRows] = await Promise.all([
     getAllTreatments(),
     prisma.pageSeo.findMany({ orderBy: { path: 'asc' } }),
@@ -26,6 +29,10 @@ export default async function SeoPage() {
     ({ path, label }) => ({ path, label, seo: seoByPath.get(path) ?? null }),
   )
 
+  return <SeoTable pages={pages} />
+}
+
+export default function SeoPage() {
   return (
     <div className="space-y-6">
       <div>
@@ -34,7 +41,9 @@ export default async function SeoPage() {
           Title, description, canonical, OG image, robots, and structured-data override — per page, across the whole site.
         </p>
       </div>
-      <SeoTable pages={pages} />
+      <Suspense fallback={<TableSkeleton columns={3} />}>
+        <SeoTableSection />
+      </Suspense>
     </div>
   )
 }

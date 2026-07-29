@@ -1,9 +1,13 @@
 'use client'
 
-import { AlertCircle, CheckCircle2, Loader2, Plus, Save, Trash2 } from 'lucide-react'
+import { AlertCircle, Loader2, Plus, Save, Trash2 } from 'lucide-react'
 import { useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
 
 import { SectionBuilder } from '@/components/admin/SectionBuilder'
+import { editTreatmentSchema, type EditTreatmentValues } from '@/lib/validation/treatment'
 
 interface Cta {
   label: string
@@ -62,24 +66,16 @@ function pickAdvanced(data: TreatmentData) {
   return advanced
 }
 
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null
+  return <p className="mt-1 text-xs text-red-600">{message}</p>
+}
+
 export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo: SeoData | null }) {
   const [status, setStatus] = useState(treatment.status)
   const [order, setOrder] = useState(treatment.order)
 
-  const [name, setName] = useState(treatment.data.name ?? '')
-  const [shortName, setShortName] = useState(treatment.data.shortName ?? '')
-  const [summary, setSummary] = useState(treatment.data.summary ?? '')
-  const [cardImageSrc, setCardImageSrc] = useState(treatment.data.cardImage?.src ?? '')
-  const [cardImageAlt, setCardImageAlt] = useState(treatment.data.cardImage?.alt ?? '')
-  const [cardBenefits, setCardBenefits] = useState((treatment.data.cardBenefits ?? []).join(', '))
-
-  const [heroEyebrow, setHeroEyebrow] = useState(treatment.data.hero?.eyebrow ?? '')
-  const [heroTitle, setHeroTitle] = useState(treatment.data.hero?.title ?? '')
-  const [heroLead, setHeroLead] = useState(treatment.data.hero?.lead ?? '')
-  const [heroImageSrc, setHeroImageSrc] = useState(treatment.data.hero?.image?.src ?? '')
-  const [heroImageAlt, setHeroImageAlt] = useState(treatment.data.hero?.image?.alt ?? '')
   const [heroCtas, setHeroCtas] = useState<Cta[]>(treatment.data.hero?.ctas ?? [])
-
   const [faqs, setFaqs] = useState(treatment.data.faqs ?? [])
 
   const [pricingTitle, setPricingTitle] = useState(treatment.data.pricing?.title ?? '')
@@ -87,10 +83,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
   const [pricingIncluded, setPricingIncluded] = useState((treatment.data.pricing?.included ?? []).join('\n'))
   const [pricingNote, setPricingNote] = useState(treatment.data.pricing?.note ?? '')
 
-  const [closingTitle, setClosingTitle] = useState(treatment.data.closingCta?.title ?? '')
-  const [closingBody, setClosingBody] = useState(treatment.data.closingCta?.body ?? '')
-  const [closingCtaLabel, setClosingCtaLabel] = useState(treatment.data.closingCta?.cta?.label ?? '')
-  const [closingCtaHref, setClosingCtaHref] = useState(treatment.data.closingCta?.cta?.href ?? '')
+  const [seoNoindex, setSeoNoindex] = useState(seo?.noindex ?? false)
 
   const [advancedJson, setAdvancedJson] = useState(JSON.stringify(pickAdvanced(treatment.data), null, 2))
   const advancedTextareaRef = useRef<HTMLTextAreaElement>(null)
@@ -115,25 +108,46 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
     }
   }
 
-  const [seoTitle, setSeoTitle] = useState(seo?.title ?? '')
-  const [seoDescription, setSeoDescription] = useState(seo?.description ?? '')
-  const [seoCanonical, setSeoCanonical] = useState(seo?.canonical ?? treatment.href)
-  const [seoNoindex, setSeoNoindex] = useState(seo?.noindex ?? false)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<EditTreatmentValues>({
+    resolver: zodResolver(editTreatmentSchema),
+    defaultValues: {
+      name: treatment.data.name ?? '',
+      shortName: treatment.data.shortName ?? '',
+      summary: treatment.data.summary ?? '',
+      cardImageSrc: treatment.data.cardImage?.src ?? '',
+      cardImageAlt: treatment.data.cardImage?.alt ?? '',
+      cardBenefits: (treatment.data.cardBenefits ?? []).join(', '),
+      heroEyebrow: treatment.data.hero?.eyebrow ?? '',
+      heroTitle: treatment.data.hero?.title ?? '',
+      heroLead: treatment.data.hero?.lead ?? '',
+      heroImageSrc: treatment.data.hero?.image?.src ?? '',
+      heroImageAlt: treatment.data.hero?.image?.alt ?? '',
+      closingTitle: treatment.data.closingCta?.title ?? '',
+      closingBody: treatment.data.closingCta?.body ?? '',
+      closingCtaLabel: treatment.data.closingCta?.cta?.label ?? '',
+      closingCtaHref: treatment.data.closingCta?.cta?.href ?? '',
+      seoTitle: seo?.title ?? '',
+      seoDescription: seo?.description ?? '',
+      seoCanonical: seo?.canonical ?? treatment.href,
+    },
+  })
 
-  const [saveStatus, setSaveStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [error, setError] = useState('')
+  const [submitError, setSubmitError] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setSaveStatus('loading')
-    setError('')
+  const onValid = async (values: EditTreatmentValues) => {
+    setSubmitError('')
 
     let advanced: Record<string, unknown>
     try {
       advanced = advancedJson.trim() ? JSON.parse(advancedJson) : {}
     } catch {
-      setSaveStatus('error')
-      setError('Advanced JSON is not valid — check for a missing comma or bracket.')
+      const message = 'Advanced JSON is not valid — check for a missing comma or bracket.'
+      setSubmitError(message)
+      toast.error(message)
       return
     }
 
@@ -145,16 +159,16 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           status,
           order,
           data: {
-            name,
-            shortName,
-            summary,
-            cardImage: { src: cardImageSrc, alt: cardImageAlt },
-            cardBenefits: cardBenefits.split(',').map((s) => s.trim()).filter(Boolean),
+            name: values.name,
+            shortName: values.shortName,
+            summary: values.summary,
+            cardImage: { src: values.cardImageSrc, alt: values.cardImageAlt },
+            cardBenefits: (values.cardBenefits ?? '').split(',').map((s) => s.trim()).filter(Boolean),
             hero: {
-              eyebrow: heroEyebrow || undefined,
-              title: heroTitle,
-              lead: heroLead,
-              image: { src: heroImageSrc, alt: heroImageAlt },
+              eyebrow: values.heroEyebrow || undefined,
+              title: values.heroTitle,
+              lead: values.heroLead,
+              image: { src: values.heroImageSrc, alt: values.heroImageAlt },
               ctas: heroCtas,
             },
             faqs,
@@ -168,16 +182,16 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
                 }
               : undefined,
             closingCta: {
-              title: closingTitle,
-              body: closingBody,
-              cta: { label: closingCtaLabel, href: closingCtaHref },
+              title: values.closingTitle,
+              body: values.closingBody,
+              cta: { label: values.closingCtaLabel, href: values.closingCtaHref },
             },
             ...advanced,
           },
           seo: {
-            title: seoTitle,
-            description: seoDescription,
-            canonical: seoCanonical,
+            title: values.seoTitle,
+            description: values.seoDescription,
+            canonical: values.seoCanonical,
             noindex: seoNoindex,
           },
         }),
@@ -186,16 +200,23 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
       const json = await res.json()
       if (!res.ok) throw new Error(json.error || 'Failed to save')
 
-      setSaveStatus('success')
-      setTimeout(() => setSaveStatus('idle'), 3000)
+      toast.success('Saved — the live page updates now (or on next visit if cached).')
     } catch (err) {
-      setSaveStatus('error')
-      setError(err instanceof Error ? err.message : 'Failed to save')
+      const message = err instanceof Error ? err.message : 'Failed to save'
+      setSubmitError(message)
+      toast.error(message)
     }
   }
 
+  const onInvalid = () => {
+    toast.error('Please fix the highlighted fields before saving.')
+  }
+
+  const inputClass =
+    'mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20'
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit(onValid, onInvalid)} className="space-y-6">
       {/* Status + order */}
       <div className="flex flex-wrap items-end gap-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <div>
@@ -239,30 +260,33 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="block text-xs font-medium text-gray-500">Name</label>
-            <input value={name} onChange={(e) => setName(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+            <input {...register('name')} className={inputClass} />
+            <FieldError message={errors.name?.message} />
           </div>
           <div>
             <label className="block text-xs font-medium text-gray-500">Short name</label>
-            <input value={shortName} onChange={(e) => setShortName(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+            <input {...register('shortName')} className={inputClass} />
           </div>
         </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">Summary</label>
-          <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={2} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+          <textarea {...register('summary')} rows={2} className={inputClass} />
+          <FieldError message={errors.summary?.message} />
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="block text-xs font-medium text-gray-500">Card image URL</label>
-            <input value={cardImageSrc} onChange={(e) => setCardImageSrc(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+            <input {...register('cardImageSrc')} className={inputClass} />
+            <FieldError message={errors.cardImageSrc?.message} />
           </div>
           <div>
             <label className="block text-xs font-medium text-gray-500">Card image alt</label>
-            <input value={cardImageAlt} onChange={(e) => setCardImageAlt(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+            <input {...register('cardImageAlt')} className={inputClass} />
           </div>
         </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">Card benefits (comma-separated)</label>
-          <input value={cardBenefits} onChange={(e) => setCardBenefits(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+          <input {...register('cardBenefits')} className={inputClass} />
         </div>
       </div>
 
@@ -271,24 +295,27 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         <h2 className="text-sm font-semibold text-ink-950">Hero</h2>
         <div>
           <label className="block text-xs font-medium text-gray-500">Eyebrow</label>
-          <input value={heroEyebrow} onChange={(e) => setHeroEyebrow(e.target.value)} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+          <input {...register('heroEyebrow')} className={inputClass} />
         </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">Title</label>
-          <input value={heroTitle} onChange={(e) => setHeroTitle(e.target.value)} required className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+          <input {...register('heroTitle')} className={inputClass} />
+          <FieldError message={errors.heroTitle?.message} />
         </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">Lead</label>
-          <textarea value={heroLead} onChange={(e) => setHeroLead(e.target.value)} required rows={3} className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+          <textarea {...register('heroLead')} rows={3} className={inputClass} />
+          <FieldError message={errors.heroLead?.message} />
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="block text-xs font-medium text-gray-500">Hero image URL</label>
-            <input value={heroImageSrc} onChange={(e) => setHeroImageSrc(e.target.value)} required className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+            <input {...register('heroImageSrc')} className={inputClass} />
+            <FieldError message={errors.heroImageSrc?.message} />
           </div>
           <div>
             <label className="block text-xs font-medium text-gray-500">Hero image alt</label>
-            <input value={heroImageAlt} onChange={(e) => setHeroImageAlt(e.target.value)} required className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+            <input {...register('heroImageAlt')} className={inputClass} />
           </div>
         </div>
 
@@ -376,20 +403,29 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
       {/* Closing CTA */}
       <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <h2 className="text-sm font-semibold text-ink-950">Closing CTA</h2>
-        <input value={closingTitle} onChange={(e) => setClosingTitle(e.target.value)} placeholder="Title" required className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
-        <textarea value={closingBody} onChange={(e) => setClosingBody(e.target.value)} placeholder="Body" required rows={2} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+        <input {...register('closingTitle')} placeholder="Title" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+        <textarea {...register('closingBody')} placeholder="Body" rows={2} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+        <FieldError message={errors.closingBody?.message} />
         <div className="flex gap-2">
-          <input value={closingCtaLabel} onChange={(e) => setClosingCtaLabel(e.target.value)} placeholder="Button label" required className="block w-1/2 rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
-          <input value={closingCtaHref} onChange={(e) => setClosingCtaHref(e.target.value)} placeholder="/book" required className="block w-1/2 rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+          <div className="w-1/2">
+            <input {...register('closingCtaLabel')} placeholder="Button label" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+            <FieldError message={errors.closingCtaLabel?.message} />
+          </div>
+          <div className="w-1/2">
+            <input {...register('closingCtaHref')} placeholder="/book" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+            <FieldError message={errors.closingCtaHref?.message} />
+          </div>
         </div>
       </div>
 
       {/* SEO */}
       <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <h2 className="text-sm font-semibold text-ink-950">SEO</h2>
-        <input value={seoTitle} onChange={(e) => setSeoTitle(e.target.value)} placeholder="Meta title" maxLength={70} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
-        <textarea value={seoDescription} onChange={(e) => setSeoDescription(e.target.value)} placeholder="Meta description" maxLength={300} rows={2} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
-        <input value={seoCanonical} onChange={(e) => setSeoCanonical(e.target.value)} placeholder="Canonical" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+        <input {...register('seoTitle')} placeholder="Meta title" maxLength={70} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+        <FieldError message={errors.seoTitle?.message} />
+        <textarea {...register('seoDescription')} placeholder="Meta description" maxLength={300} rows={2} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+        <FieldError message={errors.seoDescription?.message} />
+        <input {...register('seoCanonical')} placeholder="Canonical" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={seoNoindex} onChange={(e) => setSeoNoindex(e.target.checked)} className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600" />
           <span className="text-xs text-gray-600">No index</span>
@@ -416,27 +452,21 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         />
       </div>
 
-      {saveStatus === 'error' ? (
+      {submitError ? (
         <div className="flex items-center gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
           <AlertCircle className="size-4 shrink-0" />
-          {error}
-        </div>
-      ) : null}
-      {saveStatus === 'success' ? (
-        <div className="flex items-center gap-2 rounded-lg bg-sage-50 px-4 py-3 text-sm text-sage-700">
-          <CheckCircle2 className="size-4 shrink-0" />
-          Saved — the live page updates now (or on next visit if cached).
+          {submitError}
         </div>
       ) : null}
 
       <div className="flex justify-end border-t pt-6">
         <button
           type="submit"
-          disabled={saveStatus === 'loading'}
-          className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-700 disabled:cursor-not-allowed disabled:opacity-60"
+          disabled={isSubmitting}
+          className="inline-flex items-center gap-2 rounded-lg bg-dash-action px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-dash-action-hover disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {saveStatus === 'loading' ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />}
-          {saveStatus === 'loading' ? 'Saving...' : 'Save changes'}
+          {isSubmitting ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />}
+          {isSubmitting ? 'Saving...' : 'Save changes'}
         </button>
       </div>
     </form>

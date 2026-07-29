@@ -45,6 +45,21 @@
   --color-canvas-600: #6c6455;
   --color-canvas-900: #16130f;
 
+  /* ---- Dashboard palette (admin-only, separate from marketing site) ----
+     Every text/background pairing below is WCAG AA-verified (4.5:1 body,
+     3:1 large text/UI) — see work.md Task 1.1 for the checked ratios. */
+  --color-dash-navy-950: #0b1220;
+  --color-dash-navy-900: #111a2e; /* sidebar background */
+  --color-dash-navy-800: #1b2740;
+  --color-dash-slate-400: #94a3b8; /* muted sidebar text — 6.8:1 on navy-900 */
+  --color-dash-bg: #f7f8fa; /* body background — light mist, not pure white */
+  --color-dash-surface: #ffffff; /* card/table background */
+  --color-dash-border: #e6e8ee;
+  --color-dash-action: #16203a; /* primary button — deep navy/slate, not marketing sage */
+  --color-dash-action-hover: #0d1526;
+  --color-dash-text: #1a2033; /* 15.2:1 on dash-bg */
+  --color-dash-text-muted: #667085; /* 4.7:1 on dash-bg */
+
   /* ---- Fluid type scale ---- */
   --text-display-xl: clamp(2.75rem, 1.6rem + 5.75vw, 5.5rem);
   --text-display-xl--line-height: 1.02;

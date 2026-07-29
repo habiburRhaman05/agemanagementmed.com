@@ -1,7 +1,7 @@
 'use client'
 
-import { AlertCircle, CheckCircle2, ChevronDown, ChevronUp, Loader2, Save } from 'lucide-react'
-import { useState } from 'react'
+import { AlertCircle, CheckCircle2, ChevronDown, ChevronUp, Loader2, Save, Search } from 'lucide-react'
+import { Fragment, useState } from 'react'
 
 interface SeoRow {
   title: string | null
@@ -69,10 +69,10 @@ function EditRow({ page }: { page: PageEntry }) {
   }
 
   return (
-    <div className="space-y-4 border-t bg-canvas-50/50 px-6 py-5">
+    <div className="space-y-4 border-t border-dash-border bg-dash-bg/60 px-6 py-5">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="block text-xs font-medium text-gray-500">Title</label>
+          <label className="block text-xs font-medium text-dash-text-muted">Title</label>
           <input
             type="text"
             value={title}
@@ -80,10 +80,10 @@ function EditRow({ page }: { page: PageEntry }) {
             maxLength={70}
             className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
           />
-          <p className="mt-0.5 text-xs text-gray-400">{title.length}/70</p>
+          <p className="mt-0.5 text-xs text-dash-text-muted">{title.length}/70</p>
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-500">Canonical</label>
+          <label className="block text-xs font-medium text-dash-text-muted">Canonical</label>
           <input
             type="text"
             value={canonical}
@@ -94,7 +94,7 @@ function EditRow({ page }: { page: PageEntry }) {
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-gray-500">Description</label>
+        <label className="block text-xs font-medium text-dash-text-muted">Description</label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -102,12 +102,12 @@ function EditRow({ page }: { page: PageEntry }) {
           rows={2}
           className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
         />
-        <p className="mt-0.5 text-xs text-gray-400">{description.length}/300</p>
+        <p className="mt-0.5 text-xs text-dash-text-muted">{description.length}/300</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="block text-xs font-medium text-gray-500">OG image URL</label>
+          <label className="block text-xs font-medium text-dash-text-muted">OG image URL</label>
           <input
             type="text"
             value={ogImageUrl}
@@ -122,12 +122,12 @@ function EditRow({ page }: { page: PageEntry }) {
             onChange={(e) => setNoindex(e.target.checked)}
             className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600"
           />
-          <span className="text-xs text-gray-600">No index (hide from search engines)</span>
+          <span className="text-xs text-dash-text-muted">No index (hide from search engines)</span>
         </label>
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-gray-500">
+        <label className="block text-xs font-medium text-dash-text-muted">
           Structured data override (JSON-LD, optional)
         </label>
         <textarea
@@ -137,7 +137,7 @@ function EditRow({ page }: { page: PageEntry }) {
           placeholder='{"@context":"https://schema.org","@type":"MedicalWebPage",...}'
           className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 font-mono text-xs focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
         />
-        <p className="mt-0.5 text-xs text-gray-400">
+        <p className="mt-0.5 text-xs text-dash-text-muted">
           Leave blank to use the automatic schema (MedicalBusiness / FAQPage) already generated for this page.
         </p>
       </div>
@@ -160,7 +160,7 @@ function EditRow({ page }: { page: PageEntry }) {
           type="button"
           onClick={handleSave}
           disabled={status === 'loading'}
-          className="inline-flex items-center gap-2 rounded-lg bg-sage-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-sage-700 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-lg bg-dash-action px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-dash-action-hover disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === 'loading' ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />}
           Save
@@ -173,33 +173,43 @@ function EditRow({ page }: { page: PageEntry }) {
 export function SeoTable({ pages }: { pages: PageEntry[] }) {
   const [expanded, setExpanded] = useState<string | null>(null)
 
+  if (pages.length === 0) {
+    return (
+      <div className="rounded-2xl bg-dash-surface py-16 text-center shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+        <Search className="mx-auto h-10 w-10 text-dash-border" />
+        <h3 className="mt-4 text-base font-semibold text-dash-text">No pages found</h3>
+        <p className="mt-1 text-sm text-dash-text-muted">Pages will appear here once they&apos;re available.</p>
+      </div>
+    )
+  }
+
   return (
-    <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-      <table className="min-w-full divide-y">
-        <thead>
-          <tr className="bg-canvas-50">
-            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+    <div className="max-h-[70vh] overflow-auto rounded-2xl bg-dash-surface shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+      <table className="min-w-full divide-y divide-dash-border">
+        <thead className="sticky top-0 z-10 bg-dash-bg">
+          <tr>
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-dash-text-muted">
               Page
             </th>
-            <th className="hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:table-cell">
+            <th className="hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-dash-text-muted md:table-cell">
               Title
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-dash-text-muted">
               Status
             </th>
             <th className="px-6 py-3" />
           </tr>
         </thead>
-        <tbody className="divide-y">
+        <tbody className="divide-y divide-dash-border">
           {pages.map((page) => (
-            <>
-              <tr key={page.path} className="hover:bg-canvas-50">
+            <Fragment key={page.path}>
+              <tr className="transition-colors hover:bg-dash-bg">
                 <td className="px-6 py-4">
-                  <p className="text-sm font-medium text-ink-950">{page.label}</p>
-                  <p className="text-xs text-gray-400">{page.path}</p>
+                  <p className="text-sm font-medium text-dash-text">{page.label}</p>
+                  <p className="text-xs text-dash-text-muted">{page.path}</p>
                 </td>
-                <td className="hidden px-6 py-4 text-sm text-gray-600 md:table-cell">
-                  {page.seo?.title || <span className="text-gray-400">Not set</span>}
+                <td className="hidden px-6 py-4 text-sm text-dash-text-muted md:table-cell">
+                  {page.seo?.title || <span className="text-dash-text-muted">Not set</span>}
                 </td>
                 <td className="px-6 py-4">
                   {page.seo ? (
@@ -207,7 +217,7 @@ export function SeoTable({ pages }: { pages: PageEntry[] }) {
                       Configured
                     </span>
                   ) : (
-                    <span className="inline-flex items-center rounded-full bg-canvas-100 px-2.5 py-0.5 text-xs font-medium text-gray-600">
+                    <span className="inline-flex items-center rounded-full bg-dash-bg px-2.5 py-0.5 text-xs font-medium text-dash-text-muted">
                       Using defaults
                     </span>
                   )}
@@ -216,7 +226,7 @@ export function SeoTable({ pages }: { pages: PageEntry[] }) {
                   <button
                     type="button"
                     onClick={() => setExpanded(expanded === page.path ? null : page.path)}
-                    className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-medium text-sage-700 hover:bg-sage-50"
+                    className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-medium text-dash-text hover:bg-dash-bg"
                   >
                     {expanded === page.path ? 'Close' : 'Edit'}
                     {expanded === page.path ? (
@@ -228,13 +238,13 @@ export function SeoTable({ pages }: { pages: PageEntry[] }) {
                 </td>
               </tr>
               {expanded === page.path ? (
-                <tr key={`${page.path}-edit`}>
+                <tr>
                   <td colSpan={4} className="p-0">
                     <EditRow page={page} />
                   </td>
                 </tr>
               ) : null}
-            </>
+            </Fragment>
           ))}
         </tbody>
       </table>
