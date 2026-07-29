@@ -95,7 +95,7 @@ const FemaleSexualHealthConcerns: React.FC = () => {
                   base rule outranks an inherited `text-white` from a parent, which was making this heading
                   render nearly invisible against the dark card. */}
               <h2 className="font-display text-display-sm text-canvas-50">
-                Common Female Sexual Health Concerns
+                Common Female Sexual Health Concer
               </h2>
 
               <p className="mt-5 text-body-lg leading-relaxed text-canvas-50/75">

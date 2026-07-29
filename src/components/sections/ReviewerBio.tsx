@@ -18,11 +18,11 @@ interface ReviewerBioProps {
 /** The medical-review byline — who wrote or reviewed this clinical content. */
 export function ReviewerBio({ name, bio, portrait, background = 'alt' }: ReviewerBioProps) {
   return (
-    <Section background={background} spacing="lg">
+    <Section background={background} spacing="md">
       <Container>
         <Reveal>
-          <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 rounded-3xl border border-canvas-300/60 bg-canvas-50 p-8 text-center shadow-md sm:p-12 lg:flex-row lg:items-start lg:text-left">
-            <div className="w-40 shrink-0 sm:w-48">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 rounded-3xl border border-canvas-300/60 bg-canvas-50 p-6 text-center shadow-md sm:gap-8 sm:p-10 lg:flex-row lg:items-start lg:text-left">
+            <div className="w-32 shrink-0 sm:w-40">
               <AspectImage media={portrait} ratio="square" fit="cutout" sizes="200px" className="rounded-2xl" />
             </div>
             <div>

@@ -92,18 +92,9 @@ export async function TreatmentTemplate({ treatment, testimonials }: TreatmentTe
         />
       ) : null}
 
-       {related.length ? (
-        <PillarGrid
-          eyebrow="Related care"
-          title="Other ways we can help"
-          treatments={related}
-          background="alt"
-        />
-      ) : null}
+       
 
-      {
-        treatment.customsSection?.treatmentsPorcess > 0 && <TreatmentProcess  title='The PRP Hair Treatment Process' steps={treatment.customsSection.treatmentsPorcess}/>
-      }
+   
 
       {treatment.faqs.length ? (
         <FAQAccordion

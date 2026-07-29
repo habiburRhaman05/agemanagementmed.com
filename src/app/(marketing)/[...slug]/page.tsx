@@ -11,6 +11,14 @@ import { WeightLossMaleLayout } from '@/components/sections/custom/templates-cus
 import { WeightLossFeMaleLayout } from '@/components/sections/custom/templates-custom/WeightLossFemaleLayout'
 import { HairRestoreFemaleLayout } from '@/components/sections/custom/templates-custom/HairRestoreFemale'
 import { HairRestoreMaleLayout } from '@/components/sections/custom/templates-custom/HairRestoreMaleLayout'
+import { SexualWellnessMaleLayout } from '@/components/sections/custom/templates-custom/SexualWellnessMaleLayout'
+import { SexualWellnessFemaleLayout } from '@/components/sections/custom/templates-custom/SexualWellnessFemaleLayout'
+import { GlpMicrodosingMaleLayout } from '@/components/sections/custom/templates-custom/GlpMicrodosingMaleLayout'
+import { GlpMicrodosingFemaleLayout } from '@/components/sections/custom/templates-custom/GlpMicrodosingFemaleLayout'
+import { ShockwaveTherapyLayout } from '@/components/sections/custom/templates-custom/ShockwaveTherapyLayout'
+import { PerimenopauseMenopauseLayout } from '@/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout'
+import { HormoneTherapyMenLayout } from '@/components/sections/custom/templates-custom/HormoneTherapyMenLayout'
+import { HormoneTherapyWomenLayout } from '@/components/sections/custom/templates-custom/HormoneTherapyWomenLayout'
 
 /**
  * Single dynamic route serving every treatment page — replaces the 15
@@ -93,6 +101,22 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
           return <HairRestoreFemaleLayout treatment={treatment}/>
         case "hair-restoration-men":
           return <HairRestoreMaleLayout treatment={treatment}/>
+        case "sexual-wellness-men":
+          return <SexualWellnessMaleLayout treatment={treatment}/>
+        case "sexual-wellness-women":
+          return <SexualWellnessFemaleLayout treatment={treatment}/>
+        case "glp1-microdosing-men":
+          return <GlpMicrodosingMaleLayout treatment={treatment}/>
+        case "glp1-microdosing-women":
+          return <GlpMicrodosingFemaleLayout treatment={treatment}/>
+        case "shockwave-therapy":
+          return <ShockwaveTherapyLayout treatment={treatment}/>
+        case "perimenopause-menopause":
+          return <PerimenopauseMenopauseLayout treatment={treatment}/>
+        case "hormone-therapy-men":
+          return <HormoneTherapyMenLayout treatment={treatment}/>
+        case "hormone-therapy-women":
+          return <HormoneTherapyWomenLayout treatment={treatment}/>
       default:
        return <TreatmentTemplate
         treatment={treatment}
