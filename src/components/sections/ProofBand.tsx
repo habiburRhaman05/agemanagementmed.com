@@ -36,15 +36,16 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
       {/* Abstract Background Element */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sage-50/50 via-white to-white -z-10" />
 
-      <Container ref={containerRef}>
-        <motion.div style={{ opacity }} className="mx-auto max-w-7xl">
-          {eyebrow ? (
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="mb-20 text-center"
-            >
+      <Container>
+        <div ref={containerRef}>
+          <motion.div style={{ opacity }} className="mx-auto max-w-7xl">
+            {eyebrow ? (
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className="mb-20 text-center"
+              >
               <h2 className="inline-flex items-center gap-4 text-sm font-semibold tracking-[0.2em] uppercase text-sage-600">
                 <span className="h-[1px] w-12 bg-sage-300"></span>
                 {eyebrow}
@@ -150,6 +151,7 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
             </motion.div>
           ) : null}
         </motion.div>
+        </div>
       </Container>
     </Section>
   )

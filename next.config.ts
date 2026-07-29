@@ -1,6 +1,12 @@
-import type { NextConfig } from "next"
+
+
+
+
+
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ['76.13.183.180'],
   images: {
     remotePatterns: [
       {
@@ -13,6 +19,6 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   output:"standalone"
-}
+};
 
-export default nextConfig
+export default nextConfig;

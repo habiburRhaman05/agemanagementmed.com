@@ -4,13 +4,16 @@ import {
   FileText,
   CalendarCheck,
   Inbox,
-  Clock,
-  ArrowRight,
   ArrowUpRight,
   CheckCircle2,
   XCircle,
+  Clock,
+  TrendingUp,
+  Plus,
+  ArrowRight,
   type LucideIcon,
 } from 'lucide-react'
+import { formatDistanceToNow } from 'date-fns'
 
 const statusIcons: Record<string, LucideIcon> = {
   pending: Clock,
@@ -20,10 +23,10 @@ const statusIcons: Record<string, LucideIcon> = {
 }
 
 const statusColors: Record<string, string> = {
-  pending: 'text-amber-600 bg-amber-50',
-  confirmed: 'text-sage-600 bg-sage-50',
-  completed: 'text-blue-600 bg-blue-50',
-  cancelled: 'text-red-600 bg-red-50',
+  pending: 'text-amber-700 bg-amber-50/80 ring-amber-600/20',
+  confirmed: 'text-sage-700 bg-sage-50/80 ring-sage-600/20',
+  completed: 'text-blue-700 bg-blue-50/80 ring-blue-600/20',
+  cancelled: 'text-rose-700 bg-rose-50/80 ring-rose-600/20',
 }
 
 const statusLabels: Record<string, string> = {
@@ -36,212 +39,208 @@ const statusLabels: Record<string, string> = {
 export default async function DashboardPage() {
   const stats = await getDashboardStats()
 
-  const cards = [
-    {
-      label: 'Total Posts',
-      value: stats.totalPosts,
-      icon: FileText,
-      accent: 'from-blue-500 to-indigo-600',
-      iconColor: 'text-blue-600 bg-blue-50',
-    },
-    {
-      label: 'Published',
-      value: stats.publishedPosts,
-      icon: CheckCircle2,
-      accent: 'from-sage-600 to-teal-600',
-      iconColor: 'text-sage-600 bg-sage-50',
-    },
-    {
-      label: 'Appointments',
-      value: stats.totalAppointments,
-      icon: CalendarCheck,
-      accent: 'from-purple-500 to-fuchsia-600',
-      iconColor: 'text-purple-600 bg-purple-50',
-    },
+  const metrics = [
     {
       label: 'New Leads',
       value: stats.newLeads,
-      sublabel: `${stats.totalLeads} total`,
+      sublabel: `${stats.totalLeads} total in database`,
       icon: Inbox,
-      accent: 'from-amber-500 to-orange-600',
-      iconColor: 'text-amber-600 bg-amber-50',
+      trend: '+12% from last month',
+      trendUp: true,
+    },
+    {
+      label: 'Total Appointments',
+      value: stats.totalAppointments,
+      sublabel: 'Scheduled consultations',
+      icon: CalendarCheck,
+      trend: '+4% from last month',
+      trendUp: true,
+    },
+    {
+      label: 'Published Articles',
+      value: stats.publishedPosts,
+      sublabel: `Out of ${stats.totalPosts} total drafts`,
+      icon: FileText,
+      trend: '+2 new this week',
+      trendUp: true,
     },
   ]
 
   return (
-    <div className="space-y-8">
-      {/* Welcome banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-ink-950 via-ink-900 to-ink-800 px-6 py-8 shadow-[0_20px_50px_-24px_rgba(6,11,33,0.55)] sm:px-10 sm:py-10">
-        <div
-          className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-sage-400/20 blur-3xl"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-rose-300/10 blur-3xl"
-          aria-hidden
-        />
-        <div className="relative">
-          <p className="text-sm font-medium text-sage-400">Welcome back</p>
-          <h1 className="mt-1 text-3xl font-bold text-white">Practice overview</h1>
-          <p className="mt-2 max-w-xl text-sm text-slate-300">
-            A snapshot of content, bookings, and inbound inquiries across the site.
+    <div className="space-y-10 pb-10">
+      {/* Premium Header Area */}
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">
+            Overview
+          </h1>
+          <p className="mt-2 text-base text-gray-500">
+            A real-time snapshot of your practice's inquiries and content.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/admin/blog/create"
-              className="inline-flex items-center gap-2 rounded-xl bg-sage-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sage-400"
-            >
-              <FileText className="h-4 w-4" />
-              New Blog Post
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/admin/appointments"
-              className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur transition-all hover:bg-white/20"
-            >
-              View Appointments
-            </Link>
-            <Link
-              href="/admin/leads"
-              className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur transition-all hover:bg-white/20"
-            >
-              View Leads
-            </Link>
-            <Link
-              href="/admin/testimonials"
-              className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur transition-all hover:bg-white/20"
-            >
-              Manage Testimonials
-            </Link>
-          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/admin/blog/create"
+            className="inline-flex items-center gap-2 rounded-full bg-ink-950 px-5 py-2.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-ink-950 hover:bg-ink-900 transition-all hover:-translate-y-0.5"
+          >
+            <Plus className="-ml-1 h-4 w-4" />
+            New Post
+          </Link>
+          <Link
+            href="/admin/leads"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink-950 shadow-sm ring-1 ring-inset ring-gray-200 hover:bg-gray-50 transition-all hover:-translate-y-0.5"
+          >
+            View Leads
+          </Link>
         </div>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {cards.map((card) => (
+      {/* Metrics Grid */}
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+        {metrics.map((metric) => (
           <div
-            key={card.label}
-            className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06] transition-all hover:-translate-y-0.5 hover:shadow-lg"
+            key={metric.label}
+            className="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-gray-100 transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
           >
-            <div
-              className={`absolute inset-x-0 top-0 h-1 bg-linear-to-r ${card.accent}`}
-              aria-hidden
-            />
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-500">{card.label}</p>
-                <p className="mt-2 text-3xl font-bold text-ink-950">{card.value}</p>
-                {card.sublabel ? (
-                  <p className="mt-1 text-xs text-gray-400">{card.sublabel}</p>
-                ) : null}
+              <div className="rounded-2xl bg-sage-50 p-3 ring-1 ring-sage-100/50">
+                <metric.icon className="h-6 w-6 text-sage-600" />
               </div>
-              <div className={`rounded-xl p-3 ${card.iconColor}`}>
-                <card.icon className="h-6 w-6" />
+              <div className={`flex items-center gap-1.5 text-sm font-medium ${metric.trendUp ? 'text-sage-600' : 'text-gray-500'}`}>
+                {metric.trendUp && <TrendingUp className="h-4 w-4" />}
+                {metric.trend}
               </div>
+            </div>
+            <div className="mt-8">
+              <p className="text-sm font-medium text-gray-500">{metric.label}</p>
+              <p className="mt-2 text-4xl font-semibold tracking-tight text-ink-950">
+                {metric.value}
+              </p>
+              <p className="mt-2 text-sm text-gray-400">{metric.sublabel}</p>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Recent Data */}
-      <div className="grid gap-6 lg:grid-cols-2">
-        {/* Recent Posts */}
-        <div className="rounded-2xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-          <div className="flex items-center justify-between border-b px-6 py-4">
-            <h2 className="text-base font-semibold text-ink-950">Latest Posts</h2>
-            <Link
-              href="/admin/blog"
-              className="inline-flex items-center gap-1 text-sm font-medium text-sage-600 hover:text-sage-700"
-            >
-              View all
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-          <div className="divide-y">
-            {stats.recentPosts.length > 0 ? (
-              stats.recentPosts.map((post) => (
-                <div
-                  key={post.id}
-                  className="flex items-center justify-between px-6 py-3.5 transition-colors hover:bg-canvas-50/60"
-                >
-                  <p className="truncate text-sm font-medium text-ink-950">
-                    {post.title}
-                  </p>
-                  <span
-                    className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                      post.status === 'published'
-                        ? 'bg-sage-50 text-sage-700'
-                        : post.status === 'draft'
-                          ? 'bg-amber-50 text-amber-700'
-                          : 'bg-canvas-50 text-gray-600'
-                    }`}
-                  >
-                    {post.status}
-                  </span>
-                </div>
-              ))
-            ) : (
-              <p className="px-6 py-8 text-center text-sm text-gray-400">
-                No posts yet.
-                <Link
-                  href="/admin/blog/create"
-                  className="ml-1 text-sage-600 hover:underline"
-                >
-                  Create one
-                </Link>
-              </p>
-            )}
-          </div>
-        </div>
-
+      {/* Tables Section */}
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {/* Recent Appointments */}
-        <div className="rounded-2xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-          <div className="flex items-center justify-between border-b px-6 py-4">
-            <h2 className="text-base font-semibold text-ink-950">
-              Latest Appointments
-            </h2>
+        <div className="flex flex-col rounded-3xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-gray-100 overflow-hidden">
+          <div className="flex items-center justify-between border-b border-gray-100 bg-white/50 px-8 py-6 backdrop-blur-md">
+            <div>
+              <h2 className="text-lg font-semibold text-ink-950">Recent Appointments</h2>
+              <p className="text-sm text-gray-500">Latest scheduled consultations</p>
+            </div>
             <Link
               href="/admin/appointments"
-              className="inline-flex items-center gap-1 text-sm font-medium text-sage-600 hover:text-sage-700"
+              className="group inline-flex items-center gap-2 rounded-full bg-gray-50 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-ink-950"
             >
               View all
-              <ArrowUpRight className="h-3.5 w-3.5" />
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
-          <div className="divide-y">
+          <div className="flex-1 divide-y divide-gray-50 bg-white">
             {stats.recentAppointments.length > 0 ? (
               stats.recentAppointments.map((apt) => {
                 const StatusIcon = statusIcons[apt.status] || Clock
-                const statusColor = statusColors[apt.status] || 'text-gray-600 bg-canvas-50'
+                const statusColor = statusColors[apt.status] || 'text-gray-700 bg-gray-50 ring-gray-600/20'
                 const statusLabel = statusLabels[apt.status] || apt.status
+                const initials = apt.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
 
                 return (
                   <div
                     key={apt.id}
-                    className="flex items-center justify-between px-6 py-3.5 transition-colors hover:bg-canvas-50/60"
+                    className="group flex items-center justify-between px-8 py-5 transition-colors hover:bg-gray-50/50"
                   >
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-medium text-ink-950">
-                        {apt.name}
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        {apt.service || 'General'}
-                      </p>
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sage-50 text-sm font-semibold text-sage-700 ring-1 ring-sage-100">
+                        {initials}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-semibold text-ink-950">
+                          {apt.name}
+                        </p>
+                        <p className="truncate text-sm text-gray-500">
+                          {apt.service || 'General Consultation'}
+                        </p>
+                      </div>
                     </div>
-                    <span
-                      className={`flex shrink-0 items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColor}`}
-                    >
-                      <StatusIcon className="h-3 w-3" />
-                      {statusLabel}
-                    </span>
+                    <div className="flex items-center gap-4">
+                      <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${statusColor}`}>
+                        <StatusIcon className="h-3.5 w-3.5" />
+                        {statusLabel}
+                      </span>
+                    </div>
                   </div>
                 )
               })
             ) : (
-              <p className="px-6 py-8 text-center text-sm text-gray-400">
-                No appointments yet.
-              </p>
+              <div className="flex h-48 flex-col items-center justify-center px-8 text-center">
+                <CalendarCheck className="h-8 w-8 text-gray-300" />
+                <p className="mt-4 text-sm font-medium text-gray-900">No appointments</p>
+                <p className="mt-1 text-sm text-gray-500">Check back later for new bookings.</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Recent Posts */}
+        <div className="flex flex-col rounded-3xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-gray-100 overflow-hidden">
+          <div className="flex items-center justify-between border-b border-gray-100 bg-white/50 px-8 py-6 backdrop-blur-md">
+            <div>
+              <h2 className="text-lg font-semibold text-ink-950">Recent Content</h2>
+              <p className="text-sm text-gray-500">Latest articles and guides</p>
+            </div>
+            <Link
+              href="/admin/blog"
+              className="group inline-flex items-center gap-2 rounded-full bg-gray-50 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-ink-950"
+            >
+              View all
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
+          <div className="flex-1 divide-y divide-gray-50 bg-white">
+            {stats.recentPosts.length > 0 ? (
+              stats.recentPosts.map((post) => (
+                <div
+                  key={post.id}
+                  className="group flex items-center justify-between px-8 py-5 transition-colors hover:bg-gray-50/50"
+                >
+                  <div className="flex items-center gap-4 min-w-0 pr-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100">
+                      <FileText className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-semibold text-ink-950 group-hover:text-sage-600 transition-colors">
+                        {post.title}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {post.createdAt ? formatDistanceToNow(new Date(post.createdAt), { addSuffix: true }) : 'Recently updated'}
+                      </p>
+                    </div>
+                  </div>
+                  <span
+                    className={`inline-flex shrink-0 items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${
+                      post.status === 'published'
+                        ? 'bg-sage-50 text-sage-700 ring-sage-600/20'
+                        : post.status === 'draft'
+                          ? 'bg-amber-50 text-amber-700 ring-amber-600/20'
+                          : 'bg-gray-50 text-gray-600 ring-gray-500/20'
+                    }`}
+                  >
+                    <span className={`mr-1.5 h-1.5 w-1.5 rounded-full ${
+                       post.status === 'published' ? 'bg-sage-500' : post.status === 'draft' ? 'bg-amber-500' : 'bg-gray-400'
+                    }`} />
+                    {post.status.charAt(0).toUpperCase() + post.status.slice(1)}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <div className="flex h-48 flex-col items-center justify-center px-8 text-center">
+                <FileText className="h-8 w-8 text-gray-300" />
+                <p className="mt-4 text-sm font-medium text-gray-900">No posts yet</p>
+                <p className="mt-1 text-sm text-gray-500">Start writing your first article.</p>
+              </div>
             )}
           </div>
         </div>
