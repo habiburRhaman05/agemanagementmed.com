@@ -1,6 +1,6 @@
 import { SignJWT, jwtVerify, type JWTPayload } from 'jose'
 import { hash as bcryptHash, compare as bcryptCompare } from 'bcrypt-ts'
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 
 const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || 'fallback-secret-change-me'
@@ -54,9 +54,20 @@ export async function verifyToken(
 
 export async function setSessionCookie(token: string) {
   const cookieStore = await cookies()
+  const hdrs = await headers()
+
+  // `NODE_ENV === 'production'` doesn't mean the request was served over
+  // HTTPS — e.g. a VPS accessed directly by IP:port before a TLS-terminating
+  // reverse proxy is put in front. A `Secure` cookie set over plain HTTP is
+  // silently dropped by the browser, which breaks login without any visible
+  // error. Detect the real scheme instead: trust `x-forwarded-proto` (set by
+  // a reverse proxy terminating TLS) and fall back to a direct HTTPS check.
+  const forwardedProto = hdrs.get('x-forwarded-proto')
+  const isHttps = forwardedProto === 'https' || hdrs.get('referer')?.startsWith('https://') === true
+
   cookieStore.set(COOKIE_NAME, token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
+    secure: isHttps,
     sameSite: 'lax',
     maxAge: COOKIE_MAX_AGE,
     path: '/',

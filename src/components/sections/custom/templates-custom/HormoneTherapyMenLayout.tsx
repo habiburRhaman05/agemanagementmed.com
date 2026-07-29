@@ -46,13 +46,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
         />
       ) : null}
 
-      {/* Renders every dynamic section (protocol, monitoring, program benefits,
-          insurance notice, patient benefits, before/after comparison slider,
-          and the reviewer bio) in the order already authored for this treatment —
-          nothing here is re-hardcoded, and the comparison slider is untouched. */}
-      {treatment.sections?.map((section, index) => (
-        <SectionRenderer key={index} section={section} index={index} />
-      ))}
+    
 
       {treatment.process ? (
         <ProgramStepsTimeline

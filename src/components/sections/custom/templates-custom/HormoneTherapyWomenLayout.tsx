@@ -48,9 +48,9 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
       {/* Renders every dynamic section (protocol, monitoring, treatment-support
           feature list, billing notice, and the reviewer bio) in the order
           already authored for this treatment — nothing here is re-hardcoded. */}
-      {treatment.sections?.map((section, index) => (
+      {/* {treatment.sections?.map((section, index) => (
         <SectionRenderer key={index} section={section} index={index} />
-      ))}
+      ))} */}
 
       <SafetyAndCandidacy
         image={{
