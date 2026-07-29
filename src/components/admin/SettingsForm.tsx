@@ -8,7 +8,6 @@ interface SettingsData {
   siteName: string | null
   tagline: string | null
   logoUrl: string | null
-  logoDarkUrl: string | null
   faviconUrl: string | null
   phone: string | null
   email: string | null
@@ -22,6 +21,8 @@ interface SettingsData {
   defaultSeoTitle: string | null
   defaultSeoDescription: string | null
   defaultOgImageUrl: string | null
+  googleAnalyticsId: string | null
+  metaPixelId: string | null
   headerScripts: string | null
   footerScripts: string | null
 }
@@ -76,7 +77,6 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
   const [siteName, setSiteName] = useState(initial.siteName ?? '')
   const [tagline, setTagline] = useState(initial.tagline ?? '')
   const [logoUrl, setLogoUrl] = useState(initial.logoUrl ?? '')
-  const [logoDarkUrl, setLogoDarkUrl] = useState(initial.logoDarkUrl ?? '')
   const [faviconUrl, setFaviconUrl] = useState(initial.faviconUrl ?? '')
   const [phone, setPhone] = useState(initial.phone ?? '')
   const [email, setEmail] = useState(initial.email ?? '')
@@ -88,6 +88,8 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
   const [defaultSeoTitle, setDefaultSeoTitle] = useState(initial.defaultSeoTitle ?? '')
   const [defaultSeoDescription, setDefaultSeoDescription] = useState(initial.defaultSeoDescription ?? '')
   const [defaultOgImageUrl, setDefaultOgImageUrl] = useState(initial.defaultOgImageUrl ?? '')
+  const [googleAnalyticsId, setGoogleAnalyticsId] = useState(initial.googleAnalyticsId ?? '')
+  const [metaPixelId, setMetaPixelId] = useState(initial.metaPixelId ?? '')
   const [headerScripts, setHeaderScripts] = useState(initial.headerScripts ?? '')
   const [footerScripts, setFooterScripts] = useState(initial.footerScripts ?? '')
 
@@ -107,7 +109,6 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
           siteName: siteName || null,
           tagline: tagline || null,
           logoUrl: logoUrl || null,
-          logoDarkUrl: logoDarkUrl || null,
           faviconUrl: faviconUrl || null,
           phone: phone || null,
           email: email || null,
@@ -121,6 +122,8 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
           defaultSeoTitle: defaultSeoTitle || null,
           defaultSeoDescription: defaultSeoDescription || null,
           defaultOgImageUrl: defaultOgImageUrl || null,
+          googleAnalyticsId: googleAnalyticsId || null,
+          metaPixelId: metaPixelId || null,
           headerScripts: headerScripts || null,
           footerScripts: footerScripts || null,
         }),
@@ -144,8 +147,12 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
           <h2 className="text-sm font-semibold text-ink-950">Brand</h2>
           <Field label="Site name" value={siteName} onChange={setSiteName} />
           <Field label="Tagline" value={tagline} onChange={setTagline} />
-          <Field label="Logo URL (light background)" value={logoUrl} onChange={setLogoUrl} placeholder="/images/samm-blue-logo.png" />
-          <Field label="Logo URL (dark background / footer)" value={logoDarkUrl} onChange={setLogoDarkUrl} placeholder="/images/samm-logo.webp" />
+          <IconUploader
+            value={logoUrl}
+            onChange={setLogoUrl}
+            label="Logo"
+            hint="Upload a PNG, SVG, or paste a URL. Used across the whole site."
+          />
           <IconUploader
             value={faviconUrl}
             onChange={setFaviconUrl}
@@ -187,6 +194,8 @@ export function SettingsForm({ initial }: { initial: SettingsData }) {
           <p className="text-xs text-gray-500">
             Raw HTML/JS (e.g. GTM, Meta Pixel). Injected as-is — admin-only, never rendered from public input.
           </p>
+          <Field label="Google Analytics ID" value={googleAnalyticsId} onChange={setGoogleAnalyticsId} placeholder="G-XXXXXXXXXX" />
+          <Field label="Meta Pixel ID" value={metaPixelId} onChange={setMetaPixelId} placeholder="1234567890" />
           <Field label="Header scripts" value={headerScripts} onChange={setHeaderScripts} textarea maxLength={20000} />
           <Field label="Footer scripts" value={footerScripts} onChange={setFooterScripts} textarea maxLength={20000} />
         </div>

@@ -18,6 +18,7 @@ import {
   LogOut,
   Menu,
   X,
+  Gem,
   type LucideIcon,
 } from 'lucide-react'
 import { useState } from 'react'
@@ -36,6 +37,7 @@ const navItems: NavItem[] = [
   { label: 'Appointments', href: '/admin/appointments', icon: CalendarCheck },
   { label: 'Leads', href: '/admin/leads', icon: Inbox },
   { label: 'Treatments', href: '/admin/treatments', icon: Stethoscope },
+  { label: 'Services', href: '/admin/services', icon: Gem },
   { label: 'Team', href: '/admin/people', icon: Users },
   { label: 'Testimonials', href: '/admin/testimonials', icon: Quote },
   { label: 'News', href: '/admin/news', icon: Newspaper },

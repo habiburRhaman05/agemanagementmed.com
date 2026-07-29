@@ -8,7 +8,6 @@ export default async function SettingsPage() {
     siteName: row?.siteName ?? null,
     tagline: row?.tagline ?? null,
     logoUrl: row?.logoUrl ?? null,
-    logoDarkUrl: row?.logoDarkUrl ?? null,
     faviconUrl: row?.faviconUrl ?? null,
     phone: row?.phone ?? null,
     email: row?.email ?? null,
@@ -16,6 +15,8 @@ export default async function SettingsPage() {
     defaultSeoTitle: row?.defaultSeoTitle ?? null,
     defaultSeoDescription: row?.defaultSeoDescription ?? null,
     defaultOgImageUrl: row?.defaultOgImageUrl ?? null,
+    googleAnalyticsId: row?.googleAnalyticsId ?? null,
+    metaPixelId: row?.metaPixelId ?? null,
     headerScripts: row?.headerScripts ?? null,
     footerScripts: row?.footerScripts ?? null,
   }

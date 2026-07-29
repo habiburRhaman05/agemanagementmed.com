@@ -223,6 +223,21 @@ exports.Prisma.MediaScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.ServiceScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  href: 'href',
+  shortName: 'shortName',
+  summary: 'summary',
+  cardImageSrc: 'cardImageSrc',
+  cardImageAlt: 'cardImageAlt',
+  cardBenefits: 'cardBenefits',
+  order: 'order',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.TreatmentScalarFieldEnum = {
   id: 'id',
   slug: 'slug',
@@ -312,6 +327,8 @@ exports.Prisma.SiteSettingsScalarFieldEnum = {
   defaultSeoTitle: 'defaultSeoTitle',
   defaultSeoDescription: 'defaultSeoDescription',
   defaultOgImageUrl: 'defaultOgImageUrl',
+  googleAnalyticsId: 'googleAnalyticsId',
+  metaPixelId: 'metaPixelId',
   headerScripts: 'headerScripts',
   footerScripts: 'footerScripts',
   updatedAt: 'updatedAt'
@@ -359,6 +376,7 @@ exports.Prisma.ModelName = {
   Appointment: 'Appointment',
   Lead: 'Lead',
   Media: 'Media',
+  Service: 'Service',
   Treatment: 'Treatment',
   NewsItem: 'NewsItem',
   Person: 'Person',

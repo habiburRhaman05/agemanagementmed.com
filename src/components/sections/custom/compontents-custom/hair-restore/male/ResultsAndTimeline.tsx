@@ -52,7 +52,7 @@ const timelineCards: TimelineCard[] = [
   {
     name: 'immediateEffects',
     title: 'Immediate Effects',
-    bg: 'bg-sage-50',
+    bg: 'bg-sage-100',
     content: (
       <ul className="space-y-1.5 text-body-sm text-canvas-600">
         {[
@@ -75,15 +75,15 @@ const timelineCards: TimelineCard[] = [
     content: (
       <div className="space-y-3 text-body-sm text-canvas-600">
         <div>
-          <p className="font-semibold text-ink-900">2-3 months:</p>
+          <p className="font-semibold text-ink-900">2–3 months</p>
           <p>Initial signs of improved hair quality</p>
         </div>
         <div>
-          <p className="font-semibold text-ink-900">4-6 months:</p>
+          <p className="font-semibold text-ink-900">4–6 months</p>
           <p>Noticeable increase in hair thickness &amp; density</p>
         </div>
         <div>
-          <p className="font-semibold text-ink-900">6-12 months:</p>
+          <p className="font-semibold text-ink-900">6–12 months</p>
           <p>Optimal results with continued improvement</p>
         </div>
       </div>
@@ -92,15 +92,15 @@ const timelineCards: TimelineCard[] = [
   {
     name: 'maintenance',
     title: 'Maintenance',
-    bg: 'bg-sage-200',
+    bg: 'bg-sage-100',
     content: (
       <div className="space-y-3 text-body-sm text-canvas-600">
         <div>
-          <p className="font-semibold text-ink-900">Initial series:</p>
+          <p className="font-semibold text-ink-900">Initial series</p>
           <p>3-4 treatments spaced 4-6 weeks apart</p>
         </div>
         <div>
-          <p className="font-semibold text-ink-900">Maintenance:</p>
+          <p className="font-semibold text-ink-900">Maintenance</p>
           <p>1-2 treatments annually</p>
         </div>
       </div>
@@ -158,11 +158,11 @@ const ResultsAndTimeline: React.FC = () => {
         <StaggerGroup
           as="ul"
           stagger={0.08}
-          className="mt-12 grid grid-cols-1 items-start gap-5 sm:grid-cols-3"
+          className="mt-12 grid grid-cols-1 items-stretch gap-5 sm:grid-cols-3"
         >
           {timelineCards.map((card) => (
-            <StaggerItem as="li" key={card.title}>
-              <div className={`rounded-2xl p-6 ${card.bg}`}>
+            <StaggerItem as="li" className="h-full" key={card.title}>
+              <div className={`h-full rounded-2xl p-6 ${card.bg}`}>
                 <span className="flex size-12 items-center justify-center rounded-full bg-white/60 text-sage-700">
                   <Icon name={card.name} />
                 </span>

@@ -94,7 +94,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
         case "hair-restoration-men":
           return <HairRestoreMaleLayout treatment={treatment}/>
       default:
-        break;
+       return <TreatmentTemplate
+        treatment={treatment}
+        testimonials={getTestimonials(TESTIMONIALS_BY_SLUG[treatment.slug] ?? [])}
+      /> 
     }
   }
 
@@ -115,7 +118,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
       {!schemaOverride && faqSchema ? <JsonLd data={faqSchema} /> : null}
       <Header />
 
-{treatment.slug}
+
       {/* <TreatmentTemplate
         treatment={treatment}
         testimonials={getTestimonials(TESTIMONIALS_BY_SLUG[treatment.slug] ?? [])}

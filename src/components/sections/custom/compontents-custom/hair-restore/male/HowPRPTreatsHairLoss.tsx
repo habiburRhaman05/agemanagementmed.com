@@ -64,7 +64,7 @@ const candidateItems: CandidateItem[] = [
 
 const HowPRPTreatsHairLoss: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto px-4 py-8 pt-16">
       <div className="bg-white rounded-3xl p-2.5">
         {/* Top: image + navy content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">

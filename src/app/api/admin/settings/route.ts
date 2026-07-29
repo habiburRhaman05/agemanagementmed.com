@@ -16,7 +16,6 @@ const SettingsSchema = z.object({
   siteName: z.string().min(1).max(200).optional().nullable(),
   tagline: z.string().max(200).optional().nullable(),
   logoUrl: z.string().max(500).optional().nullable(),
-  logoDarkUrl: z.string().max(500).optional().nullable(),
   faviconUrl: z.string().max(500).optional().nullable(),
   phone: z.string().max(50).optional().nullable(),
   email: z.string().email().max(200).optional().nullable().or(z.literal('')),
@@ -32,6 +31,8 @@ const SettingsSchema = z.object({
   defaultSeoTitle: z.string().max(70).optional().nullable(),
   defaultSeoDescription: z.string().max(160).optional().nullable(),
   defaultOgImageUrl: z.string().max(500).optional().nullable(),
+  googleAnalyticsId: z.string().max(50).optional().nullable(),
+  metaPixelId: z.string().max(50).optional().nullable(),
   headerScripts: z.string().max(20000).optional().nullable(),
   footerScripts: z.string().max(20000).optional().nullable(),
 })

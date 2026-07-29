@@ -25,6 +25,7 @@ async function LeadsTableSection({
   const serializedLeads = result.leads.map((lead) => ({
     ...lead,
     createdAt: lead.createdAt.toISOString(),
+    updatedAt: lead.updatedAt.toISOString(),
   }))
 
   return (

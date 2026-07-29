@@ -15,13 +15,35 @@ import { locations } from '@/content/site'
 import { getAllTreatmentSummaries } from '@/content/treatments'
 import { CredentialStrip } from '../sections/CredentialStrip'
 import { expertsContent } from '@/content/pages/experts'
-import { features } from '@/content/feature'
+import { prisma } from '@/lib/prisma'
 
 /**
  * Section order is the funnel from docs/01-INFORMATION-ARCHITECTURE.md §5:
  * land → understand → treatments → trust → process → people → proof → book.
  * Two dark bands (ProofBand, ClosingCTA) give the page its rhythm.
  */
+async function getServices() {
+  const rows = await prisma.service.findMany({
+    where: { status: 'published' },
+    orderBy: { order: 'asc' },
+  })
+
+  return rows.map((row) => ({
+    slug: row.slug,
+    href: row.href,
+    pillar: 'aesthetics' as const,
+    audience: 'all' as const,
+    name: row.shortName,
+    shortName: row.shortName,
+    summary: row.summary,
+    cardImage: {
+      src: row.cardImageSrc,
+      alt: row.cardImageAlt,
+    },
+    cardBenefits: row.cardBenefits as string[],
+  }))
+}
+
 export async function HomeTemplate({ content }: { content: typeof homeContent }) {
   const providers = await getFeaturedPeople()
 
@@ -35,7 +57,7 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
         eyebrow="Our services"
         title="Your best life starts now"
         lead="We connect you with the latest in bioidentical hormone therapy and other cutting-edge treatments designed to support your well-being."
-        treatments={features as any}
+        treatments={await getServices()}
       />
 
       <EditorialPair {...content.origin} background="alt" />

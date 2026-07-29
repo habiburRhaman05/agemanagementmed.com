@@ -1,9 +1,9 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AlertCircle, CheckCircle2 } from 'lucide-react'
+import { AlertCircle, CheckCircle2, Loader2 } from 'lucide-react'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -13,7 +13,6 @@ import { Button } from '@/components/ui/Button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { features } from '@/content/feature'
 import { site } from '@/content/site'
 import { cn } from '@/lib/utils'
 
@@ -29,10 +28,47 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>
 
+interface ServiceOption {
+  slug: string
+  shortName: string
+}
+
 export function GetConnectedForm() {
   const pathname = usePathname()
   const [submitted, setSubmitted] = useState(false)
   const [state, setState] = useState<ActionResult | null>(null)
+  const [services, setServices] = useState<ServiceOption[]>([])
+  const [servicesLoading, setServicesLoading] = useState(true)
+  const [servicesError, setServicesError] = useState('')
+
+  useEffect(() => {
+    let cancelled = false
+
+    async function fetchServices() {
+      try {
+        setServicesLoading(true)
+        setServicesError('')
+        const res = await fetch('/api/services')
+        if (!res.ok) throw new Error('Failed to load services')
+        const json = await res.json()
+        if (!cancelled) {
+          setServices(json.services ?? [])
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setServicesError(err instanceof Error ? err.message : 'Failed to load services')
+        }
+      } finally {
+        if (!cancelled) setServicesLoading(false)
+      }
+    }
+
+    fetchServices()
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   const {
     register,
@@ -133,14 +169,32 @@ export function GetConnectedForm() {
             'disabled:cursor-not-allowed disabled:opacity-50',
           )}
           {...register('treatment')}
+          disabled={servicesLoading}
         >
-          <option value="">Select a treatment…</option>
-          {features.map((f) => (
-            <option key={f.slug} value={f.shortName}>
-              {f.shortName}
+          <option value="">
+            {servicesLoading
+              ? 'Loading services…'
+              : servicesError
+                ? 'Unable to load services'
+                : 'Select a treatment…'}
+          </option>
+          {services.map((s) => (
+            <option key={s.slug} value={s.shortName}>
+              {s.shortName}
             </option>
           ))}
         </select>
+        {servicesLoading ? (
+          <span className="mt-1 inline-flex items-center gap-1 text-xs text-gray-400">
+            <Loader2 className="size-3 animate-spin" />
+            Loading services…
+          </span>
+        ) : null}
+        {servicesError ? (
+          <p className="mt-1 text-xs text-red-500">
+            {servicesError}. Using default list instead.
+          </p>
+        ) : null}
       </div>
 
       <div>
