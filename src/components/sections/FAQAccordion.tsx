@@ -42,7 +42,7 @@ export function FAQAccordion({
             <SectionHeader eyebrow={eyebrow} title={title} lead={lead} align='center' />
           </div>
 
-          <dl className="lg:col-span-8">
+          <div className="lg:col-span-8">
             {items.map((item, index) => {
               const isOpen = open === index
               const panelId = `faq-panel-${index}`
@@ -51,13 +51,13 @@ export function FAQAccordion({
               return (
                 <div
                   key={item.question}
-                  className="border-b border-canvas-300 first:border-t"
+                  className="faq-item border-b border-canvas-300 first:border-t"
                   style={{
                     animationDelay: `${index * 60}ms`,
                     animationFillMode: 'both',
                   }}
                 >
-                  <dt>
+                  <h3>
                     <button
                       id={buttonId}
                       type="button"
@@ -99,7 +99,7 @@ export function FAQAccordion({
                         </svg>
                       </span>
                     </button>
-                  </dt>
+                  </h3>
 
                   {/*
                    * CSS grid row trick:
@@ -107,7 +107,7 @@ export function FAQAccordion({
                    *   grid-rows-[1fr] → content expands to natural height
                    * transition-all animates the row track size smoothly.
                    */}
-                  <dd
+                  <div
                     id={panelId}
                     role="region"
                     aria-labelledby={buttonId}
@@ -126,11 +126,11 @@ export function FAQAccordion({
                         {item.answer}
                       </p>
                     </div>
-                  </dd>
+                  </div>
                 </div>
               )
             })}
-          </dl>
+          </div>
         </div>
       </Container>
     </Section>
