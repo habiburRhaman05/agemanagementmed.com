@@ -67,13 +67,13 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="glass-dark inline-flex items-center rounded-full px-4 py-2 text-label font-semibold uppercase tracking-widest text-sage-400"
+            className="glass-dark inline-flex items-center rounded-full px-3 py-1.5 md:px-4 md:py-2 text-[10px] md:text-label font-semibold uppercase tracking-widest text-sage-400"
           >
             {meta}
           </motion.span>
         ) : null}
 
-        <h1 className="mt-8 max-w-4xl text-display-xl text-canvas-50 drop-shadow-sm">
+        <h1 className="mt-6 md:mt-8 max-w-4xl text-5xl md:text-display-xl leading-[1.1] md:leading-tight text-canvas-50 drop-shadow-sm">
           <StaggerGroup as="span" stagger={0.05} className="inline">
             {words.map((word, i) => (
               <StaggerItem as="span" blur key={`${word}-${i}`} className="mr-[0.28em] inline-block">
@@ -87,7 +87,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
-          className="mt-7 max-w-xl text-body-lg text-canvas-50/90"
+          className="mt-4 md:mt-7 max-w-xl text-base md:text-body-lg text-canvas-50/90"
         >
           {lead}
         </motion.p>
@@ -96,12 +96,12 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.65, ease: 'easeOut' }}
-          className="mt-10 flex flex-wrap items-center gap-4"
+          className="mt-6 md:mt-10 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 md:gap-4"
         >
           {/* Booking Modal */}
           <Dialog>
             <DialogTrigger asChild>
-              <Button size="lg" variant="primary" className="bg-[#008080]">
+              <Button size="lg" variant="primary" className="bg-[#008080] w-full sm:w-auto justify-center">
                 START TODAY <MoveRight/>
               </Button>
             </DialogTrigger>
@@ -132,10 +132,10 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           {/* Video Modal */}
           <Dialog>
             <DialogTrigger asChild>
-              <Button size="lg" variant="outlineInverse" className="group">
-                <div className='bg-sage-600  p-2 flex items-center justify-center rounded-full'>
+              <Button size="lg" variant="outlineInverse" className="group w-full sm:w-auto justify-center">
+            
                   <Play className="size-4" aria-hidden />
-                </div>
+                
                 Watch video
               </Button>
             </DialogTrigger>

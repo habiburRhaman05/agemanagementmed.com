@@ -1,3 +1,4 @@
+import { AestheticsPromo } from '@/components/sections/AestheticsPromo'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { EditorialPair } from '@/components/sections/EditorialPair'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
@@ -44,6 +45,13 @@ console.log(data);
         title="Your best life starts now"
         lead="We connect you with the latest in bioidentical hormone therapy and other cutting-edge treatments designed to support your well-being."
         treatments={await getServices()}
+      />
+
+      <AestheticsPromo
+        title="Discover Our Medical Aesthetic Services"
+        lead="Specialized medical aesthetic services personalized to your skin care goals."
+        ctaLabel="Medical Aesthetics"
+        href="https://www.savannahskinmed.com/"
       />
 
       <EditorialPair {...content.origin} background="alt" />

@@ -25,7 +25,7 @@ export interface CostIncludedGridProps {
 
 function GridCard({ item }: { item: CostGridItem }) {
   return (
-    <div className="flex h-full flex-col items-center rounded-2xl bg-canvas-50 p-6 text-center shadow-sm ring-1 ring-canvas-300/50">
+    <div className="flex h-full w-40 flex-col items-center rounded-2xl bg-canvas-50 p-5 text-center shadow-sm ring-1 ring-canvas-300/50 sm:w-44">
       <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700">
         <item.icon className="size-5" strokeWidth={1.5} aria-hidden />
       </span>
@@ -58,10 +58,10 @@ export function CostIncludedGrid({
         <StaggerGroup
           as="ul"
           stagger={0.05}
-          className="mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4"
+          className="mx-auto mt-6 flex max-w-5xl flex-wrap justify-center gap-4"
         >
           {included.map((item) => (
-            <StaggerItem as="li" key={item.title} className="h-full">
+            <StaggerItem as="li" key={item.title}>
               <GridCard item={item} />
             </StaggerItem>
           ))}
@@ -75,10 +75,10 @@ export function CostIncludedGrid({
             <StaggerGroup
               as="ul"
               stagger={0.05}
-              className="mx-auto mt-6 grid max-w-2xl grid-cols-2 gap-4"
+              className="mx-auto mt-6 flex max-w-2xl flex-wrap justify-center gap-4"
             >
               {separate.map((item) => (
-                <StaggerItem as="li" key={item.title} className="h-full">
+                <StaggerItem as="li" key={item.title}>
                   <GridCard item={item} />
                 </StaggerItem>
               ))}
@@ -90,13 +90,7 @@ export function CostIncludedGrid({
           <p className="mx-auto mt-8 max-w-2xl text-center text-body-sm leading-relaxed text-canvas-600">{note}</p>
         ) : null}
 
-        {cta ? (
-          <div className="mt-8 text-center">
-            <Button asChild size="lg">
-              <Link href={cta.href}>{cta.label}</Link>
-            </Button>
-          </div>
-        ) : null}
+        
       </Container>
     </Section>
   )

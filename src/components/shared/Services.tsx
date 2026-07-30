@@ -95,7 +95,7 @@ function TreatmentCard({ treatment }: { treatment: TreatmentSummary }) {
 
         {/* Footer Area */}
         <div className="mt-auto pt-2">
-          <ReadoutDivider className="mb-2.5" />
+       
           
           <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
             {/* Benefits List (Horizontal to save vertical space) */}
@@ -111,14 +111,7 @@ function TreatmentCard({ treatment }: { treatment: TreatmentSummary }) {
               ))}
             </ul>
 
-            {/* CTA Link - Re-instated so the bottom looks complete */}
-            <span className="inline-flex items-center gap-1 text-xs font-semibold text-sage-700 transition-colors group-hover:text-sage-900">
-              Learn more
-              <ArrowUpRight
-                className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                aria-hidden
-              />
-            </span>
+            
           </div>
         </div>
       </div>
@@ -139,7 +132,7 @@ export function Services({
   const hasMore = treatments.length > visibleCount
 
   return (
-    <Section background={background} spacing="lg">
+    <Section background={background} spacing="lg" className='pb-0'>
       <Container>
         <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
 

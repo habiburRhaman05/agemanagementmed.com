@@ -119,15 +119,31 @@ export async function getPost(id: string) {
   })
 }
 
+/** Neon's pooled connection can drop mid-request after sitting idle; one retry recovers most of these transient failures on the public post page. */
+async function withRetry<T>(fn: () => Promise<T>, attempts = 2): Promise<T> {
+  let lastError: unknown
+  for (let attempt = 0; attempt < attempts; attempt++) {
+    try {
+      return await fn()
+    } catch (error) {
+      lastError = error
+      if (attempt < attempts - 1) await new Promise((resolve) => setTimeout(resolve, 150))
+    }
+  }
+  throw lastError
+}
+
 export async function getPostBySlug(slug: string) {
-  return prisma.post.findUnique({
-    where: { slug, status: 'published', deletedAt: null },
-    include: {
-      category: { select: { name: true, slug: true } },
-      author: { select: { name: true } },
-      tags: { include: { tag: { select: { name: true, slug: true } } } },
-    },
-  })
+  return withRetry(() =>
+    prisma.post.findUnique({
+      where: { slug, status: 'published', deletedAt: null },
+      include: {
+        category: { select: { name: true, slug: true } },
+        author: { select: { name: true } },
+        tags: { include: { tag: { select: { name: true, slug: true } } } },
+      },
+    }),
+  )
 }
 
 export async function createPost(

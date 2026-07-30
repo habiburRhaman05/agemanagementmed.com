@@ -115,12 +115,12 @@ export function HeroEditorial({
       <Container className="relative">
         <div className="max-w-3xl">
           {breadcrumbs?.length ? (
-            <motion.nav aria-label="Breadcrumb" className="mb-8" {...fadeUp(0.05, 10)}>
-              <ol className="flex flex-wrap items-center gap-1.5 text-body-sm text-canvas-50/70">
+            <motion.nav aria-label="Breadcrumb" className="mb-4 md:mb-8" {...fadeUp(0.05, 10)}>
+              <ol className="flex flex-wrap items-center gap-1.5 text-xs md:text-body-sm text-canvas-50/70">
                 {breadcrumbs.map((crumb, i) => (
                   <li key={crumb.href} className="flex items-center gap-1.5">
                     {i > 0 ? (
-                      <ChevronRight className="size-3.5 text-canvas-50/40" aria-hidden />
+                      <ChevronRight className="size-3 md:size-3.5 text-canvas-50/40" aria-hidden />
                     ) : null}
                     <Link href={crumb.href} className="transition-colors hover:text-white">
                       {crumb.label}
@@ -132,24 +132,24 @@ export function HeroEditorial({
           ) : null}
 
           {eyebrow ? (
-            <motion.div {...fadeUp(0.15)} className="mb-5">
+            <motion.div {...fadeUp(0.15)} className="mb-3 md:mb-5">
               <Eyebrow tone="inverse">{eyebrow}</Eyebrow>
             </motion.div>
           ) : null}
 
-          <motion.h1 className="text-display-lg text-canvas-50" {...blurUp(0.22)}>
+          <motion.h1 className="text-4xl md:text-display-lg leading-[1.1] md:leading-tight text-canvas-50" {...blurUp(0.22)}>
             {title}
           </motion.h1>
 
-          <motion.p className="mt-6 max-w-2xl text-body-lg text-canvas-50/90" {...fadeUp(0.38)}>
+          <motion.p className="mt-4 md:mt-6 max-w-2xl text-base md:text-body-lg text-canvas-50/90" {...fadeUp(0.38)}>
             {lead}
           </motion.p>
 
           { !showFormButton && !showVideoButton ? (
-            <motion.div className="mt-10 flex flex-wrap gap-4" {...fadeUp(0.5)}>
+            <motion.div className="mt-6 md:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4" {...fadeUp(0.5)}>
              <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" variant="primary" className="bg-[#008080]">
+                    <Button size="lg" variant="primary" className="bg-[#008080] w-full sm:w-auto justify-center">
                       Schedule a consultation <span><ArrowRight></ArrowRight></span>
                     </Button>
                   </DialogTrigger>
@@ -181,13 +181,13 @@ export function HeroEditorial({
 
           {showFormButton || showVideoButton ? (
             <motion.div
-              className="mt-10 flex flex-wrap items-center gap-4"
+              className="mt-6 md:mt-10 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 md:gap-4"
               {...fadeUp(0.5)}
             >
               {showFormButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                   <Button size="lg" variant="primary" className="bg-[#008080]">
+                   <Button size="lg" variant="primary" className="bg-[#008080] w-full sm:w-auto justify-center">
                       Schedule a consultation <span><ArrowRight></ArrowRight></span>
                     </Button>
                   </DialogTrigger>
@@ -217,7 +217,7 @@ export function HeroEditorial({
               {showVideoButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" variant="outlineInverse" className="group">
+                    <Button size="lg" variant="outlineInverse" className="group w-full sm:w-auto justify-center">
                       <Play className="mr-2 size-4" aria-hidden />
                       Watch video
                     </Button>

@@ -48,7 +48,7 @@ export const footerNav = {
   practice: [
     { label: 'All Services', href: '/services' },
     { label: 'Our Experts', href: '/our-experts' },
-    { label: 'Patients Review', href: '/reviews' },
+
     { label: 'In The News', href: '/in-the-news' },
     { label: 'Blogs', href: '/blog' },
     { label: 'Book Appointment', href: '/book-appointment' },

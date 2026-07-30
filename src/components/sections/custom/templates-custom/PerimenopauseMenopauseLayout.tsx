@@ -147,7 +147,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         ]}
       />
 
-      <TextImagePanel
+      {/* <TextImagePanel
         image={{
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338093/why-woman-chose-samm_g7evxb.jpg',
           alt: 'A patient consulting with her SAMM provider',
@@ -162,7 +162,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
           'Focus on long term wellness',
           'Experienced medical guidance',
         ]}
-      />
+      /> */}
 
       <TextImagePanel
         image={{

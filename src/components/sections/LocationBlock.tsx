@@ -36,7 +36,7 @@ export function LocationBlock({
   return (
     <Section background={background} spacing="lg">
       <Container>
-        <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
+        <SectionHeader eyebrow={eyebrow} title={title} lead={lead}  align='center'/>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2">
           {locations.map((location, index) => (

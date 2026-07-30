@@ -113,7 +113,7 @@ How We Track Progress"
           { icon: CalendarCheck, title: 'Functional Movement Recommendations' },
           { icon: TestTube, title: 'In-Office Lab Draws' },
           { icon: SlidersHorizontal, title: 'Ongoing Treatment Optimization' },
-          { icon: Zap, title: 'QuickCare Access' },
+       
           { icon: Tag, title: 'Member Pricing On Supplements And Additional Services' },
         ]}
         separateLabel="What is typically separate:"
