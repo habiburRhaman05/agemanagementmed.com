@@ -23,7 +23,7 @@ export default async function ExpertsPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Our Experts', href: '/our-experts' }]}
       />
 
-      <EditorialPair {...expertsContent.standard} background="alt" />
+      {/* <EditorialPair {...expertsContent.standard} background="alt" /> */}
 
       <BenefitList {...expertsContent.whyChooseUs} />
 
