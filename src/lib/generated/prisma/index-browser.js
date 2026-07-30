@@ -223,6 +223,14 @@ exports.Prisma.MediaScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.NewsletterSubscriberScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.ServiceScalarFieldEnum = {
   id: 'id',
   slug: 'slug',
@@ -378,6 +386,7 @@ exports.Prisma.ModelName = {
   Appointment: 'Appointment',
   Lead: 'Lead',
   Media: 'Media',
+  NewsletterSubscriber: 'NewsletterSubscriber',
   Service: 'Service',
   Treatment: 'Treatment',
   NewsItem: 'NewsItem',

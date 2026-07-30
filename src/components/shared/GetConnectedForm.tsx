@@ -34,7 +34,7 @@ type FormValues = z.infer<typeof schema>
 // and correct, per request.
 const LOCATIONS: Record<LocationSlug, { name: string; address: string; hours: string }> = {
   'savannah-pooler': {
-    name: 'Savannah',
+    name: 'Savannah / Pooler',
     address: '200 Blue Moon Xing, Suite 102, Pooler, GA 31322',
     hours: 'Mon–Thu: 9AM – 5PM  |  Fri: 9AM – 3PM',
   },

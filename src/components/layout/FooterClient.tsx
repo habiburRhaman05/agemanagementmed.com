@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { SocialLinks } from '@/components/layout/SocialLinks'
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
+import { Button } from '@/components/ui/Button'
 import { footerNav } from '@/content/navigation'
 import { locations, site } from '@/content/site'
 import { toMailtoHref, toTelHref } from '@/lib/contact'
@@ -72,6 +73,14 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
             </div>
 
             <SocialLinks links={socialLinks} className="mt-6 flex gap-3" />
+
+            <Button
+              asChild
+              size="sm"
+              className="mt-6 text-label uppercase tracking-wide"
+            >
+              <Link href="/newsletter">Join our newsletter</Link>
+            </Button>
           </Reveal>
 
           {/* Treatments nav */}

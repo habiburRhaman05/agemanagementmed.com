@@ -19,6 +19,7 @@ import {
   Menu,
   X,
   Gem,
+  Mail,
   type LucideIcon,
 } from 'lucide-react'
 import { useState } from 'react'
@@ -40,6 +41,7 @@ const navItems: NavItem[] = [
   { label: 'Services', href: '/admin/services', icon: Gem },
   { label: 'Team', href: '/admin/people', icon: Users },
   { label: 'Testimonials', href: '/admin/testimonials', icon: Quote },
+  { label: 'Newsletter', href: '/admin/newsletter', icon: Mail },
   { label: 'News', href: '/admin/news', icon: Newspaper },
   { label: 'SEO', href: '/admin/seo', icon: Search },
   { label: 'Settings', href: '/admin/settings', icon: Settings },

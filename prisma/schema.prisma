@@ -128,6 +128,14 @@ model Media {
   createdAt DateTime @default(now())
 }
 
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
 // Service cards shown on the homepage "Our Services" grid — replaces the static
 // `src/content/feature.ts` array. Admins manage these from the dashboard.
 model Service {

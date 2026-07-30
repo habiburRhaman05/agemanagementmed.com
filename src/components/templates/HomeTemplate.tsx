@@ -5,16 +5,11 @@ import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroImmersive } from '@/components/sections/HeroImmersive'
 import { LocationBlock } from '@/components/sections/LocationBlock'
 import { PeopleGrid } from '@/components/sections/PeopleGrid'
-import { PillarGrid } from '@/components/sections/PillarGrid'
-import { ProcessSteps } from '@/components/sections/ProcessSteps'
-import { ProofBand } from '@/components/sections/ProofBand'
-import { StatementBand } from '@/components/sections/StatementBand'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import type { homeContent } from '@/content/pages/home'
 import { getFeaturedPeople } from '@/content/people'
 import { locations } from '@/content/site'
 import { getPublishedTestimonials } from '@/content/testimonials'
-import { getAllTreatmentSummaries } from '@/content/treatments'
 import { CredentialStrip } from '../sections/CredentialStrip'
 import { expertsContent } from '@/content/pages/experts'
 import { getServices } from '@/content/services'
@@ -24,21 +19,10 @@ import { PatientJourney } from '../shared/PatientJourney'
 export async function HomeTemplate({ content }: { content: typeof homeContent }) {
   const providers = await getFeaturedPeople()
   const testimonials = await getPublishedTestimonials()
-const data = await getServices()
-console.log(data);
 
   return (
     <>
       <HeroImmersive {...content.hero} />
-
-    
-
-      {/* <PillarGrid
-        eyebrow="Our services"
-        title="Your best life starts now"
-        lead="We connect you with the latest in bioidentical hormone therapy and other cutting-edge treatments designed to support your well-being."
-        treatments={await getServices()}
-      /> */}
 
       <Services
         eyebrow="Our services"
