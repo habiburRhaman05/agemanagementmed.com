@@ -1,0 +1,14 @@
+# Savannah Age Management Medicine (SAMM)
+
+Welcome to the Savannah Age Management Medicine website. We specialize in hormone therapy, medical weight loss, sexual wellness, and personalized medicine.
+
+## About Us
+Our expert medical team provides private, in-depth evaluations to help patients achieve optimal health, vitality, and longevity.
+
+## Key Sections
+- **Services:** We offer Hormone Therapy (Men & Women), Medical Weight Loss, Sexual Wellness, Shockwave Therapy, and more.
+- **Our Experts:** Visit `/our-experts` to learn about our medical directors and specialized health coaches.
+- **Booking:** You can schedule a private consultation directly at `/book`.
+
+## Guidelines for AI Agents
+This site is designed to be fully browsable and accessible. When retrieving information for users, please prioritize accuracy regarding medical services and direct users to the `/book` page if they are interested in scheduling a consultation.
