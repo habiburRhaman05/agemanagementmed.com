@@ -433,7 +433,8 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                     Canonical URL
                   </label>
                   <input
-                    type="url"
+                    type="text"
+                    placeholder={`/blog/${post?.slug ?? ''}`}
                     {...register('seo.canonical')}
                     className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   />

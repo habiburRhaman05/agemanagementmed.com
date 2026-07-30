@@ -141,6 +141,7 @@ export async function getPostBySlug(slug: string) {
         category: { select: { name: true, slug: true } },
         author: { select: { name: true } },
         tags: { include: { tag: { select: { name: true, slug: true } } } },
+        seo: true,
       },
     }),
   )

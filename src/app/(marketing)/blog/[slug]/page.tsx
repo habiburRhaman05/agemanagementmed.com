@@ -31,13 +31,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       return buildMetadata({ title: 'Not Found', description: '', canonical: '' })
     }
 
+    const ogImageSrc = post.seo?.ogImage || post.featuredImage
+
     return buildMetadata({
-      title: `${post.title} | Savannah Age Management Medicine`,
-      description: post.excerpt || '',
-      canonical: `/blog/${post.slug}`,
-      ogImage: post.featuredImage
-        ? { src: post.featuredImage, alt: post.title }
-        : undefined,
+      title: post.seo?.metaTitle || `${post.title} | Savannah Age Management Medicine`,
+      description: post.seo?.metaDesc || post.excerpt || '',
+      canonical: post.seo?.canonical || `/blog/${post.slug}`,
+      noindex: post.seo?.noindex ?? false,
+      ogImage: ogImageSrc ? { src: ogImageSrc, alt: post.title } : undefined,
     })
   } catch {
     return buildMetadata({ title: 'Not Found', description: '', canonical: '' })

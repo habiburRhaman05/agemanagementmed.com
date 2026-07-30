@@ -512,7 +512,11 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         <FieldError message={errors.seoTitle?.message} />
         <textarea {...register('seoDescription')} placeholder="Meta description" maxLength={300} rows={2} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         <FieldError message={errors.seoDescription?.message} />
-        <input {...register('seoCanonical')} placeholder="Canonical" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+        <div>
+          <label className="block text-xs font-medium text-gray-500">Canonical URL</label>
+          <input {...register('seoCanonical')} placeholder="/bhrt-hrt-trt" className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+          <FieldError message={errors.seoCanonical?.message} />
+        </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">Meta keywords (comma-separated)</label>
           <input {...register('seoKeywords')} placeholder="hormone therapy, weight loss, Savannah GA" className={inputClass} />
