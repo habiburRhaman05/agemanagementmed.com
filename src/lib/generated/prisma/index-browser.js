@@ -291,6 +291,7 @@ exports.Prisma.PageSeoScalarFieldEnum = {
   path: 'path',
   title: 'title',
   description: 'description',
+  keywords: 'keywords',
   ogImageUrl: 'ogImageUrl',
   canonical: 'canonical',
   noindex: 'noindex',

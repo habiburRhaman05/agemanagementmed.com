@@ -6,7 +6,7 @@ import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { SectionRenderer } from '@/components/sections/SectionRenderer'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import { pillars } from '@/content/treatments'
-import { getTestimonials } from '@/content/shared/testimonials'
+import { getPublishedTestimonials } from '@/content/testimonials'
 import type { Treatment } from '@/types/content'
 import { AuthorityTrustCard } from '../compontents-custom/hormoneTherapy/AuthorityTrustCard'
 import { CostIncludedGrid } from '../compontents-custom/hormoneTherapy/CostIncludedGrid'
@@ -18,12 +18,9 @@ interface TreatmentTemplateProps {
   treatment: Treatment
 }
 
-/** Matches `TESTIMONIALS_BY_SLUG['hormone-therapy-women']` in the routing file — currently none mapped. */
-const TESTIMONIAL_IDS: string[] = []
-
 export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
-  const testimonials = getTestimonials(TESTIMONIAL_IDS)
+  const testimonials = await getPublishedTestimonials()
 
   return (
     <>

@@ -215,6 +215,7 @@ model PageSeo {
   path         String   @unique // '/', '/contact-us', '/bioidentical-hormone-replacement-therapy/male'
   title        String?
   description  String?
+  keywords     String? // comma-separated meta keywords, admin-editable
   ogImageUrl   String?
   canonical    String?
   noindex      Boolean  @default(false)

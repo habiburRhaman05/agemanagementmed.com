@@ -6,7 +6,7 @@ import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { SectionRenderer } from '@/components/sections/SectionRenderer'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import { pillars } from '@/content/treatments'
-import { getTestimonials } from '@/content/shared/testimonials'
+import { getPublishedTestimonials } from '@/content/testimonials'
 import type { Treatment } from '@/types/content'
 import { CostIncludedGrid } from '../compontents-custom/hormoneTherapy/CostIncludedGrid'
 import { ProgramStepsTimeline } from '../compontents-custom/hormoneTherapy/ProgramStepsTimeline'
@@ -18,12 +18,9 @@ interface TreatmentTemplateProps {
   treatment: Treatment
 }
 
-/** Matches `TESTIMONIALS_BY_SLUG['hormone-therapy-men']` in the routing file — same real reviews. */
-const TESTIMONIAL_IDS = ['david-p']
-
 export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
-  const testimonials = getTestimonials(TESTIMONIAL_IDS)
+  const testimonials = await getPublishedTestimonials()
 
   return (
     <>

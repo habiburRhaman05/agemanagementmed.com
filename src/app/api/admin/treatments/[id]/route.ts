@@ -28,8 +28,10 @@ const UpdateTreatmentSchema = z.object({
       title: z.string().optional(),
       description: z.string().optional(),
       canonical: z.string().optional(),
+      keywords: z.string().optional().nullable(),
       ogImageUrl: z.string().optional().nullable(),
       noindex: z.boolean().optional(),
+      schemaJsonLd: z.string().optional().nullable(),
     })
     .optional(),
 })
@@ -84,8 +86,10 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
         title: seo.title ?? row.href,
         description: seo.description ?? '',
         canonical: seo.canonical ?? row.href,
+        keywords: seo.keywords,
         ogImageUrl: seo.ogImageUrl,
         noindex: seo.noindex ?? false,
+        schemaJsonLd: seo.schemaJsonLd,
       },
     })
   }

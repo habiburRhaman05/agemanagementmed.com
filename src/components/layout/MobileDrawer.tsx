@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
 import { Button } from '@/components/ui/Button'
-import { footerNav, megaMenu, primaryNav } from '@/content/navigation'
+import { footerNav, primaryNav } from '@/content/navigation'
 import { site } from '@/content/site'
 import { cn } from '@/lib/utils'
 
@@ -16,7 +16,7 @@ interface MobileDrawerProps {
 }
 
 export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
-  const [expanded, setExpanded] = useState<string | null>(megaMenu[0]?.href ?? null)
+  const [expanded, setExpanded] = useState<string | null>(null)
   const panelRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
 
@@ -94,63 +94,64 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
 
             <nav className="flex-1 overflow-y-auto px-6 py-6" aria-label="Mobile">
               <ul className="space-y-1">
-                {megaMenu.map((column) => {
-                  const isOpen = expanded === column.href
+                {primaryNav.map((item) => {
+                  const hasLinks = item.links && item.links.length > 0;
+                  const itemKey = item.label;
+
+                  if (hasLinks) {
+                    const isOpen = expanded === itemKey;
+                    return (
+                      <li key={itemKey} className="border-b border-canvas-300/50">
+                        <button
+                          type="button"
+                          aria-expanded={isOpen}
+                          onClick={() => setExpanded(isOpen ? null : itemKey)}
+                          className="flex w-full items-center justify-between py-4 text-left font-display text-title-md text-ink-900"
+                        >
+                          {item.label}
+                          <ChevronDown
+                            className={cn(
+                              'size-5 text-sage-600 transition-transform duration-300',
+                              isOpen && 'rotate-180',
+                            )}
+                            aria-hidden
+                          />
+                        </button>
+                        <AnimatePresence initial={false}>
+                          {isOpen ? (
+                            <motion.ul
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25, ease: 'easeOut' }}
+                              className="space-y-3 overflow-hidden pb-5 pl-1"
+                            >
+                              {item.links!.map((link) => (
+                                <li key={link.href}>
+                                  <Link href={link.href} onClick={onClose} className="text-body-sm text-canvas-600">
+                                    {link.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </motion.ul>
+                          ) : null}
+                        </AnimatePresence>
+                      </li>
+                    )
+                  }
+
                   return (
-                    <li key={column.href} className="border-b border-canvas-300/50">
-                      <button
-                        type="button"
-                        aria-expanded={isOpen}
-                        onClick={() => setExpanded(isOpen ? null : column.href)}
-                        className="flex w-full items-center justify-between py-4 text-left font-display text-title-md text-ink-900"
+                    <li key={item.href || itemKey} className="border-b border-canvas-300/50">
+                      <Link
+                        href={item.href || '#'}
+                        onClick={onClose}
+                        className="block py-4 font-display text-title-md text-ink-900"
                       >
-                        {column.title}
-                        <ChevronDown
-                          className={cn(
-                            'size-5 text-sage-600 transition-transform duration-300',
-                            isOpen && 'rotate-180',
-                          )}
-                          aria-hidden
-                        />
-                      </button>
-                      <AnimatePresence initial={false}>
-                        {isOpen ? (
-                          <motion.ul
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25, ease: 'easeOut' }}
-                            className="space-y-3 overflow-hidden pb-5 pl-1"
-                          >
-                            <li>
-                              <Link href={column.href} className="text-body-sm font-medium text-sage-700">
-                                Overview
-                              </Link>
-                            </li>
-                            {column.links.map((link) => (
-                              <li key={link.href}>
-                                <Link href={link.href} className="text-body-sm text-canvas-600">
-                                  {link.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </motion.ul>
-                        ) : null}
-                      </AnimatePresence>
+                        {item.label}
+                      </Link>
                     </li>
                   )
                 })}
-
-                {primaryNav.slice(1).map((item) => (
-                  <li key={item.href} className="border-b border-canvas-300/50">
-                    <Link
-                      href={item.href}
-                      className="block py-4 font-display text-title-md text-ink-900"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
               </ul>
 
              

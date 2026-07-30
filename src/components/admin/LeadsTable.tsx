@@ -5,6 +5,7 @@ import { Inbox, Loader2, Phone, Mail, Copy, Check, MessageSquare } from 'lucide-
 import { useState } from 'react'
 
 import { updateLeadStatus } from '@/actions/lead'
+import { ExportButton } from './ExportButton'
 
 interface Lead {
   id: string
@@ -113,20 +114,42 @@ export function LeadsTable({ leads, currentPage, totalPages, total, status, sear
     setSelectedIds(next)
   }
 
+  const today = new Date().toISOString().slice(0, 10)
+  const exportToolbar = (
+    <div className="flex items-center justify-between">
+      <p className="text-sm text-gray-500">
+        {selectedIds.size > 0 ? `${selectedIds.size} selected` : `${total} lead${total === 1 ? '' : 's'}`}
+      </p>
+      <ExportButton
+        endpoint="/api/admin/leads/export"
+        resourceLabel="Leads"
+        selectedIds={Array.from(selectedIds)}
+        totalCount={total}
+        filters={{ status, search }}
+        defaultFileTitle="Leads Export"
+        defaultFileName={`leads-export-${today}`}
+      />
+    </div>
+  )
+
   if (leads.length === 0) {
     return (
-      <div className="rounded-2xl bg-white py-16 text-center shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-gray-200">
-        <Inbox className="mx-auto size-10 text-gray-300" />
-        <h3 className="mt-4 text-base font-semibold text-gray-900">No leads found</h3>
-        <p className="mt-1 text-sm text-gray-500">
-          {search ? 'Try a different search term.' : 'No inquiries have been submitted yet.'}
-        </p>
+      <div className="space-y-4">
+        {exportToolbar}
+        <div className="rounded-2xl bg-white py-16 text-center shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-gray-200">
+          <Inbox className="mx-auto size-10 text-gray-300" />
+          <h3 className="mt-4 text-base font-semibold text-gray-900">No leads found</h3>
+          <p className="mt-1 text-sm text-gray-500">
+            {search ? 'Try a different search term.' : 'No inquiries have been submitted yet.'}
+          </p>
+        </div>
       </div>
     )
   }
 
   return (
-    <>
+    <div className="space-y-4">
+      {exportToolbar}
       <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-gray-200">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
@@ -243,6 +266,6 @@ export function LeadsTable({ leads, currentPage, totalPages, total, status, sear
           </div>
         </div>
       ) : null}
-    </>
+    </div>
   )
 }

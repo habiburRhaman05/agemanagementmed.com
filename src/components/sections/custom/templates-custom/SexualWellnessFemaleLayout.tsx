@@ -15,8 +15,9 @@ import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
+import { getPublishedTestimonials } from '@/content/testimonials'
 import { pillars } from '@/content/treatments'
-import type { Testimonial, Treatment } from '@/types/content'
+import type { Treatment } from '@/types/content'
 import { SexualHealthConcerns } from '../compontents-custom/sexualWellnes/SexualHealthConcerns'
 import { TreatmentComparison } from '../compontents-custom/sexualWellnes/TreatmentComparison'
 import { TreatmentOptionsStack } from '../compontents-custom/sexualWellnes/TreatmentOptionsStack'
@@ -25,38 +26,9 @@ interface TreatmentTemplateProps {
   treatment: Treatment
 }
 
-const testimonials: Testimonial[] = [
-  {
-    id: 's-r',
-    quote:
-      'All members of the staff are absolutely wonderful. They are polite and address any questions or concerns you have in a professional approach. They have literally changed my life for the better.',
-    author: 'S.R.',
-    source: 'google',
-  },
-  {
-    id: 'e-h',
-    quote:
-      'Dr. Collins has been an absolute delight and so informative and patient. He has a great personality and is very passionate about his profession to inform, teach, guide, and give his patients the most beneficial advice for good health and longevity. He has been very helpful for both my Husband and myself. The staff is very helpful and friendly as well.',
-    author: 'E.H.',
-    source: 'google',
-  },
-  {
-    id: 'j-f',
-    quote:
-      "Every experience has been excellent. All questions and concerns were answered. I've recommended them to my family and friends.",
-    author: 'J.F.',
-    source: 'google',
-  },
-  {
-    id: 'c-g',
-    quote: 'Great employees to work with. The staff is very knowledgeable and explain all processes.',
-    author: 'C.G.',
-    source: 'google',
-  },
-]
-
 export async function SexualWellnessFemaleLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
+  const testimonials = await getPublishedTestimonials()
 
   return (
     <>

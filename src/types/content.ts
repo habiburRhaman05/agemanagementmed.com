@@ -176,6 +176,7 @@ export interface BenefitListData {
 export interface ProcessStep {
   title: string
   body: string
+  url?:string
 }
 
 export interface ProcessStepsData {

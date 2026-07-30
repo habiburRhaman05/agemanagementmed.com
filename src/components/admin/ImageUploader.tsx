@@ -249,15 +249,16 @@ export function ImageUploader({
         )}
       </div>
 
-      {/* ── URL Mode ──────────────────────────────────────────────── */}
+         {/* ── URL Mode ──────────────────────────────────────────────── */}
       {mode === 'url' && (
         <div className="relative">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
             <LinkIcon className="size-4 text-gray-400" />
           </div>
+          {/* 👇 CHANGE 'url' TO 'text' ON THIS LINE 👇 */}
           <input
             ref={urlInputRef}
-            type="url"
+            type="text" 
             value={urlValue}
             onChange={handleUrlChange}
             placeholder="https://res.cloudinary.com/..."

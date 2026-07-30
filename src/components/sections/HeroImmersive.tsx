@@ -1,10 +1,10 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
-import { Play } from 'lucide-react'
+import { ArrowBigRight, ArrowBigRightIcon, MoveRight, Play } from 'lucide-react'
 import Image from 'next/image'
 
-import { GetConnectedForm } from '@/components/shared/GetConnectedForm'
+
 import { Container } from '@/components/shared/Container'
 import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 import { Button } from '@/components/ui/Button'
@@ -16,6 +16,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import type { Cta, Media } from '@/types/content'
+import { BookingForm } from '../shared/GetConnectedForm'
 
 interface HeroImmersiveProps {
   title: string
@@ -101,7 +102,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           <Dialog>
             <DialogTrigger asChild>
               <Button size="lg" variant="primary" className="bg-[#008080]">
-                Get Connected With Us
+                START TODAY <MoveRight/>
               </Button>
             </DialogTrigger>
             <DialogContent
@@ -119,11 +120,11 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
 >
                 <DialogHeader>
                 <DialogTitle className="text-2xl font-display text-ink-900">
-                  Get Connected With Us
+                  Schedule A Consultation
                 </DialogTitle>
               </DialogHeader>
               <div className="mt-4">
-                <GetConnectedForm />
+                <BookingForm />
               </div>
             </DialogContent>
           </Dialog>

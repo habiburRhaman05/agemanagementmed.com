@@ -1,13 +1,15 @@
 'use client'
 
-import { AlertCircle, Loader2, Plus, Save, Trash2 } from 'lucide-react'
+import { AlertCircle, ChevronDown, ChevronUp, Loader2, Plus, Save, Trash2 } from 'lucide-react'
 import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 
+import { ImageUploader } from '@/components/admin/ImageUploader'
 import { SectionBuilder } from '@/components/admin/SectionBuilder'
 import { editTreatmentSchema, type EditTreatmentValues } from '@/lib/validation/treatment'
+import { Button } from '../ui/Button'
 
 interface Cta {
   label: string
@@ -52,8 +54,10 @@ interface SeoData {
   title: string | null
   description: string | null
   canonical: string | null
+  keywords: string | null
   ogImageUrl: string | null
   noindex: boolean
+  schemaJsonLd: string | null
 }
 
 const ADVANCED_KEYS = ['symptoms', 'sections', 'process', 'candidacy', 'providers', 'related', 'customsSection']
@@ -78,12 +82,22 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
   const [heroCtas, setHeroCtas] = useState<Cta[]>(treatment.data.hero?.ctas ?? [])
   const [faqs, setFaqs] = useState(treatment.data.faqs ?? [])
 
+  const moveFaq = (index: number, direction: -1 | 1) => {
+    const target = index + direction
+    if (target < 0 || target >= faqs.length) return
+    const next = [...faqs]
+    ;[next[index], next[target]] = [next[target], next[index]]
+    setFaqs(next)
+  }
+
   const [pricingTitle, setPricingTitle] = useState(treatment.data.pricing?.title ?? '')
   const [pricingLead, setPricingLead] = useState(treatment.data.pricing?.lead ?? '')
   const [pricingIncluded, setPricingIncluded] = useState((treatment.data.pricing?.included ?? []).join('\n'))
   const [pricingNote, setPricingNote] = useState(treatment.data.pricing?.note ?? '')
 
   const [seoNoindex, setSeoNoindex] = useState(seo?.noindex ?? false)
+  const [seoSchemaJsonLd, setSeoSchemaJsonLd] = useState(seo?.schemaJsonLd ?? '')
+  const [seoSchemaError, setSeoSchemaError] = useState('')
 
   const [advancedJson, setAdvancedJson] = useState(JSON.stringify(pickAdvanced(treatment.data), null, 2))
   const advancedTextareaRef = useRef<HTMLTextAreaElement>(null)
@@ -111,6 +125,8 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<EditTreatmentValues>({
     resolver: zodResolver(editTreatmentSchema),
@@ -133,6 +149,8 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
       seoTitle: seo?.title ?? '',
       seoDescription: seo?.description ?? '',
       seoCanonical: seo?.canonical ?? treatment.href,
+      seoKeywords: seo?.keywords ?? '',
+      seoOgImageSrc: seo?.ogImageUrl ?? '',
     },
   })
 
@@ -140,6 +158,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
 
   const onValid = async (values: EditTreatmentValues) => {
     setSubmitError('')
+    setSeoSchemaError('')
 
     let advanced: Record<string, unknown>
     try {
@@ -149,6 +168,17 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
       setSubmitError(message)
       toast.error(message)
       return
+    }
+
+    if (seoSchemaJsonLd.trim()) {
+      try {
+        JSON.parse(seoSchemaJsonLd)
+      } catch {
+        const message = 'Schema JSON-LD is not valid JSON — check for a missing comma or bracket.'
+        setSeoSchemaError(message)
+        toast.error(message)
+        return
+      }
     }
 
     try {
@@ -192,7 +222,10 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
             title: values.seoTitle,
             description: values.seoDescription,
             canonical: values.seoCanonical,
+            keywords: values.seoKeywords || null,
+            ogImageUrl: values.seoOgImageSrc || null,
             noindex: seoNoindex,
+            schemaJsonLd: seoSchemaJsonLd.trim() || null,
           },
         }),
       })
@@ -216,7 +249,37 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
     'mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20'
 
   return (
-    <form onSubmit={handleSubmit(onValid, onInvalid)} className="space-y-6">
+    <>
+      {/* Sticky save bar — always reachable without scrolling to the bottom of a long form */}
+      <div className="sticky top-0 z-20 mb-6 flex items-center justify-between gap-4 rounded-2xl bg-white/95 px-6 py-4 shadow-md ring-1 ring-ink-950/[0.06] backdrop-blur-sm">
+        <div className="min-w-0">
+          <p className="truncate font-mono text-sm text-ink-950">{treatment.href}</p>
+          {status === 'draft' ? (
+            <span className="mt-0.5 inline-flex rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700">
+              Draft — not visible on the live site
+            </span>
+          ) : null}
+        </div>
+        <Button
+      
+          type="submit"
+          form="treatment-edit-form"
+          disabled={isSubmitting}
+          className="inline-flex  cursor-pointer shrink-0 items-center gap-2 rounded-lg bg-sage-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-dash-action-hover disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {isSubmitting ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />}
+          {isSubmitting ? 'Saving...' : 'Save changes'}
+        </Button>
+      </div>
+
+      {submitError ? (
+        <div className="mb-6 flex items-center gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
+          <AlertCircle className="size-4 shrink-0" />
+          {submitError}
+        </div>
+      ) : null}
+
+      <form id="treatment-edit-form" onSubmit={handleSubmit(onValid, onInvalid)} className="space-y-6">
       {/* Status + order */}
       <div className="flex flex-wrap items-end gap-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <div>
@@ -273,21 +336,23 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           <textarea {...register('summary')} rows={2} className={inputClass} />
           <FieldError message={errors.summary?.message} />
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Card image URL</label>
-            <input {...register('cardImageSrc')} className={inputClass} />
-            <FieldError message={errors.cardImageSrc?.message} />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Card image alt</label>
-            <input {...register('cardImageAlt')} className={inputClass} />
-          </div>
+        <div>
+          <ImageUploader
+            label="Card image"
+            folder="treatments"
+            value={watch('cardImageSrc')}
+            onChange={(url) => setValue('cardImageSrc', url, { shouldValidate: true, shouldDirty: true })}
+          />
+          <FieldError message={errors.cardImageSrc?.message} />
         </div>
         <div>
+          <label className="block text-xs font-medium text-gray-500">Card image alt</label>
+          <input {...register('cardImageAlt')} className={inputClass} />
+        </div>
+        {/* <div>
           <label className="block text-xs font-medium text-gray-500">Card benefits (comma-separated)</label>
           <input {...register('cardBenefits')} className={inputClass} />
-        </div>
+        </div> */}
       </div>
 
       {/* Hero */}
@@ -307,16 +372,18 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           <textarea {...register('heroLead')} rows={3} className={inputClass} />
           <FieldError message={errors.heroLead?.message} />
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Hero image URL</label>
-            <input {...register('heroImageSrc')} className={inputClass} />
-            <FieldError message={errors.heroImageSrc?.message} />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Hero image alt</label>
-            <input {...register('heroImageAlt')} className={inputClass} />
-          </div>
+        <div>
+          <ImageUploader
+            label="Hero image"
+            folder="treatments"
+            value={watch('heroImageSrc')}
+            onChange={(url) => setValue('heroImageSrc', url, { shouldValidate: true, shouldDirty: true })}
+          />
+          <FieldError message={errors.heroImageSrc?.message} />
+        </div>
+        <div>
+          <label className="block text-xs font-medium text-gray-500">Hero image alt</label>
+          <input {...register('heroImageAlt')} className={inputClass} />
         </div>
 
         <div>
@@ -377,6 +444,26 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
                     className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   />
                 </div>
+                <div className="flex shrink-0 flex-col gap-1">
+                  <button
+                    type="button"
+                    onClick={() => moveFaq(i, -1)}
+                    disabled={i === 0}
+                    aria-label="Move FAQ up"
+                    className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-600 disabled:pointer-events-none disabled:opacity-30"
+                  >
+                    <ChevronUp className="size-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => moveFaq(i, 1)}
+                    disabled={i === faqs.length - 1}
+                    aria-label="Move FAQ down"
+                    className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-600 disabled:pointer-events-none disabled:opacity-30"
+                  >
+                    <ChevronDown className="size-4" />
+                  </button>
+                </div>
                 <button type="button" onClick={() => setFaqs(faqs.filter((_, j) => j !== i))} className="shrink-0 rounded-lg p-2 text-gray-400 hover:bg-red-50 hover:text-red-600">
                   <Trash2 className="size-4" />
                 </button>
@@ -386,7 +473,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         </div>
       </div>
 
-      {/* Pricing */}
+      {/* Pricing
       {treatment.data.pricing ? (
         <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
           <h2 className="text-sm font-semibold text-ink-950">Pricing</h2>
@@ -398,10 +485,10 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           </div>
           <input value={pricingNote} onChange={(e) => setPricingNote(e.target.value)} placeholder="Note" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         </div>
-      ) : null}
+      ) : null} */}
 
       {/* Closing CTA */}
-      <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+      {/* <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <h2 className="text-sm font-semibold text-ink-950">Closing CTA</h2>
         <input {...register('closingTitle')} placeholder="Title" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         <textarea {...register('closingBody')} placeholder="Body" rows={2} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
@@ -416,7 +503,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
             <FieldError message={errors.closingCtaHref?.message} />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* SEO */}
       <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
@@ -426,17 +513,44 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         <textarea {...register('seoDescription')} placeholder="Meta description" maxLength={300} rows={2} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         <FieldError message={errors.seoDescription?.message} />
         <input {...register('seoCanonical')} placeholder="Canonical" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
+        <div>
+          <label className="block text-xs font-medium text-gray-500">Meta keywords (comma-separated)</label>
+          <input {...register('seoKeywords')} placeholder="hormone therapy, weight loss, Savannah GA" className={inputClass} />
+          <FieldError message={errors.seoKeywords?.message} />
+        </div>
+        <div>
+          <ImageUploader
+            label="Open Graph image"
+            folder="treatments"
+            value={watch('seoOgImageSrc') ?? ''}
+            onChange={(url) => setValue('seoOgImageSrc', url, { shouldValidate: true, shouldDirty: true })}
+          />
+          <FieldError message={errors.seoOgImageSrc?.message} />
+        </div>
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={seoNoindex} onChange={(e) => setSeoNoindex(e.target.checked)} className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600" />
           <span className="text-xs text-gray-600">No index</span>
         </label>
+        <div>
+          <label className="block text-xs font-medium text-gray-500">
+            Schema (JSON-LD) override <span className="font-normal text-gray-400">— optional, replaces the auto-generated schema</span>
+          </label>
+          <textarea
+            value={seoSchemaJsonLd}
+            onChange={(e) => setSeoSchemaJsonLd(e.target.value)}
+            rows={6}
+            placeholder='{"@context": "https://schema.org", "@type": "MedicalWebPage", ...}'
+            className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 font-mono text-xs focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+          />
+          <FieldError message={seoSchemaError} />
+        </div>
       </div>
 
       {/* Section Builder — visual JSON generator */}
-      <SectionBuilder onInsert={handleSectionInsert} />
+      {/* <SectionBuilder onInsert={handleSectionInsert} /> */}
 
       {/* Advanced JSON */}
-      <div className="space-y-2 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+      {/* <div className="space-y-2 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <h2 className="text-sm font-semibold text-ink-950">Advanced (symptoms, sections, process, candidacy, providers, related)</h2>
         <p className="text-xs text-gray-500">
           Raw JSON for the section types the generic renderer already knows how to draw — validated before save.
@@ -450,25 +564,9 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           rows={16}
           className="block w-full rounded-lg border border-canvas-300 px-3 py-2 font-mono text-xs focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
         />
-      </div>
+      </div> */}
 
-      {submitError ? (
-        <div className="flex items-center gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
-          <AlertCircle className="size-4 shrink-0" />
-          {submitError}
-        </div>
-      ) : null}
-
-      <div className="flex justify-end border-t pt-6">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="inline-flex items-center gap-2 rounded-lg bg-dash-action px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-dash-action-hover disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          {isSubmitting ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />}
-          {isSubmitting ? 'Saving...' : 'Save changes'}
-        </button>
-      </div>
     </form>
+    </>
   )
 }

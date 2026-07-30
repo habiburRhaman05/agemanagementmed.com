@@ -12,10 +12,13 @@ import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import type { homeContent } from '@/content/pages/home'
 import { getFeaturedPeople } from '@/content/people'
 import { locations } from '@/content/site'
+import { getPublishedTestimonials } from '@/content/testimonials'
 import { getAllTreatmentSummaries } from '@/content/treatments'
 import { CredentialStrip } from '../sections/CredentialStrip'
 import { expertsContent } from '@/content/pages/experts'
 import { prisma } from '@/lib/prisma'
+import { Services } from '../shared/Services'
+import { PatientJourney } from '../shared/PatientJourney'
 
 /**
  * Section order is the funnel from docs/01-INFORMATION-ARCHITECTURE.md §5:
@@ -46,6 +49,9 @@ async function getServices() {
 
 export async function HomeTemplate({ content }: { content: typeof homeContent }) {
   const providers = await getFeaturedPeople()
+  const testimonials = await getPublishedTestimonials()
+const data = await getServices()
+console.log(data);
 
   return (
     <>
@@ -53,7 +59,14 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
 
     
 
-      <PillarGrid
+      {/* <PillarGrid
+        eyebrow="Our services"
+        title="Your best life starts now"
+        lead="We connect you with the latest in bioidentical hormone therapy and other cutting-edge treatments designed to support your well-being."
+        treatments={await getServices()}
+      /> */}
+
+      <Services
         eyebrow="Our services"
         title="Your best life starts now"
         lead="We connect you with the latest in bioidentical hormone therapy and other cutting-edge treatments designed to support your well-being."
@@ -71,6 +84,7 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
         awards={expertsContent.awards}
       />
       <ProcessSteps {...content.journey} background="page" />
+      <PatientJourney   {...content.journey}/>
 
       {/* <EditorialPair {...content.philosophy} /> */}
 
@@ -86,7 +100,7 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
       <TestimonialSet
         eyebrow="Patient testimonials"
         title="Real stories of real transformation"
-        testimonials={content.testimonials}
+        testimonials={testimonials}
       />
 
       <LocationBlock

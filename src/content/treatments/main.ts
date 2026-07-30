@@ -28,6 +28,7 @@ interface TreatmentRow {
 interface PageSeoRow {
   title: string | null
   description: string | null
+  keywords: string | null
   canonical: string | null
   ogImageUrl: string | null
   noindex: boolean
@@ -39,6 +40,7 @@ async function resolveSeo(href: string, seoRow: PageSeoRow | null): Promise<Seo>
       title: seoRow.title,
       description: seoRow.description,
       canonical: seoRow.canonical ?? href,
+      keywords: seoRow.keywords ?? undefined,
       ogImage: seoRow.ogImageUrl ? { src: seoRow.ogImageUrl, alt: seoRow.title } : undefined,
       noindex: seoRow.noindex,
     }
@@ -50,6 +52,7 @@ async function resolveSeo(href: string, seoRow: PageSeoRow | null): Promise<Seo>
     title: seoRow?.title ?? settings?.defaultSeoTitle ?? href,
     description: seoRow?.description ?? settings?.defaultSeoDescription ?? '',
     canonical: seoRow?.canonical ?? href,
+    keywords: seoRow?.keywords ?? undefined,
     ogImage: seoRow?.ogImageUrl
       ? { src: seoRow.ogImageUrl, alt: seoRow.title ?? href }
       : settings?.defaultOgImageUrl

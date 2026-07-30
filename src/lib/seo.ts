@@ -31,7 +31,7 @@ export function buildMetadata(
   return {
     title: seo.title,
     description: seo.description,
-    keywords: options?.keywords || 'hormone therapy, weight loss, age management, bioidentical hormones, Savannah GA',
+    keywords: seo.keywords || options?.keywords || undefined,
     alternates: { canonical: url },
     robots: seo.noindex
       ? { index: false, follow: false }

@@ -1,4 +1,3 @@
-import { getTestimonials } from '@/content/shared/testimonials'
 import type {
   Award,
   ClosingCtaData,
@@ -60,14 +59,17 @@ export const homeContent = {
       {
         title: 'Personalized consultation',
         body: 'We sit with you to understand your current health challenges, your goals, and what is getting in the way of living life to the fullest.',
+        url:"https://res.cloudinary.com/khs2rcsr/image/upload/v1785396121/persdonlized-cons_hnc2nk.jpg"
       },
       {
         title: 'Convenient lab work',
         body: 'A complete analysis of your health metrics to find the root cause of your symptoms, craft a treatment plan, and set a schedule for regular check-ins.',
+        url:"https://res.cloudinary.com/khs2rcsr/image/upload/v1785396162/lab-work_yrq7fr.avif"
       },
       {
         title: 'Tailored treatment plan',
         body: 'Following the latest in bioidentical hormone research and other advanced treatments, we make sure your plan always reflects the best protocol for you.',
+        url:"https://res.cloudinary.com/khs2rcsr/image/upload/v1785396190/treatment-plan_rdxnon.png"
       },
     ],
   } satisfies ProcessStepsData,
@@ -95,7 +97,6 @@ export const homeContent = {
       { value: '2', label: 'Clinics — Pooler and Statesboro' },
       { value: '8', label: 'Providers and care team members' },
     ],
-    quotes: getTestimonials(['mark-m', 'wesley-y']),
     awards: [
       { src: '/images/award-11-img.png', alt: 'Best of Savannah award' },
       { src: '/images/award-13-img.png', alt: 'Regional excellence award' },
@@ -104,14 +105,6 @@ export const homeContent = {
       { src: '/images/award-19-img.png', alt: 'Wellness practice award' },
     ] satisfies Award[],
   },
-
-  testimonials: getTestimonials([
-    'david-p',
-    'jennifer-c',
-    'joseph-s',
-    'robert-f',
-    'mike-d',
-  ]),
 
   faqs: [
     {

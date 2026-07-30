@@ -17899,6 +17899,7 @@ export namespace Prisma {
     path: string | null
     title: string | null
     description: string | null
+    keywords: string | null
     ogImageUrl: string | null
     canonical: string | null
     noindex: boolean | null
@@ -17912,6 +17913,7 @@ export namespace Prisma {
     path: string | null
     title: string | null
     description: string | null
+    keywords: string | null
     ogImageUrl: string | null
     canonical: string | null
     noindex: boolean | null
@@ -17925,6 +17927,7 @@ export namespace Prisma {
     path: number
     title: number
     description: number
+    keywords: number
     ogImageUrl: number
     canonical: number
     noindex: number
@@ -17940,6 +17943,7 @@ export namespace Prisma {
     path?: true
     title?: true
     description?: true
+    keywords?: true
     ogImageUrl?: true
     canonical?: true
     noindex?: true
@@ -17953,6 +17957,7 @@ export namespace Prisma {
     path?: true
     title?: true
     description?: true
+    keywords?: true
     ogImageUrl?: true
     canonical?: true
     noindex?: true
@@ -17966,6 +17971,7 @@ export namespace Prisma {
     path?: true
     title?: true
     description?: true
+    keywords?: true
     ogImageUrl?: true
     canonical?: true
     noindex?: true
@@ -18052,6 +18058,7 @@ export namespace Prisma {
     path: string
     title: string | null
     description: string | null
+    keywords: string | null
     ogImageUrl: string | null
     canonical: string | null
     noindex: boolean
@@ -18082,6 +18089,7 @@ export namespace Prisma {
     path?: boolean
     title?: boolean
     description?: boolean
+    keywords?: boolean
     ogImageUrl?: boolean
     canonical?: boolean
     noindex?: boolean
@@ -18095,6 +18103,7 @@ export namespace Prisma {
     path?: boolean
     title?: boolean
     description?: boolean
+    keywords?: boolean
     ogImageUrl?: boolean
     canonical?: boolean
     noindex?: boolean
@@ -18108,6 +18117,7 @@ export namespace Prisma {
     path?: boolean
     title?: boolean
     description?: boolean
+    keywords?: boolean
     ogImageUrl?: boolean
     canonical?: boolean
     noindex?: boolean
@@ -18121,6 +18131,7 @@ export namespace Prisma {
     path?: boolean
     title?: boolean
     description?: boolean
+    keywords?: boolean
     ogImageUrl?: boolean
     canonical?: boolean
     noindex?: boolean
@@ -18129,7 +18140,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PageSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "path" | "title" | "description" | "ogImageUrl" | "canonical" | "noindex" | "schemaJsonLd" | "createdAt" | "updatedAt", ExtArgs["result"]["pageSeo"]>
+  export type PageSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "path" | "title" | "description" | "keywords" | "ogImageUrl" | "canonical" | "noindex" | "schemaJsonLd" | "createdAt" | "updatedAt", ExtArgs["result"]["pageSeo"]>
 
   export type $PageSeoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PageSeo"
@@ -18139,6 +18150,7 @@ export namespace Prisma {
       path: string
       title: string | null
       description: string | null
+      keywords: string | null
       ogImageUrl: string | null
       canonical: string | null
       noindex: boolean
@@ -18572,6 +18584,7 @@ export namespace Prisma {
     readonly path: FieldRef<"PageSeo", 'String'>
     readonly title: FieldRef<"PageSeo", 'String'>
     readonly description: FieldRef<"PageSeo", 'String'>
+    readonly keywords: FieldRef<"PageSeo", 'String'>
     readonly ogImageUrl: FieldRef<"PageSeo", 'String'>
     readonly canonical: FieldRef<"PageSeo", 'String'>
     readonly noindex: FieldRef<"PageSeo", 'Boolean'>
@@ -21457,6 +21470,7 @@ export namespace Prisma {
     path: 'path',
     title: 'title',
     description: 'description',
+    keywords: 'keywords',
     ogImageUrl: 'ogImageUrl',
     canonical: 'canonical',
     noindex: 'noindex',
@@ -22691,6 +22705,7 @@ export namespace Prisma {
     path?: StringFilter<"PageSeo"> | string
     title?: StringNullableFilter<"PageSeo"> | string | null
     description?: StringNullableFilter<"PageSeo"> | string | null
+    keywords?: StringNullableFilter<"PageSeo"> | string | null
     ogImageUrl?: StringNullableFilter<"PageSeo"> | string | null
     canonical?: StringNullableFilter<"PageSeo"> | string | null
     noindex?: BoolFilter<"PageSeo"> | boolean
@@ -22704,6 +22719,7 @@ export namespace Prisma {
     path?: SortOrder
     title?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
+    keywords?: SortOrderInput | SortOrder
     ogImageUrl?: SortOrderInput | SortOrder
     canonical?: SortOrderInput | SortOrder
     noindex?: SortOrder
@@ -22720,6 +22736,7 @@ export namespace Prisma {
     NOT?: PageSeoWhereInput | PageSeoWhereInput[]
     title?: StringNullableFilter<"PageSeo"> | string | null
     description?: StringNullableFilter<"PageSeo"> | string | null
+    keywords?: StringNullableFilter<"PageSeo"> | string | null
     ogImageUrl?: StringNullableFilter<"PageSeo"> | string | null
     canonical?: StringNullableFilter<"PageSeo"> | string | null
     noindex?: BoolFilter<"PageSeo"> | boolean
@@ -22733,6 +22750,7 @@ export namespace Prisma {
     path?: SortOrder
     title?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
+    keywords?: SortOrderInput | SortOrder
     ogImageUrl?: SortOrderInput | SortOrder
     canonical?: SortOrderInput | SortOrder
     noindex?: SortOrder
@@ -22752,6 +22770,7 @@ export namespace Prisma {
     path?: StringWithAggregatesFilter<"PageSeo"> | string
     title?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
     description?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    keywords?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
     ogImageUrl?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
     canonical?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
     noindex?: BoolWithAggregatesFilter<"PageSeo"> | boolean
@@ -24144,6 +24163,7 @@ export namespace Prisma {
     path: string
     title?: string | null
     description?: string | null
+    keywords?: string | null
     ogImageUrl?: string | null
     canonical?: string | null
     noindex?: boolean
@@ -24157,6 +24177,7 @@ export namespace Prisma {
     path: string
     title?: string | null
     description?: string | null
+    keywords?: string | null
     ogImageUrl?: string | null
     canonical?: string | null
     noindex?: boolean
@@ -24170,6 +24191,7 @@ export namespace Prisma {
     path?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
@@ -24183,6 +24205,7 @@ export namespace Prisma {
     path?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
@@ -24196,6 +24219,7 @@ export namespace Prisma {
     path: string
     title?: string | null
     description?: string | null
+    keywords?: string | null
     ogImageUrl?: string | null
     canonical?: string | null
     noindex?: boolean
@@ -24209,6 +24233,7 @@ export namespace Prisma {
     path?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
@@ -24222,6 +24247,7 @@ export namespace Prisma {
     path?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
@@ -25354,6 +25380,7 @@ export namespace Prisma {
     path?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    keywords?: SortOrder
     ogImageUrl?: SortOrder
     canonical?: SortOrder
     noindex?: SortOrder
@@ -25367,6 +25394,7 @@ export namespace Prisma {
     path?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    keywords?: SortOrder
     ogImageUrl?: SortOrder
     canonical?: SortOrder
     noindex?: SortOrder
@@ -25380,6 +25408,7 @@ export namespace Prisma {
     path?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    keywords?: SortOrder
     ogImageUrl?: SortOrder
     canonical?: SortOrder
     noindex?: SortOrder

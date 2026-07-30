@@ -108,12 +108,16 @@ export function TestimonialSet({
 
                   <figcaption className="mt-4 flex flex-col items-center gap-2">
                     <span className="font-semibold text-body text-ink-950">{current.author}</span>
-                    {current.source === 'google' ? (
+                    {/* {current.source === 'google' ? (
                       <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50/60 px-3 py-1 text-body-sm font-medium text-blue-700 shadow-sm">
                         <GoogleLogo />
                         Google Review
                       </span>
-                    ) : null}
+                    ) : null} */}
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50/60 px-3 py-1 text-body-sm font-medium text-blue-700 shadow-sm">
+                        <GoogleLogo />
+                        Google Review
+                      </span>
                   </figcaption>
                 </motion.div>
               </AnimatePresence>

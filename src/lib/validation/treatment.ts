@@ -24,6 +24,8 @@ export const treatmentCoreSchema = z.object({
   closingCtaHref: z.string().min(1, 'Button link is required'),
   seoTitle: z.string().max(70, 'Meta title must be 70 characters or fewer').optional(),
   seoDescription: z.string().max(300, 'Meta description must be 300 characters or fewer').optional(),
+  seoKeywords: z.string().max(255, 'Meta keywords must be 255 characters or fewer').optional(),
+  seoOgImageSrc: z.string().optional(),
 })
 
 export type TreatmentCoreValues = z.infer<typeof treatmentCoreSchema>

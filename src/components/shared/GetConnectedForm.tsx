@@ -1,26 +1,26 @@
 'use client'
 
+import { bookAppointment, type ActionResult } from '@/actions/appointment'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AlertCircle, CheckCircle2, Loader2 } from 'lucide-react'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { AlertCircle } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { submitLead, type ActionResult } from '@/actions/lead'
 import { FieldError } from '@/components/shared/FieldError'
 import { Button } from '@/components/ui/Button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { site } from '@/content/site'
-import { cn } from '@/lib/utils'
+import type { LocationSlug } from '@/types/content'
 
 const schema = z.object({
   name: z.string().min(2, 'Enter your full name'),
   email: z.string().email('Enter a valid email address'),
-  phone: z.string().optional(),
-  treatment: z.string().optional(),
+  phone: z.string().min(7, 'Enter a valid phone number'),
+  location: z.enum(['savannah-pooler', 'statesboro']),
   consent: z.literal(true, {
     message: 'Consent is required to submit this form',
   }),
@@ -28,173 +28,143 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>
 
-interface ServiceOption {
-  slug: string
-  shortName: string
+// Static clinic details for the location picker. If these ever need to be
+// dynamic (a third location, hour changes without a deploy), move this into
+// `site` content instead of hardcoding here — but for now, static is simpler
+// and correct, per request.
+const LOCATIONS: Record<LocationSlug, { name: string; address: string; hours: string }> = {
+  'savannah-pooler': {
+    name: 'Savannah',
+    address: '200 Blue Moon Xing, Suite 102, Pooler, GA 31322',
+    hours: 'Mon–Thu: 9AM – 5PM  |  Fri: 9AM – 3PM',
+  },
+  statesboro: {
+    name: 'Statesboro',
+    address: '5 Oak Street, Statesboro, GA 30458',
+    hours: 'Mon–Thu: 8AM – 4PM  |  Fri: 8AM – 2PM',
+  },
 }
 
-export function GetConnectedForm() {
-  const pathname = usePathname()
-  const [submitted, setSubmitted] = useState(false)
-  const [state, setState] = useState<ActionResult | null>(null)
-  const [services, setServices] = useState<ServiceOption[]>([])
-  const [servicesLoading, setServicesLoading] = useState(true)
-  const [servicesError, setServicesError] = useState('')
+/**
+ * The one canonical lead form. `defaultLocation` lets a location page or the
+ * CTA band pre-select a clinic without duplicating this component.
+ *
+ * ⚠ Submission is not wired to a backend yet — it validates and shows a
+ * confirmation state. Needs a real endpoint (email/CRM) before launch.
+ */
+interface BookingFormProps {
+  defaultLocation?: LocationSlug
+  /** Overrides the "General consultation" service label — e.g. to tag a claimed special. */
+  serviceLabel?: string
+  /** Overrides the submit button's default "Schedule a consultation" label. */
+  submitLabel?: string
+}
 
-  useEffect(() => {
-    let cancelled = false
-
-    async function fetchServices() {
-      try {
-        setServicesLoading(true)
-        setServicesError('')
-        const res = await fetch('/api/services')
-        if (!res.ok) throw new Error('Failed to load services')
-        const json = await res.json()
-        if (!cancelled) {
-          setServices(json.services ?? [])
-        }
-      } catch (err) {
-        if (!cancelled) {
-          setServicesError(err instanceof Error ? err.message : 'Failed to load services')
-        }
-      } finally {
-        if (!cancelled) setServicesLoading(false)
-      }
-    }
-
-    fetchServices()
-
-    return () => {
-      cancelled = true
-    }
-  }, [])
+export function BookingForm({ defaultLocation, serviceLabel, submitLabel }: BookingFormProps) {
+  const router = useRouter()
 
   const {
     register,
     control,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<FormValues>({ resolver: zodResolver(schema) })
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      location: defaultLocation ?? 'savannah-pooler',
+    },
+  })
 
-  if (submitted) {
-    return (
-      <div className="flex flex-col items-center justify-center py-12 text-center">
-        <span className="flex size-16 items-center justify-center rounded-full bg-sage-100 text-sage-700">
-          <CheckCircle2 className="size-8" />
-        </span>
-        <h3 className="mt-6 text-display-sm font-display text-ink-900">Thank You!</h3>
-        <p className="mt-3 max-w-md text-body text-canvas-600">
-          Your message has been received. A member of our care team will follow up with you shortly.
-        </p>
-      </div>
-    )
-  }
+  const [bookingState, setBookingState] = useState<ActionResult | null>(null)
 
   return (
     <form
       onSubmit={handleSubmit(async (data) => {
         const formData = new FormData()
+
         formData.append('name', data.name)
         formData.append('email', data.email)
-        if (data.phone) formData.append('phone', data.phone)
-        if (data.treatment) formData.append('message', `Interested in: ${data.treatment}`)
-        formData.append('sourcePath', pathname)
+        formData.append('phone', data.phone)
+        formData.append('message', `Location: ${data.location}`)
 
-        const result = await submitLead(null, formData)
+        const result = await bookAppointment(null, formData)
+
         if (result.success) {
-          setSubmitted(true)
+          router.push('/thank-you')
         } else {
-          setState(result)
+          setBookingState(result)
         }
       })}
       className="space-y-5 sm:space-y-6"
       noValidate
     >
-      {state && !state.success && (
+      {bookingState && !bookingState.success && (
         <div className="flex items-start gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-          <span className="break-words">{state.error}</span>
+          <span className="break-words">{bookingState.error}</span>
         </div>
       )}
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
         <div>
-          <Label htmlFor="gc-name">Full name</Label>
+          <Label htmlFor="name">Full name</Label>
           <Input
-            id="gc-name"
+            id="name"
             className="mt-2"
             autoComplete="name"
             aria-invalid={Boolean(errors.name)}
-            aria-describedby={errors.name ? 'gc-name-error' : undefined}
+            aria-describedby={errors.name ? 'name-error' : undefined}
             {...register('name')}
           />
-          <FieldError id="gc-name-error" message={errors.name?.message} />
+          <FieldError id="name-error" message={errors.name?.message} />
         </div>
 
         <div>
-          <Label htmlFor="gc-phone">Phone (optional)</Label>
+          <Label htmlFor="phone">Phone</Label>
           <Input
-            id="gc-phone"
+            id="phone"
             type="tel"
             className="mt-2"
             autoComplete="tel"
+            aria-invalid={Boolean(errors.phone)}
+            aria-describedby={errors.phone ? 'phone-error' : undefined}
             {...register('phone')}
           />
+          <FieldError id="phone-error" message={errors.phone?.message} />
         </div>
       </div>
 
       <div>
-        <Label htmlFor="gc-email">Email address</Label>
+        <Label htmlFor="email">Email address</Label>
         <Input
-          id="gc-email"
+          id="email"
           type="email"
           className="mt-2"
           autoComplete="email"
           aria-invalid={Boolean(errors.email)}
-          aria-describedby={errors.email ? 'gc-email-error' : undefined}
+          aria-describedby={errors.email ? 'email-error' : undefined}
           {...register('email')}
         />
-        <FieldError id="gc-email-error" message={errors.email?.message} />
+        <FieldError id="email-error" message={errors.email?.message} />
       </div>
 
-      <div>
-        <Label htmlFor="gc-treatment">Treatment of interest (optional)</Label>
-        <select
-          id="gc-treatment"
-          className={cn(
-            'mt-2 flex h-14 w-full rounded-xl border border-canvas-300 bg-canvas-50 px-4 text-body text-canvas-900',
-            'transition-shadow duration-200',
-            'focus:border-sage-600 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage-600',
-            'disabled:cursor-not-allowed disabled:opacity-50',
-          )}
-          {...register('treatment')}
-          disabled={servicesLoading}
-        >
-          <option value="">
-            {servicesLoading
-              ? 'Loading services…'
-              : servicesError
-                ? 'Unable to load services'
-                : 'Select a treatment…'}
-          </option>
-          {services.map((s) => (
-            <option key={s.slug} value={s.shortName}>
-              {s.shortName}
-            </option>
-          ))}
-        </select>
-        {servicesLoading ? (
-          <span className="mt-1 inline-flex items-center gap-1 text-xs text-gray-400">
-            <Loader2 className="size-3 animate-spin" />
-            Loading services…
-          </span>
-        ) : null}
-        {servicesError ? (
-          <p className="mt-1 text-xs text-red-500">
-            {servicesError}. Using default list instead.
-          </p>
-        ) : null}
+      <div className="grid grid-cols-1 gap-5 ">
+        <div>
+          <Label htmlFor="location">Which location?</Label>
+          <select
+            id="location"
+            className="mt-2 h-14 w-full rounded-xl border border-canvas-300 bg-canvas-50 px-4 text-body text-canvas-900 focus:border-sage-600 focus:outline-none focus-visible:outline-2 focus-visible:outline-sage-600"
+            {...register('location')}
+          >
+            {(Object.keys(LOCATIONS) as LocationSlug[]).map((slug) => (
+              <option key={slug} value={slug}>
+                {LOCATIONS[slug].name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+       
       </div>
 
       <div>
@@ -204,28 +174,35 @@ export function GetConnectedForm() {
             control={control}
             render={({ field }) => (
               <Checkbox
-                id="gc-consent"
+                id="consent"
                 className="mt-0.5 shrink-0"
                 checked={field.value ?? false}
                 onCheckedChange={field.onChange}
                 aria-invalid={Boolean(errors.consent)}
-                aria-describedby="gc-consent-text gc-consent-error"
+                aria-describedby="consent-text consent-error"
               />
             )}
           />
+
           <Label
-            htmlFor="gc-consent"
-            id="gc-consent-text"
+            htmlFor="consent"
+            id="consent-text"
             className="flex-1 text-body-sm leading-relaxed text-canvas-600"
           >
             {site.legal.smsConsent}
           </Label>
         </div>
-        <FieldError id="gc-consent-error" message={errors.consent?.message as string | undefined} />
+
+        <FieldError id="consent-error" message={errors.consent?.message as string | undefined} />
       </div>
 
-      <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:min-w-[240px] sm:w-auto">
-        {isSubmitting ? 'Submitting…' : 'Get Connected'}
+      <Button
+        type="submit"
+        size="lg"
+        disabled={isSubmitting}
+        className="w-full sm:min-w-[240px] sm:w-auto"
+      >
+        {isSubmitting ? 'Submitting…' : (submitLabel ?? 'Schedule a consultation')}
       </Button>
     </form>
   )

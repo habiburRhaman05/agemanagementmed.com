@@ -231,18 +231,18 @@ export default async function BlogIndexPage({
       <Header />
 
       {/* ── Hero — exactly as original ──────────────────────────────────── */}
-      {/* <HeroCompact
+      <HeroCompact
         {...blogContent.hero}
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Journal', href: '/blog' },
         ]}
-      /> */}
+      />
 
       {/* ── Blog grid — original ContentGrid layout, now DB-driven ─────── */}
-      {/* <Suspense fallback={<BlogGridSkeleton />}>
+      <Suspense fallback={<BlogGridSkeleton />}>
         <BlogPostsContent currentPage={currentPage} />
-      </Suspense> */}
+      </Suspense>
 
       {/* ── Latest Blog section (below pagination) ──────────────────────── */}
       {/* <Suspense fallback={null}>
@@ -250,11 +250,11 @@ export default async function BlogIndexPage({
       </Suspense> */}
 
       {/* ── Closing CTA — exactly as original ──────────────────────────── */}
-      {/* <ClosingCTA
+      <ClosingCTA
         title="Ready to transform your health?"
         body="Take the first step towards a healthier, more vibrant you."
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
-      /> */}
+      />
     </>
   )
 }

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { Header } from '@/components/layout/Header'
 import { TreatmentTemplate } from '@/components/templates/TreatmentTemplate'
 import { JsonLd } from '@/components/seo/JsonLd'
-import { getTestimonials } from '@/content/shared/testimonials'
+import { getPublishedTestimonials } from '@/content/testimonials'
 import { getAllTreatments, getTreatmentByHref } from '@/content/treatments/main'
 import { buildFaqSchema, buildMetadata, buildTreatmentSchema, getSchemaOverride } from '@/lib/seo'
 import TreatLayout from '@/components/TreatLayout'
@@ -31,28 +31,6 @@ import { LaserTreatMentLayout } from '@/components/sections/custom/templates-cus
 
 export const revalidate = 3600
 
-/**
- * Which real Google reviews to show per treatment, keyed by `Treatment.slug`.
- * Consolidated here from the 15 previous per-page hardcoded lists.
- */
-const TESTIMONIALS_BY_SLUG: Record<string, string[]> = {
-  'hormone-therapy-men': ['david-p'],
-  'hormone-therapy-women': [],
-  'weight-loss-men': ['david-p', 'robert-f', 'wesley-y'],
-  'weight-loss-women': ['jennifer-c', 'christina-t', 'christine-w'],
-  aesthetics: ['lisa-b', 'penny-m', 'leigh-ann-e'],
-  'bhrt-hrt-trt': ['jennifer-c', 'christina-t', 'christine-w'],
-  'glp1-microdosing-men': ['david-p', 'mike-d'],
-  'glp1-microdosing-women': ['jennifer-c', 'christina-t', 'christine-w'],
-  'hair-restoration-men': ['christina-t', 'eli-n'],
-  'hair-restoration-women': ['jennifer-c', 'christina-t', 'christine-w'],
-  'laser-vaginal-therapy': ['s-r', 'e-h', 'joseph-f', 'c-g'],
-  'perimenopause-menopause': ['jennifer-c', 'christina-t', 'christine-w'],
-  'sexual-wellness-men': ['s-r', 'e-h', 'joseph-f', 'c-g'],
-  'sexual-wellness-women': ['jennifer-c', 'christina-t', 'christine-w'],
-  'shockwave-therapy': ['jennifer-c', 'christina-t', 'christine-w'],
-}
-
 function hrefFromSlug(slug: string[]): string {
   return `/${slug.join('/')}`
 }
@@ -73,11 +51,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const additionalImages = treatment.hero?.image?.src
     ? [{ url: treatment.hero.image.src, alt: treatment.hero.image.alt }]
     : undefined
-  
-  // Build keywords from treatment name and default terms
-  const keywords = `${treatment.name}, hormone therapy, weight loss, age management, Savannah GA`
-  
-  return buildMetadata(treatment.seo, { additionalImages, keywords })
+
+  // Keywords come from `treatment.seo.keywords` (DB-driven, admin-editable) —
+  // buildMetadata reads it directly, nothing hardcoded here anymore.
+  return buildMetadata(treatment.seo, { additionalImages })
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string[] }> }) {
@@ -88,6 +65,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
 
   const schemaOverride = await getSchemaOverride(href)
   const faqSchema = buildFaqSchema(treatment.faqs);
+  const testimonials = await getPublishedTestimonials()
 
   const renderTemplate = (slug: string) =>{
     switch (slug) {
@@ -123,8 +101,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
       default:
        return <TreatmentTemplate
         treatment={treatment}
-        testimonials={getTestimonials(TESTIMONIALS_BY_SLUG[treatment.slug] ?? [])}
-      /> 
+        testimonials={testimonials}
+      />
     }
   }
 
@@ -145,14 +123,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
       {!schemaOverride && faqSchema ? <JsonLd data={faqSchema} /> : null}
       <Header />
 
-
-      {/* <TreatmentTemplate
-        treatment={treatment}
-        testimonials={getTestimonials(TESTIMONIALS_BY_SLUG[treatment.slug] ?? [])}
-      /> */}
-
-     {renderTemplate(treatment.slug)}
-
+      {renderTemplate(treatment.slug)}
     </>
   )
 }

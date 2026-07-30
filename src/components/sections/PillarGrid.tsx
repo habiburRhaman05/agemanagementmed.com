@@ -6,8 +6,19 @@ import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
 import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 import { AspectImage } from '@/components/ui/AspectImage'
-import type { TreatmentSummary } from '@/types/content'
+import { Audience, Media, Pillar } from '@/types/content'
 
+export interface TreatmentSummary {
+  slug: string
+  href: string
+  pillar: Pillar
+  audience: Audience
+  name: string
+  shortName: string
+  summary: string
+  cardImage: Media
+  cardBenefits: string[]
+}
 interface PillarGridProps {
   eyebrow?: string
   title: string

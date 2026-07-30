@@ -7,8 +7,9 @@ import Link from 'next/link'
 import { SocialLinks } from '@/components/layout/SocialLinks'
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
-import { footerNav, megaMenu } from '@/content/navigation'
+import { footerNav } from '@/content/navigation'
 import { locations, site } from '@/content/site'
+import { toMailtoHref, toTelHref } from '@/lib/contact'
 import type { SiteSettingsData } from '@/lib/settings'
 
 function FooterIcon({ children }: { children: React.ReactNode }) {
@@ -22,10 +23,14 @@ function FooterIcon({ children }: { children: React.ReactNode }) {
 interface FooterClientProps {
   logoUrl: string
   socialLinks: SiteSettingsData['socialLinks']
+  siteName: string
+  phone: string
+  email: string
 }
 
-
-export function FooterClient({ logoUrl, socialLinks }: FooterClientProps) {
+export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: FooterClientProps) {
+  const phoneHref = toTelHref(phone)
+  const emailHref = toMailtoHref(email)
   return (
     <footer className="relative overflow-hidden border-t border-white/5 bg-ink-900 text-canvas-50">
       <div className="absolute inset-0 bg-mesh-navy opacity-60" aria-hidden />
@@ -36,7 +41,7 @@ export function FooterClient({ logoUrl, socialLinks }: FooterClientProps) {
           <Reveal delay={0} className="lg:col-span-4">
             <Image
               src={logoUrl}
-              alt={site.name}
+              alt={siteName}
               width={180}
               height={52}
               className="h-12 w-auto brightness-0 invert"
@@ -47,22 +52,22 @@ export function FooterClient({ logoUrl, socialLinks }: FooterClientProps) {
 
             <div className="mt-8 space-y-3">
               <a
-                href={site.phoneHref}
+                href={phoneHref}
                 className="group flex items-center gap-3 text-body-sm text-canvas-50/80 transition-colors hover:text-canvas-50"
               >
                 <FooterIcon>
                   <Phone className="size-3.5" aria-hidden />
                 </FooterIcon>
-                {site.phone}
+                {phone}
               </a>
               <a
-                href={site.emailHref}
+                href={emailHref}
                 className="group flex items-center gap-3 text-body-sm text-canvas-50/80 transition-colors hover:text-canvas-50"
               >
                 <FooterIcon>
                   <Mail className="size-3.5" aria-hidden />
                 </FooterIcon>
-                {site.email}
+                {email}
               </a>
             </div>
 
@@ -76,13 +81,13 @@ export function FooterClient({ logoUrl, socialLinks }: FooterClientProps) {
                 Treatments
               </h2>
               <ul className="mt-6 space-y-3">
-                {megaMenu.map((column) => (
-                  <li key={column.href}>
+                {footerNav.treatments.map((item) => (
+                  <li key={item.href}>
                     <Link
-                      href={column.href}
+                      href={item.href}
                       className="text-body-sm text-canvas-50/70 transition-colors hover:text-canvas-50"
                     >
-                      {column.title}
+                      {item.label}
                     </Link>
                   </li>
                 ))}
