@@ -83,7 +83,7 @@ console.log(data);
         lead="These recognitions reflect our commitment to delivering high-quality aesthetic and wellness services in the Savannah area."
         awards={expertsContent.awards}
       />
-      <ProcessSteps {...content.journey} background="page" />
+      {/* <ProcessSteps {...content.journey} background="page" /> */}
       <PatientJourney   {...content.journey}/>
 
       {/* <EditorialPair {...content.philosophy} /> */}

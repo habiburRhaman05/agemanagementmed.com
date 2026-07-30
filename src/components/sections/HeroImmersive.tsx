@@ -133,7 +133,9 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           <Dialog>
             <DialogTrigger asChild>
               <Button size="lg" variant="outlineInverse" className="group">
-                <Play className="mr-2 size-4" aria-hidden />
+                <div className='bg-sage-600  p-2 flex items-center justify-center rounded-full'>
+                  <Play className="size-4" aria-hidden />
+                </div>
                 Watch video
               </Button>
             </DialogTrigger>

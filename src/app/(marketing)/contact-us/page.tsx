@@ -1,13 +1,13 @@
 import { Mail, Phone } from 'lucide-react'
 
 import { Header } from '@/components/layout/Header'
-import { BookingForm } from '@/components/shared/BookingForm'
-import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroCompact } from '@/components/sections/HeroCompact'
 import { LocationBlock } from '@/components/sections/LocationBlock'
+import { ContactForm } from '@/components/shared/ContactFrom'
+import { Container } from '@/components/shared/Container'
+import { Reveal } from '@/components/shared/Reveal'
+import { Section } from '@/components/shared/Section'
 import { contactContent } from '@/content/pages/contact'
 import { locations, site } from '@/content/site'
 import { buildMetadata } from '@/lib/seo'
@@ -72,7 +72,7 @@ export default function ContactPage() {
                   Tell us a bit about you and we'll follow up to confirm a time.
                 </p>
                 <div className="mt-8">
-                  <BookingForm />
+                  <ContactForm />
                 </div>
               </div>
             </Reveal>
