@@ -44,7 +44,7 @@ export async function SexualWellnessFemaleLayout({ treatment }: TreatmentTemplat
 
       <SexualHealthConcerns
         image={{
-          src:"",
+          src:"https://res.cloudinary.com/khs2rcsr/image/upload/v1785348763/sexual-wellniess_j4jzp4.jpg",
           alt:"Common Female Sexual Health Concerns"
         }}
         heading="Common Female Sexual Health Concerns"

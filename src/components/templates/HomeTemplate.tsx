@@ -16,36 +16,9 @@ import { getPublishedTestimonials } from '@/content/testimonials'
 import { getAllTreatmentSummaries } from '@/content/treatments'
 import { CredentialStrip } from '../sections/CredentialStrip'
 import { expertsContent } from '@/content/pages/experts'
-import { prisma } from '@/lib/prisma'
+import { getServices } from '@/content/services'
 import { Services } from '../shared/Services'
 import { PatientJourney } from '../shared/PatientJourney'
-
-/**
- * Section order is the funnel from docs/01-INFORMATION-ARCHITECTURE.md §5:
- * land → understand → treatments → trust → process → people → proof → book.
- * Two dark bands (ProofBand, ClosingCTA) give the page its rhythm.
- */
-async function getServices() {
-  const rows = await prisma.service.findMany({
-    where: { status: 'published' },
-    orderBy: { order: 'asc' },
-  })
-
-  return rows.map((row) => ({
-    slug: row.slug,
-    href: row.href,
-    pillar: 'aesthetics' as const,
-    audience: 'all' as const,
-    name: row.shortName,
-    shortName: row.shortName,
-    summary: row.summary,
-    cardImage: {
-      src: row.cardImageSrc,
-      alt: row.cardImageAlt,
-    },
-    cardBenefits: row.cardBenefits as string[],
-  }))
-}
 
 export async function HomeTemplate({ content }: { content: typeof homeContent }) {
   const providers = await getFeaturedPeople()

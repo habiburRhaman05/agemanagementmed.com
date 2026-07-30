@@ -21,7 +21,6 @@ const schema = z.object({
   email: z.string().email('Enter a valid email address'),
   phone: z.string().min(7, 'Enter a valid phone number'),
   location: z.enum(['savannah-pooler', 'statesboro']),
-  preferredDate: z.string().min(1, 'Let us know when works for you'),
   consent: z.literal(true, {
     message: 'Consent is required to submit this form',
   }),
@@ -69,16 +68,8 @@ export function BookingForm({ defaultLocation, serviceLabel, submitLabel }: Book
         formData.append('name', data.name)
         formData.append('email', data.email)
         formData.append('phone', data.phone)
-        formData.append(
-          'service',
-          serviceLabel ??
-            `Consultation at ${
-              data.location === 'savannah-pooler'
-                ? 'Savannah/Pooler'
-                : 'Statesboro'
-            }`
-        )
-        formData.append('preferredTime', data.preferredDate)
+    
+    
         formData.append('message', `Location: ${data.location}`)
 
         const result = await bookAppointment(null, formData)
@@ -151,7 +142,7 @@ export function BookingForm({ defaultLocation, serviceLabel, submitLabel }: Book
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+      <div className="grid grid-cols-1 gap-5 ">
         <div>
           <Label htmlFor="location">Which location?</Label>
           <select
@@ -164,23 +155,7 @@ export function BookingForm({ defaultLocation, serviceLabel, submitLabel }: Book
           </select>
         </div>
 
-        <div>
-          <Label htmlFor="preferredDate">
-            When would you like to come in?
-          </Label>
-          <Input
-            id="preferredDate"
-            className="mt-2"
-            placeholder="e.g. next week, mornings"
-            aria-invalid={Boolean(errors.preferredDate)}
-            aria-describedby={errors.preferredDate ? 'date-error' : undefined}
-            {...register('preferredDate')}
-          />
-          <FieldError
-            id="date-error"
-            message={errors.preferredDate?.message}
-          />
-        </div>
+       
       </div>
 
       <div>

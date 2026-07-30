@@ -48,9 +48,7 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         ]}
       />
 
-      <FemaleSexualHealthConcerns/>
-      <TreatmentOptions/>
-      <CO2LaserVsPRP/>
+   
 
 {testimonials.length ? (
         <TestimonialSet

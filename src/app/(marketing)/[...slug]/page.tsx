@@ -121,7 +121,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
         />
       )}
       {!schemaOverride && faqSchema ? <JsonLd data={faqSchema} /> : null}
-      <Header />
+      <Header overlay />
 
       {renderTemplate(treatment.slug)}
     </>

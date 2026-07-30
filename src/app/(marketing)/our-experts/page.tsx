@@ -16,7 +16,7 @@ export default async function ExpertsPage() {
 
   return (
     <>
-      <Header />
+      <Header overlay />
       <HeroEditorial
       fullHeight
         {...expertsContent.hero}

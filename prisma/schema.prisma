@@ -236,6 +236,7 @@ model Testimonial {
   quote     String
   rating    Int       @default(5) // 1-5
   photoUrl  String?
+  source    String    @default("site") // "google" | "site"
   featured  Boolean   @default(false) // pinned to the top of the public list
   status    String    @default("published") // draft | published
   order     Int       @default(0)

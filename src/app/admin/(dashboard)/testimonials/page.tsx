@@ -14,6 +14,7 @@ export default async function TestimonialsPage() {
     quote: row.quote,
     rating: row.rating,
     photoUrl: row.photoUrl,
+    source: row.source,
     featured: row.featured,
     status: row.status,
     order: row.order,

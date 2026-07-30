@@ -18992,6 +18992,7 @@ export namespace Prisma {
     quote: string | null
     rating: number | null
     photoUrl: string | null
+    source: string | null
     featured: boolean | null
     status: string | null
     order: number | null
@@ -19007,6 +19008,7 @@ export namespace Prisma {
     quote: string | null
     rating: number | null
     photoUrl: string | null
+    source: string | null
     featured: boolean | null
     status: string | null
     order: number | null
@@ -19022,6 +19024,7 @@ export namespace Prisma {
     quote: number
     rating: number
     photoUrl: number
+    source: number
     featured: number
     status: number
     order: number
@@ -19049,6 +19052,7 @@ export namespace Prisma {
     quote?: true
     rating?: true
     photoUrl?: true
+    source?: true
     featured?: true
     status?: true
     order?: true
@@ -19064,6 +19068,7 @@ export namespace Prisma {
     quote?: true
     rating?: true
     photoUrl?: true
+    source?: true
     featured?: true
     status?: true
     order?: true
@@ -19079,6 +19084,7 @@ export namespace Prisma {
     quote?: true
     rating?: true
     photoUrl?: true
+    source?: true
     featured?: true
     status?: true
     order?: true
@@ -19181,6 +19187,7 @@ export namespace Prisma {
     quote: string
     rating: number
     photoUrl: string | null
+    source: string
     featured: boolean
     status: string
     order: number
@@ -19215,6 +19222,7 @@ export namespace Prisma {
     quote?: boolean
     rating?: boolean
     photoUrl?: boolean
+    source?: boolean
     featured?: boolean
     status?: boolean
     order?: boolean
@@ -19230,6 +19238,7 @@ export namespace Prisma {
     quote?: boolean
     rating?: boolean
     photoUrl?: boolean
+    source?: boolean
     featured?: boolean
     status?: boolean
     order?: boolean
@@ -19245,6 +19254,7 @@ export namespace Prisma {
     quote?: boolean
     rating?: boolean
     photoUrl?: boolean
+    source?: boolean
     featured?: boolean
     status?: boolean
     order?: boolean
@@ -19260,6 +19270,7 @@ export namespace Prisma {
     quote?: boolean
     rating?: boolean
     photoUrl?: boolean
+    source?: boolean
     featured?: boolean
     status?: boolean
     order?: boolean
@@ -19267,7 +19278,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type TestimonialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "roleLabel" | "treatment" | "quote" | "rating" | "photoUrl" | "featured" | "status" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["testimonial"]>
+  export type TestimonialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "roleLabel" | "treatment" | "quote" | "rating" | "photoUrl" | "source" | "featured" | "status" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["testimonial"]>
 
   export type $TestimonialPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Testimonial"
@@ -19280,6 +19291,7 @@ export namespace Prisma {
       quote: string
       rating: number
       photoUrl: string | null
+      source: string
       featured: boolean
       status: string
       order: number
@@ -19715,6 +19727,7 @@ export namespace Prisma {
     readonly quote: FieldRef<"Testimonial", 'String'>
     readonly rating: FieldRef<"Testimonial", 'Int'>
     readonly photoUrl: FieldRef<"Testimonial", 'String'>
+    readonly source: FieldRef<"Testimonial", 'String'>
     readonly featured: FieldRef<"Testimonial", 'Boolean'>
     readonly status: FieldRef<"Testimonial", 'String'>
     readonly order: FieldRef<"Testimonial", 'Int'>
@@ -21490,6 +21503,7 @@ export namespace Prisma {
     quote: 'quote',
     rating: 'rating',
     photoUrl: 'photoUrl',
+    source: 'source',
     featured: 'featured',
     status: 'status',
     order: 'order',
@@ -22790,6 +22804,7 @@ export namespace Prisma {
     quote?: StringFilter<"Testimonial"> | string
     rating?: IntFilter<"Testimonial"> | number
     photoUrl?: StringNullableFilter<"Testimonial"> | string | null
+    source?: StringFilter<"Testimonial"> | string
     featured?: BoolFilter<"Testimonial"> | boolean
     status?: StringFilter<"Testimonial"> | string
     order?: IntFilter<"Testimonial"> | number
@@ -22805,6 +22820,7 @@ export namespace Prisma {
     quote?: SortOrder
     rating?: SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    source?: SortOrder
     featured?: SortOrder
     status?: SortOrder
     order?: SortOrder
@@ -22823,6 +22839,7 @@ export namespace Prisma {
     quote?: StringFilter<"Testimonial"> | string
     rating?: IntFilter<"Testimonial"> | number
     photoUrl?: StringNullableFilter<"Testimonial"> | string | null
+    source?: StringFilter<"Testimonial"> | string
     featured?: BoolFilter<"Testimonial"> | boolean
     status?: StringFilter<"Testimonial"> | string
     order?: IntFilter<"Testimonial"> | number
@@ -22838,6 +22855,7 @@ export namespace Prisma {
     quote?: SortOrder
     rating?: SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    source?: SortOrder
     featured?: SortOrder
     status?: SortOrder
     order?: SortOrder
@@ -22861,6 +22879,7 @@ export namespace Prisma {
     quote?: StringWithAggregatesFilter<"Testimonial"> | string
     rating?: IntWithAggregatesFilter<"Testimonial"> | number
     photoUrl?: StringNullableWithAggregatesFilter<"Testimonial"> | string | null
+    source?: StringWithAggregatesFilter<"Testimonial"> | string
     featured?: BoolWithAggregatesFilter<"Testimonial"> | boolean
     status?: StringWithAggregatesFilter<"Testimonial"> | string
     order?: IntWithAggregatesFilter<"Testimonial"> | number
@@ -24264,6 +24283,7 @@ export namespace Prisma {
     quote: string
     rating?: number
     photoUrl?: string | null
+    source?: string
     featured?: boolean
     status?: string
     order?: number
@@ -24279,6 +24299,7 @@ export namespace Prisma {
     quote: string
     rating?: number
     photoUrl?: string | null
+    source?: string
     featured?: boolean
     status?: string
     order?: number
@@ -24294,6 +24315,7 @@ export namespace Prisma {
     quote?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: StringFieldUpdateOperationsInput | string
     featured?: BoolFieldUpdateOperationsInput | boolean
     status?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
@@ -24309,6 +24331,7 @@ export namespace Prisma {
     quote?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: StringFieldUpdateOperationsInput | string
     featured?: BoolFieldUpdateOperationsInput | boolean
     status?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
@@ -24324,6 +24347,7 @@ export namespace Prisma {
     quote: string
     rating?: number
     photoUrl?: string | null
+    source?: string
     featured?: boolean
     status?: string
     order?: number
@@ -24339,6 +24363,7 @@ export namespace Prisma {
     quote?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: StringFieldUpdateOperationsInput | string
     featured?: BoolFieldUpdateOperationsInput | boolean
     status?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
@@ -24354,6 +24379,7 @@ export namespace Prisma {
     quote?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: StringFieldUpdateOperationsInput | string
     featured?: BoolFieldUpdateOperationsInput | boolean
     status?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
@@ -25425,6 +25451,7 @@ export namespace Prisma {
     quote?: SortOrder
     rating?: SortOrder
     photoUrl?: SortOrder
+    source?: SortOrder
     featured?: SortOrder
     status?: SortOrder
     order?: SortOrder
@@ -25445,6 +25472,7 @@ export namespace Prisma {
     quote?: SortOrder
     rating?: SortOrder
     photoUrl?: SortOrder
+    source?: SortOrder
     featured?: SortOrder
     status?: SortOrder
     order?: SortOrder
@@ -25460,6 +25488,7 @@ export namespace Prisma {
     quote?: SortOrder
     rating?: SortOrder
     photoUrl?: SortOrder
+    source?: SortOrder
     featured?: SortOrder
     status?: SortOrder
     order?: SortOrder

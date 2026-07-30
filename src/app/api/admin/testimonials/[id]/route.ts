@@ -13,6 +13,7 @@ const UpdateTestimonialSchema = z.object({
   rating: z.number().int().min(1).max(5).optional(),
   photoUrl: z.string().optional().nullable(),
   featured: z.boolean().optional(),
+  source: z.enum(['google', 'site']).optional(),
   status: z.enum(['draft', 'published']).optional(),
   order: z.number().int().optional(),
 })

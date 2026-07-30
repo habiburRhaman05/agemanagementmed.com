@@ -23,7 +23,7 @@ const fetchPublishedTestimonials = unstable_cache(
       id: row.id,
       quote: row.quote,
       author: row.name,
-      source: 'site' as const,
+      source: row.source as 'google' | 'site',
     }))
   },
   ['published-testimonials'],

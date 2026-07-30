@@ -27,6 +27,7 @@ export interface Seo {
   title: string
   description: string
   canonical: string
+  keywords?: string
   ogImage?: Media
   noindex?: boolean
 }

@@ -308,6 +308,7 @@ exports.Prisma.TestimonialScalarFieldEnum = {
   quote: 'quote',
   rating: 'rating',
   photoUrl: 'photoUrl',
+  source: 'source',
   featured: 'featured',
   status: 'status',
   order: 'order',

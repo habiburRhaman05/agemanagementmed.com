@@ -79,9 +79,7 @@ How We Track Progress"
 
         ]}
         closingParagraph="Follow-up cadence and lab intervals will be confirmed with the clinical team prior to publishing final timelines."
-        disclaimer="
-
-"
+ disclaimer="BHRT is a medical treatment and should only be initiated under the supervision of a qualified healthcare provider. Individual results vary, and hormone therapy is not intended to diagnose, treat, cure, or prevent disease."
       />
       <SafetyAndCandidacy
       bg=''
@@ -138,8 +136,8 @@ How We Track Progress"
             alt: "Hair restoration patient"
           },
           {
-            beforeImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351203/after-img_uwehcq.jpg",
-            afterImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351203/after-img_uwehcq.jpg",
+            beforeImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351202/before-2-img_mqiped.jpg",
+            afterImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351200/after-2-img_iquqib.jpg",
             alt: "Skin rejuvenation patient"
           },
          

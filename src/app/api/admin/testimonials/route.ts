@@ -13,6 +13,7 @@ const CreateTestimonialSchema = z.object({
   rating: z.number().int().min(1).max(5).default(5),
   photoUrl: z.string().optional().nullable(),
   featured: z.boolean().default(false),
+  source: z.enum(['google', 'site']).default('site'),
   status: z.enum(['draft', 'published']).default('published'),
   order: z.number().int().default(0),
 })

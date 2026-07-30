@@ -75,7 +75,7 @@ export function SexualHealthConcerns({
                 </p>
               ))}
 
-              <Eyebrow tone="inverse" className="mt-6">
+              <Eyebrow tone="inverse" className="mt-6 max-w-fit">
                 {symptomsLabel}
               </Eyebrow>
 

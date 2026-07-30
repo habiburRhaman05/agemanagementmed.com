@@ -16,7 +16,7 @@ export const primaryNav: NavLink[] = [
       { label: 'Sexual Drive For Men', href: '/rejuvenation-enhancement/male' },
       { label: 'Concierge Medical Weight Loss', href: '/concierge-medical-weight-loss/male' },
       { label: 'GLP-1 Microdosing For Men', href: '/glp-1-microdosing/male' },
-      { label: 'Wellness Specials', href: '/wellness-specials' },
+      { label: 'Wellness Specials', href: '/specials' },
       { label: 'Medical Aesthetics Services', href: 'https://www.savannahskinmed.com/' },
     ],
   },
@@ -30,7 +30,8 @@ export const primaryNav: NavLink[] = [
       { label: 'Sexual Satisfaction For Women', href: '/rejuvenation-enhancement/female' },
       { label: 'Concierge Medical Weight Loss', href: '/concierge-medical-weight-loss/female' },
       { label: 'GLP-1 Microdosing For Women', href: '/glp-1-microdosing/female' },
-      { label: 'Wellness Specials', href: '/wellness-specials' },
+          { label: 'Wellness Specials', href: '/specials' },
+
       { label: 'Medical Aesthetics Services', href: 'https://www.savannahskinmed.com/' },
     ],
   },
@@ -45,6 +46,7 @@ export const footerNav = {
     { label: 'Hair Restoration', href: '/platelet-rich-plasma-hair' },
   ] satisfies NavLink[],
   practice: [
+    { label: 'All Services', href: '/services' },
     { label: 'Our Experts', href: '/our-experts' },
     { label: 'Patients Review', href: '/reviews' },
     { label: 'In The News', href: '/in-the-news' },

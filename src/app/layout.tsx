@@ -5,6 +5,7 @@ import './globals.css'
 
 import { site } from '@/content/site'
 import { getSiteSettings } from '@/lib/settings'
+import { Header } from '@/components/layout/Header'
 
 /**
  * Bodoni Moda replaces the source site's Bodoni-72: the original is an Apple
@@ -77,6 +78,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <head dangerouslySetInnerHTML={{ __html: settings.headerScripts }} />
       ) : null}
       <body className="font-sans antialiased">
+
         {children}
         {settings.footerScripts ? (
           <div dangerouslySetInnerHTML={{ __html: settings.footerScripts }} />

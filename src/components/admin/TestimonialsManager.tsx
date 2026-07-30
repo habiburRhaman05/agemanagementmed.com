@@ -26,6 +26,7 @@ interface Testimonial {
   quote: string
   rating: number
   photoUrl: string | null
+  source: string
   featured: boolean
   status: string
   order: number
@@ -86,6 +87,7 @@ function TestimonialModal({
           quote: initial.quote,
           rating: initial.rating,
           photoUrl: initial.photoUrl ?? '',
+          source: (initial.source as 'google' | 'site') ?? 'site',
           featured: initial.featured,
           status: initial.status as 'draft' | 'published',
           order: initial.order,
@@ -97,6 +99,7 @@ function TestimonialModal({
           quote: '',
           rating: 5,
           photoUrl: '',
+          source: 'site',
           featured: false,
           status: 'published',
           order: 0,
@@ -121,6 +124,7 @@ function TestimonialModal({
           quote: data.quote,
           rating: data.rating,
           photoUrl: data.photoUrl || null,
+          source: data.source,
           featured: data.featured,
           status: data.status,
           order: data.order,
@@ -214,6 +218,13 @@ function TestimonialModal({
           </div>
 
           <div className="flex flex-wrap items-center gap-6">
+            <div>
+              <label className="block text-xs font-medium text-gray-500">Source</label>
+              <select {...register('source')} className={`${inputClass} w-auto`}>
+                <option value="site">Site</option>
+                <option value="google">Google</option>
+              </select>
+            </div>
             <div>
               <label className="block text-xs font-medium text-gray-500">Status</label>
               <select {...register('status')} className={`${inputClass} w-auto`}>

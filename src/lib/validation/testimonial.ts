@@ -10,6 +10,7 @@ export const testimonialFormSchema = z.object({
   quote: z.string().min(1, 'Quote is required'),
   rating: z.number().int().min(1).max(5),
   photoUrl: z.string().optional(),
+  source: z.enum(['google', 'site']),
   featured: z.boolean(),
   status: z.enum(['draft', 'published']),
   order: z.number().int(),
