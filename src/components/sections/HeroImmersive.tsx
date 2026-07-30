@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowBigRight, ArrowBigRightIcon, MoveRight, Play } from 'lucide-react'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 
 
 import { Container } from '@/components/shared/Container'
@@ -16,7 +17,19 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import type { Cta, Media } from '@/types/content'
-import { BookingForm } from '../shared/GetConnectedForm'
+
+// react-hook-form + zod only need to load once the booking dialog is actually
+// opened, not as part of the homepage's initial hydration bundle.
+const BookingForm = dynamic(
+  () => import('../shared/GetConnectedForm').then((mod) => mod.BookingForm),
+  {
+    loading: () => (
+      <div className="flex h-48 items-center justify-center text-body-sm text-canvas-600">
+        Loading form…
+      </div>
+    ),
+  },
+)
 
 interface HeroImmersiveProps {
   title: string

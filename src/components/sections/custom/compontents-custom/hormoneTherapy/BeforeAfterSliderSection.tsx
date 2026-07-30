@@ -109,6 +109,7 @@ export const BeforeAfterSliderSection = ({
                           src={slide.beforeImage}
                           alt={`${slide.alt} Before`}
                           fill
+                          sizes="(min-width: 768px) 40vw, 90vw"
                           className="object-cover"
                         />
                         <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm text-white text-[11px] tracking-[0.15em] uppercase font-medium ring-1 ring-white/20">
@@ -127,6 +128,7 @@ export const BeforeAfterSliderSection = ({
                           src={slide.afterImage}
                           alt={`${slide.alt} After`}
                           fill
+                          sizes="(min-width: 768px) 40vw, 90vw"
                           className="object-cover"
                         />
                         <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#C9A876] text-[#14214B] text-[11px] tracking-[0.15em] uppercase font-semibold">
