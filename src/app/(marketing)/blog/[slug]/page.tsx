@@ -465,16 +465,40 @@ export default async function BlogPostPage({ params }: Props) {
 
 
       {/* Progress bar script */}
+      {/* Progress bar script — reads scrollHeight only on resize (not per scroll tick),
+          throttles via requestAnimationFrame, and uses a passive listener to avoid
+          forced reflows during scrolling. */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
-            window.addEventListener('scroll', function() {
-              const scrollTop = window.scrollY
-              const docHeight = document.documentElement.scrollHeight - window.innerHeight
-              const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0
-              const bar = document.getElementById('reading-progress')
-              if (bar) bar.style.width = progress + '%'
-            })
+            (function () {
+              var bar = document.getElementById('reading-progress')
+              if (!bar) return
+              var docHeight = 0
+              var ticking = false
+
+              function measure() {
+                docHeight = document.documentElement.scrollHeight - window.innerHeight
+              }
+
+              function update() {
+                ticking = false
+                var scrollTop = window.scrollY
+                var progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0
+                bar.style.width = progress + '%'
+              }
+
+              function onScroll() {
+                if (ticking) return
+                ticking = true
+                requestAnimationFrame(update)
+              }
+
+              measure()
+              window.addEventListener('resize', measure, { passive: true })
+              window.addEventListener('load', measure, { passive: true })
+              window.addEventListener('scroll', onScroll, { passive: true })
+            })()
           `,
         }}
       />

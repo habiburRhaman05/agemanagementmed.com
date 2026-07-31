@@ -1,12 +1,10 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowBigRight, ArrowBigRightIcon, MoveRight, Play } from 'lucide-react'
+import { MoveRight, Play } from 'lucide-react'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 
 import { Container } from '@/components/shared/Container'
-import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 import { Button } from '@/components/ui/Button'
 import {
   Dialog,
@@ -37,18 +35,12 @@ interface HeroImmersiveProps {
 }
 
 export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) {
-  const words = title.split(' ')
-  const reduceMotion = useReducedMotion()
-
   return (
     <section
       className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-ink-950 pt-20 pb-14 sm:pt-28 sm:pb-24 lg:pt-32"
     >
-      <motion.div
-        className="absolute inset-0"
-        initial={{ scale: 1 }}
-        animate={reduceMotion ? {} : { scale: 1.09 }}
-        transition={{ duration: 22, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
+      <div
+        className="absolute inset-0 hero-zoom"
       >
         <Image
           src={image.src}
@@ -60,7 +52,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           // the 60% offset was tuned for wide desktop frames.
           className="object-cover object-[75%_center] sm:object-[60%_center]"
         />
-      </motion.div>
+      </div>
 
       <div className="absolute inset-0 bg-ink-950/40" aria-hidden />
       <div
@@ -71,45 +63,25 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
 
       <Container className="relative">
         {meta ? (
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="glass-dark inline-flex items-center rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-sage-400 md:px-4 md:py-2 md:text-label"
+          <span
+            style={{ animationDelay: '0.1s' }}
+            className="hero-enter glass-dark inline-flex items-center rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-sage-400 md:px-4 md:py-2 md:text-label"
           >
             {meta}
-          </motion.span>
+          </span>
         ) : null}
 
         <h1 className="mt-5 max-w-4xl text-3xl leading-[1.2] text-canvas-50 drop-shadow-sm sm:mt-8 sm:text-4xl sm:leading-tight md:mt-8 md:text-display-xl">
-          <StaggerGroup as="span" stagger={0.05} className="inline">
-            {words.map((word, i) => (
-              <StaggerItem
-                as="span"
-                blur
-                key={`${word}-${i}`}
-                className="mr-[0.28em] inline-block break-words"
-              >
-                {word}
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
+          {title}
         </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
-          className="mt-3 max-w-xl text-sm text-canvas-50/90 sm:mt-7 sm:text-base md:text-body-lg"
-        >
+        <p className="mt-3 max-w-xl text-sm text-canvas-50/90 sm:mt-7 sm:text-base md:text-body-lg">
           {lead}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.65, ease: 'easeOut' }}
-          className="mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
+        <div
+          style={{ animationDelay: '0.65s' }}
+          className="hero-enter mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
         >
           {/* Booking Modal */}
           <Dialog>
@@ -175,7 +147,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
               </div>
             </DialogContent>
           </Dialog>
-        </motion.div>
+        </div>
       </Container>
     </section>
   )

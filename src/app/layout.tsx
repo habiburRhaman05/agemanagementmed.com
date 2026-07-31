@@ -5,7 +5,6 @@ import './globals.css'
 
 import { site } from '@/content/site'
 import { getSiteSettings } from '@/lib/settings'
-import { Header } from '@/components/layout/Header'
 
 /**
  * Bodoni Moda replaces the source site's Bodoni-72: the original is an Apple
@@ -77,6 +76,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en" className={`${bodoni.variable} ${manrope.variable}`}>
+      {/* Critical-origin hints — nearly every hero/section image is served from Cloudinary. */}
+      <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+      <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       {settings.headerScripts ? (
         <head dangerouslySetInnerHTML={{ __html: settings.headerScripts }} />
       ) : null}

@@ -1,6 +1,3 @@
-'use client'
-
-import { motion, useReducedMotion } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 
@@ -32,24 +29,6 @@ export function HeroCompact({
   compact,
   align = 'left',
 }: HeroCompactProps) {
-  const reduceMotion = useReducedMotion()
-
-  const fadeUp = (delay: number, distance = 16) => ({
-    initial: { opacity: 0, y: reduceMotion ? 0 : distance },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
-  })
-
-  const blurUp = (delay: number) => ({
-    initial: {
-      opacity: 0,
-      y: reduceMotion ? 0 : 20,
-      filter: reduceMotion ? 'blur(0px)' : 'blur(6px)',
-    },
-    animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-    transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
-  })
-
   const isCentered = align === 'center'
 
   return (
@@ -62,10 +41,10 @@ export function HeroCompact({
           `}
         >
           {breadcrumbs?.length ? (
-            <motion.nav
+            <nav
               aria-label="Breadcrumb"
-              className={`mb-6 ${isCentered ? 'flex justify-center' : ''}`}
-              {...fadeUp(0.05, 8)}
+              className={`hero-enter mb-6 ${isCentered ? 'flex justify-center' : ''}`}
+              style={{ animationDelay: '0.05s' }}
             >
               <ol
                 className={`
@@ -84,29 +63,27 @@ export function HeroCompact({
                   </li>
                 ))}
               </ol>
-            </motion.nav>
+            </nav>
           ) : null}
 
           {eyebrow ? (
-            <motion.div className="mb-4" {...fadeUp(0.12)}>
+            <div className="hero-enter mb-4" style={{ animationDelay: '0.12s' }}>
               <Eyebrow>{eyebrow}</Eyebrow>
-            </motion.div>
+            </div>
           ) : null}
 
-          <motion.h1
+          <h1
             className={compact ? 'text-display-md' : 'text-display-md lg:text-display-lg'}
-            {...blurUp(0.2)}
           >
             {title}
-          </motion.h1>
+          </h1>
 
           {lead ? (
-            <motion.p
+            <p
               className={`mt-5 text-body-lg text-canvas-600 ${isCentered ? 'mx-auto max-w-prose' : ''}`}
-              {...fadeUp(0.34)}
             >
               {lead}
-            </motion.p>
+            </p>
           ) : null}
         </div>
       </Container>

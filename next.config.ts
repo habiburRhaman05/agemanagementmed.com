@@ -11,10 +11,12 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 2678400,
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
+      // Exact hosts in use — no wildcard. Cloudinary serves marketing/treatment
+      // images; the S3 bucket serves seeded news photos; filesafe.space serves
+      // legacy service/provider images.
+      { protocol: "https", hostname: "res.cloudinary.com" },
+      { protocol: "https", hostname: "waldoughmediaclients.s3.us-east-2.amazonaws.com" },
+      { protocol: "https", hostname: "assets.cdn.filesafe.space" },
     ],
   },
   typescript: {

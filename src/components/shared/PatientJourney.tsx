@@ -1,11 +1,11 @@
 import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { Container } from '@/components/shared/Container'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
 import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
-import { AspectImage } from '@/components/ui/AspectImage'
 import { Media } from '@/types/content'
 
 export interface JourneyStep {
@@ -81,8 +81,18 @@ export function PatientJourney({
 
                       {/* Image (Right side) - Modified Existing Div to become a circular roundel */}
                       {step.url && (
-                        <div className="relative mx-auto  flex shrink-0 my-auto items-center justify-center border-t border-slate-200/30 bg-white/50 p-4 size-24 sm:size-28 lg:size-32 overflow-hidden rounded-full sm:border-t-0 sm:border-l">
-                          <img src={step.url} alt="" className="h-full w-full object-cover" />
+                        <div className="relative mx-auto flex shrink-0 my-auto items-center justify-center border-t border-slate-200/30 bg-white/50 p-4 size-24 sm:size-28 lg:size-32 overflow-hidden rounded-full sm:border-t-0 sm:border-l">
+                          {/* Inner relative wrapper preserves the padded white ring;
+                              `fill` alone would bleed the image edge-to-edge. */}
+                          <div className="relative h-full w-full overflow-hidden rounded-full">
+                            <Image
+                              src={step.url}
+                              alt={step.title}
+                              fill
+                              sizes="128px"
+                              className="object-cover"
+                            />
+                          </div>
                         </div>
                       )}
                     </div>

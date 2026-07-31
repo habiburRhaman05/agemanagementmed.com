@@ -1,7 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, ChevronRight, Play } from 'lucide-react'
+import { ArrowRight, ChevronRight, Play } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -83,29 +82,10 @@ export function HeroEditorial({
   title,
   lead,
   image,
-  ctas,
   breadcrumbs,
   actions,
   fullHeight = false,
 }: HeroEditorialProps) {
-  const reduceMotion = useReducedMotion()
-
-  const fadeUp = (delay: number, distance = 18) => ({
-    initial: { opacity: 0, y: reduceMotion ? 0 : distance },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] as const },
-  })
-
-  const blurUp = (delay: number) => ({
-    initial: {
-      opacity: 0,
-      y: reduceMotion ? 0 : 22,
-      filter: reduceMotion ? 'blur(0px)' : 'blur(8px)',
-    },
-    animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-    transition: { duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] as const },
-  })
-
   const FormComponent = actions?.formSource ? FORM_COMPONENTS[actions.formSource] : BookingForm
   const showFormButton = Boolean(actions?.formModal)
   const showVideoButton = Boolean(actions?.videoModal && actions?.videoSource)
@@ -134,7 +114,11 @@ export function HeroEditorial({
       <Container className="relative">
         <div className="max-w-3xl text-center sm:text-left">
           {breadcrumbs?.length ? (
-            <motion.nav aria-label="Breadcrumb" className="mb-4 md:mb-8" {...fadeUp(0.05, 10)}>
+            <nav
+              aria-label="Breadcrumb"
+              className="hero-enter mb-4 md:mb-8"
+              style={{ animationDelay: '0.05s' }}
+            >
               <ol className="flex flex-wrap items-center justify-center gap-1.5 text-xs text-canvas-50/70 sm:justify-start md:text-body-sm">
                 {breadcrumbs.map((crumb, i) => (
                   <li key={crumb.href} className="flex items-center gap-1.5">
@@ -147,25 +131,28 @@ export function HeroEditorial({
                   </li>
                 ))}
               </ol>
-            </motion.nav>
+            </nav>
           ) : null}
 
           {eyebrow ? (
-            <motion.div {...fadeUp(0.15)} className="mb-3 md:mb-5">
+            <div className="hero-enter mb-3 md:mb-5" style={{ animationDelay: '0.15s' }}>
               <Eyebrow tone="inverse">{eyebrow}</Eyebrow>
-            </motion.div>
+            </div>
           ) : null}
 
-          <motion.h1 className="text-3xl sm:text-4xl md:text-display-lg leading-[1.15] md:leading-tight text-canvas-50" {...blurUp(0.22)}>
+          <h1 className="text-3xl sm:text-4xl md:text-display-lg leading-[1.15] md:leading-tight text-canvas-50">
             {title}
-          </motion.h1>
+          </h1>
 
-          <motion.p className="mx-auto mt-4 max-w-2xl text-base text-canvas-50/90 sm:mx-0 md:mt-6 md:text-body-lg" {...fadeUp(0.38)}>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-canvas-50/90 sm:mx-0 md:mt-6 md:text-body-lg">
             {lead}
-          </motion.p>
+          </p>
 
           { !showFormButton && !showVideoButton ? (
-            <motion.div className="mt-6 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4" {...fadeUp(0.5)}>
+            <div
+              className="hero-enter mt-6 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4"
+              style={{ animationDelay: '0.5s' }}
+            >
              <Dialog>
                   <DialogTrigger asChild>
                     <Button size="lg" variant="primary" className={cn('bg-[#008080] w-auto justify-center', ctaSizeClass)}>
@@ -193,15 +180,15 @@ export function HeroEditorial({
                     <div className="mt-4">{FormComponent ? <FormComponent /> : null}</div>
                   </DialogContent>
                 </Dialog>
-            </motion.div>
+            </div>
           ) : null}
 
 
 
           {showFormButton || showVideoButton ? (
-            <motion.div
-              className="mt-6 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4"
-              {...fadeUp(0.5)}
+            <div
+              className="hero-enter mt-6 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4"
+              style={{ animationDelay: '0.5s' }}
             >
               {showFormButton ? (
                 <Dialog>
@@ -250,7 +237,7 @@ export function HeroEditorial({
                   </DialogContent>
                 </Dialog>
               ) : null}
-            </motion.div>
+            </div>
           ) : null}
         </div>
       </Container>

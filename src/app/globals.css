@@ -298,10 +298,49 @@
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ==========================================================================
+   Hero entrance — CSS-driven, not JS-gated
+   ==========================================================================
+   The hero LCP text (h1 + lead) is rendered fully visible in the SSR HTML;
+   only the surrounding chrome (breadcrumbs, eyebrow, CTAs, meta, background
+   zoom) animates, and it animates via CSS keyframes that start the moment
+   the stylesheet applies — no waiting on JS hydration, which was the
+   single biggest contributor to the ~4s LCP element render delay.
+   ========================================================================== */
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.09);
+  }
+}
+
+.hero-enter {
+  animation: hero-rise 0.65s var(--ease-out-expo) both;
+}
+
+.hero-zoom {
+  animation: hero-zoom 22s ease-in-out infinite alternate;
 }
 
 
