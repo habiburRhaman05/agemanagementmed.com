@@ -66,7 +66,7 @@ function FitCard({ card }: { card: ProgramFitCard }) {
   )
 
   const imageBlock = (
-    <div className="relative min-h-64 lg:min-h-full">
+    <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-full">
       <Image
         src={card.image.src}
         alt={card.image.alt}

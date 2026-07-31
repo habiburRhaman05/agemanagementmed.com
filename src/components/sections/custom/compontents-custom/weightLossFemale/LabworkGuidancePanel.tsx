@@ -37,7 +37,7 @@ export function LabworkGuidancePanel({
       <Container>
         <Reveal>
           <div className="grid overflow-hidden rounded-3xl bg-ink-950 shadow-xl lg:grid-cols-[42%_58%]">
-            <div className="relative min-h-64 lg:min-h-full">
+            <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-full">
               <Image
                 src={image.src}
                 alt={image.alt}

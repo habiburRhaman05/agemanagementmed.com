@@ -23,6 +23,7 @@ import { BhrtHrtLayout } from '@/components/sections/custom/templates-custom/Bhr
 import { PrpOfferLayout } from '@/components/sections/custom/templates-custom/PrpOfferLayout'
 import { StatesboroLayout } from '@/components/sections/custom/templates-custom/StatesboroLayout'
 import NotFound from '../not-found'
+import { RejuvenationEnhancementLayout } from '@/components/sections/custom/templates-custom/RejuvenationEnhancementLayout'
 
 
 
@@ -101,6 +102,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
           return <PrpOfferLayout treatment={treatment}/>
         case "statesboro":
           return <StatesboroLayout treatment={treatment}/>
+        case "rejuvenation-enhancement":
+          return <RejuvenationEnhancementLayout treatment={treatment}/>
+        case "bioidentical-hormone-replacement-therapy":
+          return <HormoneTherapyMenLayout treatment={treatment}/>
+        case "concierge-medical-weight-loss":
+          return <WeightLossMaleLayout treatment={treatment}/>
+        case "platelet-rich-plasma-hair":
+          return <HairRestoreMaleLayout treatment={treatment}/>
       default:
        return <NotFound/>
     }

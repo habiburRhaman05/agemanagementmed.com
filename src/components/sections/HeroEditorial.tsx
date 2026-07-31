@@ -94,6 +94,9 @@ export function HeroEditorial({
   const showFormButton = Boolean(actions?.formModal)
   const showVideoButton = Boolean(actions?.videoModal && actions?.videoSource)
 
+  // Smaller, non-full-width CTA on mobile; the "lg" size (via the `size` prop) still applies from `sm:` up.
+  const ctaSizeClass = 'h-11 px-6 text-body-sm sm:h-14 sm:px-9 sm:text-body'
+
   return (
     <section
       className={cn(
@@ -113,10 +116,10 @@ export function HeroEditorial({
       <div className="absolute inset-0 bg-linear-to-t from-ink-950/85 via-ink-950/45 to-ink-950/20" aria-hidden />
 
       <Container className="relative">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl text-center sm:text-left">
           {breadcrumbs?.length ? (
             <motion.nav aria-label="Breadcrumb" className="mb-4 md:mb-8" {...fadeUp(0.05, 10)}>
-              <ol className="flex flex-wrap items-center gap-1.5 text-xs md:text-body-sm text-canvas-50/70">
+              <ol className="flex flex-wrap items-center justify-center gap-1.5 text-xs text-canvas-50/70 sm:justify-start md:text-body-sm">
                 {breadcrumbs.map((crumb, i) => (
                   <li key={crumb.href} className="flex items-center gap-1.5">
                     {i > 0 ? (
@@ -141,15 +144,15 @@ export function HeroEditorial({
             {title}
           </motion.h1>
 
-          <motion.p className="mt-4 md:mt-6 max-w-2xl text-base md:text-body-lg text-canvas-50/90" {...fadeUp(0.38)}>
+          <motion.p className="mx-auto mt-4 max-w-2xl text-base text-canvas-50/90 sm:mx-0 md:mt-6 md:text-body-lg" {...fadeUp(0.38)}>
             {lead}
           </motion.p>
 
           { !showFormButton && !showVideoButton ? (
-            <motion.div className="mt-6 md:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4" {...fadeUp(0.5)}>
+            <motion.div className="mt-6 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4" {...fadeUp(0.5)}>
              <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" variant="primary" className="bg-[#008080] w-full sm:w-auto justify-center">
+                    <Button size="lg" variant="primary" className={cn('bg-[#008080] w-auto justify-center', ctaSizeClass)}>
                       Schedule a consultation <span><ArrowRight></ArrowRight></span>
                     </Button>
                   </DialogTrigger>
@@ -181,13 +184,13 @@ export function HeroEditorial({
 
           {showFormButton || showVideoButton ? (
             <motion.div
-              className="mt-6 md:mt-10 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 md:gap-4"
+              className="mt-6 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4"
               {...fadeUp(0.5)}
             >
               {showFormButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                   <Button size="lg" variant="primary" className="bg-[#008080] w-full sm:w-auto justify-center">
+                   <Button size="lg" variant="primary" className={cn('bg-[#008080] w-auto justify-center', ctaSizeClass)}>
                       Schedule a consultation <span><ArrowRight></ArrowRight></span>
                     </Button>
                   </DialogTrigger>
@@ -217,7 +220,7 @@ export function HeroEditorial({
               {showVideoButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" variant="outlineInverse" className="group w-full sm:w-auto justify-center">
+                    <Button size="lg" variant="outlineInverse" className={cn('group w-auto justify-center', ctaSizeClass)}>
                       <Play className="mr-2 size-4" aria-hidden />
                       Watch video
                     </Button>

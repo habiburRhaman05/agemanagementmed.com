@@ -7,6 +7,7 @@ import { CalendarDays, Clock, User, Tag, ArrowLeft, Phone } from 'lucide-react'
 
 import { Header } from '@/components/layout/Header'
 import { ShareButton } from '@/components/blog/ShareButton'
+import { TableOfContents } from '@/components/blog/TableOfContents'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
@@ -56,39 +57,6 @@ function ReadingProgressBar() {
         id="reading-progress"
         suppressHydrationWarning
       />
-    </div>
-  )
-}
-
-/* ── Table of Contents ────────────────────────────────────────────── */
-
-function TableOfContents({ html }: { html: string }) {
-  const headings = html.match(/<h[23][^>]*>(.*?)<\/h[23]>/g) || []
-
-  if (headings.length === 0) return null
-
-  return (
-    <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-      <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400">
-        On this page
-      </h3>
-      <nav className="space-y-2">
-        {headings.map((heading, i) => {
-          const text = heading.replace(/<[^>]*>/g, '')
-          const level = heading.startsWith('<h3') ? 'ml-3' : ''
-          const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-')
-
-          return (
-            <a
-              key={i}
-              href={`#${id}`}
-              className={`block text-sm leading-relaxed text-gray-500 transition-colors hover:text-emerald-700 ${level}`}
-            >
-              {text}
-            </a>
-          )
-        })}
-      </nav>
     </div>
   )
 }

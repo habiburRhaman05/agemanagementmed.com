@@ -60,7 +60,7 @@ export function PatientJourney({
                     
                     {/* ─── Timeline Column ─── */}
                     {/* CHANGED: Removed pt-6 sm:pt-8. Added justify-center. This perfectly centers the dot exactly in the middle of the card's height. */}
-                    <div className="flex flex-col justify-center items-center w-10 sm:w-12 shrink-0 z-10 bg-transparent">
+                    <div className=" hidden sm:flex flex-col justify-center items-center w-10 sm:w-12 shrink-0 z-10 bg-transparent">
                       <div className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full bg-sage-600 font-serif text-[15px] font-medium text-white shadow-md shadow-rose-900/20 ring-4 ring-white/95">
                         {index + 1}
                       </div>
@@ -96,7 +96,7 @@ export function PatientJourney({
                       at the exact center of the dot, bridging perfectly across the gap.
                   */}
                   {!isLast && (
-                    <div className="absolute left-[1.25rem] sm:left-[1.5rem] top-1/2 bottom-[-2rem] w-[2px] border-l-2 border-dashed border-slate-400/60" />
+                    <div className="sm:absolute hidden left-[1.25rem] sm:left-[1.5rem] top-1/2 bottom-[-2rem] w-[2px] border-l-2 border-dashed border-slate-400/60" />
                   )}
                 </StaggerItem>
               )

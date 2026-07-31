@@ -80,7 +80,7 @@ const FemaleSexualHealthConcerns: React.FC = () => {
         {/* Dark editorial card — image + symptoms, mirrors the site's other treatment intro cards */}
         <Reveal>
           <div className="grid overflow-hidden rounded-3xl bg-ink-950 shadow-xl lg:grid-cols-[42%_58%]">
-            <div className="relative min-h-64 lg:min-h-full">
+            <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-full">
               <Image
                 src="https://res.cloudinary.com/khs2rcsr/image/upload/v1785348763/sexual-wellniess_j4jzp4.jpg"
                 alt="A woman reflecting on changes to her intimacy and wellness"

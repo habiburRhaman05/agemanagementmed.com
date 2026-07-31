@@ -13,17 +13,17 @@ export function ClosingCTA({ title, body, cta }: ClosingCtaData) {
   return (
     <Section background="inverse" spacing="xl" className="bg-ink-950! relative overflow-hidden">
       <div className="absolute inset-0 bg-mesh-navy" aria-hidden />
-      <Container width="prose" className="relative min-w-6xl">
+      <Container width="prose" className="relative">
         <Reveal blur strong>
           <div className="text-center">
             <h2 className="text-display-md text-canvas-50">{title}</h2>
             <p className="mx-auto mt-6 max-w-lg text-body-lg text-canvas-50/70">{body}</p>
 
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-              <Button asChild size="lg" variant="primary">
+            <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+              <Button asChild size="lg" variant="primary" className="w-full sm:w-auto">
                 <Link href={cta.href}>{cta.label}</Link>
               </Button>
-              <Button asChild size="lg" variant="outlineInverse">
+              <Button asChild size="lg" variant="outlineInverse" className="w-full sm:w-auto">
                 <a href={site.phoneHref}>
                   <Phone className="size-4" aria-hidden />
                   {site.phone}

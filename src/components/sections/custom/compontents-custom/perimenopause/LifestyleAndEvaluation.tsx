@@ -97,7 +97,7 @@ export function LifestyleAndEvaluation({ lifestylePanel, evaluationPanel }: Life
                 ))}
               </div>
 
-              <div className="relative min-h-64 lg:min-h-full">
+              <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-full">
                 <Image
                   src={evaluationPanel.image.src}
                   alt={evaluationPanel.image.alt}

@@ -37,7 +37,7 @@ export default async function NewsPage() {
         lead="Press coverage and media features of Savannah Age Management Medicine."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'In The News', href: '/in-the-news' }]}
       />
-      <ContentGrid eyebrow="As seen on" title="In the news" items={items} columns={2} />
+      <ContentGrid eyebrow="As seen on" title="In the news" items={items} columns={4} compact />
     </>
   )
 }

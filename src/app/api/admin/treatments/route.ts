@@ -33,17 +33,33 @@ const CreateTreatmentSchema = z.object({
   kind: z.enum(['hub', 'variant', 'modality']),
   status: z.enum(['draft', 'published']).default('draft'),
   order: z.number().int().default(0),
-  name: z.string().min(1),
-  shortName: z.string().min(1),
-  summary: z.string().min(1),
-  cardImage: z.object({ src: z.string(), alt: z.string() }).passthrough(),
+  name: z.string().optional(),
+  shortName: z.string().optional(),
+  summary: z.string().optional(),
+  cardImage: z.object({ src: z.string(), alt: z.string() }).passthrough().optional(),
   cardBenefits: z.array(z.string()).default([]),
-  hero: HeroSchema,
+  hero: z.object({
+    eyebrow: z.string().optional(),
+    title: z.string().optional(),
+    lead: z.string().optional(),
+    image: z.object({ src: z.string(), alt: z.string() }).passthrough().optional(),
+    ctas: z.array(z.object({ label: z.string(), href: z.string() }).passthrough()).default([]),
+  }).optional(),
   faqs: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
   closingCta: z
-    .object({ title: z.string(), body: z.string(), cta: z.object({ label: z.string(), href: z.string() }) })
-    .passthrough(),
-  seo: z.object({ title: z.string(), description: z.string(), canonical: z.string() }).passthrough(),
+    .object({ title: z.string().optional(), body: z.string().optional(), cta: z.object({ label: z.string().optional(), href: z.string().optional() }).optional() })
+    .passthrough().optional(),
+  seo: z
+    .object({
+      title: z.string().optional(),
+      description: z.string().optional(),
+      canonical: z.string().optional(),
+      keywords: z.string().optional().nullable(),
+      ogImageUrl: z.string().optional().nullable(),
+      noindex: z.boolean().optional(),
+      schemaJsonLd: z.string().optional().nullable(),
+    })
+    .optional(),
 })
 
 export async function GET() {
@@ -95,8 +111,17 @@ export async function POST(request: Request) {
 
   await prisma.pageSeo.upsert({
     where: { path: href },
-    update: seo,
-    create: { path: href, title: seo.title, description: seo.description, canonical: seo.canonical },
+    update: seo ?? {},
+    create: {
+      path: href,
+      title: seo?.title,
+      description: seo?.description,
+      canonical: seo?.canonical,
+      keywords: seo?.keywords,
+      ogImageUrl: seo?.ogImageUrl,
+      noindex: seo?.noindex ?? false,
+      schemaJsonLd: seo?.schemaJsonLd,
+    },
   })
 
   revalidateTag('treatments', 'max')

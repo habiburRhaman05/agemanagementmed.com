@@ -55,7 +55,7 @@ export function LocationHighlightCard({ title, location, phone }: LocationHighli
               </Button>
             </div>
 
-            <div className="relative min-h-72 lg:min-h-full">
+            <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-full">
               <iframe
                 src={location.mapEmbedUrl}
                 title={`Map of ${location.name}`}

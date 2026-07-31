@@ -2,12 +2,11 @@
 
 import { AlertCircle, Loader2, Plus, Save, Trash2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 
-import { SectionBuilder } from '@/components/admin/SectionBuilder'
 import { newTreatmentSchema, type NewTreatmentValues } from '@/lib/validation/treatment'
 
 interface Cta {
@@ -15,7 +14,6 @@ interface Cta {
   href: string
 }
 
-const PILLARS = ['hormone-therapy', 'weight-loss', 'sexual-wellness', 'hair-restoration', 'aesthetics']
 const AUDIENCES = ['all', 'men', 'women']
 const KINDS = ['hub', 'variant', 'modality']
 
@@ -29,36 +27,29 @@ function FieldError({ message }: { message?: string }) {
   return <p className="mt-1 text-xs text-red-600">{message}</p>
 }
 
+/** Best-effort pillar guess from the slug/title so breadcrumbs still land in a sensible category without asking the admin to pick one. */
+function inferPillar(text: string): string {
+  const t = text.toLowerCase()
+  if (/weight|glp|lipostat|obesity/.test(t)) return 'weight-loss'
+  if (/sexual|rejuvenation|libido|intimacy|shockwave/.test(t)) return 'sexual-wellness'
+  if (/hair/.test(t)) return 'hair-restoration'
+  if (/aesthetic|facial|skin|laser|peel|botox|filler|iv-|microneedling/.test(t)) return 'aesthetics'
+  return 'hormone-therapy'
+}
+
 export function NewTreatmentForm() {
   const router = useRouter()
 
-  const [pillar, setPillar] = useState(PILLARS[0])
   const [audience, setAudience] = useState('all')
   const [kind, setKind] = useState(KINDS[0])
   const [status, setStatus] = useState<'draft' | 'published'>('draft')
-  const [order, setOrder] = useState(0)
 
   const [heroCtas, setHeroCtas] = useState<Cta[]>([{ label: 'Book a Consultation', href: '/book-appointment' }])
   const [faqs, setFaqs] = useState<{ question: string; answer: string }[]>([])
 
-  const [advancedJson, setAdvancedJson] = useState('{}')
-  const advancedTextareaRef = useRef<HTMLTextAreaElement>(null)
-
-  const handleSectionInsert = (json: string) => {
-    const current = advancedJson.trim()
-    if (!current || current === '{}') {
-      setAdvancedJson(`{\n  "sections": [\n${json}\n]\n}`)
-    } else {
-      try {
-        const parsed = JSON.parse(current)
-        if (!parsed.sections) parsed.sections = []
-        parsed.sections.push(JSON.parse(json))
-        setAdvancedJson(JSON.stringify(parsed, null, 2))
-      } catch {
-        setAdvancedJson(current + '\n\n// Paste this section into your sections array:\n' + json)
-      }
-    }
-  }
+  const [seoNoindex, setSeoNoindex] = useState(false)
+  const [seoSchemaJsonLd, setSeoSchemaJsonLd] = useState('')
+  const [seoSchemaError, setSeoSchemaError] = useState('')
 
   const {
     register,
@@ -71,21 +62,11 @@ export function NewTreatmentForm() {
     defaultValues: {
       slug: '',
       href: '',
-      name: '',
-      shortName: '',
-      summary: '',
-      cardImageSrc: '',
-      cardImageAlt: '',
-      cardBenefits: '',
       heroEyebrow: '',
       heroTitle: '',
       heroLead: '',
       heroImageSrc: '',
       heroImageAlt: '',
-      closingTitle: '',
-      closingBody: '',
-      closingCtaLabel: 'Book a Consultation',
-      closingCtaHref: '/book-appointment',
       seoTitle: '',
       seoDescription: '',
     },
@@ -93,7 +74,6 @@ export function NewTreatmentForm() {
 
   const [submitError, setSubmitError] = useState('')
 
-  const name = watch('name')
   const slug = watch('slug')
   const href = watch('href')
   const heroTitle = watch('heroTitle')
@@ -105,25 +85,28 @@ export function NewTreatmentForm() {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '')
 
-  const handleNameChange = (value: string) => {
-    setValue('name', value, { shouldValidate: true })
+  const handleHeroTitleChange = (value: string) => {
+    setValue('heroTitle', value, { shouldValidate: true })
     if (!slug) setValue('slug', slugify(value), { shouldValidate: true })
     if (!href) setValue('href', `/${slugify(value)}`, { shouldValidate: true })
-    if (!heroTitle) setValue('heroTitle', value, { shouldValidate: true })
   }
 
   const onValid = async (values: NewTreatmentValues) => {
     setSubmitError('')
+    setSeoSchemaError('')
 
-    let advanced: Record<string, unknown>
-    try {
-      advanced = advancedJson.trim() ? JSON.parse(advancedJson) : {}
-    } catch {
-      const message = 'Advanced JSON is not valid — check for a missing comma or bracket.'
-      setSubmitError(message)
-      toast.error(message)
-      return
+    if (seoSchemaJsonLd.trim()) {
+      try {
+        JSON.parse(seoSchemaJsonLd)
+      } catch {
+        const message = 'Schema JSON-LD is not valid JSON — check for a missing comma or bracket.'
+        setSeoSchemaError(message)
+        toast.error(message)
+        return
+      }
     }
+
+    const pillar = inferPillar(`${values.slug} ${values.heroTitle}`)
 
     try {
       const res = await fetch('/api/admin/treatments', {
@@ -136,31 +119,34 @@ export function NewTreatmentForm() {
           audience,
           kind,
           status,
-          order,
-          name: values.name,
-          shortName: values.shortName || values.name,
-          summary: values.summary,
-          cardImage: { src: values.cardImageSrc, alt: values.cardImageAlt || values.name },
-          cardBenefits: (values.cardBenefits ?? '').split(',').map((s) => s.trim()).filter(Boolean),
+          order: 0,
+          name: values.heroTitle,
+          shortName: values.heroTitle,
+          summary: values.heroLead,
+          cardImage: { src: values.heroImageSrc, alt: values.heroImageAlt || values.heroTitle },
+          cardBenefits: [],
           hero: {
             eyebrow: values.heroEyebrow || undefined,
             title: values.heroTitle,
             lead: values.heroLead,
-            image: { src: values.heroImageSrc, alt: values.heroImageAlt || values.name },
+            image: { src: values.heroImageSrc, alt: values.heroImageAlt || values.heroTitle },
             ctas: heroCtas.filter((c) => c.label && c.href),
           },
           faqs: faqs.filter((f) => f.question && f.answer),
           closingCta: {
-            title: values.closingTitle || `Ready to explore ${values.name}?`,
-            body: values.closingBody,
-            cta: { label: values.closingCtaLabel, href: values.closingCtaHref },
+            title: `Ready to explore ${values.heroTitle}?`,
+            body: 'Schedule a consultation to learn more and get started.',
+            cta: { label: 'Book a Consultation', href: '/book-appointment' },
           },
           seo: {
-            title: values.seoTitle || values.name,
-            description: values.seoDescription || values.summary,
+            title: values.seoTitle || values.heroTitle,
+            description: values.seoDescription || values.heroLead,
             canonical: values.href,
+            keywords: values.seoKeywords || null,
+            ogImageUrl: values.seoOgImageSrc || values.heroImageSrc || null,
+            noindex: seoNoindex,
+            schemaJsonLd: seoSchemaJsonLd.trim() || null,
           },
-          ...advanced,
         }),
       })
 
@@ -203,17 +189,7 @@ export function NewTreatmentForm() {
             <FieldError message={errors.href?.message} />
           </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-3">
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Pillar</label>
-            <select value={pillar} onChange={(e) => setPillar(e.target.value)} className={inputClass}>
-              {PILLARS.map((p) => (
-                <option key={p} value={p}>
-                  {p.replace(/-/g, ' ')}
-                </option>
-              ))}
-            </select>
-          </div>
+        <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="block text-xs font-medium text-gray-500">Audience</label>
             <select value={audience} onChange={(e) => setAudience(e.target.value)} className={inputClass}>
@@ -235,63 +211,16 @@ export function NewTreatmentForm() {
             </select>
           </div>
         </div>
-        <div className="flex flex-wrap items-end gap-4">
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Status</label>
-            <select
-              value={status}
-              onChange={(e) => setStatus(e.target.value as 'draft' | 'published')}
-              className={`${inputClass} w-auto`}
-            >
-              <option value="draft">Draft</option>
-              <option value="published">Published</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Order</label>
-            <input
-              type="number"
-              value={order}
-              onChange={(e) => setOrder(Number(e.target.value))}
-              className={`${inputClass} w-24`}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Card / summary */}
-      <div className={cardClass}>
-        <h2 className="text-sm font-semibold text-ink-950">Card &amp; summary</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Name</label>
-            <input value={name} onChange={(e) => handleNameChange(e.target.value)} className={inputClass} />
-            <FieldError message={errors.name?.message} />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Short name</label>
-            <input {...register('shortName')} className={inputClass} />
-          </div>
-        </div>
         <div>
-          <label className="block text-xs font-medium text-gray-500">Summary</label>
-          <textarea {...register('summary')} rows={2} className={inputClass} />
-          <FieldError message={errors.summary?.message} />
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Card image URL</label>
-            <input {...register('cardImageSrc')} className={inputClass} />
-            <FieldError message={errors.cardImageSrc?.message} />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Card image alt</label>
-            <input {...register('cardImageAlt')} className={inputClass} />
-          </div>
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-500">Card benefits (comma-separated)</label>
-          <input {...register('cardBenefits')} className={inputClass} />
+          <label className="block text-xs font-medium text-gray-500">Status</label>
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value as 'draft' | 'published')}
+            className={`${inputClass} w-auto`}
+          >
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+          </select>
         </div>
       </div>
 
@@ -304,7 +233,7 @@ export function NewTreatmentForm() {
         </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">Title</label>
-          <input {...register('heroTitle')} className={inputClass} />
+          <input value={heroTitle} onChange={(e) => handleHeroTitleChange(e.target.value)} className={inputClass} />
           <FieldError message={errors.heroTitle?.message} />
         </div>
         <div>
@@ -407,55 +336,45 @@ export function NewTreatmentForm() {
         </div>
       </div>
 
-      {/* Closing CTA */}
-      <div className={cardClass}>
-        <h2 className="text-sm font-semibold text-ink-950">Closing CTA</h2>
-        <input {...register('closingTitle')} placeholder="Title" className={inputClass} />
-        <textarea {...register('closingBody')} placeholder="Body" rows={2} className={inputClass} />
-        <FieldError message={errors.closingBody?.message} />
-        <div className="flex gap-2">
-          <div className="w-1/2">
-            <input {...register('closingCtaLabel')} placeholder="Button label" className={inputClass} />
-            <FieldError message={errors.closingCtaLabel?.message} />
-          </div>
-          <div className="w-1/2">
-            <input {...register('closingCtaHref')} placeholder="/book-appointment" className={inputClass} />
-            <FieldError message={errors.closingCtaHref?.message} />
-          </div>
-        </div>
-      </div>
-
       {/* SEO */}
       <div className={cardClass}>
         <h2 className="text-sm font-semibold text-ink-950">SEO</h2>
-        <input {...register('seoTitle')} placeholder="Meta title (defaults to name)" maxLength={70} className={inputClass} />
+        <input {...register('seoTitle')} placeholder="Meta title (defaults to hero title)" maxLength={70} className={inputClass} />
         <FieldError message={errors.seoTitle?.message} />
-        <textarea {...register('seoDescription')} placeholder="Meta description (defaults to summary)" maxLength={300} rows={2} className={inputClass} />
+        <textarea {...register('seoDescription')} placeholder="Meta description (defaults to hero lead)" maxLength={300} rows={2} className={inputClass} />
         <FieldError message={errors.seoDescription?.message} />
-      </div>
-
-      {/* Section Builder — visual section JSON generator */}
-      <SectionBuilder onInsert={handleSectionInsert} />
-
-      {/* Advanced JSON */}
-      <div className={cardClass.replace('space-y-4', 'space-y-2')}>
-        <h2 className="text-sm font-semibold text-ink-950">
-          Advanced content (optional JSON)
-        </h2>
-        <p className="text-xs text-gray-500">
-          Add <code>symptoms</code>, <code>sections</code>, <code>process</code>, <code>candidacy</code>,{' '}
-          <code>pricing</code>, <code>providers</code>, or <code>related</code> as raw JSON — the page renderer
-          already knows these shapes. Use the <strong>Section Builder</strong> above to visually create
-          sections with design overrides and icons.
-          Leave as <code>{'{}'}</code> to skip and add later from the edit screen.
-        </p>
-        <textarea
-          ref={advancedTextareaRef}
-          value={advancedJson}
-          onChange={(e) => setAdvancedJson(e.target.value)}
-          rows={10}
-          className={`${inputClass} font-mono text-xs`}
-        />
+        <div>
+          <label className="block text-xs font-medium text-gray-500">Meta keywords (comma-separated)</label>
+          <input {...register('seoKeywords')} placeholder="hormone therapy, weight loss, Savannah GA" className={inputClass} />
+          <FieldError message={errors.seoKeywords?.message} />
+        </div>
+        <div>
+          <label className="block text-xs font-medium text-gray-500">Open Graph image URL</label>
+          <input {...register('seoOgImageSrc')} placeholder="defaults to hero image" className={inputClass} />
+          <FieldError message={errors.seoOgImageSrc?.message} />
+        </div>
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={seoNoindex}
+            onChange={(e) => setSeoNoindex(e.target.checked)}
+            className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600"
+          />
+          <span className="text-xs text-gray-600">No index</span>
+        </label>
+        <div>
+          <label className="block text-xs font-medium text-gray-500">
+            Schema (JSON-LD) override <span className="font-normal text-gray-400">— optional, replaces the auto-generated schema</span>
+          </label>
+          <textarea
+            value={seoSchemaJsonLd}
+            onChange={(e) => setSeoSchemaJsonLd(e.target.value)}
+            rows={6}
+            placeholder='{"@context": "https://schema.org", "@type": "MedicalWebPage", ...}'
+            className={`${inputClass} font-mono text-xs`}
+          />
+          <FieldError message={seoSchemaError} />
+        </div>
       </div>
 
       {submitError ? (

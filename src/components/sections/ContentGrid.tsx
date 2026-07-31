@@ -10,11 +10,19 @@ interface ContentGridProps {
   title: string
   lead?: string
   items: ContentSummary[]
-  columns?: 2 | 3
+  columns?: 2 | 3 | 4
   background?: 'page' | 'alt' | 'raised'
+  /** Slightly more compact card (smaller image ratio, tighter padding) — useful at 4 columns. */
+  compact?: boolean
 }
 
-/** Journal index, press index, "As seen on" preview — one grid, three uses. */
+const COLUMN_CLASSES: Record<2 | 3 | 4, string> = {
+  2: 'lg:grid-cols-2',
+  3: 'lg:grid-cols-3',
+  4: 'lg:grid-cols-2 xl:grid-cols-4',
+}
+
+/** Journal index, press index, "As seen on" preview — one grid, several uses. */
 export function ContentGrid({
   eyebrow,
   title,
@@ -22,6 +30,7 @@ export function ContentGrid({
   items,
   columns = 3,
   background = 'page',
+  compact = false,
 }: ContentGridProps) {
   return (
     <Section background={background} spacing="lg">
@@ -31,13 +40,11 @@ export function ContentGrid({
         <StaggerGroup
           as="ul"
           stagger={0.08}
-          className={`mt-14 grid gap-5 sm:grid-cols-2 sm:gap-6 ${
-            columns === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
-          }`}
+          className={`mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 ${COLUMN_CLASSES[columns]}`}
         >
           {items.map((item) => (
             <StaggerItem as="li" key={item.href} className="h-full">
-              <ContentCard item={item} />
+              <ContentCard item={item} compact={compact} />
             </StaggerItem>
           ))}
         </StaggerGroup>

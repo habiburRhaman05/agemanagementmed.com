@@ -153,7 +153,8 @@ export function PeopleGrid({
 
           <StaggerGroup as="ul" stagger={0.07} className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
             {people.map((person) => (
-              <StaggerItem as="li" key={person.slug} className="h-full">
+           <div   onClick={() => setActivePerson(person)} className='cursor-pointer'>
+               <StaggerItem as="li" key={person.slug} className="h-full" >
                 {/* Card — h-full + flex-col makes every card in a row equal height */}
                 <div className="group relative flex h-full flex-col items-center rounded-2xl border border-canvas-300 bg-white p-6 pb-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-sage-600/30 hover:shadow-lg">
 
@@ -200,6 +201,7 @@ export function PeopleGrid({
                   </div>
                 </div>
               </StaggerItem>
+           </div>
             ))}
           </StaggerGroup>
 

@@ -72,8 +72,7 @@ export function SafetyAndCandidacy({
       <Image
         src={image.src}
         alt={image.alt}
-        width={50000}
-        height={50000}
+        fill
         sizes="(min-width: 1024px) 42vw, 100vw"
         className="object-cover"
         style={{ objectPosition: image.focalPoint ?? 'center' }}

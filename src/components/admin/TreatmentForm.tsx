@@ -1,13 +1,12 @@
 'use client'
 
 import { AlertCircle, ChevronDown, ChevronUp, Loader2, Plus, Save, Trash2 } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 
 import { ImageUploader } from '@/components/admin/ImageUploader'
-import { SectionBuilder } from '@/components/admin/SectionBuilder'
 import { editTreatmentSchema, type EditTreatmentValues } from '@/lib/validation/treatment'
 import { Button } from '../ui/Button'
 
@@ -72,7 +71,6 @@ function FieldError({ message }: { message?: string }) {
 
 export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo: SeoData | null }) {
   const [status, setStatus] = useState(treatment.status)
-  const [order, setOrder] = useState(treatment.order)
 
   const [heroCtas, setHeroCtas] = useState<Cta[]>(treatment.data.hero?.ctas ?? [])
   const [faqs, setFaqs] = useState(treatment.data.faqs ?? [])
@@ -91,7 +89,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
   const [seoSchemaJsonLd, setSeoSchemaJsonLd] = useState(seo?.schemaJsonLd ?? '')
   const [seoSchemaError, setSeoSchemaError] = useState('')
 
-  const [advancedJson, setAdvancedJson] = useState(JSON.stringify(pickAdvanced(treatment.data), null, 2))
+  const [advancedJson] = useState(JSON.stringify(pickAdvanced(treatment.data), null, 2))
 
 
 
@@ -254,59 +252,12 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
             <option value="published">Published</option>
           </select>
         </div>
-        {/* <div>
-          <label className="block text-xs font-medium text-gray-500">Order</label>
-          <input
-            type="number"
-            value={order}
-            onChange={(e) => setOrder(Number(e.target.value))}
-            className="mt-1 w-24 rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
-          />
-        </div> */}
         {status === 'draft' ? (
           <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">
             Draft — not visible on the live site
           </span>
         ) : null}
       </div>
-
-      {/* Card / summary */}
-      {/* <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-        <h2 className="text-sm font-semibold text-ink-950">Card &amp; summary</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Name</label>
-            <input {...register('name')} className={inputClass} />
-            <FieldError message={errors.name?.message} />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-gray-500">Short name</label>
-            <input {...register('shortName')} className={inputClass} />
-          </div>
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-500">Summary</label>
-          <textarea {...register('summary')} rows={2} className={inputClass} />
-          <FieldError message={errors.summary?.message} />
-        </div>
-        <div>
-          <ImageUploader
-            label="Card image"
-            folder="treatments"
-            value={watch('cardImageSrc')}
-            onChange={(url) => setValue('cardImageSrc', url, { shouldValidate: true, shouldDirty: true })}
-          />
-          <FieldError message={errors.cardImageSrc?.message} />
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-500">Card image alt</label>
-          <input {...register('cardImageAlt')} className={inputClass} />
-        </div> */}
-        {/* <div>
-          <label className="block text-xs font-medium text-gray-500">Card benefits (comma-separated)</label>
-          <input {...register('cardBenefits')} className={inputClass} />
-        </div> */}
-      {/* </div> */}
 
       {/* Hero */}
       <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
@@ -440,24 +391,6 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         </div>
       ) : null} */}
 
-      {/* Closing CTA */}
-      {/* <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-        <h2 className="text-sm font-semibold text-ink-950">Closing CTA</h2>
-        <input {...register('closingTitle')} placeholder="Title" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
-        <textarea {...register('closingBody')} placeholder="Body" rows={2} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
-        <FieldError message={errors.closingBody?.message} />
-        <div className="flex gap-2">
-          <div className="w-1/2">
-            <input {...register('closingCtaLabel')} placeholder="Button label" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
-            <FieldError message={errors.closingCtaLabel?.message} />
-          </div>
-          <div className="w-1/2">
-            <input {...register('closingCtaHref')} placeholder="/book-appointment" className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
-            <FieldError message={errors.closingCtaHref?.message} />
-          </div>
-        </div>
-      </div> */}
-
       {/* SEO */}
       <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <h2 className="text-sm font-semibold text-ink-950">SEO</h2>
@@ -502,26 +435,6 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           <FieldError message={seoSchemaError} />
         </div>
       </div>
-
-      {/* Section Builder — visual JSON generator */}
-      {/* <SectionBuilder onInsert={handleSectionInsert} /> */}
-
-      {/* Advanced JSON */}
-      {/* <div className="space-y-2 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-        <h2 className="text-sm font-semibold text-ink-950">Advanced (symptoms, sections, process, candidacy, providers, related)</h2>
-        <p className="text-xs text-gray-500">
-          Raw JSON for the section types the generic renderer already knows how to draw — validated before save.
-          Use the <strong>Section Builder</strong> above to visually create sections with design overrides and icons, then insert them here.
-          Leave keys out entirely to skip that section on the page.
-        </p>
-        <textarea
-          ref={advancedTextareaRef}
-          value={advancedJson}
-          onChange={(e) => setAdvancedJson(e.target.value)}
-          rows={16}
-          className="block w-full rounded-lg border border-canvas-300 px-3 py-2 font-mono text-xs focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
-        />
-      </div> */}
 
     </form>
     </>

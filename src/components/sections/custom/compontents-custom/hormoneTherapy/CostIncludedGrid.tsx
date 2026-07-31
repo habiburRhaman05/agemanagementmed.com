@@ -90,7 +90,13 @@ export function CostIncludedGrid({
           <p className="mx-auto mt-8 max-w-2xl text-center text-body-sm leading-relaxed text-canvas-600">{note}</p>
         ) : null}
 
-        
+        {cta ? (
+          <div className="mt-8 flex justify-center px-4 sm:px-0">
+            <Button asChild size="md" className="w-full sm:w-auto">
+              <Link href={cta.href}>{cta.label}</Link>
+            </Button>
+          </div>
+        ) : null}
       </Container>
     </Section>
   )
