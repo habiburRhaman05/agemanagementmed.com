@@ -43,6 +43,7 @@ function GoogleLogo() {
 interface TestimonialSetProps {
   eyebrow?: string
   title: string
+  width?: string
   testimonials: Testimonial[]
   background?: 'page' | 'alt' | 'accent'
 }
@@ -51,6 +52,7 @@ interface TestimonialSetProps {
 export function TestimonialSet({
   eyebrow,
   title,
+  width,
   testimonials,
   background = 'page',
 }: TestimonialSetProps) {
@@ -76,7 +78,7 @@ export function TestimonialSet({
     <Section background={background} spacing="lg">
       <Container>
         <Reveal>
-          <div className="flex flex-col items-center text-center">
+          <div className={ `  ${width ? width : ""} flex flex-col items-center text-center `}>
             {eyebrow ? <Eyebrow className="mb-4">{eyebrow}</Eyebrow> : null}
             <h2 className="text-display-sm sm:text-display-md text-ink-950 w-full mb-12">
               {title}
@@ -96,7 +98,7 @@ export function TestimonialSet({
                 >
                   <Quote className="size-5 text-sage-300" aria-hidden />
 
-                  <blockquote className="mt-5 text-body-lg sm:text-title-lg leading-relaxed text-ink-900 max-w-2xl">
+                  <blockquote className="mt-5 text-body-lg sm:text-title-lg leading-relaxed text-ink-900 max-w-4xl">
                     {current.quote}
                   </blockquote>
 

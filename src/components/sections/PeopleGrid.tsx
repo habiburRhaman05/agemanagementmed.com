@@ -21,6 +21,7 @@ interface PeopleGridProps {
   people: Person[]
   cta?: Cta
   background?: 'page' | 'alt' | 'raised'
+  align?: 'left' | 'center'
 }
 
 /** Full-screen modal that shows a team member's complete profile */
@@ -140,6 +141,7 @@ export function PeopleGrid({
   people,
   cta,
   background = 'page',
+  align = 'left',
 }: PeopleGridProps) {
   const [activePerson, setActivePerson] = useState<Person | null>(null)
 
@@ -147,7 +149,7 @@ export function PeopleGrid({
     <>
       <Section background={background} spacing="lg">
         <Container>
-          <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
+          <SectionHeader eyebrow={eyebrow} title={title} lead={lead} align={align} />
 
           <StaggerGroup as="ul" stagger={0.07} className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
             {people.map((person) => (

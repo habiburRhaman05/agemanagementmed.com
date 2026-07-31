@@ -11,8 +11,8 @@ import type { Treatment } from '@/types/content'
 import { AuthorityTrustCard } from '../compontents-custom/hormoneTherapy/AuthorityTrustCard'
 import { CostIncludedGrid } from '../compontents-custom/hormoneTherapy/CostIncludedGrid'
 import { SafetyAndCandidacy } from '../compontents-custom/hormoneTherapy/SafetyAndCandidacy'
-import { SymptomsHeroBanner } from '../compontents-custom/hormoneTherapy/SymptomsHeroBanner'
-import { BhrtHowItWorksSection } from '../compontents-custom/hormoneTherapy/BhrtHowItWorksSection'
+import { SymptomsGridStatic } from '../compontents-custom/hormoneTherapy/SymptomsGridStatic'
+import { BhrtHowItWorksPremium } from '../compontents-custom/hormoneTherapy/BhrtHowItWorksPremium'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
@@ -34,14 +34,7 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
         ]}
       />
 
-      {treatment.symptoms ? (
-        <SymptomsHeroBanner
-          image={{...treatment.hero.image,src:"https://res.cloudinary.com/khs2rcsr/image/upload/v1785352037/column-box-7-img_ks0u8m.jpg"}}
-          heading={treatment.symptoms.title}
-          lead={treatment.symptoms.lead ?? ''}
-          groups={treatment.symptoms.items}
-        />
-      ) : null}
+      <SymptomsGridStatic />
 
       {/* Renders every dynamic section (protocol, monitoring, treatment-support
           feature list, billing notice, and the reviewer bio) in the order
@@ -50,19 +43,7 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
         <SectionRenderer key={index} section={section} index={index} />
       ))} */}
 
-  <BhrtHowItWorksSection
-  eyebrow="BHRT"
-  title="How Bioidentical Hormone Therapy For Women Works"
-  description="BHRT uses plant-derived hormones designed to closely match the body's natural hormones. At SAMM, therapy plans are personalized using detailed lab testing combined with symptom evaluation and health history review."
-  supportLabel="Treatment May Support:"
-  benefits={[
-    { icon: 'energy', label: 'Energy and Sleep Quality' },
-    { icon: 'wellness', label: 'Sexual Wellness and Vaginal Health' },
-    { icon: 'mood', label: 'Mood Stability and Mental Clarity' },
-    { icon: 'menopause', label: 'Menopause and Perimenopause Symptom Relief' },
-    { icon: 'metabolic', label: 'Metabolic Balance and Body Composition' },
-  ]}
-/>
+      <BhrtHowItWorksPremium />
 
       <SafetyAndCandidacy
       bg=''

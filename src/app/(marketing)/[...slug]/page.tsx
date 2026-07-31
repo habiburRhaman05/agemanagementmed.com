@@ -6,7 +6,6 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import { getAllTreatments, getTreatmentByHref } from '@/content/treatments/main'
 import { buildFaqSchema, buildMetadata, buildTreatmentSchema, getSchemaOverride } from '@/lib/seo'
-import TreatLayout from '@/components/TreatLayout'
 import { WeightLossMaleLayout } from '@/components/sections/custom/templates-custom/WeightLossMaleLayout'
 import { WeightLossFeMaleLayout } from '@/components/sections/custom/templates-custom/WeightLossFemaleLayout'
 import { HairRestoreFemaleLayout } from '@/components/sections/custom/templates-custom/HairRestoreFemale'
@@ -20,14 +19,11 @@ import { PerimenopauseMenopauseLayout } from '@/components/sections/custom/templ
 import { HormoneTherapyMenLayout } from '@/components/sections/custom/templates-custom/HormoneTherapyMenLayout'
 import { HormoneTherapyWomenLayout } from '@/components/sections/custom/templates-custom/HormoneTherapyWomenLayout'
 import { LaserTreatMentLayout } from '@/components/sections/custom/templates-custom/LaserTreatmentLayout'
+import { BhrtHrtLayout } from '@/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT'
+import { PrpOfferLayout } from '@/components/sections/custom/templates-custom/PrpOfferLayout'
+import { StatesboroLayout } from '@/components/sections/custom/templates-custom/StatesboroLayout'
 
-/**
- * Single dynamic route serving every treatment page — replaces the 15
- * folder-based routes. Every other static route (our-experts, contact-us,
- * blog, book, etc.) is untouched: Next.js always resolves a literal static
- * folder before falling through to this catch-all, so nothing here can
- * shadow them.
- */
+
 
 export const revalidate = 3600
 
@@ -98,6 +94,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
           return <HormoneTherapyWomenLayout treatment={treatment}/>
         case "laser-vaginal-therapy":
           return <LaserTreatMentLayout treatment={treatment}/>
+        case "bhrt-hrt-trt":
+          return <BhrtHrtLayout treatment={treatment}/>
+        case "prp-offer":
+          return <PrpOfferLayout treatment={treatment}/>
+        case "statesboro":
+          return <StatesboroLayout treatment={treatment}/>
       default:
        return <TreatmentTemplate
         treatment={treatment}

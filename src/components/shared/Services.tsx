@@ -28,6 +28,7 @@ interface ServicesProps {
   background?: 'page' | 'alt' | 'raised'
   visibleCount?: number
   viewAllHref?: string
+  align?: "center" | "left"
 }
 
 function formatPillar(pillar: Pillar): string {
@@ -124,6 +125,7 @@ export function Services({
   title,
   lead,
   treatments,
+  align,
   background = 'page',
   visibleCount = 6,
   viewAllHref = '/services',
@@ -134,7 +136,7 @@ export function Services({
   return (
     <Section background={background} spacing="lg" className='pb-0'>
       <Container>
-        <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
+        <SectionHeader eyebrow={eyebrow} title={title} lead={lead} align={align} />
 
         <StaggerGroup
           as="ul"

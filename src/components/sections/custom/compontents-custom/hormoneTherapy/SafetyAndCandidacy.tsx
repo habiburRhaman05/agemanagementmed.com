@@ -15,7 +15,7 @@ export interface SafetyAndCandidacyProps {
   questions?: string[]
   closingParagraph?: string
   disclaimerLabel?: string
-  disclaimer: string
+  disclaimer?: string
   bg: string
 }
 
@@ -59,9 +59,11 @@ export function SafetyAndCandidacy({
         <p className="mt-4 text-body leading-relaxed text-canvas-600">{closingParagraph}</p>
       ) : null}
 
-      <p className="mt-5 text-body-sm leading-relaxed text-canvas-500">
-        <span className="font-semibold text-ink-900">{disclaimerLabel}</span> {disclaimer}
-      </p>
+      {disclaimer ? (
+        <p className="mt-5 text-body-sm leading-relaxed text-canvas-500">
+          <span className="font-semibold text-ink-900">{disclaimerLabel}</span> {disclaimer}
+        </p>
+      ) : null}
     </div>
   )
 
