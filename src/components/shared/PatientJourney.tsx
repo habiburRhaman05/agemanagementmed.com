@@ -96,7 +96,7 @@ export function PatientJourney({
                       at the exact center of the dot, bridging perfectly across the gap.
                   */}
                   {!isLast && (
-                    <div className="sm:absolute hidden left-[1.25rem] sm:left-[1.5rem] top-1/2 bottom-[-2rem] w-[2px] border-l-2 border-dashed border-slate-400/60" />
+                    <div className="sm:block absolute hidden left-[1.25rem] sm:left-[1.5rem] top-1/2 bottom-[-2rem] w-[2px] border-l-2 border-dashed border-slate-400/60" />
                   )}
                 </StaggerItem>
               )

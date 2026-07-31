@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, ChevronRight, Play } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -12,9 +13,24 @@ import { Button } from '@/components/ui/Button'
 
 import { cn } from '@/lib/utils'
 import type { Cta, Media } from '@/types/content'
-import { BookingForm } from '../shared/BookingForm'
-import { LeadForm } from '../shared/LeadForm'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog'
+
+// react-hook-form + zod only need to load once the consultation dialog is
+// actually opened, not as part of every treatment page's initial bundle —
+// this hero renders on every treatment page, so deferring these two forms
+// is the single highest-impact JS-payload cut available site-wide.
+const formLoading = (
+  <div className="flex h-48 items-center justify-center text-body-sm text-canvas-600">
+    Loading form…
+  </div>
+)
+const BookingForm = dynamic(
+  () => import('../shared/BookingForm').then((mod) => mod.BookingForm),
+  { loading: () => formLoading },
+)
+const LeadForm = dynamic(() => import('../shared/LeadForm').then((mod) => mod.LeadForm), {
+  loading: () => formLoading,
+})
 
 interface Crumb {
   label: string
@@ -140,7 +156,7 @@ export function HeroEditorial({
             </motion.div>
           ) : null}
 
-          <motion.h1 className="text-4xl md:text-display-lg leading-[1.1] md:leading-tight text-canvas-50" {...blurUp(0.22)}>
+          <motion.h1 className="text-3xl sm:text-4xl md:text-display-lg leading-[1.15] md:leading-tight text-canvas-50" {...blurUp(0.22)}>
             {title}
           </motion.h1>
 

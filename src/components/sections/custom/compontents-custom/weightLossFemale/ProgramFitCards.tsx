@@ -66,13 +66,13 @@ function FitCard({ card }: { card: ProgramFitCard }) {
   )
 
   const imageBlock = (
-    <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-full">
+    <div className="relative  lg:aspect-auto lg:min-h-full">
       <Image
         src={card.image.src}
         alt={card.image.alt}
         fill
         sizes="(min-width: 1024px) 42vw, 100vw"
-        className="object-cover"
+        className="w-full h-full object-contain"
         style={{ objectPosition: card.image.focalPoint ?? 'center' }}
       />
     </div>

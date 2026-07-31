@@ -33,7 +33,7 @@ export function ThreeTherapiesCard({ title, rows, cta }: ThreeTherapiesCardProps
               {rows.map((row, index) => {
                 const imageSide = index % 2 === 0 ? 'right' : 'left'
                 const imageBlock = (
-                  <div className="relative aspect-4/3 h-full min-h-56 overflow-hidden rounded-2xl sm:aspect-auto sm:min-h-64">
+                  <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl sm:aspect-auto sm:h-full sm:min-h-64">
                     <Image
                       src={row.image.src}
                       alt={row.image.alt}
@@ -45,7 +45,7 @@ export function ThreeTherapiesCard({ title, rows, cta }: ThreeTherapiesCardProps
                   </div>
                 )
                 const textBlock = (
-                  <div className="flex h-full flex-col justify-center">
+                  <div className="flex flex-col justify-center sm:h-full">
                     <h3 className="font-display text-title-lg text-canvas-50">{row.heading}</h3>
                     <p className="mt-3 text-body-sm leading-relaxed text-canvas-50/70">{row.paragraph}</p>
                   </div>
@@ -63,8 +63,8 @@ export function ThreeTherapiesCard({ title, rows, cta }: ThreeTherapiesCardProps
                       </>
                     ) : (
                       <>
-                        <div className="h-full sm:order-2">{imageBlock}</div>
-                        <div className="h-full sm:order-1">{textBlock}</div>
+                        <div className="sm:order-2 sm:h-full">{imageBlock}</div>
+                        <div className="sm:order-1 sm:h-full">{textBlock}</div>
                       </>
                     )}
                   </div>

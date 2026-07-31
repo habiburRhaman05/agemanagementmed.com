@@ -29,14 +29,14 @@ interface EditorialCardProps {
 }
 
 function EditorialCard({ eyebrow, title, lead, items, footer, image, imageSide }: EditorialCardProps) {
-  const imageBlock = (
-    <AspectImage
-      media={image}
-      ratio="landscape"
-      sizes="(min-width: 1024px) 42vw, 100vw"
-      className="h-full min-h-56 rounded-2xl shadow-md lg:min-h-full"
-    />
-  )
+ const imageBlock = (
+  <AspectImage
+    media={image}
+    ratio="landscape"
+    sizes="(min-width: 1024px) 42vw, 100vw"
+    className="w-full rounded-2xl shadow-md"
+  />
+)
 
   const textBlock = (
     <div className="p-2 sm:p-4 lg:p-6">

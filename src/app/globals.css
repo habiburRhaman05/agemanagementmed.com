@@ -314,3 +314,86 @@
    Edit src/app/overrides.css for custom per-section CSS tweaks.
    ========================================================================== */
 @import "./overrides.css";
+.section {
+  background-color: #f7f8f2;
+  padding: 60px 20px;
+}
+
+.headline {
+  font-size: 42px;
+  font-weight: 700;
+  color: #051e5c;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.container {
+  display: flex;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch; /* Ensures all cards stretch to equal height */
+}
+
+.card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 28px 28px 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  min-height: 280px; /* optional fallback */
+}
+
+.number {
+  font-size: 48px;
+  font-weight: 800;
+  color: #051e5c;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.content {
+  flex: 0 1 auto; /* takes only the space it needs */
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #051e5c;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+}
+
+/* The dotted line that fills the remaining bottom gap */
+.line {
+  flex: 1; /* grows to fill all leftover space inside the card */
+  border-left: 2px dashed #051e5c;
+  margin-top: 20px;
+  min-height: 24px; /* ensures visibility even if content is long */
+  align-self: flex-start; /* sticks to the left (or center if you prefer) */
+  /* If you want it centered under the number, use margin: 20px auto 0; */
+}
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card {
+    min-height: auto;
+  }
+
+  .line {
+    min-height: 16px;
+  }
+}
