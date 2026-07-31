@@ -129,20 +129,17 @@ export function Sidebar({ admin, logoUrl }: SidebarProps) {
         )}
       >
         {/* Logo */}
-        <div className="flex h-16 items-center gap-3 border-b border-white/[0.06] px-6">
+        <div className="flex  items-center gap-3 border-b border-white/[0.06] ">
           {logoUrl ? (
-            <div className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-white shadow-lg shadow-sage-700/40">
-              <img src={logoUrl} alt="Logo" className="h-full w-full object-contain p-1" />
+            <div className="relative flex  w-full  items-center justify-center overflow-hidden  bg-white shadow-lg shadow-sage-700/40">
+              <img src={logoUrl} alt="Logo" className=" object-contain p-1  mx-auto h-16" />
             </div>
           ) : (
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-sage-400 to-sage-700 text-sm font-bold text-white shadow-lg shadow-sage-700/40">
-              S
+              SAMM Admin
             </div>
           )}
-          <div>
-            <p className="text-sm font-semibold text-white">SAMM Admin</p>
-            <p className="text-xs text-dash-slate-400">Age Management Med</p>
-          </div>
+          
         </div>
 
         {/* Nav items */}
