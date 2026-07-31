@@ -18,6 +18,7 @@ function NavDropdown({ item, solid }: { item: NavLink; solid: boolean }) {
   const [open, setOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const pathname = usePathname()
 
   const scheduleClose = () => {
     closeTimer.current = setTimeout(() => setOpen(false), 120)
@@ -30,6 +31,8 @@ function NavDropdown({ item, solid }: { item: NavLink; solid: boolean }) {
   const labelParts = item.label.toLowerCase().includes('for') 
     ? item.label.split(/for/i)
     : [item.label];
+
+  const isActiveParent = item.links?.some((link) => pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href)))
 
   return (
     <div
@@ -50,7 +53,9 @@ function NavDropdown({ item, solid }: { item: NavLink; solid: boolean }) {
         onClick={() => setOpen((v) => !v)}
         className={cn(
           'inline-flex items-center gap-1 text-[11px] font-bold transition-colors uppercase tracking-[0.1em]',
-          solid ? 'text-ink-900 hover:text-sage-700' : 'text-canvas-50 hover:text-sage-400',
+          solid 
+            ? isActiveParent ? 'text-sage-700' : 'text-ink-900 hover:text-sage-700' 
+            : isActiveParent ? 'text-sage-400' : 'text-canvas-50 hover:text-sage-400',
         )}
       >
         {labelParts.length > 1 ? (
@@ -72,6 +77,8 @@ function NavDropdown({ item, solid }: { item: NavLink; solid: boolean }) {
           <ul className="flex flex-col">
             {item.links?.map((link, i) => {
               const isLast = i === (item.links?.length ?? 0) - 1;
+              const isActiveItem = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+              
               return (
                 <li key={link.href} className={cn(i !== 0 && "border-t border-canvas-200")}>
                   <Link
@@ -81,7 +88,7 @@ function NavDropdown({ item, solid }: { item: NavLink; solid: boolean }) {
                     rel={isLast ? "noopener noreferrer" : undefined}
                     className={cn(
                       "flex items-center justify-between py-3 px-3 text-sm transition-colors hover:text-sage-700 hover:bg-sage-50/50 rounded-lg",
-                      isLast ? "font-bold text-ink-900" : "font-medium text-ink-700"
+                      isActiveItem ? "text-sage-700 bg-sage-50/50 font-bold" : (isLast ? "font-bold text-ink-900" : "font-medium text-ink-700")
                     )}
                   >
                     <span>{link.label}</span>
@@ -161,13 +168,17 @@ export function HeaderClient({ overlay = false, logoUrl, siteName, phone }: Head
                 if (item.links && item.links.length > 0) {
                   return <NavDropdown key={item.label} item={item} solid={solid} />
                 }
+                const isActiveLink = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+                
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
                     className={cn(
                       'relative text-[11px] font-bold transition-colors uppercase tracking-[0.1em]',
-                      solid ? 'text-ink-900 hover:text-sage-700' : 'text-canvas-50 hover:text-sage-400',
+                      solid 
+                        ? isActiveLink ? 'text-sage-700' : 'text-ink-900 hover:text-sage-700'
+                        : isActiveLink ? 'text-sage-400' : 'text-canvas-50 hover:text-sage-400',
                     )}
                   >
                     {item.label}

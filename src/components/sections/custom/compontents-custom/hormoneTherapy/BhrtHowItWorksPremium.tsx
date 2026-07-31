@@ -21,7 +21,7 @@ export const BhrtHowItWorksPremium = () => {
 
       <Container className="relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
-          <span className="inline-block py-1.5 px-4 rounded-full bg-white text-sage-700 text-xs font-bold tracking-widest uppercase mb-6 border border-sage-200 shadow-sm">
+          <span className="inline-block py-1.5 px-4 rounded-full bg-sage-200 text-sage-900 text-xs font-bold tracking-widest uppercase mb-6">
             The Protocol
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ink-950 leading-[1.1] mb-6">

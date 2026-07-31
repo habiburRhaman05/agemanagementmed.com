@@ -7,10 +7,10 @@ import { z } from 'zod'
 // explicit example (name, slug, summary). Shared by both TreatmentForm
 // (edit) and NewTreatmentForm (create) so the two never drift apart.
 export const treatmentCoreSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
+  name: z.string().optional(),
   shortName: z.string().optional(),
-  summary: z.string().min(1, 'Summary is required'),
-  cardImageSrc: z.string().min(1, 'Card image URL is required'),
+  summary: z.string().optional(),
+  cardImageSrc: z.string().optional(),
   cardImageAlt: z.string().optional(),
   cardBenefits: z.string().optional(),
   heroEyebrow: z.string().optional(),
@@ -19,9 +19,9 @@ export const treatmentCoreSchema = z.object({
   heroImageSrc: z.string().min(1, 'Hero image URL is required'),
   heroImageAlt: z.string().optional(),
   closingTitle: z.string().optional(),
-  closingBody: z.string().min(1, 'Closing CTA body is required'),
-  closingCtaLabel: z.string().min(1, 'Button label is required'),
-  closingCtaHref: z.string().min(1, 'Button link is required'),
+  closingBody: z.string().optional(),
+  closingCtaLabel: z.string().optional(),
+  closingCtaHref: z.string().optional(),
   seoTitle: z.string().max(70, 'Meta title must be 70 characters or fewer').optional(),
   seoDescription: z.string().max(300, 'Meta description must be 300 characters or fewer').optional(),
   seoKeywords: z.string().max(255, 'Meta keywords must be 255 characters or fewer').optional(),

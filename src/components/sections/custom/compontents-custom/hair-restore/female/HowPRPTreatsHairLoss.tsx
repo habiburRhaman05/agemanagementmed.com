@@ -131,29 +131,31 @@ const HowPRPTreatsHairLoss: React.FC = () => {
           </div>
 
           {/* Bottom image + text row */}
- <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-16 max-w-5xl mx-auto px-4">
-  <Reveal>
-    <img
-      src="https://res.cloudinary.com/khs2rcsr/image/upload/v1785304360/bets-result-in-see_y9elck.jpg"
-      alt="Smiling patient outdoors after treatment"
-      className="w-full aspect-[4/3] rounded-2xl object-cover"
-    />
-  </Reveal>
+          <div className="rounded-3xl bg-white p-6 md:p-8 lg:p-10 shadow-sm border border-canvas-200 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
+              <Reveal>
+                <img
+                  src="https://res.cloudinary.com/khs2rcsr/image/upload/v1785304360/bets-result-in-see_y9elck.jpg"
+                  alt="Smiling patient outdoors after treatment"
+                  className="w-full aspect-[4/3] rounded-2xl object-cover"
+                />
+              </Reveal>
 
-  <Reveal side="left">
-    <div className="rounded-2xl bg-white border border-canvas-200 shadow-sm p-7 md:p-8">
-      <h2 className="font-display text-display-sm text-ink-950">Best Results Seen In:</h2>
-      <ul className="mt-5 space-y-2.5">
-        {bestResults.map((item) => (
-          <li key={item} className="flex items-start gap-2.5">
-            <ArrowRight className="mt-1 size-4 shrink-0 text-sage-600" aria-hidden />
-            <span className="text-body-sm leading-relaxed text-canvas-600">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </Reveal>
-</div>
+              <Reveal side="left">
+                <div className="md:px-6">
+                  <h2 className="font-display text-display-sm text-ink-950">Best Results Seen In:</h2>
+                  <ul className="mt-6 space-y-3.5">
+                    {bestResults.map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <ArrowRight className="mt-1 size-4 shrink-0 text-sage-600" aria-hidden />
+                        <span className="text-body leading-relaxed text-canvas-600">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </Container>
     </Section>

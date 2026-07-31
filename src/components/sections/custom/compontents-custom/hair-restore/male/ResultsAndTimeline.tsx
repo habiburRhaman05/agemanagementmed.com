@@ -52,17 +52,18 @@ const timelineCards: TimelineCard[] = [
   {
     name: 'immediateEffects',
     title: 'Immediate Effects',
-    bg: 'bg-sage-100',
+    bg: 'bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-sage-100 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300',
     content: (
-      <ul className="space-y-1.5 text-body-sm text-canvas-600">
+      <ul className="space-y-3 text-body-sm text-canvas-600">
         {[
           'Minimal discomfort during treatment',
           'Slight scalp tenderness for 24-48 hours',
           'No significant downtime required',
+          'Can resume normal activities immediately',
         ].map((item) => (
-          <li key={item} className="flex items-start gap-2">
-            <ArrowRight className="mt-1 size-3.5 shrink-0 text-sage-600" aria-hidden />
-            <span>{item}</span>
+          <li key={item} className="flex items-start gap-2.5">
+            <ArrowRight className="mt-1 size-3.5 shrink-0 text-sage-500" aria-hidden />
+            <span className="leading-relaxed">{item}</span>
           </li>
         ))}
       </ul>
@@ -71,20 +72,29 @@ const timelineCards: TimelineCard[] = [
   {
     name: 'progressiveResults',
     title: 'Progressive Results',
-    bg: 'bg-sage-100',
+    bg: 'bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-sage-100 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300',
     content: (
-      <div className="space-y-3 text-body-sm text-canvas-600">
-        <div>
-          <p className="font-semibold text-ink-900">2–3 months</p>
-          <p>Initial signs of improved hair quality</p>
+      <div className="space-y-4 text-body-sm text-canvas-600">
+        <div className="flex gap-3">
+          <div className="mt-1 h-1.5 w-1.5 rounded-full bg-sage-500 shrink-0" />
+          <div>
+            <p className="font-semibold text-ink-900 mb-0.5">2-3 months:</p>
+            <p className="leading-relaxed">Initial signs of improved hair quality</p>
+          </div>
         </div>
-        <div>
-          <p className="font-semibold text-ink-900">4–6 months</p>
-          <p>Noticeable increase in hair thickness &amp; density</p>
+        <div className="flex gap-3">
+          <div className="mt-1 h-1.5 w-1.5 rounded-full bg-sage-500 shrink-0" />
+          <div>
+            <p className="font-semibold text-ink-900 mb-0.5">4-6 months:</p>
+            <p className="leading-relaxed">Noticeable increase in hair thickness &amp; density</p>
+          </div>
         </div>
-        <div>
-          <p className="font-semibold text-ink-900">6–12 months</p>
-          <p>Optimal results with continued improvement</p>
+        <div className="flex gap-3">
+          <div className="mt-1 h-1.5 w-1.5 rounded-full bg-sage-500 shrink-0" />
+          <div>
+            <p className="font-semibold text-ink-900 mb-0.5">6-12 months:</p>
+            <p className="leading-relaxed">Optimal results with continued improvement</p>
+          </div>
         </div>
       </div>
     ),
@@ -92,16 +102,29 @@ const timelineCards: TimelineCard[] = [
   {
     name: 'maintenance',
     title: 'Maintenance',
-    bg: 'bg-sage-100',
+    bg: 'bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-sage-100 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300',
     content: (
-      <div className="space-y-3 text-body-sm text-canvas-600">
-        <div>
-          <p className="font-semibold text-ink-900">Initial series</p>
-          <p>3-4 treatments spaced 4-6 weeks apart</p>
+      <div className="space-y-4 text-body-sm text-canvas-600">
+        <div className="flex gap-3">
+          <div className="mt-1 h-1.5 w-1.5 rounded-full bg-sage-500 shrink-0" />
+          <div>
+            <p className="font-semibold text-ink-900 mb-0.5">Initial series:</p>
+            <p className="leading-relaxed">3-4 treatments spaced 4-6 weeks apart</p>
+          </div>
         </div>
-        <div>
-          <p className="font-semibold text-ink-900">Maintenance</p>
-          <p>1-2 treatments annually</p>
+        <div className="flex gap-3">
+          <div className="mt-1 h-1.5 w-1.5 rounded-full bg-sage-500 shrink-0" />
+          <div>
+            <p className="font-semibold text-ink-900 mb-0.5">Maintenance:</p>
+            <p className="leading-relaxed">1-2 treatments annually</p>
+          </div>
+        </div>
+        <div className="flex gap-3">
+          <div className="mt-1 h-1.5 w-1.5 rounded-full bg-sage-500 shrink-0" />
+          <div>
+            <p className="font-semibold text-ink-900 mb-0.5">Long-term care:</p>
+            <p className="leading-relaxed">Complementary therapies may be recommended</p>
+          </div>
         </div>
       </div>
     ),
@@ -179,7 +202,7 @@ const ResultsAndTimeline: React.FC = () => {
           <StaggerGroup
             as="ul"
             stagger={0.08}
-            className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-5 md:grid-cols-2"
+            className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-6 md:gap-8 md:grid-cols-2"
           >
             {benefitCards.map((card) => (
               <StaggerItem as="li" key={card.title}>

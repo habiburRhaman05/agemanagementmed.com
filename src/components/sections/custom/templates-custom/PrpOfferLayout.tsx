@@ -75,12 +75,12 @@ export async function PrpOfferLayout({ treatment }: TreatmentTemplateProps) {
           {
             icon: HeartPulse,
             title: 'Minimally Invasive',
-            description: 'PRP therapy treatments are administered in-office and require little down-time.',
+            description: 'PRP therapy treatments are administered entirely in-office, avoiding the risks of surgery. Patients can typically return to their normal daily activities immediately after the procedure with very little downtime.',
           },
           {
             icon: Crosshair,
             title: 'Precision Treatment',
-            description: 'Injections can be guided using ultrasound technology for incredibly safe and accurate delivery of plasma.',
+            description: 'To ensure the best possible results, injections are guided using advanced ultrasound technology. This allows for incredibly safe, targeted, and accurate delivery of plasma directly to the affected tissues.',
           },
           {
             icon: Sparkles,
@@ -92,7 +92,7 @@ export async function PrpOfferLayout({ treatment }: TreatmentTemplateProps) {
             icon: Droplets,
             title: 'Dynamic Application',
             description:
-              'PRP therapy is safe for treating most areas of the body, and even has application in bolstering sexual function in men and women.',
+              'PRP therapy is highly versatile and safe for treating most areas of the body. Beyond joint and tissue repair, it has powerful applications in bolstering sexual function, hair restoration, and overall wellness in both men and women.',
           },
         ]}
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}

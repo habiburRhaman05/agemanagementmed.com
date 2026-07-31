@@ -17,11 +17,7 @@ interface Cta {
 }
 
 interface TreatmentData {
-  name?: string
-  shortName?: string
-  summary?: string
-  cardImage?: { src: string; alt: string }
-  cardBenefits?: string[]
+
   hero?: {
     eyebrow?: string
     title?: string
@@ -30,7 +26,6 @@ interface TreatmentData {
     ctas?: Cta[]
   }
   faqs?: { question: string; answer: string }[]
-  pricing?: { eyebrow?: string; title?: string; lead?: string; included?: string[]; note?: string; cta?: Cta }
   closingCta?: { title?: string; body?: string; cta?: Cta }
   // Everything else (symptoms, sections, process, candidacy, providers,
   // related, customsSection) is edited as raw JSON below rather than built
@@ -90,37 +85,15 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
     setFaqs(next)
   }
 
-  const [pricingTitle, setPricingTitle] = useState(treatment.data.pricing?.title ?? '')
-  const [pricingLead, setPricingLead] = useState(treatment.data.pricing?.lead ?? '')
-  const [pricingIncluded, setPricingIncluded] = useState((treatment.data.pricing?.included ?? []).join('\n'))
-  const [pricingNote, setPricingNote] = useState(treatment.data.pricing?.note ?? '')
+
 
   const [seoNoindex, setSeoNoindex] = useState(seo?.noindex ?? false)
   const [seoSchemaJsonLd, setSeoSchemaJsonLd] = useState(seo?.schemaJsonLd ?? '')
   const [seoSchemaError, setSeoSchemaError] = useState('')
 
   const [advancedJson, setAdvancedJson] = useState(JSON.stringify(pickAdvanced(treatment.data), null, 2))
-  const advancedTextareaRef = useRef<HTMLTextAreaElement>(null)
 
-  const handleSectionInsert = (json: string) => {
-    // Insert the generated section JSON into the advanced editor
-    // If the current content is empty or just '{}', replace it
-    const current = advancedJson.trim()
-    if (!current || current === '{}') {
-      setAdvancedJson(`{"sections": [\n${json}\n]}`)
-    } else {
-      // Try to find "sections" array and insert into it
-      try {
-        const parsed = JSON.parse(current)
-        if (!parsed.sections) parsed.sections = []
-        parsed.sections.push(JSON.parse(json))
-        setAdvancedJson(JSON.stringify(parsed, null, 2))
-      } catch {
-        // Fallback: show the generated JSON and let user manually place it
-        setAdvancedJson(current + '\n\n// Paste this section JSON into your sections array:\n' + json)
-      }
-    }
-  }
+
 
   const {
     register,
@@ -131,12 +104,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
   } = useForm<EditTreatmentValues>({
     resolver: zodResolver(editTreatmentSchema),
     defaultValues: {
-      name: treatment.data.name ?? '',
-      shortName: treatment.data.shortName ?? '',
-      summary: treatment.data.summary ?? '',
-      cardImageSrc: treatment.data.cardImage?.src ?? '',
-      cardImageAlt: treatment.data.cardImage?.alt ?? '',
-      cardBenefits: (treatment.data.cardBenefits ?? []).join(', '),
+     
       heroEyebrow: treatment.data.hero?.eyebrow ?? '',
       heroTitle: treatment.data.hero?.title ?? '',
       heroLead: treatment.data.hero?.lead ?? '',
@@ -187,13 +155,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           status,
-          order,
           data: {
-            name: values.name,
-            shortName: values.shortName,
-            summary: values.summary,
-            cardImage: { src: values.cardImageSrc, alt: values.cardImageAlt },
-            cardBenefits: (values.cardBenefits ?? '').split(',').map((s) => s.trim()).filter(Boolean),
             hero: {
               eyebrow: values.heroEyebrow || undefined,
               title: values.heroTitle,
@@ -202,15 +164,6 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
               ctas: heroCtas,
             },
             faqs,
-            pricing: treatment.data.pricing
-              ? {
-                  ...treatment.data.pricing,
-                  title: pricingTitle,
-                  lead: pricingLead || undefined,
-                  included: pricingIncluded.split('\n').map((s) => s.trim()).filter(Boolean),
-                  note: pricingNote || undefined,
-                }
-              : undefined,
             closingCta: {
               title: values.closingTitle,
               body: values.closingBody,
@@ -301,7 +254,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
             <option value="published">Published</option>
           </select>
         </div>
-        <div>
+        {/* <div>
           <label className="block text-xs font-medium text-gray-500">Order</label>
           <input
             type="number"
@@ -309,7 +262,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
             onChange={(e) => setOrder(Number(e.target.value))}
             className="mt-1 w-24 rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
           />
-        </div>
+        </div> */}
         {status === 'draft' ? (
           <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">
             Draft — not visible on the live site
@@ -318,7 +271,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
       </div>
 
       {/* Card / summary */}
-      <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+      {/* <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <h2 className="text-sm font-semibold text-ink-950">Card &amp; summary</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
@@ -348,12 +301,12 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         <div>
           <label className="block text-xs font-medium text-gray-500">Card image alt</label>
           <input {...register('cardImageAlt')} className={inputClass} />
-        </div>
+        </div> */}
         {/* <div>
           <label className="block text-xs font-medium text-gray-500">Card benefits (comma-separated)</label>
           <input {...register('cardBenefits')} className={inputClass} />
         </div> */}
-      </div>
+      {/* </div> */}
 
       {/* Hero */}
       <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">

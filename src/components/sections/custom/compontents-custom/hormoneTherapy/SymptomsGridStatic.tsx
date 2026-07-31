@@ -66,6 +66,9 @@ export function SymptomsGridStatic() {
     <Section spacing="lg" className="bg-[#f8fcfb]">
       <Container>
         <div className="mx-auto max-w-4xl text-center mb-16">
+          <span className="inline-block py-1.5 px-4 rounded-full bg-sage-200 text-sage-900 text-xs font-bold tracking-widest uppercase mb-6">
+            Symptoms & Candidacy
+          </span>
           <h2 className="font-display text-4xl md:text-5xl text-ink-950">Is BHRT Right For You?</h2>
           <p className="mt-4 text-lg text-canvas-700 leading-relaxed max-w-3xl mx-auto">
             Hormonal imbalances can affect multiple systems at once. Many women notice symptoms gradually; others experience sudden changes. These are the patterns we evaluate when determining whether BHRT may help.

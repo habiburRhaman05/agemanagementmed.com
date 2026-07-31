@@ -51,15 +51,18 @@ export const footerNav = {
       { label: 'Sexual Satisfaction For Women', href: '/rejuvenation-enhancement/female' },
       { label: 'Concierge Medical Weight Loss', href: '/concierge-medical-weight-loss/female' },
       { label: 'GLP-1 Microdosing For Women', href: '/glp-1-microdosing/female' },
+      { label: 'BHRT, HRT, and TRT', href: '/bhrt-hrt-trt' },
+      { label: 'PRP Therapy', href: '/prp-offer/' },
       { label: 'Wellness Specials', href: '/specials' },
   ] satisfies NavLink[],
   practice: [
+    { label: 'Home', href: '/' },
     { label: 'All Services', href: '/services' },
     { label: 'Our Experts', href: '/our-experts' },
-
     { label: 'In The News', href: '/in-the-news' },
     { label: 'Blogs', href: '/blog' },
     { label: 'Book Appointment', href: '/book-appointment' },
+    { label: 'Contact Us', href: '/contact-us' },
   ] satisfies NavLink[],
   locations: [] satisfies NavLink[],
   legal: [

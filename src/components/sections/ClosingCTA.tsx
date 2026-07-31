@@ -13,7 +13,7 @@ export function ClosingCTA({ title, body, cta }: ClosingCtaData) {
   return (
     <Section background="inverse" spacing="xl" className="bg-ink-950! relative overflow-hidden">
       <div className="absolute inset-0 bg-mesh-navy" aria-hidden />
-      <Container width="prose" className="relative">
+      <Container width="prose" className="relative min-w-6xl">
         <Reveal blur strong>
           <div className="text-center">
             <h2 className="text-display-md text-canvas-50">{title}</h2>

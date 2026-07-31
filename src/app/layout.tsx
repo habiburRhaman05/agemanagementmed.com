@@ -55,8 +55,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: settings.defaultOgImageUrl
       ? { images: [{ url: settings.defaultOgImageUrl }] }
       : undefined,
+    authors: [{ name: 'Habibur rahman' }],
+    creator: 'Habibur rahman',
     other: {
       publisher: site.name,
+      developer: 'Habibur rahman',
     },
   }
 }

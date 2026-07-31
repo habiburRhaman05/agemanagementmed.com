@@ -20,7 +20,7 @@ import WhyThisApproachWorks from '../compontents-custom/weight-loss/male/WhyThis
 import FemaleSexualHealthConcerns from '../compontents-custom/weight-loss/female/FemaleSexualHealthConcerns'
 import TreatmentOptions from '../compontents-custom/weight-loss/female/TreatmentOptions'
 import CO2LaserVsPRP from '../compontents-custom/weight-loss/female/CO2LaserVsPRP'
-import { CostIncludedGrid } from '../compontents-custom/hormoneTherapy/CostIncludedGrid'
+import { PremiumIncludedGrid as CostIncludedGrid } from '../compontents-custom/shared/PremiumIncludedGrid'
 import { LabworkGuidancePanel } from '../compontents-custom/weightLossFemale/LabworkGuidancePanel'
 import { OverviewApproachCards } from '../compontents-custom/weightLossFemale/OverviewApproachCards'
 import { ProgramFitCards } from '../compontents-custom/weightLossFemale/ProgramFitCards'

@@ -22,6 +22,7 @@ import { LaserTreatMentLayout } from '@/components/sections/custom/templates-cus
 import { BhrtHrtLayout } from '@/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT'
 import { PrpOfferLayout } from '@/components/sections/custom/templates-custom/PrpOfferLayout'
 import { StatesboroLayout } from '@/components/sections/custom/templates-custom/StatesboroLayout'
+import NotFound from '../not-found'
 
 
 
@@ -101,10 +102,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
         case "statesboro":
           return <StatesboroLayout treatment={treatment}/>
       default:
-       return <TreatmentTemplate
-        treatment={treatment}
-        testimonials={testimonials}
-      />
+       return <NotFound/>
     }
   }
 
