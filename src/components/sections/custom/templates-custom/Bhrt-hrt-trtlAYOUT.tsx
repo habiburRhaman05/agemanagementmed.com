@@ -67,6 +67,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
             image: {
               src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469157/photo-content-22-img_t5x05r.jpg',
               alt: 'A woman reviewing paperwork at home',
+              focalPoint: 'top',
             },
           },
           {
@@ -76,6 +77,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
             image: {
               src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469215/bhrt-therapy-2_a6fw5h.jpg',
               alt: 'A man being active outdoors in the mountains',
+              focalPoint: 'top',
             },
           },
           {
@@ -85,6 +87,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
             image: {
               src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469249/photo-content-24-img_t5dmp1.jpg',
               alt: 'A couple enjoying time together outdoors',
+              focalPoint: 'top',
             },
           },
         ]}
@@ -95,6 +98,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
         image={{
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469289/photo-content-25-img_ohyzgw.jpg',
           alt: 'A woman looking fatigued while working at her laptop',
+          focalPoint: 'top',
         }}
         imageSide="left"
         heading="Signs You Might Need Hormone Replacement Therapy"
@@ -114,6 +118,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
         image={{
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470190/bhrt-comprehence_lb683e.jpg',
           alt: 'A provider consulting with a patient in Pooler, GA',
+          focalPoint: 'top',
         }}
         imageSide="right"
         heading="Our Comprehensive Approach in Pooler, GA"
@@ -131,6 +136,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
         image={{
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470222/unique-compreence_eozbll.jpg',
           alt: 'Two providers reviewing lab paperwork together',
+          focalPoint: 'top',
         }}
         imageSide="left"
         heading="Our Unique Consultation Process"
@@ -149,6 +155,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
         image={{
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470245/benifit-bhrt_l8h8uu.jpg',
           alt: 'A happy couple enjoying time together outdoors',
+          focalPoint: 'top',
         }}
         imageSide="right"
         heading="Potential Benefits of Hormone Replacement Therapy"
