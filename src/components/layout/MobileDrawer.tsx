@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { ChevronDown, Phone, X } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
@@ -60,7 +60,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
     <AnimatePresence>
       {open ? (
         <div className="fixed inset-0 z-60 lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
-          <motion.button
+          <m.button
             type="button"
             aria-label="Close menu"
             onClick={onClose}
@@ -71,7 +71,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
             className="absolute inset-0 bg-ink-950/50 backdrop-blur-sm"
           />
 
-          <motion.div
+          <m.div
             ref={panelRef}
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
@@ -119,7 +119,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
                         </button>
                         <AnimatePresence initial={false}>
                           {isOpen ? (
-                            <motion.ul
+                            <m.ul
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: 'auto', opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
@@ -133,7 +133,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
                                   </Link>
                                 </li>
                               ))}
-                            </motion.ul>
+                            </m.ul>
                           ) : null}
                         </AnimatePresence>
                       </li>
@@ -172,9 +172,11 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
                 {site.phone}
               </a>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       ) : null}
     </AnimatePresence>
   )
 }
+
+

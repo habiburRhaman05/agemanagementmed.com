@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import type * as React from 'react'
 
 interface StaggerGroupProps {
@@ -14,7 +14,7 @@ interface StaggerGroupProps {
 /** Wraps a set of `StaggerItem`s; reveals them in sequence, once, on scroll into view. */
 export function StaggerGroup({ children, className, stagger = 0.08, as = 'div' }: StaggerGroupProps) {
   const reduceMotion = useReducedMotion()
-  const Comp = motion[as]
+  const Comp = m[as]
 
   return (
     <Comp
@@ -38,7 +38,7 @@ interface StaggerItemProps {
 
 export function StaggerItem({ children, className, blur = false, as = 'div' }: StaggerItemProps) {
   const reduceMotion = useReducedMotion()
-  const Comp = motion[as]
+  const Comp = m[as]
 
   return (
     <Comp

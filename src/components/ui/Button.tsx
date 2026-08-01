@@ -2,7 +2,7 @@
 
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import type * as React from 'react'
 
 import { cn } from '@/lib/utils'
@@ -56,7 +56,7 @@ export interface ButtonProps
   asChild?: boolean
 }
 
-const MotionSlot = motion.create(Slot)
+const MotionSlot = m.create(Slot)
 
 export function Button({ className, variant, size, asChild = false, ...props }: ButtonProps) {
   const reduceMotion = useReducedMotion()
@@ -77,7 +77,9 @@ export function Button({ className, variant, size, asChild = false, ...props }: 
   }
 
   // @ts-expect-error framer-motion event typings conflict with standard HTML button typings
-  return <motion.button className={classes} {...motionProps} {...props} />
+  return <m.button className={classes} {...motionProps} {...props} />
 }
 
 export { buttonVariants }
+
+

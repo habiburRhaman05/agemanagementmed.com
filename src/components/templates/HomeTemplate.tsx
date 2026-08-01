@@ -4,8 +4,10 @@ import { EditorialPair } from '@/components/sections/EditorialPair'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroImmersive } from '@/components/sections/HeroImmersive'
 import { LocationBlock } from '@/components/sections/LocationBlock'
-import { PeopleGrid } from '@/components/sections/PeopleGrid'
-import { TestimonialSet } from '@/components/sections/TestimonialSet'
+import dynamic from 'next/dynamic'
+
+const PeopleGrid = dynamic(() => import('@/components/sections/PeopleGrid').then(mod => mod.PeopleGrid))
+const TestimonialSet = dynamic(() => import('@/components/sections/TestimonialSet').then(mod => mod.TestimonialSet))
 import type { homeContent } from '@/content/pages/home'
 import { getFeaturedPeople } from '@/content/people'
 import { locations } from '@/content/site'

@@ -38,13 +38,13 @@ export function TextImagePanel({ image, imageSide = 'left', heading, lead, items
   )
 
   const imageBlock = (
-    <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-full">
+    <div className="relative aspect-4/3 lg:aspect-auto h-full w-full lg:min-h-full">
       <Image
         src={image.src}
         alt={image.alt}
         fill
         sizes="(min-width: 1024px) 42vw, 100vw"
-        className="object-cover"
+        className="object-cover h-full"
         style={{ objectPosition: image.focalPoint ?? 'center' }}
       />
     </div>

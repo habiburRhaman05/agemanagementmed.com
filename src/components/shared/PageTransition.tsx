@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import type * as React from 'react'
@@ -17,7 +17,7 @@ interface PageTransitionProps {
  * `initial={false}` so the server HTML ships fully visible — the LCP hero
  * text must paint immediately, not wait for JS hydration + animation.
  * The entrance animation still plays on client-side route changes, because
- * the motion.div remounts (keyed by pathname) after the first render.
+ * the m.div remounts (keyed by pathname) after the first render.
  * Collapses to a plain fade for prefers-reduced-motion users.
  */
 export function PageTransition({ children }: PageTransitionProps) {
@@ -34,7 +34,7 @@ export function PageTransition({ children }: PageTransitionProps) {
   const skipEntrance = isFirstRender || reduceMotion
 
   return (
-    <motion.div
+    <m.div
       key={pathname}
       initial={skipEntrance ? false : { opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
@@ -44,6 +44,6 @@ export function PageTransition({ children }: PageTransitionProps) {
       }}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }

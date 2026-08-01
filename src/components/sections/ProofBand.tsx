@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { m, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { Quote } from 'lucide-react'
 
@@ -38,9 +38,9 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
 
       <Container>
         <div ref={containerRef}>
-          <motion.div style={{ opacity }} className="mx-auto max-w-7xl">
+          <m.div style={{ opacity }} className="mx-auto max-w-7xl">
             {eyebrow ? (
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -51,16 +51,16 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
                 {eyebrow}
                 <span className="h-[1px] w-12 bg-sage-300"></span>
               </h2>
-            </motion.div>
+            </m.div>
           ) : null}
 
           {/* Stats Section with architectural borders */}
-          <motion.div 
+          <m.div 
             style={{ y: yStats }}
             className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 border-y border-gray-200 bg-white/50 backdrop-blur-sm"
           >
             {stats.map((stat, i) => (
-              <motion.div 
+              <m.div 
                 key={stat.label}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -74,14 +74,14 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
                 <div className="text-sm font-medium tracking-wider uppercase text-gray-500">
                   {stat.label}
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
           {/* Real Stories / Quotes */}
           <div className="mt-32 grid gap-12 lg:grid-cols-2 lg:gap-8">
             {quotes.map((quote, index) => (
-              <motion.div
+              <m.div
                 key={quote.id}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -113,13 +113,13 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* Awards */}
           {awards?.length ? (
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -131,7 +131,7 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
               </p>
               <ul className="flex flex-wrap items-center justify-center gap-x-16 gap-y-12">
                 {awards.map((award, i) => (
-                  <motion.li 
+                  <m.li 
                     key={award.src}
                     initial={{ opacity: 0, filter: 'blur(10px)' }}
                     whileInView={{ opacity: 1, filter: 'blur(0px)' }}
@@ -145,14 +145,16 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
                       height={140}
                       className="h-14 w-auto object-contain opacity-50 grayscale transition-all duration-700 hover:opacity-100 hover:grayscale-0 hover:-translate-y-1"
                     />
-                  </motion.li>
+                  </m.li>
                 ))}
               </ul>
-            </motion.div>
+            </m.div>
           ) : null}
-        </motion.div>
+        </m.div>
         </div>
       </Container>
     </Section>
   )
 }
+
+

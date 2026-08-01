@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { Award, Briefcase, X, ZoomIn } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -28,7 +28,7 @@ interface PeopleGridProps {
 function PersonModal({ person, onClose }: { person: Person; onClose: () => void }) {
   return (
     <AnimatePresence>
-      <motion.div
+      <m.div
         key="backdrop"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -44,7 +44,7 @@ function PersonModal({ person, onClose }: { person: Person; onClose: () => void 
         <div className="absolute inset-0 bg-ink-950/70 backdrop-blur-sm" />
 
         {/* Modal panel */}
-        <motion.div
+        <m.div
           key="panel"
           initial={{ opacity: 0, y: 24, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -128,8 +128,8 @@ function PersonModal({ person, onClose }: { person: Person; onClose: () => void 
                 </Button>
               </div>
             </div>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </AnimatePresence>
   )
 }
@@ -222,3 +222,5 @@ export function PeopleGrid({
     </>
   )
 };
+
+

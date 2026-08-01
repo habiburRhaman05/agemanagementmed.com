@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Quote, Star } from 'lucide-react'
 import { useState } from 'react'
 
@@ -86,7 +86,7 @@ export function TestimonialSet({
 
             <div className="relative w-full min-h-64">
               <AnimatePresence mode="wait" custom={direction}>
-                <motion.div
+                <m.div
                   key={index}
                   custom={direction}
                   variants={variants}
@@ -121,7 +121,7 @@ export function TestimonialSet({
                         Google Review
                       </span>
                   </figcaption>
-                </motion.div>
+                </m.div>
               </AnimatePresence>
             </div>
 
@@ -163,3 +163,5 @@ export function TestimonialSet({
     </Section>
   )
 }
+
+

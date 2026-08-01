@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { m, useScroll, useSpring } from 'framer-motion'
 import { ArrowUp } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
@@ -34,13 +34,13 @@ export function ScrollFeatures() {
   return (
     <>
       {/* Scroll Progress Bar at the top of the viewport */}
-      <motion.div
+      <m.div
         className="fixed top-0 left-0 right-0 h-1 bg-sage-600 origin-left z-[100]"
         style={{ scaleX }}
       />
 
       {/* Scroll to Top Button */}
-      <motion.button
+      <m.button
         onClick={scrollToTop}
         initial={{ opacity: 0, y: 20 }}
         animate={{
@@ -52,7 +52,9 @@ export function ScrollFeatures() {
         aria-label="Scroll to top"
       >
         <ArrowUp className="size-5" />
-      </motion.button>
+      </m.button>
     </>
   )
 }
+
+

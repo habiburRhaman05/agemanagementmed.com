@@ -5,12 +5,14 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { buildOrganizationSchema } from '@/lib/seo'
 import { getSiteSettings } from '@/lib/settings'
 
+import { AnimationProvider } from '@/components/shared/AnimationProvider'
+
 /** Chrome for every public marketing page — footer, page-transition animation, scroll features, Organization schema. Admin pages are a sibling route group and never see this. */
 export default async function MarketingLayout({ children }: { children: React.ReactNode }) {
   const settings = await getSiteSettings()
 
   return (
-    <>
+    <AnimationProvider>
       <JsonLd
         data={buildOrganizationSchema({
           siteName: settings.siteName,
@@ -29,6 +31,6 @@ export default async function MarketingLayout({ children }: { children: React.Re
       </PageTransition>
       <Footer />
       <ScrollFeatures />
-    </>
+    </AnimationProvider>
   )
 }

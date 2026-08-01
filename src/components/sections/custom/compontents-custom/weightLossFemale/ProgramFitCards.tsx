@@ -72,7 +72,7 @@ function FitCard({ card }: { card: ProgramFitCard }) {
         alt={card.image.alt}
         fill
         sizes="(min-width: 1024px) 42vw, 100vw"
-        className="w-full h-full object-contain"
+        className="w-full h-full object-cover"
         style={{ objectPosition: card.image.focalPoint ?? 'center' }}
       />
     </div>

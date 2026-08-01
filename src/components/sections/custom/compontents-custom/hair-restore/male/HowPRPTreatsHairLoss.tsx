@@ -64,23 +64,23 @@ const candidateItems: CandidateItem[] = [
 
 const HowPRPTreatsHairLoss: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 pt-16">
+    <div className="container mx-auto px-4 py-8 pt-16">
       <div className="bg-white rounded-3xl p-2.5">
         {/* Top: image + navy content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
           <div
-            className="rounded-2xl bg-cover bg-center bg-slate-200 aspect-[4/3] md:aspect-auto md:min-h-[280px]"
+            className="rounded-2xl bg-cover bg-center bg-slate-200 aspect-[4/3]  md:min-h-[280px]"
             style={{ backgroundImage: `url('${TREATMENT_IMAGE}')` }}
             role="img"
             aria-label="Provider administering PRP treatment to a patient's scalp"
           />
 
-          <div className="bg-[#0F1E4D] rounded-2xl p-6">
-            <h2 className="text-2xl font-serif text-white leading-tight mb-3">
+          <div className="bg-[#0F1E4D] rounded-2xl p-8">
+            <h2 className="text-3xl font-serif text-white leading-tight mb-3">
               How Does PRP Treat Hair Loss?
             </h2>
 
-            <p className="text-xs text-white/80 leading-relaxed mb-3">
+            <p className="text-md text-white/80 leading-relaxed mb-3">
               Platelet-Rich Plasma (PRP) therapy is a cutting-edge, non-surgical
               treatment that uses your own blood's healing properties to
               stimulate hair growth. During the procedure, we draw a small
@@ -89,7 +89,7 @@ const HowPRPTreatsHairLoss: React.FC = () => {
               directly into your scalp.
             </p>
 
-            <p className="text-xs font-semibold text-white mb-2 leading-relaxed">
+            <p className="text-md font-semibold text-white mb-2 leading-relaxed">
               These concentrated platelets contain powerful growth factors
               that:
             </p>
@@ -117,7 +117,7 @@ const HowPRPTreatsHairLoss: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-left">
             {candidateItems.map((item) => (
-              <div key={item.name} className="flex items-center gap-2.5">
+              <div key={item.name} className="flex items-center gap-2.5 ">
                 <Icon name={item.name} className="w-6 h-6 text-[#519B98] shrink-0" />
                 <p className="text-sm text-slate-600 leading-snug">{item.label}</p>
               </div>

@@ -1,4 +1,4 @@
-'use client'
+
 
 import { ArrowRight, ChevronRight, Play } from 'lucide-react'
 import dynamic from 'next/dynamic'

@@ -44,7 +44,28 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
       ))} */}
 
       <BhrtHowItWorksPremium />
+  <SafetyAndCandidacy
+      bg='bg-sage-100'
+        image={{
+          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350545/photo-content-38-img_lxshmc.jpg',
+          alt: 'A provider reviewing treatment safety with a male patient',
+        }}
+        imageSide="left"
+        heading="Monitoring & Adjustments:
+How We Track Progress"
+        paragraphs={[
+          'At Savannah Age Management Medicine, we continuously monitor both lab values and symptom improvement to ensure your treatment remains safe, effective, and aligned with your goals. Your plan may be adjusted over time based on:',
+        ]}
+        questionsLabel="Common patient questions we address:"
+        questions={[
+          'Follow-up lab results',
+          'Symptom changes',
+          'Lifestyle, training, or health changes',
 
+        ]}
+        closingParagraph="Follow-up cadence and lab intervals will be confirmed with the clinical team prior to publishing final timelines."
+ disclaimer="BHRT is a medical treatment and should only be initiated under the supervision of a qualified healthcare provider. Individual results vary, and hormone therapy is not intended to diagnose, treat, cure, or prevent disease."
+      />
       <SafetyAndCandidacy
       bg=''
         image={{

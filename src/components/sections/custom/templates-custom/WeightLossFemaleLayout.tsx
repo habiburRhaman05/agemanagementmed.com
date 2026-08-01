@@ -24,6 +24,7 @@ import { PremiumIncludedGrid as CostIncludedGrid } from '../compontents-custom/s
 import { LabworkGuidancePanel } from '../compontents-custom/weightLossFemale/LabworkGuidancePanel'
 import { OverviewApproachCards } from '../compontents-custom/weightLossFemale/OverviewApproachCards'
 import { ProgramFitCards } from '../compontents-custom/weightLossFemale/ProgramFitCards'
+import { Reveal } from '@/components/shared/Reveal'
 
 
 function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
@@ -113,6 +114,8 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         note="Your provider will walk you through everything so there are no surprises."
       />
 
+    
+
       <ProgramFitCards
         fitCard={{
           image: {
@@ -186,6 +189,9 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
           'This is what makes lab-guided weight loss more precise and sustainable.',
         ]}
       />
+
+      <WhyThisApproachWorks/>
+
 
       <ClosingCTA
         title="Ready To Take A Smarter Approach To Weight Loss?"

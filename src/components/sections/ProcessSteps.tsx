@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
@@ -29,7 +29,7 @@ export function ProcessSteps({
 
         <ol className="relative mt-20 grid gap-14 md:grid-cols-3 md:gap-10">
           {/* Spine — draws in left to right on scroll, desktop only. */}
-          <motion.span
+          <m.span
             initial={{ scaleX: reduceMotion ? 1 : 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, margin: '0px 0px -100px 0px' }}
@@ -58,3 +58,6 @@ export function ProcessSteps({
     </Section>
   )
 }
+
+
+

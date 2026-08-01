@@ -68,13 +68,13 @@ export function SafetyAndCandidacy({
   )
 
   const imageBlock = (
-    <div className="relative aspect-4/3 overflow-hidden rounded-3xl">
+    <div className="relative aspect-4/3 h-full w-full overflow-hidden rounded-3xl">
       <Image
         src={image.src}
         alt={image.alt}
         fill
         sizes="(min-width: 1024px) 42vw, 100vw"
-        className="object-cover"
+        className="object-cover h-full "
         style={{ objectPosition: image.focalPoint ?? 'center' }}
       />
     </div>

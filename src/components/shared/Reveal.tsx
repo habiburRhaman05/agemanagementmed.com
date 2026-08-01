@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import type * as React from 'react'
 
 interface RevealProps {
@@ -53,7 +53,7 @@ export function Reveal({
   const yOffset = side === 'up' ? distance : 0
 
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={{
         opacity: 0,
@@ -72,6 +72,6 @@ export function Reveal({
       }}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }

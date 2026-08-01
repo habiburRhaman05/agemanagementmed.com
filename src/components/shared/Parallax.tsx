@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { m, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import type * as React from 'react'
 import { useRef } from 'react'
 
@@ -19,8 +19,8 @@ export function Parallax({ children, className, strength = 50 }: ParallaxProps) 
   const y = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [-strength, strength])
 
   return (
-    <motion.div ref={ref} style={{ y }} className={className}>
+    <m.div ref={ref} style={{ y }} className={className}>
       {children}
-    </motion.div>
+    </m.div>
   )
 }

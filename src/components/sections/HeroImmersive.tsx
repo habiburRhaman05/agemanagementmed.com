@@ -1,4 +1,4 @@
-'use client'
+
 
 import { MoveRight, Play } from 'lucide-react'
 import Image from 'next/image'
