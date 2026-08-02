@@ -24,6 +24,7 @@ import { PrpOfferLayout } from '@/components/sections/custom/templates-custom/Pr
 import { StatesboroLayout } from '@/components/sections/custom/templates-custom/StatesboroLayout'
 import NotFound from '../not-found'
 import { RejuvenationEnhancementLayout } from '@/components/sections/custom/templates-custom/RejuvenationEnhancementLayout'
+import { RejuvenationEnhancementOfferLayout } from '@/components/sections/custom/templates-custom/RejuvenationEnhancementOfferLayout'
 
 
 
@@ -110,6 +111,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
           return <WeightLossMaleLayout treatment={treatment}/>
         case "platelet-rich-plasma-hair":
           return <HairRestoreMaleLayout treatment={treatment}/>
+        case "rejuvenation-enhancement-offer":
+          return <RejuvenationEnhancementOfferLayout treatment={treatment}/>
       default:
        return <NotFound/>
     }

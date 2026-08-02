@@ -29,6 +29,7 @@ export default async function SettingsPage() {
           Logo, favicon, social links, default SEO, and tracking scripts — used across the whole site.
         </p>
       </div>
+      
       <SettingsForm initial={initial} />
     </div>
   )
