@@ -174,8 +174,8 @@ export function DualIconGridBanner({ columns }: { columns: [IconGridColumn, Icon
                   key={column.heading}
                   className={
                     index === 0
-                      ? 'lg:border-r lg:border-white/10 lg:pr-16'
-                      : ''
+                      ? 'min-w-0 lg:border-r lg:border-white/10 lg:pr-16'
+                      : 'min-w-0'
                   }
                 >
                   <h2 className="font-display text-title-lg text-canvas-50 sm:text-display-sm">{column.heading}</h2>
@@ -201,7 +201,11 @@ export function DualIconGridBanner({ columns }: { columns: [IconGridColumn, Icon
                   ))}
 
                   {column.cta ? (
-                    <Button asChild size="md" className="mt-6">
+                    <Button
+                      asChild
+                      size="md"
+                      className="mt-6 h-auto w-full whitespace-normal text-center leading-snug py-3 sm:h-12 sm:w-auto sm:whitespace-nowrap"
+                    >
                       <Link href={column.cta.href}>{column.cta.label}</Link>
                     </Button>
                   ) : null}
