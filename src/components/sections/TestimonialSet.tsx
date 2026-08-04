@@ -57,9 +57,8 @@ export interface TestimonialSetProps {
 }
 
 /**
- * The live site's `#testimonial-d` band — a photo background with a navy
- * gradient, intro copy on the left and a white quote card carrying the review,
- * star rating, Google branding, and reviewer name. Responsive and pixel-matched.
+ * The live site's `#testimonial-d` band — 100vh photo background with left copy/card
+ * carousel and bottom justify-between bar (dashes on left, SEE ALL REVIEWS on right).
  */
 export function TestimonialSet({
   eyebrow,
@@ -84,99 +83,109 @@ export function TestimonialSet({
   return (
     <section
       id="testimonial-d"
-      className="relative w-full min-h-screen min-h-[100vh] flex flex-col justify-center overflow-hidden bg-cover bg-center py-12 sm:py-16 md:py-20"
-      style={{ backgroundImage: `url('${backgroundImage}')` }}
+      className="relative w-full min-h-screen min-h-[100vh] flex flex-col justify-center overflow-hidden bg-cover bg-[position:right_center] py-12 sm:py-16 md:py-20"
+      style={{
+        backgroundImage: `url('${backgroundImage}')`,
+        backgroundPosition: 'right center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
-      {/* Dark navy side gradient overlay (matching the screenshot layout) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#071946]/95 via-[#0b2259]/85 to-transparent pointer-events-none z-0" />
+      {/* Simple image overlay */}
+      <div className="absolute inset-0 bg-[#071946]/50 pointer-events-none z-0" />
 
-      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16 lg:right-[400px]">
-        {/* Intro text on left top */}
-        <div className="max-w-xl text-white">
-          {eyebrow ? (
-            <h2
-              className="text-xs sm:text-sm uppercase tracking-[0.15em] text-cyan-200/90 mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-16 flex flex-col justify-between min-h-[82vh]">
+        {/* Carousel & Content on Left Side */}
+        <div className="max-w-[560px] w-full">
+          {/* Intro text */}
+          <div className="text-white mb-6">
+            {eyebrow ? (
+              <h2
+                className="text-xs sm:text-sm uppercase tracking-[0.15em] text-cyan-200/90 mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              >
+                {eyebrow}
+              </h2>
+            ) : null}
+            <h3
+              className="text-3xl sm:text-4xl lg:text-[46px] leading-tight text-white mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
               style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
             >
-              {eyebrow}
-            </h2>
-          ) : null}
-          <h3
-            className="text-3xl sm:text-4xl lg:text-[46px] leading-tight text-white mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
-          >
-            {title}
-          </h3>
-          {lead ? (
-            <p className="text-sm sm:text-base text-slate-200/90 font-light max-w-lg mb-6">
-              {lead}
-            </p>
-          ) : null}
-        </div>
+              {title}
+            </h3>
+            {lead ? (
+              <p className="text-sm sm:text-base text-slate-200/90 font-light max-w-lg">
+                {lead}
+              </p>
+            ) : null}
+          </div>
 
-        {/* Carousel & Card Container */}
-        <div className="relative mt-6 sm:mt-8 max-w-[560px]">
-          {/* Navigation Arrows (floating left & right of card) */}
-          {testimonials.length > 1 ? (
-            <>
-              <button
-                type="button"
-                className="absolute -left-7 sm:-left-10 md:-left-12 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
-                onClick={() => go(-1)}
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" aria-hidden />
-              </button>
+          {/* White Testimonial Card with Left & Right Nav Arrows */}
+          <div className="relative">
+            {testimonials.length > 1 ? (
+              <>
+                <button
+                  type="button"
+                  className="absolute -left-7 sm:-left-10 md:-left-12 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
+                  onClick={() => go(-1)}
+                  aria-label="Previous testimonial"
+                >
+                  <ChevronLeft className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" aria-hidden />
+                </button>
 
-              <button
-                type="button"
-                className="absolute -right-7 sm:-right-10 md:-right-12 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
-                onClick={() => go(1)}
-                aria-label="Next testimonial"
-              >
-                <ChevronRight className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" aria-hidden />
-              </button>
-            </>
-          ) : null}
+                <button
+                  type="button"
+                  className="absolute -right-7 sm:-right-10 md:-right-12 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
+                  onClick={() => go(1)}
+                  aria-label="Next testimonial"
+                >
+                  <ChevronRight className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" aria-hidden />
+                </button>
+              </>
+            ) : null}
 
-          {/* White Testimonial Box */}
-          <div className="bg-white rounded-[24px] shadow-2xl p-6 sm:p-8 md:p-10 relative z-10 transition-all duration-300 h-auto">
-            {/* Top quote mark */}
-            <div className="mb-4">
-              <QuoteMark />
-            </div>
+            {/* White Testimonial Box */}
+            <div className="bg-white rounded-[24px] shadow-2xl p-6 sm:p-8 md:p-10 relative z-10 transition-all duration-300 h-auto">
+              {/* Top quote mark */}
+              <div className="mb-4">
+                <QuoteMark />
+              </div>
 
-            {/* Quote content */}
-            <div className="text-slate-800 text-[13px] sm:text-[14px] leading-relaxed font-normal space-y-3 mb-6">
-              {paragraphs.map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
-            </div>
+              {/* Quote content */}
+              <div className="text-slate-800 text-[13px] sm:text-[14px] leading-relaxed font-normal space-y-3 mb-6">
+                {paragraphs.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
 
-            {/* Author + Rating + Google branding */}
-            <div className="flex items-center gap-3 pt-2">
-              <GoogleLogo />
-              <div className="flex flex-col">
-                <span className="font-bold text-slate-900 text-xs sm:text-sm">
-                  {active.author}
-                </span>
-                <div className="flex items-center gap-0.5 mt-0.5" aria-label="5 out of 5 stars">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      size={14}
-                      className="fill-[#F5A623] text-[#F5A623]"
-                      aria-hidden
-                    />
-                  ))}
+              {/* Author + Rating + Google branding */}
+              <div className="flex items-center gap-3 pt-2">
+                <GoogleLogo />
+                <div className="flex flex-col">
+                  <span className="font-bold text-slate-900 text-xs sm:text-sm">
+                    {active.author}
+                  </span>
+                  <div className="flex items-center gap-0.5 mt-0.5" aria-label="5 out of 5 stars">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star
+                        key={i}
+                        size={14}
+                        className="fill-[#F5A623] text-[#F5A623]"
+                        aria-hidden
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Pagination Indicators (dashes underneath card) */}
+        {/* Full-width Bottom Bar: Carousel dashes on LEFT, SEE ALL REVIEWS button on RIGHT */}
+        <div className="flex items-center justify-between gap-4 mt-8 w-full">
+          {/* Left: Carousel dashes */}
           {testimonials.length > 1 ? (
-            <div className="flex items-center justify-center gap-1.5 mt-5">
+            <div className="flex items-center gap-1.5">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
@@ -192,11 +201,9 @@ export function TestimonialSet({
                 />
               ))}
             </div>
-          ) : null}
-        </div>
+          ) : <div />}
 
-        {/* Floating Bottom-Right CTA Button */}
-        <div className="mt-8 flex justify-end">
+          {/* Right: SEE ALL REVIEWS Button */}
           <a
             href={ctaHref}
             className="inline-flex items-center justify-center bg-[#30A7A0] hover:bg-[#278d87] text-white text-[11px] sm:text-xs font-bold tracking-wider uppercase px-6 py-2.5 rounded-full shadow-lg transition-all duration-200 transform hover:scale-105"
