@@ -105,7 +105,7 @@ export function HeaderClient({ overlay = false, logoUrl, siteName, phone }: Head
               <div className="logo">
                 <Link href="/" aria-label={`${siteName} — home`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={logoUrl} width={192} height={88} alt={siteName} />
+                  <img src="/images/samm-logo.png" width={192} height={88} alt={siteName} />
                 </Link>
               </div>
 
