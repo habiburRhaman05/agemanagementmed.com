@@ -98,7 +98,7 @@ export function HeaderClient({ overlay = false, logoUrl, siteName, phone }: Head
 
   return (
     <>
-      <div id="header" className={overlay ? undefined : 'header-colored'}>
+      <div id="header" >
         <div className="lg-max-width-1440">
           <div className="lg-container">
             <div className="lg-row">

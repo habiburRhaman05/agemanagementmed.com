@@ -6,6 +6,7 @@ import { buildOrganizationSchema } from '@/lib/seo'
 import { getSiteSettings } from '@/lib/settings'
 
 import { AnimationProvider } from '@/components/shared/AnimationProvider'
+import { Header } from '@/components/layout/Header'
 
 /** Chrome for every public marketing page — footer, page-transition animation, scroll features, Organization schema. Admin pages are a sibling route group and never see this. */
 export default async function MarketingLayout({ children }: { children: React.ReactNode }) {
@@ -26,7 +27,9 @@ export default async function MarketingLayout({ children }: { children: React.Re
       >
         Skip to content
       </a>
+      <Header/>
       <PageTransition>
+
         <main id="main">{children}</main>
       </PageTransition>
       <Footer />
