@@ -133,7 +133,7 @@ export function MaleHeroBanner({
               <DialogTrigger asChild>
                 <Button
                   size="lg"
-                  variant="outline"
+                  variant="outlineInverse"
                   className="rounded-full bg-white hover:bg-slate-100 text-[#519B99] hover:text-[#448b89] font-bold text-[11px] uppercase tracking-wider px-6 py-3.5 h-auto inline-flex items-center gap-2 shadow-md transition-all duration-200 border-none"
                 >
                   <Play className="h-3.5 w-3.5 fill-[#519B99] text-[#519B99] translate-x-0.5" aria-hidden="true" />
