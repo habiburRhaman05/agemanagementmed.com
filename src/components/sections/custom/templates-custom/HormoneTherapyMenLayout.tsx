@@ -14,6 +14,8 @@ import { SafetyAndCandidacy } from '../compontents-custom/hormoneTherapy/SafetyA
 import { SymptomsHeroCard } from '../compontents-custom/hormoneTherapy/SymptomsHeroCard'
 import { BeforeAfterSliderSection } from '../compontents-custom/hormoneTherapy/BeforeAfterSliderSection'
 
+import { MaleHeroBanner } from '../compontents-custom/hormoneTherapy/MaleHeroBanner'
+
 interface TreatmentTemplateProps {
   treatment: Treatment
 }
@@ -24,14 +26,10 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
 
   return (
     <>
-      <HeroEditorial
-        {...treatment.hero}
-        fullHeight
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: pillar.label, href: pillar.href },
-          { label: treatment.shortName, href: treatment.href },
-        ]}
+      <MaleHeroBanner
+        title="Bioidentical Hormone Replacement Therapy (BHRT) For Men"
+        lead="Optimize Testosterone. Restore Energy. Reclaim Your Edge."
+        image={treatment.hero?.image}
       />
 
       {treatment.symptoms ? (
