@@ -1,4 +1,3 @@
-import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
@@ -10,6 +9,7 @@ import TreatmentOptions from '../compontents-custom/weight-loss/female/Treatment
 import HowPRPTreatsHairLoss from '../compontents-custom/hair-restore/male/HowPRPTreatsHairLoss'
 import PRPTreatmentProcess from '../compontents-custom/hair-restore/male/PRPTreatmentProcess'
 import ResultsAndTimeline from '../compontents-custom/hair-restore/male/ResultsAndTimeline'
+import { RestoreHairClosingBand } from '../compontents-custom/hair-restore/male/RestoreHairClosingBand'
 import { Reveal } from '@/components/shared/Reveal'
 import { ArrowRight } from 'lucide-react'
 
@@ -80,7 +80,7 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
         />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <RestoreHairClosingBand />
     </>
   )
 }
