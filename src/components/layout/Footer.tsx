@@ -13,7 +13,7 @@ export async function Footer() {
 
   return (
     <FooterClient
-      logoUrl={settings.logoDarkUrl}
+      logoUrl={settings.logoUrl}
       socialLinks={settings.socialLinks}
       siteName={settings.siteName}
       phone={settings.phone ?? site.phone}

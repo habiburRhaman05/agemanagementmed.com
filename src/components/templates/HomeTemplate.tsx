@@ -66,7 +66,7 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
         testimonials={testimonials}
       />
 
-      <div className="lg-flexspace-100" />
+      {/* <div className="lg-flexspace-100" /> */}
 
       <PatientJourney {...content.journey} />
 

@@ -26,15 +26,35 @@ const ALWAYS_VISIBLE: (keyof typeof ICON_PATHS)[] = ['facebook', 'instagram', 'l
 interface SocialLinksProps {
   links: SiteSettingsData['socialLinks']
   className?: string
+  /**
+   * 'sage' (default) — translucent teal circle, for dark backgrounds
+   * (footer's old look, still used on /newsletter).
+   * 'navy' — solid navy circle with a white glyph, for light backgrounds.
+   */
+  variant?: 'sage' | 'navy'
 }
 
-export function SocialLinks({ links, className }: SocialLinksProps) {
+const VARIANT_CLASSES = {
+  sage: {
+    active:
+      'bg-sage-100/15 text-sage-400 hover:bg-sage-200/30',
+    disabled: 'bg-sage-100/5 text-sage-400/30',
+  },
+  navy: {
+    active: 'bg-ink-900 text-canvas-50 hover:bg-ink-800',
+    disabled: 'bg-ink-900/20 text-ink-900/30',
+  },
+} as const
+
+export function SocialLinks({ links, className, variant = 'sage' }: SocialLinksProps) {
   const allKeys = Object.keys(ICON_PATHS) as (keyof typeof ICON_PATHS)[]
   const entries = allKeys
     .map((key) => ({ key, href: links[key as keyof SiteSettingsData['socialLinks']] || null }))
     .filter((entry) => ALWAYS_VISIBLE.includes(entry.key) || Boolean(entry.href))
 
   if (!entries.length) return null
+
+  const colors = VARIANT_CLASSES[variant]
 
   return (
     <div className={className}>
@@ -46,7 +66,7 @@ export function SocialLinks({ links, className }: SocialLinksProps) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={key}
-            className="flex size-10 shrink-0 items-center justify-center rounded-full bg-sage-100/15 text-sage-400 transition-colors duration-200 hover:bg-sage-200/30"
+            className={`flex size-10 shrink-0 items-center justify-center rounded-full transition-colors duration-200 ${colors.active}`}
           >
             <svg viewBox="0 0 24 24" className="size-5" fill="currentColor" aria-hidden="true">
               <path d={ICON_PATHS[key]} />
@@ -57,7 +77,7 @@ export function SocialLinks({ links, className }: SocialLinksProps) {
             key={key}
             aria-disabled="true"
             aria-label={`${key} (not connected)`}
-            className="flex size-10 shrink-0 cursor-not-allowed items-center justify-center rounded-full bg-sage-100/5 text-sage-400/30"
+            className={`flex size-10 shrink-0 cursor-not-allowed items-center justify-center rounded-full ${colors.disabled}`}
           >
             <svg viewBox="0 0 24 24" className="size-5" fill="currentColor" aria-hidden="true">
               <path d={ICON_PATHS[key]} />
