@@ -19,7 +19,7 @@ export const homeMedia = {
 
   /** Background behind the testimonials band. */
   testimonialsBackground:
-    'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469249/photo-content-24-img_t5dmp1.jpg',
+    'https://www.agemanagementmed.com/themes/default/assets/images/testimonial-bg.jpg',
 
   /** Background behind the closing "Ready to transform your health?" band. */
   closingBackground:

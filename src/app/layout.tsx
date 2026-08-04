@@ -16,7 +16,7 @@ const bodoni = Bodoni_Moda({
   subsets: ['latin'],
   variable: '--font-bodoni',
   display: 'swap',
-  weight: ['400', '500'],
+  weight: ['400', '500', '600', '700'],
 })
 
 const manrope = Manrope({
