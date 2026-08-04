@@ -64,22 +64,18 @@ const candidateItems: CandidateItem[] = [
 
 const HowPRPTreatsHairLoss: React.FC = () => {
   return (
-    <div className="container mx-auto px-4 py-8 pt-16">
-      <div className="bg-white rounded-3xl p-2.5">
+    <div className="container mx-auto py-8 pt-16 overflow-hidden">
+      <div className="bg-white rounded-3xl overflow-hidden">
         {/* Top: image + navy content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+        <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
           <div
-            className="rounded-2xl bg-cover bg-center bg-slate-200 aspect-[4/3]  md:min-h-[280px]"
+            className="bg-cover bg-center bg-slate-200 aspect-[4/3]  md:min-h-[280px]"
             style={{ backgroundImage: `url('${TREATMENT_IMAGE}')` }}
             role="img"
             aria-label="Provider administering PRP treatment to a patient's scalp"
           />
 
-          <div className="bg-[#0F1E4D] rounded-2xl p-8">
-            <h2 className="text-3xl font-serif text-white leading-tight mb-3">
-              How Does PRP Treat Hair Loss?
-            </h2>
-
+          <div className="bg-[#0F1E4D] p-5 sm:p-6 md:p-8">
             <p className="text-md text-white/80 leading-relaxed mb-3">
               Platelet-Rich Plasma (PRP) therapy is a cutting-edge, non-surgical
               treatment that uses your own blood's healing properties to

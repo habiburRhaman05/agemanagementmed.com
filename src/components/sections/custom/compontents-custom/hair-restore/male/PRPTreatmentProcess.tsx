@@ -83,7 +83,7 @@ function StepRow({ step }: { step: Step }) {
 
 const PRPTreatmentProcess: React.FC = () => {
   return (
-    <Section background="page" spacing="lg">
+    <Section background="page" spacing="lg" className="bg-[#CDDEE1]">
       <Container width="prose">
         <SectionHeader title="The PRP Hair Treatment Process" align="center" />
 

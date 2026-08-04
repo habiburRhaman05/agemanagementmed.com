@@ -91,7 +91,7 @@ export function HeroEditorial({
   const showVideoButton = Boolean(actions?.videoModal && actions?.videoSource)
 
   // Smaller, non-full-width CTA on mobile; the "lg" size (via the `size` prop) still applies from `sm:` up.
-  const ctaSizeClass = 'h-11 px-6 text-body-sm sm:h-14 sm:px-9 sm:text-body'
+  const ctaSizeClass = 'h-11 px-6 text-body-sm uppercase tracking-wide sm:h-14 sm:px-9 sm:text-body'
 
   return (
     <section
@@ -109,7 +109,10 @@ export function HeroEditorial({
         className="object-cover"
         style={{ objectPosition: image.focalPoint ?? 'center' }}
       />
-      <div className="absolute inset-0 bg-[#16284F]/50 pointer-events-none z-0" aria-hidden />
+      <div
+        className="absolute inset-0 bg-linear-to-r from-[#16284F]/80 via-[#16284F]/45 to-transparent pointer-events-none z-0"
+        aria-hidden
+      />
 
       <Container className="relative z-10 py-35 md:py-50 lg:py-60 !px-3">
         <div className="max-w-3xl text-center sm:text-left">

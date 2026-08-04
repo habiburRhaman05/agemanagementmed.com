@@ -32,7 +32,6 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
     <>
       <HeroEditorial
         {...treatment.hero}
-        fullHeight
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },
@@ -41,15 +40,14 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
       />
 
       <HowPRPTreatsHairLoss/>
-      <PRPTreatmentProcess/>
          {/* Bottom image + text row */}
-                <div className="rounded-3xl bg-white p-6 md:p-8 lg:p-10 shadow-sm border border-canvas-200 max-w-5xl mx-auto">
+                <div className=" max-w-5xl mx-auto my-10 md:my-15">
                   <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
                     <Reveal>
                       <img
                         src="https://res.cloudinary.com/khs2rcsr/image/upload/v1785599006/men-hair-restoration_krr29t.jpg"
                         alt="Smiling patient outdoors after treatment"
-                        className="w-full aspect-[4/3] rounded-2xl object-cover"
+                        className="w-full aspect-[4/3] rounded-xl object-cover"
                       />
                     </Reveal>
       
@@ -68,6 +66,8 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
                     </Reveal>
                   </div>
                 </div>
+      <PRPTreatmentProcess/>
+
       <ResultsAndTimeline/>
 
 
