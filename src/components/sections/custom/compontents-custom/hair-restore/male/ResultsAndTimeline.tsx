@@ -52,9 +52,9 @@ const timelineCards: TimelineCard[] = [
   {
     name: 'immediateEffects',
     title: 'Immediate Effects',
-    bg: 'bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-sage-100 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300',
+    bg: 'bg-[#EAF3F4] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300',
     content: (
-      <ul className="space-y-3 text-body-sm text-canvas-600">
+      <ul className="space-y-3 text-body-sm font-light text-canvas-600">
         {[
           'Minimal discomfort during treatment',
           'Slight scalp tenderness for 24-48 hours',
@@ -62,7 +62,7 @@ const timelineCards: TimelineCard[] = [
           'Can resume normal activities immediately',
         ].map((item) => (
           <li key={item} className="flex items-start gap-2.5">
-            <ArrowRight className="mt-1 size-3.5 shrink-0 text-sage-500" aria-hidden />
+            <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-sage-600" aria-hidden />
             <span className="leading-relaxed">{item}</span>
           </li>
         ))}
@@ -72,9 +72,9 @@ const timelineCards: TimelineCard[] = [
   {
     name: 'progressiveResults',
     title: 'Progressive Results',
-    bg: 'bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-sage-100 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300',
+    bg: 'bg-[#D6E6E9] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300',
     content: (
-      <div className="space-y-4 text-body-sm text-canvas-600">
+      <div className="space-y-4 text-body-sm font-light text-canvas-600">
         <div className="flex gap-3">
           <div className="mt-1 h-1.5 w-1.5 rounded-full bg-sage-500 shrink-0" />
           <div>
@@ -102,9 +102,9 @@ const timelineCards: TimelineCard[] = [
   {
     name: 'maintenance',
     title: 'Maintenance',
-    bg: 'bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-sage-100 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300',
+    bg: 'bg-[#CDDEE1] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300',
     content: (
-      <div className="space-y-4 text-body-sm text-canvas-600">
+      <div className="space-y-4 text-body-sm font-light text-canvas-600">
         <div className="flex gap-3">
           <div className="mt-1 h-1.5 w-1.5 rounded-full bg-sage-500 shrink-0" />
           <div>
@@ -181,12 +181,12 @@ const ResultsAndTimeline: React.FC = () => {
         <StaggerGroup
           as="ul"
           stagger={0.08}
-          className="mt-12 grid grid-cols-1 items-stretch gap-5 sm:grid-cols-3"
+          className="mt-8 grid grid-cols-1 items-stretch gap-4 sm:mt-12 sm:grid-cols-3 sm:gap-5"
         >
           {timelineCards.map((card) => (
             <StaggerItem as="li" className="h-full" key={card.title}>
-              <div className={`h-full rounded-2xl p-6 ${card.bg}`}>
-                <span className="flex size-12 items-center justify-center rounded-full bg-white/60 text-sage-700">
+              <div className={`h-full rounded-2xl p-5 sm:p-6 ${card.bg}`}>
+                <span className="flex size-10 items-center justify-center rounded-full bg-white/60 text-sage-700 sm:size-12">
                   <Icon name={card.name} />
                 </span>
                 <h3 className="mt-4 font-display text-title-md text-ink-950">{card.title}</h3>
@@ -196,26 +196,30 @@ const ResultsAndTimeline: React.FC = () => {
           ))}
         </StaggerGroup>
 
-        <div className="mt-16">
-          <h2 className="text-center font-display text-display-sm text-ink-950">Benefits of PRP Hair Therapy</h2>
+        <div className="mt-12 md:mt-16">
+          <Reveal>
+            <h2 className="text-center font-display text-display-md text-ink-950">
+              Benefits of PRP Hair Therapy
+            </h2>
+          </Reveal>
 
           <StaggerGroup
             as="ul"
             stagger={0.08}
-            className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-6 md:gap-8 md:grid-cols-2"
+            className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-4 sm:mt-10 sm:gap-6 md:gap-8 md:grid-cols-2"
           >
             {benefitCards.map((card) => (
               <StaggerItem as="li" key={card.title}>
-                <div className="h-full rounded-2xl bg-ink-900 p-6 shadow-md md:p-7">
-                  <span className="flex size-10 items-center justify-center rounded-full bg-white/10 text-sage-400">
-                    <Icon name={card.name} className="size-5" />
+                <div className="h-full rounded-2xl bg-ink-900 p-5 shadow-md sm:p-6 md:p-7">
+                  <span className="flex size-9 items-center justify-center rounded-full bg-white/10 text-sage-400 sm:size-10">
+                    <Icon name={card.name} className="size-4 sm:size-5" />
                   </span>
                   <h3 className="mt-4 font-display text-title-lg text-canvas-50">{card.title}</h3>
                   <ul className="mt-3 space-y-1.5">
                     {card.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2">
                         <ArrowRight className="mt-1 size-3.5 shrink-0 text-sage-400" aria-hidden />
-                        <span className="text-body-sm leading-snug text-canvas-50/90">{bullet}</span>
+                        <span className="text-body-sm font-light leading-snug text-canvas-50/90">{bullet}</span>
                       </li>
                     ))}
                   </ul>
