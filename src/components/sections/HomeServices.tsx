@@ -59,6 +59,12 @@ export function HomeServices({ eyebrow, title, lead }: HomeServicesProps) {
                           <Link href={service.href}>{service.title}</Link>
                         </h3>
 
+                        {service.summary ? (
+                          <div className="lg-text">
+                            <p>{service.summary}</p>
+                          </div>
+                        ) : null}
+
                         <div className="lg-text">
                           <div className="lg-list-check two-col">
                             <ul>

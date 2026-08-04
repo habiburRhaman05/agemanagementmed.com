@@ -10,6 +10,8 @@ export interface HomeServiceCard {
   href: string
   image: string
   imageAlt: string
+  /** Short one-line pitch shown under the title, above the checklist. Not every card has one. */
+  summary?: string
   benefits: string[]
   /** The source constrains the two shorter titles to 300px. */
   narrowTitle?: boolean
@@ -20,7 +22,7 @@ export const homeServices: HomeServiceCard[] = [
     title: 'Bioidentical Hormone Replacement Therapy (BHRT) for men & women',
     href: '/bioidentical-hormone-replacement-therapy',
     image:
-      'https://res.cloudinary.com/khs2rcsr/image/upload/v1785475166/hormone-replacement_zvjw8a.avif',
+      'https://www.agemanagementmed.com/themes/default/assets/images/column-box-img.png',
     imageAlt: 'Happy People',
     benefits: ['Boost energy', 'Stabilize mood', 'Build muscle', 'Enhance libido'],
   },
@@ -28,8 +30,9 @@ export const homeServices: HomeServiceCard[] = [
     title: 'Platelet-Rich Plasma (PRP) therapy',
     href: '/platelet-rich-plasma-hair',
     image:
-      'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338054/photo-content-92-img_nitez0.jpg',
+      'https://www.agemanagementmed.com/themes/default/assets/images/column-box-5-img.png',
     imageAlt: 'Muscle Pain',
+    summary: 'Supports muscle healing and tissue repair.',
     benefits: ['Targeted relief', 'Stimulates healing', 'Versatile treatment', 'Non-surgical'],
     narrowTitle: true,
   },
@@ -37,8 +40,9 @@ export const homeServices: HomeServiceCard[] = [
     title: 'Sexual Performance Enhancement & Rejuvenation',
     href: '/rejuvenation-enhancement',
     image:
-      'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469249/photo-content-24-img_t5dmp1.jpg',
+      'https://www.agemanagementmed.com/themes/default/assets/images/column-box-3-img.png',
     imageAlt: 'Happy Couple',
+    summary: 'Boost libido, support response, enhance intimacy.',
     benefits: [
       'Non-invasive',
       'Couples support available',
@@ -50,8 +54,9 @@ export const homeServices: HomeServiceCard[] = [
     title: 'Concierge medical weight loss',
     href: '/concierge-medical-weight-loss',
     image:
-      'https://res.cloudinary.com/khs2rcsr/image/upload/v1785407018/photo-content-54-img_uz9klt.jpg',
+      'https://www.agemanagementmed.com/themes/default/assets/images/column-box-6-img.png',
     imageAlt: 'Weight Loss',
+    summary: 'Expert, personalized weight management.',
     benefits: [
       'Safe & sustainable',
       'Minimize side effects',

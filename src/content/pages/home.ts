@@ -53,25 +53,29 @@ export const homeContent = {
   } satisfies EditorialPairData,
 
   journey: {
-    eyebrow: 'Your patient journey',
-    title: "This isn't about feeling better. It's about feeling better than ever.",
+    title: 'Your Patient Journey',
+    lead: "This isn't just about feeling better... it's about feeling better than ever.",
     steps: [
       {
-        title: 'Personalized consultation',
-        body: 'We sit with you to understand your current health challenges, your goals, and what is getting in the way of living life to the fullest.',
-        url:"https://res.cloudinary.com/khs2rcsr/image/upload/f_auto,q_auto,w_256,h_256,c_fill/v1785396121/persdonlized-cons_hnc2nk.jpg"
+        title: 'Personalized Consultation',
+        body: 'In our initial consultation, the Savannah Age Management Medicine clinic team will sit with you to learn about your current health challenges, your goals, and what\'s getting in the way of living life to the fullest.',
+        url: 'https://res.cloudinary.com/khs2rcsr/image/upload/f_auto,q_auto,w_256,h_256,c_fill/v1785396121/persdonlized-cons_hnc2nk.jpg',
       },
       {
-        title: 'Convenient lab work',
-        body: 'A complete analysis of your health metrics to find the root cause of your symptoms, craft a treatment plan, and set a schedule for regular check-ins.',
-        url:"https://res.cloudinary.com/khs2rcsr/image/upload/f_auto,q_auto,w_256,h_256,c_fill/v1785396162/lab-work_yrq7fr.avif"
+        title: 'Convenient Lab Work',
+        body: "After your consultation, we'll do a complete analysis of your health metrics to find the root cause of your symptoms, craft a treatment plan, and outline a schedule for regular check-ins.",
+        url: 'https://res.cloudinary.com/khs2rcsr/image/upload/f_auto,q_auto,w_256,h_256,c_fill/v1785396162/lab-work_yrq7fr.avif',
       },
       {
-        title: 'Tailored treatment plan',
-        body: 'Following the latest in bioidentical hormone research and other advanced treatments, we make sure your plan always reflects the best protocol for you.',
-        url:"https://res.cloudinary.com/khs2rcsr/image/upload/f_auto,q_auto,w_256,h_256,c_fill/v1785396190/treatment-plan_rdxnon.png"
+        title: 'Tailored Treatment Plan',
+        body: "Following the latest in bio-identical hormone research and other advanced treatments, we'll make sure your plan always reflects the best protocol for you, any additional health concerns and ensure your plan continues to feel comprehensive and personalized.",
+        url: 'https://res.cloudinary.com/khs2rcsr/image/upload/f_auto,q_auto,w_256,h_256,c_fill/v1785396190/treatment-plan_rdxnon.png',
       },
     ],
+    cta: {
+      label: 'SCHEDULE A CONSULTATION',
+      href: '/book-appointment',
+    },
   } satisfies ProcessStepsData,
 
   philosophy: {

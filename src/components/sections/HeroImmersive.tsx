@@ -37,7 +37,7 @@ interface HeroImmersiveProps {
 export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) {
   return (
     <section
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-ink-950 pt-20 pb-14 sm:pt-28 sm:pb-24 lg:pt-32"
+      className="relative isolate flex min-h-svh items-center overflow-hidden bg-ink-950 pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28"
     >
       <div
         className="absolute inset-0 hero-zoom"
@@ -54,24 +54,22 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
         />
       </div>
 
-      <div className="absolute inset-0 bg-ink-950/40" aria-hidden />
       <div
-        className="absolute inset-0 bg-linear-to-t from-ink-950/85 via-ink-950/20 to-ink-950/10"
+        className="absolute inset-0 bg-linear-to-t from-ink-950/55 via-ink-950/15 to-transparent"
         aria-hidden
       />
-      <div className="absolute inset-0 bg-mesh-hero opacity-50" aria-hidden />
 
       <Container className="relative">
-        {meta ? (
+        {/* {meta ? (
           <span
             style={{ animationDelay: '0.1s' }}
             className="hero-enter glass-dark inline-flex items-center rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-sage-400 md:px-4 md:py-2 md:text-label"
           >
             {meta}
           </span>
-        ) : null}
+        ) : null} */}
 
-        <h1 className="mt-5 max-w-4xl text-3xl leading-[1.2] text-canvas-50 drop-shadow-sm sm:mt-8 sm:text-4xl sm:leading-tight md:mt-8 md:text-display-xl">
+        <h1 className="mt-5 max-w-3xl text-3xl leading-[1.2] text-canvas-50 capitalize drop-shadow-sm sm:mt-8 sm:text-4xl sm:leading-tight md:mt-8 md:text-display-md">
           {title}
         </h1>
 
@@ -124,7 +122,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
               <Button
                 size="lg"
                 variant="outlineInverse"
-                className="group h-12 w-full justify-center px-6 text-body-sm sm:h-14 sm:w-auto sm:px-9 sm:text-body"
+                className="group h-12 w-full justify-center px-6 text-body-sm bg-white text-[#00555A] hover:border-canvas-50/60 hover:bg-transparent hover:text-canvas-50 sm:h-14 sm:w-auto sm:px-9 sm:text-body"
               >
                 <Play className="size-4" aria-hidden />
                 Watch video

@@ -91,7 +91,7 @@ export function HeroEditorial({
   const showVideoButton = Boolean(actions?.videoModal && actions?.videoSource)
 
   // Smaller, non-full-width CTA on mobile; the "lg" size (via the `size` prop) still applies from `sm:` up.
-  const ctaSizeClass = 'h-11 px-6 text-body-sm sm:h-14 sm:px-9 sm:text-body'
+  const ctaSizeClass = 'h-11 px-6 text-body-sm uppercase tracking-wide sm:h-14 sm:px-9 sm:text-body'
 
   return (
     <section
@@ -109,42 +109,21 @@ export function HeroEditorial({
         className="object-cover"
         style={{ objectPosition: image.focalPoint ?? 'center' }}
       />
-      <div className="absolute inset-0 bg-linear-to-t from-ink-950/85 via-ink-950/45 to-ink-950/20" aria-hidden />
+      <div
+        className="absolute inset-0 bg-linear-to-r from-[#16284F]/80 via-[#16284F]/45 to-transparent pointer-events-none z-0"
+        aria-hidden
+      />
 
-      <Container className="relative">
+      <Container className="relative z-10 py-35 md:py-50 lg:py-60 !px-3">
         <div className="max-w-3xl text-center sm:text-left">
-          {breadcrumbs?.length ? (
-            <nav
-              aria-label="Breadcrumb"
-              className="hero-enter mb-4 md:mb-8"
-              style={{ animationDelay: '0.05s' }}
-            >
-              <ol className="flex flex-wrap items-center justify-center gap-1.5 text-xs text-canvas-50/70 sm:justify-start md:text-body-sm">
-                {breadcrumbs.map((crumb, i) => (
-                  <li key={crumb.href} className="flex items-center gap-1.5">
-                    {i > 0 ? (
-                      <ChevronRight className="size-3 md:size-3.5 text-canvas-50/40" aria-hidden />
-                    ) : null}
-                    <Link href={crumb.href} className="transition-colors hover:text-white">
-                      {crumb.label}
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            </nav>
-          ) : null}
-
-          {eyebrow ? (
-            <div className="hero-enter mb-3 md:mb-5" style={{ animationDelay: '0.15s' }}>
-              <Eyebrow tone="inverse">{eyebrow}</Eyebrow>
-            </div>
-          ) : null}
-
-          <h1 className="text-3xl sm:text-4xl md:text-display-lg leading-[1.15] md:leading-tight text-canvas-50">
+          <h1
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
+            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+          >
             {title}
           </h1>
 
-          <p className="mx-auto mt-4 max-w-2xl text-base text-canvas-50/90 sm:mx-0 md:mt-6 md:text-body-lg">
+          <p className="mt-4 max-w-2xl text-sm sm:text-base md:text-[17px] font-light leading-relaxed text-white/90 md:mt-6">
             {lead}
           </p>
 

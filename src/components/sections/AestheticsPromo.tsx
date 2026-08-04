@@ -11,7 +11,7 @@ export interface AestheticsPromoProps {
  */
 export function AestheticsPromo({ title, lead, ctaLabel, href }: AestheticsPromoProps) {
   return (
-    <div id="hero-d">
+    <div id="hero-d" className="mb-10 md:mb-15">
       <div className="lg-max-width-1440">
         <div className="lg-container">
           <div className="box">

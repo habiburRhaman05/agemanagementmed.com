@@ -61,21 +61,24 @@ export const BeforeAfterSliderSection = ({
   return (
     <Section className="py-16 md:py-24">
       <Container>
+        {/* Header — outside the dark card, on white background */}
+        <div className="text-center mb-10 max-w-2xl mx-auto">
+          <span className="inline-block text-[11px] tracking-[0.25em] uppercase text-[#519B99] font-medium mb-4">
+            Transformations
+          </span>
+          <h2
+            className="text-3xl md:text-[42px] font-normal text-[#1C274C] mb-4 leading-tight font-['Bodoni_Moda',var(--font-bodoni),serif]"
+            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+          >
+            {title}
+          </h2>
+          <p className="text-slate-600 text-[15px] md:text-base leading-relaxed font-light">
+            {description}
+          </p>
+        </div>
+
         {/* Main container with the requested exact #14214B background */}
         <div className="bg-[#14214B] rounded-[32px] p-6 md:p-14 relative max-w-6xl mx-auto shadow-2xl ring-1 ring-white/[0.06]">
-
-          {/* Header */}
-          <div className="text-center mb-14 max-w-2xl mx-auto">
-            <span className="inline-block text-[11px] tracking-[0.25em] uppercase text-[#C9A876] font-medium mb-4">
-              Transformations
-            </span>
-            <h2 className="font-serif text-3xl md:text-[42px] text-white mb-4 leading-tight">
-              {title}
-            </h2>
-            <p className="text-white/60 text-[15px] md:text-base leading-relaxed">
-              {description}
-            </p>
-          </div>
 
           {/* Carousel + side arrows share one relative wrapper so they align to the images, not the header */}
           <div className="relative">
@@ -104,36 +107,40 @@ export const BeforeAfterSliderSection = ({
                     <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
 
                       {/* Before */}
-                      <div className="w-full md:w-[45%] aspect-[4/5] relative rounded-2xl overflow-hidden shadow-lg shrink-0 ring-1 ring-white/10">
-                        <Image
-                          src={slide.beforeImage}
-                          alt={`${slide.alt} Before`}
-                          fill
-                          sizes="(min-width: 768px) 40vw, 90vw"
-                          className="object-cover"
-                        />
-                        <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm text-white text-[11px] tracking-[0.15em] uppercase font-medium ring-1 ring-white/20">
+                      <div className="w-full md:w-[45%] rounded-2xl overflow-hidden shadow-lg shrink-0 ring-1 ring-white/10">
+                        <div className="aspect-[4/5] relative">
+                          <Image
+                            src={slide.beforeImage}
+                            alt={`${slide.alt} Before`}
+                            fill
+                            sizes="(min-width: 768px) 40vw, 90vw"
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="bg-[#519B99] py-3 text-center text-[13px] tracking-[0.2em] uppercase text-white font-['Bodoni_Moda',var(--font-bodoni),serif]">
                           Before
-                        </span>
+                        </div>
                       </div>
 
                       {/* Center Arrow */}
-                      <div className="text-[#14214B] flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-[#C9A876] shrink-0 shadow-lg ring-4 ring-[#14214B]">
-                        <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+                      <div className="text-white shrink-0">
+                        <ArrowRight className="w-6 h-6 md:w-7 md:h-7" />
                       </div>
 
                       {/* After */}
-                      <div className="w-full md:w-[45%] aspect-[4/5] relative rounded-2xl overflow-hidden shadow-lg shrink-0 ring-1 ring-[#C9A876]/40">
-                        <Image
-                          src={slide.afterImage}
-                          alt={`${slide.alt} After`}
-                          fill
-                          sizes="(min-width: 768px) 40vw, 90vw"
-                          className="object-cover"
-                        />
-                        <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#C9A876] text-[#14214B] text-[11px] tracking-[0.15em] uppercase font-semibold">
+                      <div className="w-full md:w-[45%] rounded-2xl overflow-hidden shadow-lg shrink-0 ring-1 ring-white/10">
+                        <div className="aspect-[4/5] relative">
+                          <Image
+                            src={slide.afterImage}
+                            alt={`${slide.alt} After`}
+                            fill
+                            sizes="(min-width: 768px) 40vw, 90vw"
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="bg-[#519B99] py-3 text-center text-[13px] tracking-[0.2em] uppercase text-white font-['Bodoni_Moda',var(--font-bodoni),serif]">
                           After
-                        </span>
+                        </div>
                       </div>
                     </div>
                   </div>

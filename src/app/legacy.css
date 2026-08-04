@@ -728,7 +728,10 @@
 .lg-title.lg-max-width-300 {
   margin-left: auto;
   margin-right: auto;
-  max-width: 300px;
+  /* 300px (the source value) breaks "Platelet-Rich Plasma" mid-word in
+     Bodoni Moda; widened just enough to clear it on one line while keeping
+     "Concierge Medical Weight Loss" wrapped the same two lines as before. */
+  max-width: 340px;
 }
 
 .lg-flexspace-60 {
@@ -1295,21 +1298,18 @@
 
 /* ------------ TESTIMONIALS (#testimonial-d) ---------------------- */
 #testimonial-d {
-  background-position: center;
+  background-position: right center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 96px 0 46px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
 }
 
 #testimonial-d::before {
-  background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(11, 32, 85, 0.75) 100%);
-  content: '';
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
+  display: none;
 }
 
 #testimonial-d .lg-container {
@@ -1343,7 +1343,7 @@
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
-  height: 100%;
+  height: auto;
   padding: 45px 55px;
 }
 

@@ -10,6 +10,8 @@ import { getAllPeople } from '@/content/people'
 import { buildMetadata } from '@/lib/seo'
 import type { ContentSummary } from '@/types/content'
 import type { VideoThumbnailItem } from '@/components/features/VideoThumbnailGrid'
+import { TransformHealthBanner } from '@/components/sections/TransformHealthBanner'
+
 
 // Curated subset for this page, in display order — press coverage as full
 // cards, video/TV mentions as a compact watch grid. The full archive lives
@@ -60,7 +62,6 @@ console.log(allNews);
     <>
       <Header overlay />
       <HeroEditorial
-      fullHeight
         {...expertsContent.hero}
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Our Experts', href: '/our-experts' }]}
       />
@@ -85,12 +86,7 @@ console.log(allNews);
         news={news}
         videos={videos}
       />
-
-      <ClosingCTA
-        title="Ready to transform your health?"
-        body="Take the first step towards a healthier, more vibrant you."
-        cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
-      />
+      <TransformHealthBanner />
     </>
   )
 }

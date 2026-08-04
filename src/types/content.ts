@@ -190,6 +190,8 @@ export interface ProcessStepsData {
 export interface FaqItem {
   question: string
   answer: string
+  /** Groups consecutive items under a navy header bar when present. */
+  category?: string
 }
 
 export interface PricingData {

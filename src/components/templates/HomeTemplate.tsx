@@ -66,11 +66,11 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
         testimonials={testimonials}
       />
 
-      <div className="lg-flexspace-100" />
+      {/* <div className="lg-flexspace-100" /> */}
 
       <PatientJourney {...content.journey} />
 
-      <div className="lg-flexspace-100" />
+      {/* <div className="lg-flexspace-100" /> */}
 
       <TealStatementStrip title="Discover the treatments best suited for your needs." />
 

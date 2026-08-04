@@ -30,7 +30,6 @@ export function HeroBand({
       className={`hero-bg${centered ? ' centered-content' : ''}`}
       style={{ backgroundImage: `url('${backgroundImage}')` }}
     >
-      <div className="gradient" aria-hidden />
       <div className="lg-max-width-1440">
         <div className="lg-container">
           <div className="content">

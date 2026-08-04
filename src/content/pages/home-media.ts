@@ -14,14 +14,12 @@ export const homeMedia = {
     'https://res.cloudinary.com/khs2rcsr/image/upload/v1785817252/video-11-img_f8wfjb.gif',
 
   /** Background behind the "Who We Are" statement band. */
-  whoWeAreBackground:
-    'https://res.cloudinary.com/khs2rcsr/image/upload/v1785407018/photo-content-54-img_uz9klt.jpg',
+  whoWeAreBackground: 'https://www.agemanagementmed.com/themes/default/assets/images/hero-18-bg.jpg',
 
   /** Background behind the testimonials band. */
   testimonialsBackground:
-    'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469249/photo-content-24-img_t5dmp1.jpg',
+    'https://www.agemanagementmed.com/themes/default/assets/images/testimonial-bg.jpg',
 
   /** Background behind the closing "Ready to transform your health?" band. */
-  closingBackground:
-    'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338054/photo-content-92-img_nitez0.jpg',
+  closingBackground: 'https://www.agemanagementmed.com/themes/default/assets/images/hero-29-bg.jpg',
 } as const
