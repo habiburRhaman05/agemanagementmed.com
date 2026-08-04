@@ -14,8 +14,7 @@ export const homeMedia = {
     'https://res.cloudinary.com/khs2rcsr/image/upload/v1785817252/video-11-img_f8wfjb.gif',
 
   /** Background behind the "Who We Are" statement band. */
-  whoWeAreBackground:
-    'https://res.cloudinary.com/khs2rcsr/image/upload/v1785407018/photo-content-54-img_uz9klt.jpg',
+  whoWeAreBackground: 'https://www.agemanagementmed.com/themes/default/assets/images/hero-18-bg.jpg',
 
   /** Background behind the testimonials band. */
   testimonialsBackground:
