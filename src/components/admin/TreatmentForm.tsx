@@ -24,7 +24,7 @@ interface TreatmentData {
     image?: { src: string; alt: string }
     ctas?: Cta[]
   }
-  faqs?: { question: string; answer: string }[]
+  faqs?: { question: string; answer: string; category?: string }[]
   closingCta?: { title?: string; body?: string; cta?: Cta }
   // Everything else (symptoms, sections, process, candidacy, providers,
   // related, customsSection) is edited as raw JSON below rather than built
@@ -325,15 +325,24 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
       <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-semibold text-ink-950">FAQs</h2>
-          <button type="button" onClick={() => setFaqs([...faqs, { question: '', answer: '' }])} className="inline-flex items-center gap-1 text-xs font-medium text-sage-700 hover:text-sage-700">
+          <button type="button" onClick={() => setFaqs([...faqs, { question: '', answer: '', category: '' }])} className="inline-flex items-center gap-1 text-xs font-medium text-sage-700 hover:text-sage-700">
             <Plus className="size-3.5" /> Add FAQ
           </button>
         </div>
+        <p className="text-xs text-canvas-600">
+          Give consecutive FAQs the same category to group them under a navy header bar on the page (e.g. "About BHRT"). Leave blank for an ungrouped list.
+        </p>
         <div className="space-y-3">
           {faqs.map((faq, i) => (
             <div key={i} className="rounded-lg border border-canvas-200 p-3">
               <div className="flex items-start gap-2">
                 <div className="flex-1 space-y-2">
+                  <input
+                    value={faq.category ?? ''}
+                    onChange={(e) => setFaqs(faqs.map((f, j) => (j === i ? { ...f, category: e.target.value } : f)))}
+                    placeholder="Category (optional) — e.g. About BHRT"
+                    className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-xs text-canvas-600 focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+                  />
                   <input
                     value={faq.question}
                     onChange={(e) => setFaqs(faqs.map((f, j) => (j === i ? { ...f, question: e.target.value } : f)))}

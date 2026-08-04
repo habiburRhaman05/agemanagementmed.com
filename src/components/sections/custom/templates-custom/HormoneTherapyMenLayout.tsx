@@ -14,6 +14,7 @@ import { SafetyAndCandidacy } from '../compontents-custom/hormoneTherapy/SafetyA
 import { SymptomsHeroCard } from '../compontents-custom/hormoneTherapy/SymptomsHeroCard'
 import { BeforeAfterSliderSection } from '../compontents-custom/hormoneTherapy/BeforeAfterSliderSection'
 import { SymptomsLabsReviewPanel } from '../compontents-custom/hormoneTherapy/SymptomsLabsReviewPanel'
+import { TrustMarkers } from '@/components/sections/TrustMarkers'
 import { MaleHeroBanner } from '../compontents-custom/hormoneTherapy/MaleHeroBanner'
 import { PatientBenefitsSection } from '../compontents-custom/hormoneTherapy/PatientBenefitsSection'
 
@@ -164,6 +165,37 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
       ) : null}
 
       <ClosingCTA {...treatment.closingCta} />
+
+      
+      <TrustMarkers
+        reviewer={{
+          name: 'Dr. Harry S. Collins, DO, FACOG, Medical Director',
+          subtitle: 'Age Management Medicine Specialist',
+          bio: [
+            'Dr. Harry Collins is a Life Fellow of the American College of Obstetricians and Gynecologists and is certified in Age Management Medicine through the prestigious Cenegenics Medical Institute. He earned his BA in biology from the University of Colorado (Denver) with distinction before receiving his Doctor of Osteopathic Medicine from Kansas City University of Medicine and Biosciences.',
+            'After completing his residency in obstetrics and gynecology at Walter Reed Army Medical Center, Dr. Collins served as Command Physician during Operation Urgent Fury in Grenada, retiring from the U.S. Army Medical Corps as a Lt. Colonel. He trained under Dr. David Matlock at The Laser Vaginal Rejuvenation Institute of Los Angeles and has dedicated his career to hormone optimization and age management medicine.',
+            'Today, Dr. Collins brings his extensive expertise in Bio-Identical Hormone Optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
+          ],
+          portrait: {
+            src: '/images/teams/team-1-img.png',
+            alt: 'Dr. Harry Collins, founder and medical director of Savannah Age Management Medicine',
+          },
+        }}
+        successStories={{
+          eyebrow: 'Patient reviews',
+          title: 'Real Success Stories',
+          lead: "See how we've helped our clients transform their lives.",
+          backgroundImage: '/HormoneTherapy/superlang.jpg',
+          quote: [
+            'As a former D1 athlete with seven varsity letters, fitness has always been central to my life. In my seventies, aging challenges emerged — fatigue, poor sleep, and weight gain to nearly 230 pounds despite staying active.',
+            'After hearing Dr. Collins discuss Optimal Hormone Therapy, I had my testosterone tested, which revealed severely low levels. Within three weeks of starting twice-weekly T shots and supplements, I noticed improvements. My enhanced stamina enabled longer workouts, and I began building muscle at 72.',
+            'The program costs were modest, including ongoing prescriptions and blood reviews. Dr. Collins never pressured me and even suggested where to find the best supplement prices. His thorough physicals go beyond standard bloodwork, and both my wife and I are grateful for how this treatment has helped maintain my active lifestyle. I dropped to my high school weight of 200 pounds, and my bloodwork improved significantly.',
+          ],
+          author: 'David P.',
+        }}
+      />
+
+      
     </>
   )
 }

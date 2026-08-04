@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 import { Container } from '@/components/shared/Container'
 import { Section } from '@/components/shared/Section'
-import { SectionHeader } from '@/components/shared/SectionHeader'
 import { cn } from '@/lib/utils'
 import type { FaqItem } from '@/types/content'
 
@@ -16,14 +15,29 @@ interface FAQAccordionProps {
   background?: 'page' | 'alt' | 'raised'
 }
 
+/** Splits the flat item list into runs of consecutive same-category items,
+ * preserving order. Items without a category fall into their own unlabeled
+ * run (rendered with no navy header bar). */
+function groupByCategory(items: FaqItem[]) {
+  const groups: { category: string | null; items: FaqItem[] }[] = []
+  for (const item of items) {
+    const category = item.category ?? null
+    const last = groups[groups.length - 1]
+    if (last && last.category === category) {
+      last.items.push(item)
+    } else {
+      groups.push({ category, items: [item] })
+    }
+  }
+  return groups
+}
+
 /**
- * Ruled rows, not boxes. Placed immediately before the closing CTA so the
- * last objection is answered right before the ask.
- *
- * Animation technique: CSS grid row trick (grid-rows-[0fr] → grid-rows-[1fr])
- * eliminates the need for JS height measurement while giving silky smooth
- * expand/collapse without layout jank. The inner div has overflow-hidden so
- * content is clipped during the transition.
+ * White card on the page's cream background, with items optionally grouped
+ * under navy category bars (BHRT's "About BHRT" / "About Savannah Age
+ * Management's BHRT Program" style). Groups form automatically from
+ * `item.category` — flat lists without categories render as a single
+ * ungrouped card, unchanged.
  */
 export function FAQAccordion({
   eyebrow,
@@ -32,105 +46,85 @@ export function FAQAccordion({
   items,
   background = 'page',
 }: FAQAccordionProps) {
-  const [open, setOpen] = useState<number | null>(0)
+  const [open, setOpen] = useState<string | null>(items[0]?.question ?? null)
+  const groups = groupByCategory(items)
 
   return (
     <Section background={background} spacing="lg">
-      <Container>
-        <div className="">
-          <div className="lg:col-span-4 mb-20">
-            <SectionHeader eyebrow={eyebrow} title={title} lead={lead} align='center' />
-          </div>
+      <Container className="max-w-5xl">
+        <div className="text-center mb-14">
+          {eyebrow ? (
+            <p className="text-label font-sans font-semibold uppercase tracking-widest text-ink-900/60 mb-3">
+              {eyebrow}
+            </p>
+          ) : null}
+          <h2 className="font-display text-3xl sm:text-4xl text-ink-900">{title}</h2>
+          {lead ? (
+            <p className="mt-4 max-w-xl mx-auto text-body-sm text-[#C9A876]">{lead}</p>
+          ) : null}
+        </div>
 
-          <div className="lg:col-span-8">
-            {items.map((item, index) => {
-              const isOpen = open === index
-              const panelId = `faq-panel-${index}`
-              const buttonId = `faq-button-${index}`
+        <div className="rounded-3xl bg-white p-6 sm:p-10 shadow-sm">
+          {groups.map((group, groupIndex) => (
+            <div key={group.category ?? `ungrouped-${groupIndex}`} className={groupIndex > 0 ? 'mt-8' : ''}>
+              {group.category ? (
+                <h3 className="rounded-xl bg-[#14214B] px-6 py-4 text-body font-display text-canvas-50">
+                  {group.category}
+                </h3>
+              ) : null}
 
-              return (
-                <div
-                  key={item.question}
-                  className="faq-item border-b border-canvas-300 first:border-t"
-                  style={{
-                    animationDelay: `${index * 60}ms`,
-                    animationFillMode: 'both',
-                  }}
-                >
-                  <h3>
-                    <button
-                      id={buttonId}
-                      type="button"
-                      aria-expanded={isOpen}
-                      aria-controls={panelId}
-                      onClick={() => setOpen(isOpen ? null : index)}
-                      className="group flex w-full items-start justify-between gap-8 py-7 text-left"
-                    >
-                      <span
-                        className={cn(
-                          'text-title-md font-display transition-colors duration-300',
-                          isOpen ? 'text-sage-700' : 'text-ink-900 group-hover:text-sage-700',
-                        )}
-                      >
-                        {item.question}
-                      </span>
+              <div className={group.category ? 'mt-2' : ''}>
+                {group.items.map((item) => {
+                  const isOpen = open === item.question
+                  const panelId = `faq-panel-${item.question}`
+                  const buttonId = `faq-button-${item.question}`
 
-                      {/* Animated icon — rotates 45° on open turning + into × shape */}
-                      <span
-                        className={cn(
-                          'mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full transition-all duration-300 ease-in-out',
-                          isOpen
-                            ? 'bg-sage-700 text-white rotate-45 scale-110 shadow-md shadow-sage-700/25'
-                            : 'bg-sage-100 text-sage-700 rotate-0 scale-100 group-hover:bg-sage-200 group-hover:scale-105',
-                        )}
-                        aria-hidden
-                      >
-                        {/* Single + SVG that rotates to × via parent rotation */}
-                        <svg
-                          viewBox="0 0 14 14"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          className="size-3.5"
+                  return (
+                    <div key={item.question} className="border-b border-canvas-300 last:border-b-0">
+                      <h4>
+                        <button
+                          id={buttonId}
+                          type="button"
+                          aria-expanded={isOpen}
+                          aria-controls={panelId}
+                          onClick={() => setOpen(isOpen ? null : item.question)}
+                          className="group flex w-full items-start gap-3 py-5 text-left"
                         >
-                          <line x1="7" y1="1" x2="7" y2="13" />
-                          <line x1="1" y1="7" x2="13" y2="7" />
-                        </svg>
-                      </span>
-                    </button>
-                  </h3>
+                          <span className="text-black font-sans font-medium leading-6" aria-hidden>
+                            {isOpen ? '−' : '+'}
+                          </span>
+                          <span className="text-body text-black group-hover:text-ink-700 transition-colors">
+                            {item.question}
+                          </span>
+                        </button>
+                      </h4>
 
-                  {/*
-                   * CSS grid row trick:
-                   *   grid-rows-[0fr] → content collapses to 0 height (inner div overflow-hidden clips it)
-                   *   grid-rows-[1fr] → content expands to natural height
-                   * transition-all animates the row track size smoothly.
-                   */}
-                  <div
-                    id={panelId}
-                    role="region"
-                    aria-labelledby={buttonId}
-                    className={cn(
-                      'grid transition-all duration-500 ease-in-out',
-                      isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
-                    )}
-                  >
-                    <div className="overflow-hidden">
-                      <p
+                      <div
+                        id={panelId}
+                        role="region"
+                        aria-labelledby={buttonId}
                         className={cn(
-                          'pb-8 pr-12 text-body text-canvas-600 transition-all duration-500',
-                          isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1',
+                          'grid transition-all duration-500 ease-in-out',
+                          isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
                         )}
                       >
-                        {item.answer}
-                      </p>
+                        <div className="overflow-hidden">
+                          <p
+                            className={cn(
+                              'pb-5 pl-7 pr-4 text-body-sm text-canvas-600 transition-all duration-500',
+                              isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1',
+                            )}
+                          >
+                            {item.answer}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
         </div>
       </Container>
     </Section>
