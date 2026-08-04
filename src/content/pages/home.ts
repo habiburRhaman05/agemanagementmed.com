@@ -72,10 +72,7 @@ export const homeContent = {
         url: 'https://res.cloudinary.com/khs2rcsr/image/upload/f_auto,q_auto,w_256,h_256,c_fill/v1785396190/treatment-plan_rdxnon.png',
       },
     ],
-    cta: {
-      label: 'SCHEDULE A CONSULTATION',
-      href: '/book-appointment',
-    },
+   
   } satisfies ProcessStepsData,
 
   philosophy: {
