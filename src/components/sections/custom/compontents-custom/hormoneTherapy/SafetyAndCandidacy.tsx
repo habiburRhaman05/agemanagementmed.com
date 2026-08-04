@@ -1,104 +1,170 @@
+'use client'
+
+import { m } from 'framer-motion'
 import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
 
 import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
+import { cn } from '@/lib/utils'
 import type { Media } from '@/types/content'
 
 export interface SafetyAndCandidacyProps {
   image: Media
   imageSide?: 'left' | 'right'
   heading: string
+  subtitle?: string
   paragraphs: string[]
   questionsLabel?: string
   questions?: string[]
   closingParagraph?: string
   disclaimerLabel?: string
   disclaimer?: string
-  bg: string
+  bg?: string
+  className?: string
 }
 
-/** Plain image + text safety/candidacy panel, no card chrome — ends in a medical disclaimer. */
+/**
+ * SafetyAndCandidacy section component:
+ * - Redesigned to match the reference screenshots pixel-for-pixel
+ * - Bodoni Moda typography for headings & sub-headers
+ * - Teal directional arrow (→) list items
+ * - Clean medical disclaimer block
+ * - Rounded-[24px] image card with responsive flex/grid ordering
+ */
 export function SafetyAndCandidacy({
   image,
   imageSide = 'left',
   heading,
+  subtitle,
   paragraphs,
   questionsLabel,
   questions,
   closingParagraph,
   disclaimerLabel = 'Medical Disclaimer:',
   disclaimer,
-  bg
+  bg = 'bg-[#F8F9F5]',
+  className,
 }: SafetyAndCandidacyProps) {
+  const imageSrc = image?.src || ''
+  const imageAlt = image?.alt || heading
+
   const textContent = (
-    <div>
-      <h2 className="font-display text-display-sm text-ink-950">{heading}</h2>
-      {paragraphs.map((paragraph, index) => (
-        <p key={paragraph} className={`text-body leading-relaxed text-canvas-600 ${index === 0 ? 'mt-4' : 'mt-3'}`}>
+    <div className="flex flex-col justify-center">
+      {/* Main Headline */}
+      <h2
+        className="text-3xl sm:text-4xl md:text-[38px] font-normal leading-tight text-[#1C274C] mb-4 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+        style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+      >
+        {heading}
+      </h2>
+
+      {/* Subtitle if present */}
+      {subtitle ? (
+        <h3
+          className="text-xl sm:text-2xl font-normal text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+          style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+        >
+          {subtitle}
+        </h3>
+      ) : null}
+
+      {/* Body Paragraphs */}
+      {paragraphs?.map((paragraph, index) => (
+        <p
+          key={index}
+          className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed mb-3"
+        >
           {paragraph}
         </p>
       ))}
 
+      {/* Questions Section */}
       {questions?.length ? (
-        <>
-          {questionsLabel ? <p className="mt-5 text-body-sm font-semibold text-ink-950">{questionsLabel}</p> : null}
-          <ul className="mt-3 space-y-2">
-            {questions.map((question) => (
-              <li key={question} className="flex items-start gap-2.5">
-                <ArrowRight className="mt-0.5 size-4 shrink-0 text-sage-600" aria-hidden />
-                <span className="text-body-sm leading-snug text-canvas-600">{question}</span>
+        <div className="mt-2 mb-4">
+          {questionsLabel ? (
+            <h3
+              className="text-xl sm:text-2xl font-normal text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            >
+              {questionsLabel}
+            </h3>
+          ) : null}
+
+          <ul className="space-y-2 my-2">
+            {questions.map((question, idx) => (
+              <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 font-normal">
+                <span className="text-[#519B99] shrink-0 font-sans font-medium">→</span>
+                <span>{question}</span>
               </li>
             ))}
           </ul>
-        </>
+        </div>
       ) : null}
 
+      {/* Closing Paragraph */}
       {closingParagraph ? (
-        <p className="mt-4 text-body leading-relaxed text-canvas-600">{closingParagraph}</p>
+        <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed mb-4 italic text-slate-500">
+          {closingParagraph}
+        </p>
       ) : null}
 
+      {/* Medical Disclaimer */}
       {disclaimer ? (
-        <p className="mt-5 text-body-sm leading-relaxed text-canvas-500">
-          <span className="font-semibold text-ink-900">{disclaimerLabel}</span> {disclaimer}
-        </p>
+        <div className="mt-2 pt-3 border-t border-slate-200/60">
+          <strong className="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-1">
+            {disclaimerLabel}
+          </strong>
+          <p className="text-xs text-slate-500 font-light leading-relaxed">
+            {disclaimer}
+          </p>
+        </div>
       ) : null}
     </div>
   )
 
   const imageBlock = (
-    <div className="relative aspect-4/3 h-full w-full overflow-hidden rounded-3xl">
-      <Image
-        src={image.src}
-        alt={image.alt}
-        fill
-        sizes="(min-width: 1024px) 42vw, 100vw"
-        className="object-cover h-full "
-        style={{ objectPosition: image.focalPoint ?? 'center' }}
-      />
+    <div className="relative w-full h-full min-h-[360px] sm:min-h-[420px] rounded-[24px] overflow-hidden shadow-md bg-slate-200">
+      {imageSrc.startsWith('http') ? (
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          className="w-full h-full object-cover object-center absolute inset-0"
+        />
+      ) : (
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          className="object-cover object-center"
+        />
+      )}
     </div>
   )
 
   return (
-    <Section background="page" spacing="md" className={bg}>
-      <Container>
-        <Reveal>
-          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
-            {imageSide === 'left' ? (
-              <>
-                {imageBlock}
-                {textContent}
-              </>
-            ) : (
-              <>
-                {textContent}
-                {imageBlock}
-              </>
-            )}
-          </div>
-        </Reveal>
+    <section className={cn('relative w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8', bg, className)}>
+      <Container className="max-w-6xl mx-auto">
+        <m.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 lg:grid-cols-2 items-stretch gap-10 sm:gap-12 lg:gap-16"
+        >
+          {imageSide === 'left' ? (
+            <>
+              {imageBlock}
+              {textContent}
+            </>
+          ) : (
+            <>
+              <div className="order-2 lg:order-1">{textContent}</div>
+              <div className="order-1 lg:order-2 h-full">{imageBlock}</div>
+            </>
+          )}
+        </m.div>
       </Container>
-    </Section>
+    </section>
   )
 }

@@ -13,8 +13,9 @@ import { ProgramStepsTimeline } from '../compontents-custom/hormoneTherapy/Progr
 import { SafetyAndCandidacy } from '../compontents-custom/hormoneTherapy/SafetyAndCandidacy'
 import { SymptomsHeroCard } from '../compontents-custom/hormoneTherapy/SymptomsHeroCard'
 import { BeforeAfterSliderSection } from '../compontents-custom/hormoneTherapy/BeforeAfterSliderSection'
-
+import { SymptomsLabsReviewPanel } from '../compontents-custom/hormoneTherapy/SymptomsLabsReviewPanel'
 import { MaleHeroBanner } from '../compontents-custom/hormoneTherapy/MaleHeroBanner'
+import { PatientBenefitsSection } from '../compontents-custom/hormoneTherapy/PatientBenefitsSection'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
@@ -58,26 +59,24 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
       ) : null}
 
       <SafetyAndCandidacy
-      bg='bg-sage-100'
+        bg="bg-[#F8F9F5]"
         image={{
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350545/photo-content-38-img_lxshmc.jpg',
           alt: 'A provider reviewing treatment safety with a male patient',
         }}
-        imageSide="left"
-        heading="Monitoring & Adjustments:
-How We Track Progress"
+        imageSide="right"
+        heading="Monitoring & Adjustments: How We Track Progress"
+        subtitle="Ongoing Lab Monitoring & Symptom Review"
         paragraphs={[
+          'Hormone optimization is not a one-time event - it\'s an ongoing process.',
           'At Savannah Age Management Medicine, we continuously monitor both lab values and symptom improvement to ensure your treatment remains safe, effective, and aligned with your goals. Your plan may be adjusted over time based on:',
         ]}
-        questionsLabel="Common patient questions we address:"
         questions={[
           'Follow-up lab results',
           'Symptom changes',
           'Lifestyle, training, or health changes',
-
         ]}
         closingParagraph="Follow-up cadence and lab intervals will be confirmed with the clinical team prior to publishing final timelines."
- disclaimer="BHRT is a medical treatment and should only be initiated under the supervision of a qualified healthcare provider. Individual results vary, and hormone therapy is not intended to diagnose, treat, cure, or prevent disease."
       />
       <SafetyAndCandidacy
       bg=''
@@ -85,7 +84,7 @@ How We Track Progress"
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350494/safety-img_xtu6j4.jpg',
           alt: 'A provider reviewing treatment safety with a male patient',
         }}
-        imageSide="right"
+        imageSide="left"
         heading="Safety & What To Know Before Starting BHRT"
         paragraphs={[
           'BHRT is highly individualized and not appropriate for everyone. Before starting treatment, our providers carefully review your medical history, labs, and risk factors.',
@@ -105,22 +104,34 @@ How We Track Progress"
         title="Cost & What's Included: Transparent Pricing, No Guesswork"
         includedLabel="What's typically included as a patient:"
         included={[
-          { icon: ClipboardList, title: 'Provider Visits And Hormone Assessments' },
-          { icon: Scale, title: 'Body Composition Analysis' },
-          { icon: Utensils, title: 'Nutritional Guidance' },
-          { icon: CalendarCheck, title: 'Functional Movement Recommendations' },
-          { icon: TestTube, title: 'In-Office Lab Draws' },
-          { icon: SlidersHorizontal, title: 'Ongoing Treatment Optimization' },
-       
-          { icon: Tag, title: 'Member Pricing On Supplements And Additional Services' },
+          { iconName: 'provider-visits', title: 'Provider Visits And Hormone Assessments' },
+          { iconName: 'body-composition', title: 'Body Composition Analysis' },
+          { iconName: 'nutritional-guidance', title: 'Nutritional Guidance' },
+          { iconName: 'functional-movement', title: 'Functional Movement Recommendations' },
+          { iconName: 'lab-draws', title: 'In-Office Lab Draws' },
+          { iconName: 'treatment-optimization', title: 'Ongoing Treatment Optimization' },
+          { iconName: 'quickcare-access', title: 'QuickCare Access' },
+          { iconName: 'member-pricing', title: 'Member Pricing On Supplements And Additional Services' },
         ]}
         separateLabel="What is typically separate:"
         separate={[
-          { icon: FlaskConical, title: 'Lab Testing (Often Covered By Insurance)' },
-          { icon: Pill, title: 'Hormone Medications (Coverage Varies By Plan)' },
+          { iconName: 'lab-testing', title: 'Lab Testing (Often Covered By Insurance)' },
+          { iconName: 'hormone-medications', title: 'Hormone Medications (Coverage Varies By Plan)' },
         ]}
         note="Insurance commonly covers lab work but may not cover hormone medications. Flexible financing options are available through PatientFi to help make treatment more accessible."
-        cta={treatment.pricing?.cta}
+      />
+
+      <PatientBenefitsSection
+        imageSrc="https://res.cloudinary.com/khs2rcsr/image/upload/v1785350494/safety-img_xtu6j4.jpg"
+        imageAlt="A provider shaking hands with a male patient"
+        title="Patient Benefits"
+        subtitle="As A Savannah Age Management Medicine Patient, You Receive:"
+        benefits={[
+          'Priority access to care',
+          'Personalized treatment optimization',
+          'Exclusive member pricing on additional services',
+          'Integrated wellness support beyond hormones',
+        ]}
       />
 
       <BeforeAfterSliderSection 
@@ -142,14 +153,7 @@ How We Track Progress"
         ]}
       />
 
-      {testimonials.length ? (
-        <TestimonialSet
-          eyebrow="Patient testimonials"
-          title="What our patients say"
-          testimonials={testimonials}
-          background="alt"
-        />
-      ) : null}
+      <SymptomsLabsReviewPanel />
 
       {treatment.faqs.length ? (
         <FAQAccordion
