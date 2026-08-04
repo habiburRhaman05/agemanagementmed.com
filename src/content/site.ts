@@ -46,6 +46,7 @@ export const locations: Location[] = [
     hours: [
       { days: 'Mon – Thu', time: '9:00 AM – 5:00 PM' },
       { days: 'Friday', time: '9:00 AM – 3:00 PM' },
+      { days: 'Sat – Sun', time: 'Closed' },
     ],
     mapEmbedUrl:
       'https://www.google.com/maps?q=200+Blue+Moon+Xing+Suite+102+Pooler+GA+31322&output=embed',
@@ -60,6 +61,7 @@ export const locations: Location[] = [
     hours: [
       { days: 'Mon – Thu', time: '8:00 AM – 4:00 PM' },
       { days: 'Friday', time: '8:00 AM – 2:00 PM' },
+      { days: 'Sat – Sun', time: 'Closed' },
     ],
     mapEmbedUrl: 'https://www.google.com/maps?q=5+Oak+Street+Statesboro+GA+30458&output=embed',
   },

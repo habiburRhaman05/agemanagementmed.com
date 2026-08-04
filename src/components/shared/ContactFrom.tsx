@@ -11,6 +11,8 @@ import { FieldError } from '@/components/shared/FieldError'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { site } from '@/content/site'
+import { cn } from '@/lib/utils'
 
 const schema = z.object({
   firstName: z.string().min(1, 'Enter your first name'),
@@ -25,9 +27,12 @@ type FormValues = z.infer<typeof schema>
 interface ContactFormProps {
   /** Overrides the submit button's default "Schedule a consultation" label. */
   submitLabel?: string
+  /** 'dark' renders white text/borders on a transparent field for use over a dark background (e.g. the live-site navy form card). */
+  variant?: 'light' | 'dark'
 }
 
-export function ContactForm({ submitLabel }: ContactFormProps) {
+export function ContactForm({ submitLabel, variant = 'light' }: ContactFormProps) {
+  const isDark = variant === 'dark'
   const {
     register,
     handleSubmit,
@@ -39,6 +44,11 @@ export function ContactForm({ submitLabel }: ContactFormProps) {
   const [bookingState, setBookingState] = useState<ActionResult | null>(null)
   // Modal state to handle local success instead of page redirect
   const [showThankYou, setShowThankYou] = useState(false)
+
+  const darkInputClass =
+    'h-[60px] rounded-[10px] border border-white/30 bg-transparent px-6 text-white placeholder:text-white focus:border-white focus-visible:outline-none'
+  const darkTextareaClass =
+    'block w-full rounded-[10px] border border-white/30 bg-transparent px-6 py-4 text-white placeholder:text-white transition-colors focus:border-white focus:outline-none'
 
   return (
     <>
@@ -75,10 +85,13 @@ export function ContactForm({ submitLabel }: ContactFormProps) {
         {/* First Name & Last Name */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
           <div>
-            <Label htmlFor="firstName">First name</Label>
+            <Label htmlFor="firstName" className={cn(isDark && 'sr-only')}>
+              First name
+            </Label>
             <Input
               id="firstName"
-              className="mt-2"
+              placeholder={isDark ? 'First Name' : undefined}
+              className={cn(isDark ? cn(darkInputClass, 'mt-0') : 'mt-2')}
               autoComplete="given-name"
               aria-invalid={Boolean(errors.firstName)}
               aria-describedby={errors.firstName ? 'firstName-error' : undefined}
@@ -88,10 +101,13 @@ export function ContactForm({ submitLabel }: ContactFormProps) {
           </div>
 
           <div>
-            <Label htmlFor="lastName">Last name</Label>
+            <Label htmlFor="lastName" className={cn(isDark && 'sr-only')}>
+              Last name
+            </Label>
             <Input
               id="lastName"
-              className="mt-2"
+              placeholder={isDark ? 'Last Name' : undefined}
+              className={cn(isDark ? cn(darkInputClass, 'mt-0') : 'mt-2')}
               autoComplete="family-name"
               aria-invalid={Boolean(errors.lastName)}
               aria-describedby={errors.lastName ? 'lastName-error' : undefined}
@@ -101,28 +117,17 @@ export function ContactForm({ submitLabel }: ContactFormProps) {
           </div>
         </div>
 
-        {/* Email & Phone */}
+        {/* Phone & Email — matches the live site's field order (Phone before Email) */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
           <div>
-            <Label htmlFor="email">Email address</Label>
-            <Input
-              id="email"
-              type="email"
-              className="mt-2"
-              autoComplete="email"
-              aria-invalid={Boolean(errors.email)}
-              aria-describedby={errors.email ? 'email-error' : undefined}
-              {...register('email')}
-            />
-            <FieldError id="email-error" message={errors.email?.message} />
-          </div>
-
-          <div>
-            <Label htmlFor="phone">Phone</Label>
+            <Label htmlFor="phone" className={cn(isDark && 'sr-only')}>
+              Phone
+            </Label>
             <Input
               id="phone"
               type="tel"
-              className="mt-2"
+              placeholder={isDark ? 'Phone' : undefined}
+              className={cn(isDark ? cn(darkInputClass, 'mt-0') : 'mt-2')}
               autoComplete="tel"
               aria-invalid={Boolean(errors.phone)}
               aria-describedby={errors.phone ? 'phone-error' : undefined}
@@ -130,28 +135,67 @@ export function ContactForm({ submitLabel }: ContactFormProps) {
             />
             <FieldError id="phone-error" message={errors.phone?.message} />
           </div>
+
+          <div>
+            <Label htmlFor="email" className={cn(isDark && 'sr-only')}>
+              Email address
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder={isDark ? 'Email' : undefined}
+              className={cn(isDark ? cn(darkInputClass, 'mt-0') : 'mt-2')}
+              autoComplete="email"
+              aria-invalid={Boolean(errors.email)}
+              aria-describedby={errors.email ? 'email-error' : undefined}
+              {...register('email')}
+            />
+            <FieldError id="email-error" message={errors.email?.message} />
+          </div>
         </div>
 
         {/* Message */}
         <div>
-          <Label htmlFor="message">Message (optional)</Label>
+          <Label htmlFor="message" className={cn(isDark && 'sr-only')}>
+            Message {!isDark && '(optional)'}
+          </Label>
           <textarea
             id="message"
-            className="mt-2 block w-full rounded-lg border border-canvas-300 bg-canvas-50 px-4 py-3 text-body text-canvas-900 transition-colors placeholder:text-gray-400 focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+            className={
+              isDark
+                ? darkTextareaClass
+                : 'mt-2 block w-full rounded-lg border border-canvas-300 bg-canvas-50 px-4 py-3 text-body text-canvas-900 transition-colors placeholder:text-gray-400 focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20'
+            }
             rows={4}
-            placeholder="Tell us about your goals or any specific questions..."
+            placeholder={isDark ? 'Message' : 'Tell us about your goals or any specific questions...'}
             {...register('message')}
           />
           <FieldError id="message-error" message={errors.message?.message} />
         </div>
 
+        {isDark ? (
+          <label className="flex items-start gap-3 text-[13px] italic leading-snug text-white/80">
+            <input
+              type="checkbox"
+              name="opt-in"
+              value="Yes"
+              className="mt-1 size-4 shrink-0 rounded border-white/40 bg-transparent accent-[#519B99]"
+            />
+            <span>{site.legal.smsConsent}</span>
+          </label>
+        ) : null}
+
         <Button
           type="submit"
           size="lg"
           disabled={isSubmitting}
-          className="w-full sm:min-w-[240px] sm:w-auto"
+          className={cn(
+            isDark
+              ? 'block w-full rounded-full bg-[#519B99] px-8 py-4 text-center text-[14px] font-bold uppercase tracking-[2.8px] text-white transition-opacity hover:bg-[#519B99] hover:opacity-50 sm:mx-auto sm:w-auto sm:min-w-[240px]'
+              : 'w-full sm:min-w-[240px] sm:w-auto',
+          )}
         >
-          {isSubmitting ? 'Submitting…' : (submitLabel ?? 'Schedule a consultation')}
+          {isSubmitting ? 'Submitting…' : (submitLabel ?? (isDark ? 'Submit' : 'Schedule a consultation'))}
         </Button>
       </form>
 
