@@ -1,9 +1,3 @@
-import { ArrowRight } from 'lucide-react'
-
-import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Button } from '@/components/ui/Button'
-
 export interface AestheticsPromoProps {
   title: string
   lead: string
@@ -11,28 +5,37 @@ export interface AestheticsPromoProps {
   href: string
 }
 
-/** Compact homepage promo band linking out to the practice's dedicated medical-aesthetics site. */
+/**
+ * The live site's `#hero-d` band — a gradient card holding the aesthetics
+ * pitch on the left and a pink pill CTA on the right. Ported live-site CSS.
+ */
 export function AestheticsPromo({ title, lead, ctaLabel, href }: AestheticsPromoProps) {
   return (
-    <div className="bg-canvas-100 py-6 lg:pb-8 ">
-      <Container>
-        <Reveal>
-          <div className="relative flex flex-col items-start gap-5 overflow-hidden rounded-2xl border border-canvas-300/60 bg-canvas-50 px-6 py-6 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:px-8">
-           
-            <div>
-              <h2 className="font-display text-title-lg text-ink-950">{title}</h2>
-              <p className="mt-1.5 text-body-sm text-canvas-600">{lead}</p>
+    <div id="hero-d">
+      <div className="lg-max-width-1440">
+        <div className="lg-container">
+          <div className="box">
+            <div className="content">
+              <h2 className="lg-title">{title}</h2>
+
+              <div className="lg-text">
+                <p>{lead}</p>
+              </div>
             </div>
 
-            <Button asChild size="md" className="w-full shrink-0 sm:w-auto">
-              <a href={href} target="_blank" rel="noopener noreferrer">
+            <div className="cta">
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lg-btn lg-btn-pink lg-btn-arrow-right"
+              >
                 {ctaLabel}
-                <ArrowRight className="size-4" aria-hidden />
               </a>
-            </Button>
+            </div>
           </div>
-        </Reveal>
-      </Container>
+        </div>
+      </div>
     </div>
   )
 }

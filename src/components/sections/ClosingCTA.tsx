@@ -1,38 +1,43 @@
-import { Phone } from 'lucide-react'
 import Link from 'next/link'
 
-import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
-import { Button } from '@/components/ui/Button'
-import { site } from '@/content/site'
+import { homeMedia } from '@/content/pages/home-media'
 import type { ClosingCtaData } from '@/types/content'
 
-/** Dark band that ends every page. */
-export function ClosingCTA({ title, body, cta }: ClosingCtaData) {
-  return (
-    <Section background="inverse" spacing="xl" className="bg-ink-950! relative overflow-hidden">
-      <div className="absolute inset-0 bg-mesh-navy" aria-hidden />
-      <Container width="prose" className="relative">
-        <Reveal blur strong>
-          <div className="text-center">
-            <h2 className="text-display-md text-canvas-50">{title}</h2>
-            <p className="mx-auto mt-6 max-w-lg text-body-lg text-canvas-50/70">{body}</p>
+interface ClosingCTAProps extends ClosingCtaData {
+  /** Background photo for the band; defaults to the shared placeholder. */
+  backgroundImage?: string
+}
 
-            <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-              <Button asChild size="lg" variant="primary" className="w-full sm:w-auto">
-                <Link href={cta.href}>{cta.label}</Link>
-              </Button>
-              <Button asChild size="lg" variant="outlineInverse" className="w-full sm:w-auto">
-                <a href={site.phoneHref}>
-                  <Phone className="size-4" aria-hidden />
-                  {site.phone}
-                </a>
-              </Button>
+/**
+ * The live site's closing `.hero-bg` band — a full-bleed photo behind a
+ * left-aligned heading, lead and pill CTA. Ported live-site CSS.
+ */
+export function ClosingCTA({
+  title,
+  body,
+  cta,
+  backgroundImage = homeMedia.closingBackground,
+}: ClosingCTAProps) {
+  return (
+    <div className="hero-bg" style={{ backgroundImage: `url('${backgroundImage}')` }}>
+      <div className="gradient" aria-hidden />
+      <div className="lg-max-width-1440">
+        <div className="lg-container">
+          <div className="content">
+            <h2 className="lg-title">{title}</h2>
+
+            <div className="lg-text">
+              <p>{body}</p>
+            </div>
+
+            <div className="cta">
+              <Link href={cta.href} className="lg-btn lg-btn-arrow-right">
+                {cta.label}
+              </Link>
             </div>
           </div>
-        </Reveal>
-      </Container>
-    </Section>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -12,8 +12,16 @@ export const site = {
   url: 'https://www.agemanagementmed.com',
   phone: '(912) 925-6911',
   phoneHref: 'tel:+19129256911',
+  /** The live header's SMS link uses a different line to the main phone. */
+  smsHref: 'sms:+19127375649',
   email: 'info@agemanagementmed.com',
   emailHref: 'mailto:info@agemanagementmed.com',
+  mapHref: 'https://maps.app.goo.gl/7tYe49KUcm6XP6cE7',
+  socials: {
+    facebook: 'https://www.facebook.com/SavannahAgeManagementMedicine',
+    instagram: 'https://www.instagram.com/savannah_age_management/',
+    linkedin: 'https://www.linkedin.com/company/savannah-age-management-medicine/',
+  },
   tagline: 'Optimize your health. Optimize your life.',
   bookingHref: '/book-appointment',
   legal: {

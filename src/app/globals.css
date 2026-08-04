@@ -1,4 +1,7 @@
 @import "tailwindcss";
+/* Ported live-site rules for the rebranded sections. Deliberately unlayered so
+   it outranks Tailwind's layered utilities — see the header of legacy.css. */
+@import "./legacy.css";
 @plugin "@tailwindcss/typography";
 
 /* ==========================================================================

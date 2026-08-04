@@ -1,0 +1,1511 @@
+/* ==========================================================================
+   LEGACY UI — ported verbatim from the live site's stylesheet (download/assets/style.css).
+
+   Why this file exists: the brief is exact visual parity with the live site.
+   Hand-translating each rule into Tailwind utilities introduces a rounding
+   error per declaration, which compounds across a whole site. Porting the
+   real declarations removes that class of bug entirely.
+
+   Conventions:
+   - Generic class names are prefixed `lg-` (btn, container, title …) so they
+     can never collide with Tailwind utilities or existing components.
+   - IDs from the source (#header, #mobile-nav …) are kept as-is; they are
+     unique and their high specificity keeps them stable.
+   - Source palette: teal #519B99 · navy #14214B · ink #141518 · page #F7F8F2
+   ========================================================================== */
+
+/* ------------ FOUNDATION ---------------------- */
+.lg-max-width-1440 {
+  margin: 0 auto;
+  max-width: 1440px;
+  position: relative;
+}
+
+.lg-container {
+  width: 100%;
+  max-width: 1292px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+@media only screen and (max-width: 1399.98px) {
+  .lg-container {
+    width: 90%;
+  }
+}
+
+/* ------------ TYPOGRAPHY ---------------------- */
+.lg-top-title {
+  color: #14214b;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  line-height: 1.5em;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.lg-title {
+  color: #14214b;
+  font-family: var(--font-display);
+  line-height: 1.1em;
+  margin-bottom: 30px;
+}
+
+.lg-white-txt,
+.lg-white-txt p,
+.lg-white-txt .lg-title,
+.lg-white-txt .lg-top-title {
+  color: #fff;
+}
+
+.lg-font-size-48 {
+  font-size: 48px;
+}
+
+/* ------------ BUTTONS ---------------------- */
+.lg-btn {
+  background-color: #519b99;
+  border: 0;
+  border-radius: 100px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  line-height: 1.2em;
+  opacity: 1;
+  padding: 16px 32px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+}
+
+.lg-btn:hover {
+  background-color: #519b99;
+  color: #fff;
+  opacity: 0.5;
+}
+
+.lg-btn-pink,
+.lg-btn-pink:hover {
+  background-color: #bc8496;
+}
+
+.lg-btn-blue,
+.lg-btn-blue:hover {
+  background-color: #14214b;
+}
+
+/* Source used an external arrow-right.svg; inlined here as a data URI so the
+   button keeps its exact geometry without depending on a missing asset. */
+.lg-btn-arrow-right {
+  padding-right: 55px;
+}
+
+.lg-btn-arrow-right::after {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12' fill='none'%3E%3Cpath d='M9.5 1L14.5 6L9.5 11' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 6H1' stroke='white' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 12px;
+  width: 16px;
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: right 0.2s ease;
+}
+
+.lg-btn-arrow-right:hover {
+  opacity: 1;
+}
+
+.lg-btn-arrow-right:hover::after {
+  right: 20px;
+}
+
+.lg-btn-play,
+.lg-btn-play:hover {
+  background-color: #fff;
+  color: #519b98;
+  padding-left: 55px;
+}
+
+.lg-btn-play::before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='16' viewBox='0 0 14 16' fill='none'%3E%3Cpath d='M13 8L1 15V1L13 8Z' fill='%23519B98'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 16px;
+  width: 14px;
+  left: 30px;
+  line-height: 1em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lg-btn-play:hover {
+  opacity: 0.5;
+}
+
+/* ------------ HEADER ---------------------- */
+#header {
+  left: 0;
+  padding: 28px 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+#header.header-colored {
+  background-color: #58617c;
+}
+
+#header .lg-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#header .logo {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+#header .logo a:hover {
+  opacity: 1;
+}
+
+#header .menu {
+  flex: 1 1 0;
+}
+
+#header .menu > ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#header .menu > ul > li {
+  flex: 0 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  line-height: 1.7em;
+  margin-right: 50px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+#header .menu > ul > li.has-submenu {
+  padding-right: 18px;
+}
+
+#header .menu > ul > li:last-child {
+  margin-right: 0;
+}
+
+#header .menu > ul > li > .submenu-icon {
+  font-size: 8px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.4s ease;
+}
+
+/* The source used `<a href="javascript:void(0)">` for submenu parents; a real
+   <button> is used instead for accessibility and styled to render identically. */
+#header .menu > ul > li a,
+#header .menu > ul > li > button {
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  line-height: 1.2em;
+  text-align: center;
+  text-decoration: none;
+  transition: opacity 0.4s ease;
+}
+
+#header .menu > ul > li > button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+#header .menu > ul > li a:hover,
+#header .menu > ul > li > button:hover {
+  opacity: 0.5;
+}
+
+#header .menu > ul > li > a::after,
+#header .menu > ul > li > button::after {
+  content: '';
+  height: 6px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
+
+#header .menu > ul > li:hover > .submenu-icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+#header .menu > ul > li:hover ul {
+  margin-top: 6px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#header .menu > ul > li:hover > a::after {
+  pointer-events: auto;
+}
+
+#header .menu ul li ul {
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.25);
+  display: block;
+  background-color: #fff;
+  left: -20px;
+  list-style: none;
+  margin: 0;
+  margin-top: 12px;
+  min-width: 320px;
+  opacity: 0;
+  overflow: hidden;
+  padding: 32px;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  z-index: 2;
+  transition: opacity 0.4s ease, margin-top 0.4s ease;
+}
+
+#header .menu ul li ul li {
+  border-bottom: 1px solid rgba(20, 33, 75, 0.2);
+  color: #15224c;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.2em;
+  margin-right: 0;
+  text-transform: capitalize;
+}
+
+#header .menu ul li ul li:last-child {
+  border-bottom: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#header .menu ul li ul li:first-child a {
+  margin-top: 0;
+}
+
+#header .menu ul li ul li:last-child a {
+  margin-bottom: 0;
+  padding-right: 0;
+}
+
+#header .menu ul li ul li a {
+  display: block;
+  margin: 15px 0;
+  padding-right: 20px;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+#header .menu ul li ul li a .submenu-arrow {
+  color: #15224c;
+  margin-top: -1px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#header .menu ul li ul li:last-child a .submenu-arrow {
+  right: 0;
+}
+
+#header .menu ul li ul li a:hover {
+  opacity: 0.5;
+}
+
+#header .cta,
+#header .phone,
+#header .sms {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+#header .phone,
+#header .sms {
+  display: none;
+}
+
+#header .phone a,
+#header .sms a {
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+#header .phone a,
+#header .sms a {
+  display: inline-flex;
+  align-items: center;
+}
+
+#header .sms {
+  margin-left: 18px;
+}
+
+#header .hamburger {
+  flex: 0 0 auto;
+  display: none;
+  width: auto;
+  margin-left: 18px;
+}
+
+#header .hamburger .box {
+  cursor: pointer;
+  height: 20px;
+  margin-left: auto;
+  position: relative;
+  width: 30px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+#header .hamburger .box div {
+  background-color: #fff;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+#header .hamburger .box div:first-child {
+  top: 0;
+}
+
+#header .hamburger .box div:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#header .hamburger .box div:last-child {
+  bottom: 0;
+}
+
+@media only screen and (max-width: 1399.98px) {
+  #header .logo img {
+    width: 150px;
+    height: auto;
+  }
+
+  #header .menu > ul > li {
+    margin-right: 25px;
+  }
+}
+
+@media only screen and (max-width: 1199.98px) {
+  #header .menu > ul > li {
+    margin-right: 40px;
+  }
+
+  #header .phone {
+    display: block;
+  }
+
+  #header .cta {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  #header .logo {
+    flex: 1 1 0;
+  }
+
+  #header .menu,
+  #header .cta {
+    display: none;
+  }
+
+  #header .hamburger {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  #header .sms {
+    display: block;
+  }
+}
+
+/* ------------ MOBILE NAV ---------------------- */
+#mobile-nav {
+  background-color: #fff;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  height: 100%;
+  right: 0;
+  position: fixed;
+  top: 0;
+  max-width: 350px;
+  width: 90%;
+  transform: translateX(100%);
+  transition: transform 0.4s;
+  z-index: 15;
+}
+
+#mobile-nav.is-open {
+  transform: translateX(0);
+}
+
+#mobile-nav .menu-contact {
+  overflow-y: auto;
+  height: calc(100% - 210px);
+}
+
+#mobile-nav .menu ul {
+  list-style: none;
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+#mobile-nav .menu ul li {
+  color: #141518;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2em;
+  margin-bottom: 40px;
+  padding-right: 30px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+#mobile-nav .menu ul li:last-child {
+  margin-bottom: 0;
+}
+
+#mobile-nav .menu ul li .submenu-icon {
+  display: block;
+  font-size: 16px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+#mobile-nav .menu ul li a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+
+#mobile-nav .menu ul li ul {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+  padding-top: 20px;
+}
+
+#mobile-nav .menu ul li ul li {
+  margin-bottom: 20px;
+  padding-right: 0;
+  text-transform: none;
+}
+
+#mobile-nav .menu ul li.menu-li-active .submenu-icon {
+  transform: rotate(180deg);
+}
+
+#mobile-nav .close {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+}
+
+#mobile-nav .close .box {
+  cursor: pointer;
+  height: 14px;
+  position: relative;
+  width: 20px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+#mobile-nav .close .box div {
+  background-color: #141518;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+#mobile-nav .close .box div:first-child {
+  top: 0;
+}
+
+#mobile-nav .close .box div:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#mobile-nav .close .box div:last-child {
+  bottom: 0;
+}
+
+#mobile-nav .close .text {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2em;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+
+#mobile-nav .contact {
+  padding: 0 20px 20px;
+}
+
+#mobile-nav .contact .box {
+  background-color: #519b99;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#mobile-nav .contact p {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+#mobile-nav .contact p:last-child {
+  margin-bottom: 0;
+}
+
+#mobile-nav .contact p a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  gap: 10px;
+}
+
+#mobile-nav .bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 20px 20px;
+}
+
+#mobile-nav .social ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+#mobile-nav .social ul li a {
+  color: #141518;
+  text-decoration: none;
+}
+
+#mobile-nav .copyright {
+  color: #141518;
+  font-size: 12px;
+  line-height: 1.4em;
+}
+
+#mobile-nav-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  transition: opacity 0.4s ease;
+  width: 100%;
+  z-index: 14;
+}
+
+#mobile-nav-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ------------ GRID (Bootstrap row/col equivalent) ----------------------
+   The source is built on Bootstrap's grid. Only the row/column mechanics it
+   actually uses are reproduced here — named `lg-grid` rather than `lg-row` so
+   it can't disturb the header's own flex row. */
+.lg-grid {
+  --lg-gx: 24px;
+  --lg-gy: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--lg-gy));
+  margin-right: calc(-0.5 * var(--lg-gx));
+  margin-left: calc(-0.5 * var(--lg-gx));
+}
+
+.lg-grid > * {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--lg-gx) * 0.5);
+  padding-left: calc(var(--lg-gx) * 0.5);
+  margin-top: var(--lg-gy);
+}
+
+.lg-grid.lg-items-center {
+  align-items: center;
+}
+
+.lg-col-lg-6 {
+  width: 100%;
+}
+
+@media only screen and (min-width: 992px) {
+  .lg-col-lg-6 {
+    width: 50%;
+  }
+}
+
+/* The source separates blocks with fixed-height `.flexspace` spacers. */
+.lg-flexspace-100 {
+  margin-top: 100px;
+}
+
+/* The source pulls the awards band up over the banner by 80px. */
+.lg-flexspace-neg80 {
+  margin-top: -80px;
+}
+
+.lg-title.lg-max-width-300 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+}
+
+.lg-flexspace-60 {
+  margin-top: 120px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .lg-flexspace-60 {
+    margin-top: 60px;
+  }
+}
+
+.lg-grid.lg-justify-center {
+  justify-content: center;
+}
+
+/* ------------ LINKS + CHECK LISTS ---------------------- */
+.lg-link {
+  color: #519b98;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  opacity: 1;
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.4s ease;
+}
+
+.lg-link:hover {
+  opacity: 0.5;
+}
+
+.lg-link-arrow-right::after {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22' fill='none'%3E%3Ccircle cx='11' cy='11' r='10.25' stroke='%23519B98' stroke-width='1.5'/%3E%3Cpath d='M9.5 7.5L13 11L9.5 14.5' stroke='%23519B98' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 22px;
+  width: 22px;
+  line-height: 1em;
+  margin-left: 14px;
+  vertical-align: middle;
+}
+
+.lg-list-check ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lg-list-check.two-col ul {
+  column-count: 2;
+  column-gap: 10px;
+}
+
+.lg-list-check ul li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.lg-list-check ul li:last-child {
+  margin-bottom: 0;
+}
+
+.lg-list-check ul li::before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='10' viewBox='0 0 13 10' fill='none'%3E%3Cpath d='M1 5L4.5 8.5L12 1' stroke='%23519B98' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 10px;
+  left: 0;
+  position: absolute;
+  top: 7px;
+  width: 13px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .lg-list-check.two-col ul {
+    display: inline-block;
+    column-count: 1;
+    column-gap: 0;
+  }
+}
+
+/* ------------ SECTION HEADER (.content-d) ---------------------- */
+.lg-content-d .lg-top-title {
+  text-align: center;
+}
+
+.lg-content-d .lg-title {
+  color: #14214b;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.lg-content-d .lg-text {
+  text-align: center;
+}
+
+/* Source paragraph rhythm, scoped so it can't leak into untouched sections. */
+.lg-text p {
+  color: #111214;
+  line-height: 1.5em;
+  margin-bottom: 20px;
+}
+
+.lg-text > *:last-child,
+.lg-text p:last-child {
+  margin-bottom: 0;
+}
+
+.lg-text a {
+  color: #051e5c;
+  text-decoration: underline;
+}
+
+/* Beats `.lg-text p` on specificity so inverted blocks stay white. */
+.lg-text.lg-white-txt p,
+.lg-white-txt .lg-text p,
+.lg-white-txt .lg-text a {
+  color: #fff;
+}
+
+.lg-max-width-800 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+}
+
+.lg-max-width-925 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 925px;
+}
+
+/* ------------ AWARDS BAND (#awards-b) ---------------------- */
+#awards-b {
+  position: relative;
+  /* Sits above the banner it overlaps. */
+  z-index: 2;
+}
+
+#awards-b .box {
+  background-color: #14214b;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  filter: drop-shadow(0 24px 54px rgba(11, 32, 85, 0.1))
+    drop-shadow(0 97px 97px rgba(20, 58, 89, 0.09));
+  overflow: hidden;
+  padding: 50px 60px;
+}
+
+#awards-b .award {
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 0 3.8px 47.498px 0 rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  padding: 10px 20px;
+}
+
+#awards-b .award .lg-grid {
+  --lg-gx: 24px;
+  --lg-gy: 24px;
+}
+
+#awards-b .award .item {
+  width: 50%;
+  text-align: center;
+}
+
+#awards-b .award .item img {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+}
+
+@media only screen and (min-width: 576px) {
+  #awards-b .award .item {
+    width: 33.333333%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #awards-b .award .item {
+    width: 16.666667%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #awards-b .award .lg-grid {
+    justify-content: space-between;
+  }
+
+  #awards-b .award .item {
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  #awards-b .box {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #awards-b .award {
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  #awards-b .box {
+    padding: 40px 30px;
+  }
+}
+
+/* ------------ COLUMN BOX (#column-box-o) ---------------------- */
+#column-box-o {
+  position: relative;
+}
+
+#column-box-o .lg-grid {
+  --lg-gy: 45px;
+}
+
+#column-box-o .box {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  margin-left: 80px;
+  padding: 38px 40px 38px 120px;
+  position: relative;
+}
+
+#column-box-o .img {
+  left: -75px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#column-box-o .img::after {
+  border: 1px solid #7aaba9;
+  border-radius: 100%;
+  content: '';
+  height: calc(100% + 16px);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  width: calc(100% + 16px);
+  transform: translate(-50%, -50%);
+}
+
+#column-box-o .content {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+
+#column-box-o .top {
+  flex: 0 1 auto;
+  width: 100%;
+}
+
+#column-box-o .top > *:last-child {
+  margin-bottom: 0;
+}
+
+#column-box-o .lg-title {
+  color: #14214b;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+#column-box-o .lg-title a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+
+#column-box-o .lg-text {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#column-box-o .lg-text p {
+  font-size: 14px;
+}
+
+#column-box-o .cta {
+  align-self: flex-end;
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+/* ------------ WELCOME VIDEO (.video-d) ----------------------
+   The source wraps the heading and video in a pale blue band. */
+.lg-welcome-band {
+  background-color: rgba(163, 195, 210, 0.5);
+  padding: 100px 0;
+}
+
+.lg-welcome-band .lg-content-d {
+  margin-bottom: 60px;
+}
+
+.video-d {
+  position: relative;
+}
+
+.video-d .box {
+  border-radius: 20px;
+  height: 0;
+  overflow: hidden;
+  padding-top: 45%;
+  position: relative;
+}
+
+.video-d .box .img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.video-d .box a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.video-d .box a .play-icon {
+  flex: 0 1 auto;
+  height: 100px;
+  width: 100px;
+  transition: transform 0.3s ease;
+}
+
+.video-d .box a:hover .play-icon {
+  transform: scale(1.06);
+}
+
+@media only screen and (max-width: 991.98px) {
+  .video-d .box {
+    padding-top: 56.25%;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .video-d .box a .play-icon {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+/* ------------ HERO DEFAULT (#hero-d) ---------------------- */
+#hero-d {
+  position: relative;
+}
+
+#hero-d .lg-container {
+  max-width: 1050px;
+}
+
+#hero-d .box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #fff 0%, #f8f9fd 50%, #dce4f1 100%);
+  border-radius: 10px;
+  padding: 48px 50px;
+}
+
+#hero-d .content {
+  flex: 0 0 auto;
+  padding-right: 50px;
+}
+
+#hero-d .lg-title {
+  color: #14214b;
+  font-size: 32px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+#hero-d .cta {
+  flex: 1 1 0;
+  text-align: right;
+}
+
+/* ------------ HERO BACKGROUND (.hero-bg) ---------------------- */
+.hero-bg {
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 110px 0;
+  position: relative;
+}
+
+.hero-bg .gradient {
+  background: linear-gradient(90deg, #406388 38.21%, rgba(63, 101, 138, 0) 69.19%);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.hero-bg .lg-container {
+  position: relative;
+}
+
+.hero-bg .lg-top-title {
+  color: #fff;
+}
+
+.hero-bg .lg-title {
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.hero-bg .lg-text {
+  margin-bottom: 50px;
+}
+
+.hero-bg .lg-text p {
+  color: #fff;
+  font-size: 20px;
+}
+
+.hero-bg.centered-content .content {
+  text-align: center;
+}
+
+.hero-bg.centered-content .lg-text {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ------------ HERO PLAIN (#hero-p) ---------------------- */
+#hero-p {
+  background: linear-gradient(90deg, #519b98 0%, #4e9592 100%);
+  padding: 80px 0;
+  position: relative;
+}
+
+#hero-p .lg-container {
+  max-width: 1037px;
+}
+
+#hero-p .content {
+  margin: 0 auto;
+  max-width: 620px;
+  text-align: center;
+}
+
+#hero-p .lg-title {
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 0;
+  text-transform: capitalize;
+}
+
+/* ------------ STEPS (#steps-d) ---------------------- */
+#steps-d {
+  position: relative;
+}
+
+#steps-d .lg-container {
+  max-width: 1037px;
+}
+
+#steps-d .step {
+  padding-bottom: 40px;
+  position: relative;
+}
+
+#steps-d .step:last-child {
+  padding-bottom: 0;
+}
+
+#steps-d .box {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  min-height: 300px;
+  margin-left: 80px;
+  padding: 68px 108px 68px 300px;
+  position: relative;
+}
+
+#steps-d .img {
+  left: -100px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#steps-d .img::after {
+  border: 1px solid #7aaba9;
+  border-radius: 100%;
+  content: '';
+  height: calc(100% + 25px);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  width: calc(100% + 25px);
+  transform: translate(-50%, -50%);
+}
+
+#steps-d .number {
+  background-color: #bc8496;
+  border-radius: 50px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 36px;
+  height: 50px;
+  left: 195px;
+  line-height: 50px;
+  position: absolute;
+  text-align: center;
+  top: 57px;
+  width: 50px;
+  z-index: 3;
+}
+
+#steps-d .lg-title {
+  color: #14214b;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+#steps-d .lg-text p {
+  font-size: 16px;
+}
+
+/* ------------ TESTIMONIALS (#testimonial-d) ---------------------- */
+#testimonial-d {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 96px 0 46px;
+  position: relative;
+}
+
+#testimonial-d::before {
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(11, 32, 85, 0.75) 100%);
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#testimonial-d .lg-container {
+  position: relative;
+}
+
+#testimonial-d .content {
+  max-width: 600px;
+  position: relative;
+  width: 100%;
+}
+
+#testimonial-d .lg-top-title {
+  color: #fff;
+}
+
+#testimonial-d .lg-title {
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+#testimonial-d .lg-text p {
+  color: #fff;
+}
+
+#testimonial-d .box {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  padding: 45px 55px;
+}
+
+#testimonial-d .box .lg-text {
+  flex: 0 1 auto;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+#testimonial-d .box .lg-text p,
+#testimonial-d .box p,
+#testimonial-d .box .name {
+  color: #111214;
+}
+
+#testimonial-d .box .rating {
+  flex: 0 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-self: flex-end;
+  width: 100%;
+}
+
+#testimonial-d .box .name {
+  font-weight: 700;
+}
+
+#testimonial-d .box .star {
+  line-height: 1em;
+  color: #f5a623;
+  display: flex;
+  gap: 2px;
+}
+
+#testimonial-d .slider {
+  margin-top: 50px;
+}
+
+#testimonial-d .box {
+  max-width: 650px;
+}
+
+#testimonial-d .box .quote {
+  margin-bottom: 20px;
+}
+
+#testimonial-d .nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+#testimonial-d .arrow {
+  background: #fff;
+  border: 0;
+  border-radius: 50%;
+  color: #14214b;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  width: 44px;
+  transition: opacity 0.4s ease;
+}
+
+#testimonial-d .arrow:hover {
+  opacity: 0.6;
+}
+
+#steps-d .steps-cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* ------------ RESPONSIVE TYPE ----------------------
+   The source drops its 48px display sizes at the tablet/phone breakpoints. */
+@media only screen and (max-width: 991.98px) {
+  .lg-content-d .lg-title,
+  .hero-bg .lg-title,
+  #hero-p .lg-title,
+  #testimonial-d .lg-title,
+  .lg-font-size-48 {
+    font-size: 36px;
+  }
+
+  #column-box-o .box {
+    margin-left: 0;
+    padding: 100px 30px 38px;
+  }
+
+  #column-box-o .img {
+    left: 50%;
+    top: 40px;
+    transform: translateX(-50%);
+  }
+
+  #steps-d .box {
+    margin-left: 0;
+    min-height: 0;
+    padding: 120px 30px 40px;
+    text-align: center;
+  }
+
+  #steps-d .img {
+    left: 50%;
+    top: 40px;
+    transform: translateX(-50%);
+  }
+
+  #steps-d .number {
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  #steps-d .step {
+    padding-top: 40px;
+  }
+
+  #hero-d .box {
+    justify-content: center;
+    text-align: center;
+  }
+
+  #hero-d .content {
+    padding-right: 0;
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  #hero-d .cta {
+    flex: 0 0 auto;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .lg-content-d .lg-title,
+  .hero-bg .lg-title,
+  #hero-p .lg-title,
+  #testimonial-d .lg-title,
+  .lg-font-size-48 {
+    font-size: 30px;
+  }
+
+  #column-box-o .lg-title,
+  #steps-d .lg-title {
+    font-size: 26px;
+  }
+
+  #testimonial-d .box {
+    padding: 30px 25px;
+  }
+
+  #hero-d .box {
+    padding: 32px 24px;
+  }
+
+  .hero-bg {
+    padding: 70px 0;
+  }
+}

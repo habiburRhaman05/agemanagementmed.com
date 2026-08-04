@@ -1,40 +1,18 @@
 'use client'
 
-import { AnimatePresence, m } from 'framer-motion'
-import { ArrowLeft, ArrowRight, Quote, Star } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Star } from 'lucide-react'
 import { useState } from 'react'
 
-import { Container } from '@/components/shared/Container'
-import { Eyebrow } from '@/components/shared/Eyebrow'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
+import { homeMedia } from '@/content/pages/home-media'
 import type { Testimonial } from '@/types/content'
 
-/* ── Google Logo SVG ────────────────────────────────────────────── */
-
-function GoogleLogo() {
+/** The source's opening-quote mark, reproduced from its inline SVG. */
+function QuoteMark() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      className="size-4 shrink-0"
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="65" height="44" viewBox="0 0 65 44" fill="none" aria-hidden>
       <path
-        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"
-        fill="#4285F4"
-      />
-      <path
-        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-        fill="#34A853"
-      />
-      <path
-        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-        fill="#FBBC05"
-      />
-      <path
-        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-        fill="#EA4335"
+        d="M64.9992 31.7236C64.9992 34.9421 63.7762 37.7099 61.3302 40.0271C59.013 42.2157 56.1164 43.3099 52.6405 43.3099C47.8772 43.3099 43.8864 41.6363 40.668 38.2892C37.5783 34.9421 36.0335 30.6294 36.0335 25.3512C36.0335 15.6959 39.7668 8.80854 47.2336 4.68897C52.6405 1.72803 57.0175 0.247559 60.3647 0.247559C61.7808 0.247559 62.4888 0.762506 62.4888 1.7924C62.4888 2.69355 61.7164 3.33723 60.1716 3.72345C49.4865 6.55565 44.1439 11.8982 44.1439 19.7511C44.1439 23.227 45.045 26.188 46.8474 28.634C47.1048 24.2569 49.8727 22.0684 55.1509 22.0684C57.9831 22.0684 60.3003 23.0339 62.1026 24.965C64.0337 26.7673 64.9992 29.0202 64.9992 31.7236ZM29.4679 31.7236C29.4679 34.9421 28.2449 37.7099 25.7989 40.0271C23.4817 42.2157 20.6495 43.3099 17.3023 43.3099C12.4103 43.3099 8.4195 41.6363 5.32983 38.2892C2.24015 34.8133 0.695312 30.4363 0.695312 25.1581C0.695312 15.6316 4.42867 8.80854 11.8954 4.68897C17.3023 1.72803 21.615 0.247559 24.8334 0.247559C26.2495 0.247559 26.9576 0.762506 26.9576 1.7924C26.9576 2.69355 26.1851 3.33723 24.6403 3.72345C14.0839 6.55565 8.80571 11.9626 8.80571 19.9442C8.80571 23.2914 9.70687 26.188 11.5092 28.634C11.7667 24.2569 14.4701 22.0684 19.6196 22.0684C22.4518 22.0684 24.769 23.0339 26.5714 24.965C28.5024 26.7673 29.4679 29.0202 29.4679 31.7236Z"
+        fill="#051E5C"
       />
     </svg>
   )
@@ -43,125 +21,82 @@ function GoogleLogo() {
 interface TestimonialSetProps {
   eyebrow?: string
   title: string
+  lead?: string
   width?: string
   testimonials: Testimonial[]
   background?: 'page' | 'alt' | 'accent'
+  /** Background photo for the band; defaults to the shared placeholder. */
+  backgroundImage?: string
 }
 
-/** Small, quiet, single-quote slider — a fade/rise crossfade, no cinematic scale or giant glyph. */
+/**
+ * The live site's `#testimonial-d` band — a photo background with a navy
+ * gradient, intro copy on the left and a white quote card carrying the review,
+ * star rating and reviewer name. Ported live-site CSS.
+ */
 export function TestimonialSet({
   eyebrow,
   title,
-  width,
+  lead,
   testimonials,
-  background = 'page',
+  backgroundImage = homeMedia.testimonialsBackground,
 }: TestimonialSetProps) {
-  const [tuple, setTuple] = useState<[number, number]>([0, 0]) // [index, direction]
-  const [index, direction] = tuple
+  const [index, setIndex] = useState(0)
 
-  const total = testimonials.length
-  const current = testimonials[index]
+  if (testimonials.length === 0) return null
 
-  if (!current) return null
-
-  const go = (delta: number) => {
-    setTuple([((index + delta) % total + total) % total, delta])
-  }
-
-  const variants = {
-    enter: (dir: number) => ({ x: dir > 0 ? 16 : -16, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({ x: dir < 0 ? 16 : -16, opacity: 0 }),
-  }
+  const active = testimonials[index]
+  const go = (delta: number) =>
+    setIndex((i) => (i + delta + testimonials.length) % testimonials.length)
 
   return (
-    <Section background={background} spacing="lg">
-      <Container>
-        <Reveal>
-          <div className={ `  ${width ? width : ""} flex flex-col items-center text-center `}>
-            {eyebrow ? <Eyebrow className="mb-4">{eyebrow}</Eyebrow> : null}
-            <h2 className="text-display-sm sm:text-display-md text-ink-950 w-full mb-12">
-              {title}
-            </h2>
+    <div id="testimonial-d" style={{ backgroundImage: `url('${backgroundImage}')` }}>
+      <div className="lg-max-width-1440">
+        <div className="lg-container">
+          <div className="content">
+            {eyebrow ? <h2 className="lg-top-title">{eyebrow}</h2> : null}
+            <h3 className="lg-title">{title}</h3>
+            {lead ? (
+              <div className="lg-text">
+                <p>{lead}</p>
+              </div>
+            ) : null}
+          </div>
 
-            <div className="relative w-full min-h-64">
-              <AnimatePresence mode="wait" custom={direction}>
-                <m.div
-                  key={index}
-                  custom={direction}
-                  variants={variants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className="flex flex-col items-center rounded-2xl border border-canvas-300/60 bg-canvas-50 px-6 py-10 shadow-sm sm:px-16 sm:py-12"
-                >
-                  <Quote className="size-5 text-sage-300" aria-hidden />
+          <div className="slider">
+            <div className="box">
+              <div className="lg-text">
+                <div className="quote">
+                  <QuoteMark />
+                </div>
+                <p>{active.quote}</p>
+              </div>
 
-                  <blockquote className="mt-5 text-body-lg sm:text-title-lg leading-relaxed text-ink-900 max-w-4xl">
-                    {current.quote}
-                  </blockquote>
-
-                  <div className="mt-7 flex gap-1 text-sage-600">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="size-3.5 fill-current" />
+              <div className="rating">
+                <div className="star-name">
+                  <div className="star" aria-label="5 out of 5 stars">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} size={16} fill="currentColor" strokeWidth={0} aria-hidden />
                     ))}
                   </div>
-
-                  <figcaption className="mt-4 flex flex-col items-center gap-2">
-                    <span className="font-semibold text-body text-ink-950">{current.author}</span>
-                    {/* {current.source === 'google' ? (
-                      <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50/60 px-3 py-1 text-body-sm font-medium text-blue-700 shadow-sm">
-                        <GoogleLogo />
-                        Google Review
-                      </span>
-                    ) : null} */}
-                      <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50/60 px-3 py-1 text-body-sm font-medium text-blue-700 shadow-sm">
-                        <GoogleLogo />
-                        Google Review
-                      </span>
-                  </figcaption>
-                </m.div>
-              </AnimatePresence>
+                  <div className="name">{active.author}</div>
+                </div>
+              </div>
             </div>
 
-            {total > 1 ? (
-              <div className="mt-8 flex items-center gap-5">
-                <button
-                  type="button"
-                  onClick={() => go(-1)}
-                  aria-label="Previous testimonial"
-                  className="inline-flex size-10 items-center justify-center rounded-full border border-canvas-300 text-ink-900 transition-colors hover:border-sage-600 hover:text-sage-700 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:ring-offset-2"
-                >
-                  <ArrowLeft className="size-4" aria-hidden />
+            {testimonials.length > 1 ? (
+              <div className="nav">
+                <button type="button" className="arrow" onClick={() => go(-1)} aria-label="Previous testimonial">
+                  <ArrowLeft size={18} aria-hidden />
                 </button>
-                <div className="flex gap-2">
-                  {testimonials.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setTuple([i, i > index ? 1 : -1])}
-                      aria-label={`Go to testimonial ${i + 1}`}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        i === index ? 'w-6 bg-sage-600' : 'w-1.5 bg-canvas-300 hover:bg-sage-400'
-                      }`}
-                    />
-                  ))}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => go(1)}
-                  aria-label="Next testimonial"
-                  className="inline-flex size-10 items-center justify-center rounded-full border border-canvas-300 text-ink-900 transition-colors hover:border-sage-600 hover:text-sage-700 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:ring-offset-2"
-                >
-                  <ArrowRight className="size-4" aria-hidden />
+                <button type="button" className="arrow" onClick={() => go(1)} aria-label="Next testimonial">
+                  <ArrowRight size={18} aria-hidden />
                 </button>
               </div>
             ) : null}
           </div>
-        </Reveal>
-      </Container>
-    </Section>
+        </div>
+      </div>
+    </div>
   )
 }
-
-

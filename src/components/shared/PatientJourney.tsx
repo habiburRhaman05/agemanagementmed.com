@@ -1,18 +1,12 @@
-import { ArrowRight } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 
-import { Container } from '@/components/shared/Container'
-import { Section } from '@/components/shared/Section'
-import { SectionHeader } from '@/components/shared/SectionHeader'
-import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 import { Media } from '@/types/content'
 
 export interface JourneyStep {
   title: string
   body: string
   /** Optional — the photo sits inside the card next to the copy. */
-  image?: Media 
+  image?: Media
   url?: string
 }
 
@@ -30,105 +24,68 @@ export interface PatientJourneyProps {
   background?: 'page' | 'alt' | 'raised'
 }
 
-export function PatientJourney({
-  eyebrow,
-  title,
-  lead,
-  steps,
-  cta,
-  background = 'page',
-}: PatientJourneyProps) {
+/**
+ * The live site's `#steps-d` block — a centered `.content-d` header above a
+ * vertical stack of white cards, each with a circular photo overlapping its
+ * left edge and a numbered mauve badge. Ported live-site CSS.
+ */
+export function PatientJourney({ eyebrow, title, lead, steps, cta }: PatientJourneyProps) {
   return (
-    <Section background={background} spacing="lg">
-      <Container>
-        {/* Custom Header to match the image (green pill + centered serif headline) */}
-        <div className="mb-14 flex flex-col items-center text-center">
-        
-         <SectionHeader eyebrow={eyebrow} title={title} lead={lead} align='center' />
-        </div>
-
-
-        {/* Steps & Timeline Container */}
-        <div className="mx-auto max-w-3xl">
-          <StaggerGroup as="div" stagger={0.12} className="flex flex-col">
-            {steps.map((step, index) => {
-              const isLast = index === steps.length - 1
-
-              return (
-                <StaggerItem as="div" key={step.title} className="relative">
-                  <div className="flex flex-row items-stretch gap-x-4 sm:gap-x-6 mb-6 sm:mb-8 relative">
-                    
-                    {/* ─── Timeline Column ─── */}
-                    {/* CHANGED: Removed pt-6 sm:pt-8. Added justify-center. This perfectly centers the dot exactly in the middle of the card's height. */}
-                    <div className=" hidden sm:flex flex-col justify-center items-center w-10 sm:w-12 shrink-0 z-10 bg-transparent">
-                      <div className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full bg-sage-600 font-serif text-[15px] font-medium text-white shadow-md shadow-rose-900/20 ring-4 ring-white/95">
-                        {index + 1}
-                      </div>
-                    </div>
-
-                    {/* ─── Card Column ─── */}
-                    <div className="flex  flex-1   flex-col-reverse sm:flex-row h-full min-h-[200px] sm:min-h-[180px] overflow-hidden rounded-[2rem] border border-slate-200/60 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5  sm:items-stretch">
-                      
-                      {/* Text Content (Left side) */}
-                      <div className="flex flex-1 flex-col justify-center h-full p-6 text-center sm:p-8 sm:text-left">
-                        <h3 className="font-serif text-xl leading-snug text-navy-900 sm:text-2xl">
-                          {step.title}
-                        </h3>
-                        <p className="mt-2.5 text-body-sm text-canvas-600 leading-relaxed">
-                          {step.body}
-                        </p>
-                      </div>
-
-                      {/* Image (Right side) - Modified Existing Div to become a circular roundel */}
-                      {step.url && (
-                        <div className="relative mx-auto flex shrink-0 my-auto items-center justify-center border-t border-slate-200/30 bg-white/50 p-4 size-24 sm:size-28 lg:size-32 overflow-hidden rounded-full sm:border-t-0 sm:border-l">
-                          {/* Inner relative wrapper preserves the padded white ring;
-                              `fill` alone would bleed the image edge-to-edge. */}
-                          <div className="relative h-full w-full overflow-hidden rounded-full">
-                            <Image
-                              src={step.url}
-                              alt={step.title}
-                              fill
-                              sizes="128px"
-                              className="object-cover"
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                  </div>
-
-                  {/* ─── Continuous Line bridging the gap ─── */}
-                  {/* 
-                      CHANGED: Changed top-[3.25rem] to top-1/2.
-                      Because the dot is now perfectly centered, top-1/2 starts the dashed line
-                      at the exact center of the dot, bridging perfectly across the gap.
-                  */}
-                  {!isLast && (
-                    <div className="sm:block absolute hidden left-[1.25rem] sm:left-[1.5rem] top-1/2 bottom-[-2rem] w-[2px] border-l-2 border-dashed border-slate-400/60" />
-                  )}
-                </StaggerItem>
-              )
-            })}
-          </StaggerGroup>
-        </div>
-
-        {cta && (
-          <div className="mt-12 flex justify-center">
-            <Link
-              href={cta.href}
-              className="group inline-flex items-center gap-2 rounded-full bg-sage-600 px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-canvas-50 shadow-lg shadow-sage-900/20 transition-all duration-300 hover:bg-sage-700 hover:shadow-xl"
-            >
-              {cta.label}
-              <ArrowRight
-                className="size-4 transition-transform duration-200 group-hover:translate-x-1"
-                aria-hidden
-              />
-            </Link>
+    <>
+      <div className="lg-content-d">
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            {eyebrow ? <h2 className="lg-top-title">{eyebrow}</h2> : null}
+            <h3 className="lg-title">{title}</h3>
+            {lead ? (
+              <div className="lg-text lg-max-width-800">
+                <p>{lead}</p>
+              </div>
+            ) : null}
           </div>
-        )}
-      </Container>
-    </Section>
+        </div>
+      </div>
+
+      <div className="lg-flexspace-60" />
+
+      <div id="steps-d">
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            {steps.map((step, index) => (
+              <div className="step" key={step.title}>
+                <div className="box">
+                  {step.url ? (
+                    <div className="img">
+                      {/* Fixed 200px circular badge inside a ported layout —
+                          matches the source markup exactly. */}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={step.url} alt={step.title} width={200} height={200} loading="lazy" />
+                    </div>
+                  ) : null}
+
+                  <div className="content">
+                    <div className="number">{index + 1}</div>
+
+                    <h3 className="lg-title">{step.title}</h3>
+
+                    <div className="lg-text">
+                      <p>{step.body}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {cta ? (
+              <div className="steps-cta">
+                <Link href={cta.href} className="lg-btn lg-btn-arrow-right">
+                  {cta.label}
+                </Link>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
