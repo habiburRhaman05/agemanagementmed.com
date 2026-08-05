@@ -47,8 +47,8 @@ export function SexualHealthConcerns({
   ctaHref = '/book-appointment',
 }: SexualHealthConcernsProps) {
   return (
-    <Section background="page" spacing="md">
-      <Container>
+    <Section background="page" spacing="md" className="bg-[#D2DCED]">
+      <Container bleed className="overflow-hidden rounded-2xl bg-white pb-12">
         <Reveal>
           <div className="grid overflow-hidden rounded-3xl bg-ink-950 shadow-xl lg:grid-cols-[42%_58%]">
             <div className="relative min-h-56 lg:min-h-full">
@@ -64,12 +64,12 @@ export function SexualHealthConcerns({
             </div>
 
             <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
-              <h2 className="font-display text-display-sm text-canvas-50">{heading}</h2>
+              <h2 className="font-display text-[20px] text-canvas-50 lg:text-[24px]">{heading}</h2>
 
               {paragraphs.map((paragraph, index) => (
                 <p
                   key={paragraph}
-                  className={`text-body leading-relaxed text-canvas-50/75 ${index === 0 ? 'mt-4' : 'mt-3'}`}
+                  className={`text-body font-light leading-relaxed text-canvas-50/75 ${index === 0 ? 'mt-4' : 'mt-3'}`}
                 >
                   {paragraph}
                 </p>
@@ -83,7 +83,7 @@ export function SexualHealthConcerns({
                 {symptoms.map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <ArrowRight className="mt-0.5 size-4 shrink-0 text-sage-400" aria-hidden />
-                    <span className="text-body-sm leading-snug text-canvas-50/90">{item}</span>
+                    <span className="text-body-sm font-light leading-snug text-canvas-50/90">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -93,9 +93,9 @@ export function SexualHealthConcerns({
 
         <div className="mx-auto mt-12 max-w-2xl text-center">
           <Reveal>
-            <h2 className="font-display text-display-sm text-ink-950">{featuresHeading}</h2>
+            <h2 className="font-display text-[36px] text-ink-950 lg:text-[48px]">{featuresHeading}</h2>
             {featuresParagraphs.map((paragraph) => (
-              <p key={paragraph} className="mt-4 text-body leading-relaxed text-canvas-600">
+              <p key={paragraph} className="mt-4 text-body font-light leading-relaxed text-canvas-600">
                 {paragraph}
               </p>
             ))}
@@ -113,7 +113,7 @@ export function SexualHealthConcerns({
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700">
                   <feature.icon className="size-5" strokeWidth={1.75} aria-hidden />
                 </span>
-                <p className="text-body-sm leading-relaxed text-canvas-600">
+                <p className="text-body-sm font-light leading-relaxed text-canvas-600">
                   <span className="font-semibold text-ink-900">{feature.title}</span> —{' '}
                   {feature.description}
                 </p>
@@ -122,8 +122,8 @@ export function SexualHealthConcerns({
           ))}
         </StaggerGroup>
 
-        <div className="mt-8 text-center">
-          <Button asChild size="lg">
+        <div className="mt-8 mb-6 text-center">
+          <Button asChild size="lg" className="font-bold">
             <Link href={ctaHref}>
               {ctaLabel}
               <ArrowRight className="size-4" aria-hidden />

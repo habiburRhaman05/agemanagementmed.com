@@ -91,7 +91,7 @@ export function HeroEditorial({
   const showVideoButton = Boolean(actions?.videoModal && actions?.videoSource)
 
   // Smaller, non-full-width CTA on mobile; the "lg" size (via the `size` prop) still applies from `sm:` up.
-  const ctaSizeClass = 'h-11 px-6 text-body-sm uppercase tracking-wide sm:h-14 sm:px-9 sm:text-body'
+  const ctaSizeClass = 'h-11 px-6 text-body-sm font-bold uppercase tracking-wide sm:h-14 sm:px-9 sm:text-body'
 
   return (
     <section
@@ -117,13 +117,13 @@ export function HeroEditorial({
       <Container className="relative z-10 py-35 md:py-50 lg:py-60 !px-3">
         <div className="max-w-3xl text-center sm:text-left">
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
+            className="text-[40px] sm:text-[46px] lg:text-[56px] font-normal leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
           </h1>
 
-          <p className="mt-4 max-w-2xl text-sm sm:text-base md:text-[17px] font-light leading-relaxed text-white/90 md:mt-6">
+          <p className="mt-4 max-w-2xl text-base font-light leading-relaxed text-white/90 md:mt-6">
             {lead}
           </p>
 

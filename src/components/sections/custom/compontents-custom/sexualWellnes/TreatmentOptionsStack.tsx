@@ -46,21 +46,21 @@ function TreatmentCard({ data }: { data: TreatmentOptionCard }) {
         />
 
         <div className="flex-1">
-          <h3 className={`font-display text-title-md ${isFeatured ? 'text-canvas-50' : 'text-ink-950'}`}>
+          <h3 className={`font-display text-[20px] lg:text-[24px] ${isFeatured ? 'text-canvas-50' : 'text-ink-950'}`}>
             {data.title}
           </h3>
-          <p className={`mt-2 text-body-sm leading-relaxed ${isFeatured ? 'text-canvas-50/80' : 'text-canvas-600'}`}>
+          <p className={`mt-2 text-body-sm font-light leading-relaxed ${isFeatured ? 'text-canvas-50/80' : 'text-canvas-600'}`}>
             {data.description}
           </p>
 
-          <p className={`mt-4 text-label font-semibold uppercase tracking-wide ${isFeatured ? 'text-canvas-50' : 'text-ink-950'}`}>
+          <p className={`mt-4 text-label font-bold uppercase tracking-wide ${isFeatured ? 'text-canvas-50' : 'text-ink-950'}`}>
             {data.label}
           </p>
           <ul className="mt-2 grid grid-cols-1 gap-x-6 gap-y-1.5 sm:grid-cols-2">
             {data.bullets.map((bullet) => (
               <li
                 key={bullet}
-                className={`flex items-start gap-2 text-body-sm ${isFeatured ? 'text-canvas-50/90' : 'text-canvas-600'}`}
+                className={`flex items-start gap-2 text-body-sm font-light ${isFeatured ? 'text-canvas-50/90' : 'text-canvas-600'}`}
               >
                 <ArrowRight
                   className={`mt-0.5 size-4 shrink-0 ${isFeatured ? 'text-sage-400' : 'text-sage-600'}`}
@@ -72,7 +72,7 @@ function TreatmentCard({ data }: { data: TreatmentOptionCard }) {
           </ul>
 
           {data.cta ? (
-            <Button asChild size="sm" variant={isFeatured ? 'inverse' : 'primary'} className="mt-5">
+            <Button asChild size="sm" variant={isFeatured ? 'inverse' : 'primary'} className="mt-5 font-bold">
               <Link href={data.cta.href}>
                 {data.cta.label}
                 <ArrowRight className="size-4" aria-hidden />
