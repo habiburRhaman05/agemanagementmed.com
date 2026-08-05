@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "waldoughmediaclients.s3.us-east-2.amazonaws.com" },
       { protocol: "https", hostname: "assets.cdn.filesafe.space" },
+      { protocol: "https", hostname: "www.agemanagementmed.com" },
     ],
   },
   typescript: {

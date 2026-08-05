@@ -837,6 +837,11 @@
   text-align: center;
 }
 
+.lg-content-d.text-left .lg-title,
+.lg-content-d.text-left .lg-text {
+  text-align: left;
+}
+
 /* Source paragraph rhythm, scoped so it can't leak into untouched sections. */
 .lg-text p {
   color: #111214;
@@ -871,6 +876,47 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 925px;
+}
+
+.lg-max-width-400 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+}
+
+.lg-max-width-600 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+}
+
+.lg-max-width-700 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
+}
+
+.lg-max-width-825 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 825px;
+}
+
+/* The source's `.flexspace` spacers, at the heights this template uses. */
+.lg-flexspace-40 {
+  margin-top: 40px;
+}
+
+.lg-flexspace-50 {
+  margin-top: 50px;
+}
+
+.lg-flexspace-80 {
+  padding-top: 80px;
+}
+
+.lg-text-center {
+  text-align: center;
 }
 
 /* ------------ AWARDS BAND (#awards-b) ---------------------- */
@@ -1507,5 +1553,1839 @@
 
   .hero-bg {
     padding: 70px 0;
+  }
+}
+
+/* ==========================================================================
+   TREATMENT PAGE SECTIONS
+   Ported from download/assets/style.css for the PRP / hair-restoration
+   template (download/_platelet-rich-plasma-hair_female_.html).
+   Same convention as above: `lg-` on generic names, source IDs kept as-is.
+   ========================================================================== */
+
+/* ------------ GRID COLUMNS (additional widths) ---------------------- */
+.lg-col-md-6,
+.lg-col-lg-4,
+.lg-col-lg-5,
+.lg-col-lg-7,
+.lg-col-xl-5,
+.lg-col-xl-7 {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .lg-col-md-6 {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .lg-col-lg-4 {
+    width: 33.333333%;
+  }
+
+  .lg-col-lg-5 {
+    width: 41.666667%;
+  }
+
+  .lg-col-lg-7 {
+    width: 58.333333%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .lg-col-xl-5 {
+    width: 41.666667%;
+  }
+
+  .lg-col-xl-7 {
+    width: 58.333333%;
+  }
+}
+
+.lg-grid.lg-justify-center {
+  justify-content: center;
+}
+
+.lg-grid.lg-gutter-y-24 {
+  --lg-gy: 24px;
+}
+
+.lg-grid.lg-gutter-y-30 {
+  --lg-gy: 30px;
+}
+
+.lg-grid.lg-gutter-x-0 {
+  --lg-gx: 0px;
+}
+
+/* ------------ LIST: ARROW RIGHT ---------------------- */
+.lg-list-arrow-right h5 {
+  font-family: var(--font-sans), 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.lg-list-arrow-right ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lg-list-arrow-right ul li {
+  margin-bottom: 10px;
+  padding-left: 32px;
+  position: relative;
+  text-align: left;
+}
+
+.lg-list-arrow-right ul li:last-child {
+  margin-bottom: 0;
+}
+
+.lg-list-arrow-right ul li:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='12' viewBox='0 0 22 12' fill='none'%3E%3Cpath d='M15.5 1L20.5 6L15.5 11' stroke='%23519B98' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M20 6H1' stroke='%23519B98' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+  content: '';
+  height: 12px;
+  left: 0;
+  position: absolute;
+  top: 7px;
+  width: 22px;
+}
+
+/* ------------ SHARED: decorative radial glow ---------------------- */
+.lg-radial-gradient {
+  background: #587dbd;
+  border-radius: 50%;
+  filter: blur(500px);
+  pointer-events: none;
+  position: absolute;
+}
+
+/* ------------ GROUP BAND (.group) ---------------------- */
+.lg-group {
+  position: relative;
+}
+
+/* ------------ PHOTO CONTENT C (#photo-content-c) ---------------------- */
+#photo-content-c {
+  position: relative;
+}
+
+#photo-content-c .radial-gradient {
+  background: #587dbd;
+  border-radius: 50%;
+  bottom: 170px;
+  filter: blur(500px);
+  height: 790px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 790px;
+}
+
+#photo-content-c .box {
+  background-color: #fff;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+#photo-content-c .top {
+  background-color: #14214b;
+  border-radius: 20px;
+}
+
+#photo-content-c .img {
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+}
+
+#photo-content-c .top .content {
+  padding: 87px 77px;
+}
+
+#photo-content-c .top .lg-title {
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-transform: none;
+}
+
+#photo-content-c .top .lg-text p {
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+#photo-content-c .top .lg-text .lg-list-arrow-right {
+  margin-bottom: 30px;
+}
+
+#photo-content-c .top .lg-text .lg-list-arrow-right h5,
+#photo-content-c .top .lg-text .lg-list-arrow-right ul li {
+  color: #fff;
+  text-align: left;
+}
+
+#photo-content-c .top .lg-text > *:last-child {
+  margin-bottom: 0;
+}
+
+#photo-content-c .bottom {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 90px 100px;
+}
+
+#photo-content-c .bottom .content {
+  margin-bottom: 50px;
+}
+
+#photo-content-c .bottom .lg-title {
+  color: #0b2055;
+  font-size: 48px;
+  margin-bottom: 0;
+  max-width: 450px;
+  text-transform: none;
+}
+
+#photo-content-c .bottom .lg-title.lg-max-width-none {
+  margin-bottom: 30px;
+  max-width: none;
+}
+
+#photo-content-c .bottom .lg-text p {
+  color: #14214b;
+  font-size: 20px;
+}
+
+#photo-content-c .bottom .lg-text > *:last-child {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  #photo-content-c .top .lg-title,
+  #photo-content-c .top .lg-text,
+  #photo-content-c .top .lg-text .lg-list-arrow-right h5 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  #photo-content-c .top .lg-text .lg-list-arrow-right ul,
+  #photo-content-c .bottom .lg-text .lg-list-arrow-right ul {
+    display: inline-block;
+  }
+
+  #photo-content-c .img {
+    height: 0;
+    padding-top: 56.25%;
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  #photo-content-c .bottom {
+    padding: 60px 40px;
+  }
+
+  #photo-content-c .top .content {
+    padding: 60px 40px;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #photo-content-c .top .lg-text .lg-list-arrow-right h5 {
+    text-align: center;
+  }
+
+  #photo-content-c .top .content,
+  #photo-content-c .bottom {
+    padding: 40px 30px;
+  }
+
+  #photo-content-c .top .lg-title,
+  #photo-content-c .bottom .lg-title {
+    font-size: 30px;
+  }
+
+  #photo-content-c .img {
+    padding-top: 100%;
+  }
+}
+
+/* ------------ COLUMN ICON D (#column-icon-d) ---------------------- */
+#column-icon-d {
+  position: relative;
+}
+
+#column-icon-d.lg-max-width-770 {
+  margin: 0 auto;
+  max-width: 770px;
+}
+
+#column-icon-d .item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#column-icon-d .icon {
+  flex: 0 1 auto;
+  text-align: center;
+  width: 46px;
+}
+
+#column-icon-d .content {
+  flex: 0 1 auto;
+  display: block !important;
+  margin-bottom: 0 !important;
+  padding-left: 20px;
+  width: calc(100% - 46px);
+}
+
+#column-icon-d .content p {
+  color: #14214b;
+  font-size: 20px;
+}
+
+#column-icon-d .content > *:last-child {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 575.98px) {
+  #column-icon-d .lg-grid {
+    --lg-gy: 40px;
+  }
+
+  #column-icon-d .item {
+    justify-content: center;
+  }
+
+  #column-icon-d .icon {
+    margin-bottom: 20px;
+  }
+
+  #column-icon-d .content {
+    padding-left: 0;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* ------------ PHOTO CONTENT D (.photo-content-d) ---------------------- */
+.photo-content-d {
+  background-color: #14214b;
+  position: relative;
+}
+
+.photo-content-d .lg-container {
+  position: relative;
+}
+
+.photo-content-d .lg-grid {
+  --lg-gx: 0px;
+  position: relative;
+}
+
+.photo-content-d .lg-list-arrow-right {
+  margin-bottom: 20px;
+}
+
+.photo-content-d .img-box {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  height: 600px;
+  width: 100%;
+}
+
+.photo-content-d .content {
+  padding: 100px 7%;
+}
+
+.photo-content-d .lg-top-title {
+  color: #fff;
+  font-family: var(--font-sans), 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.photo-content-d .lg-title {
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.photo-content-d .lg-text {
+  margin-bottom: 50px;
+}
+
+.photo-content-d .lg-text * {
+  color: #fff;
+}
+
+.photo-content-d .lg-text > *:last-child,
+.photo-content-d .content > *:last-child {
+  margin-bottom: 0;
+}
+
+.photo-content-d.blue-text .lg-top-title,
+.photo-content-d.blue-text .lg-title,
+.photo-content-d.blue-text .lg-text * {
+  color: #0b2055;
+}
+
+.photo-content-d.transparent {
+  background-color: transparent;
+}
+
+.photo-content-d.step .lg-container {
+  max-width: 945px !important;
+}
+
+.photo-content-d.step .lg-grid {
+  background-color: #15214a;
+  border-radius: 20px;
+}
+
+.photo-content-d.step .img-box {
+  height: 300px;
+}
+
+.photo-content-d.step .content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 60px;
+}
+
+.photo-content-d.step .content-box {
+  flex: 0 1 auto;
+  width: 100%;
+}
+
+.photo-content-d.step .content-box > *:last-child {
+  margin-bottom: 0;
+}
+
+.photo-content-d.step .lg-top-title {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.photo-content-d.step .lg-title {
+  font-size: 32px;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  .photo-content-d .content {
+    padding: 100px calc(5% + 12px);
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  .photo-content-d .content,
+  .photo-content-d .cta {
+    text-align: center;
+  }
+
+  .photo-content-d ul {
+    display: inline-block;
+  }
+
+  .photo-content-d.transparent .img {
+    margin-bottom: 30px;
+  }
+
+  .photo-content-d.transparent .content,
+  .photo-content-d.padding-right .content,
+  .photo-content-d.padding-left .content {
+    padding: 0 !important;
+  }
+
+  .photo-content-d .lg-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .photo-content-d .lg-title {
+    font-size: 36px;
+  }
+
+  .photo-content-d.step .img-box {
+    height: 0;
+    padding-top: 100%;
+  }
+
+  .photo-content-d .content,
+  .photo-content-d.step .content {
+    padding: 40px 30px;
+  }
+}
+
+/* ------------ COLUMN BOX I-2 (#column-box-i-2) ---------------------- */
+#column-box-i-2 {
+  position: relative;
+}
+
+#column-box-i-2 .lg-grid .box {
+  background: #e8f4f9;
+  border-radius: 20px;
+  height: 100%;
+  padding: 40px 28px;
+}
+
+#column-box-i-2 .lg-grid > div:nth-child(2) .box {
+  background-color: #d0eaf7;
+}
+
+#column-box-i-2 .lg-grid > div:nth-child(3) .box {
+  background-color: #d1e1e9;
+}
+
+#column-box-i-2 .icon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  min-height: 65px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#column-box-i-2 .icon svg {
+  flex: 0 1 auto;
+}
+
+#column-box-i-2 .lg-title {
+  color: #14214b;
+  font-size: 32px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#column-box-i-2 .lg-text {
+  text-align: center;
+}
+
+#column-box-i-2 .lg-text * {
+  color: #14214b;
+}
+
+#column-box-i-2 .lg-text ul {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+/* Tailwind's preflight strips list markers; the source relies on the browser
+   default here, so restore it for this card's plain bullet list. */
+#column-box-i-2 .lg-text .list ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+#column-box-i-2 .lg-text ul li {
+  margin-bottom: 10px;
+}
+
+#column-box-i-2 .lg-text ul li:last-child {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 767.98px) {
+  #column-box-i-2 .lg-text ul {
+    display: inline-block;
+  }
+}
+
+/* ------------ CONTENT BOX D (#content-box-d) ---------------------- */
+#content-box-d {
+  position: relative;
+}
+
+#content-box-d .lg-container {
+  max-width: 1205px !important;
+}
+
+#content-box-d .box {
+  background: #14214b;
+  border-radius: 20px;
+  height: 100%;
+  padding: 45px 40px;
+}
+
+#content-box-d .lg-title {
+  color: #fff;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+#content-box-d .lg-text * {
+  color: #fff;
+}
+
+@media only screen and (max-width: 767.98px) {
+  #content-box-d .box {
+    text-align: center;
+  }
+}
+
+/* ------------ FAQ (#faq-d) ---------------------- */
+/* The source brackets the FAQ with 100px `.flexspace` spacers. */
+.lg-faq-section {
+  padding: 100px 0;
+  position: relative;
+}
+
+#faq-d {
+  position: relative;
+}
+
+/* Category header bars (BHRT's grouped FAQ); the source's flat lists simply
+   render no bar at all. */
+#faq-d .faq-category {
+  background-color: #14214b;
+  border-radius: 10px;
+  color: #fff;
+  font-family: var(--font-display), 'Bodoni-72', serif;
+  font-size: 20px;
+  margin-bottom: 25px;
+  padding: 18px 28px;
+}
+
+#faq-d .lg-container > .box {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 90px 110px;
+}
+
+#faq-d .item {
+  border-bottom: 1px solid #d9d9d9;
+  cursor: pointer;
+  margin-bottom: 25px;
+  padding-left: 50px;
+}
+
+#faq-d .item:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+#faq-d .item .lg-title {
+  background: transparent;
+  border: 0;
+  color: #051e5c;
+  display: block;
+  font-family: var(--font-display), 'Bodoni-72', serif;
+  font-size: 32px;
+  line-height: 1.1em;
+  margin-bottom: 0;
+  padding: 0 0 25px;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+#faq-d .item .toggle {
+  height: 17px;
+  left: -50px;
+  position: absolute;
+  top: 50%;
+  width: 17px;
+  transform: translateY(-50%) rotate(0deg);
+}
+
+#faq-d .item .toggle:before {
+  background-color: #051e5c;
+  content: '';
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+#faq-d .item .toggle:after {
+  background-color: #051e5c;
+  content: '';
+  height: 100%;
+  left: 50%;
+  position: absolute;
+  top: 0;
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+#faq-d .item.active .toggle:after {
+  display: none;
+}
+
+#faq-d .item .content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+
+#faq-d .item.active .content {
+  grid-template-rows: 1fr;
+}
+
+#faq-d .item .content > .box {
+  overflow: hidden;
+}
+
+#faq-d .item .content > .box > div {
+  padding-bottom: 25px;
+}
+
+#faq-d .item .content p {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 991.98px) {
+  #faq-d .lg-container > .box {
+    padding: 50px;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #faq-d .lg-container > .box {
+    padding: 40px 30px;
+  }
+
+  #faq-d .item {
+    padding-left: 30px;
+  }
+
+  #faq-d .item .toggle {
+    left: -30px;
+  }
+
+  #faq-d .item .lg-title {
+    font-size: 26px;
+  }
+}
+
+/* ==========================================================================
+   WEIGHT-LOSS PAGE SECTIONS
+   Ported from download/assets/style.css for the concierge weight-loss
+   template (download/_concierge-medical-weight-loss_{female,male}.html).
+   ========================================================================== */
+
+/* ------------ GRID: extra columns/utilities this template needs ----------------------
+   .lg-col-lg-6 already exists (ported earlier for the header grid). */
+.lg-order-1 {
+  order: 1;
+}
+
+.lg-order-2 {
+  order: 2;
+}
+
+@media only screen and (min-width: 992px) {
+  .lg-order-lg-1 {
+    order: 1;
+  }
+
+  .lg-order-lg-2 {
+    order: 2;
+  }
+}
+
+.lg-justify-end {
+  justify-content: flex-end;
+}
+
+/* ------------ LIST: ICON 2 (pill badges, .list-icon-2) ---------------------- */
+.lg-list-icon-2 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lg-list-icon-2.two-col ul {
+  column-count: 2;
+  column-gap: 24px;
+}
+
+.lg-list-icon-2 ul li {
+  background-color: #fff;
+  border: 0.5px solid #d9d9d9;
+  border-radius: 100px;
+  margin-bottom: 15px;
+  padding: 15px 15px 15px 62px;
+  position: relative;
+  text-align: left;
+}
+
+.lg-list-icon-2 ul li:last-child {
+  margin-bottom: 0;
+}
+
+.lg-list-icon-2 ul li svg {
+  left: 15px;
+  position: absolute;
+  top: 50%;
+  width: 32px;
+  transform: translateY(-50%);
+}
+
+@media only screen and (max-width: 575.98px) {
+  .lg-list-icon-2.two-col ul {
+    column-count: 1;
+    column-gap: 0;
+  }
+}
+
+/* ------------ PHOTO CONTENT C, STYLE 2 (#photo-content-c.style-2) ----------------------
+   The plain #photo-content-c rules (top/bottom/box/img/radial-gradient) are
+   defined above, under the hair-restoration section — .style-2 only overrides
+   the corner radii and padding, so it's layered on top of those. */
+#photo-content-c.style-2 .top {
+  border-bottom-right-radius: 0;
+}
+
+#photo-content-c.style-2 .top .img {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#photo-content-c.style-2 .bottom {
+  padding: 0;
+}
+
+#photo-content-c.style-2 .bottom .lg-grid {
+  --lg-gx: 0px;
+}
+
+#photo-content-c.style-2 .bottom .content {
+  margin-bottom: 0;
+  padding: 100px;
+}
+
+#photo-content-c.style-2 .bottom .lg-title {
+  margin-bottom: 30px;
+}
+
+#photo-content-c.style-2 .bottom .lg-text * {
+  color: #14214b;
+  font-size: 16px;
+}
+
+#photo-content-c.style-2 .bottom .img {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Below 1200px the top/bottom rows stack (image above content), so the
+   image reclaims full rounding on the corners it shared with its neighbor. */
+@media only screen and (max-width: 1199.98px) {
+  #photo-content-c.style-2 .top {
+    border-bottom-left-radius: 0;
+  }
+
+  #photo-content-c.style-2 .top .img {
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  #photo-content-c.style-2 .bottom .img {
+    border-bottom-left-radius: 20px;
+  }
+
+  #photo-content-c.style-2 .bottom .content {
+    padding: 87px 77px;
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  #photo-content-c.style-2 .bottom .content {
+    padding: 60px 40px;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #photo-content-c.style-2 .bottom .content {
+    padding: 40px 30px;
+  }
+}
+
+/* ------------ CARDS I (.cards-i) ---------------------- */
+.cards-i {
+  position: relative;
+}
+
+.cards-i .lg-grid {
+  --lg-gx: 30px;
+  --lg-gy: 35px;
+}
+
+.cards-i .box {
+  background: linear-gradient(180deg, #f8f8f8 0%, #fff 100%);
+  border-radius: 12px;
+  height: 100%;
+  padding: 70px 30px;
+}
+
+.cards-i .box *:last-child {
+  margin-bottom: 0;
+}
+
+.cards-i .icon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 80px;
+  margin-bottom: 30px;
+}
+
+.cards-i .icon svg {
+  flex: 0 1 auto;
+}
+
+.cards-i .lg-title {
+  color: #0b2055;
+  font-size: 24px;
+  margin-bottom: 24px;
+  text-transform: capitalize;
+}
+
+/* Source: .cards-i .box/.icon only center below 768px — desktop is left-aligned. */
+@media only screen and (max-width: 767.98px) {
+  .cards-i .box {
+    text-align: center;
+  }
+
+  .cards-i .icon {
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .cards-i .box {
+    padding: 40px 30px;
+  }
+}
+
+/* ------------ PHOTO CONTENT CU (.photo-content-cu — image+list card row) ---------------------- */
+.photo-content-cu {
+  position: relative;
+}
+
+.photo-content-cu .lg-container {
+  max-width: 1076px !important;
+}
+
+.photo-content-cu .lg-grid {
+  --lg-gx: 0px;
+  background-color: #f7f8f2;
+  border: 1px solid #dedede;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.photo-content-cu .lg-list-arrow-right {
+  margin-bottom: 20px;
+}
+
+.photo-content-cu .img {
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+}
+
+.photo-content-cu .content {
+  padding: 60px;
+}
+
+.photo-content-cu .lg-title {
+  color: #051e5c;
+  font-size: 38px;
+}
+
+@media only screen and (max-width: 991.98px) {
+  .photo-content-cu .img {
+    padding-top: 56.25%;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .photo-content-cu .img {
+    padding-top: 100%;
+  }
+
+  .photo-content-cu .content {
+    padding: 40px 30px;
+  }
+
+  .photo-content-cu .lg-title {
+    font-size: 30px;
+  }
+}
+
+/* ------------ PHOTO CONTENT D, FULL IMG (.photo-content-d.full-img) ----------------------
+   Base .photo-content-d rules are defined above (hair-restoration section);
+   .full-img only changes the image treatment to a flush, uncropped panel. */
+.photo-content-d.full-img .img-box {
+  border-radius: 0;
+  height: 100%;
+}
+
+@media only screen and (max-width: 991.98px) {
+  .photo-content-d.full-img .img-box {
+    padding-top: 56.25%;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .photo-content-d.full-img .img-box {
+    height: 0;
+    padding-top: 100%;
+  }
+}
+
+/* ==========================================================================
+   GLP-1 MICRODOSING PAGE SECTIONS
+   Ported from download/assets/style.css for the GLP-1 microdosing template
+   (download/_glp-1-microdosing_{female,male}.html).
+   ========================================================================== */
+
+.lg-col-xl-6 {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1200px) {
+  .lg-col-xl-6 {
+    width: 50%;
+  }
+
+  .lg-order-xl-1 {
+    order: 1;
+  }
+
+  .lg-order-xl-2 {
+    order: 2;
+  }
+}
+
+/* ------------ LIST: ICON (plain, .list-icon — distinct from .list-icon-2's pill badges) ---------------------- */
+.lg-list-icon ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lg-list-icon ul li {
+  margin-bottom: 20px;
+  padding-left: 45px;
+  position: relative;
+  text-align: left;
+}
+
+.lg-list-icon ul li:last-child {
+  margin-bottom: 0;
+}
+
+.lg-list-icon ul li svg {
+  left: 0;
+  position: absolute;
+  top: 50%;
+  width: 25px;
+  transform: translateY(-50%);
+}
+
+/* Icon pinned to the top of the row instead of vertically centered — used
+   when the text beside it wraps to multiple lines. */
+.lg-list-icon.top-icon ul li svg {
+  top: 0;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   SHOCKWAVE THERAPY / SINGLE-AUDIENCE TREATMENT PAGE SECTIONS
+   Ported from download/assets/style.css (download/_shockwave-therapy_.html).
+   ========================================================================== */
+
+/* ------------ LIST: CHECK 2 (bigger badge checklist, .list-check-2) ----------------------
+   Distinct from .lg-list-check (small inline check) — bigger 26x24 badge,
+   navy list text. The source's own check-2 SVG asset wasn't present in the
+   downloaded bundle, so this is a faithful reconstruction in the same teal. */
+.lg-list-check-2 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lg-list-check-2.two-col ul {
+  column-count: 2;
+  column-gap: 20px;
+}
+
+.lg-list-check-2 ul li {
+  color: #14214b;
+  margin-bottom: 10px;
+  padding-left: 42px;
+  position: relative;
+  text-align: left;
+}
+
+.lg-list-check-2 ul li:last-child {
+  margin-bottom: 0;
+}
+
+.lg-list-check-2 ul li::before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='24' viewBox='0 0 26 24' fill='none'%3E%3Ccircle cx='13' cy='12' r='11' stroke='%23519B98' stroke-width='2'/%3E%3Cpath d='M7.5 12.5L10.8 16L18.5 8' stroke='%23519B98' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 24px;
+  left: 0;
+  position: absolute;
+  width: 26px;
+}
+
+.lg-list-check-2 ul li strong {
+  color: #14214b;
+  font-family: var(--font-display), 'Bodoni-72', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .lg-list-check-2.two-col ul {
+    column-count: 1;
+    column-gap: 0;
+  }
+}
+
+/* ------------ COLUMN BOX I (#column-box-i — icon-left card, 2-col) ---------------------- */
+#column-box-i {
+  position: relative;
+}
+
+#column-box-i .lg-container {
+  max-width: 1054px !important;
+}
+
+#column-box-i.max-width-container-1292 .lg-container {
+  max-width: 1292px !important;
+}
+
+#column-box-i .lg-grid {
+  --lg-gy: 30px;
+}
+
+#column-box-i .box {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border: 1px solid #ececec;
+  border-radius: 20px;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  padding: 38px 30px;
+}
+
+#column-box-i .icon {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+#column-box-i .content {
+  flex: 1 1 0;
+  padding-left: 24px;
+}
+
+#column-box-i .lg-title {
+  color: #14214b;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+#column-box-i .lg-text > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Inside #photo-content-c (not used here, but matches the source's scoped override). */
+#photo-content-c #column-box-i .lg-title,
+#photo-content-c #column-box-i .lg-text {
+  text-align: left !important;
+}
+
+#column-box-i.style-2 .box {
+  background: #fafafa;
+  border: 1px solid #d9d9d9;
+}
+
+#column-box-i.style-2 .lg-text * {
+  color: #14214b;
+  font-size: 16px;
+}
+
+#column-box-i.style-2 .lg-text h3 {
+  font-size: 20px !important;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  #photo-content-c #column-box-i .lg-title,
+  #photo-content-c #column-box-i .lg-text {
+    text-align: center !important;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #column-box-i .icon,
+  #column-box-i .content {
+    padding: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  #column-box-i .icon {
+    margin-bottom: 20px;
+  }
+
+  #column-box-i .lg-title {
+    font-size: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ==========================================================================
+   PERIMENOPAUSE / MULTI-SECTION TREATMENT PAGE ADDITIONS
+   Ported from download/assets/style.css (download/_perimenopause-menopause_.html).
+   ========================================================================== */
+
+#photo-content-c.style-2 .top .cta {
+  margin-top: 50px;
+  text-align: left;
+}
+
+/* ------------ PHOTO CONTENT D: black-text / content-left / content-right ---------------------- */
+.photo-content-d.black-text .lg-top-title,
+.photo-content-d.black-text .lg-title,
+.photo-content-d.black-text .lg-text * {
+  color: #111214;
+}
+
+.photo-content-d.content-left:not(.full-img) .content {
+  padding-left: 0;
+  padding-right: 130px;
+}
+
+.photo-content-d.content-left .img {
+  text-align: right;
+}
+
+.photo-content-d.content-right:not(.full-img) .content {
+  padding-left: 130px;
+  padding-right: 0;
+}
+
+.photo-content-d.content-right .img {
+  text-align: left;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  .photo-content-d.content-right:not(.full-img) .content {
+    padding-left: 65px;
+  }
+
+  .photo-content-d.content-left:not(.full-img) .content {
+    padding-right: 65px;
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  .photo-content-d.content-left:not(.full-img) .content,
+  .photo-content-d.content-right:not(.full-img) .content {
+    padding: 0;
+  }
+}
+
+/* ------------ GROUP: custom-group-2 / custom-group-3 (boxed content-d band) ---------------------- */
+.lg-group.custom-group-2 .box,
+.lg-group.custom-group-3 .box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 90px 100px;
+}
+
+.lg-group.custom-group-3 .box {
+  background: #14214b;
+}
+
+.lg-group.custom-group-3 .lg-content-d * {
+  color: #fff !important;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  .lg-group.custom-group-2 .box {
+    padding: 60px;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .lg-group.custom-group-2 .box,
+  .lg-group.custom-group-3 .box {
+    padding: 40px 30px;
+  }
+}
+
+/* ------------ CARDS I, STYLE 2 (icon-top card with a "Learn more" link) ---------------------- */
+.cards-i.style-2 .box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  padding: 60px 30px;
+}
+
+.cards-i.style-2 .top {
+  flex: 1 1 0;
+}
+
+.cards-i.style-2 .cta {
+  flex: 0 0 auto;
+  margin-top: 24px;
+}
+
+/* ==========================================================================
+   STATESBORO PAGE SECTIONS
+   Ported from download/assets/style.css (download/_statesboro_.html).
+   ========================================================================== */
+
+/* Full-bleed absolute background layer for a .photo-content-d panel — a gap
+   in the earlier hair-restoration port, needed for Statesboro's "Who We Are". */
+.photo-content-d .bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* The source pulls #contact-m up over the hero it sits below. */
+.lg-flexspace-neg120 {
+  margin-top: -120px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .lg-flexspace-neg120 {
+    margin-top: -80px;
+  }
+}
+
+/* ------------ CONTACT M (#contact-m — dark card pulled up over the hero, info + map) ---------------------- */
+#contact-m {
+  position: relative;
+}
+
+#contact-m .box {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #14214b;
+  border-radius: 50px;
+  padding: 30px;
+}
+
+#contact-m .content {
+  flex: 0 1 auto;
+  width: 60%;
+  padding: 60px 30px;
+}
+
+#contact-m .lg-title,
+#contact-m .lg-text * {
+  color: #fff;
+}
+
+#contact-m .lg-title {
+  font-size: 49px;
+  margin-bottom: 20px;
+}
+
+#contact-m .lg-text {
+  margin-bottom: 20px;
+  max-width: 480px;
+}
+
+#contact-m .lg-text * {
+  font-size: 20px;
+}
+
+#contact-m .info > ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#contact-m .info > ul > li {
+  flex: 0 1 auto;
+  color: #fff;
+  padding-left: 25px;
+  margin-right: 10px;
+  position: relative;
+  width: calc(50% - 10px);
+}
+
+#contact-m .info ul li i {
+  left: 0;
+  position: absolute;
+  top: 3px;
+}
+
+#contact-m .info ul li ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#contact-m .info ul li ul li {
+  display: table-row;
+  color: #fff;
+}
+
+#contact-m .info ul li ul li span {
+  display: table-cell;
+}
+
+#contact-m .info ul li ul li span:first-child {
+  padding-right: 15px;
+}
+
+#contact-m .cta {
+  margin-top: 30px;
+}
+
+#contact-m .map {
+  flex: 0 1 auto;
+  border: 5px solid #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  width: 40%;
+}
+
+#contact-m .map iframe {
+  height: 100%;
+  width: 100%;
+  border: 0;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  #contact-m .info > ul > li {
+    margin-bottom: 15px;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  #contact-m .info > ul > li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  #contact-m .content,
+  #contact-m .map {
+    padding: 0;
+    width: 100%;
+  }
+
+  #contact-m .content {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  #contact-m .lg-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #contact-m .info ul {
+    display: inline-block;
+  }
+
+  #contact-m .info ul li {
+    text-align: left;
+  }
+
+  #contact-m .map {
+    padding-top: 56.25%;
+  }
+
+  #contact-m .map iframe {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  #contact-m .map {
+    padding-top: 100%;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #contact-m .lg-title {
+    font-size: 36px;
+  }
+
+  #contact-m .info ul li ul li,
+  #contact-m .info ul li ul li span {
+    display: block;
+  }
+
+  #contact-m .info ul li ul li {
+    margin-bottom: 5px;
+  }
+
+  #contact-m .info ul li ul li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ------------ PHOTO CONTENT CB / CB-GROUP (circular-image comparison rows) ---------------------- */
+.photo-content-cb,
+.lg-photo-content-cb-group {
+  position: relative;
+}
+
+.lg-photo-content-cb-group .photo-content-cb:last-child .container {
+  padding-bottom: 0;
+}
+
+.lg-photo-content-cb-group .photo-content-cb:last-child .container::after {
+  display: none;
+}
+
+.lg-photo-content-cb-group .radial-gradient {
+  border-radius: 50%;
+  background: #587dbd;
+  filter: blur(500px);
+  height: 790px;
+  position: absolute;
+  max-width: 790px;
+  width: 100%;
+}
+
+.lg-photo-content-cb-group .radial-gradient-1 {
+  top: 15%;
+}
+
+.lg-photo-content-cb-group .radial-gradient-2 {
+  bottom: 0;
+}
+
+.photo-content-cb .lg-container {
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.photo-content-cb .lg-container::after {
+  background-color: rgba(0, 0, 0, 0.25);
+  bottom: 0;
+  content: '';
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.photo-content-cb .lg-grid {
+  --lg-gx: 0px;
+  margin: 0 auto;
+  max-width: 1090px !important;
+}
+
+.photo-content-cb .img {
+  padding-right: 60px;
+}
+
+.photo-content-cb .img img {
+  border: 1px solid #519b98;
+  border-radius: 100%;
+  padding: 20px;
+}
+
+.photo-content-cb .content {
+  padding-left: 60px;
+}
+
+.photo-content-cb .lg-title {
+  color: #051e5c;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.photo-content-cb .cta {
+  margin-top: 40px;
+}
+
+@media only screen and (max-width: 991.98px) {
+  .photo-content-cb .img,
+  .photo-content-cb .content {
+    text-align: center;
+  }
+
+  .photo-content-cb .img {
+    margin-bottom: 30px;
+    padding-right: 0;
+  }
+
+  .photo-content-cb .content {
+    padding-left: 0;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .lg-photo-content-cb-group .radial-gradient {
+    display: none;
+  }
+
+  .photo-content-cb .lg-title {
+    font-size: 36px;
+  }
+}
+
+/* ------------ AWARDS D (#awards-d — plain logo strip) ---------------------- */
+#awards-d {
+  position: relative;
+}
+
+#awards-d .lg-grid {
+  --lg-gy: 50px;
+}
+
+#awards-d .item {
+  text-align: center;
+}
+
+@media only screen and (min-width: 1200px) {
+  #awards-d .item {
+    text-align: center;
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 1199.98px) {
+  #awards-d .lg-grid {
+    --lg-gy: 24px;
+  }
+}
+
+/* ------------ TEAM D-2 (#team-d-2 — dark box of white bio cards) ---------------------- */
+#team-d-2 {
+  position: relative;
+}
+
+#team-d-2 .box {
+  background-color: #14214b;
+  border-radius: 20px;
+  padding: 105px;
+}
+
+#team-d-2 .item {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  padding: 60px 70px;
+}
+
+#team-d-2 .item:last-child {
+  margin-bottom: 0;
+}
+
+#team-d-2 .img {
+  flex: 0 1 auto;
+}
+
+#team-d-2 .content {
+  flex: 0 1 auto;
+  padding-left: 60px;
+  width: calc(100% - 300px);
+}
+
+#team-d-2 .name {
+  color: #14214b;
+  font-family: var(--font-display), 'Bodoni-72', serif;
+  font-size: 40px;
+  line-height: 1.1em;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+#team-d-2 .position {
+  color: #14214b;
+  font-weight: 700;
+  line-height: 1.2em;
+  margin-bottom: 30px;
+}
+
+#team-d-2 .lg-text p {
+  color: #14214b;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  #team-d-2 .item {
+    justify-content: center;
+  }
+
+  #team-d-2 .img {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  #team-d-2 .content {
+    padding-left: 0;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  #team-d-2 {
+    background-color: #14214b;
+    padding: 100px 0;
+  }
+
+  #team-d-2 .box {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #team-d-2 .item {
+    padding: 40px 30px;
+  }
+
+  #team-d-2 .name {
+    font-size: 30px;
+  }
+}
+
+/* ------------ HERO G (#hero-g — pink gradient CTA banner) ---------------------- */
+#hero-g {
+  background: linear-gradient(90deg, #ba8194 0%, #c499a6 100%);
+  padding: 60px 0;
+  position: relative;
+}
+
+#hero-g .lg-container {
+  max-width: 1033px !important;
+}
+
+#hero-g .box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#hero-g .content {
+  flex: 1 1 0;
+  padding-right: 50px;
+}
+
+#hero-g .lg-title {
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+#hero-g .lg-text * {
+  color: #fff;
+  font-size: 20px;
+}
+
+#hero-g .cta {
+  flex: 0 0 auto;
+}
+
+@media only screen and (max-width: 991.98px) {
+  #hero-g .content,
+  #hero-g .cta {
+    flex: 0 1 auto;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  #hero-g .content {
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #hero-g .lg-title {
+    font-size: 36px;
+  }
+}
+
+/* ------------ CONTACT F (#contact-f — full-bleed photo contact form) ---------------------- */
+#contact-f {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px 0;
+  position: relative;
+}
+
+#contact-f .lg-container {
+  max-width: 840px !important;
+}
+
+#contact-f .content .lg-title {
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+#contact-f .content .lg-text {
+  margin: 0 auto 50px;
+  max-width: 730px;
+  text-align: center;
+}
+
+#contact-f .content .lg-text p {
+  color: #fff;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  #contact-f .content .lg-title {
+    font-size: 36px;
   }
 }

@@ -1,15 +1,17 @@
-import { BrainCircuit, Dna, HeartCrack, HeartHandshake, Scale, Thermometer } from 'lucide-react'
-
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
+import { TestimonialSet } from '@/components/sections/TestimonialSet'
+import { getPublishedTestimonials } from '@/content/testimonials'
 import { pillars } from '@/content/treatments'
 import type { Treatment } from '@/types/content'
+import { causesIcons, pathwayIcons } from '../compontents-custom/perimenopause/perimenopause-icons'
 import { LifestyleAndEvaluation } from '../compontents-custom/perimenopause/LifestyleAndEvaluation'
 import { SymptomsIntroCards } from '../compontents-custom/perimenopause/SymptomsIntroCards'
 import { TextImagePanel } from '../compontents-custom/perimenopause/TextImagePanel'
 import { TreatmentPathwaysPanel } from '../compontents-custom/perimenopause/TreatmentPathwaysPanel'
 import { SymptomsOutcomesGrid } from '../compontents-custom/shared/SymptomsOutcomesGrid'
+import { MidPageCTA } from '../compontents-custom/shared/MidPageCTA'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
@@ -17,6 +19,7 @@ interface TreatmentTemplateProps {
 
 export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
+  const testimonials = await getPublishedTestimonials()
 
   return (
     <>
@@ -40,7 +43,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
           paragraphs: [
             "You don't have to push through exhaustion, brain fog, mood swings, or stubborn weight gain alone. Our team can help you understand what's happening and build a treatment plan that supports your health now and long term.",
           ],
-          ctaLabel: 'Schedule a consultation',
+          ctaLabel: 'Schedule a Consultation',
           ctaHref: '/book-appointment',
         }}
         lightCard={{
@@ -55,16 +58,16 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
           ],
           bulletsLabel: 'Common symptoms may include:',
           bullets: [
-            'Hot flashes and night sweats',
-            'Brain fog and difficulty concentrating',
-            'Chronic fatigue',
-            'Mood swings or irritability',
-            'Weight gain and slower metabolism',
-            'Low libido',
-            'Sleep disruptions',
-            'Vaginal dryness or discomfort',
-            'Anxiety or increased stress sensitivity',
-            'Muscle loss and reduced strength',
+            'Hot Flashes And Night Sweats',
+            'Brain Fog And Difficulty Concentrating',
+            'Chronic Fatigue',
+            'Mood Swings Or Irritability',
+            'Weight Gain And Slower Metabolism',
+            'Low Libido',
+            'Sleep Disruptions',
+            'Vaginal Dryness Or Discomfort',
+            'Anxiety Or Increased Stress Sensitivity',
+            'Muscle Loss And Reduced Strength',
           ],
         }}
       />
@@ -87,18 +90,18 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
             src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338054/photo-content-92-img_nitez0.jpg',
             alt: 'A provider reviewing lab results with a patient',
           },
-          heading: 'How We Evaluate And Treat Menopausal Hormonal Imbalance',
+          heading: 'How We Evaluate and Treat Menopausal Hormonal Imbalance',
           paragraphs: [
             'At SAMM, treatment starts with understanding your full health picture. We evaluate symptoms alongside detailed labwork to identify hormone shifts and other factors that may be contributing to your perimenopause or menopause symptoms.',
           ],
           bulletsLabel: 'Testing may include:',
           bullets: [
-            'Estrogen and progesterone levels',
-            'Thyroid function',
-            'Testosterone levels',
-            'Cortisol and stress response',
-            'Metabolic health markers',
-            'Inflammation indicators',
+            'Estrogen And Progesterone Levels',
+            'Thyroid Function',
+            'Testosterone Levels',
+            'Cortisol And Stress Response',
+            'Metabolic Health Markers',
+            'Inflammation Indicators',
           ],
           closingParagraphs: [
             'From there, we create a customized plan that may include hormone therapy, lifestyle recommendations, weight management support, or sexual wellness treatments depending on your needs.',
@@ -109,27 +112,29 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
 
       <SymptomsOutcomesGrid
         title="What Causes Menopausal Symptoms?"
+        wide
+        titleAs="heading"
         items={[
           {
-            icon: Thermometer,
+            icon: causesIcons[0],
             title: 'Hot Flashes And Night Sweats',
             description:
               "Hormonal fluctuations can affect the body's temperature regulation system, leading to sudden heat, sweating, flushing, and disrupted sleep patterns. These symptoms are among the most common menopause symptoms women experience.",
           },
           {
-            icon: BrainCircuit,
+            icon: causesIcons[1],
             title: 'Brain Fog And Fatigue',
             description:
               'Changes in estrogen and progesterone levels can impact sleep quality, mental clarity, focus, and energy production. Many women describe feeling mentally exhausted or less sharp than usual during perimenopause.',
           },
           {
-            icon: Scale,
+            icon: causesIcons[2],
             title: 'Weight Gain And Metabolic Changes',
             description:
               'Hormonal changes can influence insulin sensitivity, muscle mass, and fat distribution. Even women maintaining healthy habits may notice increased abdominal weight gain or slower metabolism.',
           },
           {
-            icon: HeartCrack,
+            icon: causesIcons[3],
             title: 'Low Libido And Sexual Health Changes',
             description:
               'Reduced hormone levels can affect sexual desire, comfort, arousal, and intimacy. Vaginal dryness and discomfort may also become more noticeable during menopause.',
@@ -138,16 +143,16 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
       />
 
       <TreatmentPathwaysPanel
-        title="Menopause Treatment Pathways Based On Your Symptoms"
+        title="Menopause Treatment Pathways Based on Your Symptoms"
         lead="Your symptoms can help guide the right treatment approach. Depending on your needs, your care plan may include one or more of the following services."
         pathways={[
-          { icon: Dna, title: 'Hormone Therapy For Women', href: '/bioidentical-hormone-replacement-therapy/female' },
-          { icon: HeartHandshake, title: 'Sexual Wellness', href: '/rejuvenation-enhancement' },
-          { icon: Scale, title: 'Medical Weight Loss', href: '/concierge-medical-weight-loss' },
+          { icon: pathwayIcons[0], title: 'Hormone Therapy For Women', href: '/bioidentical-hormone-replacement-therapy/female' },
+          { icon: pathwayIcons[1], title: 'Sexual Wellness', href: '/rejuvenation-enhancement' },
+          { icon: pathwayIcons[2], title: 'Medical Weight Loss', href: '/concierge-medical-weight-loss' },
         ]}
       />
 
-      {/* <TextImagePanel
+      <TextImagePanel
         image={{
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338093/why-woman-chose-samm_g7evxb.jpg',
           alt: 'A patient consulting with her SAMM provider',
@@ -155,14 +160,24 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         imageSide="left"
         heading="Why Women Choose SAMM"
         items={[
-          'Personalized treatment plans',
-          'Comprehensive hormone testing',
-          'Ongoing monitoring and support',
-          'Data driven recommendations',
-          'Focus on long term wellness',
-          'Experienced medical guidance',
+          'Personalized Treatment Plans',
+          'Comprehensive Hormone Testing',
+          'Ongoing Monitoring And Support',
+          'Data Driven Recommendations',
+          'Focus On Long Term Wellness',
+          'Experienced Medical Guidance',
         ]}
-      /> */}
+      />
+
+      <MidPageCTA
+        backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-35-bg.jpg"
+        backgroundPosition="center top"
+        title="Ready To Get Answers?"
+        body="You deserve more than temporary fixes or generic advice. Our team can help identify the root causes behind your symptoms and create a plan designed specifically for you."
+        ctaLabel="Schedule Hormone Testing"
+        ctaHref="/bioidentical-hormone-replacement-therapy/female"
+        align="full"
+      />
 
       <TextImagePanel
         image={{
@@ -173,22 +188,27 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         heading="What Patients Often Notice After Treatment"
         lead="Every patient responds differently, but many women report improvements such as:"
         items={[
-          'Better energy levels',
-          'Improved mental clarity',
-          'More restful sleep',
-          'Better mood stability',
-          'Increased libido',
-          'Easier weight management',
-          'Greater confidence and overall well being',
+          'Better Energy Levels',
+          'Improved Mental Clarity',
+          'More Restful Sleep',
+          'Better Mood Stability',
+          'Increased Libido',
+          'Easier Weight Management',
+          'Greater Confidence And Overall Well Being',
         ]}
       />
 
-      {treatment.faqs.length ? (
-        <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
-          items={treatment.faqs}
+      {testimonials.length ? (
+        <TestimonialSet
+          eyebrow="Patient testimonials"
+          title="What our patients say"
+          testimonials={testimonials}
+          background="alt"
         />
+      ) : null}
+
+      {treatment.faqs.length ? (
+        <FAQAccordion title="Menopause and Perimenopause FAQs" items={treatment.faqs} />
       ) : null}
 
       <ClosingCTA {...treatment.closingCta} />

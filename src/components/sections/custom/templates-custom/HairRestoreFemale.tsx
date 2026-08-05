@@ -1,20 +1,11 @@
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
-import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import { pillars } from '@/content/treatments'
-import type { Treatment, TreatmentBlockData, TreatmentSection } from '@/types/content'
-import CO2LaserVsPRP from '../compontents-custom/weight-loss/female/CO2LaserVsPRP'
-import FemaleSexualHealthConcerns from '../compontents-custom/weight-loss/female/FemaleSexualHealthConcerns'
-import TreatmentOptions from '../compontents-custom/weight-loss/female/TreatmentOptions'
+import type { Treatment } from '@/types/content'
 import HowPRPTreatsHairLoss from '../compontents-custom/hair-restore/female/HowPRPTreatsHairLoss'
 import PRPTreatmentProcess from '../compontents-custom/hair-restore/female/PRPTreatmentProcess'
 import ResultsAndTimeline from '../compontents-custom/hair-restore/female/ResultsAndTimeline'
-
-
-function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
-  return 'type' in section
-}
 
 
 interface TreatmentTemplateProps {
@@ -44,13 +35,16 @@ export async function HairRestoreFemaleLayout({ treatment }: TreatmentTemplatePr
 
       {treatment.faqs.length ? (
         <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
+          title="Frequently asked questions"
+          lead="Deciding on Platelet-Rich Plasma (PRP) hair treatment is important, and you likely have questions. Here are answers to common questions to help you make an informed decision."
           items={treatment.faqs}
         />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA
+        {...treatment.closingCta}
+        note="*Individual results may vary. A consultation with our medical team is required to determine if PRP hair therapy is appropriate for your specific condition.*"
+      />
     </>
   )
 }

@@ -1,175 +1,122 @@
-import Image from 'next/image'
-import { ArrowRight, Dumbbell, Droplet, Gauge, Percent, type LucideIcon } from 'lucide-react'
-
-import { AspectImage } from '@/components/ui/AspectImage'
-import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
+import { measureIcons } from '../../shared/weight-loss-icons'
 
 /**
- * Central icon registry — add new entries here and reference them by
- * name anywhere in the app instead of importing lucide icons ad hoc.
+ * Live-site `#photo-content-c.style-2` — approach card (image + 2-col focus
+ * list) stacked on a body-composition card (content + pill measure badges +
+ * image). Ported 1:1 from download/_concierge-medical-weight-loss_male_.html
+ * (content is identical to the female page — only the two photos differ);
+ * the styling lives in src/app/legacy.css.
  */
-const ICONS: Record<string, LucideIcon> = {
-  bodyFat: Percent,
-  muscleMass: Dumbbell,
-  visceralFat: Gauge,
-  waterBalance: Droplet,
-}
 
-type IconName = keyof typeof ICONS;
+const approachPhoto = 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-64-img.jpg'
+const bodyCompPhoto = 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-65-img.jpg'
 
-/** Look up a lucide icon component by name, with a safe fallback. */
-function getIcon(name: IconName): LucideIcon {
-  return ICONS[name] ?? Percent;
-}
-
-interface IconProps {
-  name: IconName;
-  className?: string;
-  strokeWidth?: number;
-}
-
-const Icon: React.FC<IconProps> = ({ name, className = 'size-5', strokeWidth = 2 }) => {
-  const LucideIcon = getIcon(name)
-  return <LucideIcon className={className} strokeWidth={strokeWidth} />
-}
-
-const focusPoints = [
+const focusItems = [
   'Understanding why weight gain is happening',
-  'Creating a plan based on your body',
   'Identifying metabolic and hormonal factors',
+  'Creating a plan based on your body',
   'Adjusting as your body changes',
 ]
 
-const metrics: { name: IconName; label: string }[] = [
-  { name: 'bodyFat', label: 'Body Fat Percentage' },
-  { name: 'visceralFat', label: 'Visceral Fat' },
-  { name: 'muscleMass', label: 'Muscle Mass' },
-  { name: 'waterBalance', label: 'Water Balance' },
+/** Order matches the source markup: Body Fat %, Muscle Mass, Visceral Fat, Water Balance. */
+const measures = [
+  { icon: measureIcons[0], label: 'Body Fat Percentage' },
+  { icon: measureIcons[1], label: 'Muscle Mass' },
+  { icon: measureIcons[2], label: 'Visceral Fat' },
+  { icon: measureIcons[3], label: 'Water Balance' },
 ]
 
 const PersonalizedMan: React.FC = () => {
   return (
     <>
-      {/* Dark editorial card — image + copy, mirrors the TreatmentProcess card treatment */}
-      <Section background="page" spacing="lg">
-        <Container>
-          <Reveal>
-            <div className="grid overflow-hidden rounded-3xl bg-ink-950 shadow-xl lg:grid-cols-[44%_56%]">
-              <div className="relative min-h-64 lg:min-h-full">
-                <AspectImage
-                  media={{
-                    src: 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-64-img.jpg',
-                    alt: 'A physician greeting a patient during a weight loss consultation',
-                  }}
-                  ratio="square"
-                  rounded={false}
-                  sizes="(min-width: 1024px) 44vw, 100vw"
-                  className="h-full"
+      <div className="lg-flexspace-100" />
+
+      <div id="photo-content-c" className="style-2">
+        <div className="radial-gradient" aria-hidden />
+
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="box">
+              <div className="top lg-grid lg-gutter-y-30">
+                <div
+                  className="img lg-col-xl-5"
+                  style={{ backgroundImage: `url('${approachPhoto}')` }}
+                  role="img"
+                  aria-label="A physician greeting a patient during a weight loss consultation"
                 />
+
+                <div className="content lg-col-xl-7">
+                  <h2 className="lg-title lg-max-width-500">A More Personalized Approach To Weight Loss</h2>
+
+                  <div className="lg-text">
+                    <p>This program is designed for people who want more than a one-size-fits-all plan.</p>
+
+                    <div className="lg-list-arrow-right two-col">
+                      <h5>We focus on:</h5>
+                      <ul>
+                        {focusItems.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <p>This is what makes medical weight loss more effective than generic programs.</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 lg:px-14">
-                <h2 className="font-display text-display-sm text-canvas-50">
-                  A More Personalized Approach To Weight Loss
-                </h2>
+              <div className="bottom">
+                <div className="lg-grid">
+                  <div className="content lg-col-xl-7">
+                    <h2 className="lg-title" style={{ maxWidth: 'none' }}>
+                      What A Body Composition Scan Tells Us
+                    </h2>
 
-                <p className="mt-5 text-body-lg leading-relaxed text-canvas-50/75">
-                  This program is designed for people who want more than a
-                  one-size-fits-all plan.
-                </p>
+                    <div className="lg-text">
+                      <p>
+                        Weight alone doesn&apos;t tell the full story. That&apos;s why we use body
+                        composition scans to look deeper.
+                      </p>
+                      <p>Our body composition scanner measures:</p>
 
-                <div className="mt-8">
-                  <p className="text-label font-semibold uppercase tracking-[0.14em] text-sage-400">
-                    We focus on
-                  </p>
-                  <ul className="mt-4 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
-                    {focusPoints.map((item) => (
-                      <li key={item} className="flex items-start gap-2.5">
-                        <ArrowRight className="mt-0.5 size-4 shrink-0 text-sage-400" aria-hidden />
-                        <span className="text-body-sm leading-snug text-canvas-50/90">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                      <div className="lg-list-icon-2 two-col">
+                        <ul>
+                          {measures.map((measure) => (
+                            <li
+                              key={measure.label}
+                              // Static, author-controlled markup copied from the source site.
+                              dangerouslySetInnerHTML={{ __html: `${measure.icon}${measure.label}` }}
+                            />
+                          ))}
+                        </ul>
+                      </div>
+
+                      <p>This helps us understand how your body is changing, not just what the scale says.</p>
+                      <p>
+                        For example, you might be losing fat while gaining muscle, which is progress
+                        that a standard scale would miss.
+                      </p>
+                      <p>
+                        If you&apos;re looking for a body composition scan in Savannah, this is one of
+                        the most valuable tools we use to guide your plan.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    className="img lg-col-xl-5"
+                    style={{ backgroundImage: `url('${bodyCompPhoto}')` }}
+                    role="img"
+                    aria-label="A man measuring his waist with a tape measure after a body composition scan"
+                  />
                 </div>
-
-                <p className="mt-8 text-body-sm leading-relaxed text-canvas-50/60">
-                  This is what makes medical weight loss more effective than
-                  generic programs.
-                </p>
               </div>
             </div>
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* Light editorial block — copy + pill metrics, image */}
-      <Section background="page" spacing="lg" className="pt-20 lg:pt-20 bg-sage-100">
-        <Container>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-14">
-            <Reveal className="flex flex-col justify-center lg:col-span-7">
-              <h2 className="font-display text-display-sm text-ink-950">
-                What A Body Composition Scan Tells Us
-              </h2>
-
-              <div className="mt-5 space-y-4 text-body leading-relaxed text-canvas-600">
-                <p>
-                  Weight alone doesn&rsquo;t tell the full story. That&rsquo;s why we use
-                  body composition scans to look deeper.
-                </p>
-                <p className="font-medium text-ink-900">Our body composition scanner measures:</p>
-              </div>
-
-              <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {metrics.map((metric) => (
-                  <li
-                    key={metric.name}
-                    className="flex items-center gap-3 rounded-full border border-sage-600/30 bg-sage-50/60 px-5 py-3"
-                  >
-                    <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700">
-                      <Icon name={metric.name} />
-                    </span>
-                    <span className="text-body-sm font-medium text-ink-900">{metric.label}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-6 space-y-4 text-body leading-relaxed text-canvas-600">
-                <p>
-                  This helps us understand how your body is changing, not just
-                  what the scale says.
-                </p>
-                <p>
-                  For example, you might be losing fat while gaining muscle,
-                  which is progress that a standard scale would miss.
-                </p>
-                <p>
-                  If you&rsquo;re looking for a body composition scan in Savannah,
-                  this is one of the most valuable tools we use to guide your
-                  plan.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal side="left" className="lg:col-span-5">
-              <div className="relative h-full min-h-80 overflow-hidden rounded-3xl shadow-lg lg:min-h-0">
-                <Image
-                  src="https://www.agemanagementmed.com/themes/default/assets/images/photo-content-65-img.jpg"
-                  alt="A man measuring his waist with a tape measure after a body composition scan"
-                  fill
-                  sizes="(min-width: 1024px) 30vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-            </Reveal>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </div>
     </>
   )
 }
 
 export default PersonalizedMan
-export { Icon, getIcon, ICONS };
-export type { IconName };

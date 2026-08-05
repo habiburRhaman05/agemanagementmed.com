@@ -1,15 +1,9 @@
-
-import { BenefitList } from '@/components/sections/BenefitList'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
-import { PillarGrid } from '@/components/sections/PillarGrid'
-import { PricingBlock } from '@/components/sections/PricingBlock'
-import { ProcessSteps } from '@/components/sections/ProcessSteps'
-import { SectionRenderer } from '@/components/sections/SectionRenderer'
-import { TestimonialSet } from '@/components/sections/TestimonialSet'
-import { getTreatments, pillars } from '@/content/treatments'
-import type { Testimonial, Treatment, TreatmentBlockData, TreatmentSection } from '@/types/content'
+import { pillars } from '@/content/treatments'
+import type { Treatment } from '@/types/content'
+import { MidPageCTA } from '../compontents-custom/shared/MidPageCTA'
 import PersonalizedMan from '../compontents-custom/weight-loss/male/PersonalizedMan'
 import WhatsIncluded from '../compontents-custom/weight-loss/male/WhatsIncluded'
 import WhoThisProgramIsFor from '../compontents-custom/weight-loss/male/WhoThisProgramIsFor'
@@ -17,24 +11,12 @@ import WhyThisApproachWorks from '../compontents-custom/weight-loss/male/WhyThis
 import { LabworkGuidanceSection } from '../compontents-custom/weight-loss/male/LabworkGuidanceSection'
 
 
-function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
-  return 'type' in section
-}
-
-/** Legacy items key off `title`; typed blocks key off `id` (falling back to index either way). */
-function sectionKey(section: TreatmentSection, index: number): string | number {
-  if (isTypedSection(section)) return section.id ?? `${section.type}-${index}`
-  return section.title ?? index
-}
-
 interface TreatmentTemplateProps {
   treatment: Treatment
 }
 
-
 export async function WeightLossMaleLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
-  const related = await getTreatments(treatment.related ?? [])
   return (
     <>
       <HeroEditorial
@@ -47,20 +29,23 @@ export async function WeightLossMaleLayout({ treatment }: TreatmentTemplateProps
         ]}
       />
 
-      <PersonalizedMan/>
-      <LabworkGuidanceSection/>
-      <WhatsIncluded/>
-      <WhoThisProgramIsFor/>
-      <WhyThisApproachWorks/>
+      <PersonalizedMan />
+      <WhatsIncluded />
 
+      <MidPageCTA
+        backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-26-bg.jpg"
+        backgroundPosition="72% top"
+        title="Ready to Take a Smarter Approach to Weight Loss?"
+        body="Stop guessing and start working with real data."
+        align="left"
+      />
 
+      <WhoThisProgramIsFor />
+      <LabworkGuidanceSection />
+      <WhyThisApproachWorks />
 
       {treatment.faqs.length ? (
-        <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
-          items={treatment.faqs}
-        />
+        <FAQAccordion title="Medical Weight Loss FAQs" items={treatment.faqs} />
       ) : null}
 
       <ClosingCTA {...treatment.closingCta} />
