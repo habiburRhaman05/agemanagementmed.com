@@ -139,7 +139,15 @@ export async function SexualWellnessMaleLayout({ treatment }: TreatmentTemplateP
         ]}
       />
 
-      <TreatmentComparison
+      {treatment.faqs.length ? (
+        <FAQAccordion
+          title="Frequently Asked Questions"
+          lead={`Deciding on ${treatment.shortName} is important, and you likely have questions. Here are answers to common questions to help you make an informed decision.`}
+          items={treatment.faqs}
+        />
+      ) : null}
+
+      {/* <TreatmentComparison
         title="Shockwave Therapy Vs PRP Therapy: Understanding The Difference"
         lead="Shockwave therapy and PRP therapy use different mechanisms to support erectile function. Many men achieve the best results by combining both approaches."
         columnA={{
@@ -160,7 +168,7 @@ export async function SexualWellnessMaleLayout({ treatment }: TreatmentTemplateP
             { icon: Atom, label: 'Support for nerve and tissue regeneration' },
           ],
         }}
-      />
+      /> */}
 
       {testimonials.length ? (
         <TestimonialSet
@@ -168,14 +176,6 @@ export async function SexualWellnessMaleLayout({ treatment }: TreatmentTemplateP
           title="What our patients say"
           testimonials={testimonials}
           background="alt"
-        />
-      ) : null}
-
-      {treatment.faqs.length ? (
-        <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
-          items={treatment.faqs}
         />
       ) : null}
 

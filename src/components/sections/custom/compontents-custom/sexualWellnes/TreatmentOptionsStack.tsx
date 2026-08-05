@@ -34,7 +34,7 @@ function TreatmentCard({ data }: { data: TreatmentOptionCard }) {
       className={
         isFeatured
           ? 'rounded-3xl bg-ink-950 p-6 sm:p-8'
-          : 'rounded-3xl border border-canvas-300/60 bg-canvas-50 p-6 sm:p-8'
+          : 'rounded-3xl border border-sage-300/50 bg-canvas-50 p-6 sm:p-8'
       }
     >
       <div className="flex flex-col items-start gap-6 sm:flex-row">
