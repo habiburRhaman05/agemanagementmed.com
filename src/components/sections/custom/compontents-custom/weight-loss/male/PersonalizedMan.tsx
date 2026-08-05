@@ -1,4 +1,6 @@
 import { measureIcons } from '../../shared/weight-loss-icons'
+import { LabworkGuidanceBand } from './LabworkGuidanceBand'
+import { MidPageCTA } from '../../shared/MidPageCTA'
 
 /**
  * Live-site `#photo-content-c.style-2` — approach card (image + 2-col focus
@@ -35,11 +37,11 @@ const PersonalizedMan: React.FC = () => {
         <div className="radial-gradient" aria-hidden />
 
         <div className="lg-max-width-1440">
-          <div className="lg-container">
-            <div className="box">
+          <div className="lg-container !overflow-hidden">
+            <div className="box overflow-hidden">
               <div className="top lg-grid lg-gutter-y-30">
                 <div
-                  className="img lg-col-xl-5"
+                  className="img lg-col-xl-5 m-0!"
                   style={{ backgroundImage: `url('${approachPhoto}')` }}
                   role="img"
                   aria-label="A physician greeting a patient during a weight loss consultation"
@@ -115,6 +117,18 @@ const PersonalizedMan: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <div className="lg-flexspace-100" />
+      <LabworkGuidanceBand />
+
+      <div className="lg-flexspace-100" />
+      <MidPageCTA
+        backgroundImage="/weightloss/weightloss.jpg"
+        backgroundPosition="72% top"
+        title="Ready to Take a Smarter Approach to Weight Loss?"
+        body="Stop guessing and start working with real data."
+        align="left"
+      />
     </>
   )
 }

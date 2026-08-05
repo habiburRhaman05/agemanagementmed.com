@@ -2374,7 +2374,7 @@
 
 #photo-content-c.style-2 .bottom .content {
   margin-bottom: 0;
-  padding: 100px;
+  padding: 87px 77px;
 }
 
 #photo-content-c.style-2 .bottom .lg-title {
@@ -2406,10 +2406,6 @@
 
   #photo-content-c.style-2 .bottom .img {
     border-bottom-left-radius: 20px;
-  }
-
-  #photo-content-c.style-2 .bottom .content {
-    padding: 87px 77px;
   }
 }
 
