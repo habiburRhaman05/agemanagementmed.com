@@ -23,10 +23,10 @@ export const specialsContent = {
 
   hero: {
     eyebrow: 'Limited time',
-    title: 'Wellness specials',
+    title: 'Wellness Specials',
     lead: 'Explore our current health & wellness specials, available for a limited time at our Statesboro and Pooler locations.',
     image: {
-      src: 'https://picsum.photos/seed/samm-specials-hero/1600/900',
+      src: '/images/banner-27-bg.jpg',
       alt: 'A couple laughing together outdoors',
     },
   },
@@ -34,16 +34,16 @@ export const specialsContent = {
   specials: [
     {
       id: 'sharing-caring',
-      window: 'April – June',
-      title: 'Sharing is caring!',
+      window: 'APRIL-JUNE:',
+      title: 'Sharing Is Caring!',
       description:
-        'DOUBLE the referral reward! All patients who refer other patients will receive $100 instead of $50 to their account, through the end of June.',
+        'DOUBLE The Referral Rewards! All Patients Who Refer Other Patients Will Receive $100 Instead Of $50 To Their Account, Through The End Of June.',
       image: {
         src: 'https://picsum.photos/seed/samm-referral-special/800/900',
         alt: 'Refer a friend — double rewards',
       },
       locations: ['savannah-pooler', 'statesboro'],
-      ctaLabel: 'Claim',
+      ctaLabel: 'CLAIM \u2192',
     },
   ] satisfies Special[],
 }

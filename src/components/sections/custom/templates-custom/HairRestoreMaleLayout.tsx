@@ -1,5 +1,6 @@
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
+import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { pillars } from '@/content/treatments'
 import type { Treatment } from '@/types/content'
 import HowPRPTreatsHairLoss from '../compontents-custom/hair-restore/male/HowPRPTreatsHairLoss'

@@ -3,7 +3,6 @@ import { CalendarCheck, ClipboardList, FlaskConical, Percent, SlidersHorizontal,
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
-import { SectionRenderer } from '@/components/sections/SectionRenderer'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import { pillars } from '@/content/treatments'
 import { getPublishedTestimonials } from '@/content/testimonials'
@@ -26,6 +25,7 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
     <>
       <HeroEditorial
         {...treatment.hero}
+        image={treatment.hero.image ? { ...treatment.hero.image, src: '/images/banner-24-bg.jpg' } : undefined}
         fullHeight
         breadcrumbs={[
           { label: 'Home', href: '/' },
@@ -36,41 +36,27 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
 
       <SymptomsGridStatic />
 
-      {/* Renders every dynamic section (protocol, monitoring, treatment-support
-          feature list, billing notice, and the reviewer bio) in the order
-          already authored for this treatment — nothing here is re-hardcoded. */}
-      {/* {treatment.sections?.map((section, index) => (
-        <SectionRenderer key={index} section={section} index={index} />
-      ))} */}
-
       <BhrtHowItWorksPremium />
-  <SafetyAndCandidacy
-      bg='bg-sage-100'
-        image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350545/photo-content-38-img_lxshmc.jpg',
-          alt: 'A provider reviewing treatment safety with a male patient',
-        }}
-        imageSide="left"
-        heading="Monitoring & Adjustments:
-How We Track Progress"
-        paragraphs={[
-          'At Savannah Age Management Medicine, we continuously monitor both lab values and symptom improvement to ensure your treatment remains safe, effective, and aligned with your goals. Your plan may be adjusted over time based on:',
-        ]}
-        questionsLabel="Common patient questions we address:"
-        questions={[
-          'Follow-up lab results',
-          'Symptom changes',
-          'Lifestyle, training, or health changes',
 
+      <SafetyAndCandidacy
+        bg="bg-white"
+        image={{
+          src: '/images/photo-content-42-img.jpg',
+          alt: 'A SAMM provider reviewing a patient’s hormone treatment plan',
+        }}
+        imageSide="right"
+        heading="Monitoring And Ongoing Hormone Optimization"
+        paragraphs={[
+          'BHRT is not a one-time prescription. SAMM approaches hormone therapy as an ongoing, carefully monitored medical process.',
+          'Providers track progress through a combination of laboratory testing and patient-reported symptom improvements. Treatment plans are adjusted as hormone levels and symptom patterns evolve over time. This monitoring allows providers to refine dosage, delivery method, and hormone balance safely and effectively.',
+          'Regular follow-ups help ensure treatment remains aligned with your goals, lifestyle, and long-term health outcomes.',
         ]}
-        closingParagraph="Follow-up cadence and lab intervals will be confirmed with the clinical team prior to publishing final timelines."
- disclaimer="BHRT is a medical treatment and should only be initiated under the supervision of a qualified healthcare provider. Individual results vary, and hormone therapy is not intended to diagnose, treat, cure, or prevent disease."
       />
       <SafetyAndCandidacy
-      bg=''
+        bg=""
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785352168/photo-content-43-img_caanhm.jpg',
-          alt: 'A provider reviewing treatment safety and candidacy with a patient',
+          src: '/images/photo-content-43-img.jpg',
+          alt: 'A SAMM provider discussing BHRT safety and candidacy with a patient',
         }}
         imageSide="left"
         heading="Safety, Candidacy, And What To Know Before Starting BHRT"
@@ -114,10 +100,10 @@ How We Track Progress"
 
       <AuthorityTrustCard
         image={{
-          src: '/images/teams/team-1-img.png',
-          alt: 'SAMM medical provider',
+          src: '/images/photo-content-44-img.png',
+          alt: 'Harry S. Collins, DO, FACOG, Medical Director',
         }}
-        name="SAMM Medical Provider"
+        name="Harry S. Collins, DO, FACOG, Medical Director"
         lastUpdated="March 5, 2026"
         blurb="SAMM focuses on personalized, medically supervised hormone optimization designed around patient safety and measurable results."
       />
@@ -139,7 +125,7 @@ How We Track Progress"
         />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-2-bg.jpg" />
     </>
   )
 }

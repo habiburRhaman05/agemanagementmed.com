@@ -1,7 +1,8 @@
 import { Header } from '@/components/layout/Header'
-import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { SpecialsGrid } from '@/components/sections/SpecialsGrid'
+import { SpecialsClosingCTA } from '@/components/sections/custom/compontents-custom/specials/SpecialsClosingCTA'
+import { Reveal } from '@/components/shared/Reveal'
 import { specialsContent } from '@/content/pages/specials'
 import { buildMetadata } from '@/lib/seo'
 
@@ -13,15 +14,17 @@ export default function SpecialsPage() {
       <Header />
       <HeroEditorial
         {...specialsContent.hero}
+        hideDefaultCta
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Specials', href: '/specials' }]}
       />
 
       <SpecialsGrid specials={specialsContent.specials} />
 
       <ClosingCTA
-        title="Ready to learn more or schedule an appointment?"
+        title="Ready To Learn More Or Schedule An Appointment?"
         body="Contact us today to speak with our team."
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
+        backgroundImage="/images/hero-16-bg.jpg"
       />
     </>
   )

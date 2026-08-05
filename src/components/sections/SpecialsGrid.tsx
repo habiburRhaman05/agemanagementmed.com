@@ -1,18 +1,19 @@
 'use client'
 
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
 
 import { Container } from '@/components/shared/Container'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
-import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 
 import { Button } from '@/components/ui/Button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import type { Special, SpecialLocation } from '@/content/pages/specials'
 import { cn } from '@/lib/utils'
 import { BookingForm } from '../shared/BookingForm'
+import { StaggerGroup, StaggerItem } from '../shared/Stagger'
 
 interface LocationTab {
   id: 'all' | SpecialLocation
@@ -28,7 +29,7 @@ const LOCATION_TABS: LocationTab[] = [
 function SpecialCard({ special }: { special: Special }) {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-canvas-300/60 bg-canvas-50 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sage-600/30 hover:shadow-lg">
-      <div className="relative aspect-4/3">
+      <div className="relative aspect-[3/4]">
         <Image src={special.image.src} alt={special.image.alt} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
       </div>
 
@@ -61,15 +62,16 @@ function SpecialCard({ special }: { special: Special }) {
 
 export function SpecialsGrid({ specials }: { specials: Special[] }) {
   const [activeTab, setActiveTab] = useState<LocationTab['id']>('all')
+  const reduceMotion = useReducedMotion()
 
   const visible = specials.filter(
     (special) => activeTab === 'all' || special.locations.includes(activeTab),
   )
 
   return (
-    <Section background="page" spacing="md">
+    <Section className="bg-gradient-to-b from-[#e0e9f4] to-[#f3f6fa]" spacing="md">
       <Container>
-        <SectionHeader title="Select your location" align="center" />
+        <SectionHeader title="Select Your Location" align="center" />
 
         <div className="mt-8 flex justify-center gap-2">
           {LOCATION_TABS.map((tab) => (
@@ -93,10 +95,10 @@ export function SpecialsGrid({ specials }: { specials: Special[] }) {
           <StaggerGroup
             as="ul"
             stagger={0.06}
-            className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            className="mx-auto mt-12 flex max-w-5xl flex-wrap justify-center gap-6"
           >
             {visible.map((special) => (
-              <StaggerItem as="li" key={special.id} className="h-full">
+              <StaggerItem as="li" key={special.id} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm">
                 <SpecialCard special={special} />
               </StaggerItem>
             ))}
