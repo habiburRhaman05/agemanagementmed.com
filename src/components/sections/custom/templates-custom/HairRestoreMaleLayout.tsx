@@ -1,4 +1,3 @@
-import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { pillars } from '@/content/treatments'
