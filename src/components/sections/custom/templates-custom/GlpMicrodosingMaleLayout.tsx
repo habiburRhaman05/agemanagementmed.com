@@ -26,7 +26,8 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
     <>
       <HeroEditorial
         {...treatment.hero}
-        fullHeight
+        title="GLP-1 Microdosing: Precision Metabolic Optimization"
+        lead="A low-dose therapy to mute food noise, reduce inflammation, and enhance metabolic flexibility while minimizing GLP-1 side effects."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

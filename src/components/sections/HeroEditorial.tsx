@@ -109,13 +109,10 @@ export function HeroEditorial({
         className="object-cover"
         style={{ objectPosition: image.focalPoint ?? 'center' }}
       />
-      <div
-        className="absolute inset-0 bg-linear-to-r from-[#16284F]/80 via-[#16284F]/45 to-transparent pointer-events-none z-0"
-        aria-hidden
-      />
+
 
       <Container className="relative z-10 py-35 md:py-50 lg:py-60 !px-3">
-        <div className="max-w-3xl text-center sm:text-left">
+        <div className="max-w-[528px] text-center sm:text-left">
           <h1
             className="text-[40px] sm:text-[46px] lg:text-[56px] font-normal leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
