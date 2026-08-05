@@ -42,7 +42,10 @@ export async function HairRestoreFemaleLayout({ treatment }: TreatmentTemplatePr
       ) : null}
 
       <ClosingCTA
-        {...treatment.closingCta}
+        title="Restore Your Hair Naturally!"
+        body="Take the first step toward thicker, healthier hair with PRP therapy. Our expert team is ready to help you achieve your hair restoration goals using this revolutionary, natural treatment."
+        cta={{ label: 'SCHEDULE A CONSULTATION →', href: '/book-appointment' }}
+        backgroundImage="/images/hero-24-bg.jpg"
         note="*Individual results may vary. A consultation with our medical team is required to determine if PRP hair therapy is appropriate for your specific condition.*"
       />
     </>

@@ -14,14 +14,18 @@ export default function SpecialsPage() {
       <Header />
       <HeroEditorial
         {...specialsContent.hero}
+        hideDefaultCta
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Specials', href: '/specials' }]}
       />
 
       <SpecialsGrid specials={specialsContent.specials} />
 
-      <Reveal>
-        <SpecialsClosingCTA />
-      </Reveal>
+      <ClosingCTA
+        title="Ready To Learn More Or Schedule An Appointment?"
+        body="Contact us today to speak with our team."
+        cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
+        backgroundImage="/images/hero-16-bg.jpg"
+      />
     </>
   )
 }

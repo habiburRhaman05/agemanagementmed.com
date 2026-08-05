@@ -63,6 +63,8 @@ interface HeroEditorialProps {
   actions?: HeroActions
   /** Treatment pages want the full viewport; editorial/blog posts stay a shorter, content-forward height. */
   fullHeight?: boolean
+  /** Hide the default fallback CTA button if no actions are specified. */
+  hideDefaultCta?: boolean
 }
 
 /**
@@ -85,6 +87,7 @@ export function HeroEditorial({
   breadcrumbs,
   actions,
   fullHeight = false,
+  hideDefaultCta = false,
 }: HeroEditorialProps) {
   const FormComponent = actions?.formSource ? FORM_COMPONENTS[actions.formSource] : BookingForm
   const showFormButton = Boolean(actions?.formModal)
@@ -124,7 +127,7 @@ export function HeroEditorial({
             {lead}
           </p>
 
-          { !showFormButton && !showVideoButton ? (
+          { !showFormButton && !showVideoButton && !hideDefaultCta ? (
             <div
               className="hero-enter mt-6 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4"
               style={{ animationDelay: '0.5s' }}
