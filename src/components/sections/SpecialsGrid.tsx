@@ -13,6 +13,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import type { Special, SpecialLocation } from '@/content/pages/specials'
 import { cn } from '@/lib/utils'
 import { BookingForm } from '../shared/BookingForm'
+import { StaggerGroup, StaggerItem } from '../shared/Stagger'
 
 interface LocationTab {
   id: 'all' | SpecialLocation
