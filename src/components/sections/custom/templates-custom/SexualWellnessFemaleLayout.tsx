@@ -34,7 +34,7 @@ export async function SexualWellnessFemaleLayout({ treatment }: TreatmentTemplat
     <>
       <HeroEditorial
         {...treatment.hero}
-        image={treatment.hero.image ? { ...treatment.hero.image, src: '/images/banner-30-bg.jpg' } : undefined}
+        image={{ ...treatment.hero.image, src: '/images/banner-30-bg.jpg' }}
         fullHeight
         breadcrumbs={[
           { label: 'Home', href: '/' },
