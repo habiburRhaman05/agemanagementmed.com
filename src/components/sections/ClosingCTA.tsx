@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import type { CSSProperties } from 'react'
 
 import { homeMedia } from '@/content/pages/home-media'
 import type { ClosingCtaData } from '@/types/content'
@@ -28,7 +27,7 @@ export function ClosingCTA({
   contentMaxWidth,
   centered = false,
 }: ClosingCTAProps) {
-  const contentStyle: CSSProperties = {
+  const contentStyle: React.CSSProperties = {
     ...(contentMaxWidth ? { maxWidth: contentMaxWidth } : null),
     ...(centered ? { marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' } : null),
   }

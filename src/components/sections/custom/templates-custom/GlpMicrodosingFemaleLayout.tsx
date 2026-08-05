@@ -26,7 +26,8 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
     <>
       <HeroEditorial
         {...treatment.hero}
-        fullHeight
+        title="GLP-1 Microdosing: Precision Metabolic Optimization"
+        lead="A low-dose therapy to mute food noise, reduce inflammation, and enhance metabolic flexibility while minimizing GLP-1 side effects."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },
@@ -148,8 +149,9 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
 
       <FitCheckCallout
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338093/why-woman-chose-samm_g7evxb.jpg',
+          src: '/specials/photo-content-89-img.jpg',
           alt: 'A woman smiling during a consultation walk outdoors',
+          focalPoint: '50% 25%',
         }}
         heading="Is Microdosing the Right Fit for You?"
         lead="This program is a unique fit if:"
@@ -164,7 +166,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
 
       {treatment.faqs.length ? <FAQAccordion title="Microdosing FAQs" items={treatment.faqs} /> : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA {...treatment.closingCta} backgroundImage="/specials/hero-34-bg.jpg" contentMaxWidth={620} />
     </>
   )
 }
