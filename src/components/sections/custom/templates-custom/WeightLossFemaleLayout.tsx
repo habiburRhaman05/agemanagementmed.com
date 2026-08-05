@@ -22,6 +22,7 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
     <>
       <HeroEditorial
         {...treatment.hero}
+        image={treatment.hero.image ? { ...treatment.hero.image, src: '/images/banner-13-bg.jpg' } : undefined}
         fullHeight
         breadcrumbs={[
           { label: 'Home', href: '/' },
@@ -33,10 +34,10 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
       <OverviewApproachCards
         darkCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785406940/fitness-woman-measuring-her-body-isolated-weight-loss-concepts_231208-10391_pchkxx.avif',
-            alt: 'A woman at home, taking a mindful moment in her kitchen',
+            src: '/images/photo-content-5-img.jpg',
+            alt: 'A woman stepping on a scale in a kitchen',
           },
-          heading: 'A More Personalized Approach To Weight Loss',
+          heading: 'A Data-Driven Approach To Weight Loss',
           lead: 'This program is designed for people who want more than a one-size-fits-all plan.',
           focusLabel: 'We focus on:',
           focusItems: [
@@ -48,8 +49,8 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         }}
         lightCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785406992/photo-content-53-img_kefend.jpg',
-            alt: 'A woman stretching during an active session',
+            src: '/images/photo-content-51-img.jpg',
+            alt: 'A woman in athletic wear stretching her leg',
           },
           heading: 'What A Body Composition Scan Tells Us',
           paragraph: "Weight alone doesn't tell the full story. That's why we use body composition scans to look deeper.",
@@ -66,6 +67,38 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
             'If you are looking for a body composition scan in Savannah, this is one of the most valuable tools we use to guide your plan.',
           ],
         }}
+      />
+
+      <LabworkGuidancePanel
+        image={{
+          src: '/images/photo-content-52-img.jpg',
+          alt: 'A close-up portrait of a patient talking to a provider',
+        }}
+        heading="How We Use Labwork To Guide Your Plan"
+        boldStatement="We don't guess. We test."
+        paragraph="Labwork helps us understand what's happening inside your body so we can build a plan that actually works."
+        columnALabel="We may review markers related to:"
+        columnA={['Metabolism and insulin function', 'Thyroid health', 'Hormone balance', 'Inflammation levels']}
+        columnBLabel="These markers help explain things like:"
+        columnB={['Why weight loss has stalled', 'Why you feel low energy', "Why certain diets haven't worked"]}
+        closingParagraphs={[
+          <>
+            We review hormone balance and other factors that may impact weight. Learn more about our{' '}
+            <a href="/bioidentical-hormone-replacement-therapy">BHRT Therapy</a> services, including{' '}
+            <a href="/bioidentical-hormone-replacement-therapy/male">Hormone Therapy for Men</a> and{' '}
+            <a href="/bioidentical-hormone-replacement-therapy/female">Hormone Therapy for Women</a>.
+          </>,
+          'From there, we build a plan based on your results and adjust it over time as your body responds.',
+          'This is what makes lab-guided weight loss more precise and sustainable.',
+        ]}
+      />
+
+      <MidPageCTA
+        backgroundImage="/images/hero-21-bg.jpg"
+        backgroundPosition="13% center"
+        title="Ready To Take A Smarter Approach To Weight Loss?"
+        body="Stop guessing and start working with real data."
+        align="right"
       />
 
       <CostIncludedGrid
@@ -87,18 +120,10 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         note="Your provider will walk you through everything so there are no surprises."
       />
 
-      <MidPageCTA
-        backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-21-bg.jpg"
-        backgroundPosition="13% center"
-        title="Ready to Take a Smarter Approach to Weight Loss?"
-        body="Stop guessing and start working with real data."
-        align="right"
-      />
-
       <ProgramFitCards
         fitCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785407292/medical-appointment-female-doctor-gives-professional-medical-help-to-male-patient-explains-written-information-on-paper-in-clipboard-gives-support-and-good-service-pose-at_sogm8s.jpg',
+            src: '/images/photo-content-53-img.jpg',
             alt: 'A patient reviewing her plan with a provider',
           },
           imageSide: 'left',
@@ -119,11 +144,11 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         }}
         safetyCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350545/photo-content-38-img_lxshmc.jpg',
+            src: '/images/photo-content-54-img.jpg',
             alt: 'A provider reviewing a patient’s health history',
           },
           imageSide: 'right',
-          heading: 'Safety And Medical Considerations',
+          heading: 'Comprehensive Consultations',
           lead: 'Because this is a medical program, your safety comes first.',
           bulletsLabel: 'You may benefit from medical supervision if you:',
           bullets: [
@@ -136,37 +161,13 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         }}
       />
 
-      <LabworkGuidancePanel
-        image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785407018/photo-content-54-img_uz9klt.jpg',
-          alt: 'A close-up portrait of a patient in natural light',
-        }}
-        heading="How We Use Labwork To Guide Your Plan"
-        boldStatement="We don't guess. We test."
-        paragraph="Labwork helps us understand what's happening inside your body so we can build a plan that actually works."
-        columnALabel="We may review markers related to:"
-        columnA={['Metabolism and insulin function', 'Thyroid health', 'Hormone balance', 'Inflammation levels']}
-        columnBLabel="These markers help explain things like:"
-        columnB={['Why weight loss has stalled', 'Why you feel low energy', "Why certain diets haven't worked"]}
-        closingParagraphs={[
-          <>
-            We review hormone balance and other factors that may impact weight. Learn more about our{' '}
-            <a href="/bioidentical-hormone-replacement-therapy">BHRT Therapy</a> services, including{' '}
-            <a href="/bioidentical-hormone-replacement-therapy/male">Hormone Therapy for Men</a> and{' '}
-            <a href="/bioidentical-hormone-replacement-therapy/female">Hormone Therapy for Women</a>.
-          </>,
-          'From there, we build a plan based on your results and adjust it over time as your body responds.',
-          'This is what makes lab-guided weight loss more precise and sustainable.',
-        ]}
-      />
-
-      <WhyThisApproachWorks />
+      <WhyThisApproachWorks image="/images/photo-content-55-img.jpg" />
 
       {treatment.faqs.length ? (
         <FAQAccordion title="Medical Weight Loss FAQs" items={treatment.faqs} />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-22-bg.jpg" />
     </>
   )
 }

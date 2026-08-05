@@ -13,10 +13,13 @@ const focusPoints = [
   'Treating the root cause, not just symptoms',
 ]
 
-const IMAGE_URL =
-  'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-69-img.jpg'
+interface Props {
+  image?: string;
+}
 
-const WhyThisApproachWorks: React.FC = () => {
+const WhyThisApproachWorks: React.FC<Props> = ({ image }) => {
+  const finalImage = image || 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-69-img.jpg';
+  
   return (
     <section className="w-full overflow-hidden bg-[#1a2744]">
       <div className="grid lg:grid-cols-2">
@@ -24,7 +27,7 @@ const WhyThisApproachWorks: React.FC = () => {
         {/* ── Left: photo ── */}
         <div className="relative min-h-64 overflow-hidden lg:min-h-[500px]">
           <img
-            src={IMAGE_URL}
+            src={finalImage}
             alt="Doctor consulting patient about weight loss approach"
             className="absolute top-0 left-0 w-full"
             style={{ height: 'auto' }}

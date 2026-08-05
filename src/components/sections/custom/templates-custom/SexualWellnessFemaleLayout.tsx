@@ -34,6 +34,7 @@ export async function SexualWellnessFemaleLayout({ treatment }: TreatmentTemplat
     <>
       <HeroEditorial
         {...treatment.hero}
+        image={treatment.hero.image ? { ...treatment.hero.image, src: '/images/banner-30-bg.jpg' } : undefined}
         fullHeight
         breadcrumbs={[
           { label: 'Home', href: '/' },
@@ -44,8 +45,9 @@ export async function SexualWellnessFemaleLayout({ treatment }: TreatmentTemplat
 
       <SexualHealthConcerns
         image={{
-          src:"https://res.cloudinary.com/khs2rcsr/image/upload/v1785348763/sexual-wellniess_j4jzp4.jpg",
-          alt:"Common Female Sexual Health Concerns"
+          src: '/images/photo-content-46-img.jpg',
+          alt: 'Common Female Sexual Health Concerns',
+
         }}
         heading="Common Female Sexual Health Concerns"
         paragraphs={[
@@ -90,11 +92,11 @@ export async function SexualWellnessFemaleLayout({ treatment }: TreatmentTemplat
       />
 
       <TreatmentOptionsStack
-        title="Treatment Options"
+        title="Premium Options"
         lead="Tailored to your needs, these services support lasting improvements in libido, performance, and satisfaction."
         treatments={[
           {
-            image: 'https://www.agemanagementmed.com/themes/default/assets/images/column-box-14-img.png',
+            image: '/images/column-box-14-img.png',
             title: 'Laser Vaginal Rejuvenation (CO2 Laser)',
             description:
               'Laser vaginal rejuvenation uses fractional CO2 laser energy to stimulate collagen production and restore the structure of vaginal tissue.',
@@ -109,7 +111,7 @@ export async function SexualWellnessFemaleLayout({ treatment }: TreatmentTemplat
             featured: true,
           },
           {
-            image: 'https://www.agemanagementmed.com/themes/default/assets/images/column-box-12-img.png',
+            image: '/images/column-box-12-img.png',
             imageBg: 'bg-[#A9B979]',
             title: 'Bioidentical Hormone Replacement Therapy (BHRT)',
             description:
@@ -123,7 +125,7 @@ export async function SexualWellnessFemaleLayout({ treatment }: TreatmentTemplat
             ],
           },
           {
-            image: 'https://www.agemanagementmed.com/themes/default/assets/images/column-box-16-img.png',
+            image: '/images/column-box-16-img.png',
             title: 'PRP Therapy For Female Sexual Wellness',
             description:
               'PRP therapy uses platelets from your own blood to stimulate cellular regeneration and nerve function in sensitive areas.',
@@ -136,7 +138,7 @@ export async function SexualWellnessFemaleLayout({ treatment }: TreatmentTemplat
             ],
           },
           {
-            image: 'https://www.agemanagementmed.com/themes/default/assets/images/column-box-15-img.png',
+            image: '/images/column-box-15-img.png',
             title: 'Supplementation & Hormonal Support',
             description:
               'Hormonal changes, stress, and lifestyle factors can all influence libido, arousal, and overall sexual wellness.',
@@ -179,18 +181,19 @@ export async function SexualWellnessFemaleLayout({ treatment }: TreatmentTemplat
           title="What our patients say"
           testimonials={testimonials}
           background="alt"
+          backgroundImage="/images/testimonial-17-bg.jpg"
         />
       ) : null}
 
       {treatment.faqs.length ? (
         <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
+          title="Frequently asked questions"
+          lead="Deciding on Sexual Performance Enhancement & Rejuvenation is important, and you likely have questions. Here are answers to common questions to help you make an informed decision."
           items={treatment.faqs}
         />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-17-bg.jpg" />
     </>
   )
 }
