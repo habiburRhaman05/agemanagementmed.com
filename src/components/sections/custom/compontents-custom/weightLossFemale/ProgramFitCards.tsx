@@ -1,10 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 
-import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
 import type { Media } from '@/types/content'
 
 export interface ProgramFitCard {
@@ -31,86 +26,71 @@ export interface ProgramFitCardsProps {
 function FitCard({ card }: { card: ProgramFitCard }) {
   const imageSide = card.imageSide ?? 'left'
 
-  const textContent = (
-    <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10">
-      <h2 className="font-display text-display-sm text-ink-950">{card.heading}</h2>
-      <p className="mt-4 text-body leading-relaxed text-canvas-600">{card.lead}</p>
-
-      {card.bulletsLabel ? (
-        <p className="mt-5 text-body-sm font-semibold text-ink-950">{card.bulletsLabel}</p>
-      ) : null}
-
-      <ul className="mt-3 space-y-2">
-        {card.bullets.map((bullet) => (
-          <li key={bullet} className="flex items-start gap-2.5">
-            <ArrowRight className="mt-0.5 size-4 shrink-0 text-sage-600" aria-hidden />
-            <span className="text-body-sm leading-snug text-canvas-600">{bullet}</span>
-          </li>
-        ))}
-      </ul>
-
-      {card.note ? (
-        <p className="mt-5 text-body-sm leading-relaxed text-canvas-600">
-          {card.note.prefix}{' '}
-          <Link href={card.note.linkHref} className="font-medium text-sage-700 underline underline-offset-2 hover:text-sage-800">
-            {card.note.linkLabel}
-          </Link>{' '}
-          {card.note.suffix}
-        </p>
-      ) : null}
-
-      {card.closingText ? (
-        <p className="mt-5 text-body-sm leading-relaxed text-canvas-600">{card.closingText}</p>
-      ) : null}
-    </div>
+  const imageBlock = (
+    <div
+      className={`img lg-col-lg-5${imageSide === 'right' ? ' lg-order-lg-2' : ''}`}
+      style={{ backgroundImage: `url('${card.image.src}')` }}
+      role="img"
+      aria-label={card.image.alt}
+    />
   )
 
-  const imageBlock = (
-    <div className="relative  lg:aspect-auto lg:min-h-full">
-      <Image
-        src={card.image.src}
-        alt={card.image.alt}
-        fill
-        sizes="(min-width: 1024px) 42vw, 100vw"
-        className="w-full h-full object-cover"
-        style={{ objectPosition: card.image.focalPoint ?? 'center' }}
-      />
+  const contentBlock = (
+    <div className={`content lg-col-lg-7${imageSide === 'right' ? ' lg-order-lg-1' : ''}`}>
+      <h2 className="lg-title">{card.heading}</h2>
+
+      <div className="lg-text">
+        <p>{card.lead}</p>
+
+        {card.bulletsLabel ? <p>{card.bulletsLabel}</p> : null}
+
+        <div className="lg-list-arrow-right">
+          <ul>
+            {card.bullets.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
+            ))}
+          </ul>
+        </div>
+
+        {card.note ? (
+          <p>
+            {card.note.prefix}{' '}
+            <Link href={card.note.linkHref}>{card.note.linkLabel}</Link> {card.note.suffix}
+          </p>
+        ) : null}
+
+        {card.closingText ? <p>{card.closingText}</p> : null}
+      </div>
     </div>
   )
 
   return (
-    <div
-      className={`grid overflow-hidden rounded-3xl border border-canvas-300/60 bg-canvas-100 shadow-sm lg:grid-cols-2`}
-    >
-      {imageSide === 'left' ? (
-        <>
-          {imageBlock}
-          {textContent}
-        </>
-      ) : (
-        <>
-          {textContent}
-          {imageBlock}
-        </>
-      )}
+    <div className="photo-content-cu">
+      <div className="lg-max-width-1440">
+        <div className="lg-container">
+          <div className="lg-grid">
+            {imageBlock}
+            {contentBlock}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
 
-/** Two "is this right for you" style cards — content-driven, alternating image side. */
+/**
+ * Live-site `.group` band containing two `.photo-content-cu` rows — "Who
+ * This Program Is For" and "Safety And Medical Considerations", the second
+ * with the image on the right. Ported 1:1 from
+ * download/_concierge-medical-weight-loss_female_.html; the styling lives in
+ * src/app/legacy.css.
+ */
 export function ProgramFitCards({ fitCard, safetyCard }: ProgramFitCardsProps) {
   return (
-    <Section background="alt" spacing="md">
-      <Container>
-        <div className="space-y-6">
-          <Reveal>
-            <FitCard card={{ ...fitCard, imageSide: fitCard.imageSide ?? 'left' }} />
-          </Reveal>
-          <Reveal>
-            <FitCard card={{ ...safetyCard, imageSide: safetyCard.imageSide ?? 'right' }} />
-          </Reveal>
-        </div>
-      </Container>
-    </Section>
+    <div className="lg-group" style={{ backgroundColor: '#fff' }}>
+      <FitCard card={{ ...fitCard, imageSide: fitCard.imageSide ?? 'left' }} />
+      <div className="lg-flexspace-40" />
+      <FitCard card={{ ...safetyCard, imageSide: safetyCard.imageSide ?? 'right' }} />
+    </div>
   )
 }

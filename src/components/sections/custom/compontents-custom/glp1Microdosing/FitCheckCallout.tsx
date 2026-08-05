@@ -1,11 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 
-import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
-import { Button } from '@/components/ui/Button'
 import type { Media } from '@/types/content'
 
 export interface FitCheckCalloutProps {
@@ -17,7 +11,12 @@ export interface FitCheckCalloutProps {
   ctaHref?: string
 }
 
-/** Reusable "is this program right for you" callout — image + checklist on a dark card, plus a CTA. */
+/**
+ * Live-site "Is Microdosing the Right Fit for You?" — `.photo-content-d.full-img`,
+ * col-lg-6/col-lg-6, image first, with an inline CTA button. Ported 1:1 from
+ * download/_glp-1-microdosing_female_.html; the styling lives in
+ * src/app/legacy.css.
+ */
 export function FitCheckCallout({
   image,
   heading,
@@ -27,47 +26,43 @@ export function FitCheckCallout({
   ctaHref = '/book-appointment',
 }: FitCheckCalloutProps) {
   return (
-    <Section background="page" spacing="md">
-      <Container>
-        <Reveal>
-          <div className="grid overflow-hidden rounded-3xl bg-ink-950 shadow-xl lg:grid-cols-[42%_58%]">
-            <div className="relative min-h-56 lg:min-h-full">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(min-width: 1024px) 42vw, 100vw"
-                className="object-cover"
-                style={{ objectPosition: image.focalPoint ?? 'center' }}
+    <div className="photo-content-d full-img">
+      <div className="lg-max-width-1440">
+        <div className="lg-container">
+          <div className="lg-grid">
+            <div className="img lg-col-lg-6">
+              <div
+                className="img-box"
+                style={{ backgroundImage: `url('${image.src}')` }}
+                role="img"
+                aria-label={image.alt}
               />
             </div>
 
-            <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
-              <h2 className="font-display text-display-sm text-canvas-50">{heading}</h2>
+            <div className="content lg-col-lg-6">
+              <h2 className="lg-title">{heading}</h2>
 
-              {lead ? <p className="mt-4 text-body leading-relaxed text-canvas-50/75">{lead}</p> : null}
+              <div className="lg-text">
+                {lead ? <p style={{ fontSize: 20 }}>{lead}</p> : null}
 
-              <ul className="mt-5 space-y-2.5">
-                {points.map((point) => (
-                  <li key={point} className="flex items-start gap-2.5">
-                    <ArrowRight className="mt-0.5 size-4 shrink-0 text-sage-400" aria-hidden />
-                    <span className="text-body-sm leading-snug text-canvas-50/90">{point}</span>
-                  </li>
-                ))}
-              </ul>
+                <div className="lg-list-arrow-right">
+                  <ul>
+                    {points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
 
-              <div className="mt-7">
-                <Button asChild size="lg">
-                  <Link href={ctaHref}>
-                    {ctaLabel}
-                    <ArrowRight className="size-4" aria-hidden />
-                  </Link>
-                </Button>
+              <div className="cta">
+                <Link href={ctaHref} className="lg-btn lg-btn-arrow-right">
+                  {ctaLabel}
+                </Link>
               </div>
             </div>
           </div>
-        </Reveal>
-      </Container>
-    </Section>
+        </div>
+      </div>
+    </div>
   )
 }
