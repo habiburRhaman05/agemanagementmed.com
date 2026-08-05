@@ -114,13 +114,13 @@ export function HeroEditorial({
       <Container className="relative z-10 py-35 md:py-50 lg:py-60 !px-3">
         <div className="max-w-[528px] text-center sm:text-left">
           <h1
-            className="text-[40px] sm:text-[46px] lg:text-[56px] font-normal leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
+            className="text-[40px] sm:text-[46px] lg:text-[56px] font-medium leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base font-light leading-relaxed text-white/90 md:mt-6">
+          <p className="mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6">
             {lead}
           </p>
 

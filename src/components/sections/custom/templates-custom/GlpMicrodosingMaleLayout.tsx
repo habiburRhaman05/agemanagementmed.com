@@ -166,7 +166,14 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
 
       {treatment.faqs.length ? <FAQAccordion title="Microdosing FAQs" items={treatment.faqs} /> : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA
+        {...treatment.closingCta}
+        title="Start Your Personalized Weight Loss Plan Today"
+        body="You don't have to figure this out on your own."
+        cta={{ ...treatment.closingCta.cta, label: 'Schedule a Consultation' }}
+        backgroundImage="/sexual man/sw.jpg"
+        contentMaxWidth={552}
+      />
     </>
   )
 }

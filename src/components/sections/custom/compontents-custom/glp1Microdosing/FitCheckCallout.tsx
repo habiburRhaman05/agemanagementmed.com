@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import type { Media } from '@/types/content'
 
@@ -30,12 +31,13 @@ export function FitCheckCallout({
 
         {/* ── Left: photo ── */}
         <div className="relative min-h-64 overflow-hidden lg:min-h-[480px]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={image.src}
             alt={image.alt}
-            className="absolute top-0 left-0 w-full"
-            style={{ height: 'auto' }}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+            style={{ objectPosition: image.focalPoint ?? 'center top' }}
           />
         </div>
 
@@ -43,13 +45,13 @@ export function FitCheckCallout({
         <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-12 sm:px-10 lg:px-14 lg:py-16">
 
           {/* Heading */}
-          <h2 className="font-display text-[22px] font-semibold leading-snug text-white sm:text-[24px] lg:text-[26px]">
+          <h2 className="font-display text-[20px] font-medium leading-snug text-white lg:text-[24px]">
             {heading}
           </h2>
 
           {/* Lead */}
           {lead && (
-            <p className="mt-3 text-xs text-white">
+            <p className="mt-3 text-[14px] font-normal text-white">
               {lead}
             </p>
           )}
@@ -57,7 +59,7 @@ export function FitCheckCallout({
           {/* Bullet points */}
           <ul className="mt-3 space-y-2">
             {points.map((point) => (
-              <li key={point} className="flex items-start gap-2 text-xs text-white">
+              <li key={point} className="flex items-start gap-2 text-[14px] font-normal text-white">
                 <ArrowRight className="mt-0.5 size-3 shrink-0 text-[#519B98]" aria-hidden />
                 <span>{point}</span>
               </li>
@@ -68,7 +70,7 @@ export function FitCheckCallout({
           <div className="mt-8">
             <Link
               href={ctaHref}
-              className="inline-flex items-center gap-2 rounded-full border border-[#519B98] bg-[#519B98]/80 px-6 py-2.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#519B98]"
+              className="inline-flex items-center gap-2 rounded-full border border-[#519B98] bg-[#519B98]/80 px-6 py-2.5 text-[14px] font-bold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#519B98]"
             >
               {ctaLabel}
               <ArrowRight className="size-3" />

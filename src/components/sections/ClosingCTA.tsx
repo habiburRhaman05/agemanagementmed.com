@@ -8,6 +8,8 @@ interface ClosingCTAProps extends ClosingCtaData {
   backgroundImage?: string
   /** Small print under the CTA — e.g. the treatment pages' results disclaimer. */
   note?: string
+  /** Caps the text column width (px) so the title wraps onto multiple lines instead of running the full container width. Opt-in — omit to keep the existing full-width behavior. */
+  contentMaxWidth?: number
 }
 
 /**
@@ -20,12 +22,13 @@ export function ClosingCTA({
   cta,
   note,
   backgroundImage = homeMedia.closingBackground,
+  contentMaxWidth,
 }: ClosingCTAProps) {
   return (
     <div className="hero-bg" style={{ backgroundImage: `url('${backgroundImage}')` }}>
       <div className="lg-max-width-1440">
         <div className="lg-container">
-          <div className="content">
+          <div className="content" style={contentMaxWidth ? { maxWidth: contentMaxWidth } : undefined}>
             <h2 className="lg-title">{title}</h2>
 
             <div className="lg-text">
