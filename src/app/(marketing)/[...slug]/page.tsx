@@ -81,12 +81,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
           return <HairRestoreMaleLayout treatment={treatment}/>
         case "sexual-wellness-men":
           return <SexualWellnessMaleLayout treatment={treatment}/>
+          case "glp1-microdosing-men":
+            return <GlpMicrodosingMaleLayout treatment={treatment}/>
+          case "glp1-microdosing-women":
+            return <GlpMicrodosingFemaleLayout treatment={treatment}/>
         case "sexual-wellness-women":
           return <SexualWellnessFemaleLayout treatment={treatment}/>
-        case "glp1-microdosing-men":
-          return <GlpMicrodosingMaleLayout treatment={treatment}/>
-        case "glp1-microdosing-women":
-          return <GlpMicrodosingFemaleLayout treatment={treatment}/>
         case "shockwave-therapy":
           return <ShockwaveTherapyLayout treatment={treatment}/>
         case "perimenopause-menopause":

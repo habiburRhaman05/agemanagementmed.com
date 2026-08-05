@@ -1,11 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 
-import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
-import { Button } from '@/components/ui/Button'
 import type { Media } from '@/types/content'
 
 export interface SymptomsIntroCardsProps {
@@ -26,86 +20,86 @@ export interface SymptomsIntroCardsProps {
 }
 
 /**
- * Reusable paired-card intro: dark "don't ignore this" card (image + text +
- * CTA) followed by a light "common symptoms" card (image + text + arrow
- * bullet list). Content-only.
+ * Live-site `#photo-content-c.style-2` — intro card (image + paragraphs +
+ * CTA) stacked on a "Common Symptoms" card (image + paragraphs + arrow
+ * list), the bottom row's image on the right at xl+. Ported 1:1 from
+ * download/_perimenopause-menopause_.html; the styling lives in
+ * src/app/legacy.css.
  */
 export function SymptomsIntroCards({ darkCard, lightCard }: SymptomsIntroCardsProps) {
   return (
-    <Section background="page" spacing="md">
-      <Container>
-        <Reveal>
-          <div className="grid overflow-hidden rounded-3xl bg-ink-950 shadow-xl lg:grid-cols-[42%_58%]">
-            <div className="relative min-h-56 lg:min-h-full">
-              <Image
-                src={darkCard.image.src}
-                alt={darkCard.image.alt}
-                fill
-                sizes="(min-width: 1024px) 42vw, 100vw"
-                className="object-cover"
-                style={{ objectPosition: darkCard.image.focalPoint ?? 'center' }}
-              />
-            </div>
+    <>
+      <div className="lg-flexspace-100" />
 
-            <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
-              <h2 className="font-display text-display-sm text-canvas-50">{darkCard.heading}</h2>
+      <div id="photo-content-c" className="style-2">
+        <div className="radial-gradient" aria-hidden />
 
-              {darkCard.paragraphs.map((paragraph, index) => (
-                <p
-                  key={paragraph}
-                  className={`text-body leading-relaxed text-canvas-50/75 ${index === 0 ? 'mt-4' : 'mt-3'}`}
-                >
-                  {paragraph}
-                </p>
-              ))}
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="box">
+              <div className="top lg-grid">
+                <div
+                  className="img lg-col-xl-5"
+                  style={{ backgroundImage: `url('${darkCard.image.src}')` }}
+                  role="img"
+                  aria-label={darkCard.image.alt}
+                />
 
-              <div className="mt-7">
-                <Button asChild size="lg">
-                  <Link href={darkCard.ctaHref ?? '/book-appointment'}>{darkCard.ctaLabel ?? 'Schedule a consultation'}</Link>
-                </Button>
+                <div className="content lg-col-xl-7">
+                  <h2 className="lg-title">{darkCard.heading}</h2>
+
+                  <div className="lg-text">
+                    {darkCard.paragraphs.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
+
+                  <div className="cta">
+                    <Link href={darkCard.ctaHref ?? '/book-appointment'} className="lg-btn lg-btn-arrow-right">
+                      {darkCard.ctaLabel ?? 'Schedule a consultation'}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bottom">
+                <div className="lg-grid">
+                  <div
+                    className="img lg-col-xl-6 lg-order-xl-2"
+                    style={{ backgroundImage: `url('${lightCard.image.src}')` }}
+                    role="img"
+                    aria-label={lightCard.image.alt}
+                  />
+
+                  <div className="content lg-col-xl-6 lg-order-xl-1">
+                    <h2 className="lg-title">{lightCard.heading}</h2>
+
+                    <div className="lg-text">
+                      {lightCard.paragraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+
+                      {lightCard.bulletsLabel ? (
+                        <p>
+                          <strong style={{ fontSize: 20 }}>{lightCard.bulletsLabel}</strong>
+                        </p>
+                      ) : null}
+
+                      <div className="lg-list-arrow-right">
+                        <ul>
+                          {lightCard.bullets.map((bullet) => (
+                            <li key={bullet}>{bullet}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </Reveal>
-
-        <Reveal className="mt-6">
-          <div className="grid overflow-hidden rounded-3xl border border-canvas-300/60 bg-canvas-50 shadow-sm lg:grid-cols-[58%_42%]">
-            <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
-              <h2 className="font-display text-display-sm text-ink-950">{lightCard.heading}</h2>
-
-              {lightCard.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="mt-4 text-body leading-relaxed text-canvas-600">
-                  {paragraph}
-                </p>
-              ))}
-
-              {lightCard.bulletsLabel ? (
-                <p className="mt-5 text-body-sm font-semibold text-ink-950">{lightCard.bulletsLabel}</p>
-              ) : null}
-
-              <ul className="mt-3 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
-                {lightCard.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-2.5">
-                    <ArrowRight className="mt-0.5 size-4 shrink-0 text-sage-600" aria-hidden />
-                    <span className="text-body-sm leading-snug text-canvas-600">{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="relative min-h-56 lg:min-h-full">
-              <Image
-                src={lightCard.image.src}
-                alt={lightCard.image.alt}
-                fill
-                sizes="(min-width: 1024px) 42vw, 100vw"
-                className="object-cover"
-                style={{ objectPosition: lightCard.image.focalPoint ?? 'center' }}
-              />
-            </div>
-          </div>
-        </Reveal>
-      </Container>
-    </Section>
+        </div>
+      </div>
+    </>
   )
 }

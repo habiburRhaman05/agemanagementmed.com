@@ -1,30 +1,15 @@
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
-import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import { pillars } from '@/content/treatments'
-import type { Treatment, TreatmentBlockData, TreatmentSection } from '@/types/content'
-import CO2LaserVsPRP from '../compontents-custom/weight-loss/female/CO2LaserVsPRP'
-import FemaleSexualHealthConcerns from '../compontents-custom/weight-loss/female/FemaleSexualHealthConcerns'
-import TreatmentOptions from '../compontents-custom/weight-loss/female/TreatmentOptions'
+import type { Treatment } from '@/types/content'
 import HowPRPTreatsHairLoss from '../compontents-custom/hair-restore/male/HowPRPTreatsHairLoss'
 import PRPTreatmentProcess from '../compontents-custom/hair-restore/male/PRPTreatmentProcess'
 import ResultsAndTimeline from '../compontents-custom/hair-restore/male/ResultsAndTimeline'
-import { RestoreHairClosingBand } from '../compontents-custom/hair-restore/male/RestoreHairClosingBand'
-import { Reveal } from '@/components/shared/Reveal'
-import { ArrowRight } from 'lucide-react'
-
-
 
 
 interface TreatmentTemplateProps {
   treatment: Treatment
 }
-const bestResults = [
-  'Patients with hair loss in the last 2-5 years',
-  'Balding patients with active hair follicles',
-  'Individuals seeking natural, non-surgical solutions',
-  'Patients who want to enhance hair transplant results',
-]
 
 export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
@@ -39,48 +24,22 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
         ]}
       />
 
-      <HowPRPTreatsHairLoss/>
-         {/* Bottom image + text row */}
-                <div className=" max-w-5xl mx-auto my-10 md:my-15">
-                  <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
-                    <Reveal>
-                      <img
-                        src="https://res.cloudinary.com/khs2rcsr/image/upload/v1785599006/men-hair-restoration_krr29t.jpg"
-                        alt="Smiling patient outdoors after treatment"
-                        className="w-full aspect-[4/3] rounded-xl object-cover"
-                      />
-                    </Reveal>
-      
-                    <Reveal side="left">
-                      <div className="md:px-6">
-                        <h2 className="font-display text-display-sm text-ink-950">Best Results Seen In:</h2>
-                        <ul className="mt-6 space-y-3.5">
-                          {bestResults.map((item) => (
-                            <li key={item} className="flex items-start gap-3">
-                              <ArrowRight className="mt-1 size-4 shrink-0 text-sage-600" aria-hidden />
-                              <span className="text-body leading-relaxed text-canvas-600">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </Reveal>
-                  </div>
-                </div>
-      <PRPTreatmentProcess/>
-
-      <ResultsAndTimeline/>
-
-
+      <HowPRPTreatsHairLoss />
+      <PRPTreatmentProcess />
+      <ResultsAndTimeline />
 
       {treatment.faqs.length ? (
         <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
+          title="Frequently asked questions"
+          lead="Deciding on Platelet-Rich Plasma (PRP) hair treatment is important, and you likely have questions. Here are answers to common questions to help you make an informed decision."
           items={treatment.faqs}
         />
       ) : null}
 
-      <RestoreHairClosingBand />
+      <ClosingCTA
+        {...treatment.closingCta}
+        note="*Individual results may vary. A consultation with our medical team is required to determine if PRP hair therapy is appropriate for your specific condition.*"
+      />
     </>
   )
 }

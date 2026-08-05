@@ -1,130 +1,157 @@
-import React from "react";
-import {
-  ArrowRight,
-  UserRound,
-  Hand,
-  UserCircle2,
-  Crown,
-  type LucideIcon,
-} from "lucide-react";
-
-/** Replace with the real photo. */
-const TREATMENT_IMAGE =
-  "https://res.cloudinary.com/khs2rcsr/image/upload/v1785306021/hair-treatment-image-male_dik98b.jpg";
+import { prpIcons } from '../female/prp-icons'
 
 /**
- * Central icon registry — add new entries here and reference them by
- * name anywhere in the app instead of importing lucide icons ad hoc.
+ * Live-site `#photo-content-c` + `.photo-content-d.blue-text.transparent`.
+ * Ported 1:1 from download/_platelet-rich-plasma-hair_male_.html (content is
+ * identical to the female page — only the two photos differ); the styling
+ * lives in src/app/legacy.css.
  */
-const ICONS: Record<string, LucideIcon> = {
-  bullet: ArrowRight,
-  androgeneticAlopecia: UserRound,
-  thinningHair: Hand,
-  recedingHairlines: UserCircle2,
-  crownThinning: Crown,
-};
 
-type IconName = keyof typeof ICONS;
-
-function getIcon(name: IconName): LucideIcon {
-  return ICONS[name] ?? ArrowRight;
-}
-
-const Icon: React.FC<{ name: IconName; className?: string }> = ({
-  name,
-  className = "w-5 h-5",
-}) => {
-  const LucideIcon = getIcon(name);
-  return <LucideIcon className={className} strokeWidth={1.5} />;
-};
-
-const BulletIcon: React.FC<{ className?: string }> = ({ className = "w-3.5 h-3.5" }) => {
-  const LucideIcon = getIcon("bullet");
-  return <LucideIcon className={className} strokeWidth={2} />;
-};
+const heroPhoto =
+  'https://res.cloudinary.com/khs2rcsr/image/upload/v1785306021/hair-treatment-image-male_dik98b.jpg'
+const bestResultsPhoto =
+  'https://res.cloudinary.com/khs2rcsr/image/upload/v1785599006/men-hair-restoration_krr29t.jpg'
 
 const growthFactors = [
-  "Stimulate dormant hair follicles",
-  "Improve blood circulation to the scalp",
-  "Strengthen existing hair strands",
-  "Promote the growth of new, healthy hair",
-];
+  'Stimulate dormant hair follicles',
+  'Improve blood circulation to the scalp',
+  'Strengthen existing hair strands',
+  'Promote the growth of new, healthy hair',
+]
 
-interface CandidateItem {
-  name: IconName;
-  label: string;
-}
+/** Icon order matches the source markup's four candidate cards. */
+const candidateItems = [
+  { icon: prpIcons[0], label: 'Androgenetic alopecia (male/female pattern baldness)' },
+  { icon: prpIcons[1], label: 'Thinning hair or reduced hair density' },
+  { icon: prpIcons[2], label: 'Receding hairlines' },
+  { icon: prpIcons[3], label: 'Crown thinning' },
+]
 
-const candidateItems: CandidateItem[] = [
-  { name: "androgeneticAlopecia", label: "Androgenetic alopecia (male/female pattern baldness)" },
-  { name: "thinningHair", label: "Thinning hair or reduced hair density" },
-  { name: "recedingHairlines", label: "Receding hairlines" },
-  { name: "crownThinning", label: "Crown thinning" },
-];
+const bestResults = [
+  'Patients with hair loss in the last 2-5 years',
+  'Balding patients with active hair follicles',
+  'Individuals seeking natural, non-surgical solutions',
+  'Patients who want to enhance hair transplant results',
+]
 
 const HowPRPTreatsHairLoss: React.FC = () => {
   return (
-    <div className="container mx-auto py-8 pt-16 overflow-hidden">
-      <div className="bg-white rounded-3xl overflow-hidden">
-        {/* Top: image + navy content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
-          <div
-            className="bg-cover bg-center bg-slate-200 aspect-[4/3]  md:min-h-[280px]"
-            style={{ backgroundImage: `url('${TREATMENT_IMAGE}')` }}
-            role="img"
-            aria-label="Provider administering PRP treatment to a patient's scalp"
-          />
+    <>
+      <div className="lg-flexspace-100" />
 
-          <div className="bg-[#0F1E4D] p-5 sm:p-6 md:p-8">
-            <p className="text-md text-white/80 leading-relaxed mb-3">
-              Platelet-Rich Plasma (PRP) therapy is a cutting-edge, non-surgical
-              treatment that uses your own blood's healing properties to
-              stimulate hair growth. During the procedure, we draw a small
-              amount of your blood, process it to concentrate the platelets
-              that fuel regeneration, and inject the nutrient-rich plasma
-              directly into your scalp.
-            </p>
+      <div id="photo-content-c">
+        <div className="radial-gradient" aria-hidden />
 
-            <p className="text-md font-semibold text-white mb-2 leading-relaxed">
-              These concentrated platelets contain powerful growth factors
-              that:
-            </p>
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="box">
+              <div className="top lg-grid lg-gutter-x-0 lg-gutter-y-30">
+                <div
+                  className="img lg-col-xl-5"
+                  style={{
+                    backgroundImage: `url('${heroPhoto}')`,
+                    backgroundPosition: '50% 70%',
+                  }}
+                  role="img"
+                  aria-label="Provider administering PRP treatment to a patient's scalp"
+                />
 
-            <ul className="space-y-1">
-              {growthFactors.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-xs text-white/90">
-                  <BulletIcon className="w-3.5 h-3.5 mt-0.5 text-white/70 shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+                <div className="content lg-col-xl-7">
+                  <h2 className="lg-title">How Does PRP Treat Hair Loss?</h2>
 
-        {/* Bottom: candidate section */}
-        <div className="text-center px-4 py-8 md:px-10">
-          <h2 className="text-2xl font-serif text-[#14214B] mb-2">
-            Who Is a Candidate For PRP For Hair Loss?
-          </h2>
-          <p className="text-sm text-slate-500 mb-6">
-            PRP hair treatment is ideal for both men and women experiencing
-            hair loss. PRP can be used for:
-          </p>
+                  <div className="lg-text">
+                    <p>
+                      Platelet-Rich Plasma (PRP) therapy is a cutting-edge, non-surgical treatment
+                      that uses your own blood&apos;s healing properties to stimulate hair growth.
+                      During the procedure, we draw a small amount of your blood, process it to
+                      concentrate the platelets that fuel regeneration, and inject the nutrient-rich
+                      plasma directly into your scalp.
+                    </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-left">
-            {candidateItems.map((item) => (
-              <div key={item.name} className="flex items-center gap-2.5 ">
-                <Icon name={item.name} className="w-6 h-6 text-[#519B98] shrink-0" />
-                <p className="text-sm text-slate-600 leading-snug">{item.label}</p>
+                    <div className="lg-list-arrow-right">
+                      <h5 style={{ maxWidth: 400 }}>
+                        These concentrated platelets contain powerful growth factors that:
+                      </h5>
+                      <ul>
+                        {growthFactors.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
-            ))}
+
+              <div className="bottom">
+                <div className="content lg-text-center">
+                  <h2 className="lg-title lg-max-width-none">
+                    Who Is a Candidate For PRP For Hair Loss?
+                  </h2>
+
+                  <div className="lg-text">
+                    <p>
+                      PRP hair treatment is ideal for both men and women experiencing hair loss. PRP
+                      can be used for:
+                    </p>
+                  </div>
+                </div>
+
+                <div id="column-icon-d" className="lg-max-width-770">
+                  <div className="lg-grid lg-gutter-y-24">
+                    {candidateItems.map((item) => (
+                      <div className="item lg-col-lg-6" key={item.label}>
+                        <div
+                          className="icon"
+                          // Static, author-controlled markup copied from the source site.
+                          dangerouslySetInnerHTML={{ __html: item.icon }}
+                        />
+                        <div className="content">
+                          <p>{item.label}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
 
-export default HowPRPTreatsHairLoss;
-export { Icon, BulletIcon, getIcon, ICONS };
-export type { IconName };
+      <div className="lg-flexspace-100" />
+
+      <div className="photo-content-d blue-text transparent">
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="lg-grid lg-items-center">
+              <div className="img lg-col-lg-5">
+                <div
+                  className="img-box"
+                  style={{ backgroundImage: `url('${bestResultsPhoto}')`, height: 500 }}
+                  role="img"
+                  aria-label="Smiling patient after treatment"
+                />
+              </div>
+
+              <div className="content lg-col-lg-7">
+                <h2 className="lg-title">Best Results Seen In:</h2>
+
+                <div className="lg-text">
+                  <div className="lg-list-arrow-right">
+                    <ul>
+                      {bestResults.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default HowPRPTreatsHairLoss

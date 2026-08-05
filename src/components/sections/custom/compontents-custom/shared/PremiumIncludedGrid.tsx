@@ -58,7 +58,7 @@ export function PremiumIncludedGrid({
             <span className="h-px w-12 bg-sage-200" />
           </div>
         ) : null}
-        
+
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 justify-center">
             {included.map((item) => (
@@ -76,7 +76,7 @@ export function PremiumIncludedGrid({
               </h3>
               <span className="h-px w-12 bg-sage-200" />
             </div>
-            
+
             <div className="mx-auto max-w-4xl">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 justify-center">
                 {separate.map((item) => (

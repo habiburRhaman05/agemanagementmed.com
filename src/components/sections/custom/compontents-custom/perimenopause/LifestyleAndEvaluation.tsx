@@ -1,9 +1,5 @@
-import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
+import type { ReactNode } from 'react'
 
-import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
 import type { Media } from '@/types/content'
 
 export interface LifestyleAndEvaluationProps {
@@ -18,99 +14,91 @@ export interface LifestyleAndEvaluationProps {
     paragraphs: string[]
     bulletsLabel?: string
     bullets: string[]
-    closingParagraphs?: string[]
+    closingParagraphs?: ReactNode[]
   }
 }
 
 /**
- * "Why lifestyle changes aren't enough" (plain text + image, no card chrome)
- * followed by "how we evaluate" (dark, contained card — same width/rounding
- * as the rest of the page's cards). Content-only.
+ * Live-site "Why Lifestyle Changes Aren't Always Enough" (`.photo-content-d.content-right.black-text.transparent`)
+ * followed by "How We Evaluate and Treat Menopausal Hormonal Imbalance"
+ * (`.photo-content-d.full-img`, image on the right). Ported 1:1 from
+ * download/_perimenopause-menopause_.html; the styling lives in
+ * src/app/legacy.css.
  */
 export function LifestyleAndEvaluation({ lifestylePanel, evaluationPanel }: LifestyleAndEvaluationProps) {
   return (
     <>
-      <Section background="page" spacing="md" className='pt-0'>
-        <Container className=''>
-          <Reveal>
-            <div className="grid items-center gap-8 lg:grid-cols-[38%_62%] lg:gap-6 bg-white p-4 rounded-3xl">
-              <div className="relative aspect-4/5 overflow-hidden rounded-3xl lg:aspect-auto lg:h-125">
-                <Image
-                  src={lifestylePanel.image.src}
-                  alt={lifestylePanel.image.alt}
-                  fill
-                  sizes="(min-width: 1024px) 38vw, 100vw"
-                  className="object-cover"
-                  style={{ objectPosition: lifestylePanel.image.focalPoint ?? 'center' }}
+      <div className="photo-content-d content-right black-text transparent">
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="lg-grid lg-items-center">
+              <div className="img lg-col-lg-5">
+                <div
+                  className="img-box"
+                  style={{ backgroundImage: `url('${lifestylePanel.image.src}')`, height: 500 }}
+                  role="img"
+                  aria-label={lifestylePanel.image.alt}
                 />
               </div>
 
-              <div>
-                <h2 className="font-display text-display-sm text-ink-950">{lifestylePanel.heading}</h2>
-                {lifestylePanel.paragraphs.map((paragraph, index) => (
-                  <p
-                    key={paragraph}
-                    className={`text-body leading-relaxed text-canvas-600 ${index === 0 ? 'mt-4' : 'mt-3'}`}
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </Container>
-      </Section>
+              <div className="content lg-col-lg-7">
+                <h2 className="lg-title" style={{ color: '#0B2055' }}>
+                  {lifestylePanel.heading}
+                </h2>
 
-      <Section background="page" spacing="md" className="pt-0">
-        <Container>
-          <Reveal>
-            <div className="grid overflow-hidden rounded-3xl bg-ink-950 shadow-xl lg:grid-cols-2">
-              <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
-                <h2 className="font-display text-display-sm text-canvas-50">{evaluationPanel.heading}</h2>
-
-                {evaluationPanel.paragraphs.map((paragraph, index) => (
-                  <p
-                    key={paragraph}
-                    className={`text-body leading-relaxed text-canvas-50/75 ${index === 0 ? 'mt-4' : 'mt-3'}`}
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-
-                {evaluationPanel.bulletsLabel ? (
-                  <p className="mt-5 text-body-sm font-semibold text-canvas-50">{evaluationPanel.bulletsLabel}</p>
-                ) : null}
-
-                <ul className="mt-3 space-y-2">
-                  {evaluationPanel.bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-start gap-2.5">
-                      <ArrowRight className="mt-0.5 size-4 shrink-0 text-sage-400" aria-hidden />
-                      <span className="text-body-sm leading-snug text-canvas-50/90">{bullet}</span>
-                    </li>
+                <div className="lg-text">
+                  {lifestylePanel.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
                   ))}
-                </ul>
-
-                {evaluationPanel.closingParagraphs?.map((paragraph) => (
-                  <p key={paragraph} className="mt-4 text-body leading-relaxed text-canvas-50/75">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-
-              <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-full">
-                <Image
-                  src={evaluationPanel.image.src}
-                  alt={evaluationPanel.image.alt}
-                  fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover"
-                  style={{ objectPosition: evaluationPanel.image.focalPoint ?? 'center' }}
-                />
+                </div>
               </div>
             </div>
-          </Reveal>
-        </Container>
-      </Section>
+          </div>
+        </div>
+
+        <div className="lg-flexspace-100" />
+      </div>
+
+      <div className="photo-content-d full-img">
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="lg-grid">
+              <div className="img lg-col-lg-5 lg-order-lg-2">
+                <div
+                  className="img-box"
+                  style={{ backgroundImage: `url('${evaluationPanel.image.src}')` }}
+                  role="img"
+                  aria-label={evaluationPanel.image.alt}
+                />
+              </div>
+
+              <div className="content lg-col-lg-7 lg-order-lg-1">
+                <h2 className="lg-title">{evaluationPanel.heading}</h2>
+
+                <div className="lg-text">
+                  {evaluationPanel.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+
+                  {evaluationPanel.bulletsLabel ? <p>{evaluationPanel.bulletsLabel}</p> : null}
+
+                  <div className="lg-list-arrow-right">
+                    <ul>
+                      {evaluationPanel.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {evaluationPanel.closingParagraphs?.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

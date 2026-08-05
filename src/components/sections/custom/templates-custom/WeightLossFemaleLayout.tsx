@@ -1,41 +1,16 @@
-import Link from 'next/link'
-import { CalendarCheck, ClipboardList, Droplet, Dumbbell, FlaskConical, Pill, Scale, Waves } from 'lucide-react'
-
-import { BenefitList } from '@/components/sections/BenefitList'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
-import { PillarGrid } from '@/components/sections/PillarGrid'
-import { PricingBlock } from '@/components/sections/PricingBlock'
-import { ProcessSteps } from '@/components/sections/ProcessSteps'
-import { SectionRenderer } from '@/components/sections/SectionRenderer'
-import { TestimonialSet } from '@/components/sections/TestimonialSet'
-import { getPublishedTestimonials } from '@/content/testimonials'
-import { getTreatments, pillars } from '@/content/treatments'
-import type { Treatment, TreatmentBlockData, TreatmentSection } from '@/types/content'
-import PersonalizedMan from '../compontents-custom/weight-loss/male/PersonalizedMan'
-import WhatsIncluded from '../compontents-custom/weight-loss/male/WhatsIncluded'
-import WhoThisProgramIsFor from '../compontents-custom/weight-loss/male/WhoThisProgramIsFor'
-import WhyThisApproachWorks from '../compontents-custom/weight-loss/male/WhyThisApproachWorks'
-import FemaleSexualHealthConcerns from '../compontents-custom/weight-loss/female/FemaleSexualHealthConcerns'
-import TreatmentOptions from '../compontents-custom/weight-loss/female/TreatmentOptions'
-import CO2LaserVsPRP from '../compontents-custom/weight-loss/female/CO2LaserVsPRP'
-import { PremiumIncludedGrid as CostIncludedGrid } from '../compontents-custom/shared/PremiumIncludedGrid'
+import { pillars } from '@/content/treatments'
+import type { Treatment } from '@/types/content'
+import { measureIcons, programIcons } from '../compontents-custom/shared/weight-loss-icons'
+import { MidPageCTA } from '../compontents-custom/shared/MidPageCTA'
+import { LegacyIncludedGrid as CostIncludedGrid } from '../compontents-custom/shared/LegacyIncludedGrid'
 import { LabworkGuidancePanel } from '../compontents-custom/weightLossFemale/LabworkGuidancePanel'
 import { OverviewApproachCards } from '../compontents-custom/weightLossFemale/OverviewApproachCards'
 import { ProgramFitCards } from '../compontents-custom/weightLossFemale/ProgramFitCards'
-import { Reveal } from '@/components/shared/Reveal'
+import WhyThisApproachWorks from '../compontents-custom/weight-loss/male/WhyThisApproachWorks'
 
-
-function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
-  return 'type' in section
-}
-
-/** Legacy items key off `title`; typed blocks key off `id` (falling back to index either way). */
-function sectionKey(section: TreatmentSection, index: number): string | number {
-  if (isTypedSection(section)) return section.id ?? `${section.type}-${index}`
-  return section.title ?? index
-}
 
 interface TreatmentTemplateProps {
   treatment: Treatment
@@ -43,7 +18,6 @@ interface TreatmentTemplateProps {
 
 export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
-  const testimonials = await getPublishedTestimonials()
   return (
     <>
       <HeroEditorial
@@ -81,10 +55,10 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
           paragraph: "Weight alone doesn't tell the full story. That's why we use body composition scans to look deeper.",
           measuresLabel: 'Our body composition scanner measures:',
           measures: [
-            { icon: Scale, label: 'Body Fat Percentage' },
-            { icon: Droplet, label: 'Visceral Fat' },
-            { icon: Dumbbell, label: 'Muscle Mass' },
-            { icon: Waves, label: 'Water Balance' },
+            { icon: measureIcons[0], label: 'Body Fat Percentage' },
+            { icon: measureIcons[1], label: 'Muscle Mass' },
+            { icon: measureIcons[2], label: 'Visceral Fat' },
+            { icon: measureIcons[3], label: 'Water Balance' },
           ],
           closingParagraphs: [
             'This helps us understand how your body is changing, not just what the scale says.',
@@ -97,24 +71,29 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
       <CostIncludedGrid
         title="What's Included In The Program"
         lead="We want you to know exactly what to expect."
-        includedLabel="Included:"
         included={[
-          { icon: ClipboardList, title: 'Initial Consultation With A Provider' },
-          { icon: FlaskConical, title: 'Lab Testing And Review' },
-          { icon: Scale, title: 'Body Composition Scans' },
-          { icon: ClipboardList, title: 'Personalized Treatment Plan' },
-          { icon: CalendarCheck, title: 'Ongoing Follow Up Visits And Adjustments' },
+          { icon: programIcons[0], title: 'Initial Consultation<br/>With A Provider' },
+          { icon: programIcons[1], title: 'Lab Testing<br/>And Review' },
+          { icon: programIcons[2], title: 'Body Composition<br/>Scans' },
+          { icon: programIcons[3], title: 'Personalized<br/>Treatment Plan' },
+          { icon: programIcons[4], title: 'Ongoing Follow Up Visits And Adjustments' },
         ]}
-        separateLabel="May be additional:"
+        separateLabel="May Be Additional:"
         separate={[
-          { icon: Pill, title: 'Medications If Prescribed' },
-          { icon: FlaskConical, title: 'Advanced Testing If Needed' },
-          { icon: Pill, title: 'Supplements Based On Your Plan' },
+          { icon: programIcons[5], title: 'Medications If<br/>Prescribed' },
+          { icon: programIcons[6], title: 'Advanced Testing<br/>If Needed' },
+          { icon: programIcons[7], title: 'Supplements Based On Your Plan' },
         ]}
         note="Your provider will walk you through everything so there are no surprises."
       />
 
-    
+      <MidPageCTA
+        backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-21-bg.jpg"
+        backgroundPosition="13% center"
+        title="Ready to Take a Smarter Approach to Weight Loss?"
+        body="Stop guessing and start working with real data."
+        align="right"
+      />
 
       <ProgramFitCards
         fitCard={{
@@ -172,47 +151,19 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         closingParagraphs={[
           <>
             We review hormone balance and other factors that may impact weight. Learn more about our{' '}
-            <Link href="/bioidentical-hormone-replacement-therapy" className="font-medium text-sage-400 underline underline-offset-2 hover:text-sage-300">
-              BHRT Therapy
-            </Link>{' '}
-            services, including{' '}
-            <Link href="/bioidentical-hormone-replacement-therapy/male" className="font-medium text-sage-400 underline underline-offset-2 hover:text-sage-300">
-              Hormone Therapy for Men
-            </Link>{' '}
-            and{' '}
-            <Link href="/bioidentical-hormone-replacement-therapy/female" className="font-medium text-sage-400 underline underline-offset-2 hover:text-sage-300">
-              Hormone Therapy for Women
-            </Link>
-            .
+            <a href="/bioidentical-hormone-replacement-therapy">BHRT Therapy</a> services, including{' '}
+            <a href="/bioidentical-hormone-replacement-therapy/male">Hormone Therapy for Men</a> and{' '}
+            <a href="/bioidentical-hormone-replacement-therapy/female">Hormone Therapy for Women</a>.
           </>,
           'From there, we build a plan based on your results and adjust it over time as your body responds.',
           'This is what makes lab-guided weight loss more precise and sustainable.',
         ]}
       />
 
-      <WhyThisApproachWorks/>
+      <WhyThisApproachWorks />
 
-
-      <ClosingCTA
-        title="Ready To Take A Smarter Approach To Weight Loss?"
-        body="Stop guessing and start working with real data."
-        cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
-      />
-
-{testimonials.length ? (
-        <TestimonialSet
-          eyebrow="Patient testimonials"
-          title="What our patients say"
-          testimonials={testimonials}
-          background="alt"
-        />
-      ) : null}
       {treatment.faqs.length ? (
-        <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
-          items={treatment.faqs}
-        />
+        <FAQAccordion title="Medical Weight Loss FAQs" items={treatment.faqs} />
       ) : null}
 
       <ClosingCTA {...treatment.closingCta} />

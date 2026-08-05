@@ -1,10 +1,10 @@
-import { ClipboardList, Combine, Dna, FlaskConical, Gauge, Microscope, Pill, Scale, SlidersHorizontal } from 'lucide-react'
-
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { pillars } from '@/content/treatments'
 import type { Treatment } from '@/types/content'
+import { MidPageCTA } from '../compontents-custom/shared/MidPageCTA'
+import { cardIcons, listIcons } from '../compontents-custom/glp1Microdosing/glp-icons'
 import { FitCheckCallout } from '../compontents-custom/glp1Microdosing/FitCheckCallout'
 import { MetabolicOverviewCards } from '../compontents-custom/glp1Microdosing/MetabolicOverviewCards'
 import { ProgramIncludedGrid } from '../compontents-custom/glp1Microdosing/ProgramIncludedGrid'
@@ -43,17 +43,17 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
           heading: 'A Sophisticated Approach To Sustainable Metabolic Health',
           paragraphs: [
             'Leverage the inflammation-fighting power of GLP-1 medicines for sustainable, systemic health with minimized side effects.',
-            'Our GLP-1 Microdosing program is designed for individuals who want the metabolic and cognitive benefits of peptide therapy without sacrificing energy or lifestyle. We use precision lab testing and body composition data to find your "Minimum Effective Dose" — the sweet spot where you feel optimal, not overwhelmed.',
+            'Our GLP-1 Microdosing program is designed for individuals who want the metabolic and cognitive benefits of peptide therapy without sacrificing energy or lifestyle. We use precision lab testing and body composition data to find your "Minimum Effective Dose"—the sweet spot where you feel optimal, not overwhelmed.',
           ],
-          focusLabel: 'We focus on',
+          focusLabel: 'We focus on:',
           focusItems: [
-            { title: 'Muting "food noise"', body: 'Regaining cognitive control over cravings.' },
-            { title: 'Metabolic flexibility', body: 'Helping your body switch efficiently between fuel sources.' },
+            { title: 'Muting "Food Noise"', body: 'Regaining cognitive control over cravings' },
+            { title: 'Metabolic Flexibility', body: 'Helping your body switch efficiently between fuel sources' },
             {
-              title: 'Reducing systemic inflammation',
-              body: 'Leveraging the under-utilized longevity benefits of GLP-1s.',
+              title: 'Reducing Systemic Inflammation',
+              body: 'Leveraging the under-utilized longevity benefits of GLP-1s',
             },
-            { title: 'Protecting lean muscle', body: 'Maintaining strength and vitality.' },
+            { title: 'Protecting Lean Muscle', body: 'Maintaining strength and vitality' },
           ],
         }}
         lightCard={{
@@ -63,75 +63,83 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
             'We don\'t believe in "one size fits all." At a micro-level, every milligram counts. We use advanced diagnostics to ensure your protocol is working with your biology, not against it.',
           icons: [
             {
-              icon: Gauge,
-              title: 'Body composition analysis',
+              icon: listIcons[0],
+              title: 'Body Composition Analysis',
               body: 'We track your progress beyond the scale. By monitoring muscle mass and visceral fat, we ensure your microdose is promoting a healthy, toned physique rather than just "weight" loss.',
             },
             {
-              icon: Dna,
-              title: 'Hormonal synergy',
+              icon: listIcons[1],
+              title: 'Hormonal Synergy',
               body: 'GLP-1s are hormones. We review your insulin, thyroid, and sex hormone levels to ensure your microdosing protocol supports your overall hormonal balance.',
             },
             {
-              icon: FlaskConical,
-              title: 'Bloodwork baseline',
-              body: "Labwork is the foundation of the microdosing program. By understanding your baseline metabolic health, we can tailor a titration schedule that targets your specific needs — whether that's blood sugar stability, inflammation reduction, or appetite regulation.",
+              icon: listIcons[2],
+              title: 'Bloodwork Baseline',
+              body: "Labwork is the foundation of the Microdosing Program. By understanding your baseline metabolic health, we can tailor a titration schedule that targets your specific needs—whether that's blood sugar stability, inflammation reduction, or appetite regulation.",
             },
           ],
           markersLabel: 'We review markers related to:',
           markers: [
-            'Insulin sensitivity & glucose control',
-            'Systemic inflammation',
-            'Hormone balance',
-            'Cardiovascular & lipid health',
+            'Insulin Sensitivity & Glucose Control',
+            'Systemic Inflammation',
+            'Hormone Balance',
+            'Cardiovascular & Lipid Health',
           ],
         }}
       />
 
+      <MidPageCTA
+        backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-31-bg.jpg"
+        backgroundPosition="72% top"
+        title="Ready to Feel Like Yourself Again?"
+        body="Take the next step toward personalized hormone optimization and long-term wellness."
+        align="full"
+      />
+
       <ProgramIncludedGrid
-        title="What's Included In The Program"
+        title="What's Included in the Program"
         lead="Our microdosing journey is a concierge experience, providing you with the medical oversight needed to manage a precision peptide protocol safely and effectively."
         included={[
           {
-            icon: ClipboardList,
+            icon: cardIcons[0],
             title: 'Initial Clinical Consultation',
             description: 'A deep dive into your metabolic history and goals.',
           },
           {
-            icon: Microscope,
+            icon: cardIcons[1],
             title: 'Comprehensive Lab Review',
             description: 'Establishing your data-informed baseline.',
           },
           {
-            icon: SlidersHorizontal,
-            title: 'Precision Titration Plan',
+            icon: cardIcons[2],
+            title: 'Precision<br/>Titration Plan',
             description: 'A customized, low-dose GLP-1 schedule.',
           },
           {
-            icon: Gauge,
+            icon: cardIcons[3],
             title: 'Ongoing Monitoring',
             description: 'Regular check-ins to adjust your dose as your metabolism shifts.',
           },
           {
-            icon: Scale,
+            icon: cardIcons[4],
             title: 'Body Composition Scans',
             description: 'Frequent data points to track muscle retention.',
           },
         ]}
-        additionalLabel="May be additional:"
+        additionalLabel="May Be Additional:"
         additional={[
           {
-            icon: Pill,
+            icon: cardIcons[5],
             title: 'Medications',
             description: 'Compounded GLP-1 or GLP-1/GIP prescriptions.',
           },
           {
-            icon: Combine,
+            icon: cardIcons[6],
             title: 'BHRT Integration',
             description: 'Synergistic hormone replacement therapies.',
           },
           {
-            icon: FlaskConical,
+            icon: cardIcons[7],
             title: 'Advanced Longevity Testing',
             description: 'For those looking to optimize healthspan.',
           },
@@ -143,7 +151,7 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341657/photo-content-87-img_ufo98g.jpg',
           alt: 'A man smiling during a consultation walk outdoors',
         }}
-        heading="Is Microdosing The Right Fit For You?"
+        heading="Is Microdosing the Right Fit for You?"
         lead="This program is a unique fit if:"
         points={[
           'You want to eliminate "food noise" and compulsive cravings.',
@@ -154,13 +162,7 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
         ]}
       />
 
-      {treatment.faqs.length ? (
-        <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
-          items={treatment.faqs}
-        />
-      ) : null}
+      {treatment.faqs.length ? <FAQAccordion title="Microdosing FAQs" items={treatment.faqs} /> : null}
 
       <ClosingCTA {...treatment.closingCta} />
     </>

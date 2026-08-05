@@ -1,14 +1,8 @@
-import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
-
-import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
 import type { Media } from '@/types/content'
 
 export interface MeasureBadge {
-  icon: LucideIcon
+  /** Raw SVG markup — see weight-loss-icons.ts. */
+  icon: string
   label: string
 }
 
@@ -31,89 +25,98 @@ export interface OverviewApproachCardsProps {
 }
 
 /**
- * Dark "our approach" card (image + 2-column focus list) followed by a light
- * "what we measure" card (image + pill-badge row of measurements). Content
- * only — swap props to reuse for a different treatment's intro.
+ * Live-site `#photo-content-c.style-2` — approach card (image + 2-col focus
+ * list) stacked on a body-composition card (content + pill measure badges +
+ * image). Ported 1:1 from download/_concierge-medical-weight-loss_female_.html;
+ * the styling lives in src/app/legacy.css.
  */
 export function OverviewApproachCards({ darkCard, lightCard }: OverviewApproachCardsProps) {
   return (
-    <Section background="page" spacing="md">
-      <Container>
-        <Reveal>
-          <div className="grid overflow-hidden rounded-3xl bg-ink-950 shadow-xl lg:grid-cols-[42%_58%]">
-            <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-full">
-              <Image
-                src={darkCard.image.src}
-                alt={darkCard.image.alt}
-                fill
-                sizes="(min-width: 1024px) 42vw, 100vw"
-                className="object-cover"
-                style={{ objectPosition: darkCard.image.focalPoint ?? 'center' }}
-              />
-            </div>
+    <>
+      <div className="lg-flexspace-100" />
 
-            <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
-              <h2 className="font-display text-display-sm text-canvas-50">{darkCard.heading}</h2>
-              <p className="mt-4 text-body leading-relaxed text-canvas-50/75">{darkCard.lead}</p>
+      <div id="photo-content-c" className="style-2">
+        <div className="radial-gradient" aria-hidden />
 
-              {darkCard.focusLabel ? (
-                <p className="mt-6 text-body-sm font-semibold text-canvas-50">{darkCard.focusLabel}</p>
-              ) : null}
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="box">
+              <div className="top lg-grid lg-gutter-y-30">
+                <div
+                  className="img lg-col-xl-5"
+                  style={{ backgroundImage: `url('${darkCard.image.src}')` }}
+                  role="img"
+                  aria-label={darkCard.image.alt}
+                />
 
-              <ul className="mt-3 grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2">
-                {darkCard.focusItems.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <ArrowRight className="mt-0.5 size-4 shrink-0 text-sage-400" aria-hidden />
-                    <span className="text-body-sm leading-snug text-canvas-50/90">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </Reveal>
+                <div className="content lg-col-xl-7">
+                  <h2 className="lg-title lg-max-width-500">{darkCard.heading}</h2>
 
-        <Reveal className="mt-6">
-          <div className="grid overflow-hidden rounded-3xl border border-canvas-300/60 bg-canvas-50 shadow-sm lg:grid-cols-[58%_42%]">
-            <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
-              <h2 className="font-display text-display-sm text-ink-950">{lightCard.heading}</h2>
-              <p className="mt-4 text-body leading-relaxed text-canvas-600">{lightCard.paragraph}</p>
+                  <div className="lg-text">
+                    <p>{darkCard.lead}</p>
 
-              {lightCard.measuresLabel ? (
-                <p className="mt-5 text-body-sm font-semibold text-ink-950">{lightCard.measuresLabel}</p>
-              ) : null}
-
-              <div className="mt-3 flex flex-wrap gap-2.5">
-                {lightCard.measures.map((measure) => (
-                  <span
-                    key={measure.label}
-                    className="inline-flex items-center gap-2 rounded-full border border-canvas-300/60 bg-white px-4 py-2 text-body-sm font-medium text-ink-950 shadow-sm"
-                  >
-                    <measure.icon className="size-4 text-sage-600" strokeWidth={1.75} aria-hidden />
-                    {measure.label}
-                  </span>
-                ))}
+                    {darkCard.focusLabel ? (
+                      <div className="lg-list-arrow-right two-col">
+                        <h5>{darkCard.focusLabel}</h5>
+                        <ul>
+                          {darkCard.focusItems.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
               </div>
 
-              {lightCard.closingParagraphs.map((paragraph) => (
-                <p key={paragraph} className="mt-4 text-body-sm leading-relaxed text-canvas-600">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+              <div className="bottom">
+                <div className="lg-grid">
+                  <div className="content lg-col-xl-7">
+                    <h2 className="lg-title" style={{ maxWidth: 'none' }}>
+                      {lightCard.heading}
+                    </h2>
 
-            <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-full">
-              <Image
-                src={lightCard.image.src}
-                alt={lightCard.image.alt}
-                fill
-                sizes="(min-width: 1024px) 42vw, 100vw"
-                className="object-cover"
-                style={{ objectPosition: lightCard.image.focalPoint ?? 'center' }}
-              />
+                    <div className="lg-text">
+                      <p>{lightCard.paragraph}</p>
+
+                      {lightCard.measuresLabel ? (
+                        <>
+                          <p>{lightCard.measuresLabel}</p>
+
+                          <div className="lg-list-icon-2 two-col">
+                            <ul>
+                              {lightCard.measures.map((measure) => (
+                                <li
+                                  key={measure.label}
+                                  // Static, author-controlled markup copied from the source site.
+                                  dangerouslySetInnerHTML={{
+                                    __html: `${measure.icon}${measure.label}`,
+                                  }}
+                                />
+                              ))}
+                            </ul>
+                          </div>
+                        </>
+                      ) : null}
+
+                      {lightCard.closingParagraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div
+                    className="img lg-col-xl-5"
+                    style={{ backgroundImage: `url('${lightCard.image.src}')` }}
+                    role="img"
+                    aria-label={lightCard.image.alt}
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </Reveal>
-      </Container>
-    </Section>
+        </div>
+      </div>
+    </>
   )
 }

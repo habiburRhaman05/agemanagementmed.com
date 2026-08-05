@@ -6,6 +6,8 @@ import type { ClosingCtaData } from '@/types/content'
 interface ClosingCTAProps extends ClosingCtaData {
   /** Background photo for the band; defaults to the shared placeholder. */
   backgroundImage?: string
+  /** Small print under the CTA — e.g. the treatment pages' results disclaimer. */
+  note?: string
 }
 
 /**
@@ -16,6 +18,7 @@ export function ClosingCTA({
   title,
   body,
   cta,
+  note,
   backgroundImage = homeMedia.closingBackground,
 }: ClosingCTAProps) {
   return (
@@ -34,6 +37,15 @@ export function ClosingCTA({
                 {cta.label}
               </Link>
             </div>
+
+            {note ? (
+              <div
+                className="lg-text lg-max-width-825"
+                style={{ marginBottom: 0, marginTop: 25 }}
+              >
+                <p style={{ fontSize: 16 }}>{note}</p>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

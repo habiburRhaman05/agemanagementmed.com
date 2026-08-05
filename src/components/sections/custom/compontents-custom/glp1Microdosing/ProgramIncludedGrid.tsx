@@ -1,12 +1,6 @@
-import type { LucideIcon } from 'lucide-react'
-
-import { Container } from '@/components/shared/Container'
-import { Section } from '@/components/shared/Section'
-import { SectionHeader } from '@/components/shared/SectionHeader'
-import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
-
 export interface ProgramItem {
-  icon: LucideIcon
+  /** Raw SVG markup — see glp-icons.ts. */
+  icon: string
   title: string
   description: string
 }
@@ -22,63 +16,124 @@ export interface ProgramIncludedGridProps {
 
 function ProgramCard({ item }: { item: ProgramItem }) {
   return (
-    <div className="flex h-full flex-col items-center rounded-2xl border border-canvas-300/60 bg-canvas-50 p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sage-600/30 hover:shadow-lg">
-      <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700">
-        <item.icon className="size-6" strokeWidth={1.5} aria-hidden />
-      </span>
-      <h3 className="mt-4 font-display text-title-md text-ink-950">{item.title}</h3>
-      <p className="mt-2 text-body-sm leading-relaxed text-canvas-600">{item.description}</p>
+    <div className="item lg-col-md-6 lg-col-lg-4 lg-col-xl-3">
+      <div className="box">
+        <div
+          className="icon"
+          // Static, author-controlled markup copied from the source site.
+          dangerouslySetInnerHTML={{ __html: item.icon }}
+        />
+        <div className="lg-title" dangerouslySetInnerHTML={{ __html: item.title }} />
+        <div className="lg-text">
+          <p>{item.description}</p>
+        </div>
+      </div>
     </div>
   )
 }
 
 /**
- * Reusable "what's included" program grid — a required tier and an optional
- * "may be additional" tier. Content-driven so it fits any treatment program.
+ * Live-site "What's Included in the Program" — a `.group` band with a
+ * `.content-d` heading, an "Included" `.cards-i` grid split into two rows
+ * (3 + 2 items), and an optional "May Be Additional" `.cards-i` grid. Ported
+ * 1:1 from download/_glp-1-microdosing_female_.html; the styling lives in
+ * src/app/legacy.css.
  */
 export function ProgramIncludedGrid({
   title,
   lead,
   includedLabel = 'Included:',
   included,
-  additionalLabel = 'May be additional:',
+  additionalLabel = 'May Be Additional:',
   additional,
 }: ProgramIncludedGridProps) {
+  const firstRow = included.slice(0, 3)
+  const secondRow = included.slice(3)
+
   return (
-    <Section background="alt" spacing="md">
-      <Container>
-        <SectionHeader title={title} lead={lead} align="center" />
+    <div className="lg-group" style={{ backgroundColor: '#fff' }}>
+      <div className="radial-gradient" aria-hidden />
 
-        <p className="mt-10 text-title-md font-semibold text-ink-950">{includedLabel}</p>
-        <StaggerGroup
-          as="ul"
-          stagger={0.06}
-          className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {included.map((item) => (
-            <StaggerItem as="li" key={item.title} className="h-full">
-              <ProgramCard item={item} />
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
+      <div className="lg-flexspace-100" />
 
-        {additional?.length ? (
-          <>
-            <p className="mt-12 text-title-md font-semibold text-ink-950">{additionalLabel}</p>
-            <StaggerGroup
-              as="ul"
-              stagger={0.06}
-              className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-            >
-              {additional.map((item) => (
-                <StaggerItem as="li" key={item.title} className="h-full">
-                  <ProgramCard item={item} />
-                </StaggerItem>
+      <div className="lg-content-d">
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <h2 className="lg-title">{title}</h2>
+            {lead ? (
+              <div className="lg-text lg-max-width-800">
+                <p style={{ fontSize: 20 }}>{lead}</p>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+
+      <div style={{ paddingTop: 30 }} />
+
+      <div className="lg-content-d">
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="lg-title" style={{ fontSize: 32, marginBottom: 0 }}>
+              {includedLabel}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="lg-flexspace-40" />
+
+      <div className="cards-i">
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="lg-grid lg-justify-center">
+              {firstRow.map((item) => (
+                <ProgramCard item={item} key={item.title} />
               ))}
-            </StaggerGroup>
-          </>
-        ) : null}
-      </Container>
-    </Section>
+            </div>
+
+            <div style={{ paddingTop: 36 }} />
+
+            <div className="lg-grid lg-justify-center">
+              {secondRow.map((item) => (
+                <ProgramCard item={item} key={item.title} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {additional?.length ? (
+        <>
+          <div className="lg-flexspace-40" />
+
+          <div className="lg-content-d">
+            <div className="lg-max-width-1440">
+              <div className="lg-container">
+                <div className="lg-title" style={{ fontSize: 32, marginBottom: 0 }}>
+                  {additionalLabel}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg-flexspace-40" />
+
+          <div className="cards-i">
+            <div className="lg-max-width-1440">
+              <div className="lg-container">
+                <div className="lg-grid lg-justify-center">
+                  {additional.map((item) => (
+                    <ProgramCard item={item} key={item.title} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : null}
+
+      <div className="lg-flexspace-100" />
+    </div>
   )
 }

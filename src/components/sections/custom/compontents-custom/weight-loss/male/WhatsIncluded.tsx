@@ -1,130 +1,114 @@
-import {
-  FileText,
-  Dna,
-  PersonStanding,
-  ClipboardPlus,
-  UserCheck,
-  Pill,
-  Syringe,
-  PillBottle,
-  type LucideIcon,
-} from 'lucide-react'
-
-import { Container } from '@/components/shared/Container'
-import { SectionHeader } from '@/components/shared/SectionHeader'
-import { Section } from '@/components/shared/Section'
-import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
+import { programIcons } from '../../shared/weight-loss-icons'
 
 /**
- * Central icon registry — add new entries here and reference them by
- * name anywhere in the app instead of importing lucide icons ad hoc.
+ * Live-site "What's Included in the Program" — a `.content-d` heading
+ * followed by two `.cards-i` icon grids (Included / May Be Additional).
+ * Ported 1:1 from download/_concierge-medical-weight-loss_male_.html (content
+ * is identical to the female page); the styling lives in src/app/legacy.css.
  */
-const ICONS: Record<string, LucideIcon> = {
-  consultation: FileText,
-  labTesting: Dna,
-  bodyComposition: PersonStanding,
-  treatmentPlan: ClipboardPlus,
-  followUp: UserCheck,
-  medications: Pill,
-  advancedTesting: Syringe,
-  supplements: PillBottle,
-}
 
-type IconName = keyof typeof ICONS
-
-/** Look up a lucide icon component by name, with a safe fallback. */
-function getIcon(name: IconName): LucideIcon {
-  return ICONS[name] ?? FileText
-}
-
-interface IconProps {
-  name: IconName
-  className?: string
-  strokeWidth?: number
-}
-
-const Icon: React.FC<IconProps> = ({ name, className = 'size-7', strokeWidth = 1.5 }) => {
-  const LucideIcon = getIcon(name)
-  return <LucideIcon className={className} strokeWidth={strokeWidth} />
-}
-
-interface ProgramItem {
-  name: IconName
-  label: string
-}
-
-const included: ProgramItem[] = [
-  { name: 'consultation', label: 'Initial Consultation With A Provider' },
-  { name: 'labTesting', label: 'Lab Testing And Review' },
-  { name: 'bodyComposition', label: 'Body Composition Scans' },
-  { name: 'treatmentPlan', label: 'Personalized Treatment Plan' },
-  { name: 'followUp', label: 'Ongoing Follow Up Visits And Adjustments' },
+/** Icon order matches the source markup's five "included" cards. */
+const included = [
+  { icon: programIcons[0], title: 'Initial consultation<br/>with a provider' },
+  { icon: programIcons[1], title: 'Lab testing<br/>and review' },
+  { icon: programIcons[2], title: 'Body composition<br/>scans' },
+  { icon: programIcons[3], title: 'Personalized<br/>treatment plan' },
+  { icon: programIcons[4], title: 'Ongoing follow up visits and adjustments' },
 ]
 
-const additional: ProgramItem[] = [
-  { name: 'medications', label: 'Medications If Prescribed' },
-  { name: 'advancedTesting', label: 'Advanced Testing If Needed' },
-  { name: 'supplements', label: 'Supplements Based On Your Plan' },
+/** Icon order matches the source markup's three "additional" cards. */
+const additional = [
+  { icon: programIcons[5], title: 'Medications if<br/>prescribed' },
+  { icon: programIcons[6], title: 'Advanced testing<br/>if needed' },
+  { icon: programIcons[7], title: 'Supplements based on your plan' },
 ]
 
-function ProgramCard({ item }: { item: ProgramItem }) {
+function GridCard({ item }: { item: { icon: string; title: string } }) {
   return (
-    <div className="flex h-full flex-col items-center gap-4 rounded-2xl border border-canvas-300/60 bg-canvas-50 p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sage-600/30 hover:shadow-lg sm:p-8">
-      <span className="flex size-14 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700">
-        <Icon name={item.name} />
-      </span>
-      <p className="text-body-sm font-medium leading-snug text-ink-900">{item.label}</p>
+    <div className="item lg-col-md-6 lg-col-lg-4 lg-col-xl-3">
+      <div className="box">
+        <div
+          className="icon"
+          // Static, author-controlled markup copied from the source site.
+          dangerouslySetInnerHTML={{ __html: item.icon }}
+        />
+        <div className="lg-title" dangerouslySetInnerHTML={{ __html: item.title }} />
+      </div>
     </div>
-  )
-}
-
-function CardGrid({ items }: { items: ProgramItem[] }) {
-  return (
-    <StaggerGroup
-      as="ul"
-      stagger={0.06}
-      className="mx-auto grid max-w-3xl grid-cols-1 gap-5 sm:grid-cols-2 lg:max-w-none lg:grid-cols-3"
-    >
-      {items.map((item) => (
-        <StaggerItem as="li" key={item.name} className="h-full">
-          <ProgramCard item={item} />
-        </StaggerItem>
-      ))}
-    </StaggerGroup>
   )
 }
 
 const WhatsIncluded: React.FC = () => {
   return (
-    <Section background="page" spacing="lg">
-      <Container width="wide">
-        <SectionHeader
-          eyebrow="Program details"
-          title="What's Included In The Program"
-          lead="We want you to know exactly what to expect."
-          align="center"
-        />
+    <>
+      <div className="lg-flexspace-100" />
 
-        <div className="mt-14 space-y-14">
-          <div>
-            <h3 className="text-center font-display text-title-lg text-ink-950">Included</h3>
-            <div className="mt-6">
-              <CardGrid items={included} />
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-center font-display text-title-lg text-ink-950">May Be Additional</h3>
-            <div className="mt-6">
-              <CardGrid items={additional} />
+      <div className="lg-content-d" style={{ backgroundColor: '#fff' }}>
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <h2 className="lg-title">What&apos;s Included in the Program</h2>
+            <div className="lg-text">
+              <p style={{ fontSize: 20 }}>We want you to know exactly what to expect.</p>
             </div>
           </div>
         </div>
-      </Container>
-    </Section>
+      </div>
+
+      <div className="lg-flexspace-50" />
+
+      <div className="cards-i" style={{ backgroundColor: '#fff' }}>
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="lg-grid">
+              {included.map((item) => (
+                <GridCard item={item} key={item.title} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="lg-flexspace-100" />
+
+      <div className="lg-content-d" style={{ backgroundColor: '#fff' }}>
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="lg-title" style={{ fontSize: 32, marginBottom: 0 }}>
+              May Be Additional:
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="lg-flexspace-40" />
+
+      <div className="cards-i" style={{ backgroundColor: '#fff' }}>
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="lg-grid">
+              {additional.map((item) => (
+                <GridCard item={item} key={item.title} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="lg-flexspace-40" />
+
+      <div className="lg-content-d" style={{ backgroundColor: '#fff' }}>
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="lg-text lg-text-center">
+              <p>Your provider will walk you through everything so there are no surprises.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="lg-flexspace-100" />
+    </>
   )
 }
 
 export default WhatsIncluded
-export { Icon, getIcon, ICONS }
-export type { IconName }
