@@ -97,6 +97,7 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
         align="full"
       />
 
+
       <ProgramIncludedGrid
         title="What's Included in the Program"
         lead="Our microdosing journey is a concierge experience, providing you with the medical oversight needed to manage a precision peptide protocol safely and effectively."

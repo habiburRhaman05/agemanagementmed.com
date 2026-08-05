@@ -39,18 +39,18 @@ export interface MetabolicOverviewCardsProps {
  */
 export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOverviewCardsProps) {
   return (
-    <>
-      <div className="lg-flexspace-100" />
+    <div className="py-10 md:py-20">
+      
 
       <div id="photo-content-c" className="style-2">
         <div className="radial-gradient" aria-hidden />
 
         <div className="lg-max-width-1440">
           <div className="lg-container">
-            <div className="box">
+            <div className="box overflow-hidden!">
               <div className="top lg-grid">
                 <div
-                  className="img lg-col-xl-5"
+                  className="img lg-col-xl-5 overflow-hidden"
                   style={{ backgroundImage: `url('${darkCard.image.src}')` }}
                   role="img"
                   aria-label={darkCard.image.alt}
@@ -88,7 +88,7 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
               <div className="bottom">
                 <div className="lg-grid">
                   <div
-                    className="img lg-col-xl-6 lg-order-xl-2"
+                    className="img lg-col-xl-6 lg-order-xl-2 overflow-hidden"
                     style={{ backgroundImage: `url('${lightCard.image.src}')` }}
                     role="img"
                     aria-label={lightCard.image.alt}
@@ -135,6 +135,6 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
