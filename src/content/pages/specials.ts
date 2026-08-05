@@ -26,7 +26,7 @@ export const specialsContent = {
     title: 'Wellness specials',
     lead: 'Explore our current health & wellness specials, available for a limited time at our Statesboro and Pooler locations.',
     image: {
-      src: 'https://picsum.photos/seed/samm-specials-hero/1600/900',
+      src: '/specials/banner-27-bg.jpg',
       alt: 'A couple laughing together outdoors',
     },
   },
@@ -39,7 +39,7 @@ export const specialsContent = {
       description:
         'DOUBLE the referral reward! All patients who refer other patients will receive $100 instead of $50 to their account, through the end of June.',
       image: {
-        src: 'https://picsum.photos/seed/samm-referral-special/800/900',
+        src: '/specials/1.jpg',
         alt: 'Refer a friend — double rewards',
       },
       locations: ['savannah-pooler', 'statesboro'],

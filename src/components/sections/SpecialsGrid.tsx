@@ -1,12 +1,12 @@
 'use client'
 
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
 
 import { Container } from '@/components/shared/Container'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
-import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 
 import { Button } from '@/components/ui/Button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
@@ -28,7 +28,7 @@ const LOCATION_TABS: LocationTab[] = [
 function SpecialCard({ special }: { special: Special }) {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-canvas-300/60 bg-canvas-50 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sage-600/30 hover:shadow-lg">
-      <div className="relative aspect-4/3">
+      <div className="relative aspect-square">
         <Image src={special.image.src} alt={special.image.alt} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
       </div>
 
@@ -61,6 +61,7 @@ function SpecialCard({ special }: { special: Special }) {
 
 export function SpecialsGrid({ specials }: { specials: Special[] }) {
   const [activeTab, setActiveTab] = useState<LocationTab['id']>('all')
+  const reduceMotion = useReducedMotion()
 
   const visible = specials.filter(
     (special) => activeTab === 'all' || special.locations.includes(activeTab),
@@ -90,17 +91,23 @@ export function SpecialsGrid({ specials }: { specials: Special[] }) {
         </div>
 
         {visible.length ? (
-          <StaggerGroup
-            as="ul"
-            stagger={0.06}
-            className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {visible.map((special) => (
-              <StaggerItem as="li" key={special.id} className="h-full">
-                <SpecialCard special={special} />
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
+          <ul className="mx-auto mt-12 flex max-w-5xl flex-wrap justify-center gap-6">
+            <AnimatePresence mode="popLayout">
+              {visible.map((special) => (
+                <m.li
+                  key={`${activeTab}-${special.id}`}
+                  layout
+                  initial={{ opacity: 0, y: reduceMotion ? 0 : 48 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: reduceMotion ? 0 : 48 }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                  className="h-full w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+                >
+                  <SpecialCard special={special} />
+                </m.li>
+              ))}
+            </AnimatePresence>
+          </ul>
         ) : (
           <p className="mx-auto mt-12 max-w-md text-center text-body text-canvas-600">
             No specials are currently available for this location. Check back soon.
