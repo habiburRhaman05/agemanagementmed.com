@@ -25,7 +25,7 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
     <>
       <HeroEditorial
         {...treatment.hero}
-        image={treatment.hero.image ? { ...treatment.hero.image, src: '/images/banner-24-bg.jpg' } : undefined}
+        image={{...treatment.hero.image,src: '/images/banner-24-bg.jpg'}}
         fullHeight
         breadcrumbs={[
           { label: 'Home', href: '/' },
