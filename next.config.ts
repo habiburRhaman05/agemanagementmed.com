@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "waldoughmediaclients.s3.us-east-2.amazonaws.com" },
       { protocol: "https", hostname: "assets.cdn.filesafe.space" },
       { protocol: "https", hostname: "www.agemanagementmed.com" },
+      // Placeholder photos used by unfinished /specials content (src/content/pages/specials.ts) — swap for real Cloudinary assets and remove this entry.
+      { protocol: "https", hostname: "picsum.photos" },
     ],
   },
   typescript: {

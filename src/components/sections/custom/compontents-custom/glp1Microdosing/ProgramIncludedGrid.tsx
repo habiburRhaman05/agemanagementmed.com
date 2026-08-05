@@ -54,6 +54,7 @@ export function ProgramIncludedGrid({
     <div className="lg-group" style={{ backgroundColor: '#fff' }}>
       <div className="radial-gradient" aria-hidden />
 
+      <div style={{ paddingTop: 60 }} />
       <div className="lg-flexspace-100" />
 
       <div className="lg-content-d">
