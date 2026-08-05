@@ -1,6 +1,7 @@
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
+import { Reveal } from '@/components/shared/Reveal'
 import { pillars } from '@/content/treatments'
 import type { Treatment } from '@/types/content'
 import { MidPageCTA } from '../compontents-custom/shared/MidPageCTA'
@@ -35,6 +36,7 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
         ]}
       />
 
+      <Reveal>
       <MetabolicOverviewCards
         darkCard={{
           image: {
@@ -88,7 +90,9 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
           ],
         }}
       />
+      </Reveal>
 
+      <Reveal>
       <MidPageCTA
         backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-31-bg.jpg"
         backgroundPosition="72% top"
@@ -96,8 +100,9 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
         body="Take the next step toward personalized hormone optimization and long-term wellness."
         align="full"
       />
+      </Reveal>
 
-
+      <Reveal>
       <ProgramIncludedGrid
         title="What's Included in the Program"
         lead="Our microdosing journey is a concierge experience, providing you with the medical oversight needed to manage a precision peptide protocol safely and effectively."
@@ -147,7 +152,9 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
           },
         ]}
       />
+      </Reveal>
 
+      <Reveal>
       <FitCheckCallout
         image={{
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341657/photo-content-87-img_ufo98g.jpg',
@@ -163,17 +170,24 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
           'You are focused on longevity and the anti-inflammatory benefits of peptides.',
         ]}
       />
+      </Reveal>
 
-      {treatment.faqs.length ? <FAQAccordion title="Microdosing FAQs" items={treatment.faqs} /> : null}
+      {treatment.faqs.length ? (
+        <Reveal>
+          <FAQAccordion title="Microdosing FAQs" items={treatment.faqs} />
+        </Reveal>
+      ) : null}
 
-      <ClosingCTA
-        {...treatment.closingCta}
-        title="Start Your Personalized Weight Loss Plan Today"
-        body="You don't have to figure this out on your own."
-        cta={{ ...treatment.closingCta.cta, label: 'Schedule a Consultation' }}
-        backgroundImage="/sexual man/sw.jpg"
-        contentMaxWidth={552}
-      />
+      <Reveal>
+        <ClosingCTA
+          {...treatment.closingCta}
+          title="Start Your Personalized Weight Loss Plan Today"
+          body="You don't have to figure this out on your own."
+          cta={{ ...treatment.closingCta.cta, label: 'Schedule a Consultation' }}
+          backgroundImage="/sexual man/sw.jpg"
+          contentMaxWidth={552}
+        />
+      </Reveal>
     </>
   )
 }
