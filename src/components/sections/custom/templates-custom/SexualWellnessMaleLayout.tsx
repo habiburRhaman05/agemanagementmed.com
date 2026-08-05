@@ -1,14 +1,12 @@
 import { Activity, Atom, ClipboardList, ShieldCheck, Sparkles, Wand2, Zap } from 'lucide-react'
-
-import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import { pillars } from '@/content/treatments'
 import type { Treatment } from '@/types/content'
+import { SexualHealthClosingBand } from '../compontents-custom/sexualWellnes/SexualHealthClosingBand'
 import { SexualHealthConcerns } from '../compontents-custom/sexualWellnes/SexualHealthConcerns'
-import { TreatmentComparison } from '../compontents-custom/sexualWellnes/TreatmentComparison'
 import { TreatmentOptionsStack } from '../compontents-custom/sexualWellnes/TreatmentOptionsStack'
 
 interface TreatmentTemplateProps {
@@ -175,11 +173,11 @@ export async function SexualWellnessMaleLayout({ treatment }: TreatmentTemplateP
           eyebrow="Patient testimonials"
           title="What our patients say"
           testimonials={testimonials}
-          background="alt"
+          backgroundImage="/sexual man/mans.jpg"
         />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <SexualHealthClosingBand />
     </>
   )
 }
