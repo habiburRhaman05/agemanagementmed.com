@@ -1,5 +1,3 @@
-import { HeartHandshake, HeartPulse, ShieldOff, Target, Waves } from 'lucide-react'
-
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
@@ -8,6 +6,7 @@ import { getPublishedTestimonials } from '@/content/testimonials'
 import { pillars } from '@/content/treatments'
 import type { Treatment } from '@/types/content'
 import { SymptomsOutcomesGrid } from '../compontents-custom/shared/SymptomsOutcomesGrid'
+import { shockwaveIcons } from '../compontents-custom/shockwaveTherapy/shockwave-icons'
 import { TreatmentBenefitsIntro } from '../compontents-custom/shockwaveTherapy/TreatmentBenefitsIntro'
 
 interface TreatmentTemplateProps {
@@ -64,35 +63,37 @@ export async function ShockwaveTherapyLayout({ treatment }: TreatmentTemplatePro
       />
 
       <SymptomsOutcomesGrid
-        title="Symptoms And Outcomes Of Shockwave Therapy"
+        title="Symptoms and Outcomes of Shockwave Therapy"
         lead="Shockwave therapy may be most applicable for men with erectile dysfunction associated with reduced blood flow. It is also explored as a supportive option for sexual performance and overall penile health. Candidacy is always determined on an individual basis during consultation."
+        align="left"
+        wide
         items={[
           {
-            icon: HeartPulse,
+            icon: shockwaveIcons[0],
             title: 'Erectile dysfunction (ED)',
             description:
               'Difficulty achieving or maintaining an erection — particularly when associated with vascular health or reduced circulation — may be addressed with shockwave therapy.',
           },
           {
-            icon: ShieldOff,
+            icon: shockwaveIcons[1],
             title: 'Drug-free approach to sexual health',
             description:
               'Men who prefer to avoid ongoing medication — due to side effects, interactions, or personal preference — may benefit from exploring shockwave therapy as an alternative.',
           },
           {
-            icon: Waves,
+            icon: shockwaveIcons[2],
             title: "Peyronie's disease",
             description:
               "Acoustic wave therapy may help address scar tissue associated with Peyronie's disease, potentially supporting improved tissue flexibility and reduced discomfort.",
           },
           {
-            icon: HeartHandshake,
+            icon: shockwaveIcons[3],
             title: 'Post-procedure rehabilitation support',
             description:
               'Men recovering from prostate surgery or other pelvic procedures may explore shockwave therapy as part of a broader plan to support the return of erectile function.',
           },
           {
-            icon: Target,
+            icon: shockwaveIcons[4],
             title: 'Sexual performance optimization',
             description:
               'Men seeking support for stronger erections, greater ease, and improved sexual confidence.',
@@ -111,8 +112,8 @@ export async function ShockwaveTherapyLayout({ treatment }: TreatmentTemplatePro
 
       {treatment.faqs.length ? (
         <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
+          title="Frequently asked questions"
+          lead="Deciding on Shockwave Therapy is important, and you likely have questions. Here are answers to common questions to help you make an informed decision."
           items={treatment.faqs}
         />
       ) : null}

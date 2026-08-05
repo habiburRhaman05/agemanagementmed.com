@@ -837,6 +837,11 @@
   text-align: center;
 }
 
+.lg-content-d.text-left .lg-title,
+.lg-content-d.text-left .lg-text {
+  text-align: left;
+}
+
 /* Source paragraph rhythm, scoped so it can't leak into untouched sections. */
 .lg-text p {
   color: #111214;
@@ -877,6 +882,12 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 400px;
+}
+
+.lg-max-width-600 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
 }
 
 .lg-max-width-700 {
@@ -2604,4 +2615,777 @@
 .lg-list-icon.top-icon ul li svg {
   top: 0;
   transform: translateY(0);
+}
+
+/* ==========================================================================
+   SHOCKWAVE THERAPY / SINGLE-AUDIENCE TREATMENT PAGE SECTIONS
+   Ported from download/assets/style.css (download/_shockwave-therapy_.html).
+   ========================================================================== */
+
+/* ------------ LIST: CHECK 2 (bigger badge checklist, .list-check-2) ----------------------
+   Distinct from .lg-list-check (small inline check) — bigger 26x24 badge,
+   navy list text. The source's own check-2 SVG asset wasn't present in the
+   downloaded bundle, so this is a faithful reconstruction in the same teal. */
+.lg-list-check-2 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lg-list-check-2.two-col ul {
+  column-count: 2;
+  column-gap: 20px;
+}
+
+.lg-list-check-2 ul li {
+  color: #14214b;
+  margin-bottom: 10px;
+  padding-left: 42px;
+  position: relative;
+  text-align: left;
+}
+
+.lg-list-check-2 ul li:last-child {
+  margin-bottom: 0;
+}
+
+.lg-list-check-2 ul li::before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='24' viewBox='0 0 26 24' fill='none'%3E%3Ccircle cx='13' cy='12' r='11' stroke='%23519B98' stroke-width='2'/%3E%3Cpath d='M7.5 12.5L10.8 16L18.5 8' stroke='%23519B98' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 24px;
+  left: 0;
+  position: absolute;
+  width: 26px;
+}
+
+.lg-list-check-2 ul li strong {
+  color: #14214b;
+  font-family: var(--font-display), 'Bodoni-72', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .lg-list-check-2.two-col ul {
+    column-count: 1;
+    column-gap: 0;
+  }
+}
+
+/* ------------ COLUMN BOX I (#column-box-i — icon-left card, 2-col) ---------------------- */
+#column-box-i {
+  position: relative;
+}
+
+#column-box-i .lg-container {
+  max-width: 1054px !important;
+}
+
+#column-box-i.max-width-container-1292 .lg-container {
+  max-width: 1292px !important;
+}
+
+#column-box-i .lg-grid {
+  --lg-gy: 30px;
+}
+
+#column-box-i .box {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border: 1px solid #ececec;
+  border-radius: 20px;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  padding: 38px 30px;
+}
+
+#column-box-i .icon {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+#column-box-i .content {
+  flex: 1 1 0;
+  padding-left: 24px;
+}
+
+#column-box-i .lg-title {
+  color: #14214b;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+#column-box-i .lg-text > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Inside #photo-content-c (not used here, but matches the source's scoped override). */
+#photo-content-c #column-box-i .lg-title,
+#photo-content-c #column-box-i .lg-text {
+  text-align: left !important;
+}
+
+#column-box-i.style-2 .box {
+  background: #fafafa;
+  border: 1px solid #d9d9d9;
+}
+
+#column-box-i.style-2 .lg-text * {
+  color: #14214b;
+  font-size: 16px;
+}
+
+#column-box-i.style-2 .lg-text h3 {
+  font-size: 20px !important;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  #photo-content-c #column-box-i .lg-title,
+  #photo-content-c #column-box-i .lg-text {
+    text-align: center !important;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #column-box-i .icon,
+  #column-box-i .content {
+    padding: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  #column-box-i .icon {
+    margin-bottom: 20px;
+  }
+
+  #column-box-i .lg-title {
+    font-size: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ==========================================================================
+   PERIMENOPAUSE / MULTI-SECTION TREATMENT PAGE ADDITIONS
+   Ported from download/assets/style.css (download/_perimenopause-menopause_.html).
+   ========================================================================== */
+
+#photo-content-c.style-2 .top .cta {
+  margin-top: 50px;
+  text-align: left;
+}
+
+/* ------------ PHOTO CONTENT D: black-text / content-left / content-right ---------------------- */
+.photo-content-d.black-text .lg-top-title,
+.photo-content-d.black-text .lg-title,
+.photo-content-d.black-text .lg-text * {
+  color: #111214;
+}
+
+.photo-content-d.content-left:not(.full-img) .content {
+  padding-left: 0;
+  padding-right: 130px;
+}
+
+.photo-content-d.content-left .img {
+  text-align: right;
+}
+
+.photo-content-d.content-right:not(.full-img) .content {
+  padding-left: 130px;
+  padding-right: 0;
+}
+
+.photo-content-d.content-right .img {
+  text-align: left;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  .photo-content-d.content-right:not(.full-img) .content {
+    padding-left: 65px;
+  }
+
+  .photo-content-d.content-left:not(.full-img) .content {
+    padding-right: 65px;
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  .photo-content-d.content-left:not(.full-img) .content,
+  .photo-content-d.content-right:not(.full-img) .content {
+    padding: 0;
+  }
+}
+
+/* ------------ GROUP: custom-group-2 / custom-group-3 (boxed content-d band) ---------------------- */
+.lg-group.custom-group-2 .box,
+.lg-group.custom-group-3 .box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 90px 100px;
+}
+
+.lg-group.custom-group-3 .box {
+  background: #14214b;
+}
+
+.lg-group.custom-group-3 .lg-content-d * {
+  color: #fff !important;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  .lg-group.custom-group-2 .box {
+    padding: 60px;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .lg-group.custom-group-2 .box,
+  .lg-group.custom-group-3 .box {
+    padding: 40px 30px;
+  }
+}
+
+/* ------------ CARDS I, STYLE 2 (icon-top card with a "Learn more" link) ---------------------- */
+.cards-i.style-2 .box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  padding: 60px 30px;
+}
+
+.cards-i.style-2 .top {
+  flex: 1 1 0;
+}
+
+.cards-i.style-2 .cta {
+  flex: 0 0 auto;
+  margin-top: 24px;
+}
+
+/* ==========================================================================
+   STATESBORO PAGE SECTIONS
+   Ported from download/assets/style.css (download/_statesboro_.html).
+   ========================================================================== */
+
+/* Full-bleed absolute background layer for a .photo-content-d panel — a gap
+   in the earlier hair-restoration port, needed for Statesboro's "Who We Are". */
+.photo-content-d .bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* The source pulls #contact-m up over the hero it sits below. */
+.lg-flexspace-neg120 {
+  margin-top: -120px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .lg-flexspace-neg120 {
+    margin-top: -80px;
+  }
+}
+
+/* ------------ CONTACT M (#contact-m — dark card pulled up over the hero, info + map) ---------------------- */
+#contact-m {
+  position: relative;
+}
+
+#contact-m .box {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #14214b;
+  border-radius: 50px;
+  padding: 30px;
+}
+
+#contact-m .content {
+  flex: 0 1 auto;
+  width: 60%;
+  padding: 60px 30px;
+}
+
+#contact-m .lg-title,
+#contact-m .lg-text * {
+  color: #fff;
+}
+
+#contact-m .lg-title {
+  font-size: 49px;
+  margin-bottom: 20px;
+}
+
+#contact-m .lg-text {
+  margin-bottom: 20px;
+  max-width: 480px;
+}
+
+#contact-m .lg-text * {
+  font-size: 20px;
+}
+
+#contact-m .info > ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#contact-m .info > ul > li {
+  flex: 0 1 auto;
+  color: #fff;
+  padding-left: 25px;
+  margin-right: 10px;
+  position: relative;
+  width: calc(50% - 10px);
+}
+
+#contact-m .info ul li i {
+  left: 0;
+  position: absolute;
+  top: 3px;
+}
+
+#contact-m .info ul li ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#contact-m .info ul li ul li {
+  display: table-row;
+  color: #fff;
+}
+
+#contact-m .info ul li ul li span {
+  display: table-cell;
+}
+
+#contact-m .info ul li ul li span:first-child {
+  padding-right: 15px;
+}
+
+#contact-m .cta {
+  margin-top: 30px;
+}
+
+#contact-m .map {
+  flex: 0 1 auto;
+  border: 5px solid #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  width: 40%;
+}
+
+#contact-m .map iframe {
+  height: 100%;
+  width: 100%;
+  border: 0;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  #contact-m .info > ul > li {
+    margin-bottom: 15px;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  #contact-m .info > ul > li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  #contact-m .content,
+  #contact-m .map {
+    padding: 0;
+    width: 100%;
+  }
+
+  #contact-m .content {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  #contact-m .lg-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #contact-m .info ul {
+    display: inline-block;
+  }
+
+  #contact-m .info ul li {
+    text-align: left;
+  }
+
+  #contact-m .map {
+    padding-top: 56.25%;
+  }
+
+  #contact-m .map iframe {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  #contact-m .map {
+    padding-top: 100%;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #contact-m .lg-title {
+    font-size: 36px;
+  }
+
+  #contact-m .info ul li ul li,
+  #contact-m .info ul li ul li span {
+    display: block;
+  }
+
+  #contact-m .info ul li ul li {
+    margin-bottom: 5px;
+  }
+
+  #contact-m .info ul li ul li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ------------ PHOTO CONTENT CB / CB-GROUP (circular-image comparison rows) ---------------------- */
+.photo-content-cb,
+.lg-photo-content-cb-group {
+  position: relative;
+}
+
+.lg-photo-content-cb-group .photo-content-cb:last-child .container {
+  padding-bottom: 0;
+}
+
+.lg-photo-content-cb-group .photo-content-cb:last-child .container::after {
+  display: none;
+}
+
+.lg-photo-content-cb-group .radial-gradient {
+  border-radius: 50%;
+  background: #587dbd;
+  filter: blur(500px);
+  height: 790px;
+  position: absolute;
+  max-width: 790px;
+  width: 100%;
+}
+
+.lg-photo-content-cb-group .radial-gradient-1 {
+  top: 15%;
+}
+
+.lg-photo-content-cb-group .radial-gradient-2 {
+  bottom: 0;
+}
+
+.photo-content-cb .lg-container {
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.photo-content-cb .lg-container::after {
+  background-color: rgba(0, 0, 0, 0.25);
+  bottom: 0;
+  content: '';
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.photo-content-cb .lg-grid {
+  --lg-gx: 0px;
+  margin: 0 auto;
+  max-width: 1090px !important;
+}
+
+.photo-content-cb .img {
+  padding-right: 60px;
+}
+
+.photo-content-cb .img img {
+  border: 1px solid #519b98;
+  border-radius: 100%;
+  padding: 20px;
+}
+
+.photo-content-cb .content {
+  padding-left: 60px;
+}
+
+.photo-content-cb .lg-title {
+  color: #051e5c;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.photo-content-cb .cta {
+  margin-top: 40px;
+}
+
+@media only screen and (max-width: 991.98px) {
+  .photo-content-cb .img,
+  .photo-content-cb .content {
+    text-align: center;
+  }
+
+  .photo-content-cb .img {
+    margin-bottom: 30px;
+    padding-right: 0;
+  }
+
+  .photo-content-cb .content {
+    padding-left: 0;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .lg-photo-content-cb-group .radial-gradient {
+    display: none;
+  }
+
+  .photo-content-cb .lg-title {
+    font-size: 36px;
+  }
+}
+
+/* ------------ AWARDS D (#awards-d — plain logo strip) ---------------------- */
+#awards-d {
+  position: relative;
+}
+
+#awards-d .lg-grid {
+  --lg-gy: 50px;
+}
+
+#awards-d .item {
+  text-align: center;
+}
+
+@media only screen and (min-width: 1200px) {
+  #awards-d .item {
+    text-align: center;
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 1199.98px) {
+  #awards-d .lg-grid {
+    --lg-gy: 24px;
+  }
+}
+
+/* ------------ TEAM D-2 (#team-d-2 — dark box of white bio cards) ---------------------- */
+#team-d-2 {
+  position: relative;
+}
+
+#team-d-2 .box {
+  background-color: #14214b;
+  border-radius: 20px;
+  padding: 105px;
+}
+
+#team-d-2 .item {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  padding: 60px 70px;
+}
+
+#team-d-2 .item:last-child {
+  margin-bottom: 0;
+}
+
+#team-d-2 .img {
+  flex: 0 1 auto;
+}
+
+#team-d-2 .content {
+  flex: 0 1 auto;
+  padding-left: 60px;
+  width: calc(100% - 300px);
+}
+
+#team-d-2 .name {
+  color: #14214b;
+  font-family: var(--font-display), 'Bodoni-72', serif;
+  font-size: 40px;
+  line-height: 1.1em;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+#team-d-2 .position {
+  color: #14214b;
+  font-weight: 700;
+  line-height: 1.2em;
+  margin-bottom: 30px;
+}
+
+#team-d-2 .lg-text p {
+  color: #14214b;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  #team-d-2 .item {
+    justify-content: center;
+  }
+
+  #team-d-2 .img {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  #team-d-2 .content {
+    padding-left: 0;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  #team-d-2 {
+    background-color: #14214b;
+    padding: 100px 0;
+  }
+
+  #team-d-2 .box {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #team-d-2 .item {
+    padding: 40px 30px;
+  }
+
+  #team-d-2 .name {
+    font-size: 30px;
+  }
+}
+
+/* ------------ HERO G (#hero-g — pink gradient CTA banner) ---------------------- */
+#hero-g {
+  background: linear-gradient(90deg, #ba8194 0%, #c499a6 100%);
+  padding: 60px 0;
+  position: relative;
+}
+
+#hero-g .lg-container {
+  max-width: 1033px !important;
+}
+
+#hero-g .box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#hero-g .content {
+  flex: 1 1 0;
+  padding-right: 50px;
+}
+
+#hero-g .lg-title {
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+#hero-g .lg-text * {
+  color: #fff;
+  font-size: 20px;
+}
+
+#hero-g .cta {
+  flex: 0 0 auto;
+}
+
+@media only screen and (max-width: 991.98px) {
+  #hero-g .content,
+  #hero-g .cta {
+    flex: 0 1 auto;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  #hero-g .content {
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #hero-g .lg-title {
+    font-size: 36px;
+  }
+}
+
+/* ------------ CONTACT F (#contact-f — full-bleed photo contact form) ---------------------- */
+#contact-f {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px 0;
+  position: relative;
+}
+
+#contact-f .lg-container {
+  max-width: 840px !important;
+}
+
+#contact-f .content .lg-title {
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+#contact-f .content .lg-text {
+  margin: 0 auto 50px;
+  max-width: 730px;
+  text-align: center;
+}
+
+#contact-f .content .lg-text p {
+  color: #fff;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  #contact-f .content .lg-title {
+    font-size: 36px;
+  }
 }

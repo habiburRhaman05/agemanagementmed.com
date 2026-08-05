@@ -1,13 +1,8 @@
 import Link from 'next/link'
-import { ArrowRight, type LucideIcon } from 'lucide-react'
-
-import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
-import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 
 export interface TreatmentPathwayItem {
-  icon: LucideIcon
+  /** Raw SVG markup — see perimenopause-icons.ts. */
+  icon: string
   title: string
   href: string
 }
@@ -19,44 +14,67 @@ export interface TreatmentPathwaysPanelProps {
   ctaLabel?: string
 }
 
-/** Reusable dark panel of "learn more" mini service cards, routed to their real pillar/treatment pages. */
-export function TreatmentPathwaysPanel({ title, lead, pathways, ctaLabel = 'Learn more' }: TreatmentPathwaysPanelProps) {
+/**
+ * Live-site `.group.custom-group-3` — a dark navy box containing a
+ * `.content-d` heading and a `.cards-i.style-2` grid of white "learn more"
+ * mini-cards. Ported 1:1 from download/_perimenopause-menopause_.html; the
+ * styling lives in src/app/legacy.css.
+ */
+export function TreatmentPathwaysPanel({
+  title,
+  lead,
+  pathways,
+  ctaLabel = 'Learn more',
+}: TreatmentPathwaysPanelProps) {
   return (
-    <Section background="page" spacing="md">
-      <Container>
-        <Reveal>
-          <div className="overflow-hidden rounded-3xl bg-ink-950 px-6 py-12 shadow-xl sm:px-10 sm:py-16 lg:px-16">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-display text-display-sm text-canvas-50">{title}</h2>
-              {lead ? <p className="mt-5 text-body leading-relaxed text-canvas-50/75">{lead}</p> : null}
+    <div className="lg-group custom-group-3" style={{ background: '#fff' }}>
+      <div className="lg-max-width-1440">
+        <div className="lg-container">
+          <div className="box">
+            <div className="lg-content-d">
+              <div className="content">
+                <h2 className="lg-title lg-max-width-600" style={{ margin: '0 auto 30px' }}>
+                  {title}
+                </h2>
+
+                {lead ? (
+                  <div className="lg-text lg-max-width-600" style={{ margin: '0 auto' }}>
+                    <p>{lead}</p>
+                  </div>
+                ) : null}
+              </div>
             </div>
 
-            <StaggerGroup
-              as="ul"
-              stagger={0.06}
-              className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-            >
-              {pathways.map((pathway) => (
-                <StaggerItem as="li" key={pathway.title} className="h-full">
-                  <div className="flex h-full flex-col rounded-2xl bg-canvas-50 p-6 shadow-sm">
-                    <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700">
-                      <pathway.icon className="size-5" strokeWidth={1.75} aria-hidden />
-                    </span>
-                    <h3 className="mt-4 font-display text-title-md text-ink-950">{pathway.title}</h3>
-                    <Link
-                      href={pathway.href}
-                      className="mt-4 inline-flex items-center gap-1.5 text-body-sm font-semibold text-sage-700 transition-colors hover:text-sage-800"
-                    >
-                      {ctaLabel}
-                      <ArrowRight className="size-4" aria-hidden />
-                    </Link>
+            <div style={{ paddingTop: 40 }} />
+
+            <div className="cards-i style-2">
+              <div className="lg-grid lg-justify-center">
+                {pathways.map((pathway) => (
+                  <div className="item lg-col-md-6 lg-col-xl-4" key={pathway.title}>
+                    <div className="box">
+                      <div className="top">
+                        <div
+                          className="icon"
+                          // Static, author-controlled markup copied from the source site.
+                          dangerouslySetInnerHTML={{ __html: pathway.icon }}
+                        />
+
+                        <div className="lg-title">{pathway.title}</div>
+                      </div>
+
+                      <div className="cta">
+                        <Link href={pathway.href} className="lg-link lg-link-arrow-right">
+                          {ctaLabel}
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                </StaggerItem>
-              ))}
-            </StaggerGroup>
+                ))}
+              </div>
+            </div>
           </div>
-        </Reveal>
-      </Container>
-    </Section>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -1,12 +1,6 @@
-import type { LucideIcon } from 'lucide-react'
-
-import { Container } from '@/components/shared/Container'
-import { Section } from '@/components/shared/Section'
-import { SectionHeader } from '@/components/shared/SectionHeader'
-import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
-
 export interface SymptomOutcomeItem {
-  icon: LucideIcon
+  /** Raw SVG markup — see each treatment's own -icons.ts file. */
+  icon: string
   title: string
   description: string
 }
@@ -15,33 +9,86 @@ export interface SymptomsOutcomesGridProps {
   title: string
   lead?: string
   items: SymptomOutcomeItem[]
-  align?:"left" | "center"
+  /** 'left' matches Shockwave Therapy's heading; 'center' (default) matches Laser Vaginal Therapy's. */
+  align?: 'left' | 'center'
+  /** Shockwave Therapy's card grid uses the wider 1292px container; other pages use the default 1054px. */
+  wide?: boolean
+  /** 'inline' (default) matches Shockwave/Laser's `<strong>Title</strong><br/>body` paragraph; 'heading' matches Perimenopause's separate `<h3>`/`<p>`. */
+  titleAs?: 'inline' | 'heading'
 }
 
-/** Reusable "symptoms & outcomes" grid — icon-left cards, two columns. Content-driven. */
-export function SymptomsOutcomesGrid({ title, lead, items,align="left" }: SymptomsOutcomesGridProps) {
+/**
+ * Live-site `#column-box-i.style-2` — icon-left cards in a 2-column grid,
+ * preceded by a `.content-d` heading. Ported 1:1 from
+ * download/_shockwave-therapy_.html and download/_laser-vaginal-therapy_.html
+ * (reused by every single-audience treatment page with this section); the
+ * styling lives in src/app/legacy.css.
+ */
+export function SymptomsOutcomesGrid({
+  title,
+  lead,
+  items,
+  align = 'center',
+  wide = false,
+  titleAs = 'inline',
+}: SymptomsOutcomesGridProps) {
   return (
-    <Section background="alt" spacing="md">
-      <Container>
-        <SectionHeader title={title} lead={lead} align={align} size="md" />
+    <>
+      <div className="lg-flexspace-100" />
 
-        <StaggerGroup as="ul" stagger={0.06} className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {items.map((item) => (
-            <StaggerItem as="li" key={item.title} className="h-full">
-              <div className="flex h-full items-start gap-4 rounded-2xl border border-canvas-300/60 bg-canvas-50 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sage-600/30 hover:shadow-lg">
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-700">
-                  <item.icon className="size-5" strokeWidth={1.75} aria-hidden />
-                </span>
-                <p className="text-body-sm leading-relaxed text-canvas-600">
-                  <span className="font-semibold text-ink-900">{item.title}</span>
-                  <br />
-                  {item.description}
-                </p>
+      <div className={`lg-content-d${align === 'left' ? ' text-left' : ''}`}>
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <h2 className="lg-title lg-max-width-500" style={lead ? undefined : { marginBottom: 0 }}>
+              {title}
+            </h2>
+            {lead ? (
+              <div className="lg-text lg-max-width-925" style={align === 'left' ? { marginLeft: 0 } : undefined}>
+                <p>{lead}</p>
               </div>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </Container>
-    </Section>
+            ) : null}
+          </div>
+        </div>
+      </div>
+
+      <div className="lg-flexspace-50" />
+
+      <div id="column-box-i" className={`style-2${wide ? ' max-width-container-1292' : ''}`}>
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="lg-grid">
+              {items.map((item) => (
+                <div className="lg-col-lg-6" key={item.title}>
+                  <div className="box">
+                    <div
+                      className="icon"
+                      // Static, author-controlled markup copied from the source site.
+                      dangerouslySetInnerHTML={{ __html: item.icon }}
+                    />
+
+                    <div className="content">
+                      <div className="lg-text">
+                        {titleAs === 'heading' ? (
+                          <>
+                            <h3>{item.title}</h3>
+                            <p>{item.description}</p>
+                          </>
+                        ) : (
+                          <p>
+                            <strong>{item.title}</strong>
+                            <br />
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }

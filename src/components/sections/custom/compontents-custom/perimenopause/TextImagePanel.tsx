@@ -1,13 +1,8 @@
-import Image from 'next/image'
-import { CheckCircle2 } from 'lucide-react'
-
-import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
-import { Section } from '@/components/shared/Section'
 import type { Media } from '@/types/content'
 
 export interface TextImagePanelProps {
   image: Media
+  /** 'left' = image on the left, content on the right (source's `.content-right`). 'right' = reversed (source's `.content-left`, image pushed right via order). */
   imageSide?: 'left' | 'right'
   heading: string
   lead?: string
@@ -15,64 +10,51 @@ export interface TextImagePanelProps {
 }
 
 /**
- * Bordered image + checklist card — matches the rounded-3xl card language
- * used across the rest of the treatment pages (SymptomsHeroCard, LabworkGuidancePanel,
- * etc.) instead of floating bare text next to an image. Reused for both a compact
- * "why choose us" list and a longer "what to expect" list on the same page.
+ * Live-site `.photo-content-d.content-right/.content-left.black-text.transparent`
+ * — image + arrow-bullet checklist, used for "Why Women Choose SAMM" (image
+ * left) and "What Patients Often Notice After Treatment" (image right).
+ * Ported 1:1 from download/_perimenopause-menopause_.html; the styling
+ * lives in src/app/legacy.css.
  */
 export function TextImagePanel({ image, imageSide = 'left', heading, lead, items }: TextImagePanelProps) {
-  const textContent = (
-    <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
-      <h2 className="font-display text-display-sm text-ink-950">{heading}</h2>
-      {lead ? <p className="mt-4 text-body leading-relaxed text-canvas-600">{lead}</p> : null}
-
-      <ul className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
-        {items.map((item) => (
-          <li key={item} className="flex items-start gap-2.5">
-            <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-sage-600" strokeWidth={1.75} aria-hidden />
-            <span className="text-body-sm leading-snug text-canvas-600">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-
-  const imageBlock = (
-    <div className="relative aspect-4/3 lg:aspect-auto h-full w-full lg:min-h-full">
-      <Image
-        src={image.src}
-        alt={image.alt}
-        fill
-        sizes="(min-width: 1024px) 42vw, 100vw"
-        className="object-cover h-full"
-        style={{ objectPosition: image.focalPoint ?? 'center' }}
-      />
-    </div>
-  )
+  const isRight = imageSide === 'right'
 
   return (
-    <Section background="page" spacing="md">
-      <Container>
-        <Reveal>
-          <div
-            className={`grid overflow-hidden rounded-3xl border border-canvas-300/60 bg-canvas-50 shadow-sm ${
-              imageSide === 'left' ? 'lg:grid-cols-[42%_58%]' : 'lg:grid-cols-[58%_42%]'
-            }`}
-          >
-            {imageSide === 'left' ? (
-              <>
-                {imageBlock}
-                {textContent}
-              </>
-            ) : (
-              <>
-                {textContent}
-                {imageBlock}
-              </>
-            )}
+    <div className={`photo-content-d ${isRight ? 'content-left' : 'content-right'} black-text transparent`}>
+      <div className="lg-max-width-1440">
+        <div className="lg-container">
+          <div className="lg-grid lg-items-center">
+            <div className={`img lg-col-lg-5${isRight ? ' lg-order-lg-2' : ''}`}>
+              <div
+                className="img-box"
+                style={{ backgroundImage: `url('${image.src}')`, height: 500 }}
+                role="img"
+                aria-label={image.alt}
+              />
+            </div>
+
+            <div className={`content lg-col-lg-7${isRight ? ' lg-order-lg-1' : ''}`}>
+              <h2 className="lg-title" style={{ color: '#0B2055' }}>
+                {heading}
+              </h2>
+
+              <div className="lg-text">
+                {lead ? <p>{lead}</p> : null}
+
+                <div className="lg-list-arrow-right">
+                  <ul>
+                    {items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-        </Reveal>
-      </Container>
-    </Section>
+        </div>
+      </div>
+
+      <div className="lg-flexspace-100" />
+    </div>
   )
 }

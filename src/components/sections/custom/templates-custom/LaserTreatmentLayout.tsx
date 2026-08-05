@@ -2,35 +2,21 @@ import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
+import { getPublishedTestimonials } from '@/content/testimonials'
 import { pillars } from '@/content/treatments'
-import type { Treatment, TreatmentBlockData, TreatmentSection } from '@/types/content'
-import CO2LaserVsPRP from '../compontents-custom/weight-loss/female/CO2LaserVsPRP'
-import FemaleSexualHealthConcerns from '../compontents-custom/weight-loss/female/FemaleSexualHealthConcerns'
-import TreatmentOptions from '../compontents-custom/weight-loss/female/TreatmentOptions'
-import HowPRPTreatsHairLoss from '../compontents-custom/hair-restore/female/HowPRPTreatsHairLoss'
-import PRPTreatmentProcess from '../compontents-custom/hair-restore/female/PRPTreatmentProcess'
-import ResultsAndTimeline from '../compontents-custom/hair-restore/female/ResultsAndTimeline'
-import { BenefitList } from '../../BenefitList'
-import { SectionRenderer } from '../../SectionRenderer'
-import { ProcessSteps } from '../../ProcessSteps'
-import { PricingBlock } from '../../PricingBlock'
-import { sectionKey } from '@/components/templates/TreatmentTemplate'
+import type { Treatment } from '@/types/content'
 import { SymptomsOutcomesGrid } from '../compontents-custom/shared/SymptomsOutcomesGrid'
-import { HeartHandshake, HeartPulse, ShieldOff, Waves } from 'lucide-react'
-
-
-function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
-  return 'type' in section
-}
-
+import { laserIcons } from '../compontents-custom/laserVaginalTherapy/laser-icons'
+import { TreatmentBenefitsIntro } from '../compontents-custom/shockwaveTherapy/TreatmentBenefitsIntro'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
 }
 
-
 export async function LaserTreatMentLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
+  const testimonials = await getPublishedTestimonials()
+
   return (
     <>
       <HeroEditorial
@@ -43,58 +29,75 @@ export async function LaserTreatMentLayout({ treatment }: TreatmentTemplateProps
         ]}
       />
 
-  
- {treatment.symptoms ? <BenefitList {...treatment.symptoms} /> : null}
-
-      {treatment.sections?.map((section, index) => (
-        <SectionRenderer key={sectionKey(section, index)} section={section} index={index} />
-      ))}
+      <TreatmentBenefitsIntro
+        darkCard={{
+          image: {
+            src: 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-47-img.jpg',
+            alt: 'A relaxed patient before a Laser Vaginal Therapy treatment',
+          },
+          heading: 'Gentle and Precise, Designed for Intimate Areas',
+          paragraphs: [
+            'Laser Vaginal Therapy is an in-clinic treatment using non-surgical CO2 laser technology to stimulate collagen remodeling, strengthen vaginal walls, and restore vaginal mucosa — delivering meaningful rejuvenation without invasive surgery.',
+            'Patients enjoy improved tone, lubrication, and tissue integrity. Our Laser Vaginal Therapy treatments are performed by licensed clinicians trained in vaginal rejuvenation protocols. Most patients complete a series of three in-office treatments.',
+          ],
+        }}
+        lightCard={{
+          image: {
+            src: 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-71-img.jpg',
+            alt: 'A patient discussing Laser Vaginal Therapy benefits with a provider',
+          },
+          heading: 'Benefits of Laser Vaginal Therapy',
+          benefits: [
+            'Reduced vaginal dryness and improved lubrication',
+            'Improved vaginal tone, tightness, and reduction of laxity',
+            'Increased comfort and satisfaction during intercourse',
+            'Decreased incontinence and urgency',
+            'Enhanced sensitivity and satisfaction',
+          ],
+          ctaLabel: 'Request a consultation',
+          ctaHref: '/book-appointment',
+        }}
+      />
 
       <SymptomsOutcomesGrid
-  title="Symptoms And Outcomes Of Shockwave Therapy"
-  lead="Shockwave therapy may be most applicable for men with erectile dysfunction associated with reduced blood flow. It is also explored as a supportive option for sexual performance and overall penile health. Candidacy is always determined on an individual basis during consultation."
-  align="center" 
-  items={[
-    {
-      icon: HeartPulse,
-      title: 'Erectile dysfunction (ED)',
-      description:
-        'Difficulty achieving or maintaining an erection — particularly when associated with vascular health or reduced circulation — may be addressed with shockwave therapy.',
-    },
-    {
-      icon: ShieldOff,
-      title: 'Drug-free approach to sexual health',
-      description:
-        'Men who prefer to avoid ongoing medication — due to side effects, interactions, or personal preference — may benefit from exploring shockwave therapy as an alternative.',
-    },
-    {
-      icon: Waves,
-      title: "Peyronie's disease",
-      description:
-        "Acoustic wave therapy may help address scar tissue associated with Peyronie's disease, potentially supporting improved tissue flexibility and reduced discomfort.",
-    },
-    {
-      icon: HeartHandshake,
-      title: 'Post-procedure rehabilitation support',
-      description:
-        'Men recovering from prostate surgery or other pelvic procedures may explore shockwave therapy as part of a broader plan to support the return of erectile function.',
-    },
-    // Note: Removed the 5th item to ensure a clean 2x2 grid layout matching the example image.
-  ]}
-/>
+        title="Symptoms Treated by Laser Vaginal Therapy"
+        items={[
+          {
+            icon: laserIcons[0],
+            title: 'Vaginal Dryness',
+            description: 'Persistent dryness and irritation, often felt during intercourse.',
+          },
+          {
+            icon: laserIcons[1],
+            title: 'Discomfort',
+            description: 'Pain during intercourse, particularly during menopause or following cancer treatment.',
+          },
+          {
+            icon: laserIcons[2],
+            title: 'Laxity or Loss of Tone',
+            description: 'A feeling of looseness or reduced sensation after childbirth or with age.',
+          },
+          {
+            icon: laserIcons[3],
+            title: 'Urinary Incontinence',
+            description: 'Leakage while laughing, coughing, sneezing, or exercising.',
+          },
+        ]}
+      />
 
-      {/* {treatment.process ? <ProcessSteps {...treatment.process} /> : null} */}
-
-      {/* {treatment.pricing ? <PricingBlock {...treatment.pricing} /> : null}
-
-      {treatment.candidacy ? <BenefitList {...treatment.candidacy} background="page" /> : null} */}
-
-
+      {testimonials.length ? (
+        <TestimonialSet
+          eyebrow="Patient testimonials"
+          title="What our patients say"
+          testimonials={testimonials}
+          background="alt"
+        />
+      ) : null}
 
       {treatment.faqs.length ? (
         <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
+          title="Frequently asked questions"
+          lead="Deciding on Laser Vaginal Therapy is important, and you likely have questions. Here are answers to common questions to help you make an informed decision."
           items={treatment.faqs}
         />
       ) : null}
