@@ -1,4 +1,4 @@
-import { ClosingCTA } from '@/components/sections/ClosingCTA'
+import { WeightLossClosingCTA } from '../compontents-custom/weight-loss/male/WeightLossClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import type { Treatment } from '@/types/content'
 import PersonalizedMan from '../compontents-custom/weight-loss/male/PersonalizedMan'
@@ -27,7 +27,7 @@ export async function WeightLossMaleLayout({ treatment }: TreatmentTemplateProps
         <FAQAccordion title="Medical Weight Loss FAQs" items={treatment.faqs} />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <WeightLossClosingCTA />
     </>
   )
 }

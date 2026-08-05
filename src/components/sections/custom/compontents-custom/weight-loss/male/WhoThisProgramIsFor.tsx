@@ -8,7 +8,7 @@
 
 const WhoThisProgramIsFor: React.FC = () => {
   return (
-    <div className="lg-group" style={{ backgroundColor: '#fff' }}>
+    <div className="lg-group pb-10! md:pb-20!" style={{ backgroundColor: '#fff' }} >
       <div className="photo-content-cu">
         <div className="lg-max-width-1440">
           <div className="lg-container">

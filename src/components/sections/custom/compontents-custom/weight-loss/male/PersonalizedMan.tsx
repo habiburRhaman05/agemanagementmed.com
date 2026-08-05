@@ -121,7 +121,7 @@ const PersonalizedMan: React.FC = () => {
       <div className="lg-flexspace-100" />
       <LabworkGuidanceBand />
 
-      <div className="lg-flexspace-100" />
+      {/* <div className="lg-flexspace-100" /> */}
       <MidPageCTA
         backgroundImage="/weightloss/weightloss.jpg"
         backgroundPosition="72% top"

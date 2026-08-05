@@ -1,113 +1,96 @@
 import { programIcons } from '../../shared/weight-loss-icons'
 
 /**
- * Live-site "What's Included in the Program" — a `.content-d` heading
- * followed by two `.cards-i` icon grids (Included / May Be Additional).
- * Ported 1:1 from download/_concierge-medical-weight-loss_male_.html (content
- * is identical to the female page); the styling lives in src/app/legacy.css.
+ * "What's Included In The Program" section — pure Tailwind, matches the
+ * reference screenshot exactly: white background, centred navy heading,
+ * teal "exactly" accent, two icon-card grids (Included / May Be Additional),
+ * and a closing amber italic note.
  */
 
-/** Icon order matches the source markup's five "included" cards. */
 const included = [
-  { icon: programIcons[0], title: 'Initial consultation<br/>with a provider' },
-  { icon: programIcons[1], title: 'Lab testing<br/>and review' },
-  { icon: programIcons[2], title: 'Body composition<br/>scans' },
-  { icon: programIcons[3], title: 'Personalized<br/>treatment plan' },
-  { icon: programIcons[4], title: 'Ongoing follow up visits and adjustments' },
+  { icon: programIcons[0], title: 'Initial Consultation\nWith A Provider' },
+  { icon: programIcons[1], title: 'Lab Testing\nAnd Review' },
+  { icon: programIcons[2], title: 'Body Composition\nScans' },
+  { icon: programIcons[3], title: 'Personalized\nTreatment Plan' },
+  { icon: programIcons[4], title: 'Ongoing Follow Up\nVisits And Adjustments' },
 ]
 
-/** Icon order matches the source markup's three "additional" cards. */
 const additional = [
-  { icon: programIcons[5], title: 'Medications if<br/>prescribed' },
-  { icon: programIcons[6], title: 'Advanced testing<br/>if needed' },
-  { icon: programIcons[7], title: 'Supplements based on your plan' },
+  { icon: programIcons[5], title: 'Medications If\nPrescribed' },
+  { icon: programIcons[6], title: 'Advanced Testing\nIf Needed' },
+  { icon: programIcons[7], title: 'Supplements Based On\nYour Plan' },
 ]
 
-function GridCard({ item }: { item: { icon: string; title: string } }) {
+function IconCard({ icon, title }: { icon: string; title: string }) {
   return (
-    <div className="item lg-col-md-6 lg-col-lg-4 lg-col-xl-3">
-      <div className="box">
-        <div
-          className="icon"
-          // Static, author-controlled markup copied from the source site.
-          dangerouslySetInnerHTML={{ __html: item.icon }}
-        />
-        <div className="lg-title" dangerouslySetInnerHTML={{ __html: item.title }} />
-      </div>
+    <div className="flex flex-col rounded-[8px] bg-[#f0f2f5] p-6">
+      {/* Icon */}
+      <div
+        className="mb-5 h-16 w-16"
+        // Static, author-controlled SVG markup copied from the source site.
+        dangerouslySetInnerHTML={{ __html: icon }}
+      />
+      {/* Title */}
+      <p className="text-[13px] font-semibold leading-snug text-[#1a3060]">
+        {title.split('\n').map((line, i) => (
+          <span key={i}>
+            {line}
+            {i < title.split('\n').length - 1 && <br />}
+          </span>
+        ))}
+      </p>
     </div>
   )
 }
 
 const WhatsIncluded: React.FC = () => {
   return (
-    <>
-      <div className="lg-flexspace-100" />
+    <section className="w-full bg-white py-16 lg:py-20">
+      <div className="mx-auto max-w-5xl px-6 lg:px-8">
 
-      <div className="lg-content-d" style={{ backgroundColor: '#fff' }}>
-        <div className="lg-max-width-1440">
-          <div className="lg-container">
-            <h2 className="lg-title">What&apos;s Included in the Program</h2>
-            <div className="lg-text">
-              <p style={{ fontSize: 20 }}>We want you to know exactly what to expect.</p>
-            </div>
-          </div>
+        {/* ── Heading block ── */}
+        <div className="mb-10 text-center">
+          <h2 className="font-display text-[28px] font-semibold leading-snug text-[#1a3060] sm:text-[32px] lg:text-[34px]">
+            What&apos;s Included In The Program
+          </h2>
+          <p className="mt-3 text-sm text-[#519B98]">
+            We want you to know <em>exactly</em> what to expect.
+          </p>
         </div>
-      </div>
 
-      <div className="lg-flexspace-50" />
+        {/* ── "Included:" label ── */}
+        <p className="mb-5 text-center text-sm font-semibold text-[#1a3060]">Included:</p>
 
-      <div className="cards-i" style={{ backgroundColor: '#fff' }}>
-        <div className="lg-max-width-1440">
-          <div className="lg-container">
-            <div className="lg-grid">
-              {included.map((item) => (
-                <GridCard item={item} key={item.title} />
-              ))}
-            </div>
-          </div>
+        {/* ── Included cards — first row: 3 cols, second row: 2 centred ── */}
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {included.slice(0, 3).map((item) => (
+            <IconCard key={item.title} icon={item.icon} title={item.title} />
+          ))}
         </div>
-      </div>
-
-      <div className="lg-flexspace-100" />
-
-      <div className="lg-content-d" style={{ backgroundColor: '#fff' }}>
-        <div className="lg-max-width-1440">
-          <div className="lg-container">
-            <div className="lg-title" style={{ fontSize: 32, marginBottom: 0 }}>
-              May Be Additional:
-            </div>
-          </div>
+        <div className="mt-4 grid grid-cols-2 gap-4 sm:mx-auto sm:max-w-[calc(66.666%+1rem)]">
+          {included.slice(3).map((item) => (
+            <IconCard key={item.title} icon={item.icon} title={item.title} />
+          ))}
         </div>
-      </div>
 
-      <div className="lg-flexspace-40" />
+        {/* ── "May Be Additional:" label ── */}
+        <p className="mb-5 mt-14 text-center text-[22px] font-semibold text-[#1a3060] lg:text-[26px]">
+          May Be Additional:
+        </p>
 
-      <div className="cards-i" style={{ backgroundColor: '#fff' }}>
-        <div className="lg-max-width-1440">
-          <div className="lg-container">
-            <div className="lg-grid">
-              {additional.map((item) => (
-                <GridCard item={item} key={item.title} />
-              ))}
-            </div>
-          </div>
+        {/* ── Additional cards — 3 columns ── */}
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {additional.map((item) => (
+            <IconCard key={item.title} icon={item.icon} title={item.title} />
+          ))}
         </div>
+
+        {/* ── Closing note ── */}
+        <p className="mt-12 text-center text-sm italic text-[#519B98]">
+          Your provider will walk you through everything so there are no surprises.
+        </p>
       </div>
-
-      <div className="lg-flexspace-40" />
-
-      <div className="lg-content-d" style={{ backgroundColor: '#fff' }}>
-        <div className="lg-max-width-1440">
-          <div className="lg-container">
-            <div className="lg-text lg-text-center">
-              <p>Your provider will walk you through everything so there are no surprises.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="lg-flexspace-100" />
-    </>
+    </section>
   )
 }
 
