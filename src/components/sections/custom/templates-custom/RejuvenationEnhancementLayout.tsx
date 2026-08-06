@@ -53,10 +53,18 @@ interface TreatmentTemplateProps {
 
 export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
+  const isFemale = treatment.href.includes('/female')
   return (
     <>
       <HeroEditorial
         {...treatment.hero}
+        image={
+          isFemale
+            ? { ...treatment.hero.image, src: '/images/hero-17-bg.jpg' }
+            : treatment.hero.image
+        }
+        mobileFocalPoint={isFemale ? '90% center' : undefined}
+        leftAlignMobile={isFemale}
         fullHeight
         breadcrumbs={[
           { label: 'Home', href: '/' },

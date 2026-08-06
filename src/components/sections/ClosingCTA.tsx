@@ -6,6 +6,10 @@ import type { ClosingCtaData } from '@/types/content'
 interface ClosingCTAProps extends ClosingCtaData {
   /** Background photo for the band; defaults to the shared placeholder. */
   backgroundImage?: string
+  /** Background alignment for the band photo. */
+  backgroundPosition?: string
+  /** Extra class(es) added to the .hero-bg wrapper. */
+  className?: string
   /** Small print under the CTA — e.g. the treatment pages' results disclaimer. */
   note?: string
 }
@@ -20,9 +24,14 @@ export function ClosingCTA({
   cta,
   note,
   backgroundImage = homeMedia.closingBackground,
+  backgroundPosition = 'center top',
+  className,
 }: ClosingCTAProps) {
   return (
-    <div className="hero-bg" style={{ backgroundImage: `url('${backgroundImage}')` }}>
+    <div
+      className={`hero-bg${className ? ` ${className}` : ''}`}
+      style={{ backgroundImage: `url('${backgroundImage}')`, backgroundPosition }}
+    >
       <div className="lg-max-width-1440">
         <div className="lg-container">
           <div className="content">

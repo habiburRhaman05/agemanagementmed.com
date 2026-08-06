@@ -168,7 +168,11 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         <FAQAccordion title="Medical Weight Loss FAQs" items={treatment.faqs} />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-22-bg.jpg" />
+      <ClosingCTA
+        {...treatment.closingCta}
+        backgroundImage="/images/hero-22-bg.jpg"
+        backgroundPosition="80% center"
+      />
     </>
   )
 }

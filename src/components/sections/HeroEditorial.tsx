@@ -72,6 +72,10 @@ interface HeroEditorialProps {
    * every other caller of this shared component.
    */
   centerUntilTablet?: boolean
+  /** Override the hero image's object-position below the `sm` breakpoint (mobile). */
+  mobileFocalPoint?: string
+  /** Keep the hero text left-aligned on mobile too (default is centered below `sm`). */
+  leftAlignMobile?: boolean
 }
 
 /**
@@ -96,6 +100,8 @@ export function HeroEditorial({
   fullHeight = false,
   hideDefaultCta = false,
   centerUntilTablet = false,
+  mobileFocalPoint,
+  leftAlignMobile = false,
 }: HeroEditorialProps) {
   const FormComponent = actions?.formSource ? FORM_COMPONENTS[actions.formSource] : BookingForm
   const showFormButton = Boolean(actions?.formModal)
@@ -107,6 +113,7 @@ export function HeroEditorial({
         'relative isolate flex flex-col justify-end sm:justify-center overflow-hidden ',
         fullHeight ? 'min-h-[100dvh] sm:min-h-screen' : 'min-h-128 lg:min-h-[620px]',
       )}
+      style={{ '--hero-object-position-mobile': mobileFocalPoint } as Record<string, string | undefined>}
     >
       {/* Background Image */}
       <Image
@@ -115,7 +122,7 @@ export function HeroEditorial({
         fill
         priority
         sizes="100vw"
-        className="object-cover absolute inset-0 z-0"
+        className="object-cover absolute inset-0 z-0 hero-editorial-img"
         style={{ objectPosition: image.focalPoint ?? '85% center' }}
       />
       {/* Dark gradient overlay to ensure text legibility while keeping the top of the image completely vibrant */}
@@ -124,7 +131,8 @@ export function HeroEditorial({
       <Container className="relative z-10 pb-12 pt-32 sm:py-35 md:py-50 lg:py-60 !px-5 mt-auto sm:mt-0 max-w-7xl">
         <div
           className={cn(
-            'max-w-[560px] mx-auto text-center',
+            'max-w-[560px]',
+            leftAlignMobile ? 'mx-0 text-left max-sm:-ml-[30px]' : 'mx-auto text-center',
             centerUntilTablet ? 'min-[992px]:mx-0 min-[992px]:text-left' : 'sm:mx-0 sm:text-left',
           )}
         >
@@ -141,7 +149,8 @@ export function HeroEditorial({
           {!showFormButton && !showVideoButton && !hideDefaultCta ? (
             <div
               className={cn(
-                'hero-enter mt-8 flex flex-col flex-wrap items-center justify-center gap-3 md:mt-10 md:gap-4 w-full',
+                'hero-enter mt-8 flex flex-col flex-wrap items-center gap-3 md:mt-10 md:gap-4 w-full',
+                leftAlignMobile ? 'items-start justify-start' : 'justify-center',
                 centerUntilTablet ? 'min-[992px]:flex-row min-[992px]:justify-start' : 'sm:flex-row sm:justify-start',
               )}
               style={{ animationDelay: '0.5s' }}
@@ -180,7 +189,8 @@ export function HeroEditorial({
           {showFormButton || showVideoButton ? (
             <div
               className={cn(
-                'hero-enter mt-8 flex flex-col flex-wrap items-center justify-center gap-3 md:mt-10 md:gap-4 w-full',
+                'hero-enter mt-8 flex flex-col flex-wrap items-center gap-3 md:mt-10 md:gap-4 w-full',
+                leftAlignMobile ? 'items-start justify-start' : 'justify-center',
                 centerUntilTablet ? 'min-[992px]:flex-row min-[992px]:justify-start' : 'sm:flex-row sm:justify-start',
               )}
               style={{ animationDelay: '0.5s' }}

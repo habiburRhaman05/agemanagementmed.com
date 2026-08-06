@@ -19,6 +19,8 @@ export async function HairRestoreFemaleLayout({ treatment }: TreatmentTemplatePr
     <>
       <HeroEditorial
         {...treatment.hero}
+        image={{ ...treatment.hero.image, src: '/images/banner-34-bg.jpg', focalPoint: '40% center' }}
+        mobileFocalPoint="80% center"
         fullHeight
         centerUntilTablet
         breadcrumbs={[
