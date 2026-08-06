@@ -17,6 +17,9 @@ export default function SpecialsPage() {
         {...specialsContent.hero}
         hideDefaultCta
         centerUntilTablet
+        containerOverride="py-35 md:py-50 lg:pt-[201px] lg:pb-[94px]"
+        overlay={false}
+        overideMinheight="lg:min-h-auto"
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Specials', href: '/specials' }]}
       />
 

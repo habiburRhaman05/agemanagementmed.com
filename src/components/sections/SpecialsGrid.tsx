@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
@@ -28,128 +28,86 @@ const LOCATION_TABS: LocationTab[] = [
 
 function SpecialCard({ special }: { special: Special }) {
   return (
-    <div className="item lg-col-md-6">
-      <div className="box">
-        <div className="img">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={special.image.src} alt={special.image.alt} />
-        </div>
+    <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-canvas-300/60 bg-canvas-50 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sage-600/30 hover:shadow-lg">
+      <div className="relative aspect-[3/4] overflow-hidden">
+        <Image src={special.image.src} alt={special.image.alt} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        <p className="text-label font-semibold uppercase tracking-wide text-sage-700">{special.window}</p>
+        <h3 className="mt-2 font-display text-title-lg text-ink-950">{special.title}</h3>
+        <p className="mt-3 flex-1 text-body-sm leading-relaxed text-canvas-600">{special.description}</p>
 
-        <div className="content">
-          <div className="top">
-            <h3 className="top-title">{special.window}</h3>
-            <h4
-              className="lg-title"
-              style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
-            >
-              {special.title}
-            </h4>
-
-            <div className="lg-text">
-              <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>{special.description}</p>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button className="mt-6 w-full sm:w-auto">{special.ctaLabel ?? 'Claim'}</Button>
+          </DialogTrigger>
+          <DialogContent className="max-h-[90dvh] w-[calc(100%-1rem)] max-w-2xl overflow-y-auto rounded-[28px] p-5 sm:w-full sm:rounded-[40px] sm:p-10">
+            <DialogHeader>
+              <DialogTitle className="font-display text-2xl text-ink-900">Claim: {special.title}</DialogTitle>
+            </DialogHeader>
+            <div className="mt-4">
+              <BookingForm
+                defaultLocation={special.locations[0]}
+                serviceLabel={`Wellness special — ${special.title}`}
+                submitLabel="Claim this special"
+              />
             </div>
-          </div>
-
-          <div className="cta">
-            <Dialog>
-              <DialogTrigger asChild>
-                <button type="button" className="lg-btn lg-btn-arrow-right">
-                  {special.ctaLabel ?? 'Claim'}
-                </button>
-              </DialogTrigger>
-              <DialogContent className="max-h-[90dvh] w-[calc(100%-1rem)] max-w-2xl overflow-y-auto rounded-[28px] p-5 sm:w-full sm:rounded-[40px] sm:p-10">
-                <DialogHeader>
-                  <DialogTitle className="font-display text-2xl text-ink-900">Claim: {special.title}</DialogTitle>
-                </DialogHeader>
-                <div className="mt-4">
-                  <BookingForm
-                    defaultLocation={special.locations[0]}
-                    serviceLabel={`Wellness special — ${special.title}`}
-                    submitLabel="Claim this special"
-                  />
-                </div>
-              </DialogContent>
-            </Dialog>
-          </div>
-        </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   )
 }
 
-/**
- * The Specials page "Select Your Location" filter + offer grid —
- * `#filter-d` / `#grid-d`. Ported 1:1 from
- * https://www.agemanagementmed.com/specials/; styling lives in
- * src/app/legacy.css.
- */
 export function SpecialsGrid({ specials }: { specials: Special[] }) {
   const [activeTab, setActiveTab] = useState<LocationTab['id']>('all')
   const reduceMotion = useReducedMotion()
 
-  const visible = specials.filter((special) => activeTab === 'all' || special.locations.includes(activeTab))
+  const visible = specials.filter(
+    (special) => activeTab === 'all' || special.locations.includes(activeTab),
+  )
 
   return (
-    <div className="group relative overflow-hidden" style={{ backgroundColor: '#fff' }}>
-      <div className="radial-gradient" aria-hidden />
+    <Section className="bg-gradient-to-b from-[#e0e9f4] to-[#f3f6fa]" spacing="md">
+      <Container>
+        <SectionHeader title="Select Your Location" align="center" />
 
-      <div className="lg-content-d" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="lg-max-width-1440">
-          <div className="lg-container">
-            <h2
-              className="lg-title"
-              style={{ margin: 0, fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
+        <div className="mt-8 flex justify-center gap-2">
+          {LOCATION_TABS.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setActiveTab(tab.id)}
+              className={cn(
+                'rounded-full px-5 py-2 text-body-sm font-semibold transition-colors',
+                activeTab === tab.id
+                  ? 'bg-ink-950 text-canvas-50'
+                  : 'bg-canvas-100 text-canvas-600 hover:bg-canvas-200',
+              )}
             >
-              Select Your Location
-            </h2>
-          </div>
+              {tab.label}
+            </button>
+          ))}
         </div>
-      </div>
 
-      <div style={{ paddingTop: 50 }} />
-
-      <div id="filter-d" style={{ zIndex: 1, position: 'relative' }}>
-        <div className="lg-max-width-1440">
-          <div className="lg-container">
-            <div className="filter">
-              <ul>
-                {LOCATION_TABS.map((tab) => (
-                  <li
-                    key={tab.id}
-                    className={cn('item', activeTab === tab.id && 'active')}
-                    onClick={() => setActiveTab(tab.id)}
-                  >
-                    {tab.label}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style={{ paddingTop: 50 }} />
-
-      <div id="grid-d" className="relative overflow-hidden">
-        <div className="radial-gradient" aria-hidden />
-        <div className="radial-gradient radial-gradient-2" aria-hidden />
-
-        <div className="lg-max-width-1440">
-          <div className="lg-container">
-            {visible.length ? (
-              <div className="lg-grid lg-justify-center">
-                {visible.map((special) => (
-                  <SpecialCard special={special} key={special.id} />
-                ))}
-              </div>
-            ) : (
-              <p style={{ textAlign: 'center', fontSize: 16, fontWeight: 400, color: '#14214b' }}>
-                No specials are currently available for this location. Check back soon.
-              </p>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+        {visible.length ? (
+          <StaggerGroup
+            as="ul"
+            stagger={0.06}
+            className="mx-auto mt-12 flex max-w-5xl flex-wrap justify-center gap-6"
+          >
+            {visible.map((special) => (
+              <StaggerItem as="li" key={special.id} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm">
+                <SpecialCard special={special} />
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        ) : (
+          <p className="mx-auto mt-12 max-w-md text-center text-body text-canvas-600">
+            No specials are currently available for this location. Check back soon.
+          </p>
+        )}
+      </Container>
+    </Section>
   )
 }

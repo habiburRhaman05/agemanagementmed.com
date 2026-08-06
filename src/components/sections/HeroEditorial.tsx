@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 import type { Cta, Media } from '@/types/content'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog'
+import { Overlay } from '@radix-ui/react-dialog'
 
 // react-hook-form + zod only need to load once the consultation dialog is
 // actually opened, not as part of every treatment page's initial bundle —
@@ -68,6 +69,8 @@ interface HeroEditorialProps {
   /** Keep CTAs centered until the tablet/desktop breakpoint instead of left-aligning early. */
   centerUntilTablet?: boolean
   containerOverride?: string
+  overideMinheight?: string
+  overlay?:boolean
 }
 
 /**
@@ -93,6 +96,8 @@ export function HeroEditorial({
   hideDefaultCta = false,
   centerUntilTablet = false,
   containerOverride,
+  overideMinheight,
+  overlay = true,
 }: HeroEditorialProps) {
   const FormComponent = actions?.formSource ? FORM_COMPONENTS[actions.formSource] : BookingForm
   const showFormButton = Boolean(actions?.formModal)
@@ -103,6 +108,7 @@ export function HeroEditorial({
       className={cn(
         'relative isolate flex flex-col justify-end sm:justify-center overflow-hidden ',
         fullHeight ? 'min-h-[100dvh] sm:min-h-screen' : 'min-h-128 lg:min-h-[620px]',
+        overideMinheight,
       )}
     >
       {/* Background Image */}
@@ -116,7 +122,7 @@ export function HeroEditorial({
         style={{ objectPosition: image.focalPoint ?? '85% center' }}
       />
       {/* Dark gradient overlay to ensure text legibility while keeping the top of the image completely vibrant */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />
+   {  overlay && <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />}
 
 
       <Container className={cn("relative z-10 py-35 md:py-50 lg:py-60 !px-3 ", containerOverride)}>
