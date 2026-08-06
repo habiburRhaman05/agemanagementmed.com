@@ -41,7 +41,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
   return (
     <footer className="border-t border-canvas-300 bg-canvas-50 text-ink-900">
       <Container>
-        <div className="grid gap-12 pt-16 pb-12 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-14">
+        <div className="grid gap-12 pt-16 pb-12 text-left sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-14">
           {/* Brand column */}
           <Reveal delay={0} className="lg:col-span-3">
             <Image src={logoUrl} alt={siteName} width={180} height={80} className="h-16 w-auto" />
@@ -51,14 +51,14 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
             <div className="mt-6 space-y-3">
               <a
                 href={emailHref}
-                className="flex items-center gap-3 text-body-sm text-ink-900/80 transition-colors hover:text-ink-900"
+                className="flex items-center gap-3 text-[14px] text-[#111214] transition-colors hover:text-ink-900"
               >
                 <Mail className="size-4 shrink-0 text-ink-900/70" aria-hidden />
                 {email}
               </a>
               <a
                 href={phoneHref}
-                className="flex items-center gap-3 text-body-sm text-ink-900/80 transition-colors hover:text-ink-900"
+                className="flex items-center gap-3 text-[14px] text-[#111214] transition-colors hover:text-ink-900"
               >
                 <Phone className="size-4 shrink-0 text-ink-900/70" aria-hidden />
                 {phone}
@@ -72,27 +72,28 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
 
           {/* Contact info: both locations, address + hours */}
           <Reveal delay={60} className="lg:col-span-3">
-            <h2 className="text-label font-sans font-semibold uppercase text-ink-900/60">
+            <h2 className="text-base font-sans font-semibold text-ink-900">
               Contact Info
             </h2>
             <div className="mt-6 space-y-7">
               {locations.map((location) => (
                 <div key={location.slug}>
-                  <p className="font-display text-title-md text-ink-900">
+                  <p className="text-sm font-sans font-semibold text-[#0B2056]">
                     {location.name.split(' / ')[0]}
                   </p>
-                  <p className="mt-2 flex items-start gap-2 text-body-sm text-ink-900/70">
+                  <p className="mt-2 flex items-start gap-2 text-[14px] text-[#111214]">
                     <MapPin className="mt-0.5 size-4 shrink-0 text-ink-900/70" aria-hidden />
                     <span>
                       {location.addressLine}, {location.city}, {location.state} {location.zip}
                     </span>
                   </p>
 
-                  <p className="mt-4 font-display text-title-md text-ink-900">Office Hours</p>
-                  <p className="mt-2 flex items-center gap-2 text-body-sm text-ink-900/70">
+                  <p className="mt-4 text-sm font-sans font-semibold text-[#0B2056]">Office Hours</p>
+                  <p className="mt-2 flex items-center gap-2 text-[14px] text-[#111214]">
                     <Clock className="size-4 shrink-0 text-ink-900/70" aria-hidden />
                     <span>
                       {location.hours
+                        .filter((h) => h.time.toLowerCase() !== 'closed')
                         .map((h) => `${compactDays(h.days)}: ${compactTime(h.time)}`)
                         .join('   |   ')}
                     </span>
@@ -105,7 +106,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
           {/* Quick Links */}
           <Reveal delay={120} className="lg:col-span-2">
             <nav aria-label="Quick Links">
-              <h2 className="text-label font-sans font-semibold uppercase text-ink-900/60">
+              <h2 className="text-base font-sans font-semibold text-ink-900">
                 Quick Links
               </h2>
               <ul className="mt-6 space-y-3">
@@ -113,7 +114,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
                   <li key={item.href + item.label}>
                     <Link
                       href={item.href}
-                      className="text-body-sm text-ink-900/70 transition-colors hover:text-ink-900"
+                      className="text-[14px] text-[#0B2056] transition-colors hover:text-ink-900"
                     >
                       {item.label}
                     </Link>
@@ -126,7 +127,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
           {/* Services */}
           <Reveal delay={180} className="lg:col-span-4">
             <nav aria-label="Services">
-              <h2 className="text-label font-sans font-semibold uppercase text-ink-900/60">
+              <h2 className="text-base font-sans font-semibold text-ink-900">
                 Services
               </h2>
               <ul className="mt-6 space-y-3">
@@ -136,7 +137,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
                       href={item.href}
                       target={item.external ? '_blank' : undefined}
                       rel={item.external ? 'noopener noreferrer' : undefined}
-                      className="text-body-sm text-ink-900/70 transition-colors hover:text-ink-900"
+                      className="text-[14px] text-[#0B2056] transition-colors hover:text-ink-900"
                     >
                       {item.label}
                     </Link>
@@ -147,15 +148,23 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
           </Reveal>
         </div>
 
-        <div className="border-t border-canvas-300 py-6 text-center text-xs uppercase tracking-wide text-ink-900/50">
-          Copyright &copy; {new Date().getFullYear()} {site.name}
-          {'   |   '}
-          All Rights Reserved
-          {'   |   '}
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 border-t border-canvas-300 py-6 text-center text-[14px] uppercase tracking-wide text-[#111214]">
+          <span>
+            Copyright &copy; {new Date().getFullYear()} {site.name}
+          </span>
+          <span className="hidden sm:inline" aria-hidden>
+            |
+          </span>
+          <span>All Rights Reserved</span>
           {footerNav.legal.map((item) => (
-            <Link key={item.href} href={item.href} className="transition-colors hover:text-ink-900">
-              {item.label}
-            </Link>
+            <span key={item.href} className="flex items-center gap-2">
+              <span className="hidden sm:inline" aria-hidden>
+                |
+              </span>
+              <Link href={item.href} className="transition-colors hover:text-ink-900">
+                {item.label}
+              </Link>
+            </span>
           ))}
         </div>
       </Container>

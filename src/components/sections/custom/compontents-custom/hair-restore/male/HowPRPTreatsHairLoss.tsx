@@ -39,7 +39,7 @@ const HowPRPTreatsHairLoss: React.FC = () => {
     <>
       <div className="lg-flexspace-100" />
 
-      <div id="photo-content-c">
+      <div id="photo-content-c" className="relative overflow-hidden">
         <div className="radial-gradient" aria-hidden />
 
         <div className="lg-max-width-1440">
@@ -47,20 +47,24 @@ const HowPRPTreatsHairLoss: React.FC = () => {
             <div className="box">
               <div className="top lg-grid lg-gutter-x-0 lg-gutter-y-30">
                 <div
-                  className="img lg-col-xl-5"
+                  className="img lg-col-lg-5 overflow-hidden"
                   style={{
                     backgroundImage: `url('${heroPhoto}')`,
                     backgroundPosition: '50% 70%',
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
                   }}
                   role="img"
                   aria-label="Provider administering PRP treatment to a patient's scalp"
                 />
 
-                <div className="content lg-col-xl-7">
-                  <h2 className="lg-title">How Does PRP Treat Hair Loss?</h2>
+                <div className="content lg-col-lg-7">
+                  <h2 className="lg-title" style={{ fontSize: 'clamp(28px, 6vw, 48px)', fontWeight: 500, letterSpacing: '-0.025em' }}>
+                    How Does PRP Treat Hair Loss?
+                  </h2>
 
                   <div className="lg-text">
-                    <p>
+                    <p style={{ fontSize: 16, fontWeight: 400,  }}>
                       Platelet-Rich Plasma (PRP) therapy is a cutting-edge, non-surgical treatment
                       that uses your own blood&apos;s healing properties to stimulate hair growth.
                       During the procedure, we draw a small amount of your blood, process it to
@@ -69,12 +73,14 @@ const HowPRPTreatsHairLoss: React.FC = () => {
                     </p>
 
                     <div className="lg-list-arrow-right">
-                      <h5 style={{ maxWidth: 400 }}>
+                      <h5 style={{ maxWidth: 400, fontSize: 16, fontWeight: 400,  }}>
                         These concentrated platelets contain powerful growth factors that:
                       </h5>
                       <ul>
                         {growthFactors.map((item) => (
-                          <li key={item}>{item}</li>
+                          <li key={item} style={{ fontSize: 16, fontWeight: 400,  }}>
+                            {item}
+                          </li>
                         ))}
                       </ul>
                     </div>
@@ -84,12 +90,15 @@ const HowPRPTreatsHairLoss: React.FC = () => {
 
               <div className="bottom">
                 <div className="content lg-text-center">
-                  <h2 className="lg-title lg-max-width-none">
+                  <h2
+                    className="lg-title lg-max-width-none"
+                    style={{ fontSize: 'clamp(28px, 6vw, 48px)', fontWeight: 500, letterSpacing: '-0.025em' }}
+                  >
                     Who Is a Candidate For PRP For Hair Loss?
                   </h2>
 
                   <div className="lg-text">
-                    <p>
+                    <p style={{ fontSize: 16, fontWeight: 400,  }}>
                       PRP hair treatment is ideal for both men and women experiencing hair loss. PRP
                       can be used for:
                     </p>
@@ -106,7 +115,7 @@ const HowPRPTreatsHairLoss: React.FC = () => {
                           dangerouslySetInnerHTML={{ __html: item.icon }}
                         />
                         <div className="content">
-                          <p>{item.label}</p>
+                          <p style={{ fontSize: 16, fontWeight: 400,  }}>{item.label}</p>
                         </div>
                       </div>
                     ))}
@@ -126,21 +135,25 @@ const HowPRPTreatsHairLoss: React.FC = () => {
             <div className="lg-grid lg-items-center">
               <div className="img lg-col-lg-5">
                 <div
-                  className="img-box"
-                  style={{ backgroundImage: `url('${bestResultsPhoto}')`, height: 500 }}
+                  className="img-box h-70 sm:h-90 lg:h-125"
+                  style={{ backgroundImage: `url('${bestResultsPhoto}')` }}
                   role="img"
                   aria-label="Smiling patient after treatment"
                 />
               </div>
 
               <div className="content lg-col-lg-7">
-                <h2 className="lg-title">Best Results Seen In:</h2>
+                <h2 className="lg-title" style={{ fontSize: 'clamp(28px, 6vw, 48px)', fontWeight: 500, letterSpacing: '-0.025em' }}>
+                  Best Results Seen In:
+                </h2>
 
                 <div className="lg-text">
                   <div className="lg-list-arrow-right">
                     <ul>
                       {bestResults.map((item) => (
-                        <li key={item}>{item}</li>
+                        <li key={item} style={{ fontSize: 16, fontWeight: 400,  }}>
+                          {item}
+                        </li>
                       ))}
                     </ul>
                   </div>

@@ -48,11 +48,10 @@ export function SafetyAndCandidacy({
   const imageAlt = image?.alt || heading
 
   const textContent = (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center bg-[#FFFFFF] text-center lg:text-left">
       {/* Main Headline */}
       <h2
-        className="text-3xl sm:text-4xl md:text-[38px] font-normal leading-tight text-[#1C274C] mb-4 font-display"
-        
+        className="text-[36px] font-[500] leading-tight text-[#111214] mb-4 font-display"
       >
         {heading}
       </h2>
@@ -60,8 +59,7 @@ export function SafetyAndCandidacy({
       {/* Subtitle if present */}
       {subtitle ? (
         <h3
-          className="text-xl sm:text-2xl font-normal text-[#1C274C] mb-3 font-display"
-          
+          className="text-xl sm:text-2xl font-normal text-[#111214] mb-3 font-display"
         >
           {subtitle}
         </h3>
@@ -71,7 +69,7 @@ export function SafetyAndCandidacy({
       {paragraphs?.map((paragraph, index) => (
         <p
           key={index}
-          className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed mb-3"
+          className="text-[16px] font-normal text-[#111214] leading-relaxed mb-3"
         >
           {paragraph}
         </p>
@@ -82,8 +80,7 @@ export function SafetyAndCandidacy({
         <div className="mt-2 mb-4">
           {questionsLabel ? (
             <h3
-              className="text-xl sm:text-2xl font-normal text-[#1C274C] mb-3 font-display"
-              
+              className="text-[32px] font-medium leading-tight text-[#111214] mb-3 font-display"
             >
               {questionsLabel}
             </h3>
@@ -91,7 +88,7 @@ export function SafetyAndCandidacy({
 
           <ul className="space-y-2 my-2">
             {questions.map((question, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 font-normal">
+              <li key={idx} className="flex items-start justify-center lg:justify-start gap-2 text-[16px] text-[#111214] font-normal">
                 <span className="text-[#519B99] shrink-0 font-sans font-medium">→</span>
                 <span>{question}</span>
               </li>
@@ -102,7 +99,7 @@ export function SafetyAndCandidacy({
 
       {/* Closing Paragraph */}
       {closingParagraph ? (
-        <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed mb-4 italic text-slate-500">
+        <p className="text-[16px] text-[#111214] font-normal leading-relaxed mb-4 italic">
           {closingParagraph}
         </p>
       ) : null}
@@ -110,10 +107,10 @@ export function SafetyAndCandidacy({
       {/* Medical Disclaimer */}
       {disclaimer ? (
         <div className="mt-2 pt-3 border-t border-slate-200/60">
-          <strong className="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-1">
+          <strong className="block text-[16px] font-bold text-[#111214] uppercase tracking-wider mb-1">
             {disclaimerLabel}
           </strong>
-          <p className="text-xs text-slate-500 font-light leading-relaxed">
+          <p className="text-[16px] text-[#111214] font-normal leading-relaxed">
             {disclaimer}
           </p>
         </div>
@@ -122,7 +119,7 @@ export function SafetyAndCandidacy({
   )
 
   const imageBlock = (
-    <div className="relative w-full h-full min-h-[360px] sm:min-h-[420px] rounded-[24px] overflow-hidden shadow-md bg-slate-200">
+    <div className="relative w-full h-full min-h-[240px] sm:min-h-[420px] rounded-[24px] overflow-hidden shadow-md bg-slate-200">
       {imageSrc.startsWith('http') ? (
         /* eslint-disable-next-line @next/next/no-img-element */
         <img

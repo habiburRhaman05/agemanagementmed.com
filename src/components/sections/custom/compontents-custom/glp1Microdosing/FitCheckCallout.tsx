@@ -1,5 +1,6 @@
 import Link from 'next/link'
-
+import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
 import type { Media } from '@/types/content'
 
 export interface FitCheckCalloutProps {
@@ -28,39 +29,60 @@ export function FitCheckCallout({
   ctaHref = '/book-appointment',
 }: FitCheckCalloutProps) {
   return (
-    <div className="photo-content-d full-img">
-      <div className="lg-grid">
-        <div className="img lg-col-lg-6">
-          <div
-            className="img-box"
-            style={{ backgroundImage: `url('${image.src}')`, backgroundPosition: imagePosition }}
-            role="img"
-            aria-label={image.alt}
+    <section className="w-full overflow-hidden">
+      <div className="grid lg:grid-cols-2">
+
+        {/* ── Left: photo ── */}
+        <div className="relative min-h-64 overflow-hidden lg:min-h-[480px]">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+            style={{ objectPosition: image.focalPoint ?? 'center top' }}
           />
         </div>
 
-        <div className="content lg-col-lg-6">
-          <h2 className="lg-title">{heading}</h2>
+        {/* ── Right: navy content panel ── */}
+        <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-12 sm:px-10 lg:px-14 lg:py-16">
 
-          <div className="lg-text">
-            {lead ? <p style={{ fontSize: 20 }}>{lead}</p> : null}
+          {/* Heading */}
+          <h2
+            className="font-display leading-snug text-white"
+            style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
+          >
+            {heading}
+          </h2>
 
-            <div className="lg-list-arrow-right">
-              <ul>
-                {points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          {/* Lead */}
+          {lead && (
+            <p className="mt-3 text-white" style={{ fontSize: 16, fontWeight: 400 }}>
+              {lead}
+            </p>
+          )}
 
-          <div className="cta">
-            <Link href={ctaHref} className="lg-btn lg-btn-arrow-right">
+          {/* Bullet points */}
+          <ul className="mt-3 space-y-2">
+            {points.map((point) => (
+              <li key={point} className="flex items-start gap-2 text-white" style={{ fontSize: 16, fontWeight: 400 }}>
+                <ArrowRight className="mt-0.5 size-3 shrink-0 text-[#519B98]" aria-hidden />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA button */}
+          <div className="mt-8">
+            <Link
+              href={ctaHref}
+              className="inline-flex items-center gap-2 rounded-full border border-[#519B98] bg-[#519B98]/80 px-6 py-2.5 text-[14px] font-bold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#519B98]"
+            >
               {ctaLabel}
             </Link>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

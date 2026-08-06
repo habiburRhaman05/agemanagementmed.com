@@ -65,12 +65,7 @@ interface HeroEditorialProps {
   fullHeight?: boolean
   /** Hide the default fallback CTA button if no actions are specified. */
   hideDefaultCta?: boolean
-  /**
-   * The live site keeps hero text centered up to a 992px viewport (not
-   * Tailwind's 640px `sm` breakpoint) before switching to left-aligned.
-   * Opt-in only — default `false` preserves the existing `sm:` behavior for
-   * every other caller of this shared component.
-   */
+  /** Keep CTAs centered until the tablet/desktop breakpoint instead of left-aligning early. */
   centerUntilTablet?: boolean
   /** Override the hero image's object-position below the `sm` breakpoint (mobile). */
   mobileFocalPoint?: string
@@ -137,12 +132,13 @@ export function HeroEditorial({
           )}
         >
           <h1
-            className="text-[42px] sm:text-[46px] lg:text-[56px] font-normal leading-[1.1] text-white font-display"
+            className="text-[40px] sm:text-[46px] lg:text-[56px] font-medium leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
+            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
           </h1>
 
-          <p className="mt-4 sm:mt-6 max-w-2xl text-[15px] sm:text-[16px] lg:text-[20px] font-light leading-relaxed text-white">
+          <p className="mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6">
             {lead}
           </p>
 

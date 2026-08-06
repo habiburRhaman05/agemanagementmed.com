@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import type { CSSProperties } from 'react'
 
 import { homeMedia } from '@/content/pages/home-media'
 import type { ClosingCtaData } from '@/types/content'
@@ -12,6 +13,10 @@ interface ClosingCTAProps extends ClosingCtaData {
   className?: string
   /** Small print under the CTA — e.g. the treatment pages' results disclaimer. */
   note?: string
+  /** Caps the text column width (px) so the title wraps onto multiple lines instead of running the full container width. Opt-in — omit to keep the existing full-width behavior. */
+  contentMaxWidth?: number
+  /** Centers the text column (horizontally, within contentMaxWidth) and centers the title/body/CTA instead of the default left alignment. Opt-in — omit to keep the existing left-aligned behavior. */
+  centered?: boolean
 }
 
 /**
@@ -24,9 +29,14 @@ export function ClosingCTA({
   cta,
   note,
   backgroundImage = homeMedia.closingBackground,
-  backgroundPosition = 'center top',
-  className,
+  contentMaxWidth,
+  centered = false,
 }: ClosingCTAProps) {
+  const contentStyle: CSSProperties = {
+    ...(contentMaxWidth ? { maxWidth: contentMaxWidth } : null),
+    ...(centered ? { marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' } : null),
+  }
+
   return (
     <div
       className={`hero-bg${className ? ` ${className}` : ''}`}
@@ -34,14 +44,17 @@ export function ClosingCTA({
     >
       <div className="lg-max-width-1440">
         <div className="lg-container">
-          <div className="content">
+          <div className="content text-center lg:text-left" style={contentStyle}>
             <h2 className="lg-title">{title}</h2>
 
             <div className="lg-text">
               <p>{body}</p>
             </div>
 
-            <div className="cta">
+            <div
+              className="cta flex justify-center lg:justify-start"
+              style={centered ? { display: 'flex', justifyContent: 'center' } : undefined}
+            >
               <Link href={cta.href} className="lg-btn lg-btn-arrow-right">
                 {cta.label}
               </Link>

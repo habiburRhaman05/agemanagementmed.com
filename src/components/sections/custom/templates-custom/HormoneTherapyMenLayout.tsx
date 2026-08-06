@@ -36,7 +36,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
 
       {treatment.symptoms ? (
         <SymptomsHeroCard
-          image={{...treatment.hero.image,src:"https://res.cloudinary.com/khs2rcsr/image/upload/v1785336801/ChatGPT_Image_Jul_29_2026_08_52_07_PM_dyqlrx.png"}}
+          image={{...treatment.hero.image,src:"/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-73-img.jpg"}}
           heading={treatment.symptoms.title}
           lead={treatment.symptoms.lead ?? ''}
           groups={treatment.symptoms.items}
@@ -52,9 +52,9 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
           title={treatment.process.title}
           steps={treatment.process.steps}
           stepImages={[
-            'https://res.cloudinary.com/khs2rcsr/image/upload/v1785336788/steps-img_dg4sfn.png',
-            'https://res.cloudinary.com/khs2rcsr/image/upload/v1785336785/Establishing_Your_Baseline_ixdhgj.png',
-            'https://res.cloudinary.com/khs2rcsr/image/upload/v1785336784/Customized_Treatment_Plan_kyrjrd.png',
+            '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-img.png',
+            '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-2-img.png',
+            '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-3-img.png',
           ]}
         />
       ) : null}
@@ -164,7 +164,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
         />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-2-bg (1).jpg" />
 
       
       <TrustMarkers

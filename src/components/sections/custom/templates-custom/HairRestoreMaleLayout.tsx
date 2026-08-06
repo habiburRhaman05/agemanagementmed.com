@@ -40,6 +40,7 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
       <ClosingCTA
         {...treatment.closingCta}
         note="*Individual results may vary. A consultation with our medical team is required to determine if PRP hair therapy is appropriate for your specific condition.*"
+        backgroundImage="/HairRestoreMaleLoayout/hero-14-bg.jpg"
       />
     </>
   )

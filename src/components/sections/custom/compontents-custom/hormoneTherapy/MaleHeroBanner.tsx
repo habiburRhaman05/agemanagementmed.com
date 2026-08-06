@@ -2,7 +2,6 @@
 
 import { ArrowRight, Play } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Image from 'next/image'
 
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
@@ -46,53 +45,35 @@ export function MaleHeroBanner({
   className,
 }: MaleHeroBannerProps) {
   const imageSrc = image?.src || '/images/treatments/bioidentical-hormone-replacement-therapy/male/hero-banner-bg.jpg'
-  const imageAlt = image?.alt || title
 
   return (
     <section
       className={cn(
-        'relative isolate flex flex-col justify-center overflow-hidden min-h-[520px] sm:min-h-[580px] md:min-h-[620px] py-20 sm:py-28 md:py-36 bg-slate-900',
+        'relative isolate flex flex-col justify-center overflow-hidden bg-slate-900 bg-cover pt-70 pb-45 lg:pb-68.75',
         className
       )}
+      style={{
+        backgroundImage: `url(${imageSrc})`,
+        backgroundPosition: 'center top',
+      }}
     >
-      {/* Hero Background Image */}
-      {imageSrc.startsWith('http') ? (
-        /* eslint-disable-next-line @next/next/no-img-element */
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          className="absolute inset-0 w-full h-full object-cover object-center z-0"
-        />
-      ) : (
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center z-0"
-        />
-      )}
-
-      {/* Hero Background Image */}
-
-      <Container className="relative z-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
-        <div className="max-w-xl text-left">
+      <Container className="relative z-20 px-3! lg-container">
+        <div className="max-w-2xl w-full text-center mx-auto lg:mx-0 lg:text-left">
           {/* Main Title */}
           <h1
-            className="text-3xl sm:text-4xl md:text-[46px] lg:text-[48px] font-normal leading-[1.12] text-white text-left font-display max-w-lg mb-3.5"
-            
+            className="text-[40px] sm:text-[46px] lg:text-[56px] font-medium leading-[1.12] text-white text-center lg:text-left font-['Bodoni_Moda',var(--font-bodoni),serif] max-w-2xl mb-3.5"
+            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xs sm:text-sm md:text-[15px] font-normal leading-normal text-white/95 text-left mb-7 max-w-md">
+          <p className="text-[18px] lg:text-[20px] font-normal leading-normal text-white/95 text-center lg:text-left mb-7 max-w-md mx-auto lg:mx-0">
             {lead}
           </p>
 
           {/* Action Buttons Row */}
-          <div className="flex flex-row items-center justify-start gap-3.5 flex-wrap">
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-3.5">
             {/* Primary CTA (Start Today) */}
             <Dialog>
               <DialogTrigger asChild>

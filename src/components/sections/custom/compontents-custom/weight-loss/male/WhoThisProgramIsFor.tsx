@@ -24,21 +24,34 @@ const WhoThisProgramIsFor: React.FC = () => {
               />
 
               <div className="content lg-col-lg-7">
-                <h2 className="lg-title">Who This Program Is For</h2>
+                <h2
+                  className="lg-title text-[36px]! sm:text-[48px]!"
+                  style={{ fontWeight: 500, letterSpacing: '-0.025em' }}
+                >
+                  Who This Program Is For
+                </h2>
 
                 <div className="lg-text">
-                  <p>This program is a good fit if:</p>
+                  <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>This program is a good fit if:</p>
 
                   <div className="lg-list-arrow-right">
                     <ul>
-                      <li>You have tried diets without lasting results</li>
-                      <li>You suspect hormones or metabolism are a factor</li>
-                      <li>You want a medically guided approach</li>
-                      <li>You prefer ongoing support and adjustments</li>
+                      <li style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                        You have tried diets without lasting results
+                      </li>
+                      <li style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                        You suspect hormones or metabolism are a factor
+                      </li>
+                      <li style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                        You want a medically guided approach
+                      </li>
+                      <li style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                        You prefer ongoing support and adjustments
+                      </li>
                     </ul>
                   </div>
 
-                  <p>
+                  <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
                     If you are searching for a{' '}
                     <a href="/our-experts">weight loss doctor in Savannah</a>, this program offers a
                     more personalized and informed approach.
@@ -67,23 +80,36 @@ const WhoThisProgramIsFor: React.FC = () => {
               />
 
               <div className="content lg-col-lg-7 lg-order-lg-1">
-                <h2 className="lg-title" style={{ maxWidth: 300 }}>
+                <h2
+                  className="lg-title text-[36px]! sm:text-[48px]!"
+                  style={{ maxWidth: 300, fontWeight: 500, letterSpacing: '-0.025em' }}
+                >
                   Safety And Medical Considerations
                 </h2>
 
                 <div className="lg-text">
-                  <p>You may benefit from medical supervision if you:</p>
+                  <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                    You may benefit from medical supervision if you:
+                  </p>
 
                   <div className="lg-list-arrow-right">
                     <ul>
-                      <li>Have a history of hormone imbalances</li>
-                      <li>Are managing thyroid conditions</li>
-                      <li>Have metabolic or blood sugar concerns</li>
-                      <li>Are considering prescription weight loss medications</li>
+                      <li style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                        Have a history of hormone imbalances
+                      </li>
+                      <li style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                        Are managing thyroid conditions
+                      </li>
+                      <li style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                        Have metabolic or blood sugar concerns
+                      </li>
+                      <li style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                        Are considering prescription weight loss medications
+                      </li>
                     </ul>
                   </div>
 
-                  <p>
+                  <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
                     Your provider will review your health history and labs to make sure your plan is
                     appropriate and safe.
                   </p>

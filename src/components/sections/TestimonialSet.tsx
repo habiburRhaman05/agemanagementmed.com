@@ -82,8 +82,7 @@ export function TestimonialSet({
 
   return (
     <section
-      id="testimonial-d"
-      className="relative w-full min-h-screen min-h-[100vh] flex flex-col justify-center overflow-hidden bg-cover bg-center py-12 sm:py-16 md:py-20"
+      className="relative w-full min-h-screen min-h-[100vh] flex flex-col justify-center overflow-hidden bg-cover bg-[position:right_center] py-12 sm:py-16 md:py-20"
       style={{
         backgroundImage: `url('${backgroundImage}')`,
         backgroundPosition: 'center',
@@ -125,7 +124,7 @@ export function TestimonialSet({
               <>
                 <button
                   type="button"
-                  className="absolute -left-7 sm:-left-10 md:-left-12 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
+                  className="absolute -left-3 sm:-left-6 lg:-left-10 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
                   onClick={() => go(-1)}
                   aria-label="Previous testimonial"
                 >
@@ -134,7 +133,7 @@ export function TestimonialSet({
 
                 <button
                   type="button"
-                  className="absolute -right-7 sm:-right-10 md:-right-12 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
+                  className="absolute -right-3 sm:-right-6 lg:-right-10 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
                   onClick={() => go(1)}
                   aria-label="Next testimonial"
                 >
@@ -181,7 +180,7 @@ export function TestimonialSet({
         </div>
 
         {/* Full-width Bottom Bar: Carousel dashes on LEFT, SEE ALL REVIEWS button on RIGHT */}
-        <div className="flex items-center justify-between gap-4 mt-8 w-full">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 mt-8 w-full">
           {/* Left: Carousel dashes */}
           {testimonials.length > 1 ? (
             <div className="flex items-center gap-1.5">

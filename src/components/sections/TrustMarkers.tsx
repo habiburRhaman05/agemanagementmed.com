@@ -68,28 +68,28 @@ export interface TrustMarkersProps {
 export function TrustMarkers({ label = 'Trust Markers', reviewer, successStories }: TrustMarkersProps) {
   return (
     <Section background="page" spacing="lg">
-      <Container className="max-w-4xl">
+      <Container className="max-w-4xl text-center">
         <Reveal>
           <p className="font-display text-2xl text-ink-900 mb-8">{label}</p>
 
-          <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
-            <div className="relative size-32 sm:size-40 shrink-0 overflow-hidden rounded-full">
+          <div className="flex flex-col items-center gap-6 sm:gap-10">
+            <div className="relative size-40 sm:size-52 shrink-0 overflow-hidden rounded-full">
               <Image
                 src={reviewer.portrait.src}
                 alt={reviewer.portrait.alt}
                 fill
-                sizes="160px"
+                sizes="208px"
                 className="object-cover"
               />
             </div>
 
             <div>
-              <p className="text-label font-semibold uppercase tracking-widest text-ink-500 mb-1">Reviewed by</p>
-              <h3 className="font-display text-title-lg text-ink-900">{reviewer.name}</h3>
+              <p className="text-[14px] font-semibold uppercase tracking-widest text-[#111214] mb-1">Reviewed by</p>
+              <h3 className="font-display text-[32px] leading-tight tracking-tight text-[#111214]">{reviewer.name}</h3>
               {reviewer.subtitle ? (
-                <p className="mt-1 text-body-sm font-medium text-sage-700">{reviewer.subtitle}</p>
+                <p className="mt-1 text-center text-[24px] font-medium text-[#111214]">{reviewer.subtitle}</p>
               ) : null}
-              <div className="mt-4 space-y-3 text-body-sm leading-relaxed text-black">
+              <div className="mt-4 space-y-3 text-body-sm leading-relaxed text-[#111214]">
                 {reviewer.bio.map((paragraph) => (
                   <p key={paragraph.slice(0, 30)}>{paragraph}</p>
                 ))}
@@ -117,7 +117,7 @@ export function TrustMarkers({ label = 'Trust Markers', reviewer, successStories
 
             <div className="relative m-6 sm:m-10 max-w-sm rounded-2xl bg-white p-6 shadow-xl sm:p-8">
               <QuoteMark />
-              <div className="mt-4 space-y-3 text-body-sm leading-relaxed text-canvas-900">
+              <div className="mt-4 space-y-3 text-body-sm leading-relaxed text-[#111214]">
                 {successStories.quote.map((paragraph) => (
                   <p key={paragraph.slice(0, 30)}>{paragraph}</p>
                 ))}
@@ -125,7 +125,7 @@ export function TrustMarkers({ label = 'Trust Markers', reviewer, successStories
               <div className="mt-6 flex items-center gap-3">
                 <GoogleLogo />
                 <div>
-                  <p className="text-body-sm font-bold text-ink-900">{successStories.author}</p>
+                  <p className="text-body-sm font-bold text-[#111214]">{successStories.author}</p>
                   <div className="mt-0.5 flex gap-0.5" aria-label="5 out of 5 stars">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star key={i} size={14} className="fill-[#F5A623] text-[#F5A623]" aria-hidden />

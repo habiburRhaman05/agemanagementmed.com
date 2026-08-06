@@ -1,11 +1,19 @@
 'use client'
 
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
+import Image from 'next/image'
 import { useState } from 'react'
 
+import { Container } from '@/components/shared/Container'
+import { Section } from '@/components/shared/Section'
+import { SectionHeader } from '@/components/shared/SectionHeader'
+
+import { Button } from '@/components/ui/Button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import type { Special, SpecialLocation } from '@/content/pages/specials'
 import { cn } from '@/lib/utils'
 import { BookingForm } from '../shared/BookingForm'
+import { StaggerGroup, StaggerItem } from '../shared/Stagger'
 
 interface LocationTab {
   id: 'all' | SpecialLocation
@@ -72,6 +80,7 @@ function SpecialCard({ special }: { special: Special }) {
  */
 export function SpecialsGrid({ specials }: { specials: Special[] }) {
   const [activeTab, setActiveTab] = useState<LocationTab['id']>('all')
+  const reduceMotion = useReducedMotion()
 
   const visible = specials.filter((special) => activeTab === 'all' || special.locations.includes(activeTab))
 

@@ -1,9 +1,8 @@
 'use client'
 
-import { m } from 'framer-motion'
-import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
-import { Container } from '@/components/shared/Container'
 import { cn } from '@/lib/utils'
 import type { ProcessStep } from '@/types/content'
 
@@ -17,12 +16,12 @@ export interface ProgramStepsTimelineProps {
 }
 
 /**
- * ProgramStepsTimeline matching the zoomed reference screenshot:
- * - Centered Bodoni Moda heading ("How Our BHRT Program Works")
- * - Overlapping left circular step photo with thin teal ring (#519B99)
- * - Vertical dashed connector line passing through the step number badges
- * - Rose-dust step circle (1, 2, 3)
- * - Large rounded white card (rounded-[24px]) with Bodoni Moda step titles
+ * ProgramStepsTimeline — mirrors the home page "Your Patient Journey" layout:
+ * - Dashed vertical timeline running through the center of every number badge
+ * - Number badges (1, 2, 3) aligned on a fixed vertical axis across ALL cards
+ * - Circular photo vertically centered, overlapping the card's left edge (sm+)
+ * - Mobile: photo centered above the card instead of overlapping the side
+ * - Bodoni Moda headings
  */
 export function ProgramStepsTimeline({
   eyebrow,
@@ -31,93 +30,119 @@ export function ProgramStepsTimeline({
   stepImages,
   className,
 }: ProgramStepsTimelineProps) {
+  if (!steps || steps.length === 0) return null
+
   return (
-    <section className={cn('relative w-full bg-[#F6F7F2] py-16 sm:py-24 px-4 sm:px-6 lg:px-8', className)}>
-      <Container className="max-w-4xl mx-auto">
-        {/* Section Heading */}
-        <div className="text-center mb-12 sm:mb-16">
-          {eyebrow ? (
-            <span className="text-xs font-bold uppercase tracking-widest text-[#519B99] mb-2 block">
+    <section className={cn('relative w-full bg-[#F7F8F2] py-16 sm:py-20 lg:py-24 px-4 sm:px-6', className)}>
+      <div className="mx-auto max-w-[1140px]">
+        {/* Header */}
+        <div className="mx-auto mb-14 max-w-2xl text-center sm:mb-16 lg:mb-18">
+          {eyebrow && (
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#519B99]">
               {eyebrow}
-            </span>
-          ) : null}
+            </p>
+          )}
+
           <h2
-            className="text-3xl sm:text-4xl md:text-[40px] font-normal leading-tight text-[#1C274C] font-display"
-            
+            className="mb-3 text-[48px] font-medium leading-tight tracking-tight text-[#111214]"
+            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
           </h2>
         </div>
 
-        {/* Steps Container */}
-        <div className="relative max-w-3xl mx-auto space-y-10 sm:space-y-12">
-          {/* Vertical Dashed Connector Line passing through step number circles */}
-          <div
-            className="absolute left-[138px] sm:left-[172px] top-12 bottom-12 w-0 border-l border-dashed border-slate-300 pointer-events-none z-0"
-            aria-hidden="true"
-          />
+        {/* Extra side gutter so the desktop-only circular photos (which overlap the card's left edge by half their own width, sm+) never clip past the viewport edge — sized to each breakpoint's image radius (80/112px) plus a safety margin. */}
+        <div className="sm:px-24 md:px-28">
+          {/* Steps Outer Container — the vertical timeline is a ::before on this element (see .timeline-dash in globals.css), running continuously behind every card from the 1st through the last. */}
+          <div className="timeline-dash relative mx-auto max-w-[860px] before:pointer-events-none before:absolute before:left-13 before:top-0 before:block before:w-0.5 sm:before:left-42.5 md:before:left-47.5">
+            <div className="flex flex-col gap-10 sm:gap-12 md:gap-14">
+              {steps.map((step, index) => {
+                const imageSrc = stepImages[index] || stepImages[0]
 
-          {steps.map((step, index) => {
-            const imgSrc = stepImages[index] || stepImages[0]
+                return (
+                  <div key={step.title || index} className="relative">
+                    {/* Mobile layout (below sm): photo centered above the card, badge inline with the title */}
+                    <div className="sm:hidden">
+                      {imageSrc ? (
+                        <div className="relative z-20 mx-auto -mb-24 h-30 w-30 md:h-48 md:w-48 overflow-hidden rounded-full border border-[#89B3AA] bg-white p-0.75 shadow-md">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={imageSrc}
+                            alt={step.title}
+                            className="h-full w-full rounded-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+                      ) : null}
 
-            return (
-              <m.div
-                key={step.title || index}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative pl-16 sm:pl-24"
-              >
-                {/* 1. Left Circular Photo (Overlapping Left Edge of Card) */}
-                <div className="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-20">
-                  <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full p-1 bg-white shadow-md border border-[#519B99]/60">
-                    {imgSrc.startsWith('http') ? (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img
-                        src={imgSrc}
-                        alt={step.title}
-                        className="w-full h-full object-cover rounded-full"
-                      />
-                    ) : (
-                      <Image
-                        src={imgSrc}
-                        alt={step.title}
-                        width={128}
-                        height={128}
-                        className="w-full h-full object-cover rounded-full"
-                      />
-                    )}
-                  </div>
-                </div>
+                      <div className="relative rounded-xl border border-slate-100/70 bg-white p-6 pt-28 shadow-[0_8px_35px_rgba(0,0,0,0.035)]">
+                        <div className="flex items-start gap-4">
+                          <div className="relative z-20 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#B88796] font-serif text-xl font-medium text-white shadow-sm">
+                            {index + 1}
+                          </div>
+                          <div className="flex-1 pt-2">
+                            <h3
+                              className="mb-3 text-[32px] font-normal leading-snug text-[#111214] font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                            >
+                              {step.title}
+                            </h3>
+                            <p className="text-[16px] font-normal leading-[1.7] text-[#111214]">
+                              {step.body}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-                {/* 2. Main White Card Container */}
-                <div className="bg-white rounded-[24px] p-6 sm:p-10 pl-16 sm:pl-24 shadow-[0_10px_35px_rgba(0,0,0,0.035)] border border-slate-100/70 flex items-start gap-4 sm:gap-6 relative z-10">
-                  {/* Step Number Circle (Rose-Dust #AA768A) */}
-                  <div className="relative shrink-0 pt-0.5 z-20">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#AA768A] text-white font-normal text-sm sm:text-base flex items-center justify-center shadow-sm">
-                      {index + 1}
+                    {/* Desktop layout (sm+): photo overlapping the card's left edge, badge on the timeline */}
+                    <div className="relative hidden min-h-60 items-center sm:flex">
+                      <div className="relative flex min-h-60 w-full flex-col justify-center rounded-xl border border-slate-100/70 bg-white p-10 pl-52.5 shadow-[0_8px_35px_rgba(0,0,0,0.035)] md:p-12 md:pl-61.25">
+                        <h3
+                          className="mb-3 text-[32px] font-normal leading-snug text-[#111214] font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                          style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                        >
+                          {step.title}
+                        </h3>
+                        <p className="text-[16px] font-normal leading-[1.7] text-[#111214]">
+                          {step.body}
+                        </p>
+                      </div>
+
+                      <div className="absolute left-42.5 top-1/2 z-20 -ml-7 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-[#B88796] font-serif text-xl font-medium text-white shadow-sm md:left-47.5 md:-ml-8 md:h-16 md:w-16 md:text-2xl">
+                        {index + 1}
+                      </div>
+
+                      {imageSrc ? (
+                        <div className="absolute -left-20 top-1/2 z-20 h-40 w-40 -translate-y-1/2 overflow-hidden rounded-full border border-[#89B3AA] bg-white p-0.75 shadow-md md:-left-28 md:h-56 md:w-56">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={imageSrc}
+                            alt={step.title}
+                            className="h-full w-full rounded-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+                      ) : null}
                     </div>
                   </div>
-
-                  {/* Title & Body Text */}
-                  <div className="flex-1 text-left">
-                    <h3
-                      className="text-xl sm:text-2xl font-normal text-[#1C274C] mb-2 sm:mb-3 font-display"
-                      
-                    >
-                      {step.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm md:text-[15px] text-slate-600 font-light leading-relaxed">
-                      {step.body}
-                    </p>
-                  </div>
-                </div>
-              </m.div>
-            )
-          })}
+                )
+              })}
+            </div>
+          </div>
         </div>
-      </Container>
+
+        {/* Bottom CTA */}
+        <div className="mt-14 text-center sm:mt-16 lg:mt-20">
+          <Link
+            href="/book-appointment"
+            className="inline-flex items-center gap-2.5 rounded-full bg-[#519B99] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.08em] text-white shadow-md transition-all duration-200 hover:bg-[#448b89] hover:shadow-lg sm:text-xs"
+          >
+            <span>SCHEDULE A CONSULTATION</span>
+            <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
+          </Link>
+        </div>
+      </div>
     </section>
   )
 }
