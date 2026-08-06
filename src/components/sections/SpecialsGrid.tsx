@@ -38,10 +38,15 @@ function SpecialCard({ special }: { special: Special }) {
         <div className="content">
           <div className="top">
             <h3 className="top-title">{special.window}</h3>
-            <h4 className="lg-title">{special.title}</h4>
+            <h4
+              className="lg-title"
+              style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
+            >
+              {special.title}
+            </h4>
 
             <div className="lg-text">
-              <p>{special.description}</p>
+              <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>{special.description}</p>
             </div>
           </div>
 
@@ -85,13 +90,16 @@ export function SpecialsGrid({ specials }: { specials: Special[] }) {
   const visible = specials.filter((special) => activeTab === 'all' || special.locations.includes(activeTab))
 
   return (
-    <div className="group" style={{ backgroundColor: '#fff' }}>
+    <div className="group relative overflow-hidden" style={{ backgroundColor: '#fff' }}>
       <div className="radial-gradient" aria-hidden />
 
       <div className="lg-content-d" style={{ position: 'relative', zIndex: 1 }}>
         <div className="lg-max-width-1440">
           <div className="lg-container">
-            <h2 className="lg-title" style={{ margin: 0 }}>
+            <h2
+              className="lg-title"
+              style={{ margin: 0, fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
+            >
               Select Your Location
             </h2>
           </div>
@@ -122,7 +130,7 @@ export function SpecialsGrid({ specials }: { specials: Special[] }) {
 
       <div style={{ paddingTop: 50 }} />
 
-      <div id="grid-d">
+      <div id="grid-d" className="relative overflow-hidden">
         <div className="radial-gradient" aria-hidden />
         <div className="radial-gradient radial-gradient-2" aria-hidden />
 
@@ -135,7 +143,9 @@ export function SpecialsGrid({ specials }: { specials: Special[] }) {
                 ))}
               </div>
             ) : (
-              <p style={{ textAlign: 'center' }}>No specials are currently available for this location. Check back soon.</p>
+              <p style={{ textAlign: 'center', fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                No specials are currently available for this location. Check back soon.
+              </p>
             )}
           </div>
         </div>
