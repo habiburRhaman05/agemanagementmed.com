@@ -48,13 +48,16 @@ export function FitCheckCallout({
         <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-12 sm:px-10 lg:px-14 lg:py-16">
 
           {/* Heading */}
-          <h2 className="font-display text-[20px] font-medium leading-snug text-white lg:text-[24px]">
+          <h2
+            className="font-display leading-snug text-white"
+            style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
+          >
             {heading}
           </h2>
 
           {/* Lead */}
           {lead && (
-            <p className="mt-3 text-[14px] font-normal text-white">
+            <p className="mt-3 text-white" style={{ fontSize: 16, fontWeight: 400 }}>
               {lead}
             </p>
           )}
@@ -62,7 +65,7 @@ export function FitCheckCallout({
           {/* Bullet points */}
           <ul className="mt-3 space-y-2">
             {points.map((point) => (
-              <li key={point} className="flex items-start gap-2 text-[14px] font-normal text-white">
+              <li key={point} className="flex items-start gap-2 text-white" style={{ fontSize: 16, fontWeight: 400 }}>
                 <ArrowRight className="mt-0.5 size-3 shrink-0 text-[#519B98]" aria-hidden />
                 <span>{point}</span>
               </li>
