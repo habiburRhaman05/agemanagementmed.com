@@ -24,6 +24,7 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         {...treatment.hero}
         image={{ ...treatment.hero.image, src: '/images/banner-13-bg.jpg' }}
         fullHeight
+        centerUntilTablet
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

@@ -80,8 +80,8 @@ export function MaleHeroBanner({
         <div className="max-w-xl text-left">
           {/* Main Title */}
           <h1
-            className="text-3xl sm:text-4xl md:text-[46px] lg:text-[48px] font-normal leading-[1.12] text-white text-left font-['Bodoni_Moda',var(--font-bodoni),serif] max-w-lg mb-3.5"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            className="text-3xl sm:text-4xl md:text-[46px] lg:text-[48px] font-normal leading-[1.12] text-white text-left font-display max-w-lg mb-3.5"
+            
           >
             {title}
           </h1>

@@ -65,6 +65,13 @@ interface HeroEditorialProps {
   fullHeight?: boolean
   /** Hide the default fallback CTA button if no actions are specified. */
   hideDefaultCta?: boolean
+  /**
+   * The live site keeps hero text centered up to a 992px viewport (not
+   * Tailwind's 640px `sm` breakpoint) before switching to left-aligned.
+   * Opt-in only — default `false` preserves the existing `sm:` behavior for
+   * every other caller of this shared component.
+   */
+  centerUntilTablet?: boolean
 }
 
 /**
@@ -88,19 +95,17 @@ export function HeroEditorial({
   actions,
   fullHeight = false,
   hideDefaultCta = false,
+  centerUntilTablet = false,
 }: HeroEditorialProps) {
   const FormComponent = actions?.formSource ? FORM_COMPONENTS[actions.formSource] : BookingForm
   const showFormButton = Boolean(actions?.formModal)
   const showVideoButton = Boolean(actions?.videoModal && actions?.videoSource)
 
-  // Smaller, non-full-width CTA on mobile; the "lg" size (via the `size` prop) still applies from `sm:` up.
-  const ctaSizeClass = 'h-11 px-6 text-body-sm font-bold uppercase tracking-wide sm:h-14 sm:px-9 sm:text-body'
-
   return (
     <section
       className={cn(
         'relative isolate flex flex-col justify-end sm:justify-center overflow-hidden ',
-        fullHeight ? 'min-h-[100dvh] sm:min-h-screen' : 'min-h-128 lg:min-h-168',
+        fullHeight ? 'min-h-[100dvh] sm:min-h-screen' : 'min-h-128 lg:min-h-[620px]',
       )}
     >
       {/* Background Image */}
@@ -116,29 +121,36 @@ export function HeroEditorial({
       {/* Dark gradient overlay to ensure text legibility while keeping the top of the image completely vibrant */}
       <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />
 
-      <Container className="relative z-10 pb-12 pt-32 sm:py-35 md:py-50 lg:py-60 !px-5 mt-auto sm:mt-0">
-        <div className="max-w-[528px] mx-auto sm:mx-0 text-center sm:text-left">
+      <Container className="relative z-10 pb-12 pt-32 sm:py-35 md:py-50 lg:py-60 !px-5 mt-auto sm:mt-0 max-w-7xl">
+        <div
+          className={cn(
+            'max-w-[560px] mx-auto text-center',
+            centerUntilTablet ? 'min-[992px]:mx-0 min-[992px]:text-left' : 'sm:mx-0 sm:text-left',
+          )}
+        >
           <h1
-            className="text-[42px] sm:text-[46px] lg:text-[56px] font-normal leading-[1.1] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            className="text-[42px] sm:text-[46px] lg:text-[56px] font-normal leading-[1.1] text-white font-display"
           >
             {title}
           </h1>
 
-          <p className="mt-4 sm:mt-6 max-w-2xl text-[15px] sm:text-base font-light leading-relaxed text-white/95">
+          <p className="mt-4 sm:mt-6 max-w-2xl text-[15px] sm:text-[16px] lg:text-[20px] font-light leading-relaxed text-white">
             {lead}
           </p>
 
           {!showFormButton && !showVideoButton && !hideDefaultCta ? (
             <div
-              className="hero-enter mt-8 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4 w-full"
+              className={cn(
+                'hero-enter mt-8 flex flex-col flex-wrap items-center justify-center gap-3 md:mt-10 md:gap-4 w-full',
+                centerUntilTablet ? 'min-[992px]:flex-row min-[992px]:justify-start' : 'sm:flex-row sm:justify-start',
+              )}
               style={{ animationDelay: '0.5s' }}
             >
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="rounded-[32px] bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-widest px-8 py-6 h-auto flex sm:inline-flex items-center justify-center gap-3 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto">
-                    <span>SCHEDULE A CONSULTATION</span>
-                    <ArrowRight className="h-4 w-4 stroke-[1.5]" aria-hidden="true" />
+                  <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto">
+                    <span>START TODAY</span>
+                    <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
                   </Button>
                 </DialogTrigger>
                 <DialogContent
@@ -167,15 +179,18 @@ export function HeroEditorial({
 
           {showFormButton || showVideoButton ? (
             <div
-              className="hero-enter mt-8 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4 w-full"
+              className={cn(
+                'hero-enter mt-8 flex flex-col flex-wrap items-center justify-center gap-3 md:mt-10 md:gap-4 w-full',
+                centerUntilTablet ? 'min-[992px]:flex-row min-[992px]:justify-start' : 'sm:flex-row sm:justify-start',
+              )}
               style={{ animationDelay: '0.5s' }}
             >
               {showFormButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" className="rounded-[32px] bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-widest px-8 py-6 h-auto flex sm:inline-flex items-center justify-center gap-3 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto">
-                      <span>SCHEDULE A CONSULTATION</span>
-                      <ArrowRight className="h-4 w-4 stroke-[1.5]" aria-hidden="true" />
+                    <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto">
+                      <span>START TODAY</span>
+                      <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
                     </Button>
                   </DialogTrigger>
                   <DialogContent
@@ -204,8 +219,8 @@ export function HeroEditorial({
               {showVideoButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" variant="outlineInverse" className="rounded-full bg-white hover:bg-slate-100 text-[#519B99] hover:text-[#448b89] font-bold text-[11px] sm:text-[13px] uppercase tracking-wider px-8 py-4 sm:px-10 sm:py-5 h-auto inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 border-none w-auto">
-                      <Play className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-[#519B99] text-[#519B99] translate-x-0.5" aria-hidden="true" />
+                    <Button size="lg" variant="outlineInverse" className="rounded-full bg-white hover:bg-slate-100 text-[#519B99] hover:text-[#448b89] font-bold text-[11px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 border-none w-auto">
+                      <Play className="h-3.5 w-3.5 fill-[#519B99] text-[#519B99] translate-x-0.5" aria-hidden="true" />
                       <span>WATCH VIDEO</span>
                     </Button>
                   </DialogTrigger>

@@ -56,7 +56,7 @@ export function PatientJourney({
 
           <h2
             className="mb-3 text-[32px] font-normal leading-tight text-[#1C274C] sm:text-[40px] lg:text-[44px]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            
           >
             {title}
           </h2>
@@ -89,8 +89,8 @@ export function PatientJourney({
                   <div className="relative w-full bg-white rounded-[24px] shadow-[0_8px_35px_rgba(0,0,0,0.035)] border border-slate-100/70 p-6 sm:p-10 md:p-12 pl-24 sm:pl-36 md:pl-[240px] min-h-[220px] sm:min-h-[240px] flex flex-col justify-center">
                     {/* Title & Body */}
                     <h3
-                      className="text-xl sm:text-2xl md:text-[25px] font-normal leading-snug text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                      style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                      className="text-xl sm:text-2xl md:text-[25px] font-normal leading-snug text-[#1C274C] mb-3 font-display"
+                      
                     >
                       {step.title}
                     </h3>

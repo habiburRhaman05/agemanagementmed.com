@@ -67,8 +67,8 @@ export const BeforeAfterSliderSection = ({
             Transformations
           </span>
           <h2
-            className="text-3xl md:text-[42px] font-normal text-[#1C274C] mb-4 leading-tight font-['Bodoni_Moda',var(--font-bodoni),serif]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            className="text-3xl md:text-[42px] font-normal text-[#1C274C] mb-4 leading-tight font-display"
+            
           >
             {title}
           </h2>
@@ -117,7 +117,7 @@ export const BeforeAfterSliderSection = ({
                             className="object-cover"
                           />
                         </div>
-                        <div className="bg-[#519B99] py-3 text-center text-[13px] tracking-[0.2em] uppercase text-white font-['Bodoni_Moda',var(--font-bodoni),serif]">
+                        <div className="bg-[#519B99] py-3 text-center text-[13px] tracking-[0.2em] uppercase text-white font-display">
                           Before
                         </div>
                       </div>
@@ -138,7 +138,7 @@ export const BeforeAfterSliderSection = ({
                             className="object-cover"
                           />
                         </div>
-                        <div className="bg-[#519B99] py-3 text-center text-[13px] tracking-[0.2em] uppercase text-white font-['Bodoni_Moda',var(--font-bodoni),serif]">
+                        <div className="bg-[#519B99] py-3 text-center text-[13px] tracking-[0.2em] uppercase text-white font-display">
                           After
                         </div>
                       </div>

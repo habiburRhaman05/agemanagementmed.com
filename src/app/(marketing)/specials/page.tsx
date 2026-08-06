@@ -14,6 +14,7 @@ export default function SpecialsPage() {
       <HeroEditorial
         {...specialsContent.hero}
         hideDefaultCta
+        centerUntilTablet
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Specials', href: '/specials' }]}
       />
 

@@ -34,8 +34,8 @@ export function SexualHealthClosingBand({
       <Container className="relative">
         <div className="max-w-lg">
           <h2
-            className="text-[28px] sm:text-[34px] md:text-[38px] font-normal leading-[1.2] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            className="text-[28px] sm:text-[34px] md:text-[38px] font-normal leading-[1.2] text-white font-display"
+            
           >
             {title}
           </h2>

@@ -117,8 +117,8 @@ export function SymptomsHeroCard({
               {/* Right Column: Symptom Checklist */}
               <div className="flex flex-col justify-center p-6 sm:p-10 lg:p-12 text-white">
                 <h2
-                  className="text-2xl sm:text-3xl lg:text-[34px] font-normal leading-tight text-white mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                  className="text-2xl sm:text-3xl lg:text-[34px] font-normal leading-tight text-white mb-2 font-display"
+                  
                 >
                   {heading}
                 </h2>
@@ -192,8 +192,8 @@ export function SymptomsHeroCard({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start mb-12 border-b border-slate-100 pb-8">
               <div>
                 <h2
-                  className="text-2xl sm:text-3xl md:text-[34px] font-normal leading-tight text-[#1C274C] font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                  className="text-2xl sm:text-3xl md:text-[34px] font-normal leading-tight text-[#1C274C] font-display"
+                  
                 >
                   Hormone <br className="hidden sm:inline" />
                   Optimization <br className="hidden sm:inline" />
@@ -203,8 +203,8 @@ export function SymptomsHeroCard({
 
               <div>
                 <h3
-                  className="text-lg sm:text-xl font-normal text-[#1C274C] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                  className="text-lg sm:text-xl font-normal text-[#1C274C] mb-2 font-display"
+                  
                 >
                   What BHRT Is And How It Works
                 </h3>
@@ -221,8 +221,8 @@ export function SymptomsHeroCard({
             {/* Sub-Header */}
             <div className="text-center mb-10">
               <h3
-                className="text-xl sm:text-2xl font-normal text-[#1C274C] font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                className="text-xl sm:text-2xl font-normal text-[#1C274C] font-display"
+                
               >
                 Our Men’s Hormone Program May Help You:
               </h3>

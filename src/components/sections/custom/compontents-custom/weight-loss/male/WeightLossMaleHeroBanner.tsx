@@ -60,8 +60,8 @@ export function WeightLossMaleHeroBanner({
       <Container className="relative">
         <div className="max-w-xl">
           <h1
-            className="text-[32px] sm:text-[40px] md:text-[46px] font-normal leading-[1.18] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            className="text-[32px] sm:text-[40px] md:text-[46px] font-normal leading-[1.18] text-white font-display"
+            
           >
             {title}
           </h1>

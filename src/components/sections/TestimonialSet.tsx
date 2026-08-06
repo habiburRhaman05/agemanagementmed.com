@@ -83,10 +83,10 @@ export function TestimonialSet({
   return (
     <section
       id="testimonial-d"
-      className="relative w-full min-h-screen min-h-[100vh] flex flex-col justify-center overflow-hidden bg-cover bg-[position:right_center] py-12 sm:py-16 md:py-20"
+      className="relative w-full min-h-screen min-h-[100vh] flex flex-col justify-center overflow-hidden bg-cover bg-center py-12 sm:py-16 md:py-20"
       style={{
         backgroundImage: `url('${backgroundImage}')`,
-        backgroundPosition: 'right center',
+        backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       }}

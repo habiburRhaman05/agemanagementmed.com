@@ -51,8 +51,8 @@ export function SafetyAndCandidacy({
     <div className="flex flex-col justify-center">
       {/* Main Headline */}
       <h2
-        className="text-3xl sm:text-4xl md:text-[38px] font-normal leading-tight text-[#1C274C] mb-4 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-        style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+        className="text-3xl sm:text-4xl md:text-[38px] font-normal leading-tight text-[#1C274C] mb-4 font-display"
+        
       >
         {heading}
       </h2>
@@ -60,8 +60,8 @@ export function SafetyAndCandidacy({
       {/* Subtitle if present */}
       {subtitle ? (
         <h3
-          className="text-xl sm:text-2xl font-normal text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-          style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+          className="text-xl sm:text-2xl font-normal text-[#1C274C] mb-3 font-display"
+          
         >
           {subtitle}
         </h3>
@@ -82,8 +82,8 @@ export function SafetyAndCandidacy({
         <div className="mt-2 mb-4">
           {questionsLabel ? (
             <h3
-              className="text-xl sm:text-2xl font-normal text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-xl sm:text-2xl font-normal text-[#1C274C] mb-3 font-display"
+              
             >
               {questionsLabel}
             </h3>

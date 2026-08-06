@@ -28,6 +28,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
         {...treatment.hero}
         image={{ ...treatment.hero.image, src: '/images/banner-37-bg.jpg' }}
         fullHeight
+        centerUntilTablet
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

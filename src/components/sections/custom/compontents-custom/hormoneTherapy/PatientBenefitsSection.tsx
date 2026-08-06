@@ -69,16 +69,16 @@ export function PatientBenefitsSection({
           <div className="flex flex-col justify-center">
             {/* Main Title */}
             <h2
-              className="text-3xl sm:text-4xl md:text-[38px] font-normal leading-tight text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-3xl sm:text-4xl md:text-[38px] font-normal leading-tight text-[#1C274C] mb-3 font-display"
+              
             >
               {title}
             </h2>
 
             {/* Subtitle */}
             <h3
-              className="text-xl sm:text-2xl font-normal leading-snug text-[#1C274C] mb-6 max-w-md font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-xl sm:text-2xl font-normal leading-snug text-[#1C274C] mb-6 max-w-md font-display"
+              
             >
               {subtitle}
             </h3>

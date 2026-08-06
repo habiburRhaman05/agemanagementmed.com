@@ -42,8 +42,8 @@ export function ProgramStepsTimeline({
             </span>
           ) : null}
           <h2
-            className="text-3xl sm:text-4xl md:text-[40px] font-normal leading-tight text-[#1C274C] font-['Bodoni_Moda',var(--font-bodoni),serif]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            className="text-3xl sm:text-4xl md:text-[40px] font-normal leading-tight text-[#1C274C] font-display"
+            
           >
             {title}
           </h2>
@@ -103,8 +103,8 @@ export function ProgramStepsTimeline({
                   {/* Title & Body Text */}
                   <div className="flex-1 text-left">
                     <h3
-                      className="text-xl sm:text-2xl font-normal text-[#1C274C] mb-2 sm:mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                      style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                      className="text-xl sm:text-2xl font-normal text-[#1C274C] mb-2 sm:mb-3 font-display"
+                      
                     >
                       {step.title}
                     </h3>

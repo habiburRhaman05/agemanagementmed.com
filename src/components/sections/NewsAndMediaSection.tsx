@@ -102,8 +102,8 @@ export function NewsAndMediaSection({
           className="text-center mb-10 sm:mb-12"
         >
           <h2
-            className="text-2xl sm:text-3xl md:text-[36px] font-normal leading-tight text-[#1C274C] font-['Bodoni_Moda',var(--font-bodoni),serif]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            className="text-2xl sm:text-3xl md:text-[36px] font-normal leading-tight text-[#1C274C] font-display"
+            
           >
             {title}
           </h2>
@@ -206,8 +206,8 @@ export function NewsAndMediaSection({
                 ) : null}
 
                 <h3
-                  className="text-lg sm:text-xl md:text-[22px] font-normal leading-snug text-[#1C274C] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                  className="text-lg sm:text-xl md:text-[22px] font-normal leading-snug text-[#1C274C] mb-2 font-display"
+                  
                 >
                   {article.title}
                 </h3>
