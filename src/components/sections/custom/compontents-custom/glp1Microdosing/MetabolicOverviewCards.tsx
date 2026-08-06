@@ -57,7 +57,7 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
                 />
 
                 <div className="content lg-col-xl-7">
-                  <h2 className="lg-title" style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}>
+                  <h2 className="lg-title text-[36px]! sm:text-[48px]!" style={{ fontWeight: 500, letterSpacing: '-0.025em' }}>
                     {darkCard.heading}
                   </h2>
 
@@ -99,7 +99,7 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
                   />
 
                   <div className="content lg-col-xl-6 lg-order-xl-1">
-                    <h2 className="lg-title" style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}>
+                    <h2 className="lg-title text-[36px]! sm:text-[48px]!" style={{ fontWeight: 500, letterSpacing: '-0.025em' }}>
                       {lightCard.heading}
                     </h2>
 

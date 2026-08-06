@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronRight, Play } from 'lucide-react'
+import { ChevronRight, Play } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -70,6 +70,25 @@ interface HeroEditorialProps {
   overlay?: boolean
   /** Custom text for the primary CTA button; defaults to "START TODAY" */
   primaryCtaLabel?: string
+}
+
+function ArrowSvg({ className }: { className?: string }) {
+  return (
+    <svg
+      width="22"
+      height="12"
+      viewBox="0 0 22 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn('shrink-0', className)}
+      aria-hidden="true"
+    >
+      <path
+        d="M1 5.6059C0.585786 5.6059 0.25 5.94168 0.25 6.3559C0.25 6.77011 0.585786 7.1059 1 7.1059V5.6059ZM21.5303 6.88623C21.8232 6.59333 21.8232 6.11846 21.5303 5.82557L16.7574 1.0526C16.4645 0.759702 15.9896 0.759702 15.6967 1.0526C15.4038 1.34549 15.4038 1.82036 15.6967 2.11326L19.9393 6.3559L15.6967 10.5985C15.4038 10.8914 15.4038 11.3663 15.6967 11.6592C15.9896 11.9521 16.4645 11.9521 16.7574 11.6592L21.5303 6.88623ZM1 7.1059H21V5.6059H1V7.1059Z"
+        fill="currentColor"
+      />
+    </svg>
+  )
 }
 
 /**
@@ -147,30 +166,23 @@ export function HeroEditorial({
             >
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto cursor-pointer">
+                  <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2.5 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto cursor-pointer">
                     <span>{primaryCtaLabel}</span>
-                    <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
+                    <ArrowSvg />
                   </Button>
                 </DialogTrigger>
-                <DialogContent
-                  className="
-                      w-[calc(100%-1rem)]
-                      max-w-2xl
-                      max-h-[90dvh]
-                      overflow-y-auto
-                      rounded-[28px]
-                      p-5
-                      sm:w-full
-                      sm:rounded-[40px]
-                      sm:p-10
-                    "
-                >
-                  <DialogHeader>
-                    <DialogTitle className="text-2xl font-display text-ink-900">
-                      Book Your Consultation
+                <DialogContent className="max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-[480px] overflow-y-auto rounded-[28px] border-none bg-[#0B1938] p-6 sm:p-9 text-white shadow-2xl [&>button]:bg-slate-700/60 [&>button]:text-slate-200 [&>button]:hover:bg-slate-600 [&>button]:hover:text-white [&>button]:border-none [&>button]:cursor-pointer">
+                  <DialogHeader className="mb-2 text-center sm:text-center">
+                    <DialogTitle
+                      className="font-['Bodoni_Moda',var(--font-bodoni),Georgia,serif] text-2xl sm:text-[28px] font-normal text-white text-center leading-tight"
+                      style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', Georgia, serif" }}
+                    >
+                      Schedule A Consultation
                     </DialogTitle>
                   </DialogHeader>
-                  <div className="mt-4">{FormComponent ? <FormComponent /> : null}</div>
+                  <div className="mt-2">
+                    {FormComponent ? <FormComponent variant="dark" submitLabel="NEXT STEP" /> : null}
+                  </div>
                 </DialogContent>
               </Dialog>
             </div>
@@ -187,30 +199,23 @@ export function HeroEditorial({
               {showFormButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto cursor-pointer">
+                    <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2.5 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto cursor-pointer">
                       <span>{primaryCtaLabel}</span>
-                      <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
+                      <ArrowSvg />
                     </Button>
                   </DialogTrigger>
-                  <DialogContent
-                    className="
-                      w-[calc(100%-1rem)]
-                      max-w-2xl
-                      max-h-[90dvh]
-                      overflow-y-auto
-                      rounded-[28px]
-                      p-5
-                      sm:w-full
-                      sm:rounded-[40px]
-                      sm:p-10
-                    "
-                  >
-                    <DialogHeader>
-                      <DialogTitle className="text-2xl font-display text-ink-900">
-                        Book Your Consultation
+                  <DialogContent className="max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-[480px] overflow-y-auto rounded-[28px] border-none bg-[#0B1938] p-6 sm:p-9 text-white shadow-2xl [&>button]:bg-slate-700/60 [&>button]:text-slate-200 [&>button]:hover:bg-slate-600 [&>button]:hover:text-white [&>button]:border-none [&>button]:cursor-pointer">
+                    <DialogHeader className="mb-2 text-center sm:text-center">
+                      <DialogTitle
+                        className="font-['Bodoni_Moda',var(--font-bodoni),Georgia,serif] text-2xl sm:text-[28px] font-normal text-white text-center leading-tight"
+                        style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', Georgia, serif" }}
+                      >
+                        Schedule A Consultation
                       </DialogTitle>
                     </DialogHeader>
-                    <div className="mt-4">{FormComponent ? <FormComponent /> : null}</div>
+                    <div className="mt-4">
+                      {FormComponent ? <FormComponent variant="dark" submitLabel="NEXT STEP" /> : null}
+                    </div>
                   </DialogContent>
                 </Dialog>
               ) : null}

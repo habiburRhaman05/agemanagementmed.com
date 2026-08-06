@@ -49,8 +49,8 @@ export function FitCheckCallout({
 
           {/* Heading */}
           <h2
-            className="font-display leading-snug text-white"
-            style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
+            className="font-display leading-snug text-white text-[36px]! sm:text-[48px]!"
+            style={{ fontWeight: 500, letterSpacing: '-0.025em' }}
           >
             {heading}
           </h2>

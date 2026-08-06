@@ -60,7 +60,7 @@ export function ProgramIncludedGrid({
       <div className="lg-content-d">
         <div className="lg-max-width-1440">
           <div className="lg-container">
-            <h2 className="lg-title" style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}>
+            <h2 className="lg-title text-[36px]! sm:text-[48px]!" style={{ fontWeight: 500, letterSpacing: '-0.025em' }}>
               {title}
             </h2>
             {lead ? (

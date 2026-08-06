@@ -35,6 +35,9 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
           { label: pillar.label, href: pillar.href },
           { label: treatment.shortName, href: treatment.href },
         ]}
+        overideMinheight="lg:min-h-auto"
+        // containerOverride='py-35 md:py-50 lg:pt-40  lg:pb-30'
+        overlay={false}
       />
 
       <Reveal>
