@@ -80,6 +80,6 @@ export function FitCheckCallout({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

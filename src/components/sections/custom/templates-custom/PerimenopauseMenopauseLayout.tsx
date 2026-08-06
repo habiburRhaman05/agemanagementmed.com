@@ -4,7 +4,7 @@ import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import { pillars } from '@/content/treatments'
-import type { Treatment } from '@/types/content'
+import type { Testimonial, Treatment } from '@/types/content'
 import { causesIcons, pathwayIcons } from '../compontents-custom/perimenopause/perimenopause-icons'
 import { LifestyleAndEvaluation } from '../compontents-custom/perimenopause/LifestyleAndEvaluation'
 import { SymptomsIntroCards } from '../compontents-custom/perimenopause/SymptomsIntroCards'
@@ -19,28 +19,28 @@ interface TreatmentTemplateProps {
 
 export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
       id: '1',
-      source: 'Google',
+      source: 'google',
       author: 'E.H.',
       quote: 'Dr. Collins has been an absolute delight and so informative and patient. He has a great personality and is very passionate about his profession to inform, teach, guide, and give his patients the most beneficial advice for good health and longevity. He has been very helpful for both my Husband and myself. The staff is very helpful and friendly as well.',
     },
     {
       id: '2',
-      source: 'Google',
+      source: 'google',
       author: 'S.R.',
       quote: 'All members of the staff are absolutely wonderful. They are polite and address any questions or concerns you have in a professional approach. They have literally changed my life for the better.',
     },
     {
       id: '3',
-      source: 'Google',
+      source: 'google',
       author: 'J.F.',
       quote: 'Every experience has been excellent. All questions and concerns were answered. I\'ve recommended them to my family and friends.',
     },
     {
       id: '4',
-      source: 'Google',
+      source: 'google',
       author: 'C.G.',
       quote: 'Great employees to work with. The staff is very knowledgeable and explain all processes.',
     }
