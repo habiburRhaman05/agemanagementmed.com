@@ -44,7 +44,7 @@ export function ProgramStepsTimeline({
           )}
 
           <h2
-            className="mb-3 text-[36px] font-medium leading-tight tracking-tight text-[#111214]"
+            className="mb-3 text-[48px] font-medium leading-tight tracking-tight text-[#111214]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
