@@ -37,7 +37,7 @@ interface HeroImmersiveProps {
 export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) {
   return (
     <section
-      className="relative isolate flex items-center overflow-hidden bg-ink-950 px-0 pt-70 pb-45"
+      className="relative isolate flex items-center overflow-hidden bg-ink-950 px-0 pt-32.75 pb-32.75 min-[348px]:pt-35 min-[348px]:pb-35 sm:pt-40 sm:pb-24 lg:pt-70 lg:pb-45"
     >
       <div
         className="absolute inset-0 hero-zoom"
@@ -54,7 +54,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
         />
       </div>
 
-      <Container className="relative px-2! md:px-0!">
+      <Container className="relative px-3! text-center! lg:text-left! lg-container">
         {/* {meta ? (
           <span
             style={{ animationDelay: '0.1s' }}
@@ -64,17 +64,17 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           </span>
         ) : null} */}
 
-        <h1 className="mt-5 max-w-3xl text-3xl leading-[1.2] text-canvas-50 capitalize drop-shadow-sm sm:mt-8 sm:text-4xl sm:leading-tight md:mt-8 md:text-[64px] md:leading-[70px] font-medium">
+        <h1 className="mt-5 mx-auto lg:mx-0 max-w-80 sm:max-w-2xl md:max-w-3xl text-3xl leading-[1.2] text-canvas-50 capitalize drop-shadow-sm sm:mt-8 sm:text-4xl sm:leading-tight md:mt-8 md:text-[64px] md:leading-17.5 font-medium">
           {title}
         </h1>
 
-        <p className="mt-3 max-w-xl text-sm text-canvas-50/90 sm:mt-7 sm:text-base md:text-[20px] md:leading-[30px] md:text-white font-normal">
+        <p className="mt-3 mx-auto lg:mx-0 max-w-xl text-sm text-canvas-50/90 sm:mt-7 sm:text-base md:text-[20px] md:leading-7.5 md:text-white font-normal">
           {lead}
         </p>
 
         <div
           style={{ animationDelay: '0.65s' }}
-          className="hero-enter mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
+          className="hero-enter mt-6 flex w-full flex-col items-center gap-3 sm:mt-10 sm:w-fit sm:flex-row sm:gap-4 mx-auto lg:mx-0"
         >
           {/* Booking Modal */}
           <Dialog>
@@ -82,7 +82,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
               <Button
                 size="lg"
                 variant="primary"
-                className="h-12 w-full justify-center bg-[#008080] px-6 text-[14px] leading-4.25 font-bold sm:h-14 sm:w-auto sm:px-9"
+                className="h-12 w-auto justify-center bg-[#008080] px-6 text-[14px] leading-4.25 font-bold sm:h-14 sm:px-9"
               >
                 START TODAY <MoveRight />
               </Button>
@@ -117,7 +117,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
               <Button
                 size="lg"
                 variant="outlineInverse"
-                className="group h-12 w-full justify-center px-6 text-[14px] leading-4.25 font-bold bg-white text-[#00555A] hover:border-canvas-50/60 hover:bg-transparent hover:text-canvas-50 sm:h-14 sm:w-auto sm:px-9"
+                className="group h-12 w-auto justify-center px-6 text-[14px] leading-4.25 font-bold bg-white text-[#00555A] hover:border-canvas-50/60 hover:bg-transparent hover:text-canvas-50 sm:h-14 sm:px-9"
               >
                 <Play className="size-4" aria-hidden />
                 Watch video

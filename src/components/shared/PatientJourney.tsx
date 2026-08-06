@@ -68,6 +68,8 @@ export function PatientJourney({
           )}
         </div>
 
+        {/* Extra left gutter so the circular photos (which overlap the card's left edge by half their own width) never clip past the viewport edge — sized to each breakpoint's image radius (56/80/112px) plus a safety margin. Kept on a wrapper, not the timeline container itself, so the ::before timeline and the per-step badges (both anchored to elements inside this wrapper) shift together and stay aligned. */}
+        <div className="pl-16 sm:pl-24 md:pl-28">
         {/* Steps Outer Container — the vertical timeline is a ::before on this element (see .timeline-dash in globals.css), running continuously behind every card from the 1st through the last */}
         <div className="timeline-dash relative mx-auto max-w-[860px] before:pointer-events-none before:absolute before:left-42.5 before:top-0 before:hidden before:w-0.5 sm:before:block md:before:left-47.5">
           <div className="flex flex-col gap-10 sm:gap-12 md:gap-14">
@@ -120,6 +122,7 @@ export function PatientJourney({
               )
             })}
           </div>
+        </div>
         </div>
 
         {/* Bottom CTA */}
