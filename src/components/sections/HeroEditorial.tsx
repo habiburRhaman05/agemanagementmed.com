@@ -1,5 +1,3 @@
-
-
 import { ArrowRight, ChevronRight, Play } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
@@ -8,7 +6,6 @@ import Link from 'next/link'
 import { Container } from '@/components/shared/Container'
 import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Button } from '@/components/ui/Button'
-
 
 import { cn } from '@/lib/utils'
 import type { Cta, Media } from '@/types/content'
@@ -70,7 +67,9 @@ interface HeroEditorialProps {
   centerUntilTablet?: boolean
   containerOverride?: string
   overideMinheight?: string
-  overlay?:boolean
+  overlay?: boolean
+  /** Custom text for the primary CTA button; defaults to "START TODAY" */
+  primaryCtaLabel?: string
 }
 
 /**
@@ -98,6 +97,7 @@ export function HeroEditorial({
   containerOverride,
   overideMinheight,
   overlay = true,
+  primaryCtaLabel = 'START TODAY',
 }: HeroEditorialProps) {
   const FormComponent = actions?.formSource ? FORM_COMPONENTS[actions.formSource] : BookingForm
   const showFormButton = Boolean(actions?.formModal)
@@ -122,8 +122,7 @@ export function HeroEditorial({
         style={{ objectPosition: image.focalPoint ?? '85% center' }}
       />
       {/* Dark gradient overlay to ensure text legibility while keeping the top of the image completely vibrant */}
-   {  overlay && <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />}
-
+      {overlay && <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />}
 
       <Container className={cn("relative z-10 py-35 md:py-50 lg:py-60 !px-3 ", containerOverride)}>
         <div className="max-w-[528px] text-center sm:text-left">
@@ -148,8 +147,8 @@ export function HeroEditorial({
             >
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto">
-                    <span>START TODAY</span>
+                  <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto cursor-pointer">
+                    <span>{primaryCtaLabel}</span>
                     <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
                   </Button>
                 </DialogTrigger>
@@ -188,8 +187,8 @@ export function HeroEditorial({
               {showFormButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto">
-                      <span>START TODAY</span>
+                    <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto cursor-pointer">
+                      <span>{primaryCtaLabel}</span>
                       <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
                     </Button>
                   </DialogTrigger>
@@ -219,7 +218,7 @@ export function HeroEditorial({
               {showVideoButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" variant="outlineInverse" className="rounded-full bg-white hover:bg-slate-100 text-[#519B99] hover:text-[#448b89] font-bold text-[11px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 border-none w-auto">
+                    <Button size="lg" variant="outlineInverse" className="rounded-full bg-white hover:bg-slate-100 text-[#519B99] hover:text-[#448b89] font-bold text-[11px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 border-none w-auto cursor-pointer">
                       <Play className="h-3.5 w-3.5 fill-[#519B99] text-[#519B99] translate-x-0.5" aria-hidden="true" />
                       <span>WATCH VIDEO</span>
                     </Button>
