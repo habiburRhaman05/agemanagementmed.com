@@ -235,7 +235,7 @@ export function SymptomsHeroCard({
                 return (
                   <div key={b.title} className="flex flex-col items-center text-center gap-3">
                     <div className="shrink-0 text-[#519B99]">
-                      <Icon className="w-8 h-8 stroke-[1.75]" />
+                      <Icon className="w-10 h-10 stroke-[1.75]" />
                     </div>
                     <div>
                       <h4 className="text-[20px] font-bold leading-snug text-[#1C274C]">
