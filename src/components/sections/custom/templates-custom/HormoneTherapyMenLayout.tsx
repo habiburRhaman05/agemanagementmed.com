@@ -164,7 +164,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
         />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-2-bg (1).jpg" />
 
       
       <TrustMarkers

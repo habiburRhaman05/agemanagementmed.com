@@ -49,7 +49,7 @@ export function MaleHeroBanner({
   return (
     <section
       className={cn(
-        'relative isolate flex flex-col justify-center overflow-hidden bg-slate-900 bg-cover pt-[280px] pb-[180px] lg:pb-[275px]',
+        'relative isolate flex flex-col justify-center overflow-hidden bg-slate-900 bg-cover pt-24 pb-16 sm:pt-40 sm:pb-24 lg:pt-[280px] lg:pb-[275px]',
         className
       )}
       style={{

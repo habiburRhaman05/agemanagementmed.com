@@ -67,12 +67,11 @@ export const BeforeAfterSliderSection = ({
             Transformations
           </span>
           <h2
-            className="text-3xl md:text-[42px] font-normal text-[#1C274C] mb-4 leading-tight font-display"
-            
+            className="text-[36px] font-medium text-[#111214] mb-4 leading-tight font-display"
           >
             {title}
           </h2>
-          <p className="text-slate-600 text-[15px] md:text-base leading-relaxed font-light">
+          <p className="text-[16px] text-[#111214] leading-relaxed font-normal">
             {description}
           </p>
         </div>
