@@ -51,7 +51,7 @@ export function MaleHeroBanner({
   return (
     <section
       className={cn(
-        'relative isolate flex flex-col justify-center overflow-hidden min-h-[520px] sm:min-h-[580px] md:min-h-[620px] py-20 sm:py-28 md:py-36 bg-slate-900',
+        'relative isolate flex flex-col justify-center overflow-hidden py-24 sm:py-36 md:py-44 bg-slate-900',
         className
       )}
     >
@@ -76,8 +76,8 @@ export function MaleHeroBanner({
 
       {/* Hero Background Image */}
 
-      <Container className="relative z-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
-        <div className="max-w-xl text-left">
+      <Container className="relative z-20 px-3! lg-container">
+        <div className="max-w-xl w-full text-left">
           {/* Main Title */}
           <h1
             className="text-3xl sm:text-4xl md:text-[46px] lg:text-[48px] font-normal leading-[1.12] text-white text-left font-['Bodoni_Moda',var(--font-bodoni),serif] max-w-lg mb-3.5"
@@ -92,7 +92,7 @@ export function MaleHeroBanner({
           </p>
 
           {/* Action Buttons Row */}
-          <div className="flex flex-row items-center justify-start gap-3.5 flex-wrap">
+          <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-3.5">
             {/* Primary CTA (Start Today) */}
             <Dialog>
               <DialogTrigger asChild>

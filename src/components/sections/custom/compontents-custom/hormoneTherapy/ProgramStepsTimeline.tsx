@@ -51,9 +51,9 @@ export function ProgramStepsTimeline({
 
         {/* Steps Container */}
         <div className="relative max-w-3xl mx-auto space-y-10 sm:space-y-12">
-          {/* Vertical Dashed Connector Line passing through step number circles */}
+          {/* Vertical Dashed Connector Line — hidden on xs to avoid misalignment */}
           <div
-            className="absolute left-[138px] sm:left-[172px] top-12 bottom-12 w-0 border-l border-dashed border-slate-300 pointer-events-none z-0"
+            className="hidden sm:block absolute left-[172px] top-12 bottom-12 w-0 border-l border-dashed border-slate-300 pointer-events-none z-0"
             aria-hidden="true"
           />
 
@@ -67,11 +67,11 @@ export function ProgramStepsTimeline({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative pl-16 sm:pl-24"
+                className="relative pl-12 sm:pl-24"
               >
                 {/* 1. Left Circular Photo (Overlapping Left Edge of Card) */}
-                <div className="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-20">
-                  <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full p-1 bg-white shadow-md border border-[#519B99]/60">
+                <div className="absolute -left-3 sm:left-0 top-1/2 -translate-y-1/2 z-20">
+                  <div className="w-20 h-20 sm:w-32 sm:h-32 rounded-full p-1 bg-white shadow-md border border-[#519B99]/60">
                     {imgSrc.startsWith('http') ? (
                       /* eslint-disable-next-line @next/next/no-img-element */
                       <img
@@ -92,7 +92,7 @@ export function ProgramStepsTimeline({
                 </div>
 
                 {/* 2. Main White Card Container */}
-                <div className="bg-white rounded-[24px] p-6 sm:p-10 pl-16 sm:pl-24 shadow-[0_10px_35px_rgba(0,0,0,0.035)] border border-slate-100/70 flex items-start gap-4 sm:gap-6 relative z-10">
+                <div className="bg-white rounded-[24px] p-4 sm:p-10 pl-12 sm:pl-24 shadow-[0_10px_35px_rgba(0,0,0,0.035)] border border-slate-100/70 flex items-start gap-3 sm:gap-6 relative z-10">
                   {/* Step Number Circle (Rose-Dust #AA768A) */}
                   <div className="relative shrink-0 pt-0.5 z-20">
                     <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#AA768A] text-white font-normal text-sm sm:text-base flex items-center justify-center shadow-sm">

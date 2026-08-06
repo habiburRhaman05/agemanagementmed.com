@@ -105,7 +105,7 @@ export function SymptomsHeroCard({
           <div className="bg-[#0B1938] text-white">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
               {/* Left Column: Image */}
-              <div className="relative min-h-[380px] sm:min-h-[440px] lg:min-h-full bg-slate-800">
+              <div className="relative min-h-[280px] sm:min-h-[380px] max-h-[340px] sm:max-h-none lg:min-h-full bg-slate-800">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={imageSrc}
@@ -187,7 +187,7 @@ export function SymptomsHeroCard({
           </div>
 
           {/* BOTTOM HALF: White Overview Section (#FFFFFF) */}
-          <div className="bg-white p-8 sm:p-12 lg:p-16">
+          <div className="bg-white p-6 sm:p-8 lg:p-12 xl:p-16">
             {/* Header Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start mb-12 border-b border-slate-100 pb-8">
               <div>

@@ -85,7 +85,7 @@ export const BeforeAfterSliderSection = ({
             {/* Navigation Arrows — vertically centered on the image row itself */}
             <button
               onClick={scrollPrev}
-              className="absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 -translate-x-1/2 md:translate-x-0 w-11 h-11 rounded-full border border-white/15 bg-[#14214B] text-white flex items-center justify-center hover:bg-white/10 hover:border-[#C9A876]/50 transition-colors z-20 shadow-lg"
+              className="hidden md:flex absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 md:translate-x-0 w-11 h-11 rounded-full border border-white/15 bg-[#14214B] text-white items-center justify-center hover:bg-white/10 hover:border-[#C9A876]/50 transition-colors z-20 shadow-lg"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -93,7 +93,7 @@ export const BeforeAfterSliderSection = ({
 
             <button
               onClick={scrollNext}
-              className="absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-0 w-11 h-11 rounded-full border border-white/15 bg-[#14214B] text-white flex items-center justify-center hover:bg-white/10 hover:border-[#C9A876]/50 transition-colors z-20 shadow-lg"
+              className="hidden md:flex absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 md:translate-x-0 w-11 h-11 rounded-full border border-white/15 bg-[#14214B] text-white items-center justify-center hover:bg-white/10 hover:border-[#C9A876]/50 transition-colors z-20 shadow-lg"
               aria-label="Next slide"
             >
               <ChevronRight className="w-5 h-5" />
@@ -103,7 +103,7 @@ export const BeforeAfterSliderSection = ({
             <div className="overflow-hidden w-full" ref={emblaRef}>
               <div className="flex w-full">
                 {slides.map((slide, index) => (
-                  <div key={index} className="flex-[0_0_100%] min-w-0 px-6 md:px-14">
+                  <div key={index} className="flex-[0_0_100%] min-w-0 px-2 md:px-14">
                     <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
 
                       {/* Before */}

@@ -72,9 +72,9 @@ function GridCard({ item }: { item: CostGridItem }) {
   }
 
   return (
-    <div className="flex h-44 sm:h-52 w-full flex-col items-center justify-center rounded-[20px] bg-[#F8F9F5] p-5 sm:p-6 text-center transition-all duration-200 hover:shadow-md hover:bg-[#F3F5EF]">
-      <div className="mb-4 flex shrink-0 items-center justify-center text-[#519B99]">
-        <IconComponent className="w-9 h-9 sm:w-10 sm:h-10 stroke-[1.25]" aria-hidden="true" />
+    <div className="flex min-h-36 sm:h-52 w-full flex-col items-center justify-center rounded-[20px] bg-[#F8F9F5] p-4 sm:p-6 text-center transition-all duration-200 hover:shadow-md hover:bg-[#F3F5EF]">
+      <div className="mb-3 sm:mb-4 flex shrink-0 items-center justify-center text-[#519B99]">
+        <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 stroke-[1.25]" aria-hidden="true" />
       </div>
       <p
         className="text-xs sm:text-sm font-normal text-[#1C274C] leading-snug max-w-[150px] font-['Bodoni_Moda',var(--font-bodoni),serif]"
