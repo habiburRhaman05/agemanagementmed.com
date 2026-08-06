@@ -90,7 +90,7 @@ export function SymptomsHeroCard({
   const imageAlt = image?.alt || heading
 
   return (
-    <section className="relative w-full bg-[#F8F9F5] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+    <section className="relative w-full bg-[##F7F8F2] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
       <Container className="max-w-5xl mx-auto px-0">
         {/* ONE SINGLE UNIFIED CARD CONTAINER */}
         <m.div
@@ -229,7 +229,7 @@ export function SymptomsHeroCard({
             </div>
 
             {/* 6 Benefit Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 mb-12">
               {PROGRAM_BENEFITS.map((b) => {
                 const Icon = b.icon
                 return (
