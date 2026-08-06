@@ -36,7 +36,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
 
       {treatment.symptoms ? (
         <SymptomsHeroCard
-          image={{...treatment.hero.image,src:"https://res.cloudinary.com/khs2rcsr/image/upload/v1785336801/ChatGPT_Image_Jul_29_2026_08_52_07_PM_dyqlrx.png"}}
+          image={{...treatment.hero.image,src:"/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-73-img.jpg"}}
           heading={treatment.symptoms.title}
           lead={treatment.symptoms.lead ?? ''}
           groups={treatment.symptoms.items}

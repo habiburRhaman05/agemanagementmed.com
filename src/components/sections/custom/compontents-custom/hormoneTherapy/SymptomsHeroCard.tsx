@@ -91,7 +91,7 @@ export function SymptomsHeroCard({
 
   return (
     <section className="relative w-full bg-[#F8F9F5] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
-      <Container className="max-w-5xl mx-auto">
+      <Container className="max-w-5xl mx-auto px-0">
         {/* ONE SINGLE UNIFIED CARD CONTAINER */}
         <m.div
           initial={{ opacity: 0, y: 30 }}
@@ -117,14 +117,14 @@ export function SymptomsHeroCard({
               {/* Right Column: Symptom Checklist */}
               <div className="flex flex-col justify-center p-6 sm:p-10 lg:p-12 text-white">
                 <h2
-                  className="text-2xl sm:text-3xl lg:text-[34px] font-normal leading-tight text-white mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  className="text-[28px] sm:text-4xl lg:text-[40px] font-normal leading-tight text-white mb-2 capitalize text-center font-['Bodoni_Moda',var(--font-bodoni),serif]"
                   style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                 >
                   {heading}
                 </h2>
 
                 {lead ? (
-                  <p className="text-xs sm:text-[13px] text-slate-300 font-light leading-relaxed mb-6">
+                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6 text-center">
                     {lead}
                   </p>
                 ) : null}
@@ -133,13 +133,13 @@ export function SymptomsHeroCard({
                   <div className="space-y-5 mb-6">
                     {groups.map((group) => (
                       <div key={group.title}>
-                        <h3 className="text-xs sm:text-sm font-semibold text-white mb-1.5">
+                        <h3 className="text-base font-semibold text-white mb-1.5 text-center">
                           {group.title}
                         </h3>
                         {group.items?.length ? (
                           <ul className="space-y-1 pl-1">
                             {group.items.map((item, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-xs text-slate-200/90 font-light">
+                              <li key={idx} className="flex items-start gap-2 text-base text-slate-200/90 font-normal">
                                 <span className="text-[#519B99] shrink-0 font-sans">→</span>
                                 <span className={idx === 0 && group.title.includes('Sexual') ? 'underline decoration-slate-400' : ''}>
                                   {item}
@@ -154,12 +154,12 @@ export function SymptomsHeroCard({
                 ) : null}
 
                 {closingNote ? (
-                  <p className="text-xs text-slate-300 font-light leading-relaxed mb-6 pt-2 border-t border-slate-700/50">
+                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6 pt-2 border-t border-slate-700/50 text-center">
                     {closingNote}
                   </p>
                 ) : null}
 
-                <div>
+                <div className="text-center">
                   <Dialog>
                     <DialogTrigger asChild>
                       <Button
@@ -190,9 +190,9 @@ export function SymptomsHeroCard({
           <div className="bg-white p-6 sm:p-8 lg:p-12 xl:p-16">
             {/* Header Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start mb-12 border-b border-slate-100 pb-8">
-              <div>
+              <div className="text-center">
                 <h2
-                  className="text-2xl sm:text-3xl md:text-[34px] font-normal leading-tight text-[#1C274C] font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  className="text-[36px] font-normal leading-tight text-[#1C274C] mt-6 sm:mt-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
                   style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                 >
                   Hormone <br className="hidden sm:inline" />
@@ -201,14 +201,14 @@ export function SymptomsHeroCard({
                 </h2>
               </div>
 
-              <div>
+              <div className="text-center">
                 <h3
-                  className="text-lg sm:text-xl font-normal text-[#1C274C] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  className="text-[20px] font-normal text-[#1C274C] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
                   style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                 >
                   What BHRT Is And How It Works
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
+                <p className="text-base text-slate-600 font-normal leading-relaxed">
                   Bioidentical Hormone Replacement Therapy (BHRT) uses hormones that are{' '}
                   <strong className="font-semibold text-slate-800">
                     chemically identical to those produced naturally by your body
@@ -221,7 +221,7 @@ export function SymptomsHeroCard({
             {/* Sub-Header */}
             <div className="text-center mb-10">
               <h3
-                className="text-xl sm:text-2xl font-normal text-[#1C274C] font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                className="text-[32px] font-[500] text-[#14214b] leading-tight font-['Bodoni_Moda',var(--font-bodoni),serif]"
                 style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
               >
                 Our Men’s Hormone Program May Help You:
@@ -233,13 +233,13 @@ export function SymptomsHeroCard({
               {PROGRAM_BENEFITS.map((b) => {
                 const Icon = b.icon
                 return (
-                  <div key={b.title} className="flex items-start gap-4">
-                    <div className="shrink-0 text-[#519B99] mt-0.5">
-                      <Icon className="w-6 h-6 stroke-[1.75]" />
+                  <div key={b.title} className="flex flex-col items-center text-center gap-3">
+                    <div className="shrink-0 text-[#519B99]">
+                      <Icon className="w-8 h-8 stroke-[1.75]" />
                     </div>
                     <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-[#1C274C]">
-                        {b.title} <span className="font-normal text-slate-500">— {b.desc}</span>
+                      <h4 className="text-[20px] font-bold leading-snug text-[#1C274C]">
+                        {b.title} <span className="font-normal text-[#14214b]">— {b.desc}</span>
                       </h4>
                     </div>
                   </div>
