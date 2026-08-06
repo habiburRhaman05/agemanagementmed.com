@@ -29,7 +29,7 @@ export function HomeServices({ eyebrow, title, lead }: HomeServicesProps) {
         </div>
       </div>
 
-      <div className="lg-flexspace-60" />
+      <div className="h-10 lg:h-15" />
 
       <div id="column-box-o">
         <div className="lg-max-width-1440">
@@ -48,10 +48,11 @@ export function HomeServices({ eyebrow, title, lead }: HomeServicesProps) {
                         width={150}
                         height={150}
                         loading="lazy"
+                        className="w-14! h-14! min-[992px]:w-[150px]! min-[992px]:h-[150px]!"
                       />
                     </div>
 
-                    <div className="content">
+                    <div className="content mt-[16px]! md:mt-0!">
                       <div className="top">
                         <h3
                           className={`lg-title${service.narrowTitle ? ' lg-max-width-300' : ''}`}

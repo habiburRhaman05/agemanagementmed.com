@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import type { CSSProperties } from 'react'
 
 import { homeMedia } from '@/content/pages/home-media'
 import type { ClosingCtaData } from '@/types/content'
@@ -27,23 +28,29 @@ export function ClosingCTA({
   contentMaxWidth,
   centered = false,
 }: ClosingCTAProps) {
-  const contentStyle: React.CSSProperties = {
+  const contentStyle: CSSProperties = {
     ...(contentMaxWidth ? { maxWidth: contentMaxWidth } : null),
     ...(centered ? { marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' } : null),
   }
 
   return (
-    <div className="hero-bg" style={{ backgroundImage: `url('${backgroundImage}')` }}>
+    <div
+      className="hero-bg bg-cover! bg-no-repeat! bg-position-[75%_top]! md:bg-center!"
+      style={{ backgroundImage: `url('${backgroundImage}')` }}
+    >
       <div className="lg-max-width-1440">
         <div className="lg-container">
-          <div className="content" style={contentStyle}>
+          <div className="content text-center lg:text-left" style={contentStyle}>
             <h2 className="lg-title">{title}</h2>
 
             <div className="lg-text">
               <p>{body}</p>
             </div>
 
-            <div className="cta" style={centered ? { display: 'flex', justifyContent: 'center' } : undefined}>
+            <div
+              className="cta flex justify-center lg:justify-start"
+              style={centered ? { display: 'flex', justifyContent: 'center' } : undefined}
+            >
               <Link href={cta.href} className="lg-btn lg-btn-arrow-right">
                 {cta.label}
               </Link>

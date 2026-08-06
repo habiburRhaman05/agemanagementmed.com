@@ -41,7 +41,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
   return (
     <footer className="border-t border-canvas-300 bg-canvas-50 text-ink-900">
       <Container>
-        <div className="grid gap-12 pt-16 pb-12 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-14">
+        <div className="grid gap-12 pt-16 pb-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-14">
           {/* Brand column */}
           <Reveal delay={0} className="lg:col-span-3">
             <Image src={logoUrl} alt={siteName} width={180} height={80} className="h-16 w-auto" />
@@ -147,15 +147,23 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
           </Reveal>
         </div>
 
-        <div className="border-t border-canvas-300 py-6 text-center text-xs uppercase tracking-wide text-ink-900/50">
-          Copyright &copy; {new Date().getFullYear()} {site.name}
-          {'   |   '}
-          All Rights Reserved
-          {'   |   '}
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 border-t border-canvas-300 py-6 text-center text-xs uppercase tracking-wide text-ink-900/50">
+          <span>
+            Copyright &copy; {new Date().getFullYear()} {site.name}
+          </span>
+          <span className="hidden sm:inline" aria-hidden>
+            |
+          </span>
+          <span>All Rights Reserved</span>
           {footerNav.legal.map((item) => (
-            <Link key={item.href} href={item.href} className="transition-colors hover:text-ink-900">
-              {item.label}
-            </Link>
+            <span key={item.href} className="flex items-center gap-2">
+              <span className="hidden sm:inline" aria-hidden>
+                |
+              </span>
+              <Link href={item.href} className="transition-colors hover:text-ink-900">
+                {item.label}
+              </Link>
+            </span>
           ))}
         </div>
       </Container>
