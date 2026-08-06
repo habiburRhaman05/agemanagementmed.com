@@ -134,19 +134,19 @@ export function BenefitList({
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
                     whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                    className="group bg-[#FBFBF9] hover:bg-white rounded-[20px] p-6 sm:p-8 border border-slate-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all duration-300 flex items-start gap-4 sm:gap-5 cursor-pointer"
+                    className="group bg-[#FBFBF9] hover:bg-white rounded-[20px] p-6 sm:p-8 border border-slate-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all duration-300 flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:gap-5 sm:text-left cursor-pointer"
                   >
-                    {/* Left Icon with subtle hover scale/rotation */}
-                    <div className="shrink-0 text-[#489B93] mt-1 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                    {/* Icon — centered above the text on mobile, left of it from sm+, with subtle hover scale/rotation */}
+                    <div className="shrink-0 text-[#489B93] sm:mt-1 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                       {item.icon ? (
-                        <IconRenderer icon={item.icon} className="w-7 h-7 sm:w-8 sm:h-8 text-[#489B93]" />
+                        <IconRenderer icon={item.icon} className="w-16 h-16 sm:w-8 sm:h-8 text-[#489B93]" />
                       ) : (
-                        <DefaultIcon className="w-7 h-7 sm:w-8 sm:h-8 stroke-[1.75]" aria-hidden="true" />
+                        <DefaultIcon className="w-16 h-16 sm:w-8 sm:h-8 stroke-[1.75]" aria-hidden="true" />
                       )}
                     </div>
 
                     {/* Content Block */}
-                    <div className="flex-1">
+                    <div className="w-full sm:flex-1">
                       <h3
                         className="text-lg sm:text-xl md:text-[21px] font-normal leading-snug text-[#1C274C] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif] capitalize group-hover:text-[#489B93] transition-colors duration-300"
                         style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
@@ -161,7 +161,7 @@ export function BenefitList({
                       ) : null}
 
                       {item.items?.length ? (
-                        <ul className="mt-4 space-y-2">
+                        <ul className="mt-4 space-y-2 text-left">
                           {item.items.map((sub) => (
                             <li key={sub} className="flex gap-2 text-xs text-slate-600">
                               <span className="mt-1.5 w-1.5 h-1.5 shrink-0 rounded-full bg-[#489B93]" aria-hidden="true" />

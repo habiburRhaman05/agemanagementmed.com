@@ -65,6 +65,7 @@ interface HeroEditorialProps {
   fullHeight?: boolean
   /** Hide the default fallback CTA button if no actions are specified. */
   hideDefaultCta?: boolean
+  containerOverride?: string
 }
 
 /**
@@ -88,6 +89,7 @@ export function HeroEditorial({
   actions,
   fullHeight = false,
   hideDefaultCta = false,
+  containerOverride,
 }: HeroEditorialProps) {
   const FormComponent = actions?.formSource ? FORM_COMPONENTS[actions.formSource] : BookingForm
   const showFormButton = Boolean(actions?.formModal)
@@ -114,7 +116,7 @@ export function HeroEditorial({
       />
 
 
-      <Container className="relative z-10 py-35 md:py-50 lg:py-60 !px-3">
+      <Container className={cn("relative z-10 py-35 md:py-50 lg:py-60 !px-3 ", containerOverride)}>
         <div className="max-w-[528px] text-center sm:text-left">
           <h1
             className="text-[40px] sm:text-[46px] lg:text-[56px] font-medium leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
