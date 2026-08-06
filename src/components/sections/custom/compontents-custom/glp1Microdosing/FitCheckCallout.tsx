@@ -5,6 +5,7 @@ import type { Media } from '@/types/content'
 
 export interface FitCheckCalloutProps {
   image: Media
+  imagePosition?: string
   heading: string
   lead?: string
   points: string[]
@@ -13,16 +14,18 @@ export interface FitCheckCalloutProps {
 }
 
 /**
- * "Is Microdosing The Right Fit For You?" — full-bleed, image left 50% /
- * dark navy right 50%, teal arrow bullets, teal pill CTA button.
- * Matches the reference screenshot exactly.
+ * "Is Microdosing the Right Fit for You?" — full-bleed `.photo-content-d.full-img`
+ * with no container wrapper (image and copy both run edge to edge). Ported
+ * 1:1 from https://www.agemanagementmed.com/glp-1-microdosing/female/;
+ * styling lives in src/app/legacy.css.
  */
 export function FitCheckCallout({
   image,
+  imagePosition = '50% 25%',
   heading,
   lead,
   points,
-  ctaLabel = 'Schedule a Consultation',
+  ctaLabel = 'Schedule a consultation',
   ctaHref = '/book-appointment',
 }: FitCheckCalloutProps) {
   return (
@@ -73,12 +76,10 @@ export function FitCheckCallout({
               className="inline-flex items-center gap-2 rounded-full border border-[#519B98] bg-[#519B98]/80 px-6 py-2.5 text-[14px] font-bold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#519B98]"
             >
               {ctaLabel}
-              <ArrowRight className="size-3" />
             </Link>
           </div>
-
         </div>
       </div>
-    </section>
+    </div>
   )
 }

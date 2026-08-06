@@ -90,8 +90,7 @@ export function TestimonialSet({
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Simple image overlay */}
-      <div className="absolute inset-0 bg-[#071946]/50 pointer-events-none z-0" />
+
 
       <div className="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-16 flex flex-col justify-between min-h-[82vh]">
         {/* Carousel & Content on Left Side */}

@@ -34,7 +34,7 @@ export const specialsContent = {
   specials: [
     {
       id: 'sharing-caring',
-      window: 'APRIL-JUNE:',
+      window: 'April-June:',
       title: 'Sharing Is Caring!',
       description:
         'DOUBLE The Referral Rewards! All Patients Who Refer Other Patients Will Receive $100 Instead Of $50 To Their Account, Through The End Of June.',
@@ -43,7 +43,7 @@ export const specialsContent = {
         alt: 'Refer a friend — double rewards',
       },
       locations: ['savannah-pooler', 'statesboro'],
-      ctaLabel: 'CLAIM \u2192',
+      ctaLabel: 'Claim',
     },
   ] satisfies Special[],
 }

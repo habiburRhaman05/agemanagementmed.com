@@ -19,7 +19,32 @@ interface TreatmentTemplateProps {
 
 export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
-  const testimonials = await getPublishedTestimonials()
+  const testimonials = [
+    {
+      id: '1',
+      source: 'Google',
+      author: 'E.H.',
+      quote: 'Dr. Collins has been an absolute delight and so informative and patient. He has a great personality and is very passionate about his profession to inform, teach, guide, and give his patients the most beneficial advice for good health and longevity. He has been very helpful for both my Husband and myself. The staff is very helpful and friendly as well.',
+    },
+    {
+      id: '2',
+      source: 'Google',
+      author: 'S.R.',
+      quote: 'All members of the staff are absolutely wonderful. They are polite and address any questions or concerns you have in a professional approach. They have literally changed my life for the better.',
+    },
+    {
+      id: '3',
+      source: 'Google',
+      author: 'J.F.',
+      quote: 'Every experience has been excellent. All questions and concerns were answered. I\'ve recommended them to my family and friends.',
+    },
+    {
+      id: '4',
+      source: 'Google',
+      author: 'C.G.',
+      quote: 'Great employees to work with. The staff is very knowledgeable and explain all processes.',
+    }
+  ]
 
   return (
     <>
@@ -142,6 +167,8 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         ]}
       />
 
+      <div className="lg-flexspace-100" />
+
       <TreatmentPathwaysPanel
         title="Menopause Treatment Pathways Based on Your Symptoms"
         lead="Your symptoms can help guide the right treatment approach. Depending on your needs, your care plan may include one or more of the following services."
@@ -204,6 +231,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
           title="What our patients say"
           testimonials={testimonials}
           background="alt"
+          backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/testimonial-17-bg.jpg"
         />
       ) : null}
 
@@ -211,7 +239,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         <FAQAccordion title="Menopause and Perimenopause FAQs" items={treatment.faqs} />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA {...treatment.closingCta} backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-36-bg.jpg" />
     </>
   )
 }
