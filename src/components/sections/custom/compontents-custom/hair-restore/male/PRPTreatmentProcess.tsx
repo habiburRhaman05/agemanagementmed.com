@@ -66,7 +66,10 @@ const PRPTreatmentProcess: React.FC = () => {
         <div className="lg-content-d" style={{ position: 'relative' }}>
           <div className="lg-max-width-1440">
             <div className="lg-container">
-              <h3 className="lg-title" style={{ marginBottom: 0 }}>
+              <h3
+                className="lg-title"
+                style={{ marginBottom: 0, fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
+              >
                 The PRP Hair Treatment Process
               </h3>
             </div>
@@ -94,9 +97,16 @@ const PRPTreatmentProcess: React.FC = () => {
                     <div className="content lg-col-lg-7">
                       <div className="content-box">
                         <h2 className="lg-top-title">Step {step.number}</h2>
-                        <h3 className="lg-title">{step.title}</h3>
+                        <h3
+                          className="lg-title"
+                          style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
+                        >
+                          {step.title}
+                        </h3>
                         <div className="lg-text">
-                          <p>{step.description}</p>
+                          <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                            {step.description}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -113,7 +123,7 @@ const PRPTreatmentProcess: React.FC = () => {
           <div className="lg-max-width-1440">
             <div className="lg-container">
               <div className="lg-text">
-                <p style={{ color: '#14214B' }}>
+                <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
                   Treatment Time: <strong>60-90 minutes</strong>
                   <br />
                   Downtime: <strong>Minimal - return to normal activities immediately</strong>

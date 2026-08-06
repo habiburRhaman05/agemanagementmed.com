@@ -21,9 +21,9 @@ const timelineCards: TimelineCard[] = [
     body: (
       <div className="list">
         <ul>
-          <li>Minimal discomfort during treatment</li>
-          <li>Slight scalp tenderness for 24-48 hours</li>
-          <li>No significant downtime required</li>
+          <li style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>Minimal discomfort during treatment</li>
+          <li style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>Slight scalp tenderness for 24-48 hours</li>
+          <li style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>No significant downtime required</li>
         </ul>
       </div>
     ),
@@ -33,17 +33,17 @@ const timelineCards: TimelineCard[] = [
     title: 'Progressive Results',
     body: (
       <>
-        <p>
+        <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
           <strong>2-3 months:</strong>
           <br />
           Initial signs of improved hair quality
         </p>
-        <p>
+        <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
           <strong>4-6 months:</strong>
           <br />
           Noticeable increase in hair thickness &amp; density
         </p>
-        <p>
+        <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
           <strong>6-12 months:</strong>
           <br />
           Optimal results with continued improvement
@@ -56,12 +56,12 @@ const timelineCards: TimelineCard[] = [
     title: 'Maintenance',
     body: (
       <>
-        <p>
+        <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
           <strong>Initial series:</strong>
           <br />
           3-4 treatments spaced 4-6 weeks apart
         </p>
-        <p>
+        <p style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
           <strong>Maintenance:</strong>
           <br />
           1-2 treatments annually
@@ -115,7 +115,10 @@ const ResultsAndTimeline: React.FC = () => {
         <div className="lg-max-width-1440">
           <div className="lg-container">
             <h2 className="lg-top-title">What to Expect</h2>
-            <h3 className="lg-title" style={{ marginBottom: 0 }}>
+            <h3
+              className="lg-title"
+              style={{ marginBottom: 0, fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
+            >
               Results &amp; Timeline
             </h3>
           </div>
@@ -136,7 +139,12 @@ const ResultsAndTimeline: React.FC = () => {
                       // Static, author-controlled markup copied from the source site.
                       dangerouslySetInnerHTML={{ __html: card.icon }}
                     />
-                    <h2 className="lg-title">{card.title}</h2>
+                    <h2
+                      className="lg-title"
+                      style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
+                    >
+                      {card.title}
+                    </h2>
                     <div className="lg-text">{card.body}</div>
                   </div>
                 </div>
@@ -151,7 +159,16 @@ const ResultsAndTimeline: React.FC = () => {
       <div className="lg-content-d" style={{ position: 'relative' }}>
         <div className="lg-max-width-1440">
           <div className="lg-container">
-            <h2 className="lg-title" style={{ marginBottom: 0, textTransform: 'none' }}>
+            <h2
+              className="lg-title"
+              style={{
+                marginBottom: 0,
+                textTransform: 'none',
+                fontSize: 48,
+                fontWeight: 500,
+                letterSpacing: '-0.025em',
+              }}
+            >
               Benefits of PRP Hair Therapy
             </h2>
           </div>
@@ -167,12 +184,19 @@ const ResultsAndTimeline: React.FC = () => {
               {benefitCards.map((card) => (
                 <div className="lg-col-md-6" key={card.title}>
                   <div className="box">
-                    <h3 className="lg-title">{card.title}</h3>
+                    <h3
+                      className="lg-title"
+                      style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.025em' }}
+                    >
+                      {card.title}
+                    </h3>
                     <div className="lg-text">
                       <div className="lg-list-arrow-right">
                         <ul>
                           {card.bullets.map((bullet) => (
-                            <li key={bullet}>{bullet}</li>
+                            <li key={bullet} style={{ fontSize: 16, fontWeight: 400, color: '#14214b' }}>
+                              {bullet}
+                            </li>
                           ))}
                         </ul>
                       </div>
