@@ -52,9 +52,9 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
           title={treatment.process.title}
           steps={treatment.process.steps}
           stepImages={[
-            'https://res.cloudinary.com/khs2rcsr/image/upload/v1785336788/steps-img_dg4sfn.png',
-            'https://res.cloudinary.com/khs2rcsr/image/upload/v1785336785/Establishing_Your_Baseline_ixdhgj.png',
-            'https://res.cloudinary.com/khs2rcsr/image/upload/v1785336784/Customized_Treatment_Plan_kyrjrd.png',
+            '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-img.png',
+            '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-2-img.png',
+            '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-3-img.png',
           ]}
         />
       ) : null}
