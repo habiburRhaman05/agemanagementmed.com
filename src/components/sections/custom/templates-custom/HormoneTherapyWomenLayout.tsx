@@ -22,6 +22,7 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
         {...treatment.hero}
         image={{...treatment.hero.image,src: '/images/banner-24-bg.jpg'}}
         fullHeight
+        centerUntilTablet
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

@@ -62,8 +62,8 @@ export function PeopleGrid({
             ) : null}
 
             <h2
-              className="text-3xl sm:text-4xl md:text-[44px] font-normal leading-tight text-white mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-3xl sm:text-4xl md:text-[44px] font-normal leading-tight text-white mb-3 font-display"
+              
             >
               {title}
             </h2>
@@ -116,8 +116,8 @@ export function PeopleGrid({
                     {/* Text Details */}
                     <div className="flex-1 text-center md:text-left text-white">
                       <h3
-                        className="text-2xl sm:text-3xl md:text-[32px] font-normal leading-tight text-white mb-1.5 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                        style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                        className="text-2xl sm:text-3xl md:text-[32px] font-normal leading-tight text-white mb-1.5 font-display"
+                        
                       >
                         {person.name}
                         {person.credentials ? `, ${person.credentials}` : ''}

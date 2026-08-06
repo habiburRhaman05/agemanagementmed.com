@@ -20,6 +20,7 @@ export async function HairRestoreFemaleLayout({ treatment }: TreatmentTemplatePr
       <HeroEditorial
         {...treatment.hero}
         fullHeight
+        centerUntilTablet
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

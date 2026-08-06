@@ -24,8 +24,8 @@ export function TreatmentPathwaysPanel({
     <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16 my-16">
       <div className="bg-[#101b3b] rounded-[20px] p-10 md:p-16 lg:px-20 lg:py-24 text-center">
         <h2
-          className="text-3xl md:text-4xl lg:text-[44px] leading-[1.2] text-white mb-6 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-          style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+          className="text-3xl md:text-4xl lg:text-[44px] leading-[1.2] text-white mb-6 font-display"
+          
         >
           {title}
         </h2>
@@ -47,8 +47,8 @@ export function TreatmentPathwaysPanel({
               />
 
               <h3
-                className="text-[#101b3b] text-[22px] leading-[1.3] mb-12 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                className="text-[#101b3b] text-[22px] leading-[1.3] mb-12 font-display"
+                
               >
                 {pathway.title}
               </h3>

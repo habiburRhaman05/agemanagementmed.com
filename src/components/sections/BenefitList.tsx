@@ -99,8 +99,8 @@ export function BenefitList({
 
                 {title ? (
                   <h2
-                    className="text-2xl sm:text-3xl md:text-[36px] font-normal leading-tight text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                    style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                    className="text-2xl sm:text-3xl md:text-[36px] font-normal leading-tight text-[#1C274C] mb-3 font-display"
+                    
                   >
                     {title}
                   </h2>
@@ -148,8 +148,8 @@ export function BenefitList({
                     {/* Content Block */}
                     <div className="w-full sm:flex-1">
                       <h3
-                        className="text-lg sm:text-xl md:text-[21px] font-normal leading-snug text-[#1C274C] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif] capitalize group-hover:text-[#489B93] transition-colors duration-300"
-                        style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                        className="text-lg sm:text-xl md:text-[21px] font-normal leading-snug text-[#1C274C] mb-2 font-display capitalize group-hover:text-[#489B93] transition-colors duration-300"
+                        
                       >
                         {item.title}
                       </h3>
@@ -188,8 +188,8 @@ export function BenefitList({
             >
               {awardsTitle ? (
                 <h3
-                  className="text-2xl sm:text-3xl md:text-[36px] font-normal leading-tight text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                  className="text-2xl sm:text-3xl md:text-[36px] font-normal leading-tight text-[#1C274C] mb-3 font-display"
+                  
                 >
                   {awardsTitle}
                 </h3>
@@ -248,8 +248,8 @@ export function BenefitList({
             ) : null}
             {title ? (
               <h2
-                className="text-3xl sm:text-4xl font-normal text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                className="text-3xl sm:text-4xl font-normal text-[#1C274C] mb-3 font-display"
+                
               >
                 {title}
               </h2>
@@ -283,8 +283,8 @@ export function BenefitList({
                   ) : null}
 
                   <h3
-                    className="text-xl font-normal text-[#1C274C] font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                    style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                    className="text-xl font-normal text-[#1C274C] font-display"
+                    
                   >
                     {item.title}
                   </h3>

@@ -63,8 +63,8 @@ export function TransformHealthBanner({
         >
           {/* Headline */}
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.15] text-white mb-3 sm:mb-4 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.15] text-white mb-3 sm:mb-4 font-display"
+            
           >
             {title}
           </h2>

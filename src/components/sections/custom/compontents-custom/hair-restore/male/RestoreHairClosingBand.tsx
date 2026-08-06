@@ -36,8 +36,8 @@ export function RestoreHairClosingBand({
       <Container className="relative">
         <div className="max-w-xl">
           <h2
-            className="text-3xl sm:text-4xl md:text-[42px] font-normal leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            className="text-3xl sm:text-4xl md:text-[42px] font-normal leading-[1.15] text-white font-display"
+            
           >
             {title}
           </h2>

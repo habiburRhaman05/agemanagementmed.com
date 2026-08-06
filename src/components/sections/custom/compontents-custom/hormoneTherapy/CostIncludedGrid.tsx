@@ -77,8 +77,8 @@ function GridCard({ item }: { item: CostGridItem }) {
         <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 stroke-[1.25]" aria-hidden="true" />
       </div>
       <p
-        className="text-xs sm:text-sm font-normal text-[#1C274C] leading-snug max-w-[150px] font-['Bodoni_Moda',var(--font-bodoni),serif]"
-        style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+        className="text-xs sm:text-sm font-normal text-[#1C274C] leading-snug max-w-[150px] font-display"
+        
       >
         {item.title}
       </p>
@@ -117,8 +117,8 @@ export function CostIncludedGrid({
           {/* Main Title */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
             <h2
-              className="text-3xl sm:text-4xl lg:text-[42px] font-normal leading-tight text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-3xl sm:text-4xl lg:text-[42px] font-normal leading-tight text-[#1C274C] mb-3 font-display"
+              
             >
               {title}
             </h2>
@@ -128,8 +128,8 @@ export function CostIncludedGrid({
           {/* Included Sub-Header */}
           {includedLabel ? (
             <h3
-              className="text-lg sm:text-xl font-normal text-[#1C274C] text-center mb-6 sm:mb-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-lg sm:text-xl font-normal text-[#1C274C] text-center mb-6 sm:mb-8 font-display"
+              
             >
               {includedLabel}
             </h3>
@@ -146,8 +146,8 @@ export function CostIncludedGrid({
           {separate?.length ? (
             <div className="mt-12 sm:mt-16">
               <h3
-                className="text-lg sm:text-xl font-normal text-[#1C274C] text-center mb-6 sm:mb-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                className="text-lg sm:text-xl font-normal text-[#1C274C] text-center mb-6 sm:mb-8 font-display"
+                
               >
                 {separateLabel}
               </h3>
