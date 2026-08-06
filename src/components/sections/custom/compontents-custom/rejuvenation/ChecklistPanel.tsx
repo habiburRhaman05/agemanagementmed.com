@@ -42,22 +42,26 @@ export function ChecklistCard({
 
   const textBlock = (
     <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
-      <h2 className="font-display text-display-sm text-ink-950">{heading}</h2>
-      {lead ? <p className="mt-4 text-body leading-relaxed text-canvas-600">{lead}</p> : null}
+      <h2 className="font-display text-[36px] font-medium leading-tight text-[#111214]">{heading}</h2>
+      {lead ? (
+        <p className="mt-4 text-[16px] font-normal leading-relaxed text-[#111214]">{lead}</p>
+      ) : null}
 
-      {itemsLabel ? <p className="mt-6 text-body-sm font-semibold text-ink-950">{itemsLabel}</p> : null}
+      {itemsLabel ? (
+        <p className="mt-6 text-[16px] font-semibold text-[#111214]">{itemsLabel}</p>
+      ) : null}
 
       <ul className="mt-3 space-y-2">
         {items.map((item) => (
           <li key={item} className="flex items-start gap-2.5">
             <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-sage-600" strokeWidth={1.75} aria-hidden />
-            <span className="text-body-sm leading-snug text-canvas-600">{item}</span>
+            <span className="text-[16px] font-normal leading-snug text-[#111214]">{item}</span>
           </li>
         ))}
       </ul>
 
       {closingParagraphs?.map((paragraph, index) => (
-        <p key={index} className="mt-4 text-body-sm leading-relaxed text-canvas-600">
+        <p key={index} className="mt-4 text-[16px] font-normal leading-relaxed text-[#111214]">
           {paragraph}
         </p>
       ))}

@@ -47,7 +47,7 @@ export function SexualHealthConcerns({
   ctaHref = '/book-appointment',
 }: SexualHealthConcernsProps) {
   return (
-    <Section background="page" spacing="md" className="bg-[#D2DCED]">
+    <Section background="page" spacing="md" className="bg-[#D2DCED] px-[47px] md:px-0">
       <Container bleed className="overflow-hidden rounded-2xl bg-white pb-12">
         <Reveal>
           <div className="grid overflow-hidden rounded-3xl bg-ink-950 shadow-xl lg:grid-cols-[42%_58%]">
