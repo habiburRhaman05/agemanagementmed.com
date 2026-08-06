@@ -39,8 +39,8 @@ export interface MetabolicOverviewCardsProps {
  */
 export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOverviewCardsProps) {
   return (
-    <div className="py-10 md:py-20">
-      
+    <>
+      <div className="lg-flexspace-100" />
 
       <div id="photo-content-c" className="style-2">
         <div className="radial-gradient" aria-hidden />
@@ -135,6 +135,8 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
           </div>
         </div>
       </div>
-    </div>
+
+      <div className="lg-flexspace-100" />
+    </>
   )
 }

@@ -66,6 +66,10 @@
   font-size: 48px;
 }
 
+.lg-font-size-36 {
+  font-size: 36px;
+}
+
 /* ------------ BUTTONS ---------------------- */
 .lg-btn {
   background-color: #519b99;
@@ -715,6 +719,33 @@
   }
 }
 
+.lg-col-lg-10 {
+  width: 100%;
+}
+
+@media only screen and (min-width: 992px) {
+  .lg-col-lg-10 {
+    width: 83.33333333%;
+  }
+}
+
+.lg-col-12 {
+  width: 100%;
+}
+
+@media only screen and (min-width: 992px) {
+  .lg-col-lg {
+    flex: 1 0 0%;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .lg-col-lg-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+}
+
 /* The source separates blocks with fixed-height `.flexspace` spacers. */
 .lg-flexspace-100 {
   margin-top: 100px;
@@ -900,6 +931,21 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 825px;
+}
+
+/* Unlike the .lg-max-width-NNN helpers above, the source site's own
+   .max-width-450/500/1050 don't auto-center — they just cap width inside
+   whatever alignment the parent block already has. */
+.lg-max-width-450 {
+  max-width: 450px;
+}
+
+.lg-max-width-500 {
+  max-width: 500px;
+}
+
+.lg-max-width-1050 {
+  max-width: 1050px;
 }
 
 /* The source's `.flexspace` spacers, at the heights this template uses. */
@@ -1653,6 +1699,18 @@
   position: absolute;
   top: 7px;
   width: 22px;
+}
+
+.lg-list-arrow-right.lg-two-col ul {
+  column-count: 2;
+  column-gap: 75px;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .lg-list-arrow-right.lg-two-col ul {
+    column-count: 1;
+    column-gap: 0;
+  }
 }
 
 /* ------------ SHARED: decorative radial glow ---------------------- */
@@ -2818,6 +2876,22 @@
   }
 }
 
+/* Asymmetric-padding variant used by the BHRT-for-Women Monitoring/Safety
+   panels (`padding-0 padding-right` / `padding-0 padding-left`) instead of
+   the content-left/content-right + 130px variant above. The <=1199.98px
+   override to padding:0 already exists further down this file. */
+.photo-content-d.padding-0 .content {
+  padding: 0;
+}
+
+.photo-content-d.padding-left .content {
+  padding-left: 7%;
+}
+
+.photo-content-d.padding-right .content {
+  padding-right: 7%;
+}
+
 /* ------------ GROUP: custom-group-2 / custom-group-3 (boxed content-d band) ---------------------- */
 .lg-group.custom-group-2 .box,
 .lg-group.custom-group-3 .box {
@@ -3383,5 +3457,575 @@
 @media only screen and (max-width: 575.98px) {
   #contact-f .content .lg-title {
     font-size: 36px;
+  }
+}
+
+/* ------------ COLUMN BOX ICON BORDER (.column-box-ib-group / #column-box-ib) ----------------------
+   The BHRT-for-Women "Symptoms Of Hormone Imbalance" + "How Bioidentical
+   Hormone Therapy Works" combined block. Ported 1:1 from
+   https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/female/ */
+#column-box-ib,
+.column-box-ib-group {
+  position: relative;
+}
+
+.column-box-ib-group::before {
+  background-color: #fff;
+  content: '';
+  height: 68%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.column-box-ib-group .radial-gradient {
+  border-radius: 50%;
+  background: #587dbd;
+  top: 50%;
+  filter: blur(500px);
+  height: 1019px;
+  position: absolute;
+  width: 1019px;
+  transform: translateY(-50%);
+}
+
+.column-box-ib-group .img {
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  height: 0;
+  margin-left: -100px;
+  margin-right: -100px;
+  padding-top: 50%;
+}
+
+.column-box-ib-group .top {
+  position: relative;
+}
+
+.column-box-ib-group .top > .box {
+  background-color: #14214b;
+  border-radius: 20px;
+  padding: 0 100px 95px;
+}
+
+.column-box-ib-group .top > .box > .content {
+  background-color: rgba(20, 33, 75, 0.9);
+  border-radius: 20px;
+  margin-top: -160px;
+  padding: 50px 80px;
+  text-align: center;
+}
+
+.column-box-ib-group .top > .box > .content .lg-title {
+  color: #fff;
+  font-size: 40px;
+}
+
+.column-box-ib-group .top > .box > .content .lg-text p {
+  color: #fff;
+}
+
+.column-box-ib-group .top > .box > .content .lg-text > *:last-child {
+  margin-bottom: 0;
+}
+
+.column-box-ib-group .bottom {
+  margin-top: -50px;
+}
+
+.column-box-ib-group .bottom > .box {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 140px 100px 90px;
+}
+
+.column-box-ib-group .bottom > .box > .content {
+  margin-bottom: 50px;
+}
+
+.column-box-ib-group .bottom > .box > .content .lg-title {
+  color: #0b2055;
+  font-size: 48px;
+  margin-bottom: 0;
+}
+
+.column-box-ib-group .bottom > .box > .content .lg-title.lg-max-width-450 {
+  max-width: 450px;
+}
+
+.column-box-ib-group .bottom > .box > .content .lg-text p {
+  color: #14214b;
+  font-size: 20px;
+}
+
+.column-box-ib-group .bottom > .box > .content .lg-text > *:last-child {
+  margin-bottom: 0;
+}
+
+#column-box-ib .lg-grid {
+  --lg-gy: 40px;
+}
+
+#column-box-ib .box {
+  border: 1px solid #587dbd;
+  border-radius: 20px;
+  height: 100%;
+  padding: 30px 40px;
+}
+
+#column-box-ib .box .lg-grid {
+  --lg-gy: 0px;
+}
+
+#column-box-ib .icon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 85px;
+  margin-bottom: 15px;
+}
+
+#column-box-ib .icon svg {
+  flex: 0 1 auto;
+}
+
+#column-box-ib .lg-title {
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+#column-box-ib .lg-text * {
+  color: #fff;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  .column-box-ib-group .bottom > .box > .content {
+    text-align: center;
+  }
+  .column-box-ib-group .bottom > .box > .content .lg-title {
+    margin-bottom: 20px;
+  }
+  .column-box-ib-group .bottom > .box > .content .lg-title.lg-max-width-450 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  .column-box-ib-group .img {
+    margin-left: -50px;
+    margin-right: -50px;
+  }
+  .column-box-ib-group .top > .box > .content {
+    margin-top: -80px;
+    padding: 50px;
+  }
+  .column-box-ib-group .top > .box {
+    padding: 0 50px 50px;
+  }
+  .column-box-ib-group .bottom > .box {
+    padding: 100px 50px 50px;
+  }
+  #column-box-ib .icon {
+    justify-content: center;
+  }
+  #column-box-ib .content {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .column-box-ib-group .img {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+  .column-box-ib-group .top > .box {
+    padding: 0 30px 40px;
+  }
+  .column-box-ib-group .top > .box > .content {
+    margin-top: -40px;
+  }
+  #column-box-ib .box,
+  .column-box-ib-group .top > .box > .content {
+    padding: 40px 30px;
+  }
+  .column-box-ib-group .top > .box > .content .lg-title,
+  .column-box-ib-group .bottom > .box > .content .lg-title {
+    font-size: 36px;
+  }
+  .column-box-ib-group .bottom > .box {
+    padding: 100px 30px 40px;
+  }
+}
+
+/* ------------ HERO AUTHOR (#hero-a) ----------------------
+   The BHRT-for-Women "Authority And Trust" reviewer card. Ported 1:1 from
+   https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/female/ */
+#hero-a {
+  position: relative;
+}
+
+#hero-a .box {
+  background: #14214b;
+  border-radius: 20px;
+  padding: 110px;
+}
+
+#hero-a .lg-top-title {
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  line-height: 1.2em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+#hero-a .lg-title {
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+#hero-a .name {
+  color: #fff;
+  font-family: 'Bodoni-72', sans-serif;
+  font-size: 32px;
+  line-height: 1.2em;
+  margin-bottom: 40px;
+}
+
+#hero-a .lg-text * {
+  color: #fff;
+}
+
+#hero-a .lg-text > *:last-child {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 991.98px) {
+  #hero-a .box {
+    padding: 50px;
+  }
+  #hero-a .img {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  #hero-a .content {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  #hero-a .box {
+    padding: 40px 30px;
+  }
+  #hero-a .lg-title {
+    font-size: 36px;
+  }
+}
+
+/* ------------ COLUMN BOX DEFAULT (#column-box-d) ----------------------
+   The Sexual-Wellness-for-Women "Treatment Options" card stack (one navy
+   `.blue-bg` featured card + plain cards). Ported 1:1 from
+   https://www.agemanagementmed.com/rejuvenation-enhancement/female/ */
+#column-box-d {
+  position: relative;
+}
+
+#column-box-d .lg-container {
+  max-width: 1076px !important;
+}
+
+#column-box-d .radial-gradient {
+  border-radius: 50%;
+  background: #587dbd;
+  filter: blur(500px);
+  height: 1019px;
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  width: 1019px;
+  transform: translateY(-50%);
+}
+
+#column-box-d .lg-grid {
+  --lg-gy: 30px;
+}
+
+#column-box-d .box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #7aaba9;
+  border-radius: 20px;
+  height: 100%;
+  margin-bottom: 25px;
+  padding: 50px 25px;
+}
+
+#column-box-d .box:last-child {
+  margin-bottom: 0;
+}
+
+#column-box-d .img,
+#column-box-d .content {
+  flex: 0 1 auto;
+}
+
+#column-box-d .img {
+  height: 270px;
+  position: relative;
+  padding: 15px;
+  width: 270px;
+}
+
+#column-box-d .img::after {
+  border: 1px solid #7aaba9;
+  border-radius: 100%;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#column-box-d .content {
+  padding-left: 24px;
+  width: calc(100% - 270px);
+}
+
+#column-box-d .lg-title {
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+#column-box-d .lg-text * {
+  font-size: 14px;
+}
+
+#column-box-d .cta {
+  margin-top: 40px;
+}
+
+#column-box-d .box.blue-bg {
+  background: #14214b;
+  border-color: #14214b;
+}
+
+@media only screen and (max-width: 991.98px) {
+  #column-box-d .box {
+    display: block;
+  }
+  #column-box-d .img {
+    height: auto;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+  #column-box-d .content {
+    padding-left: 0;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #column-box-d .box {
+    padding: 40px 30px;
+  }
+}
+
+/* ------------ COLUMN BOX VS (#column-box-vs) ----------------------
+   The "CO2 Laser vs PRP Therapy" comparison band. Ported 1:1 from
+   https://www.agemanagementmed.com/rejuvenation-enhancement/female/ */
+#column-box-vs {
+  position: relative;
+}
+
+#column-box-vs .lg-container {
+  max-width: 972px !important;
+}
+
+#column-box-vs .lg-grid {
+  --lg-gy: 30px;
+}
+
+#column-box-vs .box {
+  background: #f9f9f9;
+  border-radius: 20px;
+  height: 100%;
+  padding: 45px 30px;
+}
+
+#column-box-vs .lg-title {
+  margin-bottom: 24px;
+}
+
+@media only screen and (max-width: 991.98px) {
+  #column-box-vs .box {
+    text-align: center;
+  }
+}
+
+/* ------------ FILTER DEFAULT (#filter-d) ----------------------
+   The Specials page's location filter pills. Ported 1:1 from
+   https://www.agemanagementmed.com/specials/ */
+#filter-d {
+  position: relative;
+}
+
+#filter-d .filter {
+  overflow-x: auto;
+}
+
+#filter-d ul {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+#filter-d ul li {
+  flex: 0 0 auto;
+  background-color: transparent;
+  border: 1px solid rgba(217, 217, 217, 0.75);
+  border-radius: 100px;
+  color: #14214b;
+  cursor: pointer;
+  font-family: 'Bodoni-72', 'Bodoni Moda', serif;
+  font-size: 24px;
+  line-height: 1em;
+  margin-bottom: 0;
+  margin-right: 24px;
+  min-width: 190px;
+  padding: 12px 47px;
+  text-align: center;
+}
+
+#filter-d ul li.active {
+  background-color: #14214b;
+  border-color: #14214b;
+  color: #fff;
+}
+
+#filter-d ul li:last-child {
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 767.98px) {
+  #filter-d ul {
+    justify-content: flex-start;
+  }
+}
+
+/* ------------ GRID DEFAULT (#grid-d) ----------------------
+   The Specials page's offer-card grid. Ported 1:1 from
+   https://www.agemanagementmed.com/specials/ */
+#grid-d {
+  position: relative;
+}
+
+#grid-d .radial-gradient {
+  border-radius: 50%;
+  background: #587dbd;
+  filter: blur(500px);
+  height: 790px;
+  left: -50px;
+  position: absolute;
+  top: 300px;
+  width: 790px;
+}
+
+#grid-d .radial-gradient-2 {
+  bottom: 300px;
+  left: auto;
+  right: -150px;
+  top: auto;
+}
+
+#grid-d .lg-container {
+  max-width: 1076px !important;
+}
+
+#grid-d .lg-grid {
+  --lg-gy: 75px;
+}
+
+#grid-d .item .box {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 20px;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+}
+
+#grid-d .item .img {
+  flex: 0 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#grid-d .item .img img {
+  display: block;
+  width: 100%;
+}
+
+#grid-d .item .content {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px 40px;
+}
+
+#grid-d .item .top,
+#grid-d .item .cta {
+  flex: 0 1 auto;
+}
+
+#grid-d .item .top-title {
+  color: #111214;
+  font-size: 20px;
+}
+
+#grid-d .item .lg-title {
+  color: #0b2055;
+  font-size: 32px;
+}
+
+#grid-d .item .lg-text {
+  margin-bottom: 50px;
+}
+
+#grid-d .item .lg-text * {
+  font-size: 24px;
+  line-height: 1.2em;
+}
+
+@media only screen and (max-width: 767.98px) {
+  #grid-d .item .content {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #grid-d .item .content {
+    padding: 40px 30px;
   }
 }

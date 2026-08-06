@@ -22,7 +22,7 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
     <>
       <HeroEditorial
         {...treatment.hero}
-        image={treatment.hero.image ? { ...treatment.hero.image, src: '/images/banner-13-bg.jpg' } : undefined}
+        image={{ ...treatment.hero.image, src: '/images/banner-13-bg.jpg' }}
         fullHeight
         breadcrumbs={[
           { label: 'Home', href: '/' },

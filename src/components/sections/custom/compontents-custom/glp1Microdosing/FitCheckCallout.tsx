@@ -1,9 +1,10 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+
 import type { Media } from '@/types/content'
 
 export interface FitCheckCalloutProps {
   image: Media
+  imagePosition?: string
   heading: string
   lead?: string
   points: string[]
@@ -12,71 +13,54 @@ export interface FitCheckCalloutProps {
 }
 
 /**
- * "Is Microdosing The Right Fit For You?" — full-bleed, image left 50% /
- * dark navy right 50%, teal arrow bullets, teal pill CTA button.
- * Matches the reference screenshot exactly.
+ * "Is Microdosing the Right Fit for You?" — full-bleed `.photo-content-d.full-img`
+ * with no container wrapper (image and copy both run edge to edge). Ported
+ * 1:1 from https://www.agemanagementmed.com/glp-1-microdosing/female/;
+ * styling lives in src/app/legacy.css.
  */
 export function FitCheckCallout({
   image,
+  imagePosition = '50% 25%',
   heading,
   lead,
   points,
-  ctaLabel = 'Schedule a Consultation',
+  ctaLabel = 'Schedule a consultation',
   ctaHref = '/book-appointment',
 }: FitCheckCalloutProps) {
   return (
-    <section className="w-full overflow-hidden">
-      <div className="grid lg:grid-cols-2">
-
-        {/* ── Left: photo ── */}
-        <div className="relative min-h-64 overflow-hidden lg:min-h-[480px]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={image.src}
-            alt={image.alt}
-            className="absolute top-0 left-0 w-full"
-            style={{ height: 'auto' }}
+    <div className="photo-content-d full-img">
+      <div className="lg-grid">
+        <div className="img lg-col-lg-6">
+          <div
+            className="img-box"
+            style={{ backgroundImage: `url('${image.src}')`, backgroundPosition: imagePosition }}
+            role="img"
+            aria-label={image.alt}
           />
         </div>
 
-        {/* ── Right: navy content panel ── */}
-        <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-12 sm:px-10 lg:px-14 lg:py-16">
+        <div className="content lg-col-lg-6">
+          <h2 className="lg-title">{heading}</h2>
 
-          {/* Heading */}
-          <h2 className="font-display text-[22px] font-semibold leading-snug text-white sm:text-[24px] lg:text-[26px]">
-            {heading}
-          </h2>
+          <div className="lg-text">
+            {lead ? <p style={{ fontSize: 20 }}>{lead}</p> : null}
 
-          {/* Lead */}
-          {lead && (
-            <p className="mt-3 text-xs text-white">
-              {lead}
-            </p>
-          )}
-
-          {/* Bullet points */}
-          <ul className="mt-3 space-y-2">
-            {points.map((point) => (
-              <li key={point} className="flex items-start gap-2 text-xs text-white">
-                <ArrowRight className="mt-0.5 size-3 shrink-0 text-[#519B98]" aria-hidden />
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
-
-          {/* CTA button */}
-          <div className="mt-8">
-            <Link
-              href={ctaHref}
-              className="inline-flex items-center gap-2 rounded-full border border-[#519B98] bg-[#519B98]/80 px-6 py-2.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#519B98]"
-            >
-              {ctaLabel}
-              <ArrowRight className="size-3" />
-            </Link>
+            <div className="lg-list-arrow-right">
+              <ul>
+                {points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </div>
           </div>
 
+          <div className="cta">
+            <Link href={ctaHref} className="lg-btn lg-btn-arrow-right">
+              {ctaLabel}
+            </Link>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

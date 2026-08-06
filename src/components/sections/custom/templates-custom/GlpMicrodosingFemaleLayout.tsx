@@ -15,7 +15,7 @@ interface TreatmentTemplateProps {
 
 /** Shared across the men's/women's light card per the source design — same asset, no gendered variant. */
 const DATA_DRIVEN_IMAGE = {
-  src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341630/photo-content-86-img_vh2zio.jpg',
+  src: '/images/photo-content-86-img.jpg',
   alt: 'Hands preparing a precision peptide injection pen',
 }
 
@@ -26,6 +26,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
     <>
       <HeroEditorial
         {...treatment.hero}
+        image={{ ...treatment.hero.image, src: '/images/banner-37-bg.jpg' }}
         fullHeight
         breadcrumbs={[
           { label: 'Home', href: '/' },
@@ -37,7 +38,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
       <MetabolicOverviewCards
         darkCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785346975/microdosing_xm7d8c.jpg',
+            src: '/images/photo-content-88-img.jpg',
             alt: 'A woman measuring her waist to track metabolic progress',
           },
           heading: 'A Sophisticated Approach To Sustainable Metabolic Health',
@@ -89,7 +90,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
       />
 
       <MidPageCTA
-        backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-33-bg.jpg"
+        backgroundImage="/images/hero-33-bg.jpg"
         backgroundPosition="72% top"
         title="Ready to Feel Like Yourself Again?"
         body="Take the next step toward personalized hormone optimization and long-term wellness."
@@ -148,7 +149,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
 
       <FitCheckCallout
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338093/why-woman-chose-samm_g7evxb.jpg',
+          src: '/images/photo-content-89-img.jpg',
           alt: 'A woman smiling during a consultation walk outdoors',
         }}
         heading="Is Microdosing the Right Fit for You?"
@@ -164,7 +165,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
 
       {treatment.faqs.length ? <FAQAccordion title="Microdosing FAQs" items={treatment.faqs} /> : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-34-bg.jpg" />
     </>
   )
 }

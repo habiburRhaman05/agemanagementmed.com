@@ -99,47 +99,50 @@ export function HeroEditorial({
   return (
     <section
       className={cn(
-        'relative isolate flex flex-col justify-center overflow-hidden ',
-        fullHeight ? 'min-h-screen' : 'min-h-128 lg:min-h-168',
+        'relative isolate flex flex-col justify-end sm:justify-center overflow-hidden ',
+        fullHeight ? 'min-h-[100dvh] sm:min-h-screen' : 'min-h-128 lg:min-h-168',
       )}
     >
+      {/* Background Image */}
       <Image
         src={image.src}
         alt={image.alt}
         fill
         priority
         sizes="100vw"
-        className="object-cover"
-        style={{ objectPosition: image.focalPoint ?? 'center' }}
+        className="object-cover absolute inset-0 z-0"
+        style={{ objectPosition: image.focalPoint ?? '85% center' }}
       />
+      {/* Dark gradient overlay to ensure text legibility while keeping the top of the image completely vibrant */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />
 
-
-      <Container className="relative z-10 py-35 md:py-50 lg:py-60 !px-3">
-        <div className="max-w-[528px] text-center sm:text-left">
+      <Container className="relative z-10 pb-12 pt-32 sm:py-35 md:py-50 lg:py-60 !px-5 mt-auto sm:mt-0">
+        <div className="max-w-[528px] mx-auto sm:mx-0 text-center sm:text-left">
           <h1
-            className="text-[40px] sm:text-[46px] lg:text-[56px] font-normal leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
+            className="text-[42px] sm:text-[46px] lg:text-[56px] font-normal leading-[1.1] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base font-light leading-relaxed text-white/90 md:mt-6">
+          <p className="mt-4 sm:mt-6 max-w-2xl text-[15px] sm:text-base font-light leading-relaxed text-white/95">
             {lead}
           </p>
 
-          { !showFormButton && !showVideoButton && !hideDefaultCta ? (
+          {!showFormButton && !showVideoButton && !hideDefaultCta ? (
             <div
-              className="hero-enter mt-6 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4"
+              className="hero-enter mt-8 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4 w-full"
               style={{ animationDelay: '0.5s' }}
             >
-             <Dialog>
-                  <DialogTrigger asChild>
-                    <Button size="lg" variant="primary" className={cn('bg-[#008080] w-auto justify-center', ctaSizeClass)}>
-                      Schedule a consultation <span><ArrowRight></ArrowRight></span>
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent
-                    className="
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="rounded-[32px] bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-widest px-8 py-6 h-auto flex sm:inline-flex items-center justify-center gap-3 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto">
+                    <span>SCHEDULE A CONSULTATION</span>
+                    <ArrowRight className="h-4 w-4 stroke-[1.5]" aria-hidden="true" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent
+                  className="
                       w-[calc(100%-1rem)]
                       max-w-2xl
                       max-h-[90dvh]
@@ -150,30 +153,29 @@ export function HeroEditorial({
                       sm:rounded-[40px]
                       sm:p-10
                     "
-                  >
-                    <DialogHeader>
-                      <DialogTitle className="text-2xl font-display text-ink-900">
-                        Book Your Consultation
-                      </DialogTitle>
-                    </DialogHeader>
-                    <div className="mt-4">{FormComponent ? <FormComponent /> : null}</div>
-                  </DialogContent>
-                </Dialog>
+                >
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-display text-ink-900">
+                      Book Your Consultation
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="mt-4">{FormComponent ? <FormComponent /> : null}</div>
+                </DialogContent>
+              </Dialog>
             </div>
           ) : null}
 
-
-
           {showFormButton || showVideoButton ? (
             <div
-              className="hero-enter mt-6 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4"
+              className="hero-enter mt-8 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4 w-full"
               style={{ animationDelay: '0.5s' }}
             >
               {showFormButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                   <Button size="lg" variant="primary" className={cn('bg-[#008080] w-auto justify-center', ctaSizeClass)}>
-                      Schedule a consultation <span><ArrowRight></ArrowRight></span>
+                    <Button size="lg" className="rounded-[32px] bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-widest px-8 py-6 h-auto flex sm:inline-flex items-center justify-center gap-3 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto">
+                      <span>SCHEDULE A CONSULTATION</span>
+                      <ArrowRight className="h-4 w-4 stroke-[1.5]" aria-hidden="true" />
                     </Button>
                   </DialogTrigger>
                   <DialogContent
@@ -202,9 +204,9 @@ export function HeroEditorial({
               {showVideoButton ? (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" variant="outlineInverse" className={cn('group w-auto justify-center', ctaSizeClass)}>
-                      <Play className="mr-2 size-4" aria-hidden />
-                      Watch video
+                    <Button size="lg" variant="outlineInverse" className="rounded-full bg-white hover:bg-slate-100 text-[#519B99] hover:text-[#448b89] font-bold text-[11px] sm:text-[13px] uppercase tracking-wider px-8 py-4 sm:px-10 sm:py-5 h-auto inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 border-none w-auto">
+                      <Play className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-[#519B99] text-[#519B99] translate-x-0.5" aria-hidden="true" />
+                      <span>WATCH VIDEO</span>
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-5xl p-1 bg-black border-none max-h-[90vh]">
