@@ -30,6 +30,8 @@ export default function SpecialsPage() {
         body="Contact us today to speak with our team."
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
         backgroundImage="/images/hero-16-bg.jpg"
+        centered
+        contentMaxWidth={620}
       />
     </>
   )
