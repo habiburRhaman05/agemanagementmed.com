@@ -44,7 +44,7 @@ export function ProgramStepsTimeline({
           )}
 
           <h2
-            className="mb-3 text-[32px] font-normal leading-tight text-[#1C274C] sm:text-[40px] lg:text-[48px]"
+            className="mb-3 text-[36px] font-medium leading-tight tracking-tight text-[#111214]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
@@ -82,12 +82,12 @@ export function ProgramStepsTimeline({
                           </div>
                           <div className="flex-1 pt-2">
                             <h3
-                              className="mb-3 text-xl font-normal leading-snug text-[#1C274C] font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                              className="mb-3 text-[32px] font-normal leading-snug text-[#111214] font-['Bodoni_Moda',var(--font-bodoni),serif]"
                               style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                             >
                               {step.title}
                             </h3>
-                            <p className="text-xs font-normal leading-[1.7] text-[#4A5568]">
+                            <p className="text-[16px] font-normal leading-[1.7] text-[#111214]">
                               {step.body}
                             </p>
                           </div>
@@ -99,12 +99,12 @@ export function ProgramStepsTimeline({
                     <div className="relative hidden min-h-60 items-center sm:flex">
                       <div className="relative flex min-h-60 w-full flex-col justify-center rounded-xl border border-slate-100/70 bg-white p-10 pl-52.5 shadow-[0_8px_35px_rgba(0,0,0,0.035)] md:p-12 md:pl-61.25">
                         <h3
-                          className="mb-3 text-2xl font-normal leading-snug text-[#1C274C] md:text-[25px] font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                          className="mb-3 text-[32px] font-normal leading-snug text-[#111214] font-['Bodoni_Moda',var(--font-bodoni),serif]"
                           style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                         >
                           {step.title}
                         </h3>
-                        <p className="text-sm font-normal leading-[1.7] text-[#4A5568] md:text-[14.5px]">
+                        <p className="text-[16px] font-normal leading-[1.7] text-[#111214]">
                           {step.body}
                         </p>
                       </div>

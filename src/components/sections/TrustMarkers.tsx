@@ -117,7 +117,7 @@ export function TrustMarkers({ label = 'Trust Markers', reviewer, successStories
 
             <div className="relative m-6 sm:m-10 max-w-sm rounded-2xl bg-white p-6 shadow-xl sm:p-8">
               <QuoteMark />
-              <div className="mt-4 space-y-3 text-body-sm leading-relaxed text-canvas-900">
+              <div className="mt-4 space-y-3 text-body-sm leading-relaxed text-[#111214]">
                 {successStories.quote.map((paragraph) => (
                   <p key={paragraph.slice(0, 30)}>{paragraph}</p>
                 ))}
@@ -125,7 +125,7 @@ export function TrustMarkers({ label = 'Trust Markers', reviewer, successStories
               <div className="mt-6 flex items-center gap-3">
                 <GoogleLogo />
                 <div>
-                  <p className="text-body-sm font-bold text-ink-900">{successStories.author}</p>
+                  <p className="text-body-sm font-bold text-[#111214]">{successStories.author}</p>
                   <div className="mt-0.5 flex gap-0.5" aria-label="5 out of 5 stars">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star key={i} size={14} className="fill-[#F5A623] text-[#F5A623]" aria-hidden />

@@ -117,7 +117,7 @@ export function SymptomsHeroCard({
               {/* Right Column: Symptom Checklist */}
               <div className="flex flex-col justify-center p-6 sm:p-10 lg:p-12 text-white">
                 <h2
-                  className="text-[28px] sm:text-4xl lg:text-[40px] font-normal leading-tight text-white mb-2 capitalize text-center font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  className="text-[36px] font-medium leading-tight text-white mb-2 capitalize text-center font-['Bodoni_Moda',var(--font-bodoni),serif]"
                   style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                 >
                   {heading}
@@ -192,7 +192,7 @@ export function SymptomsHeroCard({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start mb-12 border-b border-slate-100 pb-8">
               <div className="text-center">
                 <h2
-                  className="text-[36px] font-normal leading-tight text-[#1C274C] mt-6 sm:mt-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  className="text-[36px] font-medium leading-tight text-[#111214] mt-6 sm:mt-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
                   style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                 >
                   Hormone <br className="hidden sm:inline" />
@@ -203,14 +203,14 @@ export function SymptomsHeroCard({
 
               <div className="text-center">
                 <h3
-                  className="text-[20px] font-normal text-[#1C274C] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  className="text-[20px] font-normal text-[#111214] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
                   style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                 >
                   What BHRT Is And How It Works
                 </h3>
-                <p className="text-base text-slate-600 font-normal leading-relaxed">
+                <p className="text-[16px] text-[#111214] font-normal leading-relaxed">
                   Bioidentical Hormone Replacement Therapy (BHRT) uses hormones that are{' '}
-                  <strong className="font-semibold text-slate-800">
+                  <strong className="font-semibold text-[#111214]">
                     chemically identical to those produced naturally by your body
                   </strong>
                   , allowing for more precise and personalized optimization.
@@ -221,7 +221,7 @@ export function SymptomsHeroCard({
             {/* Sub-Header */}
             <div className="text-center mb-10">
               <h3
-                className="text-[32px] font-[500] text-[#14214b] leading-tight font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                className="text-[32px] font-medium text-[#111214] leading-tight font-['Bodoni_Moda',var(--font-bodoni),serif]"
                 style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
               >
                 Our Men’s Hormone Program May Help You:
@@ -238,8 +238,8 @@ export function SymptomsHeroCard({
                       <Icon className="w-10 h-10 stroke-[1.75]" />
                     </div>
                     <div>
-                      <h4 className="text-[20px] font-bold leading-snug text-[#1C274C]">
-                        {b.title} <span className="font-normal text-[#14214b]">— {b.desc}</span>
+                      <h4 className="text-[20px] font-bold leading-snug text-[#111214]">
+                        {b.title} <span className="font-normal text-[#111214]">— {b.desc}</span>
                       </h4>
                     </div>
                   </div>

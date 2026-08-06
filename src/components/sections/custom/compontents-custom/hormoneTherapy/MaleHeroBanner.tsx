@@ -49,7 +49,7 @@ export function MaleHeroBanner({
   return (
     <section
       className={cn(
-        'relative isolate flex flex-col justify-center overflow-hidden bg-slate-900 bg-cover pt-24 pb-16 sm:pt-40 sm:pb-24 lg:pt-[280px] lg:pb-[275px]',
+        'relative isolate flex flex-col justify-center overflow-hidden bg-slate-900 bg-cover pt-70 pb-45 lg:pb-68.75',
         className
       )}
       style={{
@@ -61,14 +61,14 @@ export function MaleHeroBanner({
         <div className="max-w-2xl w-full text-center mx-auto lg:mx-0 lg:text-left">
           {/* Main Title */}
           <h1
-            className="text-3xl sm:text-4xl md:text-[46px] lg:text-[56px] font-normal leading-[1.12] text-white text-center lg:text-left font-['Bodoni_Moda',var(--font-bodoni),serif] max-w-2xl mb-3.5"
+            className="text-[40px] sm:text-[46px] lg:text-[56px] font-medium leading-[1.12] text-white text-center lg:text-left font-['Bodoni_Moda',var(--font-bodoni),serif] max-w-2xl mb-3.5"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xs sm:text-sm md:text-[15px] font-normal leading-normal text-white/95 text-center lg:text-left mb-7 max-w-md mx-auto lg:mx-0">
+          <p className="text-[18px] lg:text-[20px] font-normal leading-normal text-white/95 text-center lg:text-left mb-7 max-w-md mx-auto lg:mx-0">
             {lead}
           </p>
 
