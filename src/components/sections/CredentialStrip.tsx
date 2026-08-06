@@ -5,7 +5,7 @@ import type { Award } from '@/types/content'
 interface CredentialStripProps {
   eyebrow?: string
   title: string
-  lead?: string
+  lead?: string | string[]
   /** Year the practice was founded — kept for API compatibility with callers. */
   foundingYear?: string
   ctaLabel?: string
@@ -40,7 +40,9 @@ export function CredentialStrip({
             <h2 className="lg-title lg-font-size-48 lg-white-txt">{title}</h2>
 
             <div className="lg-text lg-white-txt">
-              {lead ? <p>{lead}</p> : null}
+              {(Array.isArray(lead) ? lead : lead ? [lead] : []).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
 
               <div className="award">
                 <div className="lg-grid lg-items-center lg-justify-center">

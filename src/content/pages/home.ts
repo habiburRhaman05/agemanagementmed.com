@@ -22,7 +22,7 @@ export const homeContent = {
 
   hero: {
     title: 'Optimize your health. Optimize your life.',
-    lead: 'Live life feeling energetic, strong, and confident. Explore personalized solutions for age management — reclaim vitality, build wellness, and elevate performance.',
+    lead: 'Live life feeling energetic, strong, and confident. Explore personalized solutions for age management. Reclaim vitality, build wellness, and elevate performance.',
     image: {
       src: '/images/banner-18-bg.jpg',
       alt: 'A family together outdoors, representing sustained health and vitality',

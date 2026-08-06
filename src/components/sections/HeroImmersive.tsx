@@ -37,7 +37,7 @@ interface HeroImmersiveProps {
 export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) {
   return (
     <section
-      className="relative isolate flex min-h-svh items-center overflow-hidden bg-ink-950 pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28"
+      className="relative isolate flex items-center overflow-hidden bg-ink-950 px-0 pt-70 pb-45"
     >
       <div
         className="absolute inset-0 hero-zoom"
@@ -54,12 +54,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
         />
       </div>
 
-      <div
-        className="absolute inset-0 bg-linear-to-t from-ink-950/55 via-ink-950/15 to-transparent"
-        aria-hidden
-      />
-
-      <Container className="relative">
+      <Container className="relative px-2! md:px-0!">
         {/* {meta ? (
           <span
             style={{ animationDelay: '0.1s' }}
@@ -69,11 +64,11 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           </span>
         ) : null} */}
 
-        <h1 className="mt-5 max-w-3xl text-3xl leading-[1.2] text-canvas-50 capitalize drop-shadow-sm sm:mt-8 sm:text-4xl sm:leading-tight md:mt-8 md:text-display-md">
+        <h1 className="mt-5 max-w-3xl text-3xl leading-[1.2] text-canvas-50 capitalize drop-shadow-sm sm:mt-8 sm:text-4xl sm:leading-tight md:mt-8 md:text-[64px] md:leading-[70px] font-medium">
           {title}
         </h1>
 
-        <p className="mt-3 max-w-xl text-sm text-canvas-50/90 sm:mt-7 sm:text-base md:text-body-lg">
+        <p className="mt-3 max-w-xl text-sm text-canvas-50/90 sm:mt-7 sm:text-base md:text-[20px] md:leading-[30px] md:text-white font-normal">
           {lead}
         </p>
 
@@ -87,7 +82,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
               <Button
                 size="lg"
                 variant="primary"
-                className="h-12 w-full justify-center bg-[#008080] px-6 text-body-sm sm:h-14 sm:w-auto sm:px-9 sm:text-body"
+                className="h-12 w-full justify-center bg-[#008080] px-6 text-[14px] leading-4.25 font-bold sm:h-14 sm:w-auto sm:px-9"
               >
                 START TODAY <MoveRight />
               </Button>
@@ -122,7 +117,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
               <Button
                 size="lg"
                 variant="outlineInverse"
-                className="group h-12 w-full justify-center px-6 text-body-sm bg-white text-[#00555A] hover:border-canvas-50/60 hover:bg-transparent hover:text-canvas-50 sm:h-14 sm:w-auto sm:px-9 sm:text-body"
+                className="group h-12 w-full justify-center px-6 text-[14px] leading-4.25 font-bold bg-white text-[#00555A] hover:border-canvas-50/60 hover:bg-transparent hover:text-canvas-50 sm:h-14 sm:w-auto sm:px-9"
               >
                 <Play className="size-4" aria-hidden />
                 Watch video

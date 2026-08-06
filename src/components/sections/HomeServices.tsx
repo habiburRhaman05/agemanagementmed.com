@@ -77,8 +77,12 @@ export function HomeServices({ eyebrow, title, lead }: HomeServicesProps) {
                       </div>
 
                       <div className="cta">
-                        <Link href={service.href} className="lg-link lg-link-arrow-right">
+                        <Link href={service.href} className="lg-link inline-flex items-center gap-2">
                           Learn more
+                          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                            <circle cx="12.8086" cy="12.5662" r="12.5" fill="#519B98" />
+                            <path d="M11.3516 7.5813L16.3364 12.5662L11.3516 17.551" stroke="white" />
+                          </svg>
                         </Link>
                       </div>
                     </div>
