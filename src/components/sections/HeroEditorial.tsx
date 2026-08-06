@@ -65,6 +65,8 @@ interface HeroEditorialProps {
   fullHeight?: boolean
   /** Hide the default fallback CTA button if no actions are specified. */
   hideDefaultCta?: boolean
+  /** Keep CTAs centered until the tablet/desktop breakpoint instead of left-aligning early. */
+  centerUntilTablet?: boolean
   containerOverride?: string
 }
 
@@ -89,6 +91,7 @@ export function HeroEditorial({
   actions,
   fullHeight = false,
   hideDefaultCta = false,
+  centerUntilTablet = false,
   containerOverride,
 }: HeroEditorialProps) {
   const FormComponent = actions?.formSource ? FORM_COMPONENTS[actions.formSource] : BookingForm
