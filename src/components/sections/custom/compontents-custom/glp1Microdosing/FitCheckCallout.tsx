@@ -30,10 +30,10 @@ export function FitCheckCallout({
 }: FitCheckCalloutProps) {
   return (
     <section className="w-full overflow-hidden">
-      <div className="grid lg:grid-cols-2">
+      <div className="grid lg:grid-cols-2 min-h-[660px]">
 
         {/* ── Left: photo ── */}
-        <div className="relative min-h-64 overflow-hidden lg:min-h-[480px]">
+        <div className="relative min-h-64 overflow-hidden lg:min-h-[480px] ">
           <Image
             src={image.src}
             alt={image.alt}
@@ -45,11 +45,11 @@ export function FitCheckCallout({
         </div>
 
         {/* ── Right: navy content panel ── */}
-        <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-12 sm:px-10 lg:px-14 lg:py-16">
+        <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-12 sm:px-10 lg:pl-24 lg:py-16">
 
           {/* Heading */}
           <h2
-            className="font-display leading-snug text-white text-[36px]! sm:text-[48px]!"
+            className="font-display leading-snug text-white text-[36px]!  sm:text-[48px]!"
             style={{ fontWeight: 500, letterSpacing: '-0.025em' }}
           >
             {heading}
@@ -65,8 +65,8 @@ export function FitCheckCallout({
           {/* Bullet points */}
           <ul className="mt-3 space-y-2">
             {points.map((point) => (
-              <li key={point} className="flex items-start gap-2 text-white" style={{ fontSize: 16, fontWeight: 400 }}>
-                <ArrowRight className="mt-0.5 size-3 shrink-0 text-[#519B98]" aria-hidden />
+            <li key={point} className="flex items-center gap-2 text-white" style={{ fontSize: 16 }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M15.5 1L20.5 6L15.5 11" stroke="#519B98" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 6H1" stroke="#519B98" stroke-width="1.5" stroke-linecap="round"/></svg>
                 <span>{point}</span>
               </li>
             ))}

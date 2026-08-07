@@ -1,6 +1,7 @@
 import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 
 import { bhrtIcons } from './bhrt-icons'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 
 interface SymptomCard {
   icon: string
@@ -165,12 +166,10 @@ export function SymptomsAndHowItWorks() {
                   ))}
                   <SymptomBox card={menstrual} wide />
 
-                  <div className="lg-col-12">
-                    <div className="cta lg-text-center">
-                      <LegacyCtaLink href="/book-appointment" className="lg-btn lg-btn-arrow-right">
-                        Schedule Hormone Testing
-                      </LegacyCtaLink>
-                    </div>
+                  <div className="lg-col-12 flex items-center justify-center w-full">
+                   <BookAppointmentButton>
+                    Schedule a consultation
+                   </BookAppointmentButton>
                   </div>
                 </div>
               </div>

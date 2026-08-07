@@ -37,6 +37,7 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
           { label: pillar.label, href: pillar.href },
           { label: treatment.shortName, href: treatment.href },
         ]}
+        primaryCtaLabel='Start Today'
       />
 
       <SymptomsAndHowItWorks />

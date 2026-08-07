@@ -56,7 +56,7 @@ export function TreatmentPathwaysPanel({
               <div className="mt-auto">
                 <Link
                   href={pathway.href}
-                  className="inline-flex items-center gap-3 text-[#30a7a0] hover:text-[#278d87] text-[11px] font-bold tracking-[0.15em] uppercase group transition-colors"
+                  className="inline-flex items-center gap-3 text-[#30a7a0] hover:text-[#278d87] text-[14px] font-bold tracking-[0.15em] uppercase group transition-colors"
                 >
                   {ctaLabel}
                   <div className="w-6 h-6 rounded-full bg-[#30a7a0] group-hover:bg-[#278d87] text-white flex items-center justify-center transition-colors">

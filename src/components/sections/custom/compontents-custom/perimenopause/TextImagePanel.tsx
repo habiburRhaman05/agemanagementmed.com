@@ -7,6 +7,7 @@ export interface TextImagePanelProps {
   heading: string
   lead?: string
   bg?: string
+  gap?: string
   items: string[]
   /** Tune per-image if the subject's head/face gets cropped. e.g. 'center 15%' */
   imageObjectPosition?: string
@@ -22,6 +23,7 @@ export function TextImagePanel({
   heading,
   lead,
   items,
+  gap,
   imageObjectPosition = 'center 20%',
 }: TextImagePanelProps) {
   const imageBlock = (
@@ -68,7 +70,7 @@ export function TextImagePanel({
   return (
     <section className={`relative w-full ${bg ? bg : 'bg-white'} py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8`}>
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+        <div className={ `grid grid-cols-1 lg:grid-cols-2 gap-8  ${gap ? `lg:gap-${gap}` : "lg:gap-14"} items-center`}>
           {imageSide === 'left' ? (
             <>
               {imageBlock}

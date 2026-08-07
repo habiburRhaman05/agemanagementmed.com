@@ -34,7 +34,7 @@ const WhyThisApproachWorks: React.FC<Props> = ({ image }) => {
         </div>
 
         {/* ── Right: navy content panel ── */}
-        <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-12 sm:px-10 lg:px-14 lg:py-16">
+        <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-12 sm:px-10 lg:pl-28 lg:py-20">
 
           <h2
             className="font-display text-white text-[36px]! sm:text-[48px]! tracking-tight"
@@ -52,8 +52,8 @@ const WhyThisApproachWorks: React.FC<Props> = ({ image }) => {
 
           <ul className="mt-2 space-y-1.5">
             {focusPoints.map((item) => (
-              <li key={item} className="flex items-start gap-1.5 text-white" style={{ fontSize: 16 }}>
-                <ArrowRight className="mt-0.5 size-3 shrink-0 text-white" aria-hidden />
+              <li key={item} className="flex items-center gap-2 text-white" style={{ fontSize: 16 }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M15.5 1L20.5 6L15.5 11" stroke="#519B98" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 6H1" stroke="#519B98" stroke-width="1.5" stroke-linecap="round"/></svg>
                 <span>{item}</span>
               </li>
             ))}

@@ -169,7 +169,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
 
       {treatment.faqs.length ? <FAQAccordion title="Microdosing FAQs" items={treatment.faqs} /> : null}
 
-      <ClosingCTA {...treatment.closingCta} backgroundImage="/specials/hero-34-bg.jpg" contentMaxWidth={620} />
+      <ClosingCTA {...treatment.closingCta} backgroundImage="/specials/hero-34-bg.jpg" textWidth={"620"}  />
     </>
   )
 }

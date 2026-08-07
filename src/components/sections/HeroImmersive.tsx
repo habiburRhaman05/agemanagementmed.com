@@ -56,17 +56,17 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           </span>
         ) : null} */}
 
-        <h1 className="mt-5 mx-auto lg:mx-0 max-w-80 sm:max-w-2xl md:max-w-3xl text-3xl leading-[1.2] text-canvas-50 capitalize drop-shadow-sm sm:mt-8 sm:text-4xl sm:leading-tight md:mt-8 md:text-[64px] md:leading-17.5 font-medium">
+        <h1 className="mt-5 mx-auto lg:mx-0 max-w-[730px] text-[40px] leading-[1.15] text-canvas-50 capitalize drop-shadow-sm sm:mt-8 md:mt-8 lg:text-[56px] font-medium">
           {title}
         </h1>
 
-        <p className="mt-3 mx-auto lg:mx-0 max-w-xl text-sm text-canvas-50/90 sm:mt-7 sm:text-base md:text-[20px] md:leading-7.5 md:text-white font-normal">
+        <p className="mt-3 mx-auto lg:mx-0 max-w-[730px] text-sm text-canvas-50/90 sm:mt-7 sm:text-base md:text-[20px] md:leading-7.5 md:text-white font-normal">
           {lead}
         </p>
 
         <div
           style={{ animationDelay: '0.65s' }}
-          className="hero-enter mt-6 flex w-full flex-col items-center gap-3 sm:mt-10 sm:w-fit sm:flex-row sm:gap-4 mx-auto lg:mx-0"
+          className="hero-enter mt-6 flex w-full max-w-[730px] flex-col items-center gap-3 sm:mt-10 sm:w-fit sm:flex-row sm:gap-4 mx-auto lg:mx-0"
         >
           {/* Booking Modal */}
           <BookAppointmentButton
