@@ -90,8 +90,14 @@ export function SymptomsHeroCard({
   const imageAlt = image?.alt || heading
 
   return (
-    <section className="relative w-full bg-[##F7F8F2] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
-      <Container className="max-w-5xl mx-auto px-0">
+    <section className="relative w-full overflow-hidden bg-[#F7F8F2] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+      {/* Decorative background glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-[170px] left-0 h-[790px] w-[790px] rounded-full bg-[#587DBD]"
+        style={{ filter: 'blur(500px)' }}
+      />
+      <Container className="relative mx-auto px-0! lg:px-8!">
         {/* ONE SINGLE UNIFIED CARD CONTAINER */}
         <m.div
           initial={{ opacity: 0, y: 30 }}
@@ -103,7 +109,7 @@ export function SymptomsHeroCard({
         >
           {/* TOP HALF: Dark Navy Block (#0B1938) */}
           <div className="bg-[#0B1938] text-white">
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] items-stretch">
               {/* Left Column: Image */}
               <div className="relative min-h-[280px] sm:min-h-[380px] max-h-[340px] sm:max-h-none lg:min-h-full bg-slate-800">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -190,10 +196,10 @@ export function SymptomsHeroCard({
           <div className="bg-white p-6 sm:p-8 lg:p-12 xl:p-16">
             {/* Header Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start mb-12 border-b border-slate-100 pb-8">
-              <div className="text-center">
+              <div className="text-left lg:pl-[52px]">
                 <h2
-                  className="text-[36px] font-medium leading-tight text-[#111214] mt-6 sm:mt-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                  className="text-[36px] sm:text-[48px] font-medium leading-tight text-[#111214] mt-6 sm:mt-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif", fontWeight: 500 }}
                 >
                   Hormone <br className="hidden sm:inline" />
                   Optimization <br className="hidden sm:inline" />
@@ -201,14 +207,17 @@ export function SymptomsHeroCard({
                 </h2>
               </div>
 
-              <div className="text-center">
+              <div className="text-left">
                 <h3
-                  className="text-[20px] font-normal text-[#111214] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                  className="text-[36px] sm:text-[48px] font-medium leading-tight text-[#111214] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif", fontWeight: 500 }}
                 >
                   What BHRT Is And How It Works
                 </h3>
-                <p className="text-[16px] text-[#111214] font-normal leading-relaxed">
+                <p
+                  className="text-[20px] text-[#111214] leading-relaxed font-['Manrope',var(--font-sans),sans-serif]"
+                  style={{ fontFamily: 'var(--font-sans), Manrope, sans-serif', fontWeight: 400 }}
+                >
                   Bioidentical Hormone Replacement Therapy (BHRT) uses hormones that are{' '}
                   <strong className="font-semibold text-[#111214]">
                     chemically identical to those produced naturally by your body
