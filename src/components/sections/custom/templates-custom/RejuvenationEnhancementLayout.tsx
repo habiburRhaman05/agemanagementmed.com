@@ -58,6 +58,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
     <>
       <HeroEditorial
         {...treatment.hero}
+        primaryCtaLabel='Schedule A Consultation'
         image={
           isFemale
             ? { ...treatment.hero.image, src: '/images/hero-17-bg.jpg' }

@@ -91,7 +91,7 @@ export function TestimonialSet({
       }}
     >
       {/* Dark overlay over background photo */}
-      <div className="absolute inset-0 bg-[#0b1e3e]/60 z-0" aria-hidden />
+      <div className="absolute inset-0 bg-[#0b1e3e]/20 z-0" aria-hidden />
 
       <div className="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-16 flex flex-col justify-between min-h-[82vh]">
         {/* Carousel & Content on Left Side */}
@@ -99,15 +99,15 @@ export function TestimonialSet({
           {/* Intro text */}
           <div className="text-white mb-6">
             {eyebrow ? (
-              <h2
-                className="text-xs sm:text-sm uppercase tracking-[0.15em] text-cyan-200/90 mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              <p
+                className="text-[14px] uppercase tracking-[0.15em] text-white mb-2"
+               
               >
                 {eyebrow}
-              </h2>
+              </p>
             ) : null}
             <h3
-              className="text-3xl sm:text-4xl lg:text-[46px] leading-tight text-white mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+              className="text-3xl sm:text-4xl lg:text-[48px] leading-tight text-white mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
               style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
             >
               {title}
@@ -151,7 +151,7 @@ export function TestimonialSet({
               </div>
 
               {/* Quote content */}
-              <div className="text-slate-800 text-[13px] sm:text-[14px] leading-relaxed font-normal space-y-3 mb-6">
+              <div className="text-slate-800 text-[16px] leading-relaxed font-normal space-y-3 mb-6">
                 {paragraphs.map((para, i) => (
                   <p key={i}>{para}</p>
                 ))}
