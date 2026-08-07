@@ -25,6 +25,8 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         image={{ ...treatment.hero.image, src: '/images/banner-13-bg.jpg' }}
         fullHeight
         centerUntilTablet
+        containerOverride="py-24 md:py-50 lg:py-60"
+        mobileFocalPoint="70% center"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

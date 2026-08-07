@@ -98,8 +98,8 @@ export function buildOrganizationSchema(settings: {
 }
 
 /** FAQPage schema for a treatment page's existing `faqs` — real content already on the page, not invented. */
-export function buildFaqSchema(faqs: FaqItem[]) {
-  if (!faqs.length) return null
+export function buildFaqSchema(faqs: FaqItem[] | undefined) {
+  if (!faqs?.length) return null
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

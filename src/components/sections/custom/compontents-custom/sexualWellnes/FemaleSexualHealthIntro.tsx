@@ -44,8 +44,6 @@ const features: { icon: string; title: string; body: string }[] = [
 export function FemaleSexualHealthIntro() {
   return (
     <div id="photo-content-c" style={{ backgroundColor: '#fff' }}>
-      <div className="radial-gradient" aria-hidden />
-
       <div className="lg-max-width-1440">
         <div className="lg-container">
           <div className="box">

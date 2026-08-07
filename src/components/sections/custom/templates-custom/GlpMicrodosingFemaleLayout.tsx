@@ -30,6 +30,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
         title="GLP-1 Microdosing: Precision Metabolic Optimization"
         lead="A low-dose therapy to mute food noise, reduce inflammation, and enhance metabolic flexibility while minimizing GLP-1 side effects."
         primaryCtaLabel="SCHEDULE A CONSULTATION"
+        mobileFocalPoint="75% center"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },
