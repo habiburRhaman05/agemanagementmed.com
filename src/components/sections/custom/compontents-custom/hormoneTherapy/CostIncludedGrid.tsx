@@ -116,9 +116,11 @@ export function CostIncludedGrid({
           {/* Main Title */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
             <h2
-              className="text-[36px] font-medium leading-tight text-[#1C274C] mb-3 font-display"
+              className="text-[48px] font-medium leading-tight text-[#1C274C] mb-3 font-display"
             >
-              {title}
+              Cost &amp; What&apos;s Included:
+              <br className="hidden sm:inline" />
+              <span className="whitespace-nowrap">Transparent Pricing, No Guesswork</span>
             </h2>
             {lead ? <p className="text-sm sm:text-base text-slate-600 font-light">{lead}</p> : null}
           </div>
@@ -129,8 +131,7 @@ export function CostIncludedGrid({
               className="text-[32px] font-medium text-[#1C274C] text-center mb-6 sm:mb-8 font-display"
             >
               {includedLabel}
-            </h3>
-          ) : null}
+            </h3>          ) : null}
 
           {/* Included Cards Grid (4 columns) */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 sm:mb-16">

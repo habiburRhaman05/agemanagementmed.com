@@ -8,7 +8,7 @@ import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import { pillars } from '@/content/treatments'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import type { Treatment } from '@/types/content'
-import { CostIncludedGrid } from '../compontents-custom/hormoneTherapy/CostIncludedGrid'
+import { bhrtIcons } from '../compontents-custom/hormoneTherapy/bhrt-icons'
 import { ProgramStepsTimeline } from '../compontents-custom/hormoneTherapy/ProgramStepsTimeline'
 import { SafetyAndCandidacy } from '../compontents-custom/hormoneTherapy/SafetyAndCandidacy'
 import { SymptomsHeroCard } from '../compontents-custom/hormoneTherapy/SymptomsHeroCard'
@@ -17,6 +17,7 @@ import { SymptomsLabsReviewPanel } from '../compontents-custom/hormoneTherapy/Sy
 import { TrustMarkers } from '@/components/sections/TrustMarkers'
 import { MaleHeroBanner } from '../compontents-custom/hormoneTherapy/MaleHeroBanner'
 import { PatientBenefitsSection } from '../compontents-custom/hormoneTherapy/PatientBenefitsSection'
+import { LegacyIncludedGrid } from '../compontents-custom/shared/LegacyIncludedGrid'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
@@ -100,29 +101,29 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
         disclaimer="BHRT is a medical treatment and should only be initiated under the supervision of a qualified healthcare provider. Individual results vary, and hormone therapy is not intended to diagnose, treat, cure, or prevent disease."
       />
 
-      <CostIncludedGrid
+      <LegacyIncludedGrid
         title="Cost & What's Included: Transparent Pricing, No Guesswork"
-        includedLabel="What's typically included as a patient:"
+        lead="What's typically included as a patient:"
         included={[
-          { iconName: 'provider-visits', title: 'Provider Visits And Hormone Assessments' },
-          { iconName: 'body-composition', title: 'Body Composition Analysis' },
-          { iconName: 'nutritional-guidance', title: 'Nutritional Guidance' },
-          { iconName: 'functional-movement', title: 'Functional Movement Recommendations' },
-          { iconName: 'lab-draws', title: 'In-Office Lab Draws' },
-          { iconName: 'treatment-optimization', title: 'Ongoing Treatment Optimization' },
-          { iconName: 'quickcare-access', title: 'QuickCare Access' },
-          { iconName: 'member-pricing', title: 'Member Pricing On Supplements And Additional Services' },
+          { icon: bhrtIcons.costConsultation, title: 'Provider Visits And Hormone Assessments' },
+          { icon: bhrtIcons.patientBodyComposition, title: 'Body Composition Analysis' },
+          { icon: bhrtIcons.patientNutritionalGuidance, title: 'Nutritional Guidance' },
+          { icon: bhrtIcons.patientFunctionalMovement, title: 'Functional Movement Recommendations' },
+          { icon: bhrtIcons.costLabTesting, title: 'In-Office Lab Draws' },
+          { icon: bhrtIcons.patientTreatmentOptimization, title: 'Ongoing Treatment Optimization' },
+          { icon: bhrtIcons.patientQuickcare, title: 'QuickCare Access' },
+          { icon: bhrtIcons.patientMembershipPricing, title: 'Member Pricing On Supplements And Additional Services' },
         ]}
         separateLabel="What is typically separate:"
         separate={[
-          { iconName: 'lab-testing', title: 'Lab Testing (Often Covered By Insurance)' },
-          { iconName: 'hormone-medications', title: 'Hormone Medications (Coverage Varies By Plan)' },
+          { icon: bhrtIcons.costLabTesting, title: 'Lab Testing (Often Covered By Insurance)' },
+          { icon: bhrtIcons.patientSavingsSupplements, title: 'Hormone Medications (Coverage Varies By Plan)' },
         ]}
         note="Insurance commonly covers lab work but may not cover hormone medications. Flexible financing options are available through PatientFi to help make treatment more accessible."
       />
 
       <PatientBenefitsSection
-        imageSrc="https://res.cloudinary.com/khs2rcsr/image/upload/v1785350494/safety-img_xtu6j4.jpg"
+        imageSrc="/photo-content-40-img.jpg"
         imageAlt="A provider shaking hands with a male patient"
         title="Patient Benefits"
         subtitle="As A Savannah Age Management Medicine Patient, You Receive:"

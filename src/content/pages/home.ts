@@ -59,17 +59,17 @@ export const homeContent = {
       {
         title: 'Personalized Consultation',
         body: 'In our initial consultation, the Savannah Age Management Medicine clinic team will sit with you to learn about your current health challenges, your goals, and what\'s getting in the way of living life to the fullest.',
-        url: 'https://res.cloudinary.com/khs2rcsr/image/upload/f_auto,q_auto,w_256,h_256,c_fill/v1785396121/persdonlized-cons_hnc2nk.jpg',
+        url: '/steps-img.png',
       },
       {
         title: 'Convenient Lab Work',
         body: "After your consultation, we'll do a complete analysis of your health metrics to find the root cause of your symptoms, craft a treatment plan, and outline a schedule for regular check-ins.",
-        url: 'https://res.cloudinary.com/khs2rcsr/image/upload/f_auto,q_auto,w_256,h_256,c_fill/v1785396162/lab-work_yrq7fr.avif',
+        url: '/steps-2-img.png',
       },
       {
         title: 'Tailored Treatment Plan',
         body: "Following the latest in bio-identical hormone research and other advanced treatments, we'll make sure your plan always reflects the best protocol for you, any additional health concerns and ensure your plan continues to feel comprehensive and personalized.",
-        url: 'https://res.cloudinary.com/khs2rcsr/image/upload/f_auto,q_auto,w_256,h_256,c_fill/v1785396190/treatment-plan_rdxnon.png',
+        url: '/steps-3-img.png',
       },
     ],
    
