@@ -79,6 +79,8 @@ console.log(allNews);
         {...expertsContent.hero}
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Our Experts', href: '/our-experts' }]}
         containerOverride="pb-20 pt-35 md:pb-35 md:pt-50 lg:pb-40 lg:pt-65"
+        heroDiv='max-w-full'
+        heroPara='max-w-3xl'
       />
 
       {/* <EditorialPair {...expertsContent.standard} background="alt" /> */}

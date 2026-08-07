@@ -77,6 +77,9 @@ interface HeroEditorialProps {
   leftAlignMobile?: boolean
   /** Custom text for the primary CTA button; defaults to "START TODAY" */
   primaryCtaLabel?: string
+  heroDiv?: string
+  /** Extra class(es) added to the lead paragraph (overrides max-w-2xl). */
+  heroPara?: string
 }
 
 function ArrowSvg({ className }: { className?: string }) {
@@ -126,6 +129,8 @@ export function HeroEditorial({
   leftAlignMobile = false,
   overlay = true,
   primaryCtaLabel = 'START TODAY',
+  heroDiv,
+  heroPara
 }: HeroEditorialProps) {
   const [videoOpen, setVideoOpen] = useState(false)
   const [videoLoading, setVideoLoading] = useState(true)
@@ -179,7 +184,7 @@ export function HeroEditorial({
       {overlay && <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />}
 
       <Container className={cn("relative z-10 py-35 md:py-50 lg:py-60 !px-3 ", containerOverride)}>
-        <div className="max-w-[528px] text-center sm:text-left">
+        <div className={cn("max-w-[528px] text-center sm:text-left", heroDiv)}>
           <h1
             className="text-[40px] sm:text-[46px] lg:text-[56px] font-medium leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
@@ -187,7 +192,7 @@ export function HeroEditorial({
             {title}
           </h1>
 
-          <p className="mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6">
+          <p className={cn('mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6', heroPara)}>
             {lead}
           </p>
 
