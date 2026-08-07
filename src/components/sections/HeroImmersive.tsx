@@ -89,23 +89,36 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
             </DialogTrigger>
             <DialogContent
               className="
+                max-h-[92dvh]
                 w-[calc(100%-1.5rem)]
-                max-w-2xl
-                max-h-[90dvh]
+                max-w-[480px]
+                sm:max-w-[520px]
+                md:max-w-[580px]
+                lg:max-w-[620px]
                 overflow-y-auto
-                rounded-[24px]
-                p-5
-                sm:w-full
-                sm:rounded-[40px]
+                rounded-[28px]
+                border-none
+                bg-[#0B1530]
+                p-6
                 sm:p-10
+                text-white
+                shadow-2xl
+                [&>button]:bg-white/10
+                [&>button]:text-white/70
+                [&>button]:hover:bg-white/20
+                [&>button]:hover:text-white
+                [&>button]:border-none
+                [&>button]:cursor-pointer
+                [&>button]:rounded-full
+                [&>button]:size-9
               "
             >
-              <DialogHeader>
-                <DialogTitle className="text-xl font-display text-ink-900 sm:text-2xl">
+              <DialogHeader className="mb-2 text-center">
+                <DialogTitle className="font-serif text-2xl sm:text-[32px] font-bold text-white text-center tracking-tight">
                   Schedule A Consultation
                 </DialogTitle>
               </DialogHeader>
-              <div className="mt-4">
+              <div className="mt-2">
                 <BookingForm />
               </div>
             </DialogContent>
