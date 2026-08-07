@@ -1,31 +1,18 @@
 'use client'
 
 import { m } from 'framer-motion'
-import dynamic from 'next/dynamic'
-
-import { Container } from '@/components/shared/Container'
-import { Button } from '@/components/ui/Button'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import {
-  AwardBadgeIcon,
-  BrainIcon,
-  DocumentIcon,
-  GearOptimizeIcon,
-  NetworkIcon,
-  ShieldSafeIcon,
-} from '@/components/ui/icons/treatment-icons'
-import { cn } from '@/lib/utils'
-import type { BenefitItem, Media } from '@/types/content'
+  Activity,
+  Flame,
+  Heart,
+  Moon,
+  Sparkles,
+  Zap,
+} from 'lucide-react'
 
-const formLoading = (
-  <div className="flex h-48 items-center justify-center text-sm text-slate-500">
-    Loading form…
-  </div>
-)
-const BookingForm = dynamic(
-  () => import('@/components/shared/BookingForm').then((mod) => mod.BookingForm),
-  { loading: () => formLoading }
-)
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
+import { Container } from '@/components/shared/Container'
+import type { BenefitItem, Media } from '@/types/content'
 
 export interface SymptomsHeroCardProps {
   image: Media
@@ -164,30 +151,14 @@ export function SymptomsHeroCard({
                   </p>
                 ) : null}
 
-                <div className="text-center">
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button
-                        size="lg"
-                        className="w-full sm:w-auto justify-center rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[14px] uppercase tracking-wider px-8 py-4 h-auto inline-flex items-center gap-2.5 shadow-md transition-all border-none"
-                      >
-                        <span>{ctaLabel}</span>
-                        <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M1 5.6059C0.585786 5.6059 0.25 5.94168 0.25 6.3559C0.25 6.77011 0.585786 7.1059 1 7.1059V5.6059ZM21.5303 6.88623C21.8232 6.59333 21.8232 6.11846 21.5303 5.82557L16.7574 1.0526C16.4645 0.759702 15.9896 0.759702 15.6967 1.0526C15.4038 1.34549 15.4038 1.82036 15.6967 2.11326L19.9393 6.3559L15.6967 10.5985C15.4038 10.8914 15.4038 11.3663 15.6967 11.6592C15.9896 11.9521 16.4645 11.9521 16.7574 11.6592L21.5303 6.88623ZM1 7.1059H21V5.6059H1V7.1059Z" fill="white"/>
-                        </svg>
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-[480px] sm:max-w-[520px] md:max-w-[580px] lg:max-w-[620px] overflow-y-auto rounded-[28px] border-none bg-[#0B1530] p-6 sm:p-10 text-white shadow-2xl [&>button]:bg-white/10 [&>button]:text-white/70 [&>button]:hover:bg-white/20 [&>button]:hover:text-white [&>button]:border-none [&>button]:cursor-pointer [&>button]:rounded-full [&>button]:size-9">
-                      <DialogHeader className="mb-2 text-center">
-                        <DialogTitle className="font-serif text-2xl sm:text-[32px] font-bold text-white text-center tracking-tight">
-                          Schedule A Consultation
-                        </DialogTitle>
-                      </DialogHeader>
-                      <div className="mt-2">
-                        <BookingForm variant="dark" />
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                <div>
+                  <BookAppointmentButton
+                    variant="teal"
+                    className="px-7 py-3.5 shadow-md"
+                    modalTitle="Book Your Consultation"
+                  >
+                    {ctaLabel}
+                  </BookAppointmentButton>
                 </div>
               </div>
             </div>
@@ -259,29 +230,13 @@ export function SymptomsHeroCard({
 
             {/* Bottom Consultation CTA Button */}
             <div className="text-center pt-2">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button
-                    size="lg"
-                    className="w-full sm:w-auto justify-center rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[14px] uppercase tracking-wider px-8 py-4 h-auto inline-flex items-center gap-2.5 shadow-md transition-all border-none"
-                  >
-                    <span>{ctaLabel}</span>
-                    <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 5.6059C0.585786 5.6059 0.25 5.94168 0.25 6.3559C0.25 6.77011 0.585786 7.1059 1 7.1059V5.6059ZM21.5303 6.88623C21.8232 6.59333 21.8232 6.11846 21.5303 5.82557L16.7574 1.0526C16.4645 0.759702 15.9896 0.759702 15.6967 1.0526C15.4038 1.34549 15.4038 1.82036 15.6967 2.11326L19.9393 6.3559L15.6967 10.5985C15.4038 10.8914 15.4038 11.3663 15.6967 11.6592C15.9896 11.9521 16.4645 11.9521 16.7574 11.6592L21.5303 6.88623ZM1 7.1059H21V5.6059H1V7.1059Z" fill="white"/>
-                    </svg>
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-[480px] sm:max-w-[520px] md:max-w-[580px] lg:max-w-[620px] overflow-y-auto rounded-[28px] border-none bg-[#0B1530] p-6 sm:p-10 text-white shadow-2xl [&>button]:bg-white/10 [&>button]:text-white/70 [&>button]:hover:bg-white/20 [&>button]:hover:text-white [&>button]:border-none [&>button]:cursor-pointer [&>button]:rounded-full [&>button]:size-9">
-                  <DialogHeader className="mb-2 text-center">
-                    <DialogTitle className="font-serif text-2xl sm:text-[32px] font-bold text-white text-center tracking-tight">
-                      Schedule A Consultation
-                    </DialogTitle>
-                  </DialogHeader>
-                  <div className="mt-2">
-                    <BookingForm variant="dark" />
-                  </div>
-                </DialogContent>
-              </Dialog>
+              <BookAppointmentButton
+                variant="teal"
+                className="px-7 py-3.5 shadow-md"
+                modalTitle="Book Your Consultation"
+              >
+                {ctaLabel}
+              </BookAppointmentButton>
             </div>
           </div>
         </m.div>

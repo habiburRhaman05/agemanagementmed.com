@@ -1,24 +1,10 @@
 'use client'
 
 import { m } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
-import dynamic from 'next/dynamic'
-import Link from 'next/link'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
-import { Button } from '@/components/ui/Button'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { cn } from '@/lib/utils'
-
-const formLoading = (
-  <div className="flex h-48 items-center justify-center text-sm text-slate-500">
-    Loading form…
-  </div>
-)
-const BookingForm = dynamic(
-  () => import('../shared/BookingForm').then((mod) => mod.BookingForm),
-  { loading: () => formLoading }
-)
 
 export interface TransformHealthBannerProps {
   title?: string
@@ -77,52 +63,13 @@ export function TransformHealthBanner({
           ) : null}
 
           {/* Interactive Modal CTA Trigger */}
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                size="lg"
-                className="inline-flex items-center gap-2.5 rounded-full bg-[#519B99] hover:bg-[#448b89] px-8 py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:shadow-lg border-none"
-              >
-                <span>{buttonLabel}</span>
-                <ArrowRight className="h-4 w-4 stroke-[2.5]" aria-hidden="true" />
-              </Button>
-            </DialogTrigger>
-            <DialogContent
-              className="
-                max-h-[92dvh]
-                w-[calc(100%-1.5rem)]
-                max-w-[480px]
-                sm:max-w-[520px]
-                md:max-w-[580px]
-                lg:max-w-[620px]
-                overflow-y-auto
-                rounded-[28px]
-                border-none
-                bg-[#0B1530]
-                p-6
-                sm:p-10
-                text-white
-                shadow-2xl
-                [&>button]:bg-white/10
-                [&>button]:text-white/70
-                [&>button]:hover:bg-white/20
-                [&>button]:hover:text-white
-                [&>button]:border-none
-                [&>button]:cursor-pointer
-                [&>button]:rounded-full
-                [&>button]:size-9
-              "
-            >
-              <DialogHeader className="mb-2 text-center">
-                <DialogTitle className="font-serif text-2xl sm:text-[32px] font-bold text-white text-center tracking-tight">
-                  Schedule A Consultation
-                </DialogTitle>
-              </DialogHeader>
-              <div className="mt-2">
-                <BookingForm variant="dark" />
-              </div>
-            </DialogContent>
-          </Dialog>
+          <BookAppointmentButton
+            variant="teal"
+            className="px-8 py-4 shadow-md hover:shadow-lg"
+            modalTitle="Book Your Consultation"
+          >
+            {buttonLabel}
+          </BookAppointmentButton>
         </m.div>
       </Container>
     </section>

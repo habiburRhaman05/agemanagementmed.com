@@ -14,7 +14,7 @@ export function WeightLossClosingCTA() {
       backgroundImage={IMAGE_URL}
       title="Start Your Personalized Weight Loss Plan Today"
       body="You don't have to figure this out on your own."
-      cta={{ href: '/contact', label: 'Schedule a Consultation' }}
+      cta={{ href: '/book-appointment', label: 'Schedule a Consultation' }}
     />
   )
 }

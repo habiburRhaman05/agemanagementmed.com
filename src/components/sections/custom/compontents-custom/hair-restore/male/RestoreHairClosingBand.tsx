@@ -1,6 +1,4 @@
-import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 
 export interface RestoreHairClosingBandProps {

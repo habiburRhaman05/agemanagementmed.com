@@ -1,12 +1,9 @@
 
 
-"use client"
-
-import { useState } from 'react'
-import { MoveRight, Play } from 'lucide-react'
+import { Play } from 'lucide-react'
 import Image from 'next/image'
-import dynamic from 'next/dynamic'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
 import {
@@ -17,17 +14,6 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import type { Cta, Media } from '@/types/content'
-
-const BookingForm = dynamic(
-  () => import('../shared/GetConnectedForm').then((mod) => mod.BookingForm),
-  {
-    loading: () => (
-      <div className="flex h-48 items-center justify-center text-body-sm text-canvas-600">
-        Loading form…
-      </div>
-    ),
-  },
-)
 
 interface HeroImmersiveProps {
   title: string
@@ -82,52 +68,13 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           className="hero-enter mt-6 flex w-full flex-col items-center gap-3 sm:mt-10 sm:w-fit sm:flex-row sm:gap-4 mx-auto lg:mx-0"
         >
           {/* Booking Modal */}
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                size="lg"
-                variant="primary"
-                className="  justify-center bg-[#519B99] min-h-[50px] tracking-[4px] min-w-[216px] text-[14px] leading-4.25 font-bold "
-              >
-                START TODAY <MoveRight />
-              </Button>
-            </DialogTrigger>
-            <DialogContent
-              className="
-                max-h-[92dvh]
-                w-[calc(100%-1.5rem)]
-                max-w-[480px]
-                sm:max-w-[520px]
-                md:max-w-[580px]
-                lg:max-w-[620px]
-                overflow-y-auto
-                rounded-[28px]
-                border-none
-                bg-[#0B1530]
-                p-6
-                sm:p-10
-                text-white
-                shadow-2xl
-                [&>button]:bg-white/10
-                [&>button]:text-white/70
-                [&>button]:hover:bg-white/20
-                [&>button]:hover:text-white
-                [&>button]:border-none
-                [&>button]:cursor-pointer
-                [&>button]:rounded-full
-                [&>button]:size-9
-              "
-            >
-              <DialogHeader className="mb-2 text-center">
-                <DialogTitle className="font-serif text-2xl sm:text-[32px] font-bold text-white text-center tracking-tight">
-                  Schedule A Consultation
-                </DialogTitle>
-              </DialogHeader>
-              <div className="mt-2">
-                <BookingForm />
-              </div>
-            </DialogContent>
-          </Dialog>
+          <BookAppointmentButton
+            variant="teal"
+            className="h-12 w-full sm:h-14 sm:w-auto"
+            modalTitle="Schedule A Consultation"
+          >
+            START TODAY
+          </BookAppointmentButton>
 
           {/* Video Modal */}
           <Dialog open={videoOpen} onOpenChange={setVideoOpen}>

@@ -1,23 +1,10 @@
 'use client'
 
-import { ArrowRight } from 'lucide-react'
-import dynamic from 'next/dynamic'
 import Image from 'next/image'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
-import { Button } from '@/components/ui/Button'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import type { Media } from '@/types/content'
-
-const formLoading = (
-  <div className="flex h-48 items-center justify-center text-sm text-slate-500">
-    Loading form…
-  </div>
-)
-const BookingForm = dynamic(
-  () => import('@/components/shared/BookingForm').then((mod) => mod.BookingForm),
-  { loading: () => formLoading },
-)
 
 export interface WeightLossMaleHeroBannerProps {
   title?: string
@@ -82,27 +69,13 @@ export function WeightLossMaleHeroBanner({
             </p>
           </div>
 
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                size="lg"
-                className="mt-7 h-11 rounded-full bg-[#519B99] px-6 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#448b89] sm:h-14 sm:px-9 sm:text-sm"
-              >
-                {ctaLabel}
-                <ArrowRight className="size-4" aria-hidden />
-              </Button>
-            </DialogTrigger>
-            <DialogContent
-              className="max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-[480px] sm:max-w-[520px] md:max-w-[580px] lg:max-w-[620px] overflow-y-auto rounded-[28px] border-none bg-[#0B1530] p-6 sm:p-10 text-white shadow-2xl [&>button]:bg-white/10 [&>button]:text-white/70 [&>button]:hover:bg-white/20 [&>button]:hover:text-white [&>button]:border-none [&>button]:cursor-pointer [&>button]:rounded-full [&>button]:size-9"
-            >
-              <DialogHeader className="mb-2 text-center">
-                <DialogTitle className="font-serif text-2xl sm:text-[32px] font-bold text-white text-center tracking-tight">Schedule A Consultation</DialogTitle>
-              </DialogHeader>
-              <div className="mt-2">
-                <BookingForm variant="dark" />
-              </div>
-            </DialogContent>
-          </Dialog>
+          <BookAppointmentButton
+            variant="teal"
+            className="mt-7 h-11 px-6 sm:h-14 sm:px-9"
+            modalTitle="Book Your Consultation"
+          >
+            {ctaLabel}
+          </BookAppointmentButton>
         </div>
       </Container>
     </section>

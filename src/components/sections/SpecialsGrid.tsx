@@ -5,13 +5,14 @@ import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { AnimatePresence, m } from 'framer-motion'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+
 import type { Special, SpecialLocation } from '@/content/pages/specials'
 import { cn } from '@/lib/utils'
-import { BookingForm } from '../shared/BookingForm'
+import { StaggerGroup, StaggerItem } from '../shared/Stagger'
 
 interface LocationTab {
   id: 'all' | SpecialLocation
@@ -39,62 +40,20 @@ function SpecialCard({ special }: { special: Special }) {
         />
       </div>
 
-      {/* ── Text Content ──────────────────────────── */}
-      <div className="flex flex-1 flex-col p-6 sm:p-8">
+      <div className="flex flex-1 flex-col p-6">
+        <p className="text-label font-semibold uppercase tracking-wide text-sage-700">{special.window}</p>
+        <h3 className="mt-2 font-display text-title-lg text-ink-950">{special.title}</h3>
+        <p className="mt-3 flex-1 text-body-sm leading-relaxed text-canvas-600">{special.description}</p>
 
-        {/* Window — e.g. "APRIL-JUNE:" */}
-        <p className="text-[12px] font-bold uppercase tracking-[0.12em] text-[#1C274C] mb-2">
-          {special.window}
-        </p>
-
-        {/* Title — Dark Navy Bodoni Serif */}
-        <h3
-          className="text-2xl sm:text-[26px] font-normal leading-snug text-[#1C274C] mb-3"
-          style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', Georgia, serif" }}
+        <BookAppointmentButton
+          variant="teal"
+          className="mt-6 w-full sm:w-auto"
+          modalTitle={`Claim: ${special.title}`}
+          defaultLocation={special.locations[0]}
+          defaultService={`Wellness special — ${special.title}`}
         >
-          {special.title}
-        </h3>
-
-        {/* Description — Dark Neutral Body */}
-        <p className="flex-1 text-sm sm:text-[15px] leading-relaxed text-[#2D3748] font-normal mb-6">
-          {special.description}
-        </p>
-
-        {/* CTA — Teal Pill Button with cursor-pointer */}
-        <div>
-          <Dialog>
-            <DialogTrigger asChild>
-              <button
-                type="button"
-                className="inline-flex items-center gap-2 rounded-full bg-[#519B99] hover:bg-[#448b89] px-7 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-sm transition-all duration-200 hover:shadow-md active:scale-[0.98] cursor-pointer"
-              >
-                <span>{special.ctaLabel ?? 'Claim'}</span>
-                <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
-              </button>
-            </DialogTrigger>
-            
-            {/* Modal Dialog Content Matching Target Screenshot */}
-            <DialogContent className="max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-[480px] overflow-y-auto rounded-[28px] border-none bg-[#0B1938] p-6 sm:p-9 text-white shadow-2xl [&>button]:bg-slate-700/60 [&>button]:text-slate-200 [&>button]:hover:bg-slate-600 [&>button]:hover:text-white [&>button]:border-none [&>button]:cursor-pointer">
-              <DialogHeader className="mb-2 text-center sm:text-center">
-                <DialogTitle
-                  className="font-['Bodoni_Moda',var(--font-bodoni),Georgia,serif] text-2xl sm:text-[28px] font-normal text-white text-center leading-tight"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', Georgia, serif" }}
-                >
-                  Claim Wellness Special
-                </DialogTitle>
-              </DialogHeader>
-              <div className="mt-2">
-                <BookingForm
-                  variant="dark"
-                  defaultLocation={special.locations[0]}
-                  serviceLabel={`Wellness special — ${special.title}`}
-                  submitLabel="NEXT STEP"
-                />
-              </div>
-            </DialogContent>
-          </Dialog>
-        </div>
-
+          {special.ctaLabel ?? 'Claim'}
+        </BookAppointmentButton>
       </div>
     </div>
   )
