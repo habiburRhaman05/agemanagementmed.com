@@ -36,8 +36,6 @@ export function OverviewApproachCards({ darkCard, lightCard }: OverviewApproachC
       <div className="lg-flexspace-100" />
 
       <div id="photo-content-c" className="style-2">
-        <div className="radial-gradient" aria-hidden />
-
         <div className="lg-max-width-1440">
           <div className="lg-container">
             <div className="box">
