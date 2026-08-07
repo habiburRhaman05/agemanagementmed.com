@@ -28,7 +28,7 @@ export interface LifestyleAndEvaluationProps {
 export function LifestyleAndEvaluation({ lifestylePanel, evaluationPanel }: LifestyleAndEvaluationProps) {
   return (
     <>
-      <div className="photo-content-d content-right black-text transparent">
+      <div className="photo-content-d content-right black-text transparent pt-10 pb-5">
         <div className="lg-max-width-1440">
           <div className="lg-container">
             <div className="lg-grid lg-items-center">
@@ -59,7 +59,7 @@ export function LifestyleAndEvaluation({ lifestylePanel, evaluationPanel }: Life
         <div className="lg-flexspace-100" />
       </div>
 
-      <div className="photo-content-d full-img">
+      <div className="photo-content-d full-img ">
         <div className="lg-max-width-1440">
           <div className="lg-container">
             <div className="lg-grid">

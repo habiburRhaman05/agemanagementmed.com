@@ -6,6 +6,7 @@ import type { Treatment } from '@/types/content'
 import HowPRPTreatsHairLoss from '../compontents-custom/hair-restore/female/HowPRPTreatsHairLoss'
 import PRPTreatmentProcess from '../compontents-custom/hair-restore/female/PRPTreatmentProcess'
 import ResultsAndTimeline from '../compontents-custom/hair-restore/female/ResultsAndTimeline'
+import { HairRestoreFemaleCta } from '../../HairRestoreFemaleCta'
 
 
 interface TreatmentTemplateProps {
@@ -36,15 +37,21 @@ export async function HairRestoreFemaleLayout({ treatment }: TreatmentTemplatePr
 
 
 
-      {treatment.faqs.length ? (
+    <div className='bg-white py-12 w-full'>
+
+    </div>
+
+      <div className='bg-[#F7F8F2] '>
+  {treatment.faqs.length ? (
         <FAQAccordion
           title="Frequently asked questions"
           lead="Deciding on Platelet-Rich Plasma (PRP) hair treatment is important, and you likely have questions. Here are answers to common questions to help you make an informed decision."
           items={treatment.faqs}
         />
       ) : null}
+      </div>
 
-      <ClosingCTA
+      <HairRestoreFemaleCta
         title="Restore Your Hair Naturally!"
         body="Take the first step toward thicker, healthier hair with PRP therapy. Our expert team is ready to help you achieve your hair restoration goals using this revolutionary, natural treatment."
         cta={{ label: 'SCHEDULE A CONSULTATION →', href: '/book-appointment' }}
