@@ -38,7 +38,7 @@ export function PeopleGrid({
   if (!people || people.length === 0) return null
 
   return (
-    <section className="relative w-full bg-[#F8F9F5] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative w-full bg-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <Container className="!max-w-[1292px] mx-auto">
         {/* Main Elevated Dark Navy Card Container */}
         <m.div
@@ -103,13 +103,13 @@ export function PeopleGrid({
                   {/* Person Row Container */}
                   <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12! lg:gap-[110px]!">
                     {/* Circular Portrait Image */}
-                    <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-60 md:h-60 shrink-0 rounded-full overflow-hidden border-2 border-slate-700/50 shadow-2xl bg-slate-800">
+                    <div className="relative w-40 h-40 sm:w-72 sm:h-72 md:w-80 md:h-80 shrink-0 rounded-full overflow-hidden border-2 border-slate-700/50 shadow-2xl bg-slate-800">
                       {imageSrc ? (
                         <Image
                           src={imageSrc}
                           alt={imageAlt}
                           fill
-                          sizes="240px"
+                          sizes="320px"
                           className="object-cover object-top"
                         />
                       ) : null}
@@ -128,7 +128,7 @@ export function PeopleGrid({
                         {person.credentials ? `, ${person.credentials}` : ''}
                       </h3>
 
-                      <p className="text-xs sm:text-sm font-semibold text-slate-300 tracking-wide uppercase mb-4 sm:mb-6">
+                      <p className="text-xs sm:text-sm font-bold text-slate-300 tracking-wide uppercase mb-4 sm:mb-6">
                         {person.role}
                       </p>
 
@@ -143,7 +143,7 @@ export function PeopleGrid({
 
                   {/* Horizontal Divider between rows */}
                   {index < people.length - 1 ? (
-                    <div className="mt-12 sm:mt-16 w-full h-px bg-slate-700/50" />
+                    <div className="mt-12 sm:mt-16 w-full h-[0.7px] bg-white" />
                   ) : null}
                 </m.div>
               )

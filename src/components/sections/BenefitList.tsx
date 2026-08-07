@@ -202,7 +202,7 @@ export function BenefitList({
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
                     whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                    className="group bg-[#FBFBF9] hover:bg-white rounded-[20px] p-6 sm:p-8 border border-slate-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all duration-300 flex flex-row items-start gap-4 sm:gap-6 cursor-pointer"
+                    className="group bg-[#FBFBF9] hover:bg-white rounded-[20px] p-6 sm:p-8 border border-slate-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center md:flex-row md:items-start md:text-left gap-4 sm:gap-6 cursor-pointer"
                   >
                     {/* Column 1: Icon */}
                     <div className="shrink-0 text-[#489B93] mt-1 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
@@ -226,9 +226,9 @@ export function BenefitList({
                       ) : null}
 
                       {item.items?.length ? (
-                        <ul className="mt-4 space-y-2 text-left">
+                        <ul className="mt-4 space-y-2 text-left md:text-left">
                           {item.items.map((sub) => (
-                            <li key={sub} className="flex gap-2 text-xs text-slate-600">
+                            <li key={sub} className="flex gap-2 text-xs text-slate-600 justify-center md:justify-start">
                               <span className="mt-1.5 w-1.5 h-1.5 shrink-0 rounded-full bg-[#489B93]" aria-hidden="true" />
                               {sub}
                             </li>
