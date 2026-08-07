@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect, useRef, useState } from 'react'
 import { ChevronRight, Play } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
@@ -74,6 +77,9 @@ interface HeroEditorialProps {
   leftAlignMobile?: boolean
   /** Custom text for the primary CTA button; defaults to "START TODAY" */
   primaryCtaLabel?: string
+  heroDiv?: string
+  /** Extra class(es) added to the lead paragraph (overrides max-w-2xl). */
+  heroPara?: string
 }
 
 function ArrowSvg({ className }: { className?: string }) {
@@ -123,7 +129,34 @@ export function HeroEditorial({
   leftAlignMobile = false,
   overlay = true,
   primaryCtaLabel = 'START TODAY',
+  heroDiv,
+  heroPara
 }: HeroEditorialProps) {
+  const [videoOpen, setVideoOpen] = useState(false)
+  const [videoLoading, setVideoLoading] = useState(true)
+  const videoContainerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!videoOpen) return
+    const container = videoContainerRef.current
+    const iframe = container?.querySelector('iframe')
+    if (!iframe) {
+      setVideoLoading(false)
+      return
+    }
+    let cancelled = false
+    const hide = () => {
+      if (!cancelled) setVideoLoading(false)
+    }
+    iframe.addEventListener('load', hide)
+    const fallback = window.setTimeout(hide, 3000)
+    return () => {
+      cancelled = true
+      iframe.removeEventListener('load', hide)
+      window.clearTimeout(fallback)
+    }
+  }, [videoOpen])
+
   const FormComponent = actions?.formSource ? FORM_COMPONENTS[actions.formSource] : BookingForm
   const showFormButton = Boolean(actions?.formModal)
   const showVideoButton = Boolean(actions?.videoModal && actions?.videoSource)
@@ -151,7 +184,7 @@ export function HeroEditorial({
       {overlay && <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />}
 
       <Container className={cn("relative z-10 py-35 md:py-50 lg:py-60 !px-3 ", containerOverride)}>
-        <div className="max-w-[528px] text-center sm:text-left">
+        <div className={cn("max-w-[528px] text-center sm:text-left", heroDiv)}>
           <h1
             className="text-[40px] sm:text-[46px] lg:text-[56px] font-medium leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
@@ -159,7 +192,7 @@ export function HeroEditorial({
             {title}
           </h1>
 
-          <p className="mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6">
+          <p className={cn('mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6', heroPara)}>
             {lead}
           </p>
 
@@ -230,7 +263,10 @@ export function HeroEditorial({
               ) : null}
 
               {showVideoButton ? (
-                <Dialog>
+                <Dialog open={videoOpen} onOpenChange={(next) => {
+                  setVideoOpen(next)
+                  if (next) setVideoLoading(true)
+                }}>
                   <DialogTrigger asChild>
                     <Button size="lg" variant="outlineInverse" className="rounded-full bg-white hover:bg-slate-100 text-[#519B99] hover:text-[#448b89] font-bold text-[11px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto inline-flex items-center justify-center gap-2 shadow-md transition-all duration-200 border-none w-auto cursor-pointer">
                       <Play className="h-3.5 w-3.5 fill-[#519B99] text-[#519B99] translate-x-0.5" aria-hidden="true" />
@@ -238,11 +274,39 @@ export function HeroEditorial({
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-5xl p-1 bg-black border-none max-h-[90vh]">
-                    <div
-                      className="relative w-full aspect-video overflow-hidden rounded-lg [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:h-full [&_iframe]:w-full"
-                      // videoSource is CMS-authored embed markup (e.g. a Vimeo <iframe>), not user input.
-                      dangerouslySetInnerHTML={{ __html: actions!.videoSource! }}
-                    />
+                    <div className="relative w-full aspect-video overflow-hidden rounded-lg bg-black">
+                      {videoLoading ? (
+                        <div className="absolute inset-0 z-10 flex items-center justify-center">
+                          <svg
+                            className="size-12 animate-spin text-white"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            />
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                            />
+                          </svg>
+                          <span className="sr-only">Loading video…</span>
+                        </div>
+                      ) : null}
+                      <div
+                        ref={videoContainerRef}
+                        className="relative w-full aspect-video overflow-hidden rounded-lg [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:h-full [&_iframe]:w-full"
+                        // videoSource is CMS-authored embed markup (e.g. a Vimeo <iframe>), not user input.
+                        dangerouslySetInnerHTML={{ __html: actions!.videoSource! }}
+                      />
+                    </div>
                   </DialogContent>
                 </Dialog>
               ) : null}
