@@ -101,7 +101,7 @@ export function NewsAndMediaSection({
           className="text-center mb-10 sm:mb-12"
         >
           <h2
-            className="text-2xl sm:text-3xl md:text-[36px] font-normal leading-tight text-[#1C274C] font-display"
+            className="text-[32px] sm:text-[32px] font-medium leading-tight text-[#1C274C] font-display"
             
           >
             {title}

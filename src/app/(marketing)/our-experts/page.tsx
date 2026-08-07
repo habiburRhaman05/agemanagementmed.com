@@ -95,6 +95,7 @@ console.log(allNews);
           'Dr. Collins founded SAMM with a simple belief: healthcare should go beyond treating symptoms—it should focus on optimizing how patients feel, function, and live.',
           'That philosophy continues to shape every treatment and patient experience today.',
         ]}
+        overRideWidth="max-w-3xl"
       />
 
 

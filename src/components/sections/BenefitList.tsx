@@ -24,7 +24,8 @@ interface BenefitListProps extends BenefitListData {
   /** Optional heading rendered above the card (outside the white card). */
   introTitle?: string
   /** Optional multi-paragraph intro rendered above the card (outside the white card). */
-  introParagraphs?: string[]
+  introParagraphs?: string[],
+  overRideWidth?: string
 }
 
 /** Array of Lucide outline icons for card items if item.icon is omitted. */
@@ -66,6 +67,7 @@ export function BenefitList({
   awardsLead = 'These recognitions reflect our commitment to delivering high-quality aesthetic and wellness services in the Savannah area.',
   introTitle,
   introParagraphs,
+  overRideWidth,
 }: BenefitListProps) {
   const useCards = cardStyle ?? (columns === 2 && !numbered)
 
@@ -103,7 +105,7 @@ export function BenefitList({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-center max-w-2xl mx-auto mb-10 sm:mb-12"
+              className="text-center max-w-4xl mx-auto mb-10 sm:mb-12"
             >
               {introTitle ? (
                 <h2
@@ -119,7 +121,11 @@ export function BenefitList({
                   {introParagraphs.map((paragraph, i) => (
                     <p
                       key={i}
-                      className="text-base text-[#1C274C] font-normal leading-relaxed max-w-xl mx-auto"
+                      className={cn(
+                        'text-base text-[#1C274C] font-normal leading-relaxed mx-auto',
+                        !overRideWidth && 'max-w-xl'
+                      )}
+                      style={overRideWidth ? { maxWidth: overRideWidth } : undefined}
                     >
                       {paragraph}
                     </p>
@@ -240,7 +246,7 @@ export function BenefitList({
             >
               {awardsTitle ? (
                 <h3
-                  className="text-2xl sm:text-3xl md:text-[36px] font-normal leading-tight text-[#1C274C] mb-3 font-display"
+                  className="text-[32px] sm:text-[48px] font-medium leading-tight text-[#1C274C] mb-3 font-display"
                   
                 >
                   {awardsTitle}

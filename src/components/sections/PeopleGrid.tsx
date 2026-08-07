@@ -6,6 +6,7 @@ import Link from 'next/link'
 
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
+import { cn } from '@/lib/utils'
 import type { Cta, Person } from '@/types/content'
 
 interface PeopleGridProps {
@@ -62,7 +63,7 @@ export function PeopleGrid({
             ) : null}
 
             <h2
-              className="text-3xl sm:text-4xl md:text-[44px] font-normal leading-tight text-white mb-3 font-display"
+              className="text-[32px] sm:text-[48px] font-medium leading-tight text-white mb-3 font-display"
               
             >
               {title}
@@ -80,6 +81,7 @@ export function PeopleGrid({
             {people.map((person, index) => {
               const imageSrc = person.portrait?.src || ''
               const imageAlt = person.portrait?.alt || person.name
+              const isCollins = person.name.toLowerCase().includes('collins')
 
               const bioParagraphs = Array.isArray(person.bio)
                 ? person.bio
@@ -99,7 +101,7 @@ export function PeopleGrid({
                   className="flex flex-col"
                 >
                   {/* Person Row Container */}
-                  <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 lg:gap-14">
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12! lg:gap-[110px]!">
                     {/* Circular Portrait Image */}
                     <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-60 md:h-60 shrink-0 rounded-full overflow-hidden border-2 border-slate-700/50 shadow-2xl bg-slate-800">
                       {imageSrc ? (
@@ -116,7 +118,10 @@ export function PeopleGrid({
                     {/* Text Details */}
                     <div className="flex-1 text-center md:text-left text-white">
                       <h3
-                        className="text-2xl sm:text-3xl md:text-[32px] font-normal leading-tight text-white mb-1.5 font-display"
+                        className={cn(
+                          "font-medium leading-tight text-white mb-1.5 font-display",
+                          isCollins ? "text-[32px] md:text-[50px]" : "text-[32px] md:text-[40px]"
+                        )}
                         
                       >
                         {person.name}
