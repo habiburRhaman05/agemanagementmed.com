@@ -41,9 +41,12 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
   return (
     <footer className=" bg-white text-ink-900">
       <Container>
-        <div className="grid gap-12 pt-16 pb-12 text-left sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-14">
-          {/* Brand column */}
-          <Reveal delay={0} className="lg:col-span-3">
+        <div className="grid gap-12 pt-16 pb-12 text-center md:grid-cols-12 md:gap-8 md:pt-20 md:pb-14 xl:text-left">
+          {/* Brand column — centered last row below xl (mobile + md); first column, left-aligned on xl (4-col) */}
+          <Reveal
+            delay={0}
+            className="flex flex-col items-center text-center order-last md:col-span-12 xl:order-none xl:col-span-3 xl:items-start xl:text-left"
+          >
             <Image src={logoUrl} alt={siteName} width={227} height={104} />
 
             <SocialLinks links={socialLinks} variant="navy" className="mt-6 flex gap-3" />
@@ -71,7 +74,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
           </Reveal>
 
           {/* Contact info: both locations, address + hours */}
-          <Reveal delay={60} className="lg:col-span-3">
+          <Reveal delay={60} className="flex flex-col items-center text-center order-1 md:col-span-4 xl:order-none xl:col-span-3 xl:items-start xl:text-left">
             <h2 className="text-base font-sans font-semibold text-ink-900">
               Contact Info
             </h2>
@@ -81,7 +84,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
                   <p className="text-sm font-sans font-semibold text-[#0B2056]">
                     {location.name.split(' / ')[0]}
                   </p>
-                  <p className="mt-2 flex items-start gap-2 text-[14px] text-[#111214]">
+                  <p className="mt-2 flex items-start justify-center gap-2 text-[14px] text-[#111214] xl:justify-start">
                     <MapPin className="mt-0.5 size-4 shrink-0 text-ink-900/70" aria-hidden />
                     <span>
                       {location.addressLine}, {location.city}, {location.state} {location.zip}
@@ -89,7 +92,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
                   </p>
 
                   <p className="mt-4 text-sm font-sans font-semibold text-[#0B2056]">Office Hours</p>
-                  <p className="mt-2 flex items-center gap-2 text-[14px] text-[#111214]">
+                  <p className="mt-2 flex items-center justify-center gap-2 text-[14px] text-[#111214] xl:justify-start">
                     <Clock className="size-4 shrink-0 text-ink-900/70" aria-hidden />
                     <span>
                       {location.hours
@@ -104,7 +107,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
           </Reveal>
 
           {/* Quick Links */}
-          <Reveal delay={120} className="lg:col-span-2">
+          <Reveal delay={120} className="flex flex-col items-center text-center order-2 md:col-span-4 xl:order-none xl:col-span-2 xl:items-start xl:text-left">
             <nav aria-label="Quick Links">
               <h2 className="text-base font-sans font-semibold text-ink-900">
                 Quick Links
@@ -125,7 +128,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
           </Reveal>
 
           {/* Services */}
-          <Reveal delay={180} className="lg:col-span-4">
+          <Reveal delay={180} className="flex flex-col items-center text-center order-3 md:col-span-4 xl:order-none xl:col-span-4 xl:items-start xl:text-left">
             <nav aria-label="Services">
               <h2 className="text-base font-sans font-semibold text-ink-900">
                 Services
