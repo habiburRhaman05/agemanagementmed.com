@@ -1,5 +1,8 @@
 
 
+"use client"
+
+import { useState } from 'react'
 import { MoveRight, Play } from 'lucide-react'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
@@ -35,6 +38,8 @@ interface HeroImmersiveProps {
 }
 
 export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) {
+  const [videoOpen, setVideoOpen] = useState(false)
+  const [videoLoading, setVideoLoading] = useState(true)
   return (
     <section
       className="relative isolate flex items-center overflow-hidden bg-ink-950 px-0 pt-32.75 pb-32.75 min-[348px]:pt-35 min-[348px]:pb-35 sm:pt-40 sm:pb-24 lg:pt-70 lg:pb-45"
@@ -125,7 +130,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           </Dialog>
 
           {/* Video Modal */}
-          <Dialog>
+          <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
             <DialogTrigger asChild>
               <Button
                 size="lg"
@@ -136,17 +141,16 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
                 Watch video
               </Button>
             </DialogTrigger>
-            <DialogContent className="w-[calc(100%-1.5rem)] max-h-[90dvh] border-none bg-black p-1 sm:max-w-5xl">
+            <DialogContent className="w-[calc(100%-1.5rem)] sm:max-w-5xl max-h-[90dvh] border-none bg-black p-0 overflow-hidden !rounded-none sm:!rounded-none md:!rounded-none lg:!rounded-none shadow-2xl [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/80 [&>button]:border-none [&>button]:size-8 [&>button]:top-3 [&>button]:right-3 [&>button]:z-30 [&>button]:rounded-full">
               {/* Radix requires a DialogTitle for a11y; visually hidden here */}
               <DialogHeader className="sr-only">
                 <DialogTitle>Intro video</DialogTitle>
               </DialogHeader>
-              <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+              <div className="relative aspect-video w-full overflow-hidden bg-black !rounded-none">
                 <iframe
                   title="vimeo-player"
                   src="https://player.vimeo.com/video/1080951303?h=91f29206b0&autoplay=1"
-                  className="absolute inset-0 h-full w-full"
-                  frameBorder="0"
+                  className="absolute inset-0 h-full w-full border-none bg-black"
                   allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                   allowFullScreen
                 ></iframe>

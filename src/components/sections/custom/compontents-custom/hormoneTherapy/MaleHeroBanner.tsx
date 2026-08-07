@@ -121,9 +121,12 @@ export function MaleHeroBanner({
                   <span>WATCH VIDEO</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-5xl p-1 bg-black border-none max-h-[90vh]">
+              <DialogContent className="w-[calc(100%-1.5rem)] sm:max-w-5xl max-h-[90dvh] border-none bg-black p-0 overflow-hidden rounded-none shadow-2xl [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/80 [&>button]:border-none [&>button]:size-8 [&>button]:top-3 [&>button]:right-3 [&>button]:z-30 [&>button]:rounded-full">
+                <DialogHeader className="sr-only">
+                  <DialogTitle>Intro Video</DialogTitle>
+                </DialogHeader>
                 <div
-                  className="relative w-full aspect-video overflow-hidden rounded-lg [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:h-full [&_iframe]:w-full"
+                  className="relative w-full aspect-video overflow-hidden bg-black [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:h-full [&_iframe]:w-full"
                   dangerouslySetInnerHTML={{ __html: videoSource }}
                 />
               </DialogContent>
