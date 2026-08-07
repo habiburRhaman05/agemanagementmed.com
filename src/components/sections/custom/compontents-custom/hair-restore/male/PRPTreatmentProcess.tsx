@@ -17,7 +17,7 @@ const steps: Step[] = [
   {
     number: 1,
     imageAlt: "Provider examining a patient's scalp during a consultation",
-    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304804/hair-treatment-step-1-female_b95t44.jpg',
+    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131814/ppr-t-11_kvil8k.jpg',
     title: 'Consultation & Assessment',
     description:
       'Our expert team evaluates your hair loss pattern, discusses your goals, and determines if PRP is right for you.',
@@ -27,7 +27,7 @@ const steps: Step[] = [
     imageAlt: "Clinician drawing blood from a patient's arm",
     title: 'Blood Draw',
     description: 'A small amount of blood (similar to routine lab work) is drawn from your arm.',
-    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304803/hair-treatment-step-2-female_u1mico.jpg',
+    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131812/pprr-2_anhbzg.jpg',
   },
   {
     number: 3,
@@ -35,14 +35,14 @@ const steps: Step[] = [
     title: 'Platelet Concentration',
     description:
       'Your blood is processed in a specialized centrifuge to separate and concentrate the platelets.',
-    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304804/hair-treatment-step-3-female_y7wzqe.jpg',
+    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131811/ppr-3_dx0mel.jpg',
   },
   {
     number: 4,
     imageAlt: "Clinician preparing a patient's scalp for treatment",
     title: 'Scalp Preparation',
     description: 'The treatment area is cleansed and a topical numbing agent is applied for comfort.',
-    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304805/hair-treatment-step-4-female_wqfqfc.jpg',
+    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131810/ppr-4_k8cgor.jpg',
   },
   {
     number: 5,
@@ -50,7 +50,7 @@ const steps: Step[] = [
     title: 'PRP Injection',
     description:
       'The concentrated platelet-rich plasma is carefully injected into targeted areas of your scalp using fine needles.',
-    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304804/hair-treatment-step-5-female_awrdtf.jpg',
+    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131809/pprr-5_lwkuyi.jpg',
   },
 ]
 
@@ -98,8 +98,8 @@ const PRPTreatmentProcess: React.FC = () => {
                       <div className="content-box">
                         <h2 className="lg-top-title">Step {step.number}</h2>
                         <h3
-                          className="lg-title"
-                          style={{ fontSize: 'clamp(28px, 6vw, 48px)', fontWeight: 500, letterSpacing: '-0.025em' }}
+                          className="lg-title text-[32px]"
+                          style={{  fontWeight: 500, letterSpacing: '-0.025em' }}
                         >
                           {step.title}
                         </h3>

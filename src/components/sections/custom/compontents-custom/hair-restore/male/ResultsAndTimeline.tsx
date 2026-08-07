@@ -109,7 +109,7 @@ const benefitCards = [
 const ResultsAndTimeline: React.FC = () => {
   return (
     <div style={{ backgroundColor: '#fff' }}>
-      <div className="lg-flexspace-100" />
+      <div className="py-14 bg-white" />
 
       <div className="lg-content-d" style={{ position: 'relative' }}>
         <div className="lg-max-width-1440">
@@ -140,8 +140,8 @@ const ResultsAndTimeline: React.FC = () => {
                       dangerouslySetInnerHTML={{ __html: card.icon }}
                     />
                     <h2
-                      className="lg-title"
-                      style={{ fontSize: 'clamp(28px, 6vw, 48px)', fontWeight: 500, letterSpacing: '-0.025em' }}
+                      className="lg-title !text-[32px]"
+                      style={{  fontWeight: 500, letterSpacing: '-0.025em' }}
                     >
                       {card.title}
                     </h2>
@@ -185,8 +185,8 @@ const ResultsAndTimeline: React.FC = () => {
                 <div className="lg-col-md-6" key={card.title}>
                   <div className="box">
                     <h3
-                      className="lg-title"
-                      style={{ fontSize: 'clamp(28px, 6vw, 48px)', fontWeight: 500, letterSpacing: '-0.025em' }}
+                      className="lg-title !text-[32px]"
+                      style={{  fontWeight: 500, letterSpacing: '-0.025em' }}
                     >
                       {card.title}
                     </h3>

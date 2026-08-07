@@ -26,7 +26,10 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
       />
 
       <HowPRPTreatsHairLoss />
-      <PRPTreatmentProcess />
+      
+      <div className="py-8 " />
+           <PRPTreatmentProcess/>
+
       <ResultsAndTimeline />
 
       {treatment.faqs.length ? (
@@ -38,6 +41,7 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
       ) : null}
 
       <ClosingCTA
+      textWidth={"800"}
         {...treatment.closingCta}
         note="*Individual results may vary. A consultation with our medical team is required to determine if PRP hair therapy is appropriate for your specific condition.*"
         backgroundImage="/HairRestoreMaleLoayout/hero-14-bg.jpg"

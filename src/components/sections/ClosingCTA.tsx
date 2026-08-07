@@ -67,7 +67,7 @@ style={{ ...contentStyle, maxWidth: textWidth ? `${textWidth}px` : undefined }}
 >
             <h2 className="lg-title">{title}</h2>
 
-            <div className="lg-text">
+            <div className="lg-text !text-left">
               <p>{body}</p>
             </div>
 <BookAppointmentButton>

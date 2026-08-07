@@ -189,7 +189,7 @@ export function HeroEditorial({
       {/* {overlay && <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />} */}
 
       <Container className={cn("relative z-10 py-35 md:py-50 lg:py-60 !px-3", containerOverride)}>
-        <div className={cn("min-w-[700px] text-center sm:text-left", heroDiv)}>
+        <div className={cn("max-w-[700px] text-center sm:text-left", heroDiv)}>
           <h1
             className="text-[40px] sm:text-[46px] lg:text-[56px] font-medium leading-[48px] sm:leading-[62px] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}

@@ -37,9 +37,9 @@ const bestResults = [
 const HowPRPTreatsHairLoss: React.FC = () => {
   return (
     <>
-      <div className="lg-flexspace-100" />
+      <div className="lg-flexspace-100 !bg-white" />
 
-      <div id="photo-content-c" className="relative overflow-hidden">
+      <div id="photo-content-c" className="!bg-white relative overflow-hidden">
         <div className="radial-gradient" aria-hidden />
 
         <div className="lg-max-width-1440">
@@ -121,6 +121,7 @@ const HowPRPTreatsHairLoss: React.FC = () => {
                     ))}
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>

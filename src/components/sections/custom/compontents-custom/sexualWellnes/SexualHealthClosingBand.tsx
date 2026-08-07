@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react'
 
 import { Container } from '@/components/shared/Container'
 import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 
 export interface SexualHealthClosingBandProps {
   title?: string
@@ -32,23 +33,20 @@ export function SexualHealthClosingBand({
       <div className="absolute inset-0 bg-[#0F1E4D]/35" aria-hidden />
 
       <Container className="relative">
-        <div className="max-w-lg">
+        <div className="max-w-xl">
           <h2
-            className="text-[28px] sm:text-[34px] md:text-[38px] font-normal leading-[1.2] text-white font-display"
+            className="text-[28px] sm:text-[34px] md:text-[48px] font-normal leading-[1.2] text-white font-display"
             
           >
             {title}
           </h2>
 
-          <p className="mt-3 text-sm sm:text-base font-light leading-relaxed text-white/90">{body}</p>
+          <p className="my-5 text-[20px] sm:text-base font-light leading-relaxed text-white/90">{body}</p>
 
-          <LegacyCtaLink
-            href={ctaHref}
-            className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-[#519B99] px-6 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#448b89] sm:h-12 sm:px-7"
-          >
-            {ctaLabel}
-            <ArrowRight className="size-4" aria-hidden />
-          </LegacyCtaLink>
+          
+          <BookAppointmentButton>
+ {ctaLabel}
+          </BookAppointmentButton>
         </div>
       </Container>
     </section>
