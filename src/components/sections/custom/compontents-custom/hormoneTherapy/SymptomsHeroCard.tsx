@@ -148,7 +148,7 @@ export function SymptomsHeroCard({
                 <div>
                   <BookAppointmentButton
                     variant="teal"
-                    className="px-7 py-3.5 text-[11px] tracking-wider shadow-md"
+                    className="px-7 py-3.5 shadow-md"
                     modalTitle="Book Your Consultation"
                   >
                     {ctaLabel}
@@ -223,7 +223,7 @@ export function SymptomsHeroCard({
             <div className="text-center pt-2">
               <BookAppointmentButton
                 variant="teal"
-                className="px-7 py-3.5 text-[11px] tracking-wider shadow-md"
+                className="px-7 py-3.5 shadow-md"
                 modalTitle="Book Your Consultation"
               >
                 {ctaLabel}

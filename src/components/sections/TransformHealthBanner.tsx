@@ -65,7 +65,7 @@ export function TransformHealthBanner({
           {/* Interactive Modal CTA Trigger */}
           <BookAppointmentButton
             variant="teal"
-            className="px-8 py-4 text-xs shadow-md hover:shadow-lg sm:text-sm"
+            className="px-8 py-4 shadow-md hover:shadow-lg"
             modalTitle="Book Your Consultation"
           >
             {buttonLabel}

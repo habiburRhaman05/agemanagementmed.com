@@ -1,5 +1,4 @@
-import Link from 'next/link'
-
+import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 import type { Media } from '@/types/content'
 
 export interface TreatmentBenefitsIntroProps {
@@ -76,9 +75,9 @@ export function TreatmentBenefitsIntro({ darkCard, lightCard }: TreatmentBenefit
                     </div>
 
                     <div className="cta">
-                      <Link href={lightCard.ctaHref ?? '/book-appointment'} className="lg-btn lg-btn-arrow-right">
+                      <LegacyCtaLink href={lightCard.ctaHref ?? '/book-appointment'} className="lg-btn lg-btn-arrow-right">
                         {lightCard.ctaLabel ?? 'Request a consultation'}
-                      </Link>
+                      </LegacyCtaLink>
                     </div>
                   </div>
                 </div>

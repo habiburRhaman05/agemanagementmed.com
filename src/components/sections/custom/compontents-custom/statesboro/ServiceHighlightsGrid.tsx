@@ -68,7 +68,7 @@ export function ServiceHighlightsGrid({ eyebrow, title, lead, items }: ServiceHi
                   {item.href === '/book-appointment' ? (
                     <BookAppointmentButton
                       variant="teal"
-                      className="mt-6 self-start px-5 py-2.5 text-[12px]"
+                      className="mt-6 self-start px-5 py-2.5"
                       modalTitle="Schedule A Consultation"
                     >
                       {item.ctaLabel}

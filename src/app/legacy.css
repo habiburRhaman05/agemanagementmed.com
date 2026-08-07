@@ -269,17 +269,22 @@
   width: 100%;
 }
 
-#header .menu > ul > li:hover > .submenu-icon {
+#header .menu > ul > li:hover > .submenu-icon,
+#header .menu > ul > li.menu-li-open > .submenu-icon {
   transform: translateY(-50%) rotate(180deg);
 }
 
-#header .menu > ul > li:hover ul {
+#header .menu > ul > li:hover ul,
+#header .menu > ul > li.menu-li-open ul {
   margin-top: 6px;
   opacity: 1;
   pointer-events: auto;
 }
 
-#header .menu > ul > li:hover > a::after {
+#header .menu > ul > li:hover > a::after,
+#header .menu > ul > li:hover > button::after,
+#header .menu > ul > li.menu-li-open > a::after,
+#header .menu > ul > li.menu-li-open > button::after {
   pointer-events: auto;
 }
 

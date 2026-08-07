@@ -86,7 +86,7 @@ export function MaleHeroBanner({
             {/* Primary CTA (Start Today) */}
             <BookAppointmentButton
               variant="teal"
-              className="px-6 py-3.5 text-[11px] tracking-wider shadow-md hover:shadow-lg"
+              className="px-6 py-3.5 shadow-md hover:shadow-lg"
               modalTitle="Book Your Consultation"
             >
               START TODAY

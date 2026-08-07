@@ -1,6 +1,7 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
+
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import type { Media } from '@/types/content'
 
 export interface FitCheckCalloutProps {
@@ -23,7 +24,6 @@ export function FitCheckCallout({
   lead,
   points,
   ctaLabel = 'Schedule a Consultation',
-  ctaHref = '/book-appointment',
 }: FitCheckCalloutProps) {
   return (
     <section className="w-full overflow-hidden">
@@ -68,13 +68,9 @@ export function FitCheckCallout({
 
           {/* CTA button */}
           <div className="mt-8">
-            <Link
-              href={ctaHref}
-              className="inline-flex items-center gap-2 rounded-full border border-[#519B98] bg-[#519B98]/80 px-6 py-2.5 text-[14px] font-bold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#519B98]"
-            >
+            <BookAppointmentButton variant="teal" className="px-6 py-2.5" modalTitle="Schedule a Consultation">
               {ctaLabel}
-              <ArrowRight className="size-3" />
-            </Link>
+            </BookAppointmentButton>
           </div>
 
         </div>

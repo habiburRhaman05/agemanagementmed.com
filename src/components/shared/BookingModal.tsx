@@ -5,10 +5,8 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { X } from 'lucide-react';
 
 import { bookAppointment } from '@/actions/appointment';
-import { features } from '@/content/feature';
 
 const LOCATIONS = ['Pooler / Savannah', 'Statesboro'];
-const SERVICES = features.map((feature) => feature.shortName);
 
 /** Maps a `LocationSlug` (as used elsewhere in the app) to this modal's display label. */
 const LOCATION_LABELS: Record<'savannah-pooler' | 'statesboro', string> = {
@@ -166,12 +164,6 @@ export default function BookingModal({
 
   if (!open || !mounted) return null;
 
-  // A caller-supplied service label (e.g. a wellness special's name) may not
-  // be one of the standard treatment names — include it as its own option
-  // rather than silently failing to preselect it.
-  const serviceOptions =
-    defaultService && !SERVICES.includes(defaultService) ? [defaultService, ...SERVICES] : SERVICES;
-
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
@@ -182,13 +174,15 @@ export default function BookingModal({
     const email = form.get('email') as string;
     const phone = form.get('phone') as string;
     const location = form.get('location') as string;
-    const service = form.get('service') as string;
 
     const data = new FormData();
     data.append('name', name);
     data.append('email', email);
     data.append('phone', phone);
-    data.append('service', service);
+    // No visible Service field — pass through whatever the caller tagged
+    // this button with (e.g. a claimed wellness special), or a sensible
+    // default. The `service` column is optional server-side either way.
+    data.append('service', defaultService ?? 'General Consultation');
     data.append('message', `Location: ${location}`);
 
     const result = await bookAppointment(null, data);
@@ -257,14 +251,6 @@ export default function BookingModal({
                   label="Which location are you interested in?"
                   options={LOCATIONS}
                   defaultValue={defaultLocation ? LOCATION_LABELS[defaultLocation] : undefined}
-                />
-
-                <SelectField
-                  id="service"
-                  label="Service:"
-                  placeholder="Choose A Service"
-                  options={serviceOptions}
-                  defaultValue={defaultService}
                 />
               </div>
 

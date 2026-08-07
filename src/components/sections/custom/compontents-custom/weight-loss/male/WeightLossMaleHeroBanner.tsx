@@ -74,7 +74,7 @@ export function WeightLossMaleHeroBanner({
 
           <BookAppointmentButton
             variant="teal"
-            className="mt-7 h-11 px-6 text-xs sm:h-14 sm:px-9 sm:text-sm"
+            className="mt-7 h-11 px-6 sm:h-14 sm:px-9"
             modalTitle="Book Your Consultation"
           >
             {ctaLabel}

@@ -3,7 +3,7 @@
 import { ArrowRight, ChevronDown, MapPin, MessageSquare, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { primaryNav } from '@/content/navigation'
 import { locations, site } from '@/content/site'
@@ -81,6 +81,34 @@ export function HeaderClient({ overlay = false, logoUrl, siteName, phone }: Head
   const [navOpen, setNavOpen] = useState(false)
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
 
+  // Desktop mega-menu: pure-CSS `:hover` closes the instant the cursor leaves
+  // the trigger's box, including while crossing the small gap to the dropdown
+  // below it — a fast or diagonal mouse movement reads as "left the menu" and
+  // snaps it shut before the user reaches the items. This mirrors `:hover`
+  // via `.menu-li-open` (see legacy.css) but adds a short grace period on
+  // mouseleave so crossing that gap no longer closes the menu prematurely.
+  const [desktopOpen, setDesktopOpen] = useState<string | null>(null)
+  const desktopCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const openDesktopMenu = (label: string) => {
+    if (desktopCloseTimer.current) {
+      clearTimeout(desktopCloseTimer.current)
+      desktopCloseTimer.current = null
+    }
+    setDesktopOpen(label)
+  }
+
+  const scheduleCloseDesktopMenu = () => {
+    if (desktopCloseTimer.current) clearTimeout(desktopCloseTimer.current)
+    desktopCloseTimer.current = setTimeout(() => setDesktopOpen(null), 250)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (desktopCloseTimer.current) clearTimeout(desktopCloseTimer.current)
+    }
+  }, [])
+
   // The source locks body scroll behind the drawer (body.hamburger-active).
   useEffect(() => {
     document.body.style.overflow = navOpen ? 'hidden' : ''
@@ -128,8 +156,17 @@ export function HeaderClient({ overlay = false, logoUrl, siteName, phone }: Head
                     }
 
                     return (
-                      <li key={item.label} className="menu-li has-submenu">
-                        <button type="button" aria-haspopup="true">
+                      <li
+                        key={item.label}
+                        className={`menu-li has-submenu${desktopOpen === item.label ? ' menu-li-open' : ''}`}
+                        onMouseEnter={() => openDesktopMenu(item.label)}
+                        onMouseLeave={scheduleCloseDesktopMenu}
+                      >
+                        <button
+                          type="button"
+                          aria-haspopup="true"
+                          aria-expanded={desktopOpen === item.label}
+                        >
                           <NavLabel label={item.label} />
                         </button>
                         <ChevronDown className="submenu-icon" size={10} aria-hidden />

@@ -86,6 +86,8 @@ export function HeroEditorial({
 
   // Smaller, non-full-width CTA on mobile; the "lg" size (via the `size` prop) still applies from `sm:` up.
   const ctaSizeClass = 'h-11 px-6 text-body-sm font-bold uppercase tracking-wide sm:h-14 sm:px-9 sm:text-body'
+  // Same sizing, without text classes — BookAppointmentButton fixes its own font-size/weight at 14px/700 on every device.
+  const bookingCtaSizeClass = 'h-11 px-6 sm:h-14 sm:px-9'
 
   return (
     <section
@@ -125,7 +127,7 @@ export function HeroEditorial({
             >
               <BookAppointmentButton
                 variant="teal"
-                className={cn('w-auto', ctaSizeClass)}
+                className={cn('w-auto', bookingCtaSizeClass)}
                 modalTitle="Book Your Consultation"
               >
                 Schedule a consultation
@@ -174,7 +176,7 @@ export function HeroEditorial({
                 ) : (
                   <BookAppointmentButton
                     variant="teal"
-                    className={cn('w-auto', ctaSizeClass)}
+                    className={cn('w-auto', bookingCtaSizeClass)}
                     modalTitle="Book Your Consultation"
                   >
                     Schedule a consultation
