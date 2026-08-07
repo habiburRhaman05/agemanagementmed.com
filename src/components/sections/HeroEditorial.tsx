@@ -68,6 +68,10 @@ interface HeroEditorialProps {
   containerOverride?: string
   overideMinheight?: string
   overlay?: boolean
+  /** Custom mobile object-position for the background image. */
+  mobileFocalPoint?: string
+  /** Left-align CTAs on mobile instead of centering them. */
+  leftAlignMobile?: boolean
   /** Custom text for the primary CTA button; defaults to "START TODAY" */
   primaryCtaLabel?: string
 }
@@ -115,6 +119,8 @@ export function HeroEditorial({
   centerUntilTablet = false,
   containerOverride,
   overideMinheight,
+  mobileFocalPoint,
+  leftAlignMobile = false,
   overlay = true,
   primaryCtaLabel = 'START TODAY',
 }: HeroEditorialProps) {
