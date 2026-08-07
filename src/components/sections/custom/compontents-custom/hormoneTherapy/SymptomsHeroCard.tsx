@@ -98,7 +98,7 @@ export function SymptomsHeroCard({
           <div className="bg-[#0B1938] text-white">
             <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] items-stretch">
               {/* Left Column: Image */}
-              <div className="relative min-h-[280px] sm:min-h-[380px] max-h-[340px] sm:max-h-none lg:min-h-full bg-slate-800">
+              <div className="relative min-h-[280px] sm:min-h-[380px] max-h-[340px] sm:max-h-none lg:min-h-full bg-slate-800 symptoms-hero-img">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={imageSrc}

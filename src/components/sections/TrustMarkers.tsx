@@ -68,26 +68,26 @@ export interface TrustMarkersProps {
 export function TrustMarkers({ label = 'Trust Markers', reviewer, successStories }: TrustMarkersProps) {
   return (
     <Section background="page" spacing="lg">
-      <Container className="max-w-4xl text-center">
+      <Container className="max-w-6xl text-center px-4! lg:px-0">
         <Reveal>
-          <p className="font-display text-2xl text-ink-900 mb-8">{label}</p>
+          <p className="font-display text-[32px] lg:text-[48px] text-ink-900 mb-8">{label}</p>
 
-          <div className="flex flex-col items-center gap-6 sm:gap-10">
-            <div className="relative size-40 sm:size-52 shrink-0 overflow-hidden rounded-full">
+          <div className="flex flex-col xl:flex-row items-center xl:items-start justify-center gap-6 sm:gap-10">
+            <div className="relative size-72 sm:size-80 xl:size-[500px] shrink-0 overflow-hidden rounded-full">
               <Image
                 src={reviewer.portrait.src}
                 alt={reviewer.portrait.alt}
                 fill
-                sizes="208px"
+                sizes="500px"
                 className="object-cover"
               />
             </div>
 
-            <div>
+            <div className="text-left pl-[40px] max-[768px]:text-center max-[768px]:pl-0">
               <p className="text-[14px] font-semibold uppercase tracking-widest text-[#111214] mb-1">Reviewed by</p>
               <h3 className="font-display text-[32px] leading-tight tracking-tight text-[#111214]">{reviewer.name}</h3>
               {reviewer.subtitle ? (
-                <p className="mt-1 text-center text-[24px] font-medium text-[#111214]">{reviewer.subtitle}</p>
+                <p className="mt-1 text-left text-[24px] font-medium text-[#111214] py-3 max-[768px]:text-center">{reviewer.subtitle}</p>
               ) : null}
               <div className="mt-4 space-y-3 text-body-sm leading-relaxed text-[#111214]">
                 {reviewer.bio.map((paragraph) => (
