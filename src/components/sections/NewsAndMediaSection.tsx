@@ -91,7 +91,7 @@ export function NewsAndMediaSection({
 
   return (
     <section className="relative w-full bg-[#F8F9F5] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
-      <Container className="max-w-5xl mx-auto">
+      <Container className="!max-w-[1292px] mx-auto">
         {/* Section Header */}
         <m.div
           initial={{ opacity: 0, y: 20 }}
@@ -171,7 +171,7 @@ export function NewsAndMediaSection({
         </m.div>
 
         {/* Article / Press Cards Stack */}
-        <div className="flex flex-col gap-6 sm:gap-8 max-w-4xl mx-auto">
+        <div className="flex flex-col gap-6 sm:gap-8 !max-w-[1292px] w-full mx-auto">
           {displayNews.map((article, index) => (
             <m.a
               key={article.title}
@@ -219,7 +219,7 @@ export function NewsAndMediaSection({
                 ) : null}
 
                 {article.excerpt ? (
-                  <p className="text-xs sm:text-[13.5px] text-slate-600 font-light leading-relaxed mb-5">
+                  <p className="text-base text-[#1C274C] font-normal leading-relaxed mb-5">
                     {article.excerpt}
                   </p>
                 ) : null}

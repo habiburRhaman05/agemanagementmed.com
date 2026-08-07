@@ -38,7 +38,7 @@ export function PeopleGrid({
 
   return (
     <section className="relative w-full bg-[#F8F9F5] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <Container className="max-w-5xl mx-auto">
+      <Container className="!max-w-[1292px] mx-auto">
         {/* Main Elevated Dark Navy Card Container */}
         <m.div
           initial={{ opacity: 0, y: 30 }}
@@ -69,7 +69,7 @@ export function PeopleGrid({
             </h2>
 
             {lead ? (
-              <p className="text-xs sm:text-sm font-light leading-relaxed text-slate-300 max-w-xl mx-auto">
+              <p className="text-base text-white font-normal leading-relaxed">
                 {lead}
               </p>
             ) : null}
@@ -128,7 +128,7 @@ export function PeopleGrid({
                       </p>
 
                       {/* Bio Paragraphs */}
-                      <div className="space-y-3.5 text-xs sm:text-sm text-slate-200/90 font-light leading-relaxed">
+                      <div className="space-y-3.5 text-base text-slate-200/90 font-normal leading-relaxed">
                         {bioParagraphs.map((paragraph, pIdx) => (
                           <p key={pIdx}>{paragraph}</p>
                         ))}

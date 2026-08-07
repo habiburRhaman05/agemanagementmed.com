@@ -100,9 +100,8 @@ console.log(allNews);
 
 
       <PeopleGrid
-        eyebrow="Meet our experts"
-        title="The people who will look after you"
-        lead="With years of experience in integrative medicine and hormone therapy, our experts create personalized solutions that help you feel your best."
+        title="Meet Our Experts"
+        lead="With years of experience in integrative medicine and hormone therapy, our experts are here to create personalized solutions that help you feel your best."
         people={people}
       />
 
