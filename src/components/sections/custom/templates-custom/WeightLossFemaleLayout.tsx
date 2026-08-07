@@ -22,8 +22,11 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
     <>
       <HeroEditorial
         {...treatment.hero}
-        image={treatment.hero.image ? { ...treatment.hero.image, src: '/images/banner-13-bg.jpg' } : undefined}
+        image={{ ...treatment.hero.image, src: '/images/banner-13-bg.jpg' }}
         fullHeight
+        centerUntilTablet
+        containerOverride="py-24 md:py-50 lg:py-60"
+        mobileFocalPoint="70% center"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },
@@ -167,7 +170,11 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         <FAQAccordion title="Medical Weight Loss FAQs" items={treatment.faqs} />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-22-bg.jpg" />
+      <ClosingCTA
+        {...treatment.closingCta}
+        backgroundImage="/images/hero-22-bg.jpg"
+        backgroundPosition="80% center"
+      />
     </>
   )
 }

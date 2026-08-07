@@ -27,32 +27,32 @@ export interface SymptomsHeroCardProps {
 /** 6 Benefit items for "Our Men's Hormone Program May Help You" */
 const PROGRAM_BENEFITS = [
   {
-    icon: Heart,
+    icon: DocumentIcon,
     title: 'Enhance Sexual Wellness',
     desc: 'Support libido and overall sexual function',
   },
   {
-    icon: Flame,
+    icon: BrainIcon,
     title: 'Support Lean Muscle & Fat Loss',
     desc: 'Improve body composition and metabolism',
   },
   {
-    icon: Zap,
+    icon: NetworkIcon,
     title: 'Restore Energy & Mental Clarity',
     desc: 'Feel sharper, focused, and energized',
   },
   {
-    icon: Moon,
+    icon: ShieldSafeIcon,
     title: 'Improve Sleep Quality',
     desc: 'Experience deeper, more restorative sleep',
   },
   {
-    icon: Sparkles,
+    icon: AwardBadgeIcon,
     title: 'Elevate Mood & Motivation',
     desc: 'Restore drive, confidence, and resilience',
   },
   {
-    icon: Activity,
+    icon: GearOptimizeIcon,
     title: 'Improve Mobility & Recovery',
     desc: 'Reduce lingering pain & enhance movement with integrated support',
   },
@@ -76,8 +76,14 @@ export function SymptomsHeroCard({
   const imageAlt = image?.alt || heading
 
   return (
-    <section className="relative w-full bg-[#F8F9F5] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
-      <Container className="max-w-5xl mx-auto">
+    <section className="relative w-full overflow-hidden bg-[#F7F8F2] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+      {/* Decorative background glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-[170px] left-0 h-[790px] w-[790px] rounded-full bg-[#587DBD]"
+        style={{ filter: 'blur(500px)' }}
+      />
+      <Container className="relative mx-auto px-0! lg:px-8!">
         {/* ONE SINGLE UNIFIED CARD CONTAINER */}
         <m.div
           initial={{ opacity: 0, y: 30 }}
@@ -89,9 +95,9 @@ export function SymptomsHeroCard({
         >
           {/* TOP HALF: Dark Navy Block (#0B1938) */}
           <div className="bg-[#0B1938] text-white">
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] items-stretch">
               {/* Left Column: Image */}
-              <div className="relative min-h-[380px] sm:min-h-[440px] lg:min-h-full bg-slate-800">
+              <div className="relative min-h-[280px] sm:min-h-[380px] max-h-[340px] sm:max-h-none lg:min-h-full bg-slate-800">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={imageSrc}
@@ -103,14 +109,14 @@ export function SymptomsHeroCard({
               {/* Right Column: Symptom Checklist */}
               <div className="flex flex-col justify-center p-6 sm:p-10 lg:p-12 text-white">
                 <h2
-                  className="text-2xl sm:text-3xl lg:text-[34px] font-normal leading-tight text-white mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  className="text-[36px] font-medium leading-tight text-white mb-2 capitalize text-center font-['Bodoni_Moda',var(--font-bodoni),serif]"
                   style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                 >
                   {heading}
                 </h2>
 
                 {lead ? (
-                  <p className="text-xs sm:text-[13px] text-slate-300 font-light leading-relaxed mb-6">
+                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6 text-center">
                     {lead}
                   </p>
                 ) : null}
@@ -119,13 +125,13 @@ export function SymptomsHeroCard({
                   <div className="space-y-5 mb-6">
                     {groups.map((group) => (
                       <div key={group.title}>
-                        <h3 className="text-xs sm:text-sm font-semibold text-white mb-1.5">
+                        <h3 className="text-base font-semibold text-white mb-1.5 text-center">
                           {group.title}
                         </h3>
                         {group.items?.length ? (
                           <ul className="space-y-1 pl-1">
                             {group.items.map((item, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-xs text-slate-200/90 font-light">
+                              <li key={idx} className="flex items-start gap-2 text-base text-slate-200/90 font-normal">
                                 <span className="text-[#519B99] shrink-0 font-sans">→</span>
                                 <span className={idx === 0 && group.title.includes('Sexual') ? 'underline decoration-slate-400' : ''}>
                                   {item}
@@ -140,7 +146,7 @@ export function SymptomsHeroCard({
                 ) : null}
 
                 {closingNote ? (
-                  <p className="text-xs text-slate-300 font-light leading-relaxed mb-6 pt-2 border-t border-slate-700/50">
+                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6 pt-2 border-t border-slate-700/50 text-center">
                     {closingNote}
                   </p>
                 ) : null}
@@ -159,13 +165,13 @@ export function SymptomsHeroCard({
           </div>
 
           {/* BOTTOM HALF: White Overview Section (#FFFFFF) */}
-          <div className="bg-white p-8 sm:p-12 lg:p-16">
+          <div className="bg-white p-6 sm:p-8 lg:p-12 xl:p-16">
             {/* Header Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start mb-12 border-b border-slate-100 pb-8">
-              <div>
+              <div className="text-left lg:pl-[52px]">
                 <h2
-                  className="text-2xl sm:text-3xl md:text-[34px] font-normal leading-tight text-[#1C274C] font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                  className="text-[36px] sm:text-[48px] font-medium leading-tight text-[#111214] mt-6 sm:mt-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif", fontWeight: 500 }}
                 >
                   Hormone <br className="hidden sm:inline" />
                   Optimization <br className="hidden sm:inline" />
@@ -173,16 +179,19 @@ export function SymptomsHeroCard({
                 </h2>
               </div>
 
-              <div>
+              <div className="text-left">
                 <h3
-                  className="text-lg sm:text-xl font-normal text-[#1C274C] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                  className="text-[36px] sm:text-[48px] font-medium leading-tight text-[#111214] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif", fontWeight: 500 }}
                 >
                   What BHRT Is And How It Works
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
+                <p
+                  className="text-[20px] text-[#111214] leading-relaxed font-['Manrope',var(--font-sans),sans-serif]"
+                  style={{ fontFamily: 'var(--font-sans), Manrope, sans-serif', fontWeight: 400 }}
+                >
                   Bioidentical Hormone Replacement Therapy (BHRT) uses hormones that are{' '}
-                  <strong className="font-semibold text-slate-800">
+                  <strong className="font-semibold text-[#111214]">
                     chemically identical to those produced naturally by your body
                   </strong>
                   , allowing for more precise and personalized optimization.
@@ -193,7 +202,7 @@ export function SymptomsHeroCard({
             {/* Sub-Header */}
             <div className="text-center mb-10">
               <h3
-                className="text-xl sm:text-2xl font-normal text-[#1C274C] font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                className="text-[32px] font-medium text-[#111214] leading-tight font-['Bodoni_Moda',var(--font-bodoni),serif]"
                 style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
               >
                 Our Men’s Hormone Program May Help You:
@@ -201,17 +210,17 @@ export function SymptomsHeroCard({
             </div>
 
             {/* 6 Benefit Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 mb-12">
               {PROGRAM_BENEFITS.map((b) => {
                 const Icon = b.icon
                 return (
-                  <div key={b.title} className="flex items-start gap-4">
-                    <div className="shrink-0 text-[#519B99] mt-0.5">
-                      <Icon className="w-6 h-6 stroke-[1.75]" />
+                  <div key={b.title} className="flex flex-row items-start text-left gap-5 sm:gap-6">
+                    <div className="shrink-0 text-[#519B99]">
+                      <Icon className="w-9 h-9 sm:w-10 sm:h-10" />
                     </div>
                     <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-[#1C274C]">
-                        {b.title} <span className="font-normal text-slate-500">— {b.desc}</span>
+                      <h4 className="text-[20px] font-bold leading-snug text-[#111214] font-['Manrope',var(--font-sans),sans-serif]">
+                        {b.title} <span className="font-normal text-[#111214]">- {b.desc}</span>
                       </h4>
                     </div>
                   </div>

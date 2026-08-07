@@ -40,7 +40,12 @@ export function LabworkGuidancePanel({
             <div className="img lg-col-lg-5">
               <div
                 className="img-box"
-                style={{ backgroundImage: `url('${image.src}')` }}
+                style={{
+                  backgroundImage: `url('${image.src}')`,
+                  backgroundSize: 'contain',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
+                }}
                 role="img"
                 aria-label={image.alt}
               />

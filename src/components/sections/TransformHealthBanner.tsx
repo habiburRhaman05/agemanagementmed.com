@@ -27,7 +27,7 @@ export function TransformHealthBanner({
   lead = 'Take the first step towards a healthier, more vibrant you.',
   buttonLabel = 'SCHEDULE A CONSULTATION',
   buttonHref = '/book-appointment',
-  backgroundImage = 'https://www.agemanagementmed.com/themes/default/assets/images/hero-11-bg.jpg',
+  backgroundImage = '/hero-11-bg.jpg',
   className,
 }: TransformHealthBannerProps) {
   return (
@@ -49,15 +49,15 @@ export function TransformHealthBanner({
         >
           {/* Headline */}
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.15] text-white mb-3 sm:mb-4 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.15] text-white mb-3 sm:mb-4 font-display"
+            
           >
             {title}
           </h2>
 
           {/* Lead Subtitle */}
           {lead ? (
-            <p className="text-sm sm:text-base md:text-lg font-light leading-relaxed text-white/90 mb-8 sm:mb-10">
+            <p className="text-[20px] font-light leading-relaxed text-white/90 mb-8 sm:mb-10">
               {lead}
             </p>
           ) : null}

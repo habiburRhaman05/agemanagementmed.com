@@ -46,14 +46,11 @@ export function WeightLossMaleHeroBanner({
 
       <Container className="relative">
         <div className="max-w-xl">
-          <h1
-            className="text-[32px] sm:text-[40px] md:text-[46px] font-normal leading-[1.18] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
-            style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
-          >
+          <h1 className="text-[40px] sm:text-[56px] font-normal leading-[1.18] tracking-tight text-white font-display">
             {title}
           </h1>
 
-          <div className="mt-5 space-y-4 text-sm sm:text-base font-light leading-relaxed text-white/90">
+          <div className="mt-5 space-y-4 text-[20px] font-light leading-relaxed text-white/90">
             <p>
               If you&apos;ve tried to lose weight before and nothing seems to stick, you&apos;re not alone. Most
               programs focus on calories and workouts, but miss what&apos;s actually going on in your body.

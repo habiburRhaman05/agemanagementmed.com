@@ -41,22 +41,20 @@ export function SymptomsLabsReviewPanel({
           className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 sm:gap-12 lg:gap-16"
         >
           {/* Left Column: Text Content */}
-          <div className="flex flex-col justify-center order-2 lg:order-1">
+          <div className="flex flex-col justify-center order-2 lg:order-1 text-center lg:text-left">
             <h2
-              className="text-3xl sm:text-4xl md:text-[38px] font-normal leading-tight text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-[36px] font-medium leading-tight text-[#111214] mb-3 font-display"
             >
               {title}
             </h2>
 
             <h3
-              className="text-xl sm:text-2xl font-normal leading-snug text-[#1C274C] mb-6 max-w-md font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-[16px] font-normal leading-snug text-[#111214] mb-6 max-w-md mx-auto lg:mx-0 font-display"
             >
               {subtitle}
             </h3>
 
-            <p className="max-w-md text-sm sm:text-base text-slate-600 leading-relaxed">{body}</p>
+            <p className="max-w-md mx-auto lg:mx-0 text-[16px] text-[#111214] leading-relaxed">{body}</p>
           </div>
 
           {/* Right Column: Image Card */}

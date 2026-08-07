@@ -72,13 +72,12 @@ function GridCard({ item }: { item: CostGridItem }) {
   }
 
   return (
-    <div className="flex h-44 sm:h-52 w-full flex-col items-center justify-center rounded-[20px] bg-[#F8F9F5] p-5 sm:p-6 text-center transition-all duration-200 hover:shadow-md hover:bg-[#F3F5EF]">
-      <div className="mb-4 flex shrink-0 items-center justify-center text-[#519B99]">
-        <IconComponent className="w-9 h-9 sm:w-10 sm:h-10 stroke-[1.25]" aria-hidden="true" />
+    <div className="flex min-h-36 sm:h-52 w-full flex-col items-center justify-center rounded-[20px] bg-[#F8F9F5] p-4 sm:p-6 text-center transition-all duration-200 hover:shadow-md hover:bg-[#F3F5EF]">
+      <div className="mb-3 sm:mb-4 flex shrink-0 items-center justify-center text-[#519B99]">
+        <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 stroke-[1.25]" aria-hidden="true" />
       </div>
       <p
-        className="text-xs sm:text-sm font-normal text-[#1C274C] leading-snug max-w-[150px] font-['Bodoni_Moda',var(--font-bodoni),serif]"
-        style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+        className="text-[24px] font-normal text-[#1C274C] leading-snug max-w-[150px] font-display"
       >
         {item.title}
       </p>
@@ -117,10 +116,11 @@ export function CostIncludedGrid({
           {/* Main Title */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
             <h2
-              className="text-3xl sm:text-4xl lg:text-[42px] font-normal leading-tight text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-[48px] font-medium leading-tight text-[#1C274C] mb-3 font-display"
             >
-              {title}
+              Cost &amp; What&apos;s Included:
+              <br className="hidden sm:inline" />
+              <span className="whitespace-nowrap">Transparent Pricing, No Guesswork</span>
             </h2>
             {lead ? <p className="text-sm sm:text-base text-slate-600 font-light">{lead}</p> : null}
           </div>
@@ -128,15 +128,13 @@ export function CostIncludedGrid({
           {/* Included Sub-Header */}
           {includedLabel ? (
             <h3
-              className="text-lg sm:text-xl font-normal text-[#1C274C] text-center mb-6 sm:mb-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-[32px] font-medium text-[#1C274C] text-center mb-6 sm:mb-8 font-display"
             >
               {includedLabel}
-            </h3>
-          ) : null}
+            </h3>          ) : null}
 
           {/* Included Cards Grid (4 columns) */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 sm:mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 sm:mb-16">
             {included.map((item) => (
               <GridCard key={item.title} item={item} />
             ))}
@@ -146,15 +144,15 @@ export function CostIncludedGrid({
           {separate?.length ? (
             <div className="mt-12 sm:mt-16">
               <h3
-                className="text-lg sm:text-xl font-normal text-[#1C274C] text-center mb-6 sm:mb-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                className="text-lg sm:text-xl font-normal text-[#1C274C] text-center mb-6 sm:mb-8 font-display"
+                
               >
                 {separateLabel}
               </h3>
 
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-2xl mx-auto mb-10">
                 {separate.map((item) => (
-                  <div key={item.title} className="w-[calc(50%-0.5rem)] sm:w-56">
+                  <div key={item.title} className="w-full sm:w-56">
                     <GridCard item={item} />
                   </div>
                 ))}
@@ -164,7 +162,7 @@ export function CostIncludedGrid({
 
           {/* Note / Disclaimer */}
           {note ? (
-            <p className="mx-auto mt-10 max-w-3xl text-center text-xs sm:text-sm leading-relaxed text-slate-500 font-light font-sans">
+            <p className="mx-auto mt-10 max-w-3xl text-center text-[16px] leading-relaxed text-[#111214] font-normal font-sans">
               {note}
             </p>
           ) : null}

@@ -55,13 +55,21 @@ export function IconGridCard({
 
   const textBlock = (
     <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
-      <h2 className={`font-display text-display-sm ${dark ? 'text-canvas-50' : 'text-ink-950'}`}>{heading}</h2>
+      <h2
+        className={`font-display text-[36px] font-medium leading-tight ${dark ? 'text-canvas-50' : 'text-[#111214]'}`}
+      >
+        {heading}
+      </h2>
       {lead ? (
-        <p className={`mt-4 text-body leading-relaxed ${dark ? 'text-canvas-50/75' : 'text-canvas-600'}`}>{lead}</p>
+        <p className={`mt-4 text-[16px] font-normal leading-relaxed ${dark ? 'text-canvas-50/75' : 'text-[#111214]'}`}>
+          {lead}
+        </p>
       ) : null}
 
       {itemsLabel ? (
-        <p className={`mt-6 text-body-sm font-semibold ${dark ? 'text-canvas-50' : 'text-ink-950'}`}>{itemsLabel}</p>
+        <p className={`mt-6 text-[16px] font-semibold ${dark ? 'text-canvas-50' : 'text-[#111214]'}`}>
+          {itemsLabel}
+        </p>
       ) : null}
 
       <ul className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -74,7 +82,7 @@ export function IconGridCard({
             >
               <item.icon className="size-4" strokeWidth={1.75} aria-hidden />
             </span>
-            <span className={`text-body-sm leading-snug ${dark ? 'text-canvas-50/90' : 'text-canvas-600'}`}>
+            <span className={`text-[16px] font-normal leading-snug ${dark ? 'text-canvas-50/90' : 'text-[#111214]'}`}>
               {item.label}
             </span>
           </li>
@@ -82,7 +90,10 @@ export function IconGridCard({
       </ul>
 
       {closingParagraphs?.map((paragraph, index) => (
-        <p key={index} className={`mt-4 text-body-sm leading-relaxed ${dark ? 'text-canvas-50/75' : 'text-canvas-600'}`}>
+        <p
+          key={index}
+          className={`mt-4 text-[16px] font-normal leading-relaxed ${dark ? 'text-canvas-50/75' : 'text-[#111214]'}`}
+        >
           {paragraph}
         </p>
       ))}
@@ -178,9 +189,11 @@ export function DualIconGridBanner({ columns }: { columns: [IconGridColumn, Icon
                       : 'min-w-0'
                   }
                 >
-                  <h2 className="font-display text-title-lg text-canvas-50 sm:text-display-sm">{column.heading}</h2>
+                  <h2 className="font-display text-[36px] font-medium leading-tight text-canvas-50">
+                    {column.heading}
+                  </h2>
                   {column.lead ? (
-                    <p className="mt-3 text-body-sm leading-relaxed text-canvas-50/70">{column.lead}</p>
+                    <p className="mt-3 text-[16px] font-normal leading-relaxed text-canvas-50/70">{column.lead}</p>
                   ) : null}
 
                   <ul className="mt-6 space-y-4">
@@ -189,13 +202,13 @@ export function DualIconGridBanner({ columns }: { columns: [IconGridColumn, Icon
                         <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-sage-600/15 text-sage-400">
                           <item.icon className="size-4" strokeWidth={1.75} aria-hidden />
                         </span>
-                        <span className="text-body-sm leading-snug text-canvas-50/90">{item.label}</span>
+                        <span className="text-[16px] font-normal leading-snug text-canvas-50/90">{item.label}</span>
                       </li>
                     ))}
                   </ul>
 
                   {column.closingParagraphs?.map((paragraph) => (
-                    <p key={paragraph} className="mt-4 text-body-sm leading-relaxed text-canvas-50/70">
+                    <p key={paragraph} className="mt-4 text-[16px] font-normal leading-relaxed text-canvas-50/70">
                       {paragraph}
                     </p>
                   ))}

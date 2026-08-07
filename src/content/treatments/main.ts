@@ -2,7 +2,7 @@ import { unstable_cache } from 'next/cache'
 import { cache } from 'react'
 
 import { prisma } from '@/lib/prisma'
-import type { Audience, Pillar, Seo, Treatment } from '@/types/content'
+import type { Audience, Media, Pillar, Seo, Treatment } from '@/types/content'
 
 /**
  * Single source of truth for every treatment page — now backed by Postgres
@@ -62,17 +62,81 @@ async function resolveSeo(href: string, seoRow: PageSeoRow | null): Promise<Seo>
   }
 }
 
+/**
+ * `data` arrives as a JSON column. Normally Prisma hands it back as an
+ * object, but a row can hold a JSON *string* (written outside Prisma, or
+ * corrupted by an earlier admin merge that spread a string into characters).
+ * Normalize any of those shapes back to a plain object so downstream code
+ * never reads `treatment.hero` off a string.
+ */
+function parseJsonLenient(raw: string): unknown {
+  try {
+    return JSON.parse(raw)
+  } catch {
+    // Tolerate trailing commas (the common hand-edited/legacy corruption)
+    // before giving up.
+    return JSON.parse(raw.replace(/,(\s*[}\]])/g, '$1'))
+  }
+}
+
+function normalizeData(raw: unknown): Record<string, unknown> {
+  if (raw && typeof raw === 'object' && !Array.isArray(raw)) {
+    return raw as Record<string, unknown>
+  }
+  if (typeof raw === 'string') {
+    try {
+      const parsed = parseJsonLenient(raw)
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+        return parsed as Record<string, unknown>
+      }
+    } catch {
+      // fall through to empty object
+    }
+  }
+  return {}
+}
+
 async function toTreatment(row: TreatmentRow, seoRow: PageSeoRow | null): Promise<Treatment> {
   const seo = await resolveSeo(row.href, seoRow)
+  const data = normalizeData(row.data)
+
+  const name = (data.name as string | undefined) ?? row.slug
+  const shortName = (data.shortName as string | undefined) ?? name
+  const summary = (data.summary as string | undefined) ?? ''
+  const cardImage = (data.cardImage as Media | undefined) ?? { src: '/images/hero-21-bg.jpg', alt: name }
+
+  const rawClosingCta = data.closingCta as Partial<Treatment['closingCta']> | undefined
+  const closingCta: Treatment['closingCta'] = {
+    title: rawClosingCta?.title ?? 'Ready to get started?',
+    body: rawClosingCta?.body ?? 'Book a consultation today.',
+    cta: rawClosingCta?.cta ?? { label: 'Book a consultation', href: '/book-appointment' },
+  }
+
+  const rawHero = data.hero as Partial<Treatment['hero']> | undefined
+  const hero: Treatment['hero'] = {
+    ...(rawHero as object),
+    eyebrow: rawHero?.eyebrow ?? shortName,
+    title: rawHero?.title ?? name,
+    lead: rawHero?.lead ?? summary,
+    image: rawHero?.image ?? cardImage,
+    ctas: rawHero?.ctas ?? (closingCta.cta ? [closingCta.cta] : []),
+  }
 
   return {
-    ...(row.data as object),
+    ...data,
     slug: row.slug,
     href: row.href,
     pillar: row.pillar as Pillar,
     audience: (row.audience ?? 'all') as Audience,
     kind: row.kind as Treatment['kind'],
     seo,
+    name,
+    shortName,
+    summary,
+    cardImage,
+    hero,
+    faqs: (data.faqs as Treatment['faqs'] | undefined) ?? [],
+    closingCta,
   } as Treatment
 }
 

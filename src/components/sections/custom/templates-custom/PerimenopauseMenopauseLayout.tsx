@@ -4,7 +4,7 @@ import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import { pillars } from '@/content/treatments'
-import type { Treatment } from '@/types/content'
+import type { Testimonial, Treatment } from '@/types/content'
 import { causesIcons, pathwayIcons } from '../compontents-custom/perimenopause/perimenopause-icons'
 import { LifestyleAndEvaluation } from '../compontents-custom/perimenopause/LifestyleAndEvaluation'
 import { SymptomsIntroCards } from '../compontents-custom/perimenopause/SymptomsIntroCards'
@@ -12,6 +12,7 @@ import { TextImagePanel } from '../compontents-custom/perimenopause/TextImagePan
 import { TreatmentPathwaysPanel } from '../compontents-custom/perimenopause/TreatmentPathwaysPanel'
 import { SymptomsOutcomesGrid } from '../compontents-custom/shared/SymptomsOutcomesGrid'
 import { MidPageCTA } from '../compontents-custom/shared/MidPageCTA'
+import { PremenopauseCta } from '../../PremenopauseCta'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
@@ -19,7 +20,32 @@ interface TreatmentTemplateProps {
 
 export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
-  const testimonials = await getPublishedTestimonials()
+  const testimonials: Testimonial[] = [
+    {
+      id: '1',
+      source: 'google',
+      author: 'E.H.',
+      quote: 'Dr. Collins has been an absolute delight and so informative and patient. He has a great personality and is very passionate about his profession to inform, teach, guide, and give his patients the most beneficial advice for good health and longevity. He has been very helpful for both my Husband and myself. The staff is very helpful and friendly as well.',
+    },
+    {
+      id: '2',
+      source: 'google',
+      author: 'S.R.',
+      quote: 'All members of the staff are absolutely wonderful. They are polite and address any questions or concerns you have in a professional approach. They have literally changed my life for the better.',
+    },
+    {
+      id: '3',
+      source: 'google',
+      author: 'J.F.',
+      quote: 'Every experience has been excellent. All questions and concerns were answered. I\'ve recommended them to my family and friends.',
+    },
+    {
+      id: '4',
+      source: 'google',
+      author: 'C.G.',
+      quote: 'Great employees to work with. The staff is very knowledgeable and explain all processes.',
+    }
+  ]
 
   return (
     <>
@@ -113,6 +139,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
       <SymptomsOutcomesGrid
         title="What Causes Menopausal Symptoms?"
         wide
+        align='center'
         titleAs="heading"
         items={[
           {
@@ -142,13 +169,15 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         ]}
       />
 
+      <div className="lg-flexspace-100" />
+
       <TreatmentPathwaysPanel
         title="Menopause Treatment Pathways Based on Your Symptoms"
         lead="Your symptoms can help guide the right treatment approach. Depending on your needs, your care plan may include one or more of the following services."
         pathways={[
           { icon: pathwayIcons[0], title: 'Hormone Therapy For Women', href: '/bioidentical-hormone-replacement-therapy/female' },
-          { icon: pathwayIcons[1], title: 'Sexual Wellness', href: '/rejuvenation-enhancement' },
-          { icon: pathwayIcons[2], title: 'Medical Weight Loss', href: '/concierge-medical-weight-loss' },
+          { icon: pathwayIcons[1], title: 'Sexual Wellness', href: '/rejuvenation-enhancement/female' },
+          { icon: pathwayIcons[2], title: 'Medical Weight Loss', href: '/concierge-medical-weight-loss/female' },
         ]}
       />
 
@@ -171,15 +200,19 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
 
       <MidPageCTA
         backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-35-bg.jpg"
-        backgroundPosition="center top"
+        backgroundPosition="80% center"
         title="Ready To Get Answers?"
         body="You deserve more than temporary fixes or generic advice. Our team can help identify the root causes behind your symptoms and create a plan designed specifically for you."
         ctaLabel="Schedule Hormone Testing"
-        ctaHref="/bioidentical-hormone-replacement-therapy/female"
+        ctaHref="#"
         align="full"
+        gradient={false}
       />
 
+<div className="bg-[#F7F8F2] py-10">
+
       <TextImagePanel
+      bg='bg-[#F7F8F2]'
         image={{
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338393/What_Patients_Often_vuuuis.jpg',
           alt: 'A woman enjoying renewed energy and confidence',
@@ -196,14 +229,18 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
           'Easier Weight Management',
           'Greater Confidence And Overall Well Being',
         ]}
+        
       />
+</div>
 
       {testimonials.length ? (
         <TestimonialSet
+        height='680'
           eyebrow="Patient testimonials"
           title="What our patients say"
           testimonials={testimonials}
           background="alt"
+          backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/testimonial-17-bg.jpg"
         />
       ) : null}
 
@@ -211,7 +248,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         <FAQAccordion title="Menopause and Perimenopause FAQs" items={treatment.faqs} />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <PremenopauseCta {...treatment.closingCta} backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-36-bg.jpg" />
     </>
   )
 }

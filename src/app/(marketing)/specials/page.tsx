@@ -1,4 +1,5 @@
 import { Header } from '@/components/layout/Header'
+import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { SpecialsGrid } from '@/components/sections/SpecialsGrid'
 import { SpecialsClosingCTA } from '@/components/sections/custom/compontents-custom/specials/SpecialsClosingCTA'
@@ -15,6 +16,10 @@ export default function SpecialsPage() {
       <HeroEditorial
         {...specialsContent.hero}
         hideDefaultCta
+        centerUntilTablet
+        containerOverride="py-35 md:py-50 lg:pt-[201px] lg:pb-[94px]"
+        overlay={false}
+        overideMinheight="lg:min-h-auto"
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Specials', href: '/specials' }]}
       />
 
@@ -25,6 +30,8 @@ export default function SpecialsPage() {
         body="Contact us today to speak with our team."
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
         backgroundImage="/images/hero-16-bg.jpg"
+        centered
+        contentMaxWidth={620}
       />
     </>
   )

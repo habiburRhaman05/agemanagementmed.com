@@ -15,7 +15,7 @@ interface TreatmentTemplateProps {
 
 /** Shared across the men's/women's light card per the source design — same asset, no gendered variant. */
 const DATA_DRIVEN_IMAGE = {
-  src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341630/photo-content-86-img_vh2zio.jpg',
+  src: '/images/photo-content-86-img.jpg',
   alt: 'Hands preparing a precision peptide injection pen',
 }
 
@@ -26,8 +26,11 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
     <>
       <HeroEditorial
         {...treatment.hero}
+        image={{ ...treatment.hero.image, src: '/images/banner-37-bg.jpg' }}
         title="GLP-1 Microdosing: Precision Metabolic Optimization"
         lead="A low-dose therapy to mute food noise, reduce inflammation, and enhance metabolic flexibility while minimizing GLP-1 side effects."
+        primaryCtaLabel="SCHEDULE A CONSULTATION"
+        mobileFocalPoint="75% center"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },
@@ -38,7 +41,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
       <MetabolicOverviewCards
         darkCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785346975/microdosing_xm7d8c.jpg',
+            src: '/images/photo-content-88-img.jpg',
             alt: 'A woman measuring her waist to track metabolic progress',
           },
           heading: 'A Sophisticated Approach To Sustainable Metabolic Health',
@@ -90,7 +93,7 @@ export async function GlpMicrodosingFemaleLayout({ treatment }: TreatmentTemplat
       />
 
       <MidPageCTA
-        backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-33-bg.jpg"
+        backgroundImage="/images/hero-33-bg.jpg"
         backgroundPosition="72% top"
         title="Ready to Feel Like Yourself Again?"
         body="Take the next step toward personalized hormone optimization and long-term wellness."

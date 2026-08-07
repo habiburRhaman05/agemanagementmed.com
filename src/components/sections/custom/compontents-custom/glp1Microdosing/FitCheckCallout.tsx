@@ -6,6 +6,7 @@ import type { Media } from '@/types/content'
 
 export interface FitCheckCalloutProps {
   image: Media
+  imagePosition?: string
   heading: string
   lead?: string
   points: string[]
@@ -14,12 +15,14 @@ export interface FitCheckCalloutProps {
 }
 
 /**
- * "Is Microdosing The Right Fit For You?" — full-bleed, image left 50% /
- * dark navy right 50%, teal arrow bullets, teal pill CTA button.
- * Matches the reference screenshot exactly.
+ * "Is Microdosing the Right Fit for You?" — full-bleed `.photo-content-d.full-img`
+ * with no container wrapper (image and copy both run edge to edge). Ported
+ * 1:1 from https://www.agemanagementmed.com/glp-1-microdosing/female/;
+ * styling lives in src/app/legacy.css.
  */
 export function FitCheckCallout({
   image,
+  imagePosition = '50% 25%',
   heading,
   lead,
   points,
@@ -45,13 +48,16 @@ export function FitCheckCallout({
         <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-12 sm:px-10 lg:px-14 lg:py-16">
 
           {/* Heading */}
-          <h2 className="font-display text-[20px] font-medium leading-snug text-white lg:text-[24px]">
+          <h2
+            className="font-display leading-snug text-white text-[36px]! sm:text-[48px]!"
+            style={{ fontWeight: 500, letterSpacing: '-0.025em' }}
+          >
             {heading}
           </h2>
 
           {/* Lead */}
           {lead && (
-            <p className="mt-3 text-[14px] font-normal text-white">
+            <p className="mt-3 text-white" style={{ fontSize: 16, fontWeight: 400 }}>
               {lead}
             </p>
           )}
@@ -59,7 +65,7 @@ export function FitCheckCallout({
           {/* Bullet points */}
           <ul className="mt-3 space-y-2">
             {points.map((point) => (
-              <li key={point} className="flex items-start gap-2 text-[14px] font-normal text-white">
+              <li key={point} className="flex items-start gap-2 text-white" style={{ fontSize: 16, fontWeight: 400 }}>
                 <ArrowRight className="mt-0.5 size-3 shrink-0 text-[#519B98]" aria-hidden />
                 <span>{point}</span>
               </li>
@@ -72,7 +78,6 @@ export function FitCheckCallout({
               {ctaLabel}
             </BookAppointmentButton>
           </div>
-
         </div>
       </div>
     </section>

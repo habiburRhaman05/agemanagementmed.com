@@ -65,9 +65,20 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   }
 
   const { data, seo, ...columns } = parsed.data
-  const mergedData = data
-    ? JSON.parse(JSON.stringify({ ...(existing.data as object), ...data }))
-    : undefined
+  // Normalize `existing.data` to a plain object before merging — a legacy row
+  // can hold a JSON *string* (or a string-spread object), which would corrupt
+  // the stored blob if spread raw here.
+  let existingData: object = {}
+  if (existing.data && typeof existing.data === 'object' && !Array.isArray(existing.data)) {
+    existingData = existing.data as object
+  } else if (typeof existing.data === 'string') {
+    try {
+      existingData = JSON.parse(existing.data) as object
+    } catch {
+      existingData = {}
+    }
+  }
+  const mergedData = data ? JSON.parse(JSON.stringify({ ...existingData, ...data })) : undefined
 
   const row = await prisma.treatment.update({
     where: { id },

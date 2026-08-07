@@ -193,26 +193,10 @@
     border-radius: 2px;
   }
 
-  ::selection {
-    background: var(--color-sage-100);
-    color: var(--color-ink-900);
-  }
 
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--surface-page);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--border-subtle);
-    border-radius: 6px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-sage-400);
-  }
+
+
+ 
 
   /* Filmic grain — the one ambient texture in the system. Fixed, inert,
      nearly invisible; it's what keeps flat ivory fields from reading "template". */
@@ -346,6 +330,22 @@
   animation: hero-zoom 22s ease-in-out infinite alternate;
 }
 
+/* PatientJourney vertical timeline dash — ::before background-image, positioned via Tailwind before: utilities on the host element. */
+.timeline-dash::before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='20' viewBox='0 0 2 20'%3E%3Cpath d='M1 0V20' stroke='%232F4564' stroke-dasharray='10 10'/%3E%3C/svg%3E");
+  background-repeat: repeat-y;
+  z-index: 1;
+  margin-top: 90px;
+  height: 587px;
+}
+
+@media (max-width: 1023px) {
+  .timeline-dash::before {
+    display: none;
+  }
+}
+
 
 .bg-canvas-100 {
     background-color: #f5f5f5;
@@ -437,5 +437,13 @@
 
   .line {
     min-height: 16px;
+  }
+}
+
+/* Shift the hero background image on mobile when a per-page mobile focal
+   point is provided (HeroEditorial's `mobileFocalPoint` prop). */
+@media only screen and (max-width: 639.98px) {
+  .hero-editorial-img {
+    object-position: var(--hero-object-position-mobile, 85% center) !important;
   }
 }

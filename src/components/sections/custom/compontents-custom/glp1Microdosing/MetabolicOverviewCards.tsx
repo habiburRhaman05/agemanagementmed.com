@@ -39,10 +39,10 @@ export interface MetabolicOverviewCardsProps {
  */
 export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOverviewCardsProps) {
   return (
-    <div className="py-10 md:py-20">
-      
+    <>
+      <div className="lg-flexspace-100" />
 
-      <div id="photo-content-c" className="style-2">
+      <div id="photo-content-c" className="style-2 relative overflow-hidden">
         <div className="radial-gradient" aria-hidden />
 
         <div className="lg-max-width-1440">
@@ -57,15 +57,19 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
                 />
 
                 <div className="content lg-col-xl-7">
-                  <h2 className="lg-title">{darkCard.heading}</h2>
+                  <h2 className="lg-title text-[36px]! sm:text-[48px]!" style={{ fontWeight: 500, letterSpacing: '-0.025em' }}>
+                    {darkCard.heading}
+                  </h2>
 
                   <div className="lg-text">
                     {darkCard.paragraphs.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
+                      <p key={paragraph} style={{ fontSize: 16, fontWeight: 400,   }}>
+                        {paragraph}
+                      </p>
                     ))}
 
                     {darkCard.focusLabel ? (
-                      <p style={{ fontSize: 20 }}>
+                      <p style={{ fontSize: 16, fontWeight: 400,   }}>
                         <strong>{darkCard.focusLabel}</strong>
                       </p>
                     ) : null}
@@ -73,7 +77,7 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
                     <div className="lg-list-arrow-right">
                       <ul>
                         {darkCard.focusItems.map((item) => (
-                          <li key={item.title}>
+                          <li key={item.title} style={{ fontSize: 16, fontWeight: 400,   }}>
                             <strong>{item.title}:</strong>
                             <br />
                             {item.body}
@@ -95,12 +99,17 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
                   />
 
                   <div className="content lg-col-xl-6 lg-order-xl-1">
-                    <h2 className="lg-title">{lightCard.heading}</h2>
+                    <h2 className="lg-title text-[36px]! sm:text-[48px]!" style={{ fontWeight: 500, letterSpacing: '-0.025em' }}>
+                      {lightCard.heading}
+                    </h2>
 
                     <div className="lg-text">
-                      <p>{lightCard.paragraph}</p>
+                      <p style={{ fontSize: 16, fontWeight: 400,   }}>{lightCard.paragraph}</p>
 
-                      <div className="lg-list-icon top-icon" style={{ marginBottom: 20 }}>
+                      <div
+                        className="lg-list-icon top-icon"
+                        style={{ marginBottom: 20, fontSize: 16, fontWeight: 400,   }}
+                      >
                         <ul>
                           {lightCard.icons.map((item) => (
                             <li
@@ -115,7 +124,7 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
                       </div>
 
                       {lightCard.markersLabel ? (
-                        <p>
+                        <p style={{ fontSize: 16, fontWeight: 400,   }}>
                           <strong>{lightCard.markersLabel}</strong>
                         </p>
                       ) : null}
@@ -123,7 +132,9 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
                       <div className="lg-list-arrow-right">
                         <ul>
                           {lightCard.markers.map((marker) => (
-                            <li key={marker}>{marker}</li>
+                            <li key={marker} style={{ fontSize: 16, fontWeight: 400,   }}>
+                              {marker}
+                            </li>
                           ))}
                         </ul>
                       </div>
@@ -135,6 +146,8 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
           </div>
         </div>
       </div>
-    </div>
+
+      <div className="lg-flexspace-100" />
+    </>
   )
 }

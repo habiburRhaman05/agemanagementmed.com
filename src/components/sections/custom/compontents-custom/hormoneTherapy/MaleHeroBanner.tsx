@@ -14,7 +14,6 @@ export interface MaleHeroBannerProps {
   title?: string
   lead?: string
   image?: Media | { src: string; alt?: string }
-  videoSource?: string
   className?: string
 }
 
@@ -32,57 +31,39 @@ export function MaleHeroBanner({
     src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/hero-banner-bg.jpg',
     alt: 'Bioidentical Hormone Replacement Therapy for Men',
   },
-  videoSource = '<iframe src="https://player.vimeo.com/video/1080951303?autoplay=1" allow="autoplay; fullscreen" allowfullscreen></iframe>',
   className,
 }: MaleHeroBannerProps) {
   const imageSrc = image?.src || '/images/treatments/bioidentical-hormone-replacement-therapy/male/hero-banner-bg.jpg'
-  const imageAlt = image?.alt || title
+  const [videoOpen, setVideoOpen] = useState(false)
 
   return (
     <section
       className={cn(
-        'relative isolate flex flex-col justify-center overflow-hidden min-h-[520px] sm:min-h-[580px] md:min-h-[620px] py-20 sm:py-28 md:py-36 bg-slate-900',
+        'relative isolate flex flex-col justify-center overflow-hidden bg-slate-900 bg-cover pt-70 pb-45 lg:pb-68.75',
         className
       )}
+      style={{
+        backgroundImage: `url(${imageSrc})`,
+        backgroundPosition: 'center top',
+      }}
     >
-      {/* Hero Background Image */}
-      {imageSrc.startsWith('http') ? (
-        /* eslint-disable-next-line @next/next/no-img-element */
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          className="absolute inset-0 w-full h-full object-cover object-center z-0"
-        />
-      ) : (
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center z-0"
-        />
-      )}
-
-      {/* Hero Background Image */}
-
-      <Container className="relative z-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
-        <div className="max-w-xl text-left">
+      <Container className="relative z-20 px-3! lg-container">
+        <div className="max-w-2xl w-full text-center mx-auto lg:mx-0 lg:text-left">
           {/* Main Title */}
           <h1
-            className="text-3xl sm:text-4xl md:text-[46px] lg:text-[48px] font-normal leading-[1.12] text-white text-left font-['Bodoni_Moda',var(--font-bodoni),serif] max-w-lg mb-3.5"
+            className="text-[40px] sm:text-[46px] lg:text-[56px] font-medium leading-[1.12] text-white text-center lg:text-left font-['Bodoni_Moda',var(--font-bodoni),serif] max-w-2xl mb-3.5"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xs sm:text-sm md:text-[15px] font-normal leading-normal text-white/95 text-left mb-7 max-w-md">
+          <p className="text-[18px] lg:text-[20px] font-normal leading-normal text-white/95 text-center lg:text-left mb-7 max-w-md mx-auto lg:mx-0">
             {lead}
           </p>
 
           {/* Action Buttons Row */}
-          <div className="flex flex-row items-center justify-start gap-3.5 flex-wrap">
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-3.5">
             {/* Primary CTA (Start Today) */}
             <BookAppointmentButton
               variant="teal"
@@ -93,7 +74,7 @@ export function MaleHeroBanner({
             </BookAppointmentButton>
 
             {/* Secondary CTA (Watch Video Modal) */}
-            <Dialog>
+            <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
               <DialogTrigger asChild>
                 <Button
                   size="lg"
@@ -104,11 +85,20 @@ export function MaleHeroBanner({
                   <span>WATCH VIDEO</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-5xl p-1 bg-black border-none max-h-[90vh]">
-                <div
-                  className="relative w-full aspect-video overflow-hidden rounded-lg [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:h-full [&_iframe]:w-full"
-                  dangerouslySetInnerHTML={{ __html: videoSource }}
-                />
+              <DialogContent className="w-[calc(100%-1.5rem)] sm:max-w-5xl max-h-[90dvh] border-none bg-black p-0 overflow-hidden !rounded-none sm:!rounded-none md:!rounded-none lg:!rounded-none shadow-2xl [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/80 [&>button]:border-none [&>button]:size-8 [&>button]:top-3 [&>button]:right-3 [&>button]:z-30 [&>button]:rounded-full">
+                {/* Radix requires a DialogTitle for a11y; visually hidden here */}
+                <DialogHeader className="sr-only">
+                  <DialogTitle>Intro video</DialogTitle>
+                </DialogHeader>
+                <div className="relative aspect-video w-full overflow-hidden bg-black !rounded-none">
+                  <iframe
+                    title="vimeo-player"
+                    src="https://player.vimeo.com/video/1080951303?h=91f29206b0&autoplay=1"
+                    className="absolute inset-0 h-full w-full border-none bg-black"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </DialogContent>
             </Dialog>
           </div>

@@ -25,7 +25,7 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
   const testimonials = await getPublishedTestimonials()
 
   return (
-    <>
+    <div className="bg-[#F7F8F2]">
       <HeroImmersive {...content.hero} />
 
       {/* The source lifts the awards band up over the banner by 80px. */}
@@ -33,7 +33,10 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
 
       <CredentialStrip
         title="Best In Savannah Since 2010"
-        lead="Savannah Age Management Medicine (SAMM) was founded in 2010 by Harry S. Collins, DO, FACOG, with a clear vision: to move beyond treating symptoms and focus on restoring energy, balance, and long-term health. Through his expertise in hormone therapy and modern wellness, Dr. Collins established SAMM as a trusted provider in Savannah and surrounding areas."
+        lead={[
+          'Savannah Age Management Medicine (SAMM) was founded in 2010 by Harry S. Collins, DO, FACOG, with a clear vision: to move beyond treating symptoms and focus on restoring energy, balance, and long-term health. Through his expertise in hormone therapy and modern wellness, Dr. Collins established SAMM as a trusted provider in Savannah and surrounding areas.',
+          'His patient-centered approach continues to define the standard of care at SAMM today, shaping a practice rooted in intention, personalization, and lasting results.',
+        ]}
         awards={expertsContent.awards}
       />
 
@@ -81,13 +84,13 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
         cta={{ label: 'Our experts', href: '/our-experts' }}
       />
 
-      <FAQAccordion eyebrow="Frequently asked" title="Common questions" items={content.faqs} />
+      {/* <FAQAccordion eyebrow="Frequently asked" title="Common questions" items={content.faqs} /> */}
 
       <ClosingCTA
         title="Ready to transform your health?"
         body="Take the first step towards a healthier, more vibrant you."
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
       />
-    </>
+    </div>
   )
 }

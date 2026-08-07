@@ -34,16 +34,16 @@ export const specialsContent = {
   specials: [
     {
       id: 'sharing-caring',
-      window: 'APRIL-JUNE:',
+      window: 'April-June:',
       title: 'Sharing Is Caring!',
       description:
         'DOUBLE The Referral Rewards! All Patients Who Refer Other Patients Will Receive $100 Instead Of $50 To Their Account, Through The End Of June.',
       image: {
-        src: 'https://picsum.photos/seed/samm-referral-special/800/900',
+        src: '/images/grid-3-img.jpg',
         alt: 'Refer a friend — double rewards',
       },
       locations: ['savannah-pooler', 'statesboro'],
-      ctaLabel: 'CLAIM \u2192',
+      ctaLabel: 'Claim',
     },
   ] satisfies Special[],
 }

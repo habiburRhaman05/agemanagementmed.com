@@ -29,11 +29,15 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
         {...treatment.hero}
         title="GLP-1 Microdosing: Precision Metabolic Optimization"
         lead="A low-dose therapy to mute food noise, reduce inflammation, and enhance metabolic flexibility while minimizing GLP-1 side effects."
+        primaryCtaLabel="SCHEDULE A CONSULTATION"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },
           { label: treatment.shortName, href: treatment.href },
         ]}
+        overideMinheight="lg:min-h-auto"
+        // containerOverride='py-35 md:py-50 lg:pt-40  lg:pb-30'
+        overlay={false}
       />
 
       <Reveal>

@@ -66,19 +66,17 @@ export function PatientBenefitsSection({
           </div>
 
           {/* Right Column: Text Content */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center text-center lg:text-left">
             {/* Main Title */}
             <h2
-              className="text-3xl sm:text-4xl md:text-[38px] font-normal leading-tight text-[#1C274C] mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-[36px] font-medium leading-tight text-[#111214] mb-3 font-display"
             >
               {title}
             </h2>
 
             {/* Subtitle */}
             <h3
-              className="text-xl sm:text-2xl font-normal leading-snug text-[#1C274C] mb-6 max-w-md font-['Bodoni_Moda',var(--font-bodoni),serif]"
-              style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+              className="text-[16px] font-normal leading-snug text-[#111214] mb-6 max-w-md mx-auto lg:mx-0 font-display"
             >
               {subtitle}
             </h3>
@@ -86,7 +84,7 @@ export function PatientBenefitsSection({
             {/* Benefits List */}
             <ul className="space-y-3">
               {benefits.map((benefit, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-normal">
+                <li key={idx} className="flex items-start justify-center lg:justify-start gap-2.5 text-[16px] text-[#111214] font-normal">
                   <span className="text-[#519B99] shrink-0 font-sans font-medium">→</span>
                   <span>{benefit}</span>
                 </li>

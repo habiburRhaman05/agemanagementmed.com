@@ -25,7 +25,7 @@ function ProgramCard({ item }: { item: ProgramItem }) {
         />
         <div className="lg-title" dangerouslySetInnerHTML={{ __html: item.title }} />
         <div className="lg-text">
-          <p>{item.description}</p>
+          <p style={{ fontSize: 16, fontWeight: 400,   }}>{item.description}</p>
         </div>
       </div>
     </div>
@@ -60,10 +60,12 @@ export function ProgramIncludedGrid({
       <div className="lg-content-d">
         <div className="lg-max-width-1440">
           <div className="lg-container">
-            <h2 className="lg-title">{title}</h2>
+            <h2 className="lg-title text-[36px]! sm:text-[48px]!" style={{ fontWeight: 500, letterSpacing: '-0.025em' }}>
+              {title}
+            </h2>
             {lead ? (
               <div className="lg-text lg-max-width-800">
-                <p style={{ fontSize: 20 }}>{lead}</p>
+                <p style={{ fontSize: 16, fontWeight: 400,   }}>{lead}</p>
               </div>
             ) : null}
           </div>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import type { CSSProperties } from 'react'
 
 import BookingModal from '@/components/shared/BookingModal'
 import { homeMedia } from '@/content/pages/home-media'
@@ -10,6 +11,10 @@ import type { ClosingCtaData } from '@/types/content'
 interface ClosingCTAProps extends ClosingCtaData {
   /** Background photo for the band; defaults to the shared placeholder. */
   backgroundImage?: string
+  /** Background alignment for the band photo. */
+  backgroundPosition?: string
+  /** Extra class(es) added to the .hero-bg wrapper. */
+  className?: string
   /** Small print under the CTA — e.g. the treatment pages' results disclaimer. */
   note?: string
   /** Caps the text column width (px) so the title wraps onto multiple lines instead of running the full container width. Opt-in — omit to keep the existing full-width behavior. */
@@ -33,6 +38,8 @@ export function ClosingCTA({
   cta,
   note,
   backgroundImage = homeMedia.closingBackground,
+  backgroundPosition,
+  className,
   contentMaxWidth,
   centered = false,
 }: ClosingCTAProps) {
@@ -43,10 +50,13 @@ export function ClosingCTA({
   }
 
   return (
-    <div className="hero-bg" style={{ backgroundImage: `url('${backgroundImage}')` }}>
+    <div
+      className={`hero-bg${className ? ` ${className}` : ''}`}
+      style={{ backgroundImage: `url('${backgroundImage}')`, backgroundPosition }}
+    >
       <div className="lg-max-width-1440">
         <div className="lg-container">
-          <div className="content" style={contentStyle}>
+          <div className="content text-center lg:text-left" style={contentStyle}>
             <h2 className="lg-title">{title}</h2>
 
             <div className="lg-text">

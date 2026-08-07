@@ -48,6 +48,7 @@ export interface TestimonialSetProps {
   title: string
   lead?: string
   width?: string
+  height?: string
   testimonials: Testimonial[]
   background?: 'page' | 'alt' | 'accent'
   /** Background photo for the band; defaults to the shared placeholder. */
@@ -64,6 +65,7 @@ export function TestimonialSet({
   eyebrow,
   title,
   lead,
+  height,
   testimonials,
   backgroundImage = homeMedia.testimonialsBackground,
   ctaText = 'SEE ALL REVIEWS',
@@ -82,33 +84,33 @@ export function TestimonialSet({
 
   return (
     <section
-      id="testimonial-d"
-      className="relative w-full min-h-screen min-h-[100vh] flex flex-col justify-center overflow-hidden bg-cover bg-[position:right_center] py-12 sm:py-16 md:py-20"
+      className={cn(
+        'relative w-full overflow-hidden bg-cover bg-[position:right_center] py-12 sm:py-16 md:py-20',
+        height ? 'h-[640px]' : 'min-h-screen'
+      )}
       style={{
         backgroundImage: `url('${backgroundImage}')`,
-        backgroundPosition: 'right center',
+        backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Simple image overlay */}
-      <div className="absolute inset-0 bg-[#071946]/50 pointer-events-none z-0" />
+      {/* Dark overlay over background photo */}
+      <div className="absolute inset-0 bg-[#0b1e3e]/20 z-0" aria-hidden />
 
-      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-16 flex flex-col justify-between min-h-[82vh]">
-        {/* Carousel & Content on Left Side */}
-        <div className="max-w-[560px] w-full">
+      {/* Inner wrapper – grid layout for vertical centering */}
+      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-16 h-full grid grid-rows-[1fr_auto]">
+        {/* Main content – centered vertically, left-aligned horizontally */}
+        <div className="max-w-[560px] w-full self-center justify-self-start">
           {/* Intro text */}
           <div className="text-white mb-6">
             {eyebrow ? (
-              <h2
-                className="text-xs sm:text-sm uppercase tracking-[0.15em] text-cyan-200/90 mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
-              >
+              <p className="text-[14px] uppercase tracking-[0.15em] text-white mb-2">
                 {eyebrow}
-              </h2>
+              </p>
             ) : null}
             <h3
-              className="text-3xl sm:text-4xl lg:text-[46px] leading-tight text-white mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+              className="text-3xl sm:text-4xl lg:text-[48px] leading-tight text-white mb-3 font-['Bodoni_Moda',var(--font-bodoni),serif]"
               style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
             >
               {title}
@@ -126,7 +128,7 @@ export function TestimonialSet({
               <>
                 <button
                   type="button"
-                  className="absolute -left-7 sm:-left-10 md:-left-12 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
+                  className="absolute -left-3 sm:-left-6 lg:-left-10 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
                   onClick={() => go(-1)}
                   aria-label="Previous testimonial"
                 >
@@ -135,7 +137,7 @@ export function TestimonialSet({
 
                 <button
                   type="button"
-                  className="absolute -right-7 sm:-right-10 md:-right-12 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
+                  className="absolute -right-3 sm:-right-6 lg:-right-10 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white transition-opacity p-1 cursor-pointer focus:outline-none"
                   onClick={() => go(1)}
                   aria-label="Next testimonial"
                 >
@@ -152,7 +154,7 @@ export function TestimonialSet({
               </div>
 
               {/* Quote content */}
-              <div className="text-slate-800 text-[13px] sm:text-[14px] leading-relaxed font-normal space-y-3 mb-6">
+              <div className="text-slate-800 text-[16px] leading-relaxed font-normal space-y-3 mb-6">
                 {paragraphs.map((para, i) => (
                   <p key={i}>{para}</p>
                 ))}
@@ -182,7 +184,7 @@ export function TestimonialSet({
         </div>
 
         {/* Full-width Bottom Bar: Carousel dashes on LEFT, SEE ALL REVIEWS button on RIGHT */}
-        <div className="flex items-center justify-between gap-4 mt-8 w-full">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 w-full">
           {/* Left: Carousel dashes */}
           {testimonials.length > 1 ? (
             <div className="flex items-center gap-1.5">
