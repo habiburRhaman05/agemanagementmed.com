@@ -48,7 +48,6 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
 
       {treatment.process ? (
         <ProgramStepsTimeline
-          eyebrow={treatment.process.eyebrow}
           title={treatment.process.title}
           steps={treatment.process.steps}
           stepImages={[
