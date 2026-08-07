@@ -45,7 +45,7 @@ export function TransformHealthBanner({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="max-w-2xl text-left"
+          className="max-w-2xl text-center md:text-left"
         >
           {/* Headline */}
           <h2

@@ -182,8 +182,7 @@ export function NewsAndMediaSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-[24px] p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.035)] border border-slate-100 flex flex-col md:flex-row items-center gap-6 sm:gap-8 hover:shadow-lg transition-all duration-300 group cursor-pointer"
-              style={{ padding: '80px 100px' }}
+              className="bg-white rounded-[24px] p-6 sm:p-8 md:p-10 lg:p-[80px_100px] shadow-[0_8px_30px_rgba(0,0,0,0.035)] border border-slate-100 flex flex-col md:flex-row items-center gap-6 sm:gap-8 hover:shadow-lg transition-all duration-300 group cursor-pointer"
             >
               {/* Left Article Image */}
               {article.image?.src ? (
@@ -225,8 +224,7 @@ export function NewsAndMediaSection({
                   </p>
                 ) : null}
 
-                <span className="inline-flex items-center gap-2 rounded-full bg-[#519B99] px-6 py-2.5 text-[16px] font-bold uppercase tracking-wider text-white shadow-xs transition-all duration-200 group-hover:bg-[#448b89] group-hover:shadow-md"
-                  style={{ padding: '16px 32px' }}>
+                <span className="inline-flex items-center gap-2 rounded-full bg-[#519B99] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-xs transition-all duration-200 group-hover:bg-[#448b89] group-hover:shadow-md sm:px-6 sm:py-2.5 sm:text-[16px]">
                   <span>READ FULL ARTICLE HERE</span>
                   <svg width="22" height="12" viewBox="0 0 22 12" fill="none" aria-hidden="true">
                     <path
