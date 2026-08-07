@@ -1,13 +1,18 @@
 'use client'
 
 import { m } from 'framer-motion'
-import { HeartHandshake, Microscope, ShieldCheck, Sparkles } from 'lucide-react'
 import type { CSSProperties } from 'react'
 
 import { Container } from '@/components/shared/Container'
 import { IconRenderer } from '@/components/shared/IconRenderer'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
+import {
+  HeartDropsIcon,
+  LeafSparkleIcon,
+  SpaHandsIcon,
+  WellnessShieldIcon,
+} from '@/components/ui/icons/wellness-icons'
 
 import { cn } from '@/lib/utils'
 import type { BenefitListData, DesignOverride } from '@/types/content'
@@ -25,11 +30,12 @@ interface BenefitListProps extends BenefitListData {
   introTitle?: string
   /** Optional multi-paragraph intro rendered above the card (outside the white card). */
   introParagraphs?: string[],
-  overRideWidth?: string
+  overRideWidth?: string,
+  paraWidth?: string
 }
 
-/** Array of Lucide outline icons for card items if item.icon is omitted. */
-const DEFAULT_ICONS = [HeartHandshake, Sparkles, ShieldCheck, Microscope]
+/** Custom SVG icons used for card items when item.icon is omitted. */
+const DEFAULT_ICONS = [SpaHandsIcon, LeafSparkleIcon, HeartDropsIcon, WellnessShieldIcon]
 
 /** Default 9 award logos for the "Recognized For Excellence" bottom section */
 const DEFAULT_AWARDS = [
@@ -68,6 +74,7 @@ export function BenefitList({
   introTitle,
   introParagraphs,
   overRideWidth,
+  paraWidth
 }: BenefitListProps) {
   const useCards = cardStyle ?? (columns === 2 && !numbered)
 
@@ -254,7 +261,13 @@ export function BenefitList({
               ) : null}
 
               {awardsLead ? (
-                <p className="text-base text-[#1C274C] font-normal leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
+                <p
+                  className={cn(
+                    'text-base text-[#1C274C] font-normal leading-relaxed mx-auto mb-10 sm:mb-12',
+                    !paraWidth && 'max-w-2xl'
+                  )}
+                  style={paraWidth ? { maxWidth: paraWidth } : undefined}
+                >
                   {awardsLead}
                 </p>
               ) : null}

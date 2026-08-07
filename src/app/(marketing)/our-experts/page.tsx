@@ -96,6 +96,7 @@ console.log(allNews);
           'That philosophy continues to shape every treatment and patient experience today.',
         ]}
         overRideWidth="max-w-3xl"
+        paraWidth="max-w-3xl"
       />
 
 
