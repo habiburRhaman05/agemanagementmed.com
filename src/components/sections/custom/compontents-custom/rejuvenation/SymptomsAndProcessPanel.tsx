@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
@@ -101,12 +102,16 @@ export function SymptomsAndProcessPanel({
               </ul>
 
               <div className="mt-10 flex justify-center">
-                <Button asChild size="lg">
-                  <Link href={ctaHref}>
-                    {ctaLabel}
-                    <ArrowRight className="size-4" aria-hidden />
-                  </Link>
-                </Button>
+                {ctaHref === '/book-appointment' ? (
+                  <BookAppointmentButton>{ctaLabel}</BookAppointmentButton>
+                ) : (
+                  <Button asChild size="lg">
+                    <Link href={ctaHref}>
+                      {ctaLabel}
+                      <ArrowRight className="size-4" aria-hidden />
+                    </Link>
+                  </Button>
+                )}
               </div>
             </div>
           </Reveal>

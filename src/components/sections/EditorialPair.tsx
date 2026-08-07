@@ -9,6 +9,7 @@ import { Section } from '@/components/shared/Section'
 import { AspectImage } from '@/components/ui/AspectImage'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import type { EditorialPairData } from '@/types/content'
 
 interface EditorialPairProps extends EditorialPairData {
@@ -79,9 +80,13 @@ export function EditorialPair({
             ) : null}
 
             {cta ? (
-              <Button asChild variant="secondary" className="mt-10 max-w-content">
-                <Link href={cta.href}>{cta.label}</Link>
-              </Button>
+              cta.href === '/book-appointment' ? (
+                <BookAppointmentButton className="mt-10">{cta.label}</BookAppointmentButton>
+              ) : (
+                <Button asChild variant="secondary" className="mt-10 max-w-content">
+                  <Link href={cta.href}>{cta.label}</Link>
+                </Button>
+              )
             ) : null}
           </Reveal>
 

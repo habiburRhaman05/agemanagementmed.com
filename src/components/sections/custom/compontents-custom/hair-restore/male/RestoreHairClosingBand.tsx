@@ -1,5 +1,7 @@
-import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
+import { ArrowRight } from 'lucide-react'
+
 import { Container } from '@/components/shared/Container'
+import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 
 export interface RestoreHairClosingBandProps {
   title?: string
@@ -42,13 +44,13 @@ export function RestoreHairClosingBand({
 
           <p className="mt-4 text-sm sm:text-base leading-relaxed text-white/90">{body}</p>
 
-          <Link
+          <LegacyCtaLink
             href={ctaHref}
             className="mt-7 inline-flex h-12 items-center gap-2 rounded-full bg-[#519B99] px-6 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#448b89] sm:h-14 sm:px-9 sm:text-sm"
           >
             {ctaLabel}
             <ArrowRight className="size-4" aria-hidden />
-          </Link>
+          </LegacyCtaLink>
 
           {disclaimer ? (
             <p className="mt-6 max-w-lg text-xs italic leading-relaxed text-white/70">*{disclaimer}*</p>

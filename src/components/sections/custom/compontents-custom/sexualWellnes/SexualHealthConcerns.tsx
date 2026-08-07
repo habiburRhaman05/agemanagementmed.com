@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, type LucideIcon } from 'lucide-react'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Reveal } from '@/components/shared/Reveal'
@@ -123,12 +124,16 @@ export function SexualHealthConcerns({
         </StaggerGroup>
 
         <div className="mt-8 mb-6 text-center">
-          <Button asChild size="lg" className="font-bold">
-            <Link href={ctaHref}>
-              {ctaLabel}
-              <ArrowRight className="size-4" aria-hidden />
-            </Link>
-          </Button>
+          {ctaHref === '/book-appointment' ? (
+            <BookAppointmentButton>{ctaLabel}</BookAppointmentButton>
+          ) : (
+            <Button asChild size="lg" className="font-bold">
+              <Link href={ctaHref}>
+                {ctaLabel}
+                <ArrowRight className="size-4" aria-hidden />
+              </Link>
+            </Button>
+          )}
         </div>
       </Container>
     </Section>

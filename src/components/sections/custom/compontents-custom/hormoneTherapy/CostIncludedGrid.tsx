@@ -16,6 +16,7 @@ import {
   Zap,
 } from 'lucide-react'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
@@ -170,9 +171,13 @@ export function CostIncludedGrid({
           {/* CTA if available */}
           {cta ? (
             <div className="mt-8 flex justify-center">
-              <Button asChild size="lg" className="rounded-full bg-[#519B99] text-white">
-                <Link href={cta.href}>{cta.label}</Link>
-              </Button>
+              {cta.href === '/book-appointment' ? (
+                <BookAppointmentButton className="bg-[#519B99] text-white">{cta.label}</BookAppointmentButton>
+              ) : (
+                <Button asChild size="lg" className="rounded-full bg-[#519B99] text-white">
+                  <Link href={cta.href}>{cta.label}</Link>
+                </Button>
+              )}
             </div>
           ) : null}
         </m.div>

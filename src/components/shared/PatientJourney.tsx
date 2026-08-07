@@ -1,9 +1,10 @@
 'use client'
 
 import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
 
+import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 import type { Media } from '@/types/content'
+import BookAppointmentButton from './BookAppointmentButton'
 
 export interface JourneyStep {
   title: string
@@ -152,13 +153,10 @@ export function PatientJourney({
         {/* Bottom CTA */}
         {cta && (
           <div className="mt-14 text-center sm:mt-16 lg:mt-20">
-            <Link
-              href={cta.href}
-              className="inline-flex items-center gap-2.5 rounded-full bg-[#519B99] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.08em] text-white shadow-md transition-all duration-200 hover:bg-[#448b89] hover:shadow-lg sm:text-xs"
-            >
-              <span>{cta.label}</span>
-              <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
-            </Link>
+          
+            <BookAppointmentButton >
+                 <span>{cta.label}</span>
+            </BookAppointmentButton>
           </div>
         )}
       </div>

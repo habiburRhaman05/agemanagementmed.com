@@ -99,7 +99,7 @@ const [openModal,setOpenModal] = useState(false)
             >
                        <div className="cta">
                 <Link href={cta.href} onClick={(e)=>{
-if(cta.href === "#"){
+if(cta.href === "#" || cta.href === "/book-appointment"){
   e.preventDefault();
 setOpenModal(true)
 }

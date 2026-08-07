@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
 
 import { Container } from '@/components/shared/Container'
+import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 
 export interface SexualHealthClosingBandProps {
   title?: string
@@ -42,13 +42,13 @@ export function SexualHealthClosingBand({
 
           <p className="mt-3 text-sm sm:text-base font-light leading-relaxed text-white/90">{body}</p>
 
-          <Link
+          <LegacyCtaLink
             href={ctaHref}
             className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-[#519B99] px-6 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#448b89] sm:h-12 sm:px-7"
           >
             {ctaLabel}
             <ArrowRight className="size-4" aria-hidden />
-          </Link>
+          </LegacyCtaLink>
         </div>
       </Container>
     </section>

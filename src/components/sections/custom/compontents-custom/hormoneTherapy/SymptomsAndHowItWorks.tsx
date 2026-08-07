@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 
 import { bhrtIcons } from './bhrt-icons'
 
@@ -167,9 +167,9 @@ export function SymptomsAndHowItWorks() {
 
                   <div className="lg-col-12">
                     <div className="cta lg-text-center">
-                      <Link href="/book-appointment" className="lg-btn lg-btn-arrow-right">
+                      <LegacyCtaLink href="/book-appointment" className="lg-btn lg-btn-arrow-right">
                         Schedule Hormone Testing
-                      </Link>
+                      </LegacyCtaLink>
                     </div>
                   </div>
                 </div>

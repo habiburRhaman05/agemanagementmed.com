@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 
 import { sexualWellnessIcons } from './sexual-wellness-icons'
 
@@ -123,9 +123,9 @@ export function FemaleSexualHealthIntro() {
               </div>
 
               <div className="cta flex justify-center mt-10">
-                <Link href="/book-appointment" className="lg-btn lg-btn-arrow-right uppercase">
+                <LegacyCtaLink href="/book-appointment" className="lg-btn lg-btn-arrow-right uppercase">
                   SCHEDULE A CONSULTATION
-                </Link>
+                </LegacyCtaLink>
               </div>
             </div>
           </div>

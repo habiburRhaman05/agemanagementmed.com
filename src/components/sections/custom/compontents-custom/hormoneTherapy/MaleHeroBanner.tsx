@@ -2,11 +2,12 @@
 
 import { Play } from 'lucide-react'
 import Image from 'next/image'
+import { useState } from 'react'
 
 import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { cn } from '@/lib/utils'
 import type { Media } from '@/types/content'
 

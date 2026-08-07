@@ -15,8 +15,7 @@ import { ThreeTherapiesCard } from '../compontents-custom/hormoneTherapy/ThreeTh
 import { TextImagePanel } from '../compontents-custom/perimenopause/TextImagePanel'
 import { Container } from '@/components/shared/Container'
 import { Section } from '@/components/shared/Section'
-import { Button } from '@/components/ui/Button'
-import Link from 'next/link'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 
 
 function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
@@ -173,9 +172,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
 
       <Section background="page" spacing="none" className="pb-12 lg:pb-16">
         <Container className="flex justify-center">
-          <Button asChild size="md">
-            <Link href="/book-appointment">Schedule a consultation</Link>
-          </Button>
+          <BookAppointmentButton>Schedule a consultation</BookAppointmentButton>
         </Container>
       </Section>
 

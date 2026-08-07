@@ -9,8 +9,9 @@ import { Header } from '@/components/layout/Header'
 import { ShareButton } from '@/components/blog/ShareButton'
 import { TableOfContents } from '@/components/blog/TableOfContents'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
-import { Button } from '@/components/ui/Button'
+import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 import { getPostBySlug, getPosts } from '@/actions/blog'
 import { site } from '@/content/site'
 import { buildMetadata } from '@/lib/seo'
@@ -256,12 +257,12 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
                   <p className="mt-1 text-xs leading-relaxed text-gray-500">
                     Our providers can help with your specific health concerns.
                   </p>
-                  <Link
-                    href="/book-appointment-appointment"
+                  <LegacyCtaLink
+                    href="/book-appointment"
                     className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-emerald-700"
                   >
                     Book a consultation
-                  </Link>
+                  </LegacyCtaLink>
                   <a
                     href={site.phoneHref}
                     className="mt-2 flex items-center justify-center gap-1.5 text-xs font-medium text-emerald-700 hover:text-emerald-800"
@@ -420,9 +421,7 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
                   Our care team is here to help — no pressure, just answers.
                 </p>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-                  <Button asChild size="lg" variant="primary" className="w-full sm:w-auto">
-                    <Link href={site.bookingHref}>Schedule a consultation</Link>
-                  </Button>
+                  <BookAppointmentButton className="w-full sm:w-auto">Schedule a consultation</BookAppointmentButton>
                   <a
                     href={site.phoneHref}
                     className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50"

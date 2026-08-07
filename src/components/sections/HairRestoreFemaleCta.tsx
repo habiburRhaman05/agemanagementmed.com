@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 import type { CSSProperties } from 'react'
 
 import { homeMedia } from '@/content/pages/home-media'
@@ -57,9 +57,9 @@ export function HairRestoreFemaleCta({
               className="cta flex justify-center lg:justify-start"
               style={centered ? { display: 'flex', justifyContent: 'center' } : undefined}
             >
-              <Link href={cta.href} className="lg-btn ">
+              <LegacyCtaLink href={cta.href} className="lg-btn ">
                 {cta.label}
-              </Link>
+              </LegacyCtaLink>
             </div>
 
             {note ? (

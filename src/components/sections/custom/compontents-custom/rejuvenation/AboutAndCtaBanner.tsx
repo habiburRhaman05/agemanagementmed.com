@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Reveal } from '@/components/shared/Reveal'
@@ -47,12 +48,16 @@ export function AboutAndCtaBanner({ eyebrow, heading, lead, image, ctaLabel, cta
                 <h2 className="font-display text-display-sm text-canvas-50">{heading}</h2>
                 <p className="mt-4 text-body leading-relaxed text-canvas-50/75">{lead}</p>
                 <div className="mt-7">
-                  <Button asChild size="lg">
-                    <Link href={ctaHref}>
-                      {ctaLabel}
-                      <ArrowRight className="size-4" aria-hidden />
-                    </Link>
-                  </Button>
+                  {ctaHref === '/book-appointment' ? (
+                    <BookAppointmentButton>{ctaLabel}</BookAppointmentButton>
+                  ) : (
+                    <Button asChild size="lg">
+                      <Link href={ctaHref}>
+                        {ctaLabel}
+                        <ArrowRight className="size-4" aria-hidden />
+                      </Link>
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>

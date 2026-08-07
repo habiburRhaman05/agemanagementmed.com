@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
@@ -72,12 +73,16 @@ function TreatmentCard({ data }: { data: TreatmentOptionCard }) {
           </ul>
 
           {data.cta ? (
-            <Button asChild size="sm" variant={isFeatured ? 'inverse' : 'primary'} className="mt-5 font-bold">
-              <Link href={data.cta.href}>
-                {data.cta.label}
-                <ArrowRight className="size-4" aria-hidden />
-              </Link>
-            </Button>
+            data.cta.href === '/book-appointment' ? (
+              <BookAppointmentButton className="mt-5">{data.cta.label}</BookAppointmentButton>
+            ) : (
+              <Button asChild size="sm" variant={isFeatured ? 'inverse' : 'primary'} className="mt-5 font-bold">
+                <Link href={data.cta.href}>
+                  {data.cta.label}
+                  <ArrowRight className="size-4" aria-hidden />
+                </Link>
+              </Button>
+            )
           ) : null}
         </div>
       </div>

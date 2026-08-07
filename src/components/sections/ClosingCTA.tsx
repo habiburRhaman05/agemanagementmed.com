@@ -7,6 +7,7 @@ import type { CSSProperties } from 'react'
 import BookingModal from '@/components/shared/BookingModal'
 import { homeMedia } from '@/content/pages/home-media'
 import type { ClosingCtaData } from '@/types/content'
+import BookAppointmentButton from '../shared/BookAppointmentButton'
 
 interface ClosingCTAProps extends ClosingCtaData {
   /** Background photo for the band; defaults to the shared placeholder. */
@@ -62,8 +63,10 @@ export function ClosingCTA({
             <div className="lg-text">
               <p>{body}</p>
             </div>
-
-            <div className="cta" style={centered ? { display: 'flex', justifyContent: 'center' } : undefined}>
+<BookAppointmentButton>
+  Schedule a consultation
+</BookAppointmentButton>
+            {/* <div className="cta" style={centered ? { display: 'flex', justifyContent: 'center' } : undefined}>
               {isBookingHref(cta.href) ? (
                 <button type="button" onClick={() => setModalOpen(true)} className="lg-btn lg-btn-arrow-right">
                   {cta.label}
@@ -73,7 +76,7 @@ export function ClosingCTA({
                   {cta.label}
                 </Link>
               )}
-            </div>
+            </div> */}
 
             {note ? (
               <div

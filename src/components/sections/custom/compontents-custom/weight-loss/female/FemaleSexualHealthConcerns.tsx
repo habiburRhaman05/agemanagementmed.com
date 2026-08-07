@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { ArrowRight, ClipboardList, Atom, Hexagon, Clock, type LucideIcon } from 'lucide-react'
 
 import { Container } from '@/components/shared/Container'
@@ -7,7 +6,7 @@ import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
 import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
-import { Button } from '@/components/ui/Button'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 
 /**
  * Central icon registry — add new entries here and reference them by
@@ -161,12 +160,7 @@ const FemaleSexualHealthConcerns: React.FC = () => {
         </StaggerGroup>
 
         <div className="mt-10 text-center">
-          <Button asChild size="lg">
-            <Link href="/book-appointment">
-              Schedule a consultation
-              <ArrowRight className="size-4" aria-hidden />
-            </Link>
-          </Button>
+          <BookAppointmentButton>Schedule a consultation</BookAppointmentButton>
         </div>
       </Container>
     </Section>

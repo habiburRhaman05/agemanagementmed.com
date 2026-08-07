@@ -1,6 +1,7 @@
 import { Check } from 'lucide-react'
 import Link from 'next/link'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
@@ -25,9 +26,13 @@ export function PricingBlock({ eyebrow, title, lead, included, note, cta }: Pric
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
           <Reveal className="lg:col-span-5">
             <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
-            <Button asChild className="mt-10">
-              <Link href={cta.href}>{cta.label}</Link>
-            </Button>
+            {cta.href === '/book-appointment' ? (
+              <BookAppointmentButton className="mt-10">{cta.label}</BookAppointmentButton>
+            ) : (
+              <Button asChild className="mt-10">
+                <Link href={cta.href}>{cta.label}</Link>
+              </Button>
+            )}
           </Reveal>
 
           <div className="lg:col-span-7">

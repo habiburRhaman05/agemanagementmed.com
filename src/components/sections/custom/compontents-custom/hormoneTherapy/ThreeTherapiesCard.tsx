@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
@@ -74,9 +75,13 @@ export function ThreeTherapiesCard({ title, rows, cta }: ThreeTherapiesCardProps
 
             {cta ? (
               <div className="mt-6 flex justify-center sm:mt-8">
-                <Button asChild size="md">
-                  <Link href={cta.href}>{cta.label}</Link>
-                </Button>
+                {cta.href === '/book-appointment' ? (
+                  <BookAppointmentButton>{cta.label}</BookAppointmentButton>
+                ) : (
+                  <Button asChild size="md">
+                    <Link href={cta.href}>{cta.label}</Link>
+                  </Button>
+                )}
               </div>
             ) : null}
           </div>

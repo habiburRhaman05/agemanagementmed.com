@@ -4,6 +4,7 @@ import { m } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
@@ -153,9 +154,13 @@ export function PeopleGrid({
           {/* Optional CTA */}
           {cta ? (
             <div className="mt-16 text-center">
-              <Button asChild variant="primary" className="bg-[#519B99] hover:bg-[#448b89]">
-                <Link href={cta.href}>{cta.label}</Link>
-              </Button>
+              {cta.href === '/book-appointment' ? (
+                <BookAppointmentButton className="bg-[#519B99] hover:bg-[#448b89]">{cta.label}</BookAppointmentButton>
+              ) : (
+                <Button asChild variant="primary" className="bg-[#519B99] hover:bg-[#448b89]">
+                  <Link href={cta.href}>{cta.label}</Link>
+                </Button>
+              )}
             </div>
           ) : null}
         </m.div>

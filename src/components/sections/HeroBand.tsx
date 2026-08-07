@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 
 import { homeMedia } from '@/content/pages/home-media'
 
@@ -42,9 +42,9 @@ export function HeroBand({
 
             {cta ? (
               <div className="cta">
-                <Link href={cta.href} className="lg-btn lg-btn-arrow-right">
+                <LegacyCtaLink href={cta.href} className="lg-btn lg-btn-arrow-right">
                   {cta.label}
-                </Link>
+                </LegacyCtaLink>
               </div>
             ) : null}
           </div>

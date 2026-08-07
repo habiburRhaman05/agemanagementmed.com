@@ -25,6 +25,8 @@ type BookAppointmentButtonProps = {
   defaultLocation?: 'savannah-pooler' | 'statesboro';
   /** Pre-selects the modal's service dropdown — e.g. a claimed wellness special. */
   defaultService?: string;
+  /** Fired when the button is clicked, before the modal opens — e.g. to close an enclosing drawer. */
+  onOpen?: () => void;
 };
 
 /** "Book Appointment" CTA that opens the shared booking modal instead of navigating. */
@@ -35,6 +37,7 @@ export default function BookAppointmentButton({
   modalTitle,
   defaultLocation,
   defaultService,
+  onOpen,
 }: BookAppointmentButtonProps) {
   const [open, setOpen] = useState(false);
 
@@ -42,7 +45,10 @@ export default function BookAppointmentButton({
     <>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          onOpen?.();
+          setOpen(true);
+        }}
         className={cn(
           'group inline-flex items-center cursor-pointer justify-center gap-3 rounded-full px-8 py-[15px] font-bold font-sans text-[14px] uppercase tracking-[0.15em] transition-colors duration-300',
           variants[variant],

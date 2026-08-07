@@ -1,7 +1,6 @@
 import { ArrowRight, BatteryCharging, Brain, CalendarDays, HeartPulse, Scale } from 'lucide-react'
-import Link from 'next/link'
 
-import { Button } from '@/components/ui/Button'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Section } from '@/components/shared/Section'
 
@@ -132,9 +131,7 @@ export function SymptomsGridStatic() {
           </div>
 
           <div className="mt-8 flex justify-center sm:mt-10">
-            <Button asChild size="lg" variant="primary">
-              <Link href="/book-appointment">Schedule Hormone Testing</Link>
-            </Button>
+            <BookAppointmentButton className="h-14 px-9">Schedule Hormone Testing</BookAppointmentButton>
           </div>
         </div>
       </Container>

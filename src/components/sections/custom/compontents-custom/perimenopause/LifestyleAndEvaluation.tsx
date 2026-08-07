@@ -59,45 +59,48 @@ export function LifestyleAndEvaluation({ lifestylePanel, evaluationPanel }: Life
         <div className="lg-flexspace-100" />
       </div>
 
-      <div className="photo-content-d full-img ">
-        <div className="lg-max-width-1440">
-          <div className="lg-container">
-            <div className="lg-grid">
-              <div className="img lg-col-lg-5 lg-order-lg-2">
-                <div
-                  className="img-box"
-                  style={{ backgroundImage: `url('${evaluationPanel.image.src}')` }}
-                  role="img"
-                  aria-label={evaluationPanel.image.alt}
-                />
-              </div>
+      {/* Evaluation panel — page-specific full-bleed layout (not the shared
+          `.photo-content-d.full-img` grid, which caps at 1292px and splits
+          5/7 columns): full section width, content flush to the left edge,
+          image filling a true 50% column on the right. See the reference UI
+          this was built to match. Only used here — safe to keep inline
+          rather than a separate component. */}
+      <div className="grid w-full grid-cols-1 lg:grid-cols-2">
+        <div className="flex flex-col justify-center bg-[#14214B] px-6 py-12 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
+          <h2 className="lg-title" style={{ color: '#fff', maxWidth: 560 }}>
+            {evaluationPanel.heading}
+          </h2>
 
-              <div className="content lg-col-lg-7 lg-order-lg-1">
-                <h2 className="lg-title">{evaluationPanel.heading}</h2>
+          <div
+            className="lg-text [&_li]:!text-white [&_p]:!text-white [&_strong]:!text-white"
+            style={{ maxWidth: 560 }}
+          >
+            {evaluationPanel.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
 
-                <div className="lg-text">
-                  {evaluationPanel.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
+            {evaluationPanel.bulletsLabel ? <p>{evaluationPanel.bulletsLabel}</p> : null}
 
-                  {evaluationPanel.bulletsLabel ? <p>{evaluationPanel.bulletsLabel}</p> : null}
-
-                  <div className="lg-list-arrow-right">
-                    <ul>
-                      {evaluationPanel.bullets.map((bullet) => (
-                        <li key={bullet}>{bullet}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {evaluationPanel.closingParagraphs?.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                  ))}
-                </div>
-              </div>
+            <div className="lg-list-arrow-right">
+              <ul>
+                {evaluationPanel.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
             </div>
+
+            {evaluationPanel.closingParagraphs?.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
         </div>
+
+        <div
+          className="min-h-[360px] bg-cover bg-center lg:min-h-full"
+          style={{ backgroundImage: `url('${evaluationPanel.image.src}')` }}
+          role="img"
+          aria-label={evaluationPanel.image.alt}
+        />
       </div>
     </>
   )

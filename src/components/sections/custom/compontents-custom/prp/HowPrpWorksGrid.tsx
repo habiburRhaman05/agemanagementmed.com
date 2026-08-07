@@ -8,6 +8,7 @@ import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 import { Button } from '@/components/ui/Button'
 
 import { Eyebrow } from '@/components/shared/Eyebrow'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 
 export interface HowPrpWorksItem {
   icon: LucideIcon
@@ -61,9 +62,13 @@ export function HowPrpWorksGrid({ eyebrow, heading, lead, items, cta }: HowPrpWo
 
         {cta ? (
           <div className="mt-10 flex justify-center">
-            <Button asChild size="md">
-              <Link href={cta.href}>{cta.label}</Link>
-            </Button>
+            {cta.href === '/book-appointment' ? (
+              <BookAppointmentButton>{cta.label}</BookAppointmentButton>
+            ) : (
+              <Button asChild size="md">
+                <Link href={cta.href}>{cta.label}</Link>
+              </Button>
+            )}
           </div>
         ) : null}
       </Container>

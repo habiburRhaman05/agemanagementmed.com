@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { LucideIcon } from 'lucide-react'
 import type { ReactNode } from 'react'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
@@ -99,9 +100,13 @@ export function IconGridCard({
       ))}
 
       {cta ? (
-        <Button asChild size="md" className="mt-6 self-start">
-          <Link href={cta.href}>{cta.label}</Link>
-        </Button>
+        cta.href === '/book-appointment' ? (
+          <BookAppointmentButton className="mt-6 self-start">{cta.label}</BookAppointmentButton>
+        ) : (
+          <Button asChild size="md" className="mt-6 self-start">
+            <Link href={cta.href}>{cta.label}</Link>
+          </Button>
+        )
       ) : null}
     </div>
   )
@@ -214,13 +219,17 @@ export function DualIconGridBanner({ columns }: { columns: [IconGridColumn, Icon
                   ))}
 
                   {column.cta ? (
-                    <Button
-                      asChild
-                      size="md"
-                      className="mt-6 h-auto w-full whitespace-normal text-center leading-snug py-3 sm:h-12 sm:w-auto sm:whitespace-nowrap"
-                    >
-                      <Link href={column.cta.href}>{column.cta.label}</Link>
-                    </Button>
+                    column.cta.href === '/book-appointment' ? (
+                      <BookAppointmentButton className="mt-6 w-full sm:w-auto">{column.cta.label}</BookAppointmentButton>
+                    ) : (
+                      <Button
+                        asChild
+                        size="md"
+                        className="mt-6 h-auto w-full whitespace-normal text-center leading-snug py-3 sm:h-12 sm:w-auto sm:whitespace-nowrap"
+                      >
+                        <Link href={column.cta.href}>{column.cta.label}</Link>
+                      </Button>
+                    )
                   ) : null}
                 </div>
               ))}

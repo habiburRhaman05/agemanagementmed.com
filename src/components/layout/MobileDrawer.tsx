@@ -5,7 +5,7 @@ import { ChevronDown, Phone, X } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
-import { Button } from '@/components/ui/Button'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { footerNav, primaryNav } from '@/content/navigation'
 import { site } from '@/content/site'
 import { cn } from '@/lib/utils'
@@ -161,9 +161,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
 
             {/* Booking stays thumb-reachable — the phone call is the conversion. */}
             <div className="shrink-0 space-y-3 border-t border-canvas-300/60 bg-canvas-100 px-6 py-5">
-              <Button asChild className="w-full">
-                <Link href={site.bookingHref}>Book consultation</Link>
-              </Button>
+              <BookAppointmentButton className="w-full" onOpen={onClose}>Book consultation</BookAppointmentButton>
               <a
                 href={site.phoneHref}
                 className="flex items-center justify-center gap-2 py-2 text-body-sm font-medium text-ink-900"
