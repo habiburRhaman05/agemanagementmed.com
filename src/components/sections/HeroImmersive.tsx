@@ -42,7 +42,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           sizes="100vw"
           // Mobile portrait crops need the subject pulled more toward center;
           // the 60% offset was tuned for wide desktop frames.
-          className="object-cover object-[80%_center] sm:object-[140%_center]"
+          className="object-cover object-[80%_center] sm:object-[60%_center]"
         />
       </div>
 
