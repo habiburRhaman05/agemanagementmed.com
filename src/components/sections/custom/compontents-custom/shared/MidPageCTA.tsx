@@ -1,4 +1,9 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
+
+import BookingModal from '@/components/shared/BookingModal'
 
 interface MidPageCTAProps {
   backgroundImage: string
@@ -11,6 +16,11 @@ interface MidPageCTAProps {
   align?: 'left' | 'right' | 'full'
   /** Explicit override; defaults to true for 'left'/'full' (matches the source's per-page markup). */
   gradient?: boolean
+}
+
+/** Booking CTAs open the shared modal instead of navigating — everything else stays a real `<Link>`. */
+function isBookingHref(href: string) {
+  return href === '/book-appointment'
 }
 
 /**
@@ -30,6 +40,9 @@ export function MidPageCTA({
   align = 'left',
   gradient = align !== 'right',
 }: MidPageCTAProps) {
+  const [modalOpen, setModalOpen] = useState(false)
+  const isBooking = isBookingHref(ctaHref)
+
   return (
     <div
       className="hero-bg"
@@ -48,14 +61,24 @@ export function MidPageCTA({
               </div>
 
               <div className="cta">
-                <Link href={ctaHref} className="lg-btn lg-btn-arrow-right">
-                  {ctaLabel}
-                </Link>
+                {isBooking ? (
+                  <button type="button" onClick={() => setModalOpen(true)} className="lg-btn lg-btn-arrow-right">
+                    {ctaLabel}
+                  </button>
+                ) : (
+                  <Link href={ctaHref} className="lg-btn lg-btn-arrow-right">
+                    {ctaLabel}
+                  </Link>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {isBooking ? (
+        <BookingModal open={modalOpen} onClose={() => setModalOpen(false)} title="Schedule a Consultation" />
+      ) : null}
     </div>
   )
 }

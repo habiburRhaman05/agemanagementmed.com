@@ -1,24 +1,14 @@
 'use client'
 
-import { ArrowRight, Play } from 'lucide-react'
-import dynamic from 'next/dynamic'
+import { Play } from 'lucide-react'
 import Image from 'next/image'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { cn } from '@/lib/utils'
 import type { Media } from '@/types/content'
-
-const formLoading = (
-  <div className="flex h-48 items-center justify-center text-sm text-slate-500">
-    Loading form…
-  </div>
-)
-const BookingForm = dynamic(
-  () => import('@/components/shared/BookingForm').then((mod) => mod.BookingForm),
-  { loading: () => formLoading }
-)
 
 export interface MaleHeroBannerProps {
   title?: string
@@ -94,39 +84,13 @@ export function MaleHeroBanner({
           {/* Action Buttons Row */}
           <div className="flex flex-row items-center justify-start gap-3.5 flex-wrap">
             {/* Primary CTA (Start Today) */}
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button
-                  size="lg"
-                  className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[11px] uppercase tracking-wider px-6 py-3.5 h-auto inline-flex items-center gap-2 shadow-md transition-all duration-200 hover:shadow-lg border-none"
-                >
-                  <span>START TODAY</span>
-                  <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
-                </Button>
-              </DialogTrigger>
-              <DialogContent
-                className="
-                  w-[calc(100%-1rem)]
-                  max-w-2xl
-                  max-h-[90dvh]
-                  overflow-y-auto
-                  rounded-[28px]
-                  p-5
-                  sm:w-full
-                  sm:rounded-[40px]
-                  sm:p-10
-                "
-              >
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-display text-slate-900">
-                    Book Your Consultation
-                  </DialogTitle>
-                </DialogHeader>
-                <div className="mt-4">
-                  <BookingForm />
-                </div>
-              </DialogContent>
-            </Dialog>
+            <BookAppointmentButton
+              variant="teal"
+              className="px-6 py-3.5 text-[11px] tracking-wider shadow-md hover:shadow-lg"
+              modalTitle="Book Your Consultation"
+            >
+              START TODAY
+            </BookAppointmentButton>
 
             {/* Secondary CTA (Watch Video Modal) */}
             <Dialog>

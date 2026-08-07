@@ -1,12 +1,11 @@
 
 
-import { ArrowRight, ChevronRight, Play } from 'lucide-react'
+import { Play } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
-import Link from 'next/link'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
-import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Button } from '@/components/ui/Button'
 
 
@@ -14,18 +13,16 @@ import { cn } from '@/lib/utils'
 import type { Cta, Media } from '@/types/content'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog'
 
-// react-hook-form + zod only need to load once the consultation dialog is
+// react-hook-form + zod only need to load once the lead-capture dialog is
 // actually opened, not as part of every treatment page's initial bundle —
-// this hero renders on every treatment page, so deferring these two forms
-// is the single highest-impact JS-payload cut available site-wide.
+// this hero renders on every treatment page, so deferring this form is a
+// high-impact JS-payload cut. (The booking CTA itself now opens the shared
+// `BookAppointmentButton` modal instead, so `BookingForm` is no longer
+// dynamically loaded here.)
 const formLoading = (
   <div className="flex h-48 items-center justify-center text-body-sm text-canvas-600">
     Loading form…
   </div>
-)
-const BookingForm = dynamic(
-  () => import('../shared/BookingForm').then((mod) => mod.BookingForm),
-  { loading: () => formLoading },
 )
 const LeadForm = dynamic(() => import('../shared/LeadForm').then((mod) => mod.LeadForm), {
   loading: () => formLoading,
@@ -36,21 +33,15 @@ interface Crumb {
   href: string
 }
 
-/** Registry of forms that can be rendered inside the form modal, keyed by `formSource`. */
-const FORM_COMPONENTS = {
-  booking: BookingForm,
-  lead: LeadForm,
-} as const
-
 interface HeroActions {
   /** Show a "Watch video" button that opens `videoSource` in a modal. Omit/false hides the button entirely. */
   videoModal?: boolean
-  /** Show a "Schedule a consultation" button that opens `formSource` in a modal. Omit/false hides the button entirely. */
+  /** Show a "Schedule a consultation" button. Omit/false hides the button entirely. */
   formModal?: boolean
   /** Raw embed markup for the video modal, e.g. a Vimeo/YouTube `<iframe>` string. */
   videoSource?: string
-  /** Which form to render inside the form modal. */
-  formSource?: keyof typeof FORM_COMPONENTS
+  /** 'booking' (default) opens the shared appointment modal; 'lead' opens the lighter lead-capture form instead. */
+  formSource?: 'booking' | 'lead'
 }
 
 interface HeroEditorialProps {
@@ -74,8 +65,8 @@ interface HeroEditorialProps {
  * Sub-elements stagger on page load (breadcrumbs → eyebrow → h1 → lead → CTAs)
  * for a cinematic entrance consistent with the home page HeroImmersive.
  *
- * `actions` drives two optional modal-triggered buttons:
- * - `formModal: true` shows "Schedule a consultation", opening `formSource` in a dialog
+ * `actions` drives two optional buttons:
+ * - `formModal: true` shows a booking CTA (`BookAppointmentButton`) unless `formSource: 'lead'`, in which case it opens the lighter lead-capture form in a dialog instead
  * - `videoModal: true` shows "Watch video", opening `videoSource` (an iframe embed string) in a dialog
  * Either button is omitted entirely when its flag is false/unset.
  */
@@ -89,9 +80,9 @@ export function HeroEditorial({
   fullHeight = false,
   hideDefaultCta = false,
 }: HeroEditorialProps) {
-  const FormComponent = actions?.formSource ? FORM_COMPONENTS[actions.formSource] : BookingForm
   const showFormButton = Boolean(actions?.formModal)
   const showVideoButton = Boolean(actions?.videoModal && actions?.videoSource)
+  const isLeadForm = actions?.formSource === 'lead'
 
   // Smaller, non-full-width CTA on mobile; the "lg" size (via the `size` prop) still applies from `sm:` up.
   const ctaSizeClass = 'h-11 px-6 text-body-sm font-bold uppercase tracking-wide sm:h-14 sm:px-9 sm:text-body'
@@ -132,33 +123,13 @@ export function HeroEditorial({
               className="hero-enter mt-6 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:justify-start md:mt-10 md:gap-4"
               style={{ animationDelay: '0.5s' }}
             >
-             <Dialog>
-                  <DialogTrigger asChild>
-                    <Button size="lg" variant="primary" className={cn('bg-[#008080] w-auto justify-center', ctaSizeClass)}>
-                      Schedule a consultation <span><ArrowRight></ArrowRight></span>
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent
-                    className="
-                      w-[calc(100%-1rem)]
-                      max-w-2xl
-                      max-h-[90dvh]
-                      overflow-y-auto
-                      rounded-[28px]
-                      p-5
-                      sm:w-full
-                      sm:rounded-[40px]
-                      sm:p-10
-                    "
-                  >
-                    <DialogHeader>
-                      <DialogTitle className="text-2xl font-display text-ink-900">
-                        Book Your Consultation
-                      </DialogTitle>
-                    </DialogHeader>
-                    <div className="mt-4">{FormComponent ? <FormComponent /> : null}</div>
-                  </DialogContent>
-                </Dialog>
+              <BookAppointmentButton
+                variant="teal"
+                className={cn('w-auto', ctaSizeClass)}
+                modalTitle="Book Your Consultation"
+              >
+                Schedule a consultation
+              </BookAppointmentButton>
             </div>
           ) : null}
 
@@ -170,33 +141,45 @@ export function HeroEditorial({
               style={{ animationDelay: '0.5s' }}
             >
               {showFormButton ? (
-                <Dialog>
-                  <DialogTrigger asChild>
-                   <Button size="lg" variant="primary" className={cn('bg-[#008080] w-auto justify-center', ctaSizeClass)}>
-                      Schedule a consultation <span><ArrowRight></ArrowRight></span>
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent
-                    className="
-                      w-[calc(100%-1rem)]
-                      max-w-2xl
-                      max-h-[90dvh]
-                      overflow-y-auto
-                      rounded-[28px]
-                      p-5
-                      sm:w-full
-                      sm:rounded-[40px]
-                      sm:p-10
-                    "
+                isLeadForm ? (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button size="lg" variant="primary" className={cn('bg-[#008080] w-auto justify-center', ctaSizeClass)}>
+                        Schedule a consultation
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent
+                      className="
+                        w-[calc(100%-1rem)]
+                        max-w-2xl
+                        max-h-[90dvh]
+                        overflow-y-auto
+                        rounded-[28px]
+                        p-5
+                        sm:w-full
+                        sm:rounded-[40px]
+                        sm:p-10
+                      "
+                    >
+                      <DialogHeader>
+                        <DialogTitle className="text-2xl font-display text-ink-900">
+                          Book Your Consultation
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="mt-4">
+                        <LeadForm />
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                ) : (
+                  <BookAppointmentButton
+                    variant="teal"
+                    className={cn('w-auto', ctaSizeClass)}
+                    modalTitle="Book Your Consultation"
                   >
-                    <DialogHeader>
-                      <DialogTitle className="text-2xl font-display text-ink-900">
-                        Book Your Consultation
-                      </DialogTitle>
-                    </DialogHeader>
-                    <div className="mt-4">{FormComponent ? <FormComponent /> : null}</div>
-                  </DialogContent>
-                </Dialog>
+                    Schedule a consultation
+                  </BookAppointmentButton>
+                )
               ) : null}
 
               {showVideoButton ? (

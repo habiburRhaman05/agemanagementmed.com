@@ -4,15 +4,13 @@ import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
 
-import { Button } from '@/components/ui/Button'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import type { Special, SpecialLocation } from '@/content/pages/specials'
 import { cn } from '@/lib/utils'
-import { BookingForm } from '../shared/BookingForm'
 import { StaggerGroup, StaggerItem } from '../shared/Stagger'
 
 interface LocationTab {
@@ -38,23 +36,15 @@ function SpecialCard({ special }: { special: Special }) {
         <h3 className="mt-2 font-display text-title-lg text-ink-950">{special.title}</h3>
         <p className="mt-3 flex-1 text-body-sm leading-relaxed text-canvas-600">{special.description}</p>
 
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button className="mt-6 w-full sm:w-auto">{special.ctaLabel ?? 'Claim'}</Button>
-          </DialogTrigger>
-          <DialogContent className="max-h-[90dvh] w-[calc(100%-1rem)] max-w-2xl overflow-y-auto rounded-[28px] p-5 sm:w-full sm:rounded-[40px] sm:p-10">
-            <DialogHeader>
-              <DialogTitle className="font-display text-2xl text-ink-900">Claim: {special.title}</DialogTitle>
-            </DialogHeader>
-            <div className="mt-4">
-              <BookingForm
-                defaultLocation={special.locations[0]}
-                serviceLabel={`Wellness special — ${special.title}`}
-                submitLabel="Claim this special"
-              />
-            </div>
-          </DialogContent>
-        </Dialog>
+        <BookAppointmentButton
+          variant="teal"
+          className="mt-6 w-full sm:w-auto"
+          modalTitle={`Claim: ${special.title}`}
+          defaultLocation={special.locations[0]}
+          defaultService={`Wellness special — ${special.title}`}
+        >
+          {special.ctaLabel ?? 'Claim'}
+        </BookAppointmentButton>
       </div>
     </div>
   )

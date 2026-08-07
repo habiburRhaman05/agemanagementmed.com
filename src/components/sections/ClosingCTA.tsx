@@ -1,5 +1,9 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 
+import BookingModal from '@/components/shared/BookingModal'
 import { homeMedia } from '@/content/pages/home-media'
 import type { ClosingCtaData } from '@/types/content'
 
@@ -18,6 +22,11 @@ interface ClosingCTAProps extends ClosingCtaData {
  * The live site's closing `.hero-bg` band — a full-bleed photo behind a
  * left-aligned heading, lead and pill CTA. Ported live-site CSS.
  */
+/** Booking CTAs open the shared modal instead of navigating — everything else (e.g. a link to a specific treatment page) stays a real `<Link>`. */
+function isBookingHref(href: string) {
+  return href === '/book-appointment'
+}
+
 export function ClosingCTA({
   title,
   body,
@@ -27,6 +36,7 @@ export function ClosingCTA({
   contentMaxWidth,
   centered = false,
 }: ClosingCTAProps) {
+  const [modalOpen, setModalOpen] = useState(false)
   const contentStyle: React.CSSProperties = {
     ...(contentMaxWidth ? { maxWidth: contentMaxWidth } : null),
     ...(centered ? { marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' } : null),
@@ -44,9 +54,15 @@ export function ClosingCTA({
             </div>
 
             <div className="cta" style={centered ? { display: 'flex', justifyContent: 'center' } : undefined}>
-              <Link href={cta.href} className="lg-btn lg-btn-arrow-right">
-                {cta.label}
-              </Link>
+              {isBookingHref(cta.href) ? (
+                <button type="button" onClick={() => setModalOpen(true)} className="lg-btn lg-btn-arrow-right">
+                  {cta.label}
+                </button>
+              ) : (
+                <Link href={cta.href} className="lg-btn lg-btn-arrow-right">
+                  {cta.label}
+                </Link>
+              )}
             </div>
 
             {note ? (
@@ -60,6 +76,10 @@ export function ClosingCTA({
           </div>
         </div>
       </div>
+
+      {isBookingHref(cta.href) ? (
+        <BookingModal open={modalOpen} onClose={() => setModalOpen(false)} title="Schedule a Consultation" />
+      ) : null}
     </div>
   )
 }

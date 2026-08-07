@@ -1,24 +1,10 @@
 'use client'
 
 import { m } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
-import dynamic from 'next/dynamic'
-import Link from 'next/link'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
-import { Button } from '@/components/ui/Button'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { cn } from '@/lib/utils'
-
-const formLoading = (
-  <div className="flex h-48 items-center justify-center text-sm text-slate-500">
-    Loading form…
-  </div>
-)
-const BookingForm = dynamic(
-  () => import('../shared/BookingForm').then((mod) => mod.BookingForm),
-  { loading: () => formLoading }
-)
 
 export interface TransformHealthBannerProps {
   title?: string
@@ -77,39 +63,13 @@ export function TransformHealthBanner({
           ) : null}
 
           {/* Interactive Modal CTA Trigger */}
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                size="lg"
-                className="inline-flex items-center gap-2.5 rounded-full bg-[#519B99] hover:bg-[#448b89] px-8 py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:shadow-lg border-none"
-              >
-                <span>{buttonLabel}</span>
-                <ArrowRight className="h-4 w-4 stroke-[2.5]" aria-hidden="true" />
-              </Button>
-            </DialogTrigger>
-            <DialogContent
-              className="
-                w-[calc(100%-1rem)]
-                max-w-2xl
-                max-h-[90dvh]
-                overflow-y-auto
-                rounded-[28px]
-                p-5
-                sm:w-full
-                sm:rounded-[40px]
-                sm:p-10
-              "
-            >
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-display text-slate-900">
-                  Book Your Consultation
-                </DialogTitle>
-              </DialogHeader>
-              <div className="mt-4">
-                <BookingForm />
-              </div>
-            </DialogContent>
-          </Dialog>
+          <BookAppointmentButton
+            variant="teal"
+            className="px-8 py-4 text-xs shadow-md hover:shadow-lg sm:text-sm"
+            modalTitle="Book Your Consultation"
+          >
+            {buttonLabel}
+          </BookAppointmentButton>
         </m.div>
       </Container>
     </section>

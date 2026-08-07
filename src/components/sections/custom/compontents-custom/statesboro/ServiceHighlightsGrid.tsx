@@ -3,32 +3,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import dynamic from 'next/dynamic'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
 import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 import { Button } from '@/components/ui/Button'
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog'
 import type { Media } from '@/types/content'
-
-const BookingForm = dynamic(
-  () => import('@/components/shared/GetConnectedForm').then((mod) => mod.BookingForm),
-  {
-    loading: () => (
-      <div className="flex h-48 items-center justify-center text-body-sm text-canvas-600">
-        Loading form…
-      </div>
-    ),
-  }
-)
 
 export interface ServiceHighlightItem {
   image: Media
@@ -84,36 +66,13 @@ export function ServiceHighlightsGrid({ eyebrow, title, lead, items }: ServiceHi
                   </p>
 
                   {item.href === '/book-appointment' ? (
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button size="sm" className="mt-6 self-start group">
-                          {item.ctaLabel}
-                          <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent
-                        className="
-                          w-[calc(100%-1rem)]
-                          max-w-2xl
-                          max-h-[90dvh]
-                          overflow-y-auto
-                          rounded-[28px]
-                          p-5
-                          sm:w-full
-                          sm:rounded-[40px]
-                          sm:p-10
-                        "
-                      >
-                        <DialogHeader>
-                          <DialogTitle className="text-2xl font-display text-ink-900">
-                            Schedule A Consultation
-                          </DialogTitle>
-                        </DialogHeader>
-                        <div className="mt-4">
-                          <BookingForm />
-                        </div>
-                      </DialogContent>
-                    </Dialog>
+                    <BookAppointmentButton
+                      variant="teal"
+                      className="mt-6 self-start px-5 py-2.5 text-[12px]"
+                      modalTitle="Schedule A Consultation"
+                    >
+                      {item.ctaLabel}
+                    </BookAppointmentButton>
                   ) : (
                     <Button asChild size="sm" className="mt-6 self-start group">
                       <Link href={item.href}>

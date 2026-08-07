@@ -1,9 +1,9 @@
 
 
-import { MoveRight, Play } from 'lucide-react'
+import { Play } from 'lucide-react'
 import Image from 'next/image'
-import dynamic from 'next/dynamic'
 
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
 import {
@@ -14,17 +14,6 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import type { Cta, Media } from '@/types/content'
-
-const BookingForm = dynamic(
-  () => import('../shared/GetConnectedForm').then((mod) => mod.BookingForm),
-  {
-    loading: () => (
-      <div className="flex h-48 items-center justify-center text-body-sm text-canvas-600">
-        Loading form…
-      </div>
-    ),
-  },
-)
 
 interface HeroImmersiveProps {
   title: string
@@ -82,39 +71,13 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           className="hero-enter mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
         >
           {/* Booking Modal */}
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                size="lg"
-                variant="primary"
-                className="h-12 w-full justify-center bg-[#008080] px-6 text-body-sm sm:h-14 sm:w-auto sm:px-9 sm:text-body"
-              >
-                START TODAY <MoveRight />
-              </Button>
-            </DialogTrigger>
-            <DialogContent
-              className="
-                w-[calc(100%-1.5rem)]
-                max-w-2xl
-                max-h-[90dvh]
-                overflow-y-auto
-                rounded-[24px]
-                p-5
-                sm:w-full
-                sm:rounded-[40px]
-                sm:p-10
-              "
-            >
-              <DialogHeader>
-                <DialogTitle className="text-xl font-display text-ink-900 sm:text-2xl">
-                  Schedule A Consultation
-                </DialogTitle>
-              </DialogHeader>
-              <div className="mt-4">
-                <BookingForm />
-              </div>
-            </DialogContent>
-          </Dialog>
+          <BookAppointmentButton
+            variant="teal"
+            className="h-12 w-full sm:h-14 sm:w-auto"
+            modalTitle="Schedule A Consultation"
+          >
+            START TODAY
+          </BookAppointmentButton>
 
           {/* Video Modal */}
           <Dialog>
