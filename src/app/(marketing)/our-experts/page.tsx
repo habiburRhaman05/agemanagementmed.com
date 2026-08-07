@@ -77,10 +77,12 @@ console.log(allNews);
       <Header overlay />
       <HeroEditorial
         {...expertsContent.hero}
+        hideDefaultCta
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Our Experts', href: '/our-experts' }]}
-        containerOverride="pb-20 pt-35 md:pb-35 md:pt-50 lg:pb-40 lg:pt-65"
-        heroDiv='max-w-full'
+        containerOverride="pb-20 pt-35 md:pb-35 md:pt-50 lg:pb-55 lg:pt-75"
+        heroDiv='max-w-full md:px-10 lg:px-0'
         heroPara='max-w-3xl'
+        overlay={false}
       />
 
       {/* <EditorialPair {...expertsContent.standard} background="alt" /> */}
