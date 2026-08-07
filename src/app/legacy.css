@@ -133,7 +133,14 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 .lg-btn-arrow-right:hover::after {
-  right: 20px;
+  right: 17px;
+}
+
+/* Buttons that render the arrow as an inline JSX SVG instead of the ::after
+   data-URI — keep the class for its padding-right/hover-opacity, hide the
+   pseudo-element so only the inline SVG shows. */
+.lg-btn-arrow-svg::after {
+  display: none;
 }
 
 .lg-btn-play,
@@ -1227,19 +1234,20 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 #hero-d .content {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
+  min-width: 0;
   padding-right: 50px;
 }
 
 #hero-d .lg-title {
   color: #14214b;
-  font-size: 32px;
+  font-size: 28px;
   margin-bottom: 10px;
   text-transform: capitalize;
 }
 
 #hero-d .cta {
-  flex: 1 1 0;
+  flex: 0 0 auto;
   text-align: right;
 }
 
@@ -1609,6 +1617,20 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
   #hero-d .box {
     padding: 32px 24px;
+  }
+
+  #hero-d .lg-btn {
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 13px 24px;
+  }
+
+  #hero-d .lg-btn-arrow-right {
+    padding-right: 44px;
+  }
+
+  #hero-d .lg-btn-arrow-right svg {
+    right: 20px;
   }
 
   .hero-bg {
