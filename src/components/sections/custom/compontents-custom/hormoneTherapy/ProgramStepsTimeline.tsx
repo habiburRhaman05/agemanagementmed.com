@@ -1,8 +1,5 @@
 'use client'
 
-import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-
 import { cn } from '@/lib/utils'
 import type { ProcessStep } from '@/types/content'
 
@@ -130,17 +127,6 @@ export function ProgramStepsTimeline({
               })}
             </div>
           </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-14 text-center sm:mt-16 lg:mt-20">
-          <Link
-            href="/book-appointment"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-[#519B99] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.08em] text-white shadow-md transition-all duration-200 hover:bg-[#448b89] hover:shadow-lg sm:text-xs"
-          >
-            <span>SCHEDULE A CONSULTATION</span>
-            <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
-          </Link>
         </div>
       </div>
     </section>
