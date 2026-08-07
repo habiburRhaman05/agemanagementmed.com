@@ -78,7 +78,7 @@ export function MidPageCTA({
                 </DialogTitle>
               </DialogHeader>
               <div className="mt-2">
-                <BookingForm />
+                <BookingForm variant="dark" />
               </div>
             </DialogContent>
           </Dialog>
@@ -91,7 +91,7 @@ export function MidPageCTA({
             <div className={`content${align === 'full' ? '' : ' lg-col-lg-6'}`}>
               <div className="lg-title">{title}</div>
 
-              <div className="lg-text">
+              <div className="lg-text max-w-[835px]">
                 <p>{body}</p>
               </div>
 
