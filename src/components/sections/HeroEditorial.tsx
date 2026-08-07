@@ -58,6 +58,7 @@ interface HeroEditorialProps {
   eyebrow?: string
   title: string
   lead: string
+  lead2?: string
   image: Media
   ctas?: Cta[]
   breadcrumbs?: Crumb[]
@@ -117,6 +118,7 @@ export function HeroEditorial({
   eyebrow,
   title,
   lead,
+  lead2,
   image,
   ctas,
   breadcrumbs,
@@ -198,6 +200,9 @@ const [modalOpen, setModalOpen] = useState(false)
           <p className={cn('mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6', heroPara)}>
             {lead}
           </p>
+         {lead2 && <p className={cn('mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6', heroPara)}>
+            {lead2}
+          </p>}
 
           {!showFormButton && !showVideoButton && !hideDefaultCta ? (
             <div

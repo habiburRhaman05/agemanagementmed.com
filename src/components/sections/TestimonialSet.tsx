@@ -48,6 +48,7 @@ export interface TestimonialSetProps {
   title: string
   lead?: string
   width?: string
+  height?: string
   testimonials: Testimonial[]
   background?: 'page' | 'alt' | 'accent'
   /** Background photo for the band; defaults to the shared placeholder. */
@@ -64,6 +65,7 @@ export function TestimonialSet({
   eyebrow,
   title,
   lead,
+  height,
   testimonials,
   backgroundImage = homeMedia.testimonialsBackground,
   ctaText = 'SEE ALL REVIEWS',
@@ -82,7 +84,10 @@ export function TestimonialSet({
 
   return (
     <section
-      className="relative w-full min-h-screen min-h-[100vh] flex flex-col justify-center overflow-hidden bg-cover bg-[position:right_center] py-12 sm:py-16 md:py-20"
+      className={cn(
+        'relative w-full overflow-hidden bg-cover bg-[position:right_center] py-12 sm:py-16 md:py-20',
+        height ? 'h-[640px]' : 'min-h-screen'
+      )}
       style={{
         backgroundImage: `url('${backgroundImage}')`,
         backgroundPosition: 'center',
@@ -93,16 +98,14 @@ export function TestimonialSet({
       {/* Dark overlay over background photo */}
       <div className="absolute inset-0 bg-[#0b1e3e]/20 z-0" aria-hidden />
 
-      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-16 flex flex-col justify-between min-h-[82vh]">
-        {/* Carousel & Content on Left Side */}
-        <div className="max-w-[560px] w-full">
+      {/* Inner wrapper – grid layout for vertical centering */}
+      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-16 h-full grid grid-rows-[1fr_auto]">
+        {/* Main content – centered vertically, left-aligned horizontally */}
+        <div className="max-w-[560px] w-full self-center justify-self-start">
           {/* Intro text */}
           <div className="text-white mb-6">
             {eyebrow ? (
-              <p
-                className="text-[14px] uppercase tracking-[0.15em] text-white mb-2"
-               
-              >
+              <p className="text-[14px] uppercase tracking-[0.15em] text-white mb-2">
                 {eyebrow}
               </p>
             ) : null}
@@ -181,7 +184,7 @@ export function TestimonialSet({
         </div>
 
         {/* Full-width Bottom Bar: Carousel dashes on LEFT, SEE ALL REVIEWS button on RIGHT */}
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 mt-8 w-full">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 w-full">
           {/* Left: Carousel dashes */}
           {testimonials.length > 1 ? (
             <div className="flex items-center gap-1.5">

@@ -47,7 +47,7 @@ export function TreatmentPathwaysPanel({
               />
 
               <h3
-                className="text-[#101b3b] text-[22px] leading-[1.3] mb-12 font-display"
+                className="text-[#101b3b] text-[24px] font-medium leading-[1.3] mb-12 font-display"
                 
               >
                 {pathway.title}

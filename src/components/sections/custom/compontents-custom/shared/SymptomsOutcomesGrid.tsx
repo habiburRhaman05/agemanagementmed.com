@@ -39,7 +39,7 @@ export function SymptomsOutcomesGrid({
       <div className={`lg-content-d${align === 'left' ? ' text-left' : ''}`}>
         <div className="lg-max-width-1440">
           <div className="lg-container">
-            <h2 className="lg-title lg-max-width-500" style={lead ? undefined : { marginBottom: 0 }}>
+            <h2 className={`lg-title ${align === "center" ? "mx-auto":""} lg-max-width-500" style={lead ? undefined : { marginBottom: 0 }`}>
               {title}
             </h2>
             {lead ? (
