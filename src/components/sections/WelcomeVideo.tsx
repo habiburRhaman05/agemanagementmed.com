@@ -28,7 +28,7 @@ function toPlayerUrl(href: string): string {
 /**
  * The live site's welcome block — a heading and a wide 20px-radius video
  * poster with a centred play button, sitting on a pale blue band.
- * Clicking the video opens the video in a modal (matching the hero video modal).
+ * Clicking the video opens the video in a modal with a dark overlay.
  */
 export function WelcomeVideo({
   title,
@@ -48,19 +48,24 @@ export function WelcomeVideo({
         </div>
       </div>
 
-      <Dialog open={open} onOpenChange={setOpen}>
+      {/* Video section — DialogTrigger is inside Dialog, section layout unchanged */}
+      <Dialog open={open} onOpenChange={(next) => { setOpen(next); if (next) setLoading(true) }}>
         <div className="video-d">
           <div className="lg-max-width-1440">
             <div className="lg-container">
               <DialogTrigger asChild>
-                <div className="box cursor-pointer group">
+                <button
+                  type="button"
+                  aria-label={`Play video: ${title}`}
+                  className="box relative w-full cursor-pointer group border-none p-0 m-0 bg-transparent block"
+                >
                   <div
                     className="img"
                     style={{ backgroundImage: `url('${posterUrl}')` }}
                   />
-                  <div className="flex items-center justify-center absolute inset-0">
+                  <span className="flex items-center justify-center absolute inset-0">
                     <svg
-                      className="play-icon w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 transition-transform group-hover:scale-110"
+                      className="play-icon w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 transition-transform duration-200 group-hover:scale-110"
                       viewBox="0 0 100 100"
                       fill="none"
                       aria-hidden
@@ -68,25 +73,54 @@ export function WelcomeVideo({
                       <circle cx="50" cy="50" r="49" fill="rgba(255,255,255,0.85)" />
                       <path d="M40 32L70 50L40 68V32Z" fill="#519B98" />
                     </svg>
-                  </div>
-                </div>
+                  </span>
+                </button>
               </DialogTrigger>
             </div>
           </div>
         </div>
 
-        <DialogContent className="w-[calc(100%-1.5rem)] sm:max-w-5xl max-h-[90dvh] border-none bg-black p-0 overflow-hidden !rounded-none sm:!rounded-none md:!rounded-none lg:!rounded-none shadow-2xl [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/80 [&>button]:border-none [&>button]:size-8 [&>button]:top-3 [&>button]:right-3 [&>button]:z-30 [&>button]:rounded-full">
+        {/* Modal — rendered via Radix Portal at <body> level so overlay covers everything */}
+        <DialogContent className="w-[calc(100%-1.5rem)] sm:max-w-5xl max-h-[90dvh] border-none bg-black p-0 overflow-hidden !rounded-none shadow-2xl [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/80 [&>button]:border-none [&>button]:size-8 [&>button]:top-3 [&>button]:right-3 [&>button]:z-30 [&>button]:rounded-full">
           <DialogHeader className="sr-only">
             <DialogTitle>{title}</DialogTitle>
           </DialogHeader>
-          <div className="relative aspect-video w-full overflow-hidden bg-black !rounded-none">
+          <div className="relative aspect-video w-full overflow-hidden bg-black">
+            {/* Spinner — visible only while video is loading */}
+            {loading && (
+              <div className="absolute inset-0 z-10 flex items-center justify-center bg-black">
+                <svg
+                  className="size-12 animate-spin text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  />
+                </svg>
+                <span className="sr-only">Loading video…</span>
+              </div>
+            )}
+            {/* iframe always rendered — src set only when open to avoid mount/unmount blinking */}
             <iframe
               title="vimeo-player"
-              src={toPlayerUrl(videoHref)}
+              src={open ? toPlayerUrl(videoHref) : 'about:blank'}
               className="absolute inset-0 h-full w-full border-none bg-black"
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
               allowFullScreen
-            ></iframe>
+              onLoad={() => { if (open) setLoading(false) }}
+            />
           </div>
         </DialogContent>
       </Dialog>
