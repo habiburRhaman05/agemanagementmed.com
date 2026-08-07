@@ -48,7 +48,6 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
 
       {treatment.process ? (
         <ProgramStepsTimeline
-          eyebrow={treatment.process.eyebrow}
           title={treatment.process.title}
           steps={treatment.process.steps}
           stepImages={[
@@ -60,9 +59,9 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
       ) : null}
 
       <SafetyAndCandidacy
-        bg="bg-[#F8F9F5]"
+        bg="bg-white"
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350545/photo-content-38-img_lxshmc.jpg',
+          src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-38-img.jpg',
           alt: 'A provider reviewing treatment safety with a male patient',
         }}
         imageSide="right"
@@ -80,9 +79,9 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
         closingParagraph="Follow-up cadence and lab intervals will be confirmed with the clinical team prior to publishing final timelines."
       />
       <SafetyAndCandidacy
-      bg=''
+        bg=""
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350494/safety-img_xtu6j4.jpg',
+          src: '/photo-content-39-img.jpg',
           alt: 'A provider reviewing treatment safety with a male patient',
         }}
         imageSide="left"

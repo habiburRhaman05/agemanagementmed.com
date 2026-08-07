@@ -1,8 +1,5 @@
 'use client'
 
-import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-
 import { cn } from '@/lib/utils'
 import type { ProcessStep } from '@/types/content'
 
@@ -44,7 +41,7 @@ export function ProgramStepsTimeline({
           )}
 
           <h2
-            className="mb-3 text-[48px] font-medium leading-tight tracking-tight text-[#111214]"
+            className="mb-3 text-[32px] sm:text-[40px] md:text-[48px] font-medium leading-tight tracking-tight text-[#111214]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
@@ -75,19 +72,19 @@ export function ProgramStepsTimeline({
                         </div>
                       ) : null}
 
-                      <div className="relative rounded-xl border border-slate-100/70 bg-white p-6 pt-28 shadow-[0_8px_35px_rgba(0,0,0,0.035)]">
-                        <div className="flex items-start gap-4">
-                          <div className="relative z-20 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#B88796] font-serif text-xl font-medium text-white shadow-sm">
+                      <div className="relative rounded-xl border border-slate-100/70 bg-white p-5 pt-24 shadow-[0_8px_35px_rgba(0,0,0,0.035)] sm:p-6 sm:pt-28">
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          <div className="relative z-20 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#B88796] font-serif text-lg font-medium text-white shadow-sm sm:h-14 sm:w-14 sm:text-xl">
                             {index + 1}
                           </div>
-                          <div className="flex-1 pt-2">
+                          <div className="flex-1 pt-1.5 sm:pt-2">
                             <h3
-                              className="mb-3 text-[32px] font-normal leading-snug text-[#111214] font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                              className="mb-2 sm:mb-3 text-[24px] sm:text-[32px] font-normal leading-snug text-[#111214] font-['Bodoni_Moda',var(--font-bodoni),serif]"
                               style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                             >
                               {step.title}
                             </h3>
-                            <p className="text-[16px] font-normal leading-[1.7] text-[#111214]">
+                            <p className="text-[15px] sm:text-[16px] font-normal leading-[1.7] text-[#111214]">
                               {step.body}
                             </p>
                           </div>
@@ -130,17 +127,6 @@ export function ProgramStepsTimeline({
               })}
             </div>
           </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-14 text-center sm:mt-16 lg:mt-20">
-          <Link
-            href="/book-appointment"
-            className="inline-flex items-center gap-2.5 rounded-full bg-[#519B99] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.08em] text-white shadow-md transition-all duration-200 hover:bg-[#448b89] hover:shadow-lg sm:text-xs"
-          >
-            <span>SCHEDULE A CONSULTATION</span>
-            <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
-          </Link>
         </div>
       </div>
     </section>

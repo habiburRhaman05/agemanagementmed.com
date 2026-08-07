@@ -87,10 +87,11 @@ function FitCard({ card }: { card: ProgramFitCard }) {
  */
 export function ProgramFitCards({ fitCard, safetyCard }: ProgramFitCardsProps) {
   return (
-    <div className="lg-group" style={{ backgroundColor: '#fff' }}>
+    <div className="lg-group" style={{ backgroundColor: '#fff', overflow: 'hidden' }}>
       <FitCard card={{ ...fitCard, imageSide: fitCard.imageSide ?? 'left' }} />
       <div className="lg-flexspace-40" />
       <FitCard card={{ ...safetyCard, imageSide: safetyCard.imageSide ?? 'right' }} />
+      <div className="lg-flexspace-100" style={{ backgroundColor: '#fff' }} />
     </div>
   )
 }

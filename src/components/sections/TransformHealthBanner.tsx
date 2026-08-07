@@ -41,7 +41,7 @@ export function TransformHealthBanner({
   lead = 'Take the first step towards a healthier, more vibrant you.',
   buttonLabel = 'SCHEDULE A CONSULTATION',
   buttonHref = '/book-appointment',
-  backgroundImage = 'https://www.agemanagementmed.com/themes/default/assets/images/hero-11-bg.jpg',
+  backgroundImage = '/hero-11-bg.jpg',
   className,
 }: TransformHealthBannerProps) {
   return (
@@ -71,7 +71,7 @@ export function TransformHealthBanner({
 
           {/* Lead Subtitle */}
           {lead ? (
-            <p className="text-sm sm:text-base md:text-lg font-light leading-relaxed text-white/90 mb-8 sm:mb-10">
+            <p className="text-[20px] font-light leading-relaxed text-white/90 mb-8 sm:mb-10">
               {lead}
             </p>
           ) : null}

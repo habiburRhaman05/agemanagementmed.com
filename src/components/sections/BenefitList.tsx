@@ -1,13 +1,18 @@
 'use client'
 
 import { m } from 'framer-motion'
-import { HeartHandshake, Microscope, ShieldCheck, Sparkles } from 'lucide-react'
 import type { CSSProperties } from 'react'
 
 import { Container } from '@/components/shared/Container'
 import { IconRenderer } from '@/components/shared/IconRenderer'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
+import {
+  HeartDropsIcon,
+  LeafSparkleIcon,
+  SpaHandsIcon,
+  WellnessShieldIcon,
+} from '@/components/ui/icons/wellness-icons'
 
 import { cn } from '@/lib/utils'
 import type { BenefitListData, DesignOverride } from '@/types/content'
@@ -21,10 +26,16 @@ interface BenefitListProps extends BenefitListData {
   awards?: Array<{ src: string; alt: string }>
   awardsTitle?: string
   awardsLead?: string
+  /** Optional heading rendered above the card (outside the white card). */
+  introTitle?: string
+  /** Optional multi-paragraph intro rendered above the card (outside the white card). */
+  introParagraphs?: string[],
+  overRideWidth?: string,
+  paraWidth?: string
 }
 
-/** Array of default Lucide outline icons for card items if item.icon is omitted. */
-const DEFAULT_ICONS = [HeartHandshake, Sparkles, ShieldCheck, Microscope]
+/** Custom SVG icons used for card items when item.icon is omitted. */
+const DEFAULT_ICONS = [SpaHandsIcon, LeafSparkleIcon, HeartDropsIcon, WellnessShieldIcon]
 
 /** Default 9 award logos for the "Recognized For Excellence" bottom section */
 const DEFAULT_AWARDS = [
@@ -60,6 +71,10 @@ export function BenefitList({
   awards = DEFAULT_AWARDS,
   awardsTitle = 'Recognized For Excellence In Savannah & Beyond',
   awardsLead = 'These recognitions reflect our commitment to delivering high-quality aesthetic and wellness services in the Savannah area.',
+  introTitle,
+  introParagraphs,
+  overRideWidth,
+  paraWidth
 }: BenefitListProps) {
   const useCards = cardStyle ?? (columns === 2 && !numbered)
 
@@ -73,14 +88,67 @@ export function BenefitList({
         )}
         style={design?.vars as CSSProperties}
       >
-        <Container className={cn('max-w-5xl mx-auto', design?.containerClassName)}>
+        {/* Decorative Blur Background */}
+        <div
+          aria-hidden="true"
+          className="absolute left-1/2 -translate-x-1/2 pointer-events-none"
+          style={{
+            borderRadius: '50%',
+            background: '#587DBD',
+            filter: 'blur(500px)',
+            height: '790px',
+            maxWidth: '790px',
+            width: '100%',
+            top: '40%',
+            zIndex: 0,
+          }}
+        />
+
+        <Container className={cn('relative z-10 !max-w-[1292px] mx-auto', design?.containerClassName)}>
+          {/* Intro above the card (outside the white card) */}
+          {introTitle || introParagraphs?.length ? (
+            <m.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-center max-w-4xl mx-auto mb-10 sm:mb-12"
+            >
+              {introTitle ? (
+                <h2
+                  className="text-[32px] sm:text-[48px] font-medium tracking-tight text-[#1C274C] mb-3 font-display leading-tight"
+                  
+                >
+                  {introTitle}
+                </h2>
+              ) : null}
+
+              {introParagraphs?.length ? (
+                <div className="mt-4 space-y-3">
+                  {introParagraphs.map((paragraph, i) => (
+                    <p
+                      key={i}
+                      className={cn(
+                        'text-base text-[#1C274C] font-normal leading-relaxed mx-auto',
+                        !overRideWidth && 'max-w-xl'
+                      )}
+                      style={overRideWidth ? { maxWidth: overRideWidth } : undefined}
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
+            </m.div>
+          ) : null}
+
           {/* Main Elevated White Card Container with entrance animation */}
           <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-white rounded-[28px] p-6 sm:p-10 md:p-14 shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-100/70"
+            className="bg-white rounded-[28px] p-6 sm:p-10 md:p-14 lg:p-16 shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-100/70"
           >
             {/* Header Section inside Card */}
             {title || eyebrow || lead ? (
@@ -99,7 +167,7 @@ export function BenefitList({
 
                 {title ? (
                   <h2
-                    className="text-2xl sm:text-3xl md:text-[36px] font-normal leading-tight text-[#1C274C] mb-3 font-display"
+                    className="text-[32px] sm:text-[48px] font-medium tracking-tight text-[#1C274C] mb-3 font-display leading-tight"
                     
                   >
                     {title}
@@ -107,7 +175,7 @@ export function BenefitList({
                 ) : null}
 
                 {lead ? (
-                  <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed max-w-xl mx-auto">
+                  <p className="text-base text-[#1C274C] font-normal leading-relaxed max-w-xl mx-auto">
                     {lead}
                   </p>
                 ) : null}
@@ -134,36 +202,33 @@ export function BenefitList({
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
                     whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                    className="group bg-[#FBFBF9] hover:bg-white rounded-[20px] p-6 sm:p-8 border border-slate-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all duration-300 flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:gap-5 sm:text-left cursor-pointer"
+                    className="group bg-[#FBFBF9] hover:bg-white rounded-[20px] p-6 sm:p-8 border border-slate-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center md:flex-row md:items-start md:text-left gap-4 sm:gap-6 cursor-pointer"
                   >
-                    {/* Icon — centered above the text on mobile, left of it from sm+, with subtle hover scale/rotation */}
-                    <div className="shrink-0 text-[#489B93] sm:mt-1 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                    {/* Column 1: Icon */}
+                    <div className="shrink-0 text-[#489B93] mt-1 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                       {item.icon ? (
-                        <IconRenderer icon={item.icon} className="w-16 h-16 sm:w-8 sm:h-8 text-[#489B93]" />
+                        <IconRenderer icon={item.icon} className="w-10 h-10 sm:w-12 sm:h-12 text-[#489B93]" />
                       ) : (
-                        <DefaultIcon className="w-16 h-16 sm:w-8 sm:h-8 stroke-[1.75]" aria-hidden="true" />
+                        <DefaultIcon className="w-10 h-10 sm:w-12 sm:h-12 stroke-[1.75]" aria-hidden="true" />
                       )}
                     </div>
 
-                    {/* Content Block */}
-                    <div className="w-full sm:flex-1">
-                      <h3
-                        className="text-lg sm:text-xl md:text-[21px] font-normal leading-snug text-[#1C274C] mb-2 font-display capitalize group-hover:text-[#489B93] transition-colors duration-300"
-                        
-                      >
+                    {/* Column 2: Title & Body Text */}
+                    <div className="flex-1">
+                      <h3 className="text-[24px] sm:text-[28px] md:text-[32px] font-medium tracking-tight text-[#1C274C] mb-2 font-display capitalize leading-tight group-hover:text-[#489B93] transition-colors duration-300">
                         {item.title}
                       </h3>
 
                       {item.body ? (
-                        <p className="text-xs sm:text-[13.5px] text-slate-600 font-light leading-relaxed">
+                        <p className="text-base text-[#1C274C] font-normal leading-relaxed">
                           {item.body}
                         </p>
                       ) : null}
 
                       {item.items?.length ? (
-                        <ul className="mt-4 space-y-2 text-left">
+                        <ul className="mt-4 space-y-2 text-left md:text-left">
                           {item.items.map((sub) => (
-                            <li key={sub} className="flex gap-2 text-xs text-slate-600">
+                            <li key={sub} className="flex gap-2 text-xs text-slate-600 justify-center md:justify-start">
                               <span className="mt-1.5 w-1.5 h-1.5 shrink-0 rounded-full bg-[#489B93]" aria-hidden="true" />
                               {sub}
                             </li>
@@ -188,7 +253,7 @@ export function BenefitList({
             >
               {awardsTitle ? (
                 <h3
-                  className="text-2xl sm:text-3xl md:text-[36px] font-normal leading-tight text-[#1C274C] mb-3 font-display"
+                  className="text-[32px] sm:text-[48px] font-medium leading-tight text-[#1C274C] mb-3 font-display"
                   
                 >
                   {awardsTitle}
@@ -196,12 +261,18 @@ export function BenefitList({
               ) : null}
 
               {awardsLead ? (
-                <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
+                <p
+                  className={cn(
+                    'text-base text-[#1C274C] font-normal leading-relaxed mx-auto mb-10 sm:mb-12',
+                    !paraWidth && 'max-w-2xl'
+                  )}
+                  style={paraWidth ? { maxWidth: paraWidth } : undefined}
+                >
                   {awardsLead}
                 </p>
               ) : null}
 
-              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-10 max-w-5xl mx-auto">
+              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-10 !max-w-[1292px] mx-auto">
                 {awards.map((award, i) => (
                   <m.div
                     key={award.src + i}
@@ -255,6 +326,16 @@ export function BenefitList({
               </h2>
             ) : null}
             {lead ? <p className="text-sm text-slate-600 font-light">{lead}</p> : null}
+
+            {introParagraphs?.length ? (
+              <div className="mt-4 space-y-3">
+                {introParagraphs.map((paragraph, i) => (
+                  <p key={i} className="text-sm text-slate-600 font-light">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            ) : null}
           </div>
         ) : null}
 

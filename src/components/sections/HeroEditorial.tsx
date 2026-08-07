@@ -191,7 +191,7 @@ const [modalOpen, setModalOpen] = useState(false)
         <div className={cn("max-w-[700px]  text-center sm:text-left", heroDiv)}>
          
           <h1
-            className="text-[40px]  sm:text-[46px] lg:text-[56px] font-medium leading-[62px] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
+            className="text-[40px]  sm:text-[46px] lg:text-[56px] font-medium leading-[48px] sm:leading-[62px] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}

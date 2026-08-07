@@ -1,20 +1,19 @@
 'use client'
 
 import { m } from 'framer-motion'
-import {
-  Activity,
-  ArrowRight,
-  Flame,
-  Heart,
-  Moon,
-  Sparkles,
-  Zap,
-} from 'lucide-react'
 import dynamic from 'next/dynamic'
 
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import {
+  AwardBadgeIcon,
+  BrainIcon,
+  DocumentIcon,
+  GearOptimizeIcon,
+  NetworkIcon,
+  ShieldSafeIcon,
+} from '@/components/ui/icons/treatment-icons'
 import { cn } from '@/lib/utils'
 import type { BenefitItem, Media } from '@/types/content'
 
@@ -41,32 +40,32 @@ export interface SymptomsHeroCardProps {
 /** 6 Benefit items for "Our Men's Hormone Program May Help You" */
 const PROGRAM_BENEFITS = [
   {
-    icon: Heart,
+    icon: DocumentIcon,
     title: 'Enhance Sexual Wellness',
     desc: 'Support libido and overall sexual function',
   },
   {
-    icon: Flame,
+    icon: BrainIcon,
     title: 'Support Lean Muscle & Fat Loss',
     desc: 'Improve body composition and metabolism',
   },
   {
-    icon: Zap,
+    icon: NetworkIcon,
     title: 'Restore Energy & Mental Clarity',
     desc: 'Feel sharper, focused, and energized',
   },
   {
-    icon: Moon,
+    icon: ShieldSafeIcon,
     title: 'Improve Sleep Quality',
     desc: 'Experience deeper, more restorative sleep',
   },
   {
-    icon: Sparkles,
+    icon: AwardBadgeIcon,
     title: 'Elevate Mood & Motivation',
     desc: 'Restore drive, confidence, and resilience',
   },
   {
-    icon: Activity,
+    icon: GearOptimizeIcon,
     title: 'Improve Mobility & Recovery',
     desc: 'Reduce lingering pain & enhance movement with integrated support',
   },
@@ -90,8 +89,14 @@ export function SymptomsHeroCard({
   const imageAlt = image?.alt || heading
 
   return (
-    <section className="relative w-full bg-[##F7F8F2] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
-      <Container className="max-w-5xl mx-auto px-0">
+    <section className="relative w-full overflow-hidden bg-[#F7F8F2] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+      {/* Decorative background glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-[170px] left-0 h-[790px] w-[790px] rounded-full bg-[#587DBD]"
+        style={{ filter: 'blur(500px)' }}
+      />
+      <Container className="relative mx-auto px-0! lg:px-8!">
         {/* ONE SINGLE UNIFIED CARD CONTAINER */}
         <m.div
           initial={{ opacity: 0, y: 30 }}
@@ -103,7 +108,7 @@ export function SymptomsHeroCard({
         >
           {/* TOP HALF: Dark Navy Block (#0B1938) */}
           <div className="bg-[#0B1938] text-white">
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] items-stretch">
               {/* Left Column: Image */}
               <div className="relative min-h-[280px] sm:min-h-[380px] max-h-[340px] sm:max-h-none lg:min-h-full bg-slate-800">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -164,10 +169,12 @@ export function SymptomsHeroCard({
                     <DialogTrigger asChild>
                       <Button
                         size="lg"
-                        className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[11px] uppercase tracking-wider px-7 py-3.5 h-auto inline-flex items-center gap-2 shadow-md transition-all border-none"
+                        className="w-full sm:w-auto justify-center rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[14px] uppercase tracking-wider px-8 py-4 h-auto inline-flex items-center gap-2.5 shadow-md transition-all border-none"
                       >
                         <span>{ctaLabel}</span>
-                        <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
+                        <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 5.6059C0.585786 5.6059 0.25 5.94168 0.25 6.3559C0.25 6.77011 0.585786 7.1059 1 7.1059V5.6059ZM21.5303 6.88623C21.8232 6.59333 21.8232 6.11846 21.5303 5.82557L16.7574 1.0526C16.4645 0.759702 15.9896 0.759702 15.6967 1.0526C15.4038 1.34549 15.4038 1.82036 15.6967 2.11326L19.9393 6.3559L15.6967 10.5985C15.4038 10.8914 15.4038 11.3663 15.6967 11.6592C15.9896 11.9521 16.4645 11.9521 16.7574 11.6592L21.5303 6.88623ZM1 7.1059H21V5.6059H1V7.1059Z" fill="white"/>
+                        </svg>
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="w-[calc(100%-1rem)] max-w-2xl max-h-[90dvh] overflow-y-auto rounded-[28px] p-5 sm:w-full sm:rounded-[40px] sm:p-10">
@@ -190,10 +197,10 @@ export function SymptomsHeroCard({
           <div className="bg-white p-6 sm:p-8 lg:p-12 xl:p-16">
             {/* Header Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start mb-12 border-b border-slate-100 pb-8">
-              <div className="text-center">
+              <div className="text-left lg:pl-[52px]">
                 <h2
-                  className="text-[36px] font-medium leading-tight text-[#111214] mt-6 sm:mt-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                  className="text-[36px] sm:text-[48px] font-medium leading-tight text-[#111214] mt-6 sm:mt-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif", fontWeight: 500 }}
                 >
                   Hormone <br className="hidden sm:inline" />
                   Optimization <br className="hidden sm:inline" />
@@ -201,14 +208,17 @@ export function SymptomsHeroCard({
                 </h2>
               </div>
 
-              <div className="text-center">
+              <div className="text-left">
                 <h3
-                  className="text-[20px] font-normal text-[#111214] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
-                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
+                  className="text-[36px] sm:text-[48px] font-medium leading-tight text-[#111214] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif", fontWeight: 500 }}
                 >
                   What BHRT Is And How It Works
                 </h3>
-                <p className="text-[16px] text-[#111214] font-normal leading-relaxed">
+                <p
+                  className="text-[20px] text-[#111214] leading-relaxed font-['Manrope',var(--font-sans),sans-serif]"
+                  style={{ fontFamily: 'var(--font-sans), Manrope, sans-serif', fontWeight: 400 }}
+                >
                   Bioidentical Hormone Replacement Therapy (BHRT) uses hormones that are{' '}
                   <strong className="font-semibold text-[#111214]">
                     chemically identical to those produced naturally by your body
@@ -233,13 +243,13 @@ export function SymptomsHeroCard({
               {PROGRAM_BENEFITS.map((b) => {
                 const Icon = b.icon
                 return (
-                  <div key={b.title} className="flex flex-col items-center text-center gap-3">
+                  <div key={b.title} className="flex flex-row items-start text-left gap-5 sm:gap-6">
                     <div className="shrink-0 text-[#519B99]">
-                      <Icon className="w-10 h-10 stroke-[1.75]" />
+                      <Icon className="w-9 h-9 sm:w-10 sm:h-10" />
                     </div>
                     <div>
-                      <h4 className="text-[20px] font-bold leading-snug text-[#111214]">
-                        {b.title} <span className="font-normal text-[#111214]">— {b.desc}</span>
+                      <h4 className="text-[20px] font-bold leading-snug text-[#111214] font-['Manrope',var(--font-sans),sans-serif]">
+                        {b.title} <span className="font-normal text-[#111214]">- {b.desc}</span>
                       </h4>
                     </div>
                   </div>
@@ -253,10 +263,12 @@ export function SymptomsHeroCard({
                 <DialogTrigger asChild>
                   <Button
                     size="lg"
-                    className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[11px] uppercase tracking-wider px-7 py-3.5 h-auto inline-flex items-center gap-2 shadow-md transition-all border-none"
+                    className="w-full sm:w-auto justify-center rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[14px] uppercase tracking-wider px-8 py-4 h-auto inline-flex items-center gap-2.5 shadow-md transition-all border-none"
                   >
                     <span>{ctaLabel}</span>
-                    <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
+                    <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 5.6059C0.585786 5.6059 0.25 5.94168 0.25 6.3559C0.25 6.77011 0.585786 7.1059 1 7.1059V5.6059ZM21.5303 6.88623C21.8232 6.59333 21.8232 6.11846 21.5303 5.82557L16.7574 1.0526C16.4645 0.759702 15.9896 0.759702 15.6967 1.0526C15.4038 1.34549 15.4038 1.82036 15.6967 2.11326L19.9393 6.3559L15.6967 10.5985C15.4038 10.8914 15.4038 11.3663 15.6967 11.6592C15.9896 11.9521 16.4645 11.9521 16.7574 11.6592L21.5303 6.88623ZM1 7.1059H21V5.6059H1V7.1059Z" fill="white"/>
+                    </svg>
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="w-[calc(100%-1rem)] max-w-2xl max-h-[90dvh] overflow-y-auto rounded-[28px] p-5 sm:w-full sm:rounded-[40px] sm:p-10">

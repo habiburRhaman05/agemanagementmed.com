@@ -63,8 +63,6 @@ const treatments: TreatmentOptionCard[] = [
 export function TreatmentOptionsColumnBox() {
   return (
     <div id="column-box-d">
-      <div className="radial-gradient" aria-hidden />
-
       <div className="lg-max-width-1440">
         <div className="lg-container">
           {treatments.map((card) => (

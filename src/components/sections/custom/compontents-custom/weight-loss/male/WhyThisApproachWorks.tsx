@@ -29,8 +29,7 @@ const WhyThisApproachWorks: React.FC<Props> = ({ image }) => {
           <img
             src={finalImage}
             alt="Doctor consulting patient about weight loss approach"
-            className="absolute top-0 left-0 w-full"
-            style={{ height: 'auto' }}
+            className="absolute inset-0 h-full w-full object-cover object-top"
           />
         </div>
 

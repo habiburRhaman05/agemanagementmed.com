@@ -2,6 +2,7 @@
 
 import { ArrowRight, Play } from 'lucide-react'
 import dynamic from 'next/dynamic'
+import { useState } from 'react'
 
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
@@ -23,7 +24,6 @@ export interface MaleHeroBannerProps {
   title?: string
   lead?: string
   image?: Media | { src: string; alt?: string }
-  videoSource?: string
   className?: string
 }
 
@@ -41,10 +41,10 @@ export function MaleHeroBanner({
     src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/hero-banner-bg.jpg',
     alt: 'Bioidentical Hormone Replacement Therapy for Men',
   },
-  videoSource = '<iframe src="https://player.vimeo.com/video/1080951303?autoplay=1" allow="autoplay; fullscreen" allowfullscreen></iframe>',
   className,
 }: MaleHeroBannerProps) {
   const imageSrc = image?.src || '/images/treatments/bioidentical-hormone-replacement-therapy/male/hero-banner-bg.jpg'
+  const [videoOpen, setVideoOpen] = useState(false)
 
   return (
     <section
@@ -85,32 +85,23 @@ export function MaleHeroBanner({
                   <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
                 </Button>
               </DialogTrigger>
-              <DialogContent
-                className="
-                  w-[calc(100%-1rem)]
-                  max-w-2xl
-                  max-h-[90dvh]
-                  overflow-y-auto
-                  rounded-[28px]
-                  p-5
-                  sm:w-full
-                  sm:rounded-[40px]
-                  sm:p-10
-                "
-              >
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-display text-slate-900">
-                    Book Your Consultation
+              <DialogContent className="max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-[480px] overflow-y-auto rounded-[28px] border-none bg-[#0B1938] p-6 sm:p-9 text-white shadow-2xl [&>button]:bg-slate-700/60 [&>button]:text-slate-200 [&>button]:hover:bg-slate-600 [&>button]:hover:text-white [&>button]:border-none [&>button]:cursor-pointer">
+                <DialogHeader className="mb-2 text-center sm:text-center">
+                  <DialogTitle
+                    className="font-['Bodoni_Moda',var(--font-bodoni),Georgia,serif] text-2xl sm:text-[28px] font-normal text-white text-center leading-tight"
+                    style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', Georgia, serif" }}
+                  >
+                    Schedule A Consultation
                   </DialogTitle>
                 </DialogHeader>
                 <div className="mt-4">
-                  <BookingForm />
+                  <BookingForm variant="dark" submitLabel="NEXT STEP" />
                 </div>
               </DialogContent>
             </Dialog>
 
             {/* Secondary CTA (Watch Video Modal) */}
-            <Dialog>
+            <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
               <DialogTrigger asChild>
                 <Button
                   size="lg"
@@ -121,14 +112,20 @@ export function MaleHeroBanner({
                   <span>WATCH VIDEO</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent className="w-[calc(100%-1.5rem)] sm:max-w-5xl max-h-[90dvh] border-none bg-black p-0 overflow-hidden rounded-none shadow-2xl [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/80 [&>button]:border-none [&>button]:size-8 [&>button]:top-3 [&>button]:right-3 [&>button]:z-30 [&>button]:rounded-full">
+              <DialogContent className="w-[calc(100%-1.5rem)] sm:max-w-5xl max-h-[90dvh] border-none bg-black p-0 overflow-hidden !rounded-none sm:!rounded-none md:!rounded-none lg:!rounded-none shadow-2xl [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/80 [&>button]:border-none [&>button]:size-8 [&>button]:top-3 [&>button]:right-3 [&>button]:z-30 [&>button]:rounded-full">
+                {/* Radix requires a DialogTitle for a11y; visually hidden here */}
                 <DialogHeader className="sr-only">
-                  <DialogTitle>Intro Video</DialogTitle>
+                  <DialogTitle>Intro video</DialogTitle>
                 </DialogHeader>
-                <div
-                  className="relative w-full aspect-video overflow-hidden bg-black [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:h-full [&_iframe]:w-full"
-                  dangerouslySetInnerHTML={{ __html: videoSource }}
-                />
+                <div className="relative aspect-video w-full overflow-hidden bg-black !rounded-none">
+                  <iframe
+                    title="vimeo-player"
+                    src="https://player.vimeo.com/video/1080951303?h=91f29206b0&autoplay=1"
+                    className="absolute inset-0 h-full w-full border-none bg-black"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </DialogContent>
             </Dialog>
           </div>

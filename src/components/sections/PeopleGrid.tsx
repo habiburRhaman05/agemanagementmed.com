@@ -6,6 +6,7 @@ import Link from 'next/link'
 
 import { Container } from '@/components/shared/Container'
 import { Button } from '@/components/ui/Button'
+import { cn } from '@/lib/utils'
 import type { Cta, Person } from '@/types/content'
 
 interface PeopleGridProps {
@@ -37,8 +38,8 @@ export function PeopleGrid({
   if (!people || people.length === 0) return null
 
   return (
-    <section className="relative w-full bg-[#F8F9F5] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <Container className="max-w-5xl mx-auto">
+    <section className="relative w-full bg-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <Container className="!max-w-[1292px] mx-auto">
         {/* Main Elevated Dark Navy Card Container */}
         <m.div
           initial={{ opacity: 0, y: 30 }}
@@ -62,14 +63,14 @@ export function PeopleGrid({
             ) : null}
 
             <h2
-              className="text-3xl sm:text-4xl md:text-[44px] font-normal leading-tight text-white mb-3 font-display"
+              className="text-[32px] sm:text-[48px] font-medium leading-tight text-white mb-3 font-display"
               
             >
               {title}
             </h2>
 
             {lead ? (
-              <p className="text-xs sm:text-sm font-light leading-relaxed text-slate-300 max-w-xl mx-auto">
+              <p className="text-base text-white font-normal leading-relaxed">
                 {lead}
               </p>
             ) : null}
@@ -80,6 +81,7 @@ export function PeopleGrid({
             {people.map((person, index) => {
               const imageSrc = person.portrait?.src || ''
               const imageAlt = person.portrait?.alt || person.name
+              const isCollins = person.name.toLowerCase().includes('collins')
 
               const bioParagraphs = Array.isArray(person.bio)
                 ? person.bio
@@ -99,15 +101,15 @@ export function PeopleGrid({
                   className="flex flex-col"
                 >
                   {/* Person Row Container */}
-                  <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 lg:gap-14">
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12! lg:gap-[110px]!">
                     {/* Circular Portrait Image */}
-                    <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-60 md:h-60 shrink-0 rounded-full overflow-hidden border-2 border-slate-700/50 shadow-2xl bg-slate-800">
+                    <div className="relative w-40 h-40 sm:w-72 sm:h-72 md:w-80 md:h-80 shrink-0 rounded-full overflow-hidden border-2 border-slate-700/50 shadow-2xl bg-slate-800">
                       {imageSrc ? (
                         <Image
                           src={imageSrc}
                           alt={imageAlt}
                           fill
-                          sizes="240px"
+                          sizes="320px"
                           className="object-cover object-top"
                         />
                       ) : null}
@@ -116,19 +118,22 @@ export function PeopleGrid({
                     {/* Text Details */}
                     <div className="flex-1 text-center md:text-left text-white">
                       <h3
-                        className="text-2xl sm:text-3xl md:text-[32px] font-normal leading-tight text-white mb-1.5 font-display"
+                        className={cn(
+                          "font-medium leading-tight text-white mb-1.5 font-display",
+                          isCollins ? "text-[32px] md:text-[50px]" : "text-[32px] md:text-[40px]"
+                        )}
                         
                       >
                         {person.name}
                         {person.credentials ? `, ${person.credentials}` : ''}
                       </h3>
 
-                      <p className="text-xs sm:text-sm font-semibold text-slate-300 tracking-wide uppercase mb-4 sm:mb-6">
+                      <p className="text-xs sm:text-sm font-bold text-slate-300 tracking-wide uppercase mb-4 sm:mb-6">
                         {person.role}
                       </p>
 
                       {/* Bio Paragraphs */}
-                      <div className="space-y-3.5 text-xs sm:text-sm text-slate-200/90 font-light leading-relaxed">
+                      <div className="space-y-3.5 text-base text-slate-200/90 font-normal leading-relaxed">
                         {bioParagraphs.map((paragraph, pIdx) => (
                           <p key={pIdx}>{paragraph}</p>
                         ))}
@@ -138,7 +143,7 @@ export function PeopleGrid({
 
                   {/* Horizontal Divider between rows */}
                   {index < people.length - 1 ? (
-                    <div className="mt-12 sm:mt-16 w-full h-px bg-slate-700/50" />
+                    <div className="mt-12 sm:mt-16 w-full h-[0.7px] bg-white" />
                   ) : null}
                 </m.div>
               )

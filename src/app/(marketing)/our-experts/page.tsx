@@ -77,22 +77,33 @@ console.log(allNews);
       <Header overlay />
       <HeroEditorial
         {...expertsContent.hero}
+        hideDefaultCta
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Our Experts', href: '/our-experts' }]}
-        containerOverride="pb-20 pt-35 md:pb-35 md:pt-50 lg:pb-40 lg:pt-65"
-        heroDiv='max-w-full'
+        containerOverride="pb-20 pt-35 md:pb-35 md:pt-50 lg:pb-55 lg:pt-75"
+        heroDiv='max-w-full md:px-10 lg:px-0'
         heroPara='max-w-3xl'
+        overlay={false}
       />
 
       {/* <EditorialPair {...expertsContent.standard} background="alt" /> */}
 
-      <BenefitList {...expertsContent.whyChooseUs} />
+      <BenefitList
+        {...expertsContent.whyChooseUs}
+        eyebrow={undefined}
+        introTitle="A New Standard in Hormone and Regenerative Care"
+        introParagraphs={[
+          'Dr. Collins founded SAMM with a simple belief: healthcare should go beyond treating symptoms—it should focus on optimizing how patients feel, function, and live.',
+          'That philosophy continues to shape every treatment and patient experience today.',
+        ]}
+        overRideWidth="max-w-3xl"
+        paraWidth="max-w-3xl"
+      />
 
 
 
       <PeopleGrid
-        eyebrow="Meet our experts"
-        title="The people who will look after you"
-        lead="With years of experience in integrative medicine and hormone therapy, our experts create personalized solutions that help you feel your best."
+        title="Meet Our Experts"
+        lead="With years of experience in integrative medicine and hormone therapy, our experts are here to create personalized solutions that help you feel your best."
         people={people}
       />
 
