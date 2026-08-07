@@ -4037,3 +4037,14 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     padding: 40px 30px;
   }
 }
+
+
+#photo-content-c .box .top {
+  align-items: stretch; /* ensures both columns start at the same top edge */
+}
+
+#photo-content-c .box .top .img {
+  padding-top: 0;
+  margin-top: 0;
+  align-self: stretch; /* removes any grid-item default top offset */
+}
