@@ -7,6 +7,10 @@ import type { ClosingCtaData } from '@/types/content'
 interface ClosingCTAProps extends ClosingCtaData {
   /** Background photo for the band; defaults to the shared placeholder. */
   backgroundImage?: string
+  /** Background alignment for the band photo. */
+  backgroundPosition?: string
+  /** Extra class(es) added to the .hero-bg wrapper. */
+  className?: string
   /** Small print under the CTA — e.g. the treatment pages' results disclaimer. */
   note?: string
   /** Caps the text column width (px) so the title wraps onto multiple lines instead of running the full container width. Opt-in — omit to keep the existing full-width behavior. */
@@ -35,8 +39,8 @@ export function ClosingCTA({
 
   return (
     <div
-      className="hero-bg bg-cover! bg-no-repeat! bg-position-[75%_top]! md:bg-center!"
-      style={{ backgroundImage: `url('${backgroundImage}')` }}
+      className={`hero-bg${className ? ` ${className}` : ''}`}
+      style={{ backgroundImage: `url('${backgroundImage}')`, backgroundPosition }}
     >
       <div className="lg-max-width-1440">
         <div className="lg-container">

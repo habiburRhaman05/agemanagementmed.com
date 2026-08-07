@@ -20,7 +20,8 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
     <>
       <HeroEditorial
         {...treatment.hero}
-        image={{...treatment.hero.image,src: '/images/banner-24-bg.jpg'}}
+        image={{ ...treatment.hero.image, src: '/images/hero-2-bg.jpg' }}
+        mobileFocalPoint="60% center"
         fullHeight
         centerUntilTablet
         breadcrumbs={[
@@ -110,7 +111,7 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
 
       {treatment.faqs.length ? <FAQAccordion title="BHRT For Women FAQs" items={treatment.faqs} /> : null}
 
-      <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-2-bg.jpg" />
+      <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-2-bg.jpg" className="hero-bg-shift-80" />
     </>
   )
 }

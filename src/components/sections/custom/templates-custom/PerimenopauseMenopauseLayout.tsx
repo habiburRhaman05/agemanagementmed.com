@@ -198,12 +198,13 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
 
       <MidPageCTA
         backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-35-bg.jpg"
-        backgroundPosition="center top"
+        backgroundPosition="80% center"
         title="Ready To Get Answers?"
         body="You deserve more than temporary fixes or generic advice. Our team can help identify the root causes behind your symptoms and create a plan designed specifically for you."
         ctaLabel="Schedule Hormone Testing"
         ctaHref="/bioidentical-hormone-replacement-therapy/female"
         align="full"
+        gradient={false}
       />
 
       <TextImagePanel

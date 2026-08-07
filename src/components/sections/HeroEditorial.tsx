@@ -129,6 +129,7 @@ export function HeroEditorial({
         fullHeight ? 'min-h-[100dvh] sm:min-h-screen' : 'min-h-128 lg:min-h-[620px]',
         overideMinheight,
       )}
+      style={{ '--hero-object-position-mobile': mobileFocalPoint } as Record<string, string | undefined>}
     >
       {/* Background Image */}
       <Image
@@ -137,7 +138,7 @@ export function HeroEditorial({
         fill
         priority
         sizes="100vw"
-        className="object-cover absolute inset-0 z-0"
+        className="object-cover absolute inset-0 z-0 hero-editorial-img"
         style={{ objectPosition: image.focalPoint ?? '85% center' }}
       />
       {/* Dark gradient overlay to ensure text legibility while keeping the top of the image completely vibrant */}
@@ -159,7 +160,8 @@ export function HeroEditorial({
           {!showFormButton && !showVideoButton && !hideDefaultCta ? (
             <div
               className={cn(
-                'hero-enter mt-8 flex flex-col flex-wrap items-center justify-center gap-3 md:mt-10 md:gap-4 w-full',
+                'hero-enter mt-8 flex flex-col flex-wrap items-center gap-3 md:mt-10 md:gap-4 w-full',
+                leftAlignMobile ? 'items-start justify-start' : 'justify-center',
                 centerUntilTablet ? 'min-[992px]:flex-row min-[992px]:justify-start' : 'sm:flex-row sm:justify-start',
               )}
               style={{ animationDelay: '0.5s' }}
@@ -191,7 +193,8 @@ export function HeroEditorial({
           {showFormButton || showVideoButton ? (
             <div
               className={cn(
-                'hero-enter mt-8 flex flex-col flex-wrap items-center justify-center gap-3 md:mt-10 md:gap-4 w-full',
+                'hero-enter mt-8 flex flex-col flex-wrap items-center gap-3 md:mt-10 md:gap-4 w-full',
+                leftAlignMobile ? 'items-start justify-start' : 'justify-center',
                 centerUntilTablet ? 'min-[992px]:flex-row min-[992px]:justify-start' : 'sm:flex-row sm:justify-start',
               )}
               style={{ animationDelay: '0.5s' }}

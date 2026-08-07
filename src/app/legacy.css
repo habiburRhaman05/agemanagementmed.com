@@ -1289,6 +1289,14 @@
   margin-right: auto;
 }
 
+/* Mobile-only background shift for opt-in `.hero-bg` bands (beat the inline
+   `background-position` via !important). */
+@media only screen and (max-width: 639.98px) {
+  .hero-bg.hero-bg-shift-80 {
+    background-position: 80% center !important;
+  }
+}
+
 /* ------------ HERO PLAIN (#hero-p) ---------------------- */
 #hero-p {
   background: linear-gradient(90deg, #519b98 0%, #4e9592 100%);
