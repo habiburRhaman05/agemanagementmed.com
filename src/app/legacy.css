@@ -1243,6 +1243,7 @@
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
   padding: 110px 0;
   position: relative;
 }
@@ -1755,6 +1756,7 @@
 #photo-content-c .box {
   background-color: #fff;
   border-radius: 20px;
+  overflow: hidden;
   position: relative;
   z-index: 1;
 }
