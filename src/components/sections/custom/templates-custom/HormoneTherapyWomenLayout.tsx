@@ -20,8 +20,8 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
     <>
       <HeroEditorial
         {...treatment.hero}
-        image={{ ...treatment.hero.image, src: '/images/hero-2-bg.jpg' }}
-        mobileFocalPoint="60% center"
+        image={{ ...treatment.hero.image, src: '/images/banner-24-bg.jpg' }}
+        mobileFocalPoint="75% center"
         fullHeight
         centerUntilTablet
         breadcrumbs={[
