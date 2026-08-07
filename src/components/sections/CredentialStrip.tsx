@@ -58,7 +58,7 @@ export function CredentialStrip({
               </div>
 
               <p>
-                {ctaLabel} <Link href={ctaHref}>here</Link>.
+                {ctaLabel} <Link href={ctaHref} className="text-white!">here</Link>.
               </p>
             </div>
           </div>
