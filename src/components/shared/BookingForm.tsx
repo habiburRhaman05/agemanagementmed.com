@@ -2,7 +2,7 @@
 
 import { bookAppointment, type ActionResult } from '@/actions/appointment'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AlertCircle } from 'lucide-react'
+import { AlertCircle, ChevronDown } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -77,7 +77,7 @@ export function BookingForm({ defaultLocation, serviceLabel, submitLabel, varian
           setBookingState(result)
         }
       })}
-      className={isDark ? 'space-y-4' : 'space-y-5 sm:space-y-6'}
+      className={isDark ? 'space-y-4 sm:space-y-5' : 'space-y-5 sm:space-y-6'}
       noValidate
     >
       {bookingState && !bookingState.success && (
@@ -95,7 +95,7 @@ export function BookingForm({ defaultLocation, serviceLabel, submitLabel, varian
           placeholder={isDark ? 'Name' : undefined}
           className={
             isDark
-              ? 'h-12 w-full rounded-xl border border-white/25 bg-[#08142c] px-4 text-sm text-white placeholder:text-slate-300 focus:border-[#519B99] focus:outline-none focus:ring-1 focus:ring-[#519B99] cursor-pointer'
+              ? 'h-13 sm:h-14 w-full rounded-xl border border-white/20 bg-[#060E26]/50 px-4 sm:px-5 text-base sm:text-lg text-white placeholder:text-white/70 focus:bg-[#060E26] focus:border-teal-400 focus:outline-none transition-all'
               : 'mt-2'
           }
           autoComplete="name"
@@ -115,7 +115,7 @@ export function BookingForm({ defaultLocation, serviceLabel, submitLabel, varian
           placeholder={isDark ? 'E-mail Address' : undefined}
           className={
             isDark
-              ? 'h-12 w-full rounded-xl border border-white/25 bg-[#08142c] px-4 text-sm text-white placeholder:text-slate-300 focus:border-[#519B99] focus:outline-none focus:ring-1 focus:ring-[#519B99] cursor-pointer'
+              ? 'h-13 sm:h-14 w-full rounded-xl border border-white/20 bg-[#060E26]/50 px-4 sm:px-5 text-base sm:text-lg text-white placeholder:text-white/70 focus:bg-[#060E26] focus:border-teal-400 focus:outline-none transition-all'
               : 'mt-2'
           }
           autoComplete="email"
@@ -135,7 +135,7 @@ export function BookingForm({ defaultLocation, serviceLabel, submitLabel, varian
           placeholder={isDark ? 'Phone' : undefined}
           className={
             isDark
-              ? 'h-12 w-full rounded-xl border border-white/25 bg-[#08142c] px-4 text-sm text-white placeholder:text-slate-300 focus:border-[#519B99] focus:outline-none focus:ring-1 focus:ring-[#519B99] cursor-pointer'
+              ? 'h-13 sm:h-14 w-full rounded-xl border border-white/20 bg-[#060E26]/50 px-4 sm:px-5 text-base sm:text-lg text-white placeholder:text-white/70 focus:bg-[#060E26] focus:border-teal-400 focus:outline-none transition-all'
               : 'mt-2'
           }
           autoComplete="tel"
@@ -147,34 +147,41 @@ export function BookingForm({ defaultLocation, serviceLabel, submitLabel, varian
       </div>
 
       {/* Location Select */}
-      <div>
-        <label
-          htmlFor="location"
-          className={
-            isDark
-              ? 'block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5'
-              : 'block text-sm font-medium text-canvas-900 mb-2'
-          }
-        >
-          WHICH LOCATION ARE YOU INTERESTED IN?
-        </label>
-        <select
-          id="location"
-          className={
-            isDark
-              ? 'h-12 w-full rounded-xl border border-white/25 bg-[#08142c] px-4 text-sm text-white focus:border-[#519B99] focus:outline-none focus:ring-1 focus:ring-[#519B99] cursor-pointer'
-              : 'mt-2 h-14 w-full rounded-xl border border-canvas-300 bg-canvas-50 px-4 text-body text-canvas-900 focus:border-sage-600 focus:outline-none focus-visible:outline-2 focus-visible:outline-sage-600 cursor-pointer'
-          }
-          {...register('location')}
-        >
-          <option value="savannah-pooler" className="bg-[#0b1938] text-white">
-            Pooler / Savannah
-          </option>
-          <option value="statesboro" className="bg-[#0b1938] text-white">
-            Statesboro
-          </option>
-        </select>
-      </div>
+      {isDark ? (
+        <div className="relative rounded-xl border border-white/20 bg-[#060E26]/50 focus-within:bg-[#060E26] px-4 sm:px-5 pt-2 pb-2 focus-within:border-teal-400 transition-all">
+          <label
+            htmlFor="location"
+            className="block text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-white/90"
+          >
+            WHICH LOCATION ARE YOU INTERESTED IN?
+          </label>
+          <div className="relative flex items-center">
+            <select
+              id="location"
+              className="w-full appearance-none bg-transparent pr-8 py-0.5 text-white text-base sm:text-lg font-normal focus:outline-none cursor-pointer [&>option]:bg-[#0E1738] [&>option]:text-white"
+              {...register('location')}
+            >
+              <option value="savannah-pooler">Pooler / Savannah</option>
+              <option value="statesboro">Statesboro</option>
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 h-5 w-5 text-white/80" />
+          </div>
+        </div>
+      ) : (
+        <div>
+          <label htmlFor="location" className="block text-sm font-medium text-canvas-900 mb-2">
+            WHICH LOCATION ARE YOU INTERESTED IN?
+          </label>
+          <select
+            id="location"
+            className="mt-2 h-14 w-full rounded-xl border border-canvas-300 bg-canvas-50 px-4 text-body text-canvas-900 focus:border-sage-600 focus:outline-none focus-visible:outline-2 focus-visible:outline-sage-600 cursor-pointer"
+            {...register('location')}
+          >
+            <option value="savannah-pooler">Pooler / Savannah</option>
+            <option value="statesboro">Statesboro</option>
+          </select>
+        </div>
+      )}
 
       {/* Checkbox for default theme */}
       {!isDark && (
@@ -216,9 +223,9 @@ export function BookingForm({ defaultLocation, serviceLabel, submitLabel, varian
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full rounded-full bg-[#519B99] hover:bg-[#448b89] py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-white shadow-md transition-all duration-200 hover:shadow-lg active:scale-[0.98] cursor-pointer mt-2"
+          className="w-full h-13 sm:h-14 rounded-full bg-[#4DA89E] hover:bg-[#3f9188] active:scale-[0.99] text-white font-bold tracking-[0.18em] text-sm sm:text-base uppercase transition-all shadow-lg shadow-teal-900/30 flex items-center justify-center disabled:opacity-75 disabled:cursor-not-allowed mt-2"
         >
-          {isSubmitting ? 'Submitting…' : (submitLabel ?? 'NEXT STEP')}
+          {isSubmitting ? 'SUBMITTING...' : (submitLabel ?? 'NEXT STEP')}
         </button>
       ) : (
         <Button
@@ -233,11 +240,12 @@ export function BookingForm({ defaultLocation, serviceLabel, submitLabel, varian
 
       {/* Explicit Legal Consent Disclaimer for Dark Theme */}
       {isDark && (
-        <div className="mt-6 pt-5 border-t border-white/15">
-          <p className="text-[9px] sm:text-[9.5px] leading-relaxed text-slate-300 font-medium uppercase tracking-tight text-left">
-            BY COMPLETING AND SUBMITTING THIS FORM, I HEREBY PROVIDE EXPLICIT WRITTEN CONSENT TO RECEIVE COMMUNICATIONS THROUGH TEXT MESSAGES AND PHONE CALLS, INCLUDING THOSE TO WIRELESS NUMBERS OR NUMBERS REGISTERED ON AN INTERNAL DO NOT CALL REGISTRY. I ACKNOWLEDGE THAT THESE COMMUNICATIONS MAY BE INITIATED THROUGH TELEPHONE CALLS, PRERECORDED VOICEMAILS, OR POSTAL MAIL, AND MAY PERTAIN TO MARKETING SERVICES. I UNDERSTAND THAT SUCH COMMUNICATIONS MIGHT INVOLVE AUTOMATED SOFTWARE. ADDITIONALLY, I AFFIRM MY UNDERSTANDING AND ACCEPTANCE OF THE PRIVACY POLICY AND TERMS AND CONDITIONS. I AM AWARE THAT I CAN OPT OUT OF THESE COMMUNICATIONS AT ANY TIME BY REPLYING WITH "STOP". STANDARD MESSAGE AND DATA RATES MAY APPLY.
+        <>
+          <div className="my-6 sm:my-7 border-t border-white/15" />
+          <p className="text-[10px] sm:text-[11px] leading-[1.45] text-white/60 uppercase tracking-tight text-justify font-sans">
+            BY COMPLETING AND SUBMITTING THIS FORM, I HEREBY PROVIDE EXPLICIT WRITTEN CONSENT TO RECEIVE COMMUNICATIONS THROUGH TEXT MESSAGES AND PHONE CALLS, INCLUDING THOSE TO WIRELESS NUMBERS OR NUMBERS REGISTERED ON AN INTERNAL DO NOT CALL REGISTRY. I ACKNOWLEDGE THAT THESE COMMUNICATIONS MAY BE INITIATED THROUGH TELEPHONE CALLS, PRERECORDED VOICEMAILS, OR POSTAL MAIL, AND MAY PERTAIN TO MARKETING SERVICES. I UNDERSTAND THAT SUCH COMMUNICATIONS MIGHT INVOLVE AUTOMATED SOFTWARE. ADDITIONALLY, I AFFIRM MY UNDERSTANDING AND ACCEPTANCE OF THE PRIVACY POLICY AND TERMS AND CONDITIONS. I AM AWARE THAT I CAN OPT OUT OF THESE COMMUNICATIONS AT ANY TIME BY REPLYING WITH &quot;STOP&quot;. STANDARD MESSAGE AND DATA RATES MAY APPLY.
           </p>
-        </div>
+        </>
       )}
     </form>
   )

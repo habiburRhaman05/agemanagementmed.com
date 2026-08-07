@@ -80,7 +80,7 @@ const [openModal,setOpenModal] = useState(false)
                 </DialogTitle>
               </DialogHeader>
               <div className="mt-2">
-                <BookingForm />
+                <BookingForm variant="dark" />
               </div>
             </DialogContent>
           </Dialog>
