@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 import BookingModal from '@/components/shared/BookingModal'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 
 interface MidPageCTAProps {
   backgroundImage: string
@@ -12,6 +13,8 @@ interface MidPageCTAProps {
   body: string
   ctaLabel?: string
   ctaHref?: string
+  paraWidth?: string
+  titleWidth?: string
   /** Content column: left/right (col-lg-6, weight-loss pages) or full-width (col-12, GLP-1 pages). */
   align?: 'left' | 'right' | 'full'
   /** Explicit override; defaults to true for 'left'/'full' (matches the source's per-page markup). */
@@ -35,6 +38,8 @@ export function MidPageCTA({
   backgroundPosition,
   title,
   body,
+  paraWidth,
+  titleWidth,
   ctaLabel = 'Schedule a consultation',
   ctaHref = '/book-appointment',
   align = 'left',
@@ -57,20 +62,14 @@ export function MidPageCTA({
               <div className={`content${align === 'full' ? '' : ' lg-col-lg-6'}`}>
                 <div className="lg-title">{title}</div>
 
-                <div className="lg-text max-w-[835px]">
+                <div className={`lg-text max-w-[${paraWidth || "835"}px]`}>
                   <p>{body}</p>
                 </div>
 
                 <div className="cta">
-                  {isBooking ? (
-                    <button type="button" onClick={() => setModalOpen(true)} className="lg-btn lg-btn-arrow-right">
-                      {ctaLabel}
-                    </button>
-                  ) : (
-                    <Link href={ctaHref} className="lg-btn lg-btn-arrow-right">
-                      {ctaLabel}
-                    </Link>
-                  )}
+               <BookAppointmentButton>
+                {ctaLabel}
+               </BookAppointmentButton>
                 </div>
               </div>
             </div>
@@ -78,9 +77,7 @@ export function MidPageCTA({
         </div>
       </div>
 
-      {isBooking ? (
-        <BookingModal open={modalOpen} onClose={() => setModalOpen(false)} title="Schedule a Consultation" />
-      ) : null}
+  
     </>
   )
 }

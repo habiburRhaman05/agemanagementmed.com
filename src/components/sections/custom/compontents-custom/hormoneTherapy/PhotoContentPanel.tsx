@@ -31,7 +31,7 @@ export function PhotoContentPanel({
 
   return (
     <div
-      className={`photo-content-d black-text padding-0 ${isRight ? 'padding-right' : 'padding-left'} pt-8`}
+      className={`photo-content-d black-text padding-0 ${isRight ? 'padding-right' : 'padding-left'} py-12 lg:py-20`}
       style={bg ? { backgroundColor: bg } : undefined}
     >
       <div className="lg-max-width-1440">

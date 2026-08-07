@@ -85,16 +85,16 @@ export function LegacyIncludedGrid({
     <section className="py-16 md:py-20" style={{ backgroundColor: bg ?? '#fff' }}>
       <Container width="wide">
         {/* Heading */}
-        <div className={`max-w-[720px] ${HEADING_ALIGN[align]}`}>
+        <div className={`max-w-[800px] ${HEADING_ALIGN[align]}`}>
           <h2 className="font-display text-[32px] leading-tight text-[#14214b] capitalize sm:text-[40px] lg:text-[48px]">
             {title}
           </h2>
-          {lead ? <p className="mt-4 text-lg text-canvas-600">{lead}</p> : null}
+          {lead ? <p className="mt-4 text-[20px] text-navy-600">{lead}</p> : null}
         </div>
 
         {/* Included */}
         {resolvedIncludedLabel ? (
-          <p className="mt-10 mb-6 text-center font-display text-2xl text-[#14214b] sm:mt-12 sm:mb-8">
+          <p className="mt-10 mb-6 text-center font-display text-[32px] text-[#14214b] sm:mt-12 sm:mb-8">
             {resolvedIncludedLabel}
           </p>
         ) : (
@@ -106,7 +106,7 @@ export function LegacyIncludedGrid({
         {/* May be additional */}
         {separate?.length ? (
           <>
-            <p className="mt-14 mb-6 text-center font-display text-[28px] text-[#14214b] sm:mt-16 sm:mb-8 sm:text-[32px]">
+            <p className="mt-14 mb-6 text-center font-display text-[32px] text-[#14214b] sm:mt-16 sm:mb-8 sm:text-[32px]">
               {separateLabel ?? 'May Be Additional:'}
             </p>
             <GridRow items={separate} />

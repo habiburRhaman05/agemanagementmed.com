@@ -16,10 +16,13 @@ export interface LabworkGuidancePanelProps {
 }
 
 /**
- * Live-site "How We Use Labwork to Guide Your Plan" — `.photo-content-d.full-img`
- * with a two-column bullet comparison. Ported 1:1 from
- * download/_concierge-medical-weight-loss_female_.html; the styling lives in
- * src/app/legacy.css.
+ * Live-site "How We Use Labwork to Guide Your Plan" — page-specific
+ * full-bleed layout (not the shared `.photo-content-d.full-img` grid, which
+ * caps at 1292px and splits 5/7 columns): full section width, content flush
+ * to the left edge, image filling a true 50% column on the right. Ported
+ * from download/_concierge-medical-weight-loss_female_.html; only used here
+ * (see LabworkGuidancePanel usages), so safe to keep inline rather than a
+ * separate component.
  */
 export function LabworkGuidancePanel({
   image,
@@ -33,66 +36,67 @@ export function LabworkGuidancePanel({
   closingParagraphs,
 }: LabworkGuidancePanelProps) {
   return (
-    <div className="photo-content-d full-img">
-      <div className="lg-max-width-1440">
-        <div className="lg-container">
-          <div className="lg-grid">
-            <div className="img lg-col-lg-5">
-              <div
-                className="img-box"
-                style={{
-                  backgroundImage: `url('${image.src}')`,
-                  backgroundSize: 'contain',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
-                }}
-                role="img"
-                aria-label={image.alt}
-              />
+    <div className="grid w-full grid-cols-1 lg:grid-cols-12">
+      <div
+        className="min-h-[360px] bg-cover   col-span-5"
+        style={{ backgroundImage: `url('${image.src}')` }}
+        role="img"
+        aria-label={image.alt}
+      />
+
+      <div
+        className="flex flex-col min-w-full justify-center  bg-[#14214B] px-6 py-12 sm:px-10 sm:py-16 lg:order-2 lg:py-20 col-span-7"
+        style={{ paddingLeft: 125, paddingRight: 64 }}
+      >
+        <h2
+          className="font-display  max-w-full text-[36px] text-white lg:text-[48px]"
+          style={{ fontWeight: 600, lineHeight: 1.1, marginBottom: 30 }}
+        >
+          {heading}
+        </h2>
+
+        <div className="[&_li]:!text-white [&_p]:!text-white [&_strong]:!text-white">
+          {boldStatement ? (
+            <p style={{ fontSize: 20, fontWeight: 600, marginBottom: 20 }}>
+              <strong style={{ fontWeight: 600 }}>{boldStatement}</strong>
+            </p>
+          ) : null}
+
+          <p style={{ fontSize: 16, fontWeight: 500, marginBottom: 20 }}>{paragraph}</p>
+
+          <div className="lg-grid lg-gutter-x-24" style={{ marginBottom: 20 }}>
+            <div className="lg-col-md-6">
+              <div className="lg-list-arrow-right">
+                <p style={{ fontSize: 20, fontWeight: 600, marginBottom: 20 }}>{columnALabel}</p>
+                <ul>
+                  {columnA.map((item) => (
+                    <li key={item} style={{ fontSize: 16, fontWeight: 500 }}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div className="content lg-col-lg-7">
-              <h2 className="lg-title lg-max-width-500">{heading}</h2>
-
-              <div className="lg-text">
-                {boldStatement ? (
-                  <p style={{ fontSize: 20 }}>
-                    <strong>{boldStatement}</strong>
-                  </p>
-                ) : null}
-
-                <p style={{ fontSize: 20 }}>{paragraph}</p>
-
-                <div className="lg-grid lg-gutter-x-24" style={{ marginBottom: 20 }}>
-                  <div className="lg-col-md-6">
-                    <div className="lg-list-arrow-right">
-                      <p>{columnALabel}</p>
-                      <ul>
-                        {columnA.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="lg-col-md-6">
-                    <div className="lg-list-arrow-right">
-                      <p>{columnBLabel}</p>
-                      <ul>
-                        {columnB.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {closingParagraphs.map((paragraphNode, index) => (
-                  <p key={index}>{paragraphNode}</p>
-                ))}
+            <div className="lg-col-md-6">
+              <div className="lg-list-arrow-right">
+                <p style={{ fontSize: 20, fontWeight: 600, marginBottom: 20 }}>{columnBLabel}</p>
+                <ul>
+                  {columnB.map((item) => (
+                    <li key={item} style={{ fontSize: 16, fontWeight: 500 }}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
+
+          {closingParagraphs.map((paragraphNode, index) => (
+            <p key={index} style={{ fontSize: 16, fontWeight: 500, marginBottom: 20 }}>
+              {paragraphNode}
+            </p>
+          ))}
         </div>
       </div>
     </div>

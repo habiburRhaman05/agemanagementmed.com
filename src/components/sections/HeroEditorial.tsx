@@ -197,7 +197,24 @@ export function HeroEditorial({
             {title}
           </h1>
 
-          <p
+    
+          {
+            Array.isArray(lead) ? lead.map((text,i)=>{
+              return  <div
+              key={i+1}
+           
+          >
+            <p
+             className={cn(
+              "mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6",
+              heroPara
+            )}
+            >
+
+            {text}
+            </p>
+          </div>
+            }) :  <p
             className={cn(
               "mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6",
               heroPara
@@ -205,16 +222,7 @@ export function HeroEditorial({
           >
             {lead}
           </p>
-          {lead2 && (
-            <p
-              className={cn(
-                "mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6",
-                heroPara
-              )}
-            >
-              {lead2}
-            </p>
-          )}
+          }
 
           {/* Default CTA – only shown when no custom actions are defined */}
           {!showFormButton && !showVideoButton && !hideDefaultCta && (

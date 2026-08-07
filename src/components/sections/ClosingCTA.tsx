@@ -22,6 +22,8 @@ interface ClosingCTAProps extends ClosingCtaData {
   contentMaxWidth?: number
   /** Centers the text column (horizontally, within contentMaxWidth) and centers the title/body/CTA instead of the default left alignment. Opt-in — omit to keep the existing left-aligned behavior. */
   centered?: boolean
+   textWidth?:string
+  // titleWidth?:string
 }
 
 /**
@@ -43,6 +45,8 @@ export function ClosingCTA({
   className,
   contentMaxWidth,
   centered = false,
+   textWidth,
+
 }: ClosingCTAProps) {
   const [modalOpen, setModalOpen] = useState(false)
   const contentStyle: React.CSSProperties = {
@@ -57,7 +61,10 @@ export function ClosingCTA({
     >
       <div className="lg-max-width-1440">
         <div className="lg-container">
-          <div className="content text-center lg:text-left" style={contentStyle}>
+          <div 
+     className="content text-center lg:text-left"
+style={{ ...contentStyle, maxWidth: textWidth ? `${textWidth}px` : undefined }}
+>
             <h2 className="lg-title">{title}</h2>
 
             <div className="lg-text">

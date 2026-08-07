@@ -102,6 +102,7 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         title="Ready To Take A Smarter Approach To Weight Loss?"
         body="Stop guessing and start working with real data."
         align="right"
+        ctaLabel='Schedule a consultation'
       />
 
       <CostIncludedGrid
@@ -171,6 +172,7 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
       ) : null}
 
       <ClosingCTA
+      textWidth='600'
         {...treatment.closingCta}
         backgroundImage="/images/hero-22-bg.jpg"
         backgroundPosition="80% center"

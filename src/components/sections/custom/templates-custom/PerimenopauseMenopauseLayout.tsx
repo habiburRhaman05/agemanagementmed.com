@@ -196,6 +196,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
           'Focus On Long Term Wellness',
           'Experienced Medical Guidance',
         ]}
+        gap='28'
       />
 
       <MidPageCTA
@@ -207,6 +208,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         ctaHref="#"
         align="full"
         gradient={false}
+        paraWidth='680'
       />
 
 <div className="bg-[#F7F8F2] py-10">

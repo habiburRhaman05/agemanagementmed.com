@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from '@/components/ui/Button'
 import { MoveRight } from 'lucide-react'
 import { BookingForm } from '@/components/shared/BookingForm'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 
 interface ClosingCTAProps extends ClosingCtaData {
   /** Background photo for the band; defaults to the shared placeholder. */
@@ -53,7 +54,7 @@ export function HormoneWomanCtaBtm({
           <div className="content text-center lg:text-left" style={contentStyle}>
             <h2 className="lg-title">{title}</h2>
 
-            <div className="lg-text">
+            <div className="lg-text max-w-[500px]">
               <p>{body}</p>
             </div>
 
@@ -61,52 +62,9 @@ export function HormoneWomanCtaBtm({
               className="cta flex justify-center lg:justify-start"
               style={centered ? { display: 'flex', justifyContent: 'center' } : undefined}
             >
-             <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                size="lg"
-                variant="primary"
-                className="  justify-center bg-[#519B99] min-h-[50px] uppercase tracking-[4px] min-w-[216px] text-[14px] leading-4.25 font-bold "
-              >
-                Schedule consultation <MoveRight />
-              </Button>
-            </DialogTrigger>
-            <DialogContent
-              className="
-                max-h-[92dvh]
-                w-[calc(100%-1.5rem)]
-                max-w-[480px]
-                sm:max-w-[520px]
-                md:max-w-[580px]
-                lg:max-w-[620px]
-                overflow-y-auto
-                rounded-[28px]
-                border-none
-                bg-[#0B1530]
-                p-6
-                sm:p-10
-                text-white
-                shadow-2xl
-                [&>button]:bg-white/10
-                [&>button]:text-white/70
-                [&>button]:hover:bg-white/20
-                [&>button]:hover:text-white
-                [&>button]:border-none
-                [&>button]:cursor-pointer
-                [&>button]:rounded-full
-                [&>button]:size-9
-              "
-            >
-              <DialogHeader className="mb-2 text-center">
-                <DialogTitle className="font-serif text-2xl sm:text-[32px] font-bold text-white text-center tracking-tight">
-                  Schedule A Consultation
-                </DialogTitle>
-              </DialogHeader>
-              <div className="mt-2">
-                <BookingForm variant="dark" />
-              </div>
-            </DialogContent>
-          </Dialog>
+           <BookAppointmentButton>
+             Schedule consultation
+           </BookAppointmentButton>
             </div>
 
             {note ? (

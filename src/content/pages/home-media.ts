@@ -21,5 +21,5 @@ export const homeMedia = {
     'https://www.agemanagementmed.com/themes/default/assets/images/testimonial-bg.jpg',
 
   /** Background behind the closing "Ready to transform your health?" band. */
-  closingBackground: 'https://www.agemanagementmed.com/themes/default/assets/images/hero-29-bg.jpg',
+  closingBackground: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786128022/hero-2-bg_ynbqdu.jpg',
 } as const

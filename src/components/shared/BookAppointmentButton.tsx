@@ -50,7 +50,7 @@ export default function BookAppointmentButton({
           setOpen(true);
         }}
         className={cn(
-          'group inline-flex items-center cursor-pointer justify-center gap-3 rounded-full px-8 py-[15px] font-bold font-sans text-[14px] uppercase tracking-[0.15em] transition-colors duration-300',
+          'group inline-flex items-center cursor-pointer justify-center gap-3 rounded-full px-[32px] py-[16px] font-bold font-sans text-[14px] uppercase tracking-[0.15em] transition-colors duration-300',
           variants[variant],
           className,
         )}
@@ -64,7 +64,7 @@ export default function BookAppointmentButton({
       <BookingModal
         open={open}
         onClose={() => setOpen(false)}
-        title={modalTitle}
+        title={"Schedule A Consultation"}
         defaultLocation={defaultLocation}
         defaultService={defaultService}
       />
