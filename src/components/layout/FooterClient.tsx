@@ -39,12 +39,12 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
   const emailHref = toMailtoHref(email)
 
   return (
-    <footer className="border-t border-canvas-300 bg-canvas-50 text-ink-900">
+    <footer className=" bg-white text-ink-900">
       <Container>
         <div className="grid gap-12 pt-16 pb-12 text-left sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-14">
           {/* Brand column */}
           <Reveal delay={0} className="lg:col-span-3">
-            <Image src={logoUrl} alt={siteName} width={180} height={80} className="h-16 w-auto" />
+            <Image src={logoUrl} alt={siteName} width={227} height={104} />
 
             <SocialLinks links={socialLinks} variant="navy" className="mt-6 flex gap-3" />
 
@@ -65,9 +65,9 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
               </a>
             </div>
 
-            <Button asChild size="md" className="mt-6 text-label uppercase tracking-wide">
+            <button   className="mt-6 bg-[#519B99] py-3 text-white rounded-3xl text-[14px] font-bold   w-[275px] hover:bg-[#559795]  uppercase tracking-wide">
               <Link href="/newsletter">Join our newsletter</Link>
-            </Button>
+            </button>
           </Reveal>
 
           {/* Contact info: both locations, address + hours */}

@@ -55,7 +55,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
           sizes="100vw"
           // Mobile portrait crops need the subject pulled more toward center;
           // the 60% offset was tuned for wide desktop frames.
-          className="object-cover object-[75%_center] sm:object-[60%_center]"
+          className="object-cover object-[80%_center] sm:object-[140%_center]"
         />
       </div>
 
@@ -87,7 +87,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
               <Button
                 size="lg"
                 variant="primary"
-                className="h-12 w-auto justify-center bg-[#008080] px-6 text-[14px] leading-4.25 font-bold sm:h-14 sm:px-9"
+                className="  justify-center bg-[#519B99] min-h-[50px] tracking-[4px] min-w-[216px] text-[14px] leading-4.25 font-bold "
               >
                 START TODAY <MoveRight />
               </Button>
@@ -135,9 +135,11 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
               <Button
                 size="lg"
                 variant="outlineInverse"
-                className="group h-12 w-auto justify-center px-6 text-[14px] leading-4.25 font-bold bg-white text-[#00555A] hover:border-canvas-50/60 hover:bg-transparent hover:text-canvas-50 sm:h-14 sm:px-9"
+                className="group  flex items-center gap-x-3 justify-center uppercase text-[14px] tracking-[4px] leading-4.25 font-bold bg-white text-[#315756] hover:border-canvas-50/60 hover:bg-transparent hover:text-canvas-50 "
               >
-                <Play className="size-4" aria-hidden />
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+<path d="M11.046 5.57164L1.95607 0.683144C1.28985 0.324857 0.482422 0.807411 0.482422 1.56386V11.3409C0.482422 12.0973 1.28985 12.5799 1.95607 12.2216L11.046 7.33307C11.7478 6.95564 11.7478 5.94907 11.046 5.57164Z" fill="#519B98"/>
+</svg>
                 Watch video
               </Button>
             </DialogTrigger>

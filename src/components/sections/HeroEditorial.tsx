@@ -118,6 +118,7 @@ export function HeroEditorial({
   title,
   lead,
   image,
+  ctas,
   breadcrumbs,
   actions,
   fullHeight = false,
@@ -128,7 +129,7 @@ export function HeroEditorial({
   mobileFocalPoint,
   leftAlignMobile = false,
   overlay = true,
-  primaryCtaLabel = 'START TODAY',
+  primaryCtaLabel,
   heroDiv,
   heroPara
 }: HeroEditorialProps) {
@@ -160,7 +161,8 @@ export function HeroEditorial({
   const FormComponent = actions?.formSource ? FORM_COMPONENTS[actions.formSource] : BookingForm
   const showFormButton = Boolean(actions?.formModal)
   const showVideoButton = Boolean(actions?.videoModal && actions?.videoSource)
-
+console.log(ctas);
+const [modalOpen, setModalOpen] = useState(false)
   return (
     <section
       className={cn(
@@ -181,12 +183,13 @@ export function HeroEditorial({
         style={{ objectPosition: image.focalPoint ?? '85% center' }}
       />
       {/* Dark gradient overlay to ensure text legibility while keeping the top of the image completely vibrant */}
-      {overlay && <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />}
+      {/* {overlay && <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />} */}
 
       <Container className={cn("relative z-10 py-35 md:py-50 lg:py-60 !px-3 ", containerOverride)}>
-        <div className={cn("max-w-[528px] text-center sm:text-left", heroDiv)}>
+        <div className={cn("max-w-[700px]  text-center sm:text-left", heroDiv)}>
+         
           <h1
-            className="text-[40px] sm:text-[46px] lg:text-[56px] font-medium leading-[1.15] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
+            className="text-[40px]  sm:text-[46px] lg:text-[56px] font-medium leading-[62px] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
           >
             {title}
@@ -205,13 +208,42 @@ export function HeroEditorial({
               )}
               style={{ animationDelay: '0.5s' }}
             >
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2.5 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto cursor-pointer">
-                    <span>{primaryCtaLabel}</span>
+
+{ctas && ctas.length > 0 ? (
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 w-full sm:w-auto">
+                {ctas.map((cta, index) => {
+                  return  <Link
+                    key={index}
+                    href={"#"}
+                    onClick={(e)=>{
+                      e.preventDefault();
+                      if(cta.href === "/book"){
+                        setModalOpen(true)
+                      }
+                      else{
+                        window.location.href = cta.href
+                      }
+                      
+                    }}
+                    className={cn(
+                      'rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[14px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2.5 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto cursor-pointer',
+                      index === 1 ? 'bg-white text-[#519B99] hover:bg-slate-100 hover:text-[#448b89]' : '',
+                    )}
+                  >
+                    <span>{cta.label}</span>
+                    {index === 0 ? <ArrowSvg /> : null}
+                  </Link>
+                })}
+                </div> ) : null}
+
+
+              <Dialog open={modalOpen} onOpenChange={(next) => setModalOpen(next)}>
+                {/* <DialogTrigger asChild>
+                  <Button size="lg" className="rounded-full bg-[#519B99] hover:bg-[#448b89] text-white font-bold text-[14px] uppercase tracking-[0.1em] px-6 py-3.5 sm:px-8 sm:py-4 h-auto flex sm:inline-flex items-center justify-center gap-2.5 shadow-md transition-all duration-200 hover:shadow-lg border-none w-full sm:w-auto cursor-pointer">
+                    
                     <ArrowSvg />
                   </Button>
-                </DialogTrigger>
+                </DialogTrigger> */}
                 <DialogContent className="max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-[480px] overflow-y-auto rounded-[28px] border-none bg-[#0B1938] p-6 sm:p-9 text-white shadow-2xl [&>button]:bg-slate-700/60 [&>button]:text-slate-200 [&>button]:hover:bg-slate-600 [&>button]:hover:text-white [&>button]:border-none [&>button]:cursor-pointer">
                   <DialogHeader className="mb-2 text-center sm:text-center">
                     <DialogTitle
