@@ -46,7 +46,7 @@ export function LegacyIncludedGrid({
   note,
 }: LegacyIncludedGridProps) {
   return (
-    <div style={{ backgroundColor: '#fff' }}>
+    <div style={{ backgroundColor: '#fff', overflow: 'hidden' }}>
       <div className="lg-flexspace-100" style={{ backgroundColor: '#fff' }} />
 
       <div className="lg-content-d">

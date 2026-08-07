@@ -115,6 +115,8 @@ export function OverviewApproachCards({ darkCard, lightCard }: OverviewApproachC
           </div>
         </div>
       </div>
+
+      <div className="lg-flexspace-100" />
     </>
   )
 }
