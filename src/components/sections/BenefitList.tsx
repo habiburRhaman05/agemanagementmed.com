@@ -21,6 +21,10 @@ interface BenefitListProps extends BenefitListData {
   awards?: Array<{ src: string; alt: string }>
   awardsTitle?: string
   awardsLead?: string
+  /** Optional heading rendered above the card (outside the white card). */
+  introTitle?: string
+  /** Optional multi-paragraph intro rendered above the card (outside the white card). */
+  introParagraphs?: string[]
 }
 
 /** Array of default Lucide outline icons for card items if item.icon is omitted. */
@@ -60,6 +64,8 @@ export function BenefitList({
   awards = DEFAULT_AWARDS,
   awardsTitle = 'Recognized For Excellence In Savannah & Beyond',
   awardsLead = 'These recognitions reflect our commitment to delivering high-quality aesthetic and wellness services in the Savannah area.',
+  introTitle,
+  introParagraphs,
 }: BenefitListProps) {
   const useCards = cardStyle ?? (columns === 2 && !numbered)
 
@@ -74,6 +80,39 @@ export function BenefitList({
         style={design?.vars as CSSProperties}
       >
         <Container className={cn('max-w-5xl mx-auto', design?.containerClassName)}>
+          {/* Intro above the card (outside the white card) */}
+          {introTitle || introParagraphs?.length ? (
+            <m.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-center max-w-2xl mx-auto mb-10 sm:mb-12"
+            >
+              {introTitle ? (
+                <h2
+                  className="text-2xl sm:text-3xl md:text-[36px] font-normal leading-tight text-[#1C274C] mb-3 font-display"
+                  
+                >
+                  {introTitle}
+                </h2>
+              ) : null}
+
+              {introParagraphs?.length ? (
+                <div className="mt-4 space-y-3">
+                  {introParagraphs.map((paragraph, i) => (
+                    <p
+                      key={i}
+                      className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed max-w-xl mx-auto"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
+            </m.div>
+          ) : null}
+
           {/* Main Elevated White Card Container with entrance animation */}
           <m.div
             initial={{ opacity: 0, y: 30 }}
@@ -255,6 +294,16 @@ export function BenefitList({
               </h2>
             ) : null}
             {lead ? <p className="text-sm text-slate-600 font-light">{lead}</p> : null}
+
+            {introParagraphs?.length ? (
+              <div className="mt-4 space-y-3">
+                {introParagraphs.map((paragraph, i) => (
+                  <p key={i} className="text-sm text-slate-600 font-light">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            ) : null}
           </div>
         ) : null}
 

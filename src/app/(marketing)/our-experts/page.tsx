@@ -87,7 +87,15 @@ console.log(allNews);
 
       {/* <EditorialPair {...expertsContent.standard} background="alt" /> */}
 
-      <BenefitList {...expertsContent.whyChooseUs} />
+      <BenefitList
+        {...expertsContent.whyChooseUs}
+        eyebrow={undefined}
+        introTitle="A New Standard in Hormone and Regenerative Care"
+        introParagraphs={[
+          'Dr. Collins founded SAMM with a simple belief: healthcare should go beyond treating symptoms—it should focus on optimizing how patients feel, function, and live.',
+          'That philosophy continues to shape every treatment and patient experience today.',
+        ]}
+      />
 
 
 
