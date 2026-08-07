@@ -29,6 +29,8 @@ export function ClosingCTA({
   cta,
   note,
   backgroundImage = homeMedia.closingBackground,
+  backgroundPosition,
+  className,
   contentMaxWidth,
   centered = false,
 }: ClosingCTAProps) {
