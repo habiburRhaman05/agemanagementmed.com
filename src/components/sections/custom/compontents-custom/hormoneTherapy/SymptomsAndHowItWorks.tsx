@@ -132,7 +132,7 @@ function SymptomBox({ card, wide = false }: { card: SymptomCard; wide?: boolean 
  */
 export function SymptomsAndHowItWorks() {
   return (
-    <div className="column-box-ib-group">
+    <div className="column-box-ib-group pt-24">
       <div className="radial-gradient" aria-hidden />
 
       <div className="lg-max-width-1440">
@@ -182,11 +182,11 @@ export function SymptomsAndHowItWorks() {
               <div className="content">
                 <div className="lg-grid">
                   <div className="left lg-col-xl-6">
-                    <h2 className="lg-title lg-max-width-450">How Bioidentical Hormone Therapy For Women Works</h2>
+                    <h2 className="lg-title font-medium lg-max-width-450">How Bioidentical Hormone Therapy For Women Works</h2>
                   </div>
 
                   <div className="right lg-col-xl-6">
-                    <div className="lg-text">
+                    <div className="lg-text font-medium">
                       <p>
                         BHRT uses plant-derived hormones designed to closely match the body&apos;s natural hormones. At
                         SAMM, therapy plans are personalized using detailed lab testing combined with symptom
@@ -206,9 +206,9 @@ export function SymptomsAndHowItWorks() {
               </div>
 
               <div id="column-icon-d">
-                <div className="lg-grid">
+                <div className="lg-grid gap-y-5">
                   {supports.map((item) => (
-                    <div className="item lg-col-lg-6" key={item.label}>
+                    <div className="item lg-col-lg-6 " key={item.label}>
                       <div className="icon" dangerouslySetInnerHTML={{ __html: item.icon }} />
                       <div className="content">
                         <p>

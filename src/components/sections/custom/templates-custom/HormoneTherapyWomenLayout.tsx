@@ -8,6 +8,7 @@ import { bhrtIcons } from '../compontents-custom/hormoneTherapy/bhrt-icons'
 import { LegacyIncludedGrid } from '../compontents-custom/shared/LegacyIncludedGrid'
 import { PhotoContentPanel } from '../compontents-custom/hormoneTherapy/PhotoContentPanel'
 import { SymptomsAndHowItWorks } from '../compontents-custom/hormoneTherapy/SymptomsAndHowItWorks'
+import { HormoneWomanCtaBtm } from './HormoneWomanCtaBtm'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
@@ -40,23 +41,28 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
 
       <SymptomsAndHowItWorks />
 
-      <PhotoContentPanel
-        bg="#fff"
+<div className='pt-12'>
+        <PhotoContentPanel
+        bg="#FEFEFE"
         image={{
           src: '/images/photo-content-42-img.jpg',
           alt: 'A SAMM provider reviewing a patient’s hormone treatment plan',
         }}
         imageSide="right"
         heading="Monitoring And Ongoing Hormone Optimization"
-        headingMaxWidth={500}
+        headingMaxWidth={600}
         paragraphs={[
           'BHRT is not a one-time prescription. SAMM approaches hormone therapy as an ongoing, carefully monitored medical process.',
           'Providers track progress through a combination of laboratory testing and patient-reported symptom improvements. Treatment plans are adjusted as hormone levels and symptom patterns evolve over time. This monitoring allows providers to refine dosage, delivery method, and hormone balance safely and effectively.',
           'Regular follow-ups help ensure treatment remains aligned with your goals, lifestyle, and long-term health outcomes.',
         ]}
       />
-      <PhotoContentPanel
+</div>
+  
+<div className="pt-12">
+    <PhotoContentPanel
         bg="#F9F9F9"
+      
         image={{
           src: '/images/photo-content-43-img.jpg',
           alt: 'A SAMM provider discussing BHRT safety and candidacy with a patient',
@@ -78,8 +84,10 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
           </em>,
         ]}
       />
+</div>
 
       <LegacyIncludedGrid
+      bg='#F7F8F2'
         title="Cost And What To Expect From BHRT Treatment"
         lead="BHRT costs vary depending on individual treatment needs and lab testing requirements. SAMM focuses on transparent treatment planning so patients understand the full scope of care."
         included={[
@@ -105,7 +113,8 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
         ]}
       />
 
-      <AuthorityCard
+      <div className="bg-[#FFFFFF] pb-5">
+        <AuthorityCard
         image={{
           src: '/images/photo-content-44-img.png',
           alt: 'Harry S. Collins, DO, FACOG, Medical Director',
@@ -115,10 +124,20 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
         blurb="SAMM focuses on personalized, medically supervised hormone optimization designed around patient safety and measurable results."
       />
 
+      </div>
 
-      {treatment.faqs.length ? <FAQAccordion title="BHRT For Women FAQs" items={treatment.faqs} /> : null}
+   <div className="bg-[#F7F8F2]">
+       {treatment.faqs.length ? <FAQAccordion  title="BHRT For Women FAQs" items={treatment.faqs} /> : null}
+   </div>
 
-      <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-2-bg.jpg" className="hero-bg-shift-80" />
+
+<HormoneWomanCtaBtm
+
+{...treatment.closingCta}
+
+/>
+
+      {/* <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-2-bg.jpg" className="hero-bg-shift-80" /> */}
     </>
   )
 }

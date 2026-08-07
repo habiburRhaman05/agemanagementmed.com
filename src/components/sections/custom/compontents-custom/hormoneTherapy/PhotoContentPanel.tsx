@@ -31,7 +31,7 @@ export function PhotoContentPanel({
 
   return (
     <div
-      className={`photo-content-d black-text padding-0 ${isRight ? 'padding-right' : 'padding-left'}`}
+      className={`photo-content-d black-text padding-0 ${isRight ? 'padding-right' : 'padding-left'} pt-8`}
       style={bg ? { backgroundColor: bg } : undefined}
     >
       <div className="lg-max-width-1440">
@@ -47,9 +47,8 @@ export function PhotoContentPanel({
             </div>
 
             <div className={`content lg-col-lg-6 lg-col-xl-7${isRight ? ' lg-order-lg-1' : ''}`}>
-              <h2 className={`lg-title${headingMaxWidth ? ` lg-max-width-${headingMaxWidth}` : ''}`} style={{ color: '#0B2055' }}>
-                {heading}
-              </h2>
+           <h2 className={`!ml-0 lg-title ${headingMaxWidth ? `lg-max-width-${headingMaxWidth}` : ''}`} style={{ color: '#0B2055' }}> {heading} </h2>
+
 
               <div className="lg-text">
                 {paragraphs.map((paragraph, index) => (

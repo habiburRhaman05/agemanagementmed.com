@@ -12,6 +12,7 @@ import { TextImagePanel } from '../compontents-custom/perimenopause/TextImagePan
 import { TreatmentPathwaysPanel } from '../compontents-custom/perimenopause/TreatmentPathwaysPanel'
 import { SymptomsOutcomesGrid } from '../compontents-custom/shared/SymptomsOutcomesGrid'
 import { MidPageCTA } from '../compontents-custom/shared/MidPageCTA'
+import { PremenopauseCta } from '../../PremenopauseCta'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
@@ -138,6 +139,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
       <SymptomsOutcomesGrid
         title="What Causes Menopausal Symptoms?"
         wide
+        align='center'
         titleAs="heading"
         items={[
           {
@@ -174,8 +176,8 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         lead="Your symptoms can help guide the right treatment approach. Depending on your needs, your care plan may include one or more of the following services."
         pathways={[
           { icon: pathwayIcons[0], title: 'Hormone Therapy For Women', href: '/bioidentical-hormone-replacement-therapy/female' },
-          { icon: pathwayIcons[1], title: 'Sexual Wellness', href: '/rejuvenation-enhancement' },
-          { icon: pathwayIcons[2], title: 'Medical Weight Loss', href: '/concierge-medical-weight-loss' },
+          { icon: pathwayIcons[1], title: 'Sexual Wellness', href: '/rejuvenation-enhancement/female' },
+          { icon: pathwayIcons[2], title: 'Medical Weight Loss', href: '/concierge-medical-weight-loss/female' },
         ]}
       />
 
@@ -202,12 +204,15 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         title="Ready To Get Answers?"
         body="You deserve more than temporary fixes or generic advice. Our team can help identify the root causes behind your symptoms and create a plan designed specifically for you."
         ctaLabel="Schedule Hormone Testing"
-        ctaHref="/bioidentical-hormone-replacement-therapy/female"
+        ctaHref="#"
         align="full"
         gradient={false}
       />
 
+<div className="bg-[#F7F8F2] py-10">
+
       <TextImagePanel
+      bg='bg-[#F7F8F2]'
         image={{
           src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338393/What_Patients_Often_vuuuis.jpg',
           alt: 'A woman enjoying renewed energy and confidence',
@@ -224,10 +229,13 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
           'Easier Weight Management',
           'Greater Confidence And Overall Well Being',
         ]}
+        
       />
+</div>
 
       {testimonials.length ? (
         <TestimonialSet
+        height='680'
           eyebrow="Patient testimonials"
           title="What our patients say"
           testimonials={testimonials}
@@ -240,7 +248,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         <FAQAccordion title="Menopause and Perimenopause FAQs" items={treatment.faqs} />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-36-bg.jpg" />
+      <PremenopauseCta {...treatment.closingCta} backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-36-bg.jpg" />
     </>
   )
 }

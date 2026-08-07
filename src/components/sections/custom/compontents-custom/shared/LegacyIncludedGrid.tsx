@@ -11,6 +11,8 @@ export interface LegacyIncludedGridProps {
   separateLabel?: string
   separate?: CostGridItem[]
   note?: string
+  bg?: string
+  align?: 'left' | 'center' | 'right'
 }
 
 function GridCard({ item }: { item: CostGridItem }) {
@@ -44,17 +46,19 @@ export function LegacyIncludedGrid({
   separateLabel,
   separate,
   note,
+  bg,
+  align = 'center',
 }: LegacyIncludedGridProps) {
   return (
-    <div style={{ backgroundColor: '#fff', overflow: 'hidden' }}>
-      <div className="lg-flexspace-100" style={{ backgroundColor: '#fff' }} />
+    <div style={{ backgroundColor: bg ? bg : '#fff',paddingTop:"10px" ,paddingBottom:"10px" }}>
+      <div className="lg-flexspace-100" style={{ backgroundColor: bg ? bg : '#fff' }} />
 
       <div className="lg-content-d">
         <div className="lg-max-width-1440">
           <div className="lg-container">
-            <h2 className="lg-title lg-text-center">{title}</h2>
+            <h2 className={`lg-title max-w-[720px] ${align === "center" ? "mx-auto" : ""} text-${align}`}>{title}</h2>
             {lead ? (
-              <div className="lg-text lg-text-center mx-auto">
+              <div className={`lg-text lg-text-${align} mx-auto`}>
                 <p style={{ fontSize: 20 }}>{lead}</p>
               </div>
             ) : null}
@@ -67,11 +71,12 @@ export function LegacyIncludedGrid({
       <div className="cards-i">
         <div className="lg-max-width-1440">
           <div className="lg-container">
-            <div className="lg-grid justify-center">
-              {included.map((item) => (
-                <GridCard item={item} key={item.title} />
-              ))}
-            </div>
+         <div className="grid grid-cols-4 justify-center gap-4">
+  {included.map((item) => (
+    <GridCard item={item} key={item.title} />
+  ))}
+</div>
+
           </div>
         </div>
       </div>

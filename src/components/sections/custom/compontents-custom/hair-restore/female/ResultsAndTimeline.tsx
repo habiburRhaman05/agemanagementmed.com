@@ -109,11 +109,11 @@ const benefitCards = [
 const ResultsAndTimeline: React.FC = () => {
   return (
     <div style={{ backgroundColor: '#fff' }}>
-      <div className="lg-flexspace-100" />
 
-      <div className="lg-content-d" style={{ position: 'relative' }}>
+      <div className="lg-content-d pt-28" style={{ position: 'relative' }}>
         <div className="lg-max-width-1440">
           <div className="lg-container">
+    
             <h2 className="lg-top-title">What to Expect</h2>
             <h3 className="lg-title" style={{ marginBottom: 0 }}>
               Results &amp; Timeline
@@ -185,7 +185,7 @@ const ResultsAndTimeline: React.FC = () => {
         </div>
       </div>
 
-      <div className="lg-flexspace-100" />
+      {/* <div className="lg-flexspace-100" /> */}
     </div>
   )
 }
