@@ -24,6 +24,13 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
         mobileFocalPoint="75% center"
         fullHeight
         centerUntilTablet
+        actions={{
+          formModal: true,
+          formSource: 'booking',
+          videoModal: true,
+          videoSource:
+            '<iframe title="vimeo-player" src="https://player.vimeo.com/video/1081534475?h=2deee69275" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>',
+        }}
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },
