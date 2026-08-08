@@ -1,3 +1,4 @@
+import { AutoRevealSections } from '@/components/layout/AutoRevealSections'
 import { Footer } from '@/components/layout/Footer'
 import { ScrollFeatures } from '@/components/layout/ScrollFeatures'
 import { PageTransition } from '@/components/shared/PageTransition'
@@ -33,6 +34,7 @@ export default async function MarketingLayout({ children }: { children: React.Re
         <main id="main">{children}</main>
       </PageTransition>
       <Footer />
+      <AutoRevealSections />
       {/* <ScrollFeatures /> */}
     </AnimationProvider>
   )
