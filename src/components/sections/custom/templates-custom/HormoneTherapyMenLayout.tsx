@@ -113,13 +113,13 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
           { icon: bhrtIcons.patientNutritionalGuidance, title: 'Nutritional Guidance' },
           { icon: bhrtIcons.patientFunctionalMovement, title: 'Functional Movement Recommendations' },
           { icon: bhrtIcons.costLabTesting, title: 'In-Office Lab Draws' },
-          { icon: bhrtIcons.patientTreatmentOptimization, title: 'Ongoing Treatment Optimization' },
+          { icon: bhrtIcons.patientSavingsSupplements, title: 'Ongoing Treatment Optimization' },
           { icon: bhrtIcons.patientQuickcare, title: 'QuickCare Access' },
           { icon: bhrtIcons.patientMembershipPricing, title: 'Member Pricing On Supplements And Additional Services' },
         ]}
         separateLabel="What is typically separate:"
         separate={[
-          { icon: bhrtIcons.costLabTesting, title: 'Lab Testing (Often Covered By Insurance)' },
+          { icon: bhrtIcons.labTestingInsurance, title: 'Lab Testing (Often Covered By Insurance)' },
           { icon: bhrtIcons.patientSavingsSupplements, title: 'Hormone Medications (Coverage Varies By Plan)' },
         ]}
         note="Insurance commonly covers lab work but may not cover hormone medications. Flexible financing options are available through PatientFi to help make treatment more accessible."

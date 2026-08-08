@@ -30,12 +30,12 @@ function GridCard({ item }: { item: CostGridItem }) {
   return (
     <div className="flex h-full flex-col items-center rounded-2xl  bg-[#F9F9F9] p-8 text-center sm:items-start sm:p-10 sm:text-left">
       <div
-        className="mb-6 flex h-16 items-center justify-center sm:justify-start [&_svg]:h-auto [&_svg]:max-h-16 [&_svg]:w-auto"
+        className="mb-6 flex h-24 items-center justify-center sm:justify-start [&_svg]:h-auto [&_svg]:max-h-24 [&_svg]:w-auto"
         // Static, author-controlled markup copied from the source site.
         dangerouslySetInnerHTML={{ __html: item.icon }}
       />
       <div
-        className="text-lg leading-snug font-semibold text-[#14214b] sm:text-xl"
+        className="text-[24px] leading-snug font-display font-normal text-[#14214b] max-w-[239px]"
         dangerouslySetInnerHTML={{ __html: item.title }}
       />
     </div>
@@ -51,7 +51,7 @@ function GridRow({ items }: { items: CostGridItem[] }) {
   return (
     <div className="flex flex-wrap justify-center gap-6">
       {items.map((item) => (
-        <div key={item.title} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+        <div key={item.title} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]">
           <GridCard item={item} />
         </div>
       ))}
