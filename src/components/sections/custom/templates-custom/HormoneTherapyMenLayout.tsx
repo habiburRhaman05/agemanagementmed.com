@@ -61,6 +61,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
       ) : null}
 
       <SafetyAndCandidacy
+      overrideWdith="max-w-[1395px]"
         bg="bg-white"
         image={{
           src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-38-img.jpg',
@@ -81,6 +82,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
         closingParagraph="Follow-up cadence and lab intervals will be confirmed with the clinical team prior to publishing final timelines."
       />
       <SafetyAndCandidacy
+      overrideWdith="max-w-[1395px]"
         bg=""
         image={{
           src: '/photo-content-39-img.jpg',

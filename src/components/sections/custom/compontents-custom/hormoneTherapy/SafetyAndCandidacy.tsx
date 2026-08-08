@@ -22,6 +22,7 @@ export interface SafetyAndCandidacyProps {
   /** Render image + text inside one unified card */
   card?: boolean
   className?: string
+  overrideWdith?:string
 }
 
 /**
@@ -46,6 +47,7 @@ export function SafetyAndCandidacy({
   bg = 'bg-[#F8F9F5]',
   card = false,
   className,
+  overrideWdith
 }: SafetyAndCandidacyProps) {
   const imageSrc = image?.src || ''
   const imageAlt = image?.alt || heading
@@ -144,7 +146,7 @@ export function SafetyAndCandidacy({
 
   return (
     <section className={cn('relative w-full py-16 sm:py-24 px-4 ', bg, className)}>
-      <Container className="w-full px-0">
+      <Container className={cn("w-full px-4! md:px-0!", overrideWdith)}>
         <m.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -153,7 +155,7 @@ export function SafetyAndCandidacy({
           className={cn(
             'grid grid-cols-1 lg:grid-cols-2 items-stretch',
             card && 'overflow-hidden rounded-[28px] border border-slate-200/80 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)]',
-            !card && 'gap-10 sm:gap-12 lg:gap-16'
+            !card && 'gap-10 sm:gap-12 lg:gap-[94px]'
           )}
         >
           {imageSide === 'left' ? (
