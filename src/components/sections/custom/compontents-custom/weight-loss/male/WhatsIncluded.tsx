@@ -31,7 +31,7 @@ function IconCard({ icon, title }: { icon: string; title: string }) {
         dangerouslySetInnerHTML={{ __html: icon }}
       />
       {/* Title */}
-      <p className="text-[13px] font-semibold leading-snug text-[#1a3060]">
+      <p className="text-[24px] font-semibold leading-snug text-[#1a3060]">
         {title.split('\n').map((line, i) => (
           <span key={i}>
             {line}
@@ -50,16 +50,16 @@ const WhatsIncluded: React.FC = () => {
 
         {/* ── Heading block ── */}
         <div className="mb-10 text-center">
-          <h2 className="font-display text-[28px] font-semibold leading-snug text-[#1a3060] sm:text-[32px] lg:text-[34px]">
+          <h2 className="font-display text-[28px] font-semibold leading-snug text-[#1a3060] sm:text-[32px] lg:text-[48px]">
             What&apos;s Included In The Program
           </h2>
-          <p className="mt-3 text-sm text-[#519B98]">
+          <p className="mt-3 text-[20px] text-black font-medium">
             We want you to know <em>exactly</em> what to expect.
           </p>
         </div>
 
         {/* ── "Included:" label ── */}
-        <p className="mb-5 text-center text-sm font-semibold text-[#1a3060]">Included:</p>
+        <p className="mb-5 text-center text-[32px] font-semibold text-[#1a3060]">Included:</p>
 
         {/* ── Included cards — first row: 3 cols, second row: 2 centred ── */}
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
@@ -74,7 +74,7 @@ const WhatsIncluded: React.FC = () => {
         </div>
 
         {/* ── "May Be Additional:" label ── */}
-        <p className="mb-5 mt-14 text-center text-[22px] font-semibold text-[#1a3060] lg:text-[26px]">
+        <p className="mb-5 mt-14 text-center text-[32px] font-semibold text-[#1a3060] lg:text-[26px]">
           May Be Additional:
         </p>
 
@@ -86,7 +86,7 @@ const WhatsIncluded: React.FC = () => {
         </div>
 
         {/* ── Closing note ── */}
-        <p className="mt-12 text-center text-sm italic text-[#519B98]">
+        <p className="mt-12 text-center text-[16px]  text-black">
           Your provider will walk you through everything so there are no surprises.
         </p>
       </div>

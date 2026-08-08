@@ -8,8 +8,10 @@ import { Button } from '@/components/ui/Button'
 export default function NotFound() {
   return (
     <>
-      <Header />
-      <Section spacing="xl" className="pt-40">
+      <div className='bg-[#58617C] w-full sm:h-[145px] h-[100px] '>
+        <Header />
+      </div>
+      <Section spacing="xl" className="pt-40 bg-white">
         <Container width="prose">
           <div className="text-center">
             <span className="text-label font-semibold uppercase text-sage-700">Error 404</span>

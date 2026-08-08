@@ -6,11 +6,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 import { Header } from '@/components/layout/Header'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
-import { ContentGrid } from '@/components/sections/ContentGrid'
-import { HeroCompact } from '@/components/sections/HeroCompact'
 import { Container } from '@/components/shared/Container'
-import { Section } from '@/components/shared/Section'
 import { blogContent } from '@/content/pages/blog'
+import { cn } from '@/lib/utils'
 import { buildMetadata } from '@/lib/seo'
 import { getPosts } from '@/actions/blog'
 import type { ContentSummary } from '@/types/content'
@@ -21,82 +19,113 @@ export const dynamic = 'force-dynamic'
 
 const POSTS_PER_PAGE = 9
 
-/* ── Loading skeleton (matches ContentGrid's internal grid classes) ── */
+/** Thin long-stem arrow used throughout the site's brand CTAs. */
+function ArrowSvg({ className }: { className?: string }) {
+  return (
+    <svg
+      width="18"
+      height="10"
+      viewBox="0 0 22 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn('shrink-0', className)}
+      aria-hidden="true"
+    >
+      <path
+        d="M1 5.6059C0.585786 5.6059 0.25 5.94168 0.25 6.3559C0.25 6.77011 0.585786 7.1059 1 7.1059V5.6059ZM21.5303 6.88623C21.8232 6.59333 21.8232 6.11846 21.5303 5.82557L16.7574 1.0526C16.4645 0.759702 15.9896 0.759702 15.6967 1.0526C15.4038 1.34549 15.4038 1.82036 15.6967 2.11326L19.9393 6.3559L15.6967 10.5985C15.4038 10.8914 15.4038 11.3663 15.6967 11.6592C15.9896 11.9521 16.4645 11.9521 16.7574 11.6592L21.5303 6.88623ZM1 7.1059H21V5.6059H1V7.1059Z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
+/* ── Hero — full-bleed brand photo, navy scrim, left-aligned title ──── */
+
+function BlogHero() {
+  return (
+    <section className="relative isolate flex min-h-[360px] items-end overflow-hidden pt-36 pb-12 sm:min-h-[440px] sm:pb-16 lg:pt-44">
+      <Image
+        src="/images/photo-content-56-img.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover object-[center_25%]"
+      />
+      <div className="absolute inset-0 -z-10 bg-[#0f1c3f]/55" aria-hidden />
+
+      <Container className="relative">
+        <h1 className="font-display text-[40px] text-white sm:text-[56px]">Blog</h1>
+        {blogContent.hero.lead ? (
+          <p className="mt-3 max-w-2xl text-[16px] font-light text-white/85">
+            {blogContent.hero.lead}
+          </p>
+        ) : null}
+      </Container>
+    </section>
+  )
+}
+
+/* ── Loading skeleton (matches the new card grid) ─────────────────── */
 
 function BlogGridSkeleton() {
   return (
-    <Section background="page" spacing="lg">
+    <section className="bg-gradient-to-br from-[#eef1f8] via-white to-[#e7ecf6] py-16 sm:py-20">
       <Container>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+        <div className="mx-auto mb-12 h-10 w-40 animate-pulse rounded bg-gray-200/70" />
+        <div className="grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div
-              key={i}
-              className="flex animate-pulse flex-col overflow-hidden rounded-2xl border border-canvas-300/60 bg-canvas-50"
-            >
-              <div className="aspect-[4/3] bg-gray-200" />
-              <div className="flex flex-1 flex-col p-6 space-y-3">
-                <div className="h-4 w-24 bg-gray-200 rounded" />
-                <div className="h-5 bg-gray-200 rounded w-full" />
-                <div className="h-5 bg-gray-200 rounded w-3/4" />
-                <div className="h-4 bg-gray-200 rounded w-full mt-2" />
-                <div className="h-3 bg-gray-200 rounded w-20 mt-auto" />
+            <div key={i} className="flex animate-pulse flex-col">
+              <div className="aspect-[4/3] bg-gray-200/70" />
+              <div className="mt-5 space-y-3">
+                <div className="h-5 w-full rounded bg-gray-200/70" />
+                <div className="h-5 w-3/4 rounded bg-gray-200/70" />
+                <div className="h-3 w-24 rounded bg-gray-200/70" />
+                <div className="h-4 w-full rounded bg-gray-200/70" />
+                <div className="mt-2 h-9 w-32 rounded-full bg-gray-200/70" />
               </div>
             </div>
           ))}
         </div>
       </Container>
-    </Section>
+    </section>
   )
 }
 
-/* ── Latest Blog Section ──────────────────────────────────────────── */
+/* ── Post card ─────────────────────────────────────────────────────── */
 
-function LatestBlogSection({ posts }: { posts: ContentSummary[] }) {
+function BlogCard({ post }: { post: ContentSummary }) {
   return (
-    <Section background="alt" spacing="lg">
-      <Container>
-        <div className="mb-10 text-center">
-          <p className="mb-2 text-label font-semibold uppercase tracking-widest text-sage-600">
-            Latest Articles
-          </p>
-          <h2 className="text-display-sm text-ink-900">Stay informed</h2>
+    <Link key={post.href} href={post.href} className="group flex flex-col">
+      {post.image ? (
+        <div className="relative aspect-[4/3] overflow-hidden">
+          <Image
+            src={post.image.src}
+            alt={post.image.alt}
+            fill
+            sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 100vw"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+          />
         </div>
+      ) : null}
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <Link
-              key={post.href}
-              href={post.href}
-              className="group rounded-2xl border border-canvas-300/60 bg-canvas-50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-sage-600/30 hover:shadow-lg"
-            >
-              {post.image && (
-                <div className="relative -mx-5 -mt-5 mb-4 aspect-[16/9] overflow-hidden rounded-t-2xl">
-                  <Image
-                    src={post.image.src}
-                    alt={post.image.alt}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-              )}
-              {post.eyebrow && (
-                <p className="mb-2 text-body-sm text-sage-700">{post.eyebrow}</p>
-              )}
-              <h3 className="text-title-lg transition-colors group-hover:text-sage-700 line-clamp-2">
-                {post.title}
-              </h3>
-              {post.excerpt && (
-                <p className="mt-2 text-body-sm text-canvas-600 line-clamp-2">{post.excerpt}</p>
-              )}
-              {post.date && (
-                <p className="mt-3 text-body-sm text-canvas-500">{post.date}</p>
-              )}
-            </Link>
-          ))}
-        </div>
-      </Container>
-    </Section>
+      <div className="flex flex-1 flex-col pt-5">
+        <h3 className="font-display text-[20px] leading-snug text-[#15224c] transition-colors group-hover:text-[#519B99] sm:text-[22px]">
+          {post.title}
+        </h3>
+
+        {post.date ? <p className="mt-2 text-[13px] font-medium text-[#519B99]">{post.date}</p> : null}
+
+        {post.excerpt ? (
+          <p className="mt-2 line-clamp-2 text-[15px] leading-relaxed text-[#15224c]/75">{post.excerpt}</p>
+        ) : null}
+
+        <span className="mt-5 inline-flex w-fit items-center gap-2.5 rounded-full bg-[#519B99] px-6 py-2.5 text-[13px] font-bold tracking-[0.1em] text-white uppercase transition-colors duration-300 group-hover:bg-[#458785]">
+          Read more
+          <ArrowSvg className="transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
+      </div>
+    </Link>
   )
 }
 
@@ -119,7 +148,7 @@ function Pagination({
             {currentPage > 1 && (
               <Link
                 href={currentPage === 2 ? '/blog' : `/blog?page=${currentPage - 1}`}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-canvas-300/60 bg-canvas-50 px-4 py-2.5 text-body-sm font-medium text-canvas-600 transition-all hover:border-sage-600/30 hover:text-sage-700 hover:shadow-sm"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-[#15224c]/15 bg-white px-4 py-2.5 text-body-sm font-medium text-[#15224c]/70 transition-all hover:border-[#519B99]/40 hover:text-[#519B99] hover:shadow-sm"
               >
                 <ChevronLeft className="size-4" />
                 Previous
@@ -132,8 +161,8 @@ function Pagination({
                 href={page === 1 ? '/blog' : `/blog?page=${page}`}
                 className={`inline-flex h-10 w-10 items-center justify-center rounded-xl text-body-sm font-medium transition-all ${
                   page === currentPage
-                    ? 'bg-sage-700 text-canvas-50 shadow-sm'
-                    : 'border border-canvas-300/60 bg-canvas-50 text-canvas-600 hover:border-sage-600/30 hover:text-sage-700 hover:shadow-sm'
+                    ? 'bg-[#519B99] text-white shadow-sm'
+                    : 'border border-[#15224c]/15 bg-white text-[#15224c]/70 hover:border-[#519B99]/40 hover:text-[#519B99] hover:shadow-sm'
                 }`}
               >
                 {page}
@@ -143,19 +172,37 @@ function Pagination({
             {currentPage < totalPages && (
               <Link
                 href={`/blog?page=${currentPage + 1}`}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-canvas-300/60 bg-canvas-50 px-4 py-2.5 text-body-sm font-medium text-canvas-600 transition-all hover:border-sage-600/30 hover:text-sage-700 hover:shadow-sm"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-[#15224c]/15 bg-white px-4 py-2.5 text-body-sm font-medium text-[#15224c]/70 transition-all hover:border-[#519B99]/40 hover:text-[#519B99] hover:shadow-sm"
               >
                 Next
                 <ChevronRight className="size-4" />
               </Link>
             )}
           </div>
-          <p className="text-body-sm text-canvas-500">
+          <p className="text-body-sm text-[#15224c]/50">
             Page {currentPage} of {totalPages}
           </p>
         </div>
       </Container>
     </div>
+  )
+}
+
+/* ── "All Posts" grid ─────────────────────────────────────────────── */
+
+function BlogGrid({ posts }: { posts: ContentSummary[] }) {
+  return (
+    <section className="bg-gradient-to-br from-[#eef1f8] via-white to-[#e7ecf6] py-16 sm:py-20">
+      <Container>
+        <h2 className="text-center font-display text-[36px] text-[#15224c] sm:text-[48px]">All Posts</h2>
+
+        <div className="mt-12 grid gap-x-10 gap-y-14 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3">
+          {posts.map((post) => (
+            <BlogCard key={post.href} post={post} />
+          ))}
+        </div>
+      </Container>
+    </section>
   )
 }
 
@@ -183,37 +230,10 @@ async function BlogPostsContent({ currentPage }: { currentPage: number }) {
 
   return (
     <>
-      <ContentGrid title="All posts" items={posts} />
+      <BlogGrid posts={posts} />
       <Pagination currentPage={currentPage} totalPages={result.totalPages} />
     </>
   )
-}
-
-/* ── Latest blog posts (always fetches fresh alongside main query) ── */
-
-async function LatestPostsContent() {
-  const result = await getPosts({
-    status: 'published',
-    page: 1,
-    pageSize: 6,
-  })
-
-  const latestPosts: ContentSummary[] = result.posts.map((post) => ({
-    href: `/blog/${post.slug}`,
-    title: post.title,
-    excerpt: post.excerpt || undefined,
-    eyebrow: post.category?.name || undefined,
-    date: post.publishedAt
-      ? format(new Date(post.publishedAt), 'MMMM d, yyyy')
-      : undefined,
-    image: post.featuredImage
-      ? { src: post.featuredImage, alt: post.title }
-      : undefined,
-  }))
-
-  if (latestPosts.length === 0) return null
-
-  return <LatestBlogSection posts={latestPosts} />
 }
 
 /* ── Page ─────────────────────────────────────────────────────────── */
@@ -228,32 +248,20 @@ export default async function BlogIndexPage({
 
   return (
     <>
-      <Header />
+      <Header overlay />
 
-      {/* ── Hero — exactly as original ──────────────────────────────────── */}
-      <HeroCompact
-        {...blogContent.hero}
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'Journal', href: '/blog' },
-        ]}
-      />
+      <BlogHero />
 
-      {/* ── Blog grid — original ContentGrid layout, now DB-driven ─────── */}
+      {/* ── Blog grid — DB-driven, streamed via Suspense ────────────────── */}
       <Suspense fallback={<BlogGridSkeleton />}>
         <BlogPostsContent currentPage={currentPage} />
       </Suspense>
 
-      {/* ── Latest Blog section (below pagination) ──────────────────────── */}
-      {/* <Suspense fallback={null}>
-        <LatestPostsContent />
-      </Suspense> */}
-
-      {/* ── Closing CTA — exactly as original ──────────────────────────── */}
       <ClosingCTA
         title="Ready to transform your health?"
         body="Take the first step towards a healthier, more vibrant you."
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
+        centered
       />
     </>
   )

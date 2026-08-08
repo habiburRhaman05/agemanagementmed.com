@@ -101,7 +101,9 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
                   if (hasLinks) {
                     const isOpen = expanded === itemKey;
                     return (
-                      <li key={itemKey} className="border-b border-canvas-300/50">
+                      <li key={itemKey} className="border-b border-canvas-300/50 cursor-pointer "
+                      onClick={() => setExpanded(isOpen ? null : itemKey)}
+                      >
                         <button
                           type="button"
                           aria-expanded={isOpen}

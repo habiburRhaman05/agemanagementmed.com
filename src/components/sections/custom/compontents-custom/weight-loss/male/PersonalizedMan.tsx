@@ -30,8 +30,7 @@ const measures = [
 
 const PersonalizedMan: React.FC = () => {
   return (
-    <>
-      <div className="lg-flexspace-100" />
+    <section className="">
 
       <div id="photo-content-c" className="style-2 relative overflow-hidden">
         <div className="radial-gradient" aria-hidden />
@@ -137,10 +136,8 @@ const PersonalizedMan: React.FC = () => {
         </div>
       </div>
 
-      <div className="lg-flexspace-100" />
       <LabworkGuidanceBand />
 
-      {/* <div className="lg-flexspace-100" /> */}
       <MidPageCTA
         backgroundImage="/weightloss/weightloss.jpg"
         backgroundPosition="72% top"
@@ -148,7 +145,7 @@ const PersonalizedMan: React.FC = () => {
         body="Stop guessing and start working with real data."
         align="left"
       />
-    </>
+    </section>
   )
 }
 

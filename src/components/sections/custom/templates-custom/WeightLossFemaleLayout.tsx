@@ -172,7 +172,7 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
       ) : null}
 
       <ClosingCTA
-      textWidth='600'
+      textWidth='400'
         {...treatment.closingCta}
         backgroundImage="/images/hero-22-bg.jpg"
         backgroundPosition="80% center"

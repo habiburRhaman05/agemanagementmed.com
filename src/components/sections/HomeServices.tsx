@@ -55,7 +55,7 @@ export function HomeServices({ eyebrow, title, lead }: HomeServicesProps) {
                     <div className="content mt-[16px]! md:mt-0!">
                       <div className="top">
                         <h3
-                          className={`lg-title${service.narrowTitle ? ' lg-max-width-300' : ''}`}
+                          className={`lg-title${service.narrowTitle ? 'w-full' : ''} text-[30px]!`}
                         >
                           <Link href={service.href}>{service.title}</Link>
                         </h3>

@@ -208,7 +208,7 @@ export function TestimonialSet({
           {/* Right: SEE ALL REVIEWS Button */}
           <a
             href={ctaHref}
-            className="inline-flex items-center justify-center bg-[#30A7A0] hover:bg-[#278d87] text-white text-[11px] sm:text-xs font-bold tracking-wider uppercase px-6 py-2.5 rounded-full shadow-lg transition-all duration-200 transform hover:scale-105"
+            className="inline-flex items-center justify-center bg-[#30A7A0] hover:bg-[#278d87] text-white text-[14px]  font-bold tracking-wider uppercase px-6 py-2.5 rounded-full shadow-lg transition-all duration-200 transform hover:scale-105"
           >
             {ctaText}
           </a>

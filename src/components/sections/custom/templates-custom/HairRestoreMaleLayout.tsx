@@ -18,11 +18,8 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
     <>
       <HeroEditorial
         {...treatment.hero}
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: pillar.label, href: pillar.href },
-          { label: treatment.shortName, href: treatment.href },
-        ]}
+        overideMinheight='min-h-[850px]!'
+        textWidth='800'
       />
 
       <HowPRPTreatsHairLoss />

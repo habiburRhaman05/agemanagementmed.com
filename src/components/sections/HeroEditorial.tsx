@@ -47,6 +47,7 @@ interface HeroEditorialProps {
   title: string;
   lead: string;
   lead2?: string;
+  textWidth?: string;
   image: Media;
   ctas?: Cta[];
   breadcrumbs?: Crumb[];
@@ -121,6 +122,7 @@ export function HeroEditorial({
   primaryCtaLabel = "Schedule a consultation",
   heroDiv,
   heroPara,
+  textWidth,
 }: HeroEditorialProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [videoOpen, setVideoOpen] = useState(false);
@@ -163,19 +165,21 @@ export function HeroEditorial({
 
   return (
     <section
-      className={cn(
-        "relative isolate flex flex-col justify-end sm:justify-center overflow-hidden",
-        fullHeight ? "min-h-[100dvh] sm:min-h-screen" : "min-h-128 lg:min-h-[620px]",
-        overideMinheight
-      )}
+      // className={cn(
+      //   "relative isolate flex flex-col justify-end sm:justify-center overflow-hidden",
+      //   fullHeight ? "min-h-[100dvh] sm:min-h-screen" : "min-h-128 lg:min-h-[620px]",
+      //   overideMinheight
+      // )}
+      id="banner-d"
+      
       style={
-        {
-          "--hero-object-position-mobile": mobileFocalPoint,
-        } as Record<string, string | undefined>
+    {
+      backgroundImage:`url(${image.src})`
+    }
       }
     >
       {/* Background Image */}
-      <Image
+      {/* <Image
         src={image.src}
         alt={image.alt}
         fill
@@ -183,13 +187,13 @@ export function HeroEditorial({
         sizes="100vw"
         className="absolute inset-0 z-0 object-cover hero-editorial-img"
         style={{ objectPosition: image.focalPoint ?? "85% center" }}
-      />
+      /> */}
 
       {/* Dark gradient overlay to ensure text legibility while keeping the top of the image vibrant */}
       {/* {overlay && <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />} */}
 
-      <Container className={cn("relative z-10 py-35 md:py-50 lg:py-60 !px-3", containerOverride)}>
-        <div className={cn("max-w-[700px] text-center sm:text-left", heroDiv)}>
+      <div className={'mx-auto w-full max-w-[80rem] px-2 lg:px-12 relative z-20  lg-container'}>
+        <div className={cn(`text-center sm:text-left ${textWidth ? `max-w-${textWidth}px` : "max-w-[700px]"}`, heroDiv)}>
           <h1
             className="text-[40px] sm:text-[46px] lg:text-[56px] font-medium leading-[48px] sm:leading-[62px] text-white font-['Bodoni_Moda',var(--font-bodoni),serif]"
             style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
@@ -364,7 +368,7 @@ export function HeroEditorial({
             </div>
           )}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

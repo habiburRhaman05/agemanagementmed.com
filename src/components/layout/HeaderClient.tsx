@@ -179,7 +179,7 @@ export function HeaderClient({ overlay = false, logoUrl, siteName, phone }: Head
                         <ul>
                           {submenu.map((link) =>
                             link.href.startsWith('http') ? (
-                              <li key={link.href} className="menu-li">
+                              <li key={link.href} className="menu-li ">
                                 <a href={link.href} target="_blank" rel="noreferrer">
                                   {link.label}
                                   <ArrowRight className="submenu-arrow" size={16} aria-hidden />
@@ -268,7 +268,7 @@ export function HeaderClient({ overlay = false, logoUrl, siteName, phone }: Head
                 }
 
                 return (
-                  <li key={item.label} className={`menu-li${expanded ? ' menu-li-active' : ''}`}>
+                  <li key={item.label} className={`menu-li${expanded ? ' menu-li-active' : ''}`}   onClick={() => setOpenSubmenu(expanded ? null : item.label)}>
                     <button
                       type="button"
                       className="submenu-icon"

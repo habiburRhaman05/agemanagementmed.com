@@ -15,7 +15,7 @@ export const blogContent = {
   hero: {
     eyebrow: 'Journal',
     title: 'Hormone health, explained',
-    lead: 'Practical, provider-written insight on hormones, weight loss, and healthy aging.',
+    lead: 'Explore articles about health optimization, hormone balance, weight management, regenerative therapies, and overall well-being.',
   },
 
   posts: [

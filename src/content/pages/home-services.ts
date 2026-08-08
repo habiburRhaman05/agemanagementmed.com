@@ -20,7 +20,7 @@ export interface HomeServiceCard {
 export const homeServices: HomeServiceCard[] = [
   {
     title: 'Bioidentical Hormone Replacement Therapy (BHRT) for men & women',
-    href: '/bioidentical-hormone-replacement-therapy',
+    href: '/bioidentical-hormone-replacement-therapy/male/',
     image:
       'https://www.agemanagementmed.com/themes/default/assets/images/column-box-img.png',
     imageAlt: 'Happy People',
@@ -38,7 +38,7 @@ export const homeServices: HomeServiceCard[] = [
   },
   {
     title: 'Sexual Performance Enhancement & Rejuvenation',
-    href: '/rejuvenation-enhancement',
+    href: '/rejuvenation-enhancement/female',
     image:
       'https://www.agemanagementmed.com/themes/default/assets/images/column-box-3-img.png',
     imageAlt: 'Happy Couple',
@@ -52,7 +52,7 @@ export const homeServices: HomeServiceCard[] = [
   },
   {
     title: 'Concierge medical weight loss',
-    href: '/concierge-medical-weight-loss',
+    href: '/concierge-medical-weight-loss/female',
     image:
       'https://www.agemanagementmed.com/themes/default/assets/images/column-box-6-img.png',
     imageAlt: 'Weight Loss',

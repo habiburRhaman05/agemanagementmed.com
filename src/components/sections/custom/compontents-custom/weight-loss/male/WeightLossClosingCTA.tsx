@@ -11,6 +11,7 @@ const IMAGE_URL =
 export function WeightLossClosingCTA() {
   return (
     <ClosingCTA
+    textWidth='600'
       backgroundImage={IMAGE_URL}
       title="Start Your Personalized Weight Loss Plan Today"
       body="You don't have to figure this out on your own."

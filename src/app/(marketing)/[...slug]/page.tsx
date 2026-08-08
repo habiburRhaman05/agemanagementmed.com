@@ -77,6 +77,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
           return <WeightLossFeMaleLayout treatment={treatment}/>
         case "hair-restoration-women":
           return <HairRestoreFemaleLayout treatment={treatment}/>
+        case "platelet-rich-plasma-hair":
+          return <HairRestoreFemaleLayout treatment={treatment}/>
         case "hair-restoration-men":
           return <HairRestoreMaleLayout treatment={treatment}/>
         case "sexual-wellness-men":

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { format } from 'date-fns'
-import { CalendarDays, Clock, User, Tag, ArrowLeft, Phone } from 'lucide-react'
+import { Tag, ArrowLeft, Phone } from 'lucide-react'
 
 import { Header } from '@/components/layout/Header'
 import { ShareButton } from '@/components/blog/ShareButton'
@@ -53,7 +53,7 @@ function ReadingProgressBar() {
   return (
     <div className="fixed left-0 right-0 top-0 z-50 h-1 bg-gray-100">
       <div
-        className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-150"
+        className="h-full bg-[#519B99] transition-all duration-150"
         style={{ width: '0%' }}
         id="reading-progress"
         suppressHydrationWarning
@@ -78,77 +78,78 @@ function processArticleHtml(html: string): string {
   )
 }
 
-/* ── Related Posts (wrapped in Suspense) ──────────────────────────── */
+/** Thin long-stem arrow used throughout the site's brand CTAs. */
+function ArrowSvg({ className }: { className?: string }) {
+  return (
+    <svg
+      width="16"
+      height="9"
+      viewBox="0 0 22 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <path
+        d="M1 5.6059C0.585786 5.6059 0.25 5.94168 0.25 6.3559C0.25 6.77011 0.585786 7.1059 1 7.1059V5.6059ZM21.5303 6.88623C21.8232 6.59333 21.8232 6.11846 21.5303 5.82557L16.7574 1.0526C16.4645 0.759702 15.9896 0.759702 15.6967 1.0526C15.4038 1.34549 15.4038 1.82036 15.6967 2.11326L19.9393 6.3559L15.6967 10.5985C15.4038 10.8914 15.4038 11.3663 15.6967 11.6592C15.9896 11.9521 16.4645 11.9521 16.7574 11.6592L21.5303 6.88623ZM1 7.1059H21V5.6059H1V7.1059Z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
 
-async function RelatedPosts({ currentSlug }: { currentSlug: string }) {
+/** Sidebar "More Articles" box skeleton — shown while related posts stream in. */
+function MoreArticlesSkeleton() {
+  return (
+    <div className="border border-gray-200 p-6">
+      <div className="h-6 w-32 animate-pulse rounded bg-gray-200" />
+      <div className="mt-5 space-y-5">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} className="border-b border-gray-100 pb-5 last:border-0 last:pb-0">
+            <div className="h-4 w-full animate-pulse rounded bg-gray-200" />
+            <div className="mt-2 h-4 w-2/3 animate-pulse rounded bg-gray-200" />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+/* ── "More Articles" sidebar list (wrapped in Suspense) ───────────── */
+
+async function MoreArticles({ currentSlug }: { currentSlug: string }) {
   let related
   try {
     related = await getPosts({
       status: 'published',
-      pageSize: 3,
+      pageSize: 5,
     })
   } catch {
     related = { posts: [] }
   }
 
-  const relatedPosts = related.posts
-    .filter((p) => p.slug !== currentSlug)
-    .slice(0, 3)
+  const relatedPosts = related.posts.filter((p) => p.slug !== currentSlug).slice(0, 4)
 
   if (relatedPosts.length === 0) return null
 
   return (
-    <section className="border-t border-gray-100 bg-gray-50/50 py-16">
-      <Container>
-        <div className="mb-8">
-          <h2 className="font-display text-2xl font-bold text-gray-900">
-            Related Articles
-          </h2>
-          <p className="mt-1 text-gray-500">
-            Continue reading from our journal
-          </p>
-        </div>
+    <div className="border border-gray-200 p-6">
+      <h2 className="font-display text-[24px] text-[#15224c]">More Articles</h2>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {relatedPosts.map((rp) => {
-            const date = rp.publishedAt
-              ? format(new Date(rp.publishedAt), 'MMM d, yyyy')
-              : ''
-
-            return (
-              <Link
-                key={rp.id}
-                href={`/blog/${rp.slug}`}
-                className="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
-              >
-                {rp.featuredImage && (
-                  <div className="relative -mx-5 -mt-5 mb-4 aspect-[16/9] overflow-hidden rounded-t-xl">
-                    <Image
-                      src={rp.featuredImage}
-                      alt={rp.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
-                )}
-                <h3 className="font-semibold text-gray-900 transition-colors group-hover:text-emerald-700 line-clamp-2">
-                  {rp.title}
-                </h3>
-                {rp.excerpt && (
-                  <p className="mt-1.5 text-sm leading-relaxed text-gray-500 line-clamp-2">
-                    {rp.excerpt}
-                  </p>
-                )}
-                {date && (
-                  <p className="mt-3 text-xs text-gray-400">{date}</p>
-                )}
-              </Link>
-            )
-          })}
-        </div>
-      </Container>
-    </section>
+      <ul className="mt-5">
+        {relatedPosts.map((rp) => (
+          <li key={rp.id} className="border-b border-gray-100 py-4 first:pt-0 last:border-0 last:pb-0">
+            <Link
+              href={`/blog/${rp.slug}`}
+              className="group flex items-start justify-between gap-3 text-[15px] leading-snug font-medium text-[#15224c] transition-colors hover:text-[#519B99]"
+            >
+              <span>{rp.title}</span>
+              <ArrowSvg className="mt-1 shrink-0 text-[#519B99] transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
@@ -168,104 +169,61 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
 
   return (
     <>
-      {/* ── Hero Section ────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          {post.featuredImage ? (
-            <Image
-              src={post.featuredImage}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
-            />
-          ) : (
-            <div className="h-full w-full bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900" />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
-        </div>
+      {/* ── Hero Section — solid navy band, centered eyebrow + title ──── */}
+      <section className="relative overflow-hidden bg-[#0f1c3f] pt-36 pb-16 sm:pt-44 sm:pb-20">
+        <Container className="relative text-center">
+          <p className="text-[13px] font-bold tracking-[0.15em] text-white uppercase">Blog</p>
+          <h1 className="mx-auto mt-4 max-w-3xl font-display text-[32px] leading-tight text-white sm:text-[44px]">
+            {post.title}
+          </h1>
+        </Container>
+      </section>
 
-        {/* Content */}
-        <div className="relative pt-28 pb-16">
-          <Container>
-            {/* Back link */}
+      {/* ── Article Body ────────────────────────────────────────────── */}
+      <section className="bg-white py-12 sm:py-16">
+        <Container>
+          {/* Back link + category, above the two columns */}
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
             <Link
               href="/blog"
-              className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-white/60 transition-colors hover:text-white"
+              className="inline-flex items-center gap-2 text-sm font-medium text-[#15224c]/60 transition-colors hover:text-[#519B99]"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to Journal
             </Link>
-
-            {/* Category */}
-            {post.category && (
-              <div className="mb-4">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-300 backdrop-blur-sm">
-                  <Tag className="h-3 w-3" />
-                  {post.category.name}
-                </span>
-              </div>
-            )}
-
-            {/* Title */}
-            <h1 className="max-w-4xl font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-              {post.title}
-            </h1>
-
-            {/* Meta */}
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/70">
-              {postDate && (
-                <span className="inline-flex items-center gap-1.5">
-                  <CalendarDays className="h-4 w-4" />
-                  {postDate}
-                </span>
-              )}
-              <span className="inline-flex items-center gap-1.5">
-                <Clock className="h-4 w-4" />
-                {readingTime} min read
+            {post.category ? (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#519B99]/10 px-3.5 py-1.5 text-xs font-semibold tracking-wider text-[#519B99] uppercase">
+                <Tag className="h-3 w-3" />
+                {post.category.name}
               </span>
-              <span className="inline-flex items-center gap-1.5">
-                <User className="h-4 w-4" />
-                {authorName}
-              </span>
-            </div>
+            ) : null}
+          </div>
 
-            {/* Share */}
-            <div className="mt-6">
-              <ShareButton title={post.title} url={canonicalUrl} />
-            </div>
-          </Container>
-        </div>
-      </section>
+          <div className="grid gap-8 lg:grid-cols-12">
+            {/* Sidebar */}
+            <aside className="lg:col-span-4 lg:order-2">
+              <div className="space-y-6 lg:sticky lg:top-24">
+                <Suspense fallback={<MoreArticlesSkeleton />}>
+                  <MoreArticles currentSlug={post.slug} />
+                </Suspense>
 
-      {/* ── Article Body ────────────────────────────────────────────── */}
-      <section className="bg-white py-12">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-12">
-            {/* Sidebar - Table of Contents */}
-            <aside className="hidden lg:col-span-3 lg:block">
-              <div className="sticky top-24 space-y-6">
                 <TableOfContents html={post.contentHtml || ''} />
 
                 {/* CTA Card */}
-                <div className="rounded-xl border border-gray-200 bg-gradient-to-br from-emerald-50 to-teal-50 p-5 shadow-sm">
-                  <h3 className="text-sm font-semibold text-gray-900">
-                    Need personalized care?
-                  </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-gray-500">
+                <div className="border border-gray-200 p-6">
+                  <h3 className="font-display text-[18px] text-[#15224c]">Need personalized care?</h3>
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-[#15224c]/60">
                     Our providers can help with your specific health concerns.
                   </p>
                   <LegacyCtaLink
                     href="/book-appointment"
-                    className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-emerald-700"
+                    className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#519B99] px-4 py-2.5 text-[13px] font-bold tracking-[0.08em] text-white uppercase transition-colors hover:bg-[#458785]"
                   >
                     Book a consultation
                   </LegacyCtaLink>
                   <a
                     href={site.phoneHref}
-                    className="mt-2 flex items-center justify-center gap-1.5 text-xs font-medium text-emerald-700 hover:text-emerald-800"
+                    className="mt-3 flex items-center justify-center gap-1.5 text-[13px] font-medium text-[#519B99] hover:text-[#458785]"
                   >
                     <Phone className="h-3 w-3" />
                     {site.phone}
@@ -274,15 +232,15 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
 
                 {/* Tags */}
                 {post.tags.length > 0 && (
-                  <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                    <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400">
+                  <div className="border border-gray-200 p-6">
+                    <h3 className="mb-3 text-xs font-semibold tracking-widest text-[#15224c]/40 uppercase">
                       Topics
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map(({ tag }) => (
                         <span
                           key={tag.slug}
-                          className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 transition-colors hover:bg-emerald-50 hover:text-emerald-700"
+                          className="rounded-full border border-gray-200 px-3 py-1 text-xs font-medium text-[#15224c]/70 transition-colors hover:border-[#519B99]/40 hover:text-[#519B99]"
                         >
                           {tag.name}
                         </span>
@@ -294,59 +252,54 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
             </aside>
 
             {/* Main Content */}
-            <article className="lg:col-span-9">
-              {/* Mobile meta */}
-              <div className="mb-8 flex flex-wrap items-center gap-3 text-sm text-gray-400 lg:hidden">
-                {postDate && (
-                  <span className="inline-flex items-center gap-1.5">
-                    <CalendarDays className="h-3.5 w-3.5" />
-                    {postDate}
-                  </span>
-                )}
-                <span className="inline-flex items-center gap-1.5">
-                  <Clock className="h-3.5 w-3.5" />
-                  {readingTime} min read
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <User className="h-3.5 w-3.5" />
-                  {authorName}
-                </span>
+            <article className="border border-gray-200 p-6 sm:p-10 lg:col-span-8 lg:order-1">
+              {/* Meta */}
+              <p className="text-[13px] text-[#15224c]/50">
+                {postDate ? <>Posted on {postDate}</> : null}
+                {postDate ? ' · ' : null}
+                {readingTime} min read · {authorName}
+              </p>
+
+              <h1 className="mt-3 font-display text-[28px] leading-tight text-[#15224c] sm:text-[34px] lg:text-[38px]">
+                {post.title}
+              </h1>
+
+              <div className="mt-4">
+                <ShareButton title={post.title} url={canonicalUrl} />
               </div>
 
               {/* Excerpt lead */}
               {post.excerpt && (
-                <div className="mb-8 rounded-xl border-l-4 border-emerald-500 bg-emerald-50/50 px-6 py-4">
-                  <p className="text-lg leading-relaxed text-emerald-900/80 italic">
-                    {post.excerpt}
-                  </p>
-                </div>
+                <p className="mt-6 text-[17px] leading-relaxed font-light text-[#15224c]/85 italic">
+                  {post.excerpt}
+                </p>
               )}
 
               {/* Content */}
               {processedHtml ? (
                 <div
                   className={[
-                    'prose prose-lg max-w-none',
+                    'prose prose-lg mt-6 max-w-none',
                     // Headings
-                    'prose-headings:font-display prose-headings:font-semibold prose-headings:text-gray-900 prose-headings:scroll-mt-24',
-                    'prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-gray-100',
+                    'prose-headings:font-display prose-headings:font-semibold prose-headings:text-[#15224c] prose-headings:scroll-mt-24',
+                    'prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4',
                     'prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3',
                     // Paragraphs
-                    'prose-p:text-gray-600 prose-p:leading-8 prose-p:mb-5',
+                    'prose-p:text-[#15224c]/80 prose-p:leading-8 prose-p:mb-5',
                     // Links
-                    'prose-a:text-emerald-700 prose-a:font-medium prose-a:no-underline hover:prose-a:underline hover:prose-a:decoration-emerald-500 hover:prose-a:decoration-2',
+                    'prose-a:text-[#519B99] prose-a:font-medium prose-a:no-underline hover:prose-a:underline hover:prose-a:decoration-[#519B99] hover:prose-a:decoration-2',
                     // Images
                     'prose-img:rounded-2xl prose-img:shadow-md prose-img:my-8',
                     // Bold
-                    'prose-strong:text-gray-900 prose-strong:font-semibold',
+                    'prose-strong:text-[#15224c] prose-strong:font-semibold',
                     // Blockquote
-                    'prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50/50 prose-blockquote:py-2 prose-blockquote:pl-6 prose-blockquote:pr-4 prose-blockquote:rounded-r-xl prose-blockquote:not-italic',
-                    'prose-blockquote:font-normal prose-blockquote:text-gray-600 prose-blockquote:text-lg',
+                    'prose-blockquote:border-l-[#519B99] prose-blockquote:bg-[#519B99]/5 prose-blockquote:py-2 prose-blockquote:pl-6 prose-blockquote:pr-4 prose-blockquote:rounded-r-xl prose-blockquote:not-italic',
+                    'prose-blockquote:font-normal prose-blockquote:text-[#15224c]/80 prose-blockquote:text-lg',
                     // Lists
-                    'prose-ul:list-disc prose-ul:pl-6 prose-ul:text-gray-600 prose-li:my-1',
-                    'prose-ol:list-decimal prose-ol:pl-6 prose-ol:text-gray-600',
+                    'prose-ul:list-disc prose-ul:pl-6 prose-ul:text-[#15224c]/80 prose-li:my-1',
+                    'prose-ol:list-decimal prose-ol:pl-6 prose-ol:text-[#15224c]/80',
                     // Code
-                    'prose-code:rounded-lg prose-code:bg-gray-100 prose-code:px-2 prose-code:py-0.5 prose-code:text-sm prose-code:font-normal prose-code:text-emerald-800',
+                    'prose-code:rounded-lg prose-code:bg-gray-100 prose-code:px-2 prose-code:py-0.5 prose-code:text-sm prose-code:font-normal prose-code:text-[#458785]',
                     'prose-pre:rounded-xl prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:shadow-md prose-pre:my-6',
                     // Horizontal rule
                     'prose-hr:border-gray-200 prose-hr:my-10',
@@ -355,19 +308,17 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
                     'prose-th:bg-gray-50 prose-th:px-4 prose-th:py-3 prose-th:text-xs prose-th:font-semibold prose-th:uppercase prose-th:tracking-wider prose-th:text-gray-500',
                     'prose-td:px-4 prose-td:py-3 prose-td:text-sm prose-td:border-t prose-td:border-gray-100',
                     // Embedded CTA buttons
-                    '[&_.btn-arrow-right]:inline-flex [&_.btn-arrow-right]:items-center [&_.btn-arrow-right]:gap-2',
-                    '[&_.btn-arrow-right]:rounded-full [&_.btn-arrow-right]:bg-gradient-to-br [&_.btn-arrow-right]:from-emerald-600 [&_.btn-arrow-right]:to-teal-700',
-                    '[&_.btn-arrow-right]:px-7 [&_.btn-arrow-right]:py-3.5 [&_.btn-arrow-right]:font-semibold',
-                    '[&_.btn-arrow-right]:text-white [&_.btn-arrow-right]:no-underline [&_.btn-arrow-right]:shadow-md',
-                    '[&_.btn-arrow-right]:hover:shadow-lg [&_.btn-arrow-right]:hover:from-emerald-700 [&_.btn-arrow-right]:hover:to-teal-800',
-                    '[&_.btn-arrow-right]:transition-all [&_.btn-arrow-right]:duration-200',
-                    // First letter drop cap for first paragraph
-                    '[&>p:first-of-type]:first-letter:text-4xl [&>p:first-of-type]:first-letter:font-bold [&>p:first-of-type]:first-letter:text-emerald-700 [&>p:first-of-type]:first-letter:float-left [&>p:first-of-type]:first-letter:mr-3 [&>p:first-of-type]:first-letter:mt-1',
+                    '[&_.btn-arrow-right]:inline-flex [&_.btn-arrow-right]:items-center [&_.btn-arrow-right]:gap-2.5',
+                    '[&_.btn-arrow-right]:rounded-full [&_.btn-arrow-right]:bg-[#519B99]',
+                    '[&_.btn-arrow-right]:px-7 [&_.btn-arrow-right]:py-3.5 [&_.btn-arrow-right]:text-[13px] [&_.btn-arrow-right]:font-bold [&_.btn-arrow-right]:tracking-[0.1em] [&_.btn-arrow-right]:uppercase',
+                    '[&_.btn-arrow-right]:text-white [&_.btn-arrow-right]:no-underline',
+                    '[&_.btn-arrow-right]:hover:bg-[#458785]',
+                    '[&_.btn-arrow-right]:transition-colors [&_.btn-arrow-right]:duration-200',
                   ].join(' ')}
                   dangerouslySetInnerHTML={{ __html: processedHtml }}
                 />
               ) : (
-                <div className="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center">
+                <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-8 text-center">
                   <p className="text-gray-500">
                     This article content is being prepared. Please check back soon.
                   </p>
@@ -379,12 +330,12 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
                 <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
                   {/* Author */}
                   <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 text-sm font-bold text-white shadow-md">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#519B99] text-sm font-bold text-white">
                       {authorName.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-gray-900">{authorName}</p>
-                      <p className="text-xs text-gray-400">Clinical Expert</p>
+                      <p className="text-sm font-semibold text-[#15224c]">{authorName}</p>
+                      <p className="text-xs text-[#15224c]/50">Clinical Expert</p>
                     </div>
                   </div>
 
@@ -395,14 +346,14 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
                 {/* Mobile tags */}
                 {post.tags.length > 0 && (
                   <div className="mt-6 border-t border-gray-100 pt-6 lg:hidden">
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400">
+                    <p className="mb-3 text-xs font-semibold tracking-widest text-[#15224c]/40 uppercase">
                       Topics
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map(({ tag }) => (
                         <span
                           key={tag.slug}
-                          className="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600"
+                          className="rounded-full border border-gray-200 px-3 py-1.5 text-xs font-medium text-[#15224c]/70"
                         >
                           {tag.name}
                         </span>
@@ -413,20 +364,20 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
               </div>
 
               {/* Mobile CTA */}
-              <div className="mt-8 rounded-xl border border-gray-200 bg-gradient-to-br from-emerald-50 to-teal-50 p-6 shadow-sm lg:hidden">
-                <h3 className="text-base font-semibold text-gray-900">
+              <div className="mt-8 border border-gray-200 p-6 lg:hidden">
+                <h3 className="font-display text-[18px] text-[#15224c]">
                   Have questions about what you read?
                 </h3>
-                <p className="mt-1 text-sm leading-relaxed text-gray-500">
+                <p className="mt-1 text-[13px] leading-relaxed text-[#15224c]/60">
                   Our care team is here to help — no pressure, just answers.
                 </p>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                   <BookAppointmentButton className="w-full sm:w-auto">Schedule a consultation</BookAppointmentButton>
                   <a
                     href={site.phoneHref}
-                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-2.5 text-[13px] font-medium text-[#15224c]/70 transition-colors hover:border-[#519B99]/40 hover:text-[#519B99]"
                   >
-                    <Phone className="h-4 w-4 text-emerald-600" />
+                    <Phone className="h-4 w-4 text-[#519B99]" />
                     {site.phone}
                   </a>
                 </div>
@@ -502,42 +453,14 @@ export default async function BlogPostPage({ params }: Props) {
         }}
       />
 
-      {/* Main article content */}
+      {/* Main article content (includes the "More Articles" sidebar, streamed via Suspense) */}
       <ArticleContent post={post} />
-
-      {/* Related Posts (streamed via Suspense) */}
-      <Suspense
-        fallback={
-          <section className="border-t border-gray-100 bg-gray-50/50 py-16">
-            <Container>
-              <div className="mb-8">
-                <div className="h-7 w-48 rounded bg-gray-200 animate-pulse" />
-                <div className="mt-1 h-4 w-64 rounded bg-gray-100 animate-pulse" />
-              </div>
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {Array.from({ length: 3 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="animate-pulse rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
-                  >
-                    <div className="-mx-5 -mt-5 mb-4 aspect-[16/9] rounded-t-xl bg-gray-200" />
-                    <div className="mb-2 h-5 w-full rounded bg-gray-200" />
-                    <div className="mb-2 h-5 w-3/4 rounded bg-gray-200" />
-                    <div className="h-3 w-20 rounded bg-gray-100" />
-                  </div>
-                ))}
-              </div>
-            </Container>
-          </section>
-        }
-      >
-        <RelatedPosts currentSlug={slug} />
-      </Suspense>
 
       <ClosingCTA
         title="Ready to transform your health?"
         body="Take the first step towards a healthier, more vibrant you."
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
+        centered
       />
     </>
   )

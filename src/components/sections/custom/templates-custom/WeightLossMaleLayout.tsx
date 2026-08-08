@@ -6,6 +6,7 @@ import WhatsIncluded from '../compontents-custom/weight-loss/male/WhatsIncluded'
 import WhoThisProgramIsFor from '../compontents-custom/weight-loss/male/WhoThisProgramIsFor'
 import WhyThisApproachWorks from '../compontents-custom/weight-loss/male/WhyThisApproachWorks'
 import { WeightLossMaleHeroBanner } from '../compontents-custom/weight-loss/male/WeightLossMaleHeroBanner'
+import { HeroEditorial } from '../../HeroEditorial'
 
 
 interface TreatmentTemplateProps {
@@ -15,9 +16,18 @@ interface TreatmentTemplateProps {
 export async function WeightLossMaleLayout({ treatment }: TreatmentTemplateProps) {
   return (
     <>
-      <WeightLossMaleHeroBanner image={treatment.hero?.image} />
+      {/* <HeroEditorial  image={treatment.hero?.image} /> */}
 
+     <HeroEditorial
+        {...treatment.hero}
+        fullHeight
+        textWidth='900'
+        
+      />
       <PersonalizedMan />
+
+
+     
       <WhatsIncluded />
 
       <WhoThisProgramIsFor />
