@@ -79,7 +79,7 @@ export function LegacyIncludedGrid({
   bg,
   align = 'center',
 }: LegacyIncludedGridProps) {
-  const resolvedIncludedLabel = includedLabel ?? (separate?.length ? 'Included:' : undefined)
+  const resolvedIncludedLabel = includedLabel
 
   return (
     <section className="py-16 md:py-20" style={{ backgroundColor: bg ?? '#fff' }}>
@@ -89,7 +89,7 @@ export function LegacyIncludedGrid({
           <h2 className="font-display text-[32px] leading-tight text-[#14214b] capitalize sm:text-[40px] lg:text-[48px]">
             {title}
           </h2>
-          {lead ? <p className="mt-4 text-[20px] text-navy-600">{lead}</p> : null}
+          {lead ? <p className="mt-4 text-[20px] lg:text-[32px] font-display font-medium text-navy-600">{lead}</p> : null}
         </div>
 
         {/* Included */}
