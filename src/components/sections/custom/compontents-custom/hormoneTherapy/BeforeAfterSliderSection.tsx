@@ -63,11 +63,9 @@ export const BeforeAfterSliderSection = ({
       <Container>
         {/* Header — outside the dark card, on white background */}
         <div className="text-center mb-10 max-w-2xl mx-auto">
-          <span className="inline-block text-[11px] tracking-[0.25em] uppercase text-[#519B99] font-medium mb-4">
-            Transformations
-          </span>
+          
           <h2
-            className="text-[36px] font-medium text-[#111214] mb-4 leading-tight font-display"
+            className="text-[36px] sm:text-[48px] font-medium text-[#111214] mb-4 leading-tight font-display"
           >
             {title}
           </h2>

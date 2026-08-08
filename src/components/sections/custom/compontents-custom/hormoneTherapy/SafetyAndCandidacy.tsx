@@ -51,10 +51,10 @@ export function SafetyAndCandidacy({
   const imageAlt = image?.alt || heading
 
   const textContent = (
-    <div className={cn('flex flex-col justify-center  text-center lg:text-left', card && 'p-6 sm:p-8 lg:p-10')}>
+    <div className={cn('flex flex-col  w-full justify-center  text-center lg:text-left', card && 'p-6 sm:p-8 lg:p-10')}>
       {/* Main Headline */}
       <h2
-        className="text-[32px] sm:text-[48px] font-[500] leading-tight text-[#111214] mb-4 font-display"
+        className="text-[32px] sm:text-[48px] font-[500] leading-tight text-[#0b2055] mb-4 font-display"
       >
         {heading}
       </h2>
@@ -62,7 +62,7 @@ export function SafetyAndCandidacy({
       {/* Subtitle if present */}
       {subtitle ? (
         <h3
-          className="text-[22px] sm:text-[32px] font-normal text-[#111214] mb-3 font-display"
+          className="text-[22px] sm:text-[32px] font-normal text-[#0b2055] mb-3 font-display"
         >
           {subtitle}
         </h3>
@@ -143,8 +143,8 @@ export function SafetyAndCandidacy({
   )
 
   return (
-    <section className={cn('relative w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8', bg, className)}>
-      <Container className="max-w-6xl mx-auto">
+    <section className={cn('relative w-full py-16 sm:py-24 px-4 ', bg, className)}>
+      <Container className="w-full px-0">
         <m.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}

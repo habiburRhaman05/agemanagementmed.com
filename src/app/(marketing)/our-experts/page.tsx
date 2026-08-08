@@ -1,4 +1,5 @@
 import { Header } from '@/components/layout/Header'
+import { AwardsSection } from '@/components/sections/AwardsSection'
 import { BenefitList } from '@/components/sections/BenefitList'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
@@ -96,8 +97,9 @@ console.log(allNews);
           'That philosophy continues to shape every treatment and patient experience today.',
         ]}
         overRideWidth="max-w-3xl"
-        paraWidth="max-w-3xl"
       />
+
+      <AwardsSection awards={expertsContent.awards} />
 
 
 

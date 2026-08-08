@@ -15,6 +15,7 @@ import { SymptomsHeroCard } from '../compontents-custom/hormoneTherapy/SymptomsH
 import { BeforeAfterSliderSection } from '../compontents-custom/hormoneTherapy/BeforeAfterSliderSection'
 import { SymptomsLabsReviewPanel } from '../compontents-custom/hormoneTherapy/SymptomsLabsReviewPanel'
 import { TrustMarkers } from '@/components/sections/TrustMarkers'
+import { PatientSuccessStories } from '@/components/sections/PatientSuccessStories'
 import { MaleHeroBanner } from '../compontents-custom/hormoneTherapy/MaleHeroBanner'
 import { PatientBenefitsSection } from '../compontents-custom/hormoneTherapy/PatientBenefitsSection'
 import { LegacyIncludedGrid } from '../compontents-custom/shared/LegacyIncludedGrid'
@@ -181,21 +182,24 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
             alt: 'Dr. Harry Collins, founder and medical director of Savannah Age Management Medicine',
           },
         }}
-        successStories={{
-          eyebrow: 'Patient reviews',
-          title: 'Real Success Stories',
-          lead: "See how we've helped our clients transform their lives.",
-          backgroundImage: '/HormoneTherapy/superlang.jpg',
-          quote: [
-            'As a former D1 athlete with seven varsity letters, fitness has always been central to my life. In my seventies, aging challenges emerged — fatigue, poor sleep, and weight gain to nearly 230 pounds despite staying active.',
-            'After hearing Dr. Collins discuss Optimal Hormone Therapy, I had my testosterone tested, which revealed severely low levels. Within three weeks of starting twice-weekly T shots and supplements, I noticed improvements. My enhanced stamina enabled longer workouts, and I began building muscle at 72.',
-            'The program costs were modest, including ongoing prescriptions and blood reviews. Dr. Collins never pressured me and even suggested where to find the best supplement prices. His thorough physicals go beyond standard bloodwork, and both my wife and I are grateful for how this treatment has helped maintain my active lifestyle. I dropped to my high school weight of 200 pounds, and my bloodwork improved significantly.',
-          ],
-          author: 'David P.',
-        }}
       />
 
-      
+      <PatientSuccessStories
+        eyebrow="Patient reviews"
+        title="Real Success Stories"
+        lead="See how we've helped our clients transform their lives."
+        backgroundImage="/HormoneTherapy/superlang.jpg"
+        backgroundPosition="75% top"
+        backgroundSize="auto 140%"
+        quote={[
+          'As a former D1 athlete with seven varsity letters, fitness has always been central to my life. In my seventies, aging challenges emerged — fatigue, poor sleep, and weight gain to nearly 230 pounds despite staying active.',
+          'After hearing Dr. Collins discuss Optimal Hormone Therapy, I had my testosterone tested, which revealed severely low levels. Within three weeks of starting twice-weekly T shots and supplements, I noticed improvements. My enhanced stamina enabled longer workouts, and I began building muscle at 72.',
+          'The program costs were modest, including ongoing prescriptions and blood reviews. Dr. Collins never pressured me and even suggested where to find the best supplement prices. His thorough physicals go beyond standard bloodwork, and both my wife and I are grateful for how this treatment has helped maintain my active lifestyle. I dropped to my high school weight of 200 pounds, and my bloodwork improved significantly.',
+        ]}
+        author="David P."
+      />
+
+
     </>
   )
 }

@@ -69,14 +69,14 @@ export function PatientBenefitsSection({
           <div className="flex flex-col justify-center text-center lg:text-left">
             {/* Main Title */}
             <h2
-              className="text-[36px] font-medium leading-tight text-[#111214] mb-3 font-display"
+              className="sm:text-[48px] text-[36px] font-medium leading-tight text-[#111214] mb-3 font-display"
             >
               {title}
             </h2>
 
             {/* Subtitle */}
             <h3
-              className="text-[16px] font-normal leading-snug text-[#111214] mb-6 max-w-md mx-auto lg:mx-0 font-display"
+              className="text-[32px] font-normal leading-snug text-[#111214] mb-6  lg:mx-0 font-display"
             >
               {subtitle}
             </h3>

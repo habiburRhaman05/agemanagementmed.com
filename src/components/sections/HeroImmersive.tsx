@@ -47,14 +47,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
       </div>
 
       <Container className="relative px-3! text-center! lg:text-left! lg-container">
-        {/* {meta ? (
-          <span
-            style={{ animationDelay: '0.1s' }}
-            className="hero-enter glass-dark inline-flex items-center rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-sage-400 md:px-4 md:py-2 md:text-label"
-          >
-            {meta}
-          </span>
-        ) : null} */}
+
 
         <h1 className="mt-5 mx-auto lg:mx-0 max-w-[730px] text-[40px] leading-[1.15] text-canvas-50 capitalize drop-shadow-sm sm:mt-8 md:mt-8 lg:text-[56px] font-medium">
           {title}
@@ -83,7 +76,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
               <Button
                 size="lg"
                 variant="outlineInverse"
-                className="group  flex items-center gap-x-3 justify-center uppercase text-[14px] tracking-[4px] leading-4.25 font-bold bg-white text-[#315756] hover:border-canvas-50/60 hover:bg-transparent hover:text-canvas-50 "
+                className="group  flex items-center gap-x-3 justify-center uppercase text-[14px] tracking-[4px] leading-4.25 font-bold bg-white text-[#549898] hover:border-canvas-50/60 hover:bg-[#B7BCC8] ease-linear hover:text:[#B7BCC8]  "
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
 <path d="M11.046 5.57164L1.95607 0.683144C1.28985 0.324857 0.482422 0.807411 0.482422 1.56386V11.3409C0.482422 12.0973 1.28985 12.5799 1.95607 12.2216L11.046 7.33307C11.7478 6.95564 11.7478 5.94907 11.046 5.57164Z" fill="#519B98"/>

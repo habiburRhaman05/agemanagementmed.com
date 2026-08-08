@@ -39,7 +39,7 @@ export function TransformHealthBanner({
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
 
-      <Container className="relative z-10 max-w-5xl mx-auto">
+      <Container className="relative z-10 ">
         <m.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -22,40 +22,25 @@ interface BenefitListProps extends BenefitListData {
   cardStyle?: boolean
   design?: DesignOverride
   sectionId?: string
-  /** Optional array of awards logos to render at the bottom of the section */
-  awards?: Array<{ src: string; alt: string }>
-  awardsTitle?: string
-  awardsLead?: string
   /** Optional heading rendered above the card (outside the white card). */
   introTitle?: string
   /** Optional multi-paragraph intro rendered above the card (outside the white card). */
   introParagraphs?: string[],
   overRideWidth?: string,
-  paraWidth?: string
 }
 
 /** Custom SVG icons used for card items when item.icon is omitted. */
 const DEFAULT_ICONS = [SpaHandsIcon, LeafSparkleIcon, HeartDropsIcon, WellnessShieldIcon]
-
-/** Default 9 award logos for the "Recognized For Excellence" bottom section */
-const DEFAULT_AWARDS = [
-  { src: '/images/award-11-img.png', alt: 'Best of Pooler 2025' },
-  { src: '/images/award-12-img.png', alt: 'Best of Savannah 2025' },
-  { src: '/images/award-13-img.png', alt: 'Connect Best of Savannah 2025' },
-  { src: '/images/award-14-img.png', alt: 'Best of Savannah 2024 Winner' },
-  { src: '/images/award-15-img.png', alt: 'Best of Savannah 2023 Winner' },
-  { src: '/images/award-16-img.png', alt: 'Best of Savannah 2022 Winner' },
-  { src: '/images/award-17-img.png', alt: 'Best of Savannah 2021 Winner' },
-  { src: '/images/award-18-img.png', alt: 'Best of Savannah 2020 Winner' },
-  { src: '/images/award-19-img.png', alt: 'Best of Savannah 2019 Winner' },
-]
 
 /**
  * Rebuilt BenefitList component matching the reference design:
  * - Elevated white card container on soft off-white background with framer-motion `m` animations
  * - Centered Bodoni Moda typography for headings
  * - Staggered entrance animation and micro-interactions on sub-cards
- * - Optional / Default bottom Awards & Recognition logos section
+ *
+ * The bottom "Recognized For Excellence" awards band used to live here —
+ * it's now its own standalone `AwardsSection` component; render that
+ * separately wherever an awards band is needed.
  */
 export function BenefitList({
   eyebrow,
@@ -68,13 +53,9 @@ export function BenefitList({
   cardStyle,
   design,
   sectionId,
-  awards = DEFAULT_AWARDS,
-  awardsTitle = 'Recognized For Excellence In Savannah & Beyond',
-  awardsLead = 'These recognitions reflect our commitment to delivering high-quality aesthetic and wellness services in the Savannah area.',
   introTitle,
   introParagraphs,
   overRideWidth,
-  paraWidth
 }: BenefitListProps) {
   const useCards = cardStyle ?? (columns === 2 && !numbered)
 
@@ -241,60 +222,6 @@ export function BenefitList({
               })}
             </div>
           </m.div>
-
-          {/* Bottom Awards & Recognition Section */}
-          {awards && awards.length > 0 ? (
-            <m.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-16 sm:mt-20 md:mt-24 text-center"
-            >
-              {awardsTitle ? (
-                <h3
-                  className="text-[32px] sm:text-[48px] font-medium leading-tight text-[#1C274C] mb-3 font-display"
-                  
-                >
-                  {awardsTitle}
-                </h3>
-              ) : null}
-
-              {awardsLead ? (
-                <p
-                  className={cn(
-                    'text-base text-[#1C274C] font-normal leading-relaxed mx-auto mb-10 sm:mb-12',
-                    !paraWidth && 'max-w-2xl'
-                  )}
-                  style={paraWidth ? { maxWidth: paraWidth } : undefined}
-                >
-                  {awardsLead}
-                </p>
-              ) : null}
-
-              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-10 !max-w-[1292px] mx-auto">
-                {awards.map((award, i) => (
-                  <m.div
-                    key={award.src + i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.05 }}
-                    whileHover={{ scale: 1.08 }}
-                    className="shrink-0 p-1"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={award.src}
-                      alt={award.alt}
-                      className="h-16 sm:h-20 md:h-24 w-auto object-contain transition-all duration-300"
-                      loading="lazy"
-                    />
-                  </m.div>
-                ))}
-              </div>
-            </m.div>
-          ) : null}
         </Container>
       </section>
     )

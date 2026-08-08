@@ -1,5 +1,6 @@
 'use client'
 
+import { AnimatePresence, m } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
 import { useState } from 'react'
 
@@ -71,13 +72,22 @@ export function TestimonialSet({
   ctaText = 'SEE ALL REVIEWS',
   ctaHref = '/specials',
 }: TestimonialSetProps) {
-  const [index, setIndex] = useState(0)
+  // `direction` drives which side the slide animation enters/exits from:
+  // +1 (next) slides the new card in from the right, -1 (prev) from the left.
+  const [[index, direction], setSlide] = useState<[number, number]>([0, 0])
 
   if (!testimonials || testimonials.length === 0) return null
 
   const active = testimonials[index]
   const go = (delta: number) =>
-    setIndex((i) => (i + delta + testimonials.length) % testimonials.length)
+    setSlide(([i]) => [(i + delta + testimonials.length) % testimonials.length, delta])
+  const goTo = (target: number) => setSlide(([i]) => [target, target > i ? 1 : -1])
+
+  const slideVariants = {
+    enter: (dir: number) => ({ x: dir > 0 ? 48 : -48, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? -48 : 48, opacity: 0 }),
+  }
 
   // Split multi-paragraph quotes cleanly
   const paragraphs = active.quote ? active.quote.split(/\n+/).filter((p) => p.trim().length > 0) : []
@@ -146,39 +156,52 @@ export function TestimonialSet({
               </>
             ) : null}
 
-            {/* White Testimonial Box */}
-            <div className="bg-white rounded-[24px] shadow-2xl p-6 sm:p-8 md:p-10 relative z-10 transition-all duration-300 h-auto">
-              {/* Top quote mark */}
-              <div className="mb-4">
-                <QuoteMark />
-              </div>
+            {/* White Testimonial Box — slides + fades on every card change */}
+            <div className="relative z-10 overflow-hidden rounded-[24px]">
+              <AnimatePresence mode="wait" custom={direction} initial={false}>
+                <m.div
+                  key={index}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.35, ease: 'easeInOut' }}
+                  className="bg-white rounded-[24px] shadow-2xl p-6 sm:p-8 md:p-10 h-auto"
+                >
+                  {/* Top quote mark */}
+                  <div className="mb-4">
+                    <QuoteMark />
+                  </div>
 
-              {/* Quote content */}
-              <div className="text-slate-800 text-[16px] leading-relaxed font-normal space-y-3 mb-6">
-                {paragraphs.map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))}
-              </div>
-
-              {/* Author + Rating + Google branding */}
-              <div className="flex items-center gap-3 pt-2">
-                <GoogleLogo />
-                <div className="flex flex-col">
-                  <span className="font-bold text-slate-900 text-xs sm:text-sm">
-                    {active.author}
-                  </span>
-                  <div className="flex items-center gap-0.5 mt-0.5" aria-label="5 out of 5 stars">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        size={14}
-                        className="fill-[#F5A623] text-[#F5A623]"
-                        aria-hidden
-                      />
+                  {/* Quote content */}
+                  <div className="text-slate-800 text-[16px] leading-relaxed font-normal space-y-3 mb-6">
+                    {paragraphs.map((para, i) => (
+                      <p key={i}>{para}</p>
                     ))}
                   </div>
-                </div>
-              </div>
+
+                  {/* Author + Rating + Google branding */}
+                  <div className="flex items-center gap-3 pt-2">
+                    <GoogleLogo />
+                    <div className="flex flex-col">
+                      <span className="font-bold text-slate-900 text-xs sm:text-sm">
+                        {active.author}
+                      </span>
+                      <div className="flex items-center gap-0.5 mt-0.5" aria-label="5 out of 5 stars">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star
+                            key={i}
+                            size={14}
+                            className="fill-[#F5A623] text-[#F5A623]"
+                            aria-hidden
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </m.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>
@@ -192,7 +215,7 @@ export function TestimonialSet({
                 <button
                   key={i}
                   type="button"
-                  onClick={() => setIndex(i)}
+                  onClick={() => goTo(i)}
                   className={cn(
                     'h-1 rounded-full transition-all duration-300 cursor-pointer border-0 p-0',
                     i === index

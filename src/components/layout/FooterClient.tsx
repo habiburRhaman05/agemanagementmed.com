@@ -151,8 +151,9 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
           </Reveal>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 border-t border-canvas-300 py-6 text-center text-[14px] uppercase tracking-wide text-[#111214]">
-          <span>
+        <div className=" flex items-center justify-between border-t border-canvas-300 py-6 text-center text-[14px] uppercase tracking-wide text-[#111214]">
+     <div className='flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5'>
+           <span>
             Copyright &copy; {new Date().getFullYear()} {site.name}
           </span>
           <span className="hidden sm:inline" aria-hidden>
@@ -169,7 +170,22 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
               </Link>
             </span>
           ))}
+     </div>
+
+           <p className="border-t border-canvas-300 py-4 text-center text-[13px] text-[#111214] sm:text-right">
+          Developed by{' '}
+          <a
+            href="https://ghlprime.com/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="font-semibold text-ink-900 transition-colors duration-300 hover:text-[#519B99]"
+          >
+            GHL Prime
+          </a>
+        </p>
         </div>
+
+       
       </Container>
     </footer>
   )

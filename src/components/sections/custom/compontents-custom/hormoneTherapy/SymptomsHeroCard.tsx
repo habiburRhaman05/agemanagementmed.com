@@ -108,16 +108,16 @@ export function SymptomsHeroCard({
               </div>
 
               {/* Right Column: Symptom Checklist */}
-              <div className="flex flex-col justify-center p-6 sm:p-10 lg:p-12 text-white">
+              <div className="flex flex-col justify-start p-6 sm:p-10 lg:p-12 text-white">
                 <h2
-                  className="text-[36px] font-medium leading-tight text-white mb-2 capitalize text-center font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  className="text-[36px] sm:text-[48px] font-medium leading-tight text-white mb-2 capitalize text-left font-['Bodoni_Moda',var(--font-bodoni),serif]"
                   style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                 >
                   {heading}
                 </h2>
 
                 {lead ? (
-                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6 text-center">
+                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6 text-left">
                     {lead}
                   </p>
                 ) : null}
@@ -126,7 +126,7 @@ export function SymptomsHeroCard({
                   <div className="space-y-5 mb-6">
                     {groups.map((group) => (
                       <div key={group.title}>
-                        <h3 className="text-base font-semibold text-white mb-1.5 text-center">
+                        <h3 className="text-[20px] font-semibold text-white mb-1.5 text-left">
                           {group.title}
                         </h3>
                         {group.items?.length ? (
@@ -147,7 +147,7 @@ export function SymptomsHeroCard({
                 ) : null}
 
                 {closingNote ? (
-                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6 pt-2 border-t border-slate-700/50 text-center">
+                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6 pt-2 border-t border-slate-700/50 text-left">
                     {closingNote}
                   </p>
                 ) : null}

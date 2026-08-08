@@ -32,24 +32,24 @@ export function SymptomsLabsReviewPanel({
 }: SymptomsLabsReviewPanelProps) {
   return (
     <section className={cn('relative w-full bg-canvas-50 py-16 sm:py-24 px-4 sm:px-6 lg:px-8', className)}>
-      <Container className="max-w-6xl mx-auto">
+      <Container>
         <m.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 sm:gap-12 lg:gap-16"
+          className="grid grid-cols-1 lg:grid-cols-2 w-full items-center gap-10 sm:gap-12 lg:gap-16"
         >
           {/* Left Column: Text Content */}
-          <div className="flex flex-col justify-center order-2 lg:order-1 text-center lg:text-left">
+          <div className="flex flex-col w-full justify-center order-2 lg:order-1 text-center lg:text-left">
             <h2
-              className="text-[36px] font-medium leading-tight text-[#111214] mb-3 font-display"
+              className="text-[36px] sm:text-[48px] font-medium leading-tight text-[#111214] mb-3 font-display"
             >
               {title}
             </h2>
 
             <h3
-              className="text-[16px] font-normal leading-snug text-[#111214] mb-6 max-w-md mx-auto lg:mx-0 font-display"
+              className="text-[32px] font-normal leading-snug text-[#111214] mb-6 max-w-md mx-auto lg:mx-0 font-display"
             >
               {subtitle}
             </h3>
