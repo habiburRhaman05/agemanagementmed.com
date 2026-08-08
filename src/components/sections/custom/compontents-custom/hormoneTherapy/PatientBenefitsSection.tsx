@@ -13,6 +13,7 @@ export interface PatientBenefitsSectionProps {
   imageSrc?: string
   imageAlt?: string
   className?: string
+  overrideWdith?:string
 }
 
 const DEFAULT_BENEFITS = [
@@ -34,10 +35,11 @@ export function PatientBenefitsSection({
   imageSrc = 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350545/photo-content-38-img_lxshmc.jpg',
   imageAlt = 'A provider shaking hands with a male patient',
   className,
+  overrideWdith
 }: PatientBenefitsSectionProps) {
   return (
     <section className={cn('relative w-full bg-[#F8F9F5] py-16 sm:py-24 px-4 sm:px-6 lg:px-8', className)}>
-      <Container className="max-w-6xl mx-auto">
+      <Container className={cn("max-w-6xl mx-auto", overrideWdith)}>
         <m.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,7 +48,7 @@ export function PatientBenefitsSection({
           className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 sm:gap-12 lg:gap-16"
         >
           {/* Left Column: Image Card */}
-          <div className="relative w-full aspect-4/3 sm:aspect-square lg:aspect-auto lg:h-[440px] rounded-[24px] overflow-hidden shadow-md bg-slate-200">
+          <div className="relative w-full aspect-4/3 sm:aspect-square lg:aspect-auto h-[] md:h-[500px] lg:h-[639px] rounded-[24px] overflow-hidden shadow-md bg-slate-200">
             {imageSrc.startsWith('http') ? (
               /* eslint-disable-next-line @next/next/no-img-element */
               <img

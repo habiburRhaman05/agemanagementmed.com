@@ -126,6 +126,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
       />
 
       <PatientBenefitsSection
+      overrideWdith="max-w-[1395px] px-4! lg:px-0!"
         imageSrc="/photo-content-40-img.jpg"
         imageAlt="A provider shaking hands with a male patient"
         title="Patient Benefits"

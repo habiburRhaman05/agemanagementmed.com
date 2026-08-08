@@ -113,7 +113,7 @@ export function LegacyIncludedGrid({
           </>
         ) : null}
 
-        {/* {note ? <p className="mt-10 text-center text-body text-canvas-600 sm:mt-12">{note}</p> : null} */}
+        {note ? <p className="mt-10 text-center text-body text-navy-600 sm:mt-12">{note}</p> : null}
       </Container>
     </section>
   )
