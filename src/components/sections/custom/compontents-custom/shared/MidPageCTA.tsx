@@ -45,8 +45,7 @@ export function MidPageCTA({
   align = 'left',
   gradient = align !== 'right',
 }: MidPageCTAProps) {
-  const [modalOpen, setModalOpen] = useState(false)
-  const isBooking = isBookingHref(ctaHref)
+
 
   return (
     <>
@@ -56,7 +55,7 @@ export function MidPageCTA({
       >
         {gradient ? <div className="gradient" aria-hidden /> : null}
 
-        <div className="lg-max-width-1440">
+        <div className={` ${paraWidth || titleWidth  ? `max-w-${500}px` : 'lg-max-width-1440'}`}>
           <div className="lg-container">
             <div className={`lg-grid${align === 'right' ? ' lg-justify-end' : ''}`}>
               <div className={`content${align === 'full' ? '' : ' lg-col-lg-6'}`}>

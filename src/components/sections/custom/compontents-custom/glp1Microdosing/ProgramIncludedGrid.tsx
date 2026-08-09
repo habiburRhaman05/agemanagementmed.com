@@ -136,7 +136,7 @@ export function ProgramIncludedGrid({
         </>
       ) : null}
 
-      <div className="lg-flexspace-100" />
+      {/* <div className="lg-flexspace-100" /> */}
     </div>
   )
 }

@@ -206,9 +206,10 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         body="You deserve more than temporary fixes or generic advice. Our team can help identify the root causes behind your symptoms and create a plan designed specifically for you."
         ctaLabel="Schedule Hormone Testing"
         ctaHref="#"
-        align="full"
+        align="left"
         gradient={false}
         paraWidth='680'
+        titleWidth='680'
       />
 
 <div className="bg-[#F7F8F2] py-10">

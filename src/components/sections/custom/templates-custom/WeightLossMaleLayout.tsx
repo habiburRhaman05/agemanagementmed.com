@@ -24,6 +24,8 @@ export async function WeightLossMaleLayout({ treatment }: TreatmentTemplateProps
         textWidth='900'
         
       />
+      <div className="lg-flexspace-100" />
+
       <PersonalizedMan />
 
 
@@ -33,9 +35,13 @@ export async function WeightLossMaleLayout({ treatment }: TreatmentTemplateProps
       <WhoThisProgramIsFor />
       <WhyThisApproachWorks />
 
+<div className='bg-[#F7F8F2]'>
+
       {treatment.faqs.length ? (
         <FAQAccordion title="Medical Weight Loss FAQs" items={treatment.faqs} />
       ) : null}
+</div>
+
 
       <WeightLossClosingCTA />
     </>

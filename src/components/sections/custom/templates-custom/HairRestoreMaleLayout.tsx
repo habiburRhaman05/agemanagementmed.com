@@ -13,7 +13,7 @@ interface TreatmentTemplateProps {
 }
 
 export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProps) {
-  const pillar = pillars[treatment.pillar]
+
   return (
     <>
       <HeroEditorial
@@ -22,12 +22,14 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
         textWidth='800'
       />
 
-      <HowPRPTreatsHairLoss />
+   <div className='flex flex-col gap-y-10 bg-[#fff]'>
+       <HowPRPTreatsHairLoss />
       
       <div className="py-8 " />
            <PRPTreatmentProcess/>
 
       <ResultsAndTimeline />
+   </div>
 
       {treatment.faqs.length ? (
         <FAQAccordion

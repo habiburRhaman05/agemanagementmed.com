@@ -189,7 +189,7 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
           body="You don't have to figure this out on your own."
           cta={{ ...treatment.closingCta.cta, label: 'Schedule a Consultation' }}
           backgroundImage="/sexual man/sw.jpg"
-          contentMaxWidth={552}
+          textWidth={"552"}
         />
       </Reveal>
     </>

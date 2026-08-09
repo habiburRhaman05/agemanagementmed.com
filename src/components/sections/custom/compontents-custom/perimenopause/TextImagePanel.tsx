@@ -8,6 +8,7 @@ export interface TextImagePanelProps {
   lead?: string
   bg?: string
   gap?: string
+  textBg?: string
   items: string[]
   /** Tune per-image if the subject's head/face gets cropped. e.g. 'center 15%' */
   imageObjectPosition?: string
@@ -25,6 +26,7 @@ export function TextImagePanel({
   items,
   gap,
   imageObjectPosition = 'center 20%',
+  textBg,
 }: TextImagePanelProps) {
   const imageBlock = (
     <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] lg:aspect-auto lg:h-full min-h-0 lg:min-h-[520px] rounded-2xl overflow-hidden shadow-md">
@@ -39,7 +41,7 @@ export function TextImagePanel({
   )
 
   const textBlock = (
-    <div className="flex flex-col justify-center py-4 lg:py-0">
+    <div className={`flex flex-col justify-center py-4 lg:py-0 ${textBg && textBg  }`}>
       <h2
         className="sm:text-[48px] text-[36px] font-normal leading-tight mb-4"
         style={{ color: '#0B2055', fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}

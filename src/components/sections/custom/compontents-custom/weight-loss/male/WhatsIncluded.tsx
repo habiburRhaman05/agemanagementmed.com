@@ -23,7 +23,7 @@ const additional = [
 
 function IconCard({ icon, title }: { icon: string; title: string }) {
   return (
-    <div className="flex flex-col rounded-[8px] bg-[#f0f2f5] p-6">
+    <div className="flex flex-col rounded-[8px] bg-[#FAFAFA] px-6 py-10 gap-y-4">
       {/* Icon */}
       <div
         className="mb-5 h-16 w-16"
@@ -31,14 +31,14 @@ function IconCard({ icon, title }: { icon: string; title: string }) {
         dangerouslySetInnerHTML={{ __html: icon }}
       />
       {/* Title */}
-      <p className="text-[24px] font-semibold leading-snug text-[#1a3060]">
+      <h1 className="text-[24px] font-semibold leading-snug text-[#1a3060]">
         {title.split('\n').map((line, i) => (
           <span key={i}>
             {line}
             {i < title.split('\n').length - 1 && <br />}
           </span>
         ))}
-      </p>
+      </h1>
     </div>
   )
 }

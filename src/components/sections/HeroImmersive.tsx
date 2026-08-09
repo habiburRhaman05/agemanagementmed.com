@@ -29,7 +29,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
   const [videoLoading, setVideoLoading] = useState(true)
   return (
     <section
-      className="relative isolate flex items-center overflow-hidden bg-ink-950 px-0 pt-32.75 pb-32.75 min-[348px]:pt-35 min-[348px]:pb-35 sm:pt-40 sm:pb-24 lg:pt-70 lg:pb-45"
+      className="relative isolate flex items-center overflow-hidden bg-ink-950 px-0 pt-32.75 pb-32.75 min-[348px]:pt-35 min-[348px]:pb-35 sm:pt-40 sm:pb-24 lg:pt-80 lg:pb-45"
     >
       <div
         className="absolute inset-0 hero-zoom"

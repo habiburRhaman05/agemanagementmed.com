@@ -12,6 +12,7 @@ export const metadata = buildMetadata(contactContent.seo)
 export default function ContactPage() {
   return (
     <>
+      <Header />
       <ContactHero
         title="Connect with us at Savannah Age Management Medicine!"
         lead={contactContent.hero.lead}

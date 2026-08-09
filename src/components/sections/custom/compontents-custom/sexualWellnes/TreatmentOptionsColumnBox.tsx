@@ -65,7 +65,7 @@ export function TreatmentOptionsColumnBox() {
     <div id="column-box-d">
       <div className="lg-max-width-1440">
         <div className="lg-container">
-          {treatments.map((card) => (
+          {treatments.map((card,index) => (
             <div className={`box${card.featured ? ' blue-bg' : ''}`} key={card.title}>
               <div className="img">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -80,6 +80,7 @@ export function TreatmentOptionsColumnBox() {
 
                   <div className="lg-list-arrow-right lg-two-col">
                     <h5
+                    className={`${index === 0 && "text-white" }`}
                       style={{
                         fontSize: 14,
                         letterSpacing: '1.4px',

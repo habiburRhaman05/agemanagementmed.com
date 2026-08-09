@@ -1,3 +1,4 @@
+import { Header } from '@/components/layout/Header';
 import TextHero from '@/components/sections/TextHero';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -123,6 +124,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       {/* <PageJsonLd route="/privacy-policy" /> */}
+      <Header />
       <TextHero title="Privacy Policy" />
 
       <section className="section bg-white">

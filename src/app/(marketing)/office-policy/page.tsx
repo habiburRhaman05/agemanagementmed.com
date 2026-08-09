@@ -15,6 +15,7 @@ import { Section } from '@/components/shared/Section'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { site } from '@/content/site'
 import { buildMetadata } from '@/lib/seo'
+import { Header } from '@/components/layout/Header'
 import TextHero from '@/components/sections/TextHero'
 
 export const metadata = buildMetadata({
@@ -27,8 +28,8 @@ export const metadata = buildMetadata({
 export default function OfficePolicyPage() {
   return (
     <>
-      {/* Header — clean, simple, matches contact info heading style */}
-     <TextHero 
+      <Header />
+     <TextHero
      
      title=' Office Policies'/>
 

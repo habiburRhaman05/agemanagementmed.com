@@ -3,6 +3,7 @@ import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { SpecialsGrid } from '@/components/sections/SpecialsGrid'
 import { SpecialsClosingCTA } from '@/components/sections/custom/compontents-custom/specials/SpecialsClosingCTA'
+import { SpecialsHero } from '@/components/sections/custom/templates-custom/SpecialsHero'
 import { Reveal } from '@/components/shared/Reveal'
 import { specialsContent } from '@/content/pages/specials'
 import { buildMetadata } from '@/lib/seo'
@@ -13,7 +14,7 @@ export default function SpecialsPage() {
   return (
     <>
       <Header />
-      <HeroEditorial
+      <SpecialsHero
         {...specialsContent.hero}
         hideDefaultCta
         centerUntilTablet
@@ -21,6 +22,7 @@ export default function SpecialsPage() {
         overlay={false}
         overideMinheight="lg:min-h-auto"
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Specials', href: '/specials' }]}
+        
       />
 
       <SpecialsGrid specials={specialsContent.specials} />
@@ -31,7 +33,8 @@ export default function SpecialsPage() {
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
         backgroundImage="/images/hero-16-bg.jpg"
         centered
-        contentMaxWidth={620}
+        textWidth={"620"}
+        
       />
     </>
   )

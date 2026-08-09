@@ -91,7 +91,7 @@ export function FAQAccordion({ eyebrow, title, lead, items }: FAQAccordionProps)
                           aria-expanded={isOpen}
                           aria-controls={panelId}
                           onClick={() => setOpen(isOpen ? null : item.question)}
-                          className="lg-title"
+                          className="lg-title cursor-pointer"
                         >
                           <span className="toggle" aria-hidden />
                           {item.question}

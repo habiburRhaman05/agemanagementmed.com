@@ -33,7 +33,7 @@ const PersonalizedMan: React.FC = () => {
     <section className="">
 
       <div id="photo-content-c" className="style-2 relative overflow-hidden">
-        <div className="radial-gradient" aria-hidden />
+        {/* <div className="radial-gradient" aria-hidden /> */}
 
         <div className="lg-max-width-1440">
           <div className="lg-container !overflow-hidden">
@@ -135,8 +135,10 @@ const PersonalizedMan: React.FC = () => {
           </div>
         </div>
       </div>
+      <div className="lg-flexspace-80" />
 
       <LabworkGuidanceBand />
+      
 
       <MidPageCTA
         backgroundImage="/weightloss/weightloss.jpg"

@@ -62,12 +62,12 @@ export function ClosingCTA({
       <div className="lg-max-width-1440">
         <div className="lg-container">
           <div 
-     className="content text-center lg:text-left"
+     className={`content text-center lg:text-left`}
 style={{ ...contentStyle, maxWidth: textWidth ? `${textWidth}px` : undefined }}
 >
             <h2 className="lg-title">{title}</h2>
 
-            <div className="lg-text !text-left">
+            <div className={`lg-text text-center ${centered ? "lg:text-center" : "lg:text-left"}`}>
               <p>{body}</p>
             </div>
 <BookAppointmentButton>

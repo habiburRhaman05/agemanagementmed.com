@@ -26,7 +26,9 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
 
   return (
     <div className="bg-[#F7F8F2]">
-      <HeroImmersive {...content.hero} />
+      <HeroImmersive {...content.hero}  
+      
+      />
 
       {/* The source lifts the awards band up over the banner by 80px. */}
       <div className="lg-flexspace-neg80" />

@@ -163,6 +163,9 @@ export function HeroEditorial({
     };
   }, [videoOpen]);
 
+  console.log(lead);
+  
+
   return (
     <section
       // className={cn(

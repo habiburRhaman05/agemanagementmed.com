@@ -57,7 +57,7 @@ const steps: Step[] = [
 const PRPTreatmentProcess: React.FC = () => {
   return (
     <>
-      <div className="lg-flexspace-100" />
+      {/* <div className="lg-flexspace-100" /> */}
 
       {/* Source band colour: rgba(163, 195, 210, 0.5) */}
       <div className="lg-group" style={{ backgroundColor: 'rgba(163, 195, 210, 0.5)' }}>
@@ -117,7 +117,7 @@ const PRPTreatmentProcess: React.FC = () => {
           </div>
         ))}
 
-        <div className="lg-flexspace-80" />
+        <div className="lg-flexspace-40" />
 
         <div className="lg-content-d" style={{ position: 'relative' }}>
           <div className="lg-max-width-1440">

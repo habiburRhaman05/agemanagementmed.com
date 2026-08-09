@@ -64,7 +64,7 @@ export default function BookAppointmentButton({
       <BookingModal
         open={open}
         onClose={() => setOpen(false)}
-        title={"Schedule A Consultation"}
+        title={ modalTitle || "Schedule A Consultation"}
         defaultLocation={defaultLocation}
         defaultService={defaultService}
       />

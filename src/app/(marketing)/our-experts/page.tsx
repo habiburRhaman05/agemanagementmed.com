@@ -111,7 +111,7 @@ console.log(allNews);
 
       <NewsAndMediaSection
         eyebrow="As seen in"
-        title="News & Media"
+        title="As seen on"
         lead="Press coverage and media features of Savannah Age Management Medicine and our team."
         news={news}
         videos={videos}

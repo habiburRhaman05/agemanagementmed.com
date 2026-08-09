@@ -27,7 +27,7 @@ export function ThreeTherapiesCard({ title, rows, cta }: ThreeTherapiesCardProps
     <Section background="page" spacing="md">
       <Container>
         <Reveal>
-          <div className="rounded-3xl bg-ink-950 p-5 shadow-xl sm:p-8 lg:p-10">
+          <div className="rounded-3xl bg-[#14214B] p-5 shadow-xl sm:p-8 lg:p-12">
             <SectionHeader title={title} align="center" tone="inverse" />
 
             <div className="mt-10 space-y-4 sm:space-y-6">
@@ -47,7 +47,7 @@ export function ThreeTherapiesCard({ title, rows, cta }: ThreeTherapiesCardProps
                 )
                 const textBlock = (
                   <div className="flex flex-col justify-center sm:h-full">
-                    <h3 className="font-display text-title-lg text-canvas-50">{row.heading}</h3>
+                    <h3 className="font-display text-[26px] leading-[42px] sm:text-[38px] text-canvas-50">{row.heading}</h3>
                     <p className="mt-3 text-body-sm leading-relaxed text-canvas-50/70">{row.paragraph}</p>
                   </div>
                 )
@@ -55,7 +55,7 @@ export function ThreeTherapiesCard({ title, rows, cta }: ThreeTherapiesCardProps
                 return (
                   <div
                     key={row.heading}
-                    className="grid items-stretch gap-5 rounded-2xl border border-white/10 bg-white/5 p-5 sm:grid-cols-2 sm:gap-8 sm:p-6"
+                    className="grid items-stretch gap-5 rounded-2xl border border-blue-500/50 p-5 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:min-h-[450px]"
                   >
                     {imageSide === 'left' ? (
                       <>

@@ -43,7 +43,7 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
       <div className="lg-flexspace-100" />
 
       <div id="photo-content-c" className="style-2 relative overflow-hidden">
-        <div className="radial-gradient" aria-hidden />
+        {/* <div className="radial-gradient" aria-hidden /> */}
 
         <div className="lg-max-width-1440">
           <div className="lg-container">
@@ -146,8 +146,8 @@ export function MetabolicOverviewCards({ darkCard, lightCard }: MetabolicOvervie
           </div>
         </div>
       </div>
-
       <div className="lg-flexspace-100" />
+
     </>
   )
 }

@@ -172,7 +172,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
           ))}
      </div>
 
-           <p className="border-t border-canvas-300 py-4 text-center text-[13px] text-[#111214] sm:text-right">
+           <p className="text-center text-[13px] text-[#111214] sm:text-right">
           Developed by{' '}
           <a
             href="https://ghlprime.com/"

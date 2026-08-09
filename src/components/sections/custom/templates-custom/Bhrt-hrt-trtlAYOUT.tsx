@@ -35,11 +35,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
       <HeroEditorial
         {...treatment.hero}
         fullHeight
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: pillar.label, href: pillar.href },
-          { label: treatment.shortName, href: treatment.href },
-        ]}
+     primaryCtaLabel='Learn More'
       />
    
 
@@ -111,6 +107,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
           'Disrupted sleep patterns',
           'Mood fluctuations',
         ]}
+        bg='bg-none'
       />
 
       <TextImagePanel
@@ -129,6 +126,8 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
           'Experienced Medical Professionals',
           'Holistic Health Optimization',
         ]}
+        bg='bg-none'
+
       />
 
       <TextImagePanel
@@ -148,6 +147,8 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
           'Precise medication dosing',
           'Hands-on testosterone injection training',
         ]}
+        bg='bg-none'
+
       />
 
       <TextImagePanel
@@ -168,6 +169,8 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
           'Restored libido and sexual function',
           'Better sleep quality',
         ]}
+        bg='bg-none'
+
       />
 
       <Section background="page" spacing="none" className="pb-12 lg:pb-16">

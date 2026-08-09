@@ -32,6 +32,7 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
           { label: pillar.label, href: pillar.href },
           { label: treatment.shortName, href: treatment.href },
         ]}
+        textWidth='700'
       />
 
       <OverviewApproachCards
@@ -172,7 +173,7 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
       ) : null}
 
       <ClosingCTA
-      textWidth='400'
+      textWidth='700'
         {...treatment.closingCta}
         backgroundImage="/images/hero-22-bg.jpg"
         backgroundPosition="80% center"
