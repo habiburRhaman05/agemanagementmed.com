@@ -179,6 +179,31 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
         </Container>
       </Section>
 
+      <TestimonialSet
+      testimonials={
+        [
+          {
+             source:"google",
+            id:'2',
+            author:"",
+quote:"This is my 13th year with SAM. What a relaxed office environment, and Dr. Collins and his staff is always personable and professional. I appreciate the specialized time, knowledge and attention I've received here."
+          },
+          {
+            author:"",
+            quote:"What a pleasure to meet John Kurtz - the time and attention you gave me during my last visit put me at ease and is certainly invaluable. I have recommended anyone, looking to simply feel better, to call Savannah Age Management.",
+            source:"google",
+            id:'2'
+          }
+        ]
+
+      }
+      eyebrow='Patient Testimonials
+'
+      title='What Our Patients Say'
+     height='650'
+     backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1786254314/testimonial-9-bg_fsgwrv.jpg'
+      />
+
       {treatment.faqs.length ? (
         <FAQAccordion
           eyebrow="Frequently asked"
@@ -187,7 +212,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
         />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA {...treatment.closingCta} textWidth='800' centered backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1786254414/hero-13-bg_xi7jhs.jpg' />
     </>
   )
 }

@@ -163,16 +163,12 @@ export function HeroEditorial({
     };
   }, [videoOpen]);
 
-  console.log(lead);
+  console.log(ctas);
   
 
   return (
     <section
-      // className={cn(
-      //   "relative isolate flex flex-col justify-end sm:justify-center overflow-hidden",
-      //   fullHeight ? "min-h-[100dvh] sm:min-h-screen" : "min-h-128 lg:min-h-[620px]",
-      //   overideMinheight
-      // )}
+
       id="banner-d"
       
       style={
@@ -181,20 +177,9 @@ export function HeroEditorial({
     }
       }
     >
-      {/* Background Image */}
-      {/* <Image
-        src={image.src}
-        alt={image.alt}
-        fill
-        priority
-        sizes="100vw"
-        className="absolute inset-0 z-0 object-cover hero-editorial-img"
-        style={{ objectPosition: image.focalPoint ?? "85% center" }}
-      /> */}
+     
 
-      {/* Dark gradient overlay to ensure text legibility while keeping the top of the image vibrant */}
-      {/* {overlay && <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />} */}
-
+      
       <div className={'mx-auto w-full max-w-[80rem] px-2 lg:px-12 relative z-20  lg-container'}>
         <div className={cn(`text-center sm:text-left ${textWidth ? `max-w-${textWidth}px` : "max-w-[700px]"}`, heroDiv)}>
           <h1

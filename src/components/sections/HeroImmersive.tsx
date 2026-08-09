@@ -22,9 +22,10 @@ interface HeroImmersiveProps {
   image: Media
   ctas: Cta[]
   meta?: string
+  videoUrl?: string
 }
 
-export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) {
+export function HeroImmersive({ title, lead, image, meta ,videoUrl}: HeroImmersiveProps) {
   const [videoOpen, setVideoOpen] = useState(false)
   const [videoLoading, setVideoLoading] = useState(true)
   return (
@@ -92,7 +93,7 @@ export function HeroImmersive({ title, lead, image, meta }: HeroImmersiveProps) 
               <div className="relative aspect-video w-full overflow-hidden bg-black !rounded-none">
                 <iframe
                   title="vimeo-player"
-                  src="https://player.vimeo.com/video/1080951303?h=91f29206b0&autoplay=1"
+                  src= { videoUrl || "https://player.vimeo.com/video/1080951303?h=91f29206b0&autoplay=1"}
                   className="absolute inset-0 h-full w-full border-none bg-black"
                   allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                   allowFullScreen

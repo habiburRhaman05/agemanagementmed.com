@@ -18,6 +18,7 @@ import { ProviderSpotlightCard } from '../compontents-custom/prp/ProviderSpotlig
 import { OtherTreatmentsGrid } from '../compontents-custom/prp/OtherTreatmentsGrid'
 import { Services } from '@/components/shared/Services'
 import { getServices } from '@/content/services'
+import { HeroImmersive } from '../../HeroImmersive'
 
 
 function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
@@ -34,14 +35,11 @@ export async function PrpOfferLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
   return (
     <>
-      <HeroEditorial
+      <HeroImmersive
         {...treatment.hero}
-        fullHeight
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: pillar.label, href: pillar.href },
-          { label: treatment.shortName, href: treatment.href },
-        ]}
+        videoUrl={"https://player.vimeo.com/video/1081611626?h"}
+        
+       
       />
 
       <WhyChoosePrpCard
