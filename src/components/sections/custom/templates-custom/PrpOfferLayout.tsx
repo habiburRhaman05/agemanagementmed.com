@@ -12,13 +12,14 @@ import TreatmentOptions from '../compontents-custom/weight-loss/female/Treatment
 import HowPRPTreatsHairLoss from '../compontents-custom/hair-restore/female/HowPRPTreatsHairLoss'
 import PRPTreatmentProcess from '../compontents-custom/hair-restore/female/PRPTreatmentProcess'
 import ResultsAndTimeline from '../compontents-custom/hair-restore/female/ResultsAndTimeline'
-import { WhyChoosePrpCard } from '../compontents-custom/prp/WhyChoosePrpCard'
-import { HowPrpWorksGrid } from '../compontents-custom/prp/HowPrpWorksGrid'
+import { PrpOfferSymptomsSection } from '../compontents-custom/hormoneTherapy/PrpOfferSymptomsSection'
 import { ProviderSpotlightCard } from '../compontents-custom/prp/ProviderSpotlightCard'
 import { OtherTreatmentsGrid } from '../compontents-custom/prp/OtherTreatmentsGrid'
 import { Services } from '@/components/shared/Services'
 import { getServices } from '@/content/services'
 import { HeroImmersive } from '../../HeroImmersive'
+import { HomeServices } from '../../HomeServices'
+import { WelcomeVideo } from '../../WelcomeVideo'
 
 
 function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
@@ -42,9 +43,9 @@ export async function PrpOfferLayout({ treatment }: TreatmentTemplateProps) {
        
       />
 
-      <WhyChoosePrpCard
+      <PrpOfferSymptomsSection
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470555/prp-therefy_o0t8bx.jpg',
+          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786257656/photo-content-11-img_hdhnzm.jpg',
           alt: 'An active man serving a tennis ball outdoors',
         }}
         heading="Why Choose PRP Therapy?"
@@ -63,12 +64,8 @@ export async function PrpOfferLayout({ treatment }: TreatmentTemplateProps) {
           'Tendon injuries',
           'Tendonitis',
         ]}
-      />
-
-      <HowPrpWorksGrid
-        eyebrow="The Process"
-        heading="How Platelet-Rich Plasma (PRP) Therapy Works"
-        lead="PRP therapy uses a concentrated sample of your own platelets to stimulate healing and tissue regeneration. Platelets are rich in growth factors."
+        worksHeading="How Platelet-Rich Plasma (PRP) Therapy Works"
+        worksLead="PRP therapy uses a concentrated sample of your own platelets to stimulate healing and tissue regeneration. Platelets are rich in growth factors."
         items={[
           {
             icon: HeartPulse,
@@ -93,30 +90,34 @@ export async function PrpOfferLayout({ treatment }: TreatmentTemplateProps) {
               'PRP therapy is highly versatile and safe for treating most areas of the body. Beyond joint and tissue repair, it has powerful applications in bolstering sexual function, hair restoration, and overall wellness in both men and women.',
           },
         ]}
-        cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
+        cta={{ label: 'Schedule a consultation' }}
       />
 
-      <ProviderSpotlightCard
-        eyebrow="Physician Associate"
-        name="John Kurtz, MPAS, PA-C"
-        photo={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470601/jhon_kurtz_ovd4j1.png',
-          alt: 'John Kurtz, MPAS, PA-C',
-        }}
-        paragraphs={[
-          'Mr. Kurtz is a certified Physician Associate with 17 years of NCCPA certification and over 20 years of experience in various medical fields, including Primary Care, Emergency Medicine, and Orthopedic Medicine. This extensive experience has refined his skills in individualized care, focusing on illness and injury prevention and treatment.',
-          'A graduate of the Interservice Physician Associate Program in 2007, Mr. Kurtz is a 27-year Veteran of the United States Army and a Fellow of the American Academy of Physician Associates. His dedication is evident in his military accomplishments and the 2012 AAAA Medicine Award. Recently, he trained in Bioidentical Hormone Replacement Therapy (BHRT) and Platelet-Rich Plasma (PRP) injections, expanding his treatment capabilities.',
-        ]}
+
+  <WelcomeVideo
+        title="PRP For Joint And Tissue Pain
+"
+        videoHref="https://vimeo.com/1080951303"
       />
 
-      <Services
-      align="center"
-        eyebrow="Other Treatments"
-        title="Explore Other Treatments We Offer"
-        lead="We go beyond hormonal health to provide a wide range of treatments tailored to support your overall wellness, vitality, and confidence."
-        treatments={(await getServices()).filter(s => s.slug !== treatment.slug)}
-        visibleCount={3}
-      />
+
+         {treatment.faqs.length ? (
+        <FAQAccordion
+          eyebrow="Frequently asked"
+          title={`${treatment.shortName} questions`}
+          items={treatment.faqs}
+        />
+      ) : null}
+
+  <HomeServices
+         eyebrow=""
+         title="Explore Other Treatments We Offer"
+         lead="We go beyond hormonal health to provide a wide range of treatments tailored to support your overall wellness, vitality, and confidence.
+
+"
+       />
+
+      <div className="lg-flexspace-100" />
 
 
 
@@ -131,16 +132,22 @@ export async function PrpOfferLayout({ treatment }: TreatmentTemplateProps) {
         source:"google",
         id:"1"
       }]}
+      backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1786257977/testimonial-10-bg_naq3hm.jpg'
       />
       
-
-      {treatment.faqs.length ? (
-        <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
-          items={treatment.faqs}
-        />
-      ) : null}
+      <ProviderSpotlightCard
+        eyebrow="Physician Associate"
+        name="John Kurtz, MPAS, PA-C"
+        photo={{
+          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470601/jhon_kurtz_ovd4j1.png',
+          alt: 'John Kurtz, MPAS, PA-C',
+        }}
+        paragraphs={[
+          'Mr. Kurtz is a certified Physician Associate with 17 years of NCCPA certification and over 20 years of experience in various medical fields, including Primary Care, Emergency Medicine, and Orthopedic Medicine. This extensive experience has refined his skills in individualized care, focusing on illness and injury prevention and treatment.',
+          'A graduate of the Interservice Physician Associate Program in 2007, Mr. Kurtz is a 27-year Veteran of the United States Army and a Fellow of the American Academy of Physician Associates. His dedication is evident in his military accomplishments and the 2012 AAAA Medicine Award. Recently, he trained in Bioidentical Hormone Replacement Therapy (BHRT) and Platelet-Rich Plasma (PRP) injections, expanding his treatment capabilities.',
+        ]}
+      />
+   
 
       <ClosingCTA {...treatment.closingCta} />
     </>
