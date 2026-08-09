@@ -7,20 +7,7 @@ import { buildOrganizationSchema } from '@/lib/seo'
 import { getSiteSettings } from '@/lib/settings'
 
 
-/**
- * Chrome for every public marketing page — footer, page-transition animation,
- * scroll features, Organization schema. Admin pages are a sibling route
- * group and never see this.
- *
- * `<Header>` is deliberately NOT rendered here — every page renders its own
- * (with the `overlay` flag it needs for its hero). Rendering it here too
- * used to double the header on nearly every route: two identical,
- * perfectly-overlapping `#header` elements fighting for hover/click events,
- * which is what made desktop submenu items near the bottom randomly close
- * or stop being clickable. Pages that have no hero of their own
- * (contact-us, financing-options, office-policy, privacy-policy) render
- * `<Header />` themselves for that reason.
- */
+
 export default async function MarketingLayout({ children }: { children: React.ReactNode }) {
   const settings = await getSiteSettings()
 
