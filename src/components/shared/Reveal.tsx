@@ -63,14 +63,6 @@ export function Reveal({
         filter: blur && !reduceMotion ? 'blur(10px)' : 'blur(0px)',
       }}
       whileInView={{ opacity: 1, y: 0, x: 0, scale: 1, filter: 'blur(0px)' }}
-      // Positive bottom margin *expands* the trigger zone past the real
-      // viewport edge instead of shrinking it. A shrunk zone (the old
-      // negative value) is easy to jump straight past on a fast or dragged
-      // scroll — especially on short viewports or content near the very
-      // bottom of the page, like the footer — leaving the element stuck at
-      // `initial` (opacity: 0) forever because the observer never once
-      // intersects it. Triggering a little early is a non-issue; the
-      // content silently disappearing is not.
       viewport={{ once, margin: '0px 0px 200px 0px' }}
       transition={{
         type: 'spring',
