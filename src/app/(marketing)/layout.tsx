@@ -39,10 +39,10 @@ export default async function MarketingLayout({ children }: { children: React.Re
       >
         Skip to content
       </a>
-      <PageTransition>
+     
 
         <main id="main">{children}</main>
-      </PageTransition>
+      
       <Footer />
     
       {/* <ScrollFeatures /> */}
