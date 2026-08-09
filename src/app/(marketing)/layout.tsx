@@ -6,7 +6,6 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { buildOrganizationSchema } from '@/lib/seo'
 import { getSiteSettings } from '@/lib/settings'
 
-import { AnimationProvider } from '@/components/shared/AnimationProvider'
 
 /**
  * Chrome for every public marketing page — footer, page-transition animation,
@@ -26,7 +25,7 @@ export default async function MarketingLayout({ children }: { children: React.Re
   const settings = await getSiteSettings()
 
   return (
-    <AnimationProvider>
+   <>
       <JsonLd
         data={buildOrganizationSchema({
           siteName: settings.siteName,
@@ -47,6 +46,6 @@ export default async function MarketingLayout({ children }: { children: React.Re
       <Footer />
       <AutoRevealSections />
       {/* <ScrollFeatures /> */}
-    </AnimationProvider>
+   </>
   )
 }
