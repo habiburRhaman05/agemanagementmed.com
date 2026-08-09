@@ -44,7 +44,7 @@ export default async function MarketingLayout({ children }: { children: React.Re
         <main id="main">{children}</main>
       </PageTransition>
       <Footer />
-      <AutoRevealSections />
+    
       {/* <ScrollFeatures /> */}
    </>
   )
