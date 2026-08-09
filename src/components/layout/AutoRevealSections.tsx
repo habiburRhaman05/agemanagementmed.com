@@ -33,7 +33,11 @@ export function AutoRevealSections() {
           }
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -80px 0px' }
+      // Positive bottom margin (see Reveal.tsx for the full rationale):
+      // expands the trigger zone past the viewport edge instead of
+      // shrinking it, so a fast/dragged scroll can't jump a section clean
+      // past the observer and strand it at opacity: 0 forever.
+      { threshold: 0.12, rootMargin: '0px 0px 200px 0px' }
     )
 
     const arm = (el: Element) => {
