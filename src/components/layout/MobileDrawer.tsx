@@ -71,12 +71,9 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
             className="absolute inset-0 bg-ink-950/50 backdrop-blur-sm"
           />
 
-          <m.div
+          <div
             ref={panelRef}
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', stiffness: 320, damping: 34 }}
+
             className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-canvas-50 shadow-xl"
           >
             <div className="flex h-20 shrink-0 items-center justify-between border-b border-canvas-300/60 px-6">
@@ -172,7 +169,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
                 {site.phone}
               </a>
             </div>
-          </m.div>
+          </div>
         </div>
       ) : null}
     </AnimatePresence>

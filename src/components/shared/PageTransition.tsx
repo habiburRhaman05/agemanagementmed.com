@@ -17,7 +17,7 @@ interface PageTransitionProps {
  * `initial={false}` so the server HTML ships fully visible — the LCP hero
  * text must paint immediately, not wait for JS hydration + animation.
  * The entrance animation still plays on client-side route changes, because
- * the m.div remounts (keyed by pathname) after the first render.
+ * the div remounts (keyed by pathname) after the first render.
  * Collapses to a plain fade for prefers-reduced-motion users.
  */
 export function PageTransition({ children }: PageTransitionProps) {
@@ -34,16 +34,11 @@ export function PageTransition({ children }: PageTransitionProps) {
   const skipEntrance = isFirstRender || reduceMotion
 
   return (
-    <m.div
+    <div
       key={pathname}
-      initial={skipEntrance ? false : { opacity: 0, y: 14 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.55,
-        ease: [0.16, 1, 0.3, 1],
-      }}
+     
     >
       {children}
-    </m.div>
+    </div>
   )
 }

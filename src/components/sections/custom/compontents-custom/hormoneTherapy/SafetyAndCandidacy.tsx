@@ -145,11 +145,8 @@ export function SafetyAndCandidacy({
   return (
     <section className={cn('relative w-full py-16 sm:py-24 px-4 ', bg, className)}>
       <Container className="w-full px-0">
-        <m.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6 }}
+        <div
+         
           className={cn(
             'grid grid-cols-1 lg:grid-cols-2 items-stretch',
             card && 'overflow-hidden rounded-[28px] border border-slate-200/80 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)]',
@@ -167,7 +164,7 @@ export function SafetyAndCandidacy({
               <div className="order-1 lg:order-2 h-full">{imageBlock}</div>
             </>
           )}
-        </m.div>
+        </div>
       </Container>
     </section>
   )

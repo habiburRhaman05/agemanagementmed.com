@@ -40,11 +40,8 @@ export function TransformHealthBanner({
     >
 
       <Container className="relative z-10 ">
-        <m.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+        <div
+         
           className="max-w-2xl text-center md:text-left"
         >
           {/* Headline */}
@@ -70,7 +67,7 @@ export function TransformHealthBanner({
           >
             {buttonLabel}
           </BookAppointmentButton>
-        </m.div>
+        </div>
       </Container>
     </section>
   )

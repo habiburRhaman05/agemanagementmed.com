@@ -34,9 +34,9 @@ export function ScrollFeatures() {
   return (
     <>
       {/* Scroll Progress Bar at the top of the viewport */}
-      <m.div
+      <div
         className="fixed top-0 left-0 right-0 h-1 bg-sage-600 origin-left z-[100]"
-        style={{ scaleX }}
+        
       />
 
       {/* Scroll to Top Button */}

@@ -55,11 +55,8 @@ export function AwardsSection({
       )}
     >
       <Container className="mx-auto !max-w-[1292px]">
-        <m.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+        <div
+     
           className="mx-auto mb-10 text-center sm:mb-14"
         >
           {title ? (
@@ -76,7 +73,7 @@ export function AwardsSection({
               {lead}
             </p>
           ) : null}
-        </m.div>
+        </div>
 
         {/* Fixed-size cells (not `w-auto` on the image) so every badge — circular
             seal or rectangular ribbon alike — occupies the same column pitch.
@@ -84,13 +81,9 @@ export function AwardsSection({
             grid instead of a ragged flex row. */}
         <div className="mx-auto flex max-w-full flex-wrap items-center justify-center gap-x-6 gap-y-10 sm:gap-x-10 md:gap-x-14 lg:gap-x-16">
           {awards.map((award, i) => (
-            <m.div
+            <div
               key={award.src + i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              whileHover={{ scale: 1.08 }}
+            
               className="flex h-24 w-28 shrink-0 items-center justify-center sm:h-28 sm:w-32 md:h-32 md:w-36"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -100,7 +93,7 @@ export function AwardsSection({
                 className="h-full w-full object-contain"
                 loading="lazy"
               />
-            </m.div>
+            </div>
           ))}
         </div>
       </Container>

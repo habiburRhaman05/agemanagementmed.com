@@ -94,26 +94,22 @@ export function SpecialsGrid({ specials }: { specials: Special[] }) {
         {/* Animated Cards Container — Bottom to Top Slide on Tab Change */}
         <AnimatePresence mode="wait">
           {visible.length ? (
-            <m.div
+            <div
               key={activeTab}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+           
+            
               className="mx-auto mt-12 flex max-w-6xl flex-wrap justify-center gap-6 sm:gap-8"
             >
               {visible.map((special, index) => (
-                <m.div
+                <div
                   key={special.id}
-                  initial={{ opacity: 0, y: 35 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                
                   className="w-full sm:w-auto sm:grow sm:basis-[380px] sm:max-w-[560px]"
                 >
                   <SpecialCard special={special} />
-                </m.div>
+                </div>
               ))}
-            </m.div>
+            </div>
           ) : (
             <m.p
               key="empty"

@@ -42,19 +42,13 @@ export function PeopleGrid({
     <section className="relative w-full bg-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <Container className="!max-w-[1292px] mx-auto">
         {/* Main Elevated Dark Navy Card Container */}
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+        <div
+         
           className="bg-[#0B1938] rounded-[28px] p-6 sm:p-10 md:p-14 lg:p-16 shadow-[0_15px_50px_rgba(11,25,56,0.18)] text-white border border-slate-800/80"
         >
           {/* Header Section inside Card */}
-          <m.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+          <div
+           
             className="text-center max-w-2xl mx-auto mb-14 sm:mb-16"
           >
             {eyebrow ? (
@@ -75,7 +69,7 @@ export function PeopleGrid({
                 {lead}
               </p>
             ) : null}
-          </m.div>
+          </div>
 
           {/* Expert Rows List */}
           <div className="flex flex-col gap-12 sm:gap-16">
@@ -93,12 +87,9 @@ export function PeopleGrid({
                 : []
 
               return (
-                <m.div
+                <div
                   key={person.slug || person.name}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-30px' }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                 
                   className="flex flex-col"
                 >
                   {/* Person Row Container */}
@@ -146,7 +137,7 @@ export function PeopleGrid({
                   {index < people.length - 1 ? (
                     <div className="mt-12 sm:mt-16 w-full h-[0.7px] bg-white" />
                   ) : null}
-                </m.div>
+                </div>
               )
             })}
           </div>
@@ -163,7 +154,7 @@ export function PeopleGrid({
               )}
             </div>
           ) : null}
-        </m.div>
+        </div>
       </Container>
     </section>
   )

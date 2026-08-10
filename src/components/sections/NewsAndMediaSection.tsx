@@ -93,11 +93,8 @@ export function NewsAndMediaSection({
     <section className="relative w-full bg-[#F7F8F2] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
       <Container className="!max-w-[1440px] mx-auto">
         {/* Section Header */}
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+        <div
+         
           className="text-center mb-10 sm:mb-12"
         >
           <h2
@@ -106,59 +103,44 @@ export function NewsAndMediaSection({
           >
             {title}
           </h2>
-        </m.div>
+        </div>
 
         {/* 1-2-1 Video Layout */}
         <div className="flex flex-col items-center">
           {/* Top Video (Card 1 - Centered Large) */}
-          <m.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
+           
             className="w-full max-w-[900px] mb-5 sm:mb-6"
           >
             <VideoCard item={displayVideos[0]} />
-          </m.div>
+          </div>
 
           {/* Middle Row Videos (Cards 2 & 3 - Side by Side) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 w-full max-w-[1200px] mb-5 sm:mb-6">
-            <m.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.08 }}
+            <div
+            
             >
               <VideoCard item={displayVideos[1]} />
-            </m.div>
-            <m.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.14 }}
+            </div>
+            <div
+             
             >
               <VideoCard item={displayVideos[2]} />
-            </m.div>
+            </div>
           </div>
 
           {/* Bottom Video (Card 4 - Centered Medium) */}
-          <m.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+          <div
+      
             className="w-full max-w-[720px] mb-12 sm:mb-16"
           >
             <VideoCard item={displayVideos[3]} />
-          </m.div>
+          </div>
         </div>
 
         {/* WTOC 11 Channel Brand Divider */}
-        <m.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+        <div
+         
           className="flex flex-col items-center justify-center my-12 sm:my-16"
         >
           <Image
@@ -168,7 +150,7 @@ export function NewsAndMediaSection({
             height={74}
             className="h-auto w-44 sm:w-56"
           />
-        </m.div>
+        </div>
 
         {/* Article / Press Cards Stack */}
         <div className="flex flex-col gap-6 sm:gap-8 !max-w-[1440px] w-full mx-auto">

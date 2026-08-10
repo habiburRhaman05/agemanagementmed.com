@@ -108,11 +108,8 @@ export function CostIncludedGrid({
   return (
     <section className={cn('relative w-full bg-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8', className)}>
       <Container className="max-w-6xl mx-auto">
-        <m.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6 }}
+        <div
+        
         >
           {/* Main Title */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
@@ -180,7 +177,7 @@ export function CostIncludedGrid({
               )}
             </div>
           ) : null}
-        </m.div>
+        </div>
       </Container>
     </section>
   )

@@ -38,12 +38,10 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
 
       <Container>
         <div ref={containerRef}>
-          <m.div style={{ opacity }} className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-7xl">
             {eyebrow ? (
-              <m.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+              <div 
+                
                 className="mb-20 text-center"
               >
               <h2 className="inline-flex items-center gap-4 text-sm font-semibold tracking-[0.2em] uppercase text-sage-600">
@@ -51,21 +49,18 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
                 {eyebrow}
                 <span className="h-[1px] w-12 bg-sage-300"></span>
               </h2>
-            </m.div>
+            </div>
           ) : null}
 
           {/* Stats Section with architectural borders */}
-          <m.div 
-            style={{ y: yStats }}
+          <div 
+            
             className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 border-y border-gray-200 bg-white/50 backdrop-blur-sm"
           >
             {stats.map((stat, i) => (
-              <m.div 
+              <div 
                 key={stat.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: i * 0.15, duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+               
                 className="group p-12 text-center transition-colors hover:bg-sage-50/30"
               >
                 <div className="font-serif text-6xl md:text-7xl tracking-tight text-ink-950 mb-4 transition-transform group-hover:scale-105 duration-700">
@@ -74,19 +69,16 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
                 <div className="text-sm font-medium tracking-wider uppercase text-gray-500">
                   {stat.label}
                 </div>
-              </m.div>
+              </div>
             ))}
-          </m.div>
+          </div>
 
           {/* Real Stories / Quotes */}
           <div className="mt-32 grid gap-12 lg:grid-cols-2 lg:gap-8">
             {quotes.map((quote, index) => (
-              <m.div
+              <div
                 key={quote.id}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1, ease: [0.21, 0.47, 0.32, 0.98], delay: index * 0.2 }}
+              
                 className="relative rounded-3xl bg-white p-10 sm:p-14 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-gray-100 overflow-hidden group"
               >
                 {/* Decorative Quote Icon behind text */}
@@ -113,17 +105,14 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
                     </div>
                   </div>
                 </div>
-              </m.div>
+              </div>
             ))}
           </div>
 
           {/* Awards */}
           {awards?.length ? (
-            <m.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8 }}
+            <div 
+             
               className="mt-32 pt-16 border-t border-gray-100"
             >
               <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-10">
@@ -148,9 +137,9 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
                   </m.li>
                 ))}
               </ul>
-            </m.div>
+            </div>
           ) : null}
-        </m.div>
+        </div>
         </div>
       </Container>
     </Section>

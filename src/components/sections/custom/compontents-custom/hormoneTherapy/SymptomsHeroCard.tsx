@@ -86,11 +86,8 @@ export function SymptomsHeroCard({
       />
       <Container className="relative mx-auto px-0! lg:px-8!">
         {/* ONE SINGLE UNIFIED CARD CONTAINER */}
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6 }}
+        <div
+       
           className="bg-white rounded-[28px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-slate-200/80"
           style={{ borderRadius: '28px', overflow: 'hidden' }}
         >
@@ -240,7 +237,7 @@ export function SymptomsHeroCard({
               </BookAppointmentButton>
             </div>
           </div>
-        </m.div>
+        </div>
       </Container>
     </section>
   )

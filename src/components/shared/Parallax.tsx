@@ -19,8 +19,8 @@ export function Parallax({ children, className, strength = 50 }: ParallaxProps) 
   const y = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [-strength, strength])
 
   return (
-    <m.div ref={ref} style={{ y }} className={className}>
+    <div ref={ref}  className={className}>
       {children}
-    </m.div>
+    </div>
   )
 }

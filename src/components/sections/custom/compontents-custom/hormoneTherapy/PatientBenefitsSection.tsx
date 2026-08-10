@@ -38,11 +38,8 @@ export function PatientBenefitsSection({
   return (
     <section className={cn('relative w-full bg-[#F8F9F5] py-16 sm:py-24 px-4 sm:px-6 lg:px-8', className)}>
       <Container className="max-w-6xl mx-auto">
-        <m.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6 }}
+        <div
+          
           className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 sm:gap-12 lg:gap-16"
         >
           {/* Left Column: Image Card */}
@@ -91,7 +88,7 @@ export function PatientBenefitsSection({
               ))}
             </ul>
           </div>
-        </m.div>
+        </div>
       </Container>
     </section>
   )

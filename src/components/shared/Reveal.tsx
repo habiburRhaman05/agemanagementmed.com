@@ -53,25 +53,11 @@ export function Reveal({
   const yOffset = side === 'up' ? distance : 0
 
   return (
-    <m.div
+    <div
       className={className}
-      initial={{
-        opacity: 0,
-        y: yOffset,
-        x: xOffset,
-        scale,
-        filter: blur && !reduceMotion ? 'blur(10px)' : 'blur(0px)',
-      }}
-      whileInView={{ opacity: 1, y: 0, x: 0, scale: 1, filter: 'blur(0px)' }}
-      viewport={{ once, margin: '0px 0px -80px 0px' }}
-      transition={{
-        type: 'spring',
-        stiffness: 120,
-        damping: 18,
-        delay: delay / 1000,
-      }}
+      
     >
       {children}
-    </m.div>
+    </div>
   )
 }

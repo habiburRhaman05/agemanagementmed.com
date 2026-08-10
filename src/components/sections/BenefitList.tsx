@@ -88,11 +88,8 @@ export function BenefitList({
         <Container className={cn('relative z-10 !max-w-[1292px] mx-auto', design?.containerClassName)}>
           {/* Intro above the card (outside the white card) */}
           {introTitle || introParagraphs?.length ? (
-            <m.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+            <div
+             
               className="text-center max-w-4xl mx-auto mb-10 sm:mb-12"
             >
               {introTitle ? (
@@ -120,24 +117,18 @@ export function BenefitList({
                   ))}
                 </div>
               ) : null}
-            </m.div>
+            </div>
           ) : null}
 
           {/* Main Elevated White Card Container with entrance animation */}
-          <m.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+          <div
+          
             className="bg-white rounded-[28px] p-6 sm:p-10 md:p-14 lg:p-16 shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-100/70"
           >
             {/* Header Section inside Card */}
             {title || eyebrow || lead ? (
-              <m.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+              <div
+                
                 className="text-center max-w-2xl mx-auto mb-10 sm:mb-12"
               >
                 {eyebrow ? (
@@ -160,7 +151,7 @@ export function BenefitList({
                     {lead}
                   </p>
                 ) : null}
-              </m.div>
+              </div>
             ) : null}
 
             {/* 2-Column Sub-Cards Grid with Staggered Entrance & Hover Animation */}
@@ -176,13 +167,9 @@ export function BenefitList({
                 const DefaultIcon = DEFAULT_ICONS[index % DEFAULT_ICONS.length]
 
                 return (
-                  <m.div
+                  <div
                     key={item.title}
-                    initial={{ opacity: 0, y: 25 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
-                    whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                   
                     className="group bg-[#FBFBF9] hover:bg-white rounded-[20px] p-6 sm:p-8 border border-slate-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center md:flex-row md:items-start md:text-left gap-4 sm:gap-6 cursor-pointer"
                   >
                     {/* Column 1: Icon */}
@@ -217,11 +204,11 @@ export function BenefitList({
                         </ul>
                       ) : null}
                     </div>
-                  </m.div>
+                  </div>
                 )
               })}
             </div>
-          </m.div>
+          </div>
         </Container>
       </section>
     )
