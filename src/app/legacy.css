@@ -237,12 +237,24 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
    which reads as "left the menu" — closing (or scheduling a close of) a menu
    the user is still trying to reach. This pseudo-element is invisible but is
    a real descendant box spanning that gap, so hovering it still counts as
-   hovering the `li` and the dead zone disappears entirely. */
+   hovering the `li` and the dead zone disappears entirely.
+
+   Width matters here: the dropdown (`ul`, below) is `left: -20px` with
+   `min-width: 320px` — much wider than this trigger `li`, whose own box is
+   only as wide as its label. A bridge sized to the `li` (`right: -20px`)
+   only spans the left sliver of that 320px+ box, so a normal mouse path
+   toward items lower in the list (which sits further right than the
+   trigger label) slips off the bridge into whatever's behind the header,
+   firing a real `mouseleave` and killing the menu before those items are
+   reachable — the "only the first few items work" bug. Sizing the bridge
+   to match the dropdown's width (with a little slack for wrapped, wider
+   content) closes that gap for the whole box, not just the part under the
+   trigger. */
 #header .menu > ul > li.has-submenu::before {
   content: '';
   position: absolute;
   left: -20px;
-  right: -20px;
+  width: 340px;
   top: 100%;
   height: 12px;
   z-index: 1;
@@ -514,12 +526,20 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   max-width: 350px;
   width: 90%;
   transform: translateX(100%);
-  transition: transform 0.4s;
+  transition: transform 0.4s, visibility 0s linear 0.4s;
   z-index: 50;
+  /* Belt-and-suspenders against the panel ever blocking the page while
+     "closed": if `transform` fails to apply for any reason (a load-order
+     race, a slow style recalculation on first paint, etc.), `visibility:
+     hidden` still removes it from hit-testing entirely instead of leaving a
+     full-height white panel sitting over the right ~90% of the screen. */
+  visibility: hidden;
 }
 
 #mobile-nav.is-open {
   transform: translateX(0);
+  transition: transform 0.4s, visibility 0s linear 0s;
+  visibility: visible;
 }
 
 #mobile-nav .menu-contact {
@@ -702,14 +722,21 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   pointer-events: none;
   position: fixed;
   top: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
   width: 100%;
   z-index: 14;
+  /* Same redundancy as #mobile-nav — `pointer-events: none` alone should
+     already keep the closed overlay from swallowing taps, but pairing it
+     with `visibility: hidden` means a stuck-open haze can never intercept
+     the page even if that rule is ever dropped. */
+  visibility: hidden;
 }
 
 #mobile-nav-overlay.is-open {
   opacity: 1;
   pointer-events: auto;
+  transition: opacity 0.4s ease, visibility 0s linear 0s;
+  visibility: visible;
 }
 
 /* ------------ GRID (Bootstrap row/col equivalent) ----------------------

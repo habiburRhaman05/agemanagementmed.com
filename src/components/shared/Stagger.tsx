@@ -21,7 +21,10 @@ export function StaggerGroup({ children, className, stagger = 0.08, as = 'div' }
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+      // See Reveal.tsx: a positive bottom margin expands the trigger zone
+      // instead of shrinking it, so a fast/dragged scroll can't jump past
+      // it and strand children at `hidden` (opacity: 0) forever.
+      viewport={{ once: true, margin: '0px 0px 200px 0px' }}
       variants={{ hidden: {}, show: { transition: { staggerChildren: reduceMotion ? 0 : stagger } } }}
     >
       {children}

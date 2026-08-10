@@ -43,8 +43,8 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
       <Container>
         <div className="grid gap-12 pt-16 pb-12 text-center md:grid-cols-12 md:gap-8 md:pt-20 md:pb-14 xl:text-left">
           {/* Brand column — centered last row below xl (mobile + md); first column, left-aligned on xl (4-col) */}
-          <Reveal
-            delay={0}
+          <div
+          
             className="flex flex-col items-center text-center order-last md:col-span-12 xl:order-none xl:col-span-3 xl:items-start xl:text-left"
           >
             <Image src={logoUrl} alt={siteName} width={227} height={104} />
@@ -71,10 +71,10 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
             <button   className="mt-6 bg-[#519B99] py-3 text-white rounded-3xl text-[14px] font-bold   w-[275px] hover:bg-[#559795]  uppercase tracking-wide">
               <Link href="/newsletter">Join our newsletter</Link>
             </button>
-          </Reveal>
+          </div>
 
           {/* Contact info: both locations, address + hours */}
-          <Reveal delay={60} className="flex flex-col items-center text-center order-1 md:col-span-4 xl:order-none xl:col-span-3 xl:items-start xl:text-left">
+          <div  className="flex flex-col items-center text-center order-1 md:col-span-4 xl:order-none xl:col-span-3 xl:items-start xl:text-left">
             <h2 className="text-base font-sans font-semibold text-ink-900">
               Contact Info
             </h2>
@@ -104,10 +104,10 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
                 </div>
               ))}
             </div>
-          </Reveal>
+          </div>
 
           {/* Quick Links */}
-          <Reveal delay={120} className="flex flex-col items-center text-center order-2 md:col-span-4 xl:order-none xl:col-span-2 xl:items-start xl:text-left">
+          <div  className="flex flex-col items-center text-center order-2 md:col-span-4 xl:order-none xl:col-span-2 xl:items-start xl:text-left">
             <nav aria-label="Quick Links">
               <h2 className="text-base font-sans font-semibold text-ink-900">
                 Quick Links
@@ -125,10 +125,10 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
                 ))}
               </ul>
             </nav>
-          </Reveal>
+          </div>
 
           {/* Services */}
-          <Reveal delay={180} className="flex flex-col items-center text-center order-3 md:col-span-4 xl:order-none xl:col-span-4 xl:items-start xl:text-left">
+          <div  className="flex flex-col items-center text-center order-3 md:col-span-4 xl:order-none xl:col-span-4 xl:items-start xl:text-left">
             <nav aria-label="Services">
               <h2 className="text-base font-sans font-semibold text-ink-900">
                 Services
@@ -148,7 +148,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
                 ))}
               </ul>
             </nav>
-          </Reveal>
+          </div>
         </div>
 
         <div className=" flex items-center justify-between border-t border-canvas-300 py-6 text-center text-[14px] uppercase tracking-wide text-[#111214]">
