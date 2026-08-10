@@ -78,7 +78,18 @@ export function TestimonialSet({
 
   if (!testimonials || testimonials.length === 0) return null
 
-  const active = testimonials[index]
+  // `index` can only ever be produced in-bounds by `go`/`goTo` below, but it's
+  // state that outlives any single render — if `testimonials` itself ever
+  // arrives shorter than it was on a previous render (a refetch after an
+  // admin edit, fast-refresh in dev, etc.), a stale `index` past the new
+  // array's end reads `testimonials[index]` as `undefined`. `active.quote`
+  // a few lines down would then throw, which is what a "blank slide" is in
+  // practice — the component unmounts into nothing rather than showing a
+  // scrambled state. Re-deriving a safe index from the current array length
+  // on every render removes that possibility outright, on top of `go`/`goTo`
+  // already keeping normal navigation in range.
+  const safeIndex = ((index % testimonials.length) + testimonials.length) % testimonials.length
+  const active = testimonials[safeIndex]
   const go = (delta: number) =>
     setSlide(([i]) => [(i + delta + testimonials.length) % testimonials.length, delta])
   const goTo = (target: number) => setSlide(([i]) => [target, target > i ? 1 : -1])
@@ -96,7 +107,11 @@ export function TestimonialSet({
     <section
       className={cn(
         'relative w-full overflow-hidden bg-cover bg-[position:right_center] py-12 sm:py-16 md:py-20',
-        height ? 'h-[640px]' : 'min-h-screen'
+        // Below `sm`, height is content-driven (no min-height) so the
+        // section doesn't force a full 100vh of mostly-empty space around a
+        // short mobile card. `sm` and up keep the original full-bleed
+        // photo-band height.
+        height ? 'h-[640px]' : 'sm:min-h-screen'
       )}
       style={{
         backgroundImage: `url('${backgroundImage}')`,
@@ -110,8 +125,9 @@ export function TestimonialSet({
 
       {/* Inner wrapper – grid layout for vertical centering */}
       <div className="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-16 h-full grid grid-rows-[1fr_auto]">
-        {/* Main content – centered vertically, left-aligned horizontally */}
-        <div className="max-w-[560px] w-full self-center justify-self-start">
+        {/* Main content – centered vertically; centered horizontally on
+            mobile, left-aligned from `sm` up (the original layout). */}
+        <div className="max-w-[560px] w-full mx-auto self-center justify-self-center text-center sm:mx-0 sm:justify-self-start sm:text-left">
           {/* Intro text */}
           <div className="text-white mb-6">
             {eyebrow ? (
@@ -126,7 +142,7 @@ export function TestimonialSet({
               {title}
             </h3>
             {lead ? (
-              <p className="text-sm sm:text-base text-slate-200/90 font-light max-w-lg">
+              <p className="text-sm sm:text-base text-slate-200/90 font-light max-w-lg mx-auto sm:mx-0">
                 {lead}
               </p>
             ) : null}
@@ -160,31 +176,49 @@ export function TestimonialSet({
             <div className="relative z-10 overflow-hidden rounded-[24px]">
               <AnimatePresence mode="wait" custom={direction} initial={false}>
                 <m.div
-                  key={index}
+                  key={safeIndex}
                   custom={direction}
                   variants={slideVariants}
                   initial="enter"
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.35, ease: 'easeInOut' }}
-                  className="bg-white rounded-[24px] shadow-2xl p-6 sm:p-8 md:p-10 h-auto"
+                  className="bg-white rounded-[24px] shadow-2xl p-6 sm:p-8 md:p-10 h-auto touch-pan-y"
+                  // Touch/mouse swipe — previously only the arrow buttons could
+                  // navigate, so a swipe (the natural mobile gesture for a
+                  // carousel) did nothing at all. `drag="x"` with a snap-back
+                  // constraint lets the card track the gesture; `onDragEnd`
+                  // reads the release offset/velocity and only advances the
+                  // slide past a real swipe threshold, so a stray tap-drag
+                  // doesn't fire a spurious navigation.
+                  drag={testimonials.length > 1 ? 'x' : false}
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.6}
+                  onDragEnd={(_event, info) => {
+                    const SWIPE_THRESHOLD = 50
+                    if (info.offset.x <= -SWIPE_THRESHOLD || info.velocity.x < -400) {
+                      go(1)
+                    } else if (info.offset.x >= SWIPE_THRESHOLD || info.velocity.x > 400) {
+                      go(-1)
+                    }
+                  }}
                 >
                   {/* Top quote mark */}
-                  <div className="mb-4">
+                  <div className="mb-4 flex justify-center sm:justify-start">
                     <QuoteMark />
                   </div>
 
                   {/* Quote content */}
-                  <div className="text-slate-800 text-[16px] leading-relaxed font-normal space-y-3 mb-6">
+                  <div className="text-slate-800 text-[16px] leading-relaxed font-normal space-y-3 mb-6 text-center sm:text-left">
                     {paragraphs.map((para, i) => (
                       <p key={i}>{para}</p>
                     ))}
                   </div>
 
                   {/* Author + Rating + Google branding */}
-                  <div className="flex items-center gap-3 pt-2">
+                  <div className="flex items-center justify-center gap-3 pt-2 sm:justify-start">
                     <GoogleLogo />
-                    <div className="flex flex-col">
+                    <div className="flex flex-col items-center sm:items-start">
                       <span className="font-bold text-slate-900 text-xs sm:text-sm">
                         {active.author}
                       </span>
@@ -206,8 +240,11 @@ export function TestimonialSet({
           </div>
         </div>
 
-        {/* Full-width Bottom Bar: Carousel dashes on LEFT, SEE ALL REVIEWS button on RIGHT */}
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 w-full">
+        {/* Full-width Bottom Bar: Carousel dashes on LEFT, SEE ALL REVIEWS button on RIGHT.
+            `mt-8` gives it deliberate breathing room on mobile, where the
+            section is no longer forced to `min-h-screen` and can't rely on
+            the grid's `1fr` row to push this down to the bottom anymore. */}
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 w-full mt-8 sm:mt-0 sm:justify-between">
           {/* Left: Carousel dashes */}
           {testimonials.length > 1 ? (
             <div className="flex items-center gap-1.5">
@@ -218,7 +255,7 @@ export function TestimonialSet({
                   onClick={() => goTo(i)}
                   className={cn(
                     'h-1 rounded-full transition-all duration-300 cursor-pointer border-0 p-0',
-                    i === index
+                    i === safeIndex
                       ? 'w-7 sm:w-8 bg-white'
                       : 'w-3.5 sm:w-4 bg-white/40 hover:bg-white/75'
                   )}

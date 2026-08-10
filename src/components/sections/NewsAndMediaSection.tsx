@@ -1,6 +1,5 @@
 'use client'
 
-import { m } from 'framer-motion'
 import { Play } from 'lucide-react'
 import Image from 'next/image'
 
@@ -154,16 +153,16 @@ export function NewsAndMediaSection({
 
         {/* Article / Press Cards Stack */}
         <div className="flex flex-col gap-6 sm:gap-8 !max-w-[1440px] w-full mx-auto">
-          {displayNews.map((article, index) => (
-            <m.a
+          {displayNews.map((article) => (
+            // Was an `m.a` fading in via `whileInView` — that observer could
+            // get stuck (see Reveal.tsx/Stagger.tsx), leaving an entire
+            // clickable article card invisible and out of hit-testing. A
+            // plain link can't get stuck.
+            <a
               key={article.title}
               href={article.href}
               target={article.external ? '_blank' : undefined}
               rel={article.external ? 'noopener noreferrer' : undefined}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white rounded-[24px] p-6 sm:p-8 md:p-10 lg:p-[80px_100px] shadow-[0_8px_30px_rgba(0,0,0,0.035)] border border-slate-100 flex flex-col md:flex-row items-center gap-6 sm:gap-8 hover:shadow-lg transition-all duration-300 group cursor-pointer"
             >
               {/* Left Article Image */}
@@ -216,7 +215,7 @@ export function NewsAndMediaSection({
                   </svg>
                 </span>
               </div>
-            </m.a>
+            </a>
           ))}
         </div>
       </Container>

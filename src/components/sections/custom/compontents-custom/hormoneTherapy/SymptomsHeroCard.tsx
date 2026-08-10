@@ -105,31 +105,38 @@ export function SymptomsHeroCard({
               </div>
 
               {/* Right Column: Symptom Checklist */}
-              <div className="flex flex-col justify-start p-6 sm:p-10 lg:p-12 text-white">
+              <div className="flex flex-col justify-start items-center text-center p-6 sm:p-10 lg:p-12 text-white lg:items-start lg:text-left">
                 <h2
-                  className="text-[36px] sm:text-[48px] font-medium leading-tight text-white mb-2 capitalize text-left font-['Bodoni_Moda',var(--font-bodoni),serif]"
+                  className="text-[36px] sm:text-[48px] font-medium leading-tight text-white mb-2 capitalize font-['Bodoni_Moda',var(--font-bodoni),serif]"
                   style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif" }}
                 >
                   {heading}
                 </h2>
 
                 {lead ? (
-                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6 text-left">
+                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6">
                     {lead}
                   </p>
                 ) : null}
 
                 {groups && groups.length > 0 ? (
-                  <div className="space-y-5 mb-6">
+                  <div className="space-y-5 mb-6 w-full">
                     {groups.map((group) => (
                       <div key={group.title}>
-                        <h3 className="text-[20px] font-semibold text-white mb-1.5 text-left">
+                        <h3 className="text-[20px] font-semibold text-white mb-1.5">
                           {group.title}
                         </h3>
                         {group.items?.length ? (
-                          <ul className="space-y-1 pl-1">
+                          // Arrow-bullet rows read awkwardly split apart when
+                          // centered as plain text, so each row stays a
+                          // shrink-wrapped inline unit (arrow glued to its
+                          // text) and it's that *unit* that gets centered as
+                          // a column — same fix as the homepage service
+                          // checklist. lg+ reverts to the original flush-left
+                          // list.
+                          <ul className="space-y-1 pl-1 flex flex-col items-center lg:items-stretch">
                             {group.items.map((item, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-base text-slate-200/90 font-normal">
+                              <li key={idx} className="inline-flex items-start gap-2 text-base text-slate-200/90 font-normal text-left">
                                 <span className="text-[#519B99] shrink-0 font-sans">→</span>
                                 <span className={idx === 0 && group.title.includes('Sexual') ? 'underline decoration-slate-400' : ''}>
                                   {item}
@@ -144,7 +151,7 @@ export function SymptomsHeroCard({
                 ) : null}
 
                 {closingNote ? (
-                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6 pt-2 border-t border-slate-700/50 text-left">
+                  <p className="text-base text-slate-300 font-normal leading-relaxed mb-6 pt-2 border-t border-slate-700/50">
                     {closingNote}
                   </p>
                 ) : null}
@@ -166,7 +173,7 @@ export function SymptomsHeroCard({
           <div className="bg-white p-6 sm:p-8 lg:p-12 xl:p-16">
             {/* Header Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start mb-12 border-b border-slate-100 pb-8">
-              <div className="text-left lg:pl-[52px]">
+              <div className="text-center md:text-left lg:pl-[52px]">
                 <h2
                   className="text-[36px] sm:text-[48px] font-medium leading-tight text-[#111214] mt-6 sm:mt-8 font-['Bodoni_Moda',var(--font-bodoni),serif]"
                   style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif", fontWeight: 500 }}
@@ -177,7 +184,7 @@ export function SymptomsHeroCard({
                 </h2>
               </div>
 
-              <div className="text-left">
+              <div className="text-center md:text-left">
                 <h3
                   className="text-[36px] sm:text-[48px] font-medium leading-tight text-[#111214] mb-2 font-['Bodoni_Moda',var(--font-bodoni),serif]"
                   style={{ fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif", fontWeight: 500 }}
@@ -212,7 +219,10 @@ export function SymptomsHeroCard({
               {PROGRAM_BENEFITS.map((b) => {
                 const Icon = b.icon
                 return (
-                  <div key={b.title} className="flex flex-row items-start text-left gap-5 sm:gap-6">
+                  <div
+                    key={b.title}
+                    className="flex flex-col items-center text-center gap-3 sm:flex-row sm:items-start sm:text-left sm:gap-5 md:gap-6"
+                  >
                     <div className="shrink-0 text-[#519B99]">
                       <Icon className="w-9 h-9 sm:w-10 sm:h-10" />
                     </div>

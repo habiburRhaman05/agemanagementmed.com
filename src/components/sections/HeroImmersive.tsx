@@ -60,12 +60,12 @@ export function HeroImmersive({ title, lead, image, meta ,videoUrl}: HeroImmersi
 
         <div
           style={{ animationDelay: '0.65s' }}
-          className="hero-enter mt-6 flex w-full max-w-[730px] flex-col items-center gap-3 sm:mt-10 sm:w-fit sm:flex-row sm:gap-4 mx-auto lg:mx-0"
+          className="hero-enter mt-6 flex w-full max-w-[730px] flex-row flex-wrap items-center justify-center gap-3 sm:mt-10 sm:w-fit sm:flex-nowrap sm:gap-4 mx-auto lg:mx-0 lg:justify-start"
         >
           {/* Booking Modal */}
           <BookAppointmentButton
             variant="teal"
-            className="h-12 w-full sm:h-14 sm:w-auto"
+            className="h-12 w-auto px-6 sm:h-14 sm:px-8"
             modalTitle="Schedule A Consultation"
           >
             START TODAY
@@ -77,7 +77,7 @@ export function HeroImmersive({ title, lead, image, meta ,videoUrl}: HeroImmersi
               <Button
                 size="lg"
                 variant="outlineInverse"
-                className="group  flex items-center gap-x-3 justify-center uppercase text-[14px] tracking-[4px] leading-4.25 font-bold bg-white text-[#549898] hover:border-canvas-50/60 hover:bg-[#B7BCC8] ease-linear hover:text:[#B7BCC8]  "
+                className="group  flex items-center gap-x-3 justify-center uppercase text-[14px] tracking-[4px] leading-4.25 font-bold bg-white text-[#549898] hover:border-canvas-50/60 hover:bg-[#B7BCC8] ease-linear hover:text:[#B7BCC8] px-5 sm:px-9 "
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
 <path d="M11.046 5.57164L1.95607 0.683144C1.28985 0.324857 0.482422 0.807411 0.482422 1.56386V11.3409C0.482422 12.0973 1.28985 12.5799 1.95607 12.2216L11.046 7.33307C11.7478 6.95564 11.7478 5.94907 11.046 5.57164Z" fill="#519B98"/>

@@ -48,7 +48,7 @@ export function HomeServices({ eyebrow, title, lead }: HomeServicesProps) {
                         width={150}
                         height={150}
                         loading="lazy"
-                        className="w-14! h-14! min-[992px]:w-[150px]! min-[992px]:h-[150px]!"
+                        className="w-40! h-40! min-[576px]:w-20! min-[576px]:h-20! min-[992px]:w-[150px]! min-[992px]:h-[150px]!"
                       />
                     </div>
 

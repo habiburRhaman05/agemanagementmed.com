@@ -23,7 +23,7 @@ const additional = [
 
 function IconCard({ icon, title }: { icon: string; title: string }) {
   return (
-    <div className="flex flex-col rounded-[8px] bg-[#FAFAFA] px-6 py-10 gap-y-4">
+    <div className="flex flex-col items-center rounded-[8px] bg-[#FAFAFA] px-4 py-6 gap-y-4 text-center sm:items-start sm:px-6 sm:py-10 sm:text-left">
       {/* Icon */}
       <div
         className="mb-5 h-16 w-16"

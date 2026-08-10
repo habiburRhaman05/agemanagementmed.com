@@ -55,7 +55,7 @@ export function IconGridCard({
   )
 
   const textBlock = (
-    <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
+    <div className="flex flex-col items-center justify-center px-6 py-8 text-center sm:px-10 sm:py-10 lg:items-start lg:px-12 lg:text-left">
       <h2
         className={`font-display text-[36px] font-medium leading-tight ${dark ? 'text-canvas-50' : 'text-[#111214]'}`}
       >
@@ -101,9 +101,9 @@ export function IconGridCard({
 
       {cta ? (
         cta.href === '/book-appointment' ? (
-          <BookAppointmentButton className="mt-6 self-start">{cta.label}</BookAppointmentButton>
+          <BookAppointmentButton className="mt-6 self-center lg:self-start">{cta.label}</BookAppointmentButton>
         ) : (
-          <Button asChild size="md" className="mt-6 self-start">
+          <Button asChild size="md" className="mt-6 self-center lg:self-start">
             <Link href={cta.href}>{cta.label}</Link>
           </Button>
         )
@@ -123,9 +123,14 @@ export function IconGridCard({
           {textBlock}
         </>
       ) : (
+        // `imageSide="right"` puts the image second in the DOM for the
+        // desktop-only `lg:` column swap — below `lg` the grid stacks in
+        // plain DOM order, which would show text before image on every
+        // phone regardless of `imageSide`. `order` puts the image back on
+        // top below `lg`, matching every other stacked image/text split.
         <>
-          {textBlock}
-          {imageBlock}
+          <div className="order-2 lg:order-1">{textBlock}</div>
+          <div className="order-1 lg:order-2">{imageBlock}</div>
         </>
       )}
     </div>
@@ -190,8 +195,8 @@ export function DualIconGridBanner({ columns }: { columns: [IconGridColumn, Icon
                   key={column.heading}
                   className={
                     index === 0
-                      ? 'min-w-0 lg:border-r lg:border-white/10 lg:pr-16'
-                      : 'min-w-0'
+                      ? 'min-w-0 text-center lg:border-r lg:border-white/10 lg:pr-16 lg:text-left'
+                      : 'min-w-0 text-center lg:text-left'
                   }
                 >
                   <h2 className="font-display text-[36px] font-medium leading-tight text-canvas-50">
@@ -201,7 +206,7 @@ export function DualIconGridBanner({ columns }: { columns: [IconGridColumn, Icon
                     <p className="mt-3 text-[16px] font-normal leading-relaxed text-canvas-50/70">{column.lead}</p>
                   ) : null}
 
-                  <ul className="mt-6 space-y-4">
+                  <ul className="mt-6 flex flex-col items-center space-y-4 lg:items-start">
                     {column.items.map((item) => (
                       <li key={item.label} className="flex items-center gap-3">
                         <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-sage-600/15 text-sage-400">

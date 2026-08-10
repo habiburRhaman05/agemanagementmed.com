@@ -4,7 +4,7 @@ import type { LucideIcon } from 'lucide-react'
 
 import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
-import { Reveal } from '@/components/shared/Reveal'
+
 import { Section } from '@/components/shared/Section'
 import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger'
 import { cn } from '@/lib/utils'
@@ -69,7 +69,7 @@ export function SexualHealthConcerns({
   return (
     <Section background="page" spacing="md" className="bg-[#D2DCED] px-4 sm:px-[47px] md:px-0">
       <Container bleed className="overflow-hidden rounded-2xl bg-white pb-12">
-        <Reveal>
+        <div>
           <div className="grid overflow-hidden rounded-3xl bg-[#0f1c3f] shadow-xl lg:grid-cols-[42%_58%]">
             <div className="relative min-h-72 sm:min-h-96 lg:min-h-full">
               <Image
@@ -82,7 +82,7 @@ export function SexualHealthConcerns({
               />
             </div>
 
-            <div className="flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-16">
+            <div className="flex flex-col items-center justify-center px-6 py-10 text-center sm:px-10 sm:py-12 lg:items-start lg:px-14 lg:py-16 lg:text-left">
               <h2 className="font-display text-[36px] leading-tight text-white sm:text-[48px]">
                 {heading}
               </h2>
@@ -103,36 +103,44 @@ export function SexualHealthConcerns({
                 {symptomsLabel}
               </span>
 
-              <ul className="mt-4 space-y-3">
+              {/* Arrow-bullet rows stay left-aligned as a shrink-wrapped unit
+                  (arrow glued to its text) even while the column above is
+                  centered — centering plain text is fine, centering a
+                  left-pinned-arrow list would split the two apart. */}
+              <ul className="mt-4 space-y-3 flex flex-col items-center lg:items-stretch">
                 {symptoms.map((item) => (
-                  <li key={item} className="flex items-center gap-3">
-                    <ArrowSvg className="text-[#519B99]" />
+                  <li key={item} className="inline-flex items-center gap-3 text-left">
+                    <ArrowSvg className="text-[#519B99] shrink-0" />
                     <span className="text-[16px] leading-snug font-light text-white/90">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-        </Reveal>
+        </div>
 
         <div className="mx-auto mt-14 max-w-2xl px-4 text-center sm:mt-16">
-          <Reveal>
+          <div>
             <h2 className="font-display text-[36px] text-ink-950 sm:text-[48px]">{featuresHeading}</h2>
             {featuresParagraphs.map((paragraph) => (
               <p key={paragraph} className="mt-4 text-[16px] leading-relaxed font-light text-canvas-600">
                 {paragraph}
               </p>
             ))}
-          </Reveal>
+          </div>
         </div>
 
         <StaggerGroup
           as="ul"
-          stagger={0.06}
-          className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-x-12 gap-y-8 px-4 text-left sm:grid-cols-2"
+         
+          className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-x-12 gap-y-8 px-4 text-center sm:grid-cols-2 sm:text-left"
         >
           {features.map((feature) => (
-            <StaggerItem as="li" key={feature.title} className="flex items-start gap-4">
+            <StaggerItem
+              as="li"
+              key={feature.title}
+              className="flex flex-col items-center gap-3 sm:flex-row sm:items-start sm:gap-4"
+            >
               <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center text-[#519B99]">
                 <feature.icon className="size-7" strokeWidth={1.5} aria-hidden />
               </span>

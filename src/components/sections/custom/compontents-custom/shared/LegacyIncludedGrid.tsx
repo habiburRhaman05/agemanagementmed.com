@@ -28,7 +28,7 @@ const HEADING_ALIGN: Record<'left' | 'center' | 'right', string> = {
 
 function GridCard({ item }: { item: CostGridItem }) {
   return (
-    <div className="flex h-full flex-col items-center rounded-2xl  bg-[#F9F9F9] p-8 text-center sm:items-start sm:p-10 sm:text-left">
+    <div className="flex h-full flex-col items-center rounded-2xl  bg-[#F9F9F9] p-5 text-center sm:items-start sm:p-10 sm:text-left">
       <div
         className="mb-6 flex h-16 items-center justify-center sm:justify-start [&_svg]:h-auto [&_svg]:max-h-16 [&_svg]:w-auto"
         // Static, author-controlled markup copied from the source site.

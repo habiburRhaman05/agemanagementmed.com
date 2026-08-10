@@ -34,7 +34,7 @@ const WhyThisApproachWorks: React.FC<Props> = ({ image }) => {
         </div>
 
         {/* ── Right: navy content panel ── */}
-        <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-12 sm:px-10 lg:pl-28 lg:py-20">
+        <div className="flex flex-col items-center justify-center bg-[#1a2744] px-6 py-10 text-center sm:px-10 sm:py-12 lg:items-start lg:pl-28 lg:py-20 lg:text-left">
 
           <h2
             className="font-display text-white text-[36px]! sm:text-[48px]! tracking-tight"
@@ -50,7 +50,7 @@ const WhyThisApproachWorks: React.FC<Props> = ({ image }) => {
 
           <p className="mt-3 text-white" style={{ fontSize: 16 }}>We focus on:</p>
 
-          <ul className="mt-2 space-y-1.5">
+          <ul className="mt-2 flex flex-col items-center space-y-1.5 lg:items-start">
             {focusPoints.map((item) => (
               <li key={item} className="flex items-center gap-2 text-white" style={{ fontSize: 16 }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="12" viewBox="0 0 22 12" fill="none">

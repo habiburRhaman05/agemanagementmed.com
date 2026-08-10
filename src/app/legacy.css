@@ -1108,11 +1108,15 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 @media only screen and (max-width: 575.98px) {
   #awards-b .award {
     border-radius: 20px;
-    padding: 20px;
+    padding: 16px;
+    margin-bottom: 16px;
   }
 
   #awards-b .box {
-    padding: 40px 30px;
+    /* Was 40px 30px — this band's vertical padding read as excessive next to
+       its compact mobile content; trimmed to keep it premium without the
+       extra whitespace. Horizontal padding untouched. */
+    padding: 28px 24px;
   }
 }
 
@@ -1368,6 +1372,24 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   }
 }
 
+/* `.hero-bg` had no mobile treatment at all — 110px of vertical padding and
+   left-aligned text (the `.centered-content` variant that DOES center is
+   opt-in, not the default) on every viewport down to the smallest phone. */
+@media only screen and (max-width: 767.98px) {
+  .hero-bg {
+    padding: 60px 0;
+  }
+
+  .hero-bg .content {
+    text-align: center;
+  }
+
+  .hero-bg .lg-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /* ------------ HERO PLAIN (#hero-p) ---------------------- */
 #hero-p {
   background: linear-gradient(90deg, #519b98 0%, #4e9592 100%);
@@ -1604,13 +1626,46 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
   #column-box-o .box {
     margin-left: 0;
-    padding: 100px 30px 38px;
+    /* Top padding pulled in from 100px: the badge now overlaps the card's
+       top edge (see .img below) instead of sitting fully inside it, so the
+       card needs less clearance above its content. */
+    padding: 56px 24px 30px;
+  }
+
+  /* Stacked cards need more room than the desktop side-by-side layout's
+     45px row gap — the badge floats above each card's own top edge (see
+     .img below), so a tight gap lets the next card's badge collide with
+     the previous card's bottom. 70px clears the 40px tablet overhang with
+     room to spare; phones get a bigger bump at 575.98px for the 80px
+     overhang there. */
+  #column-box-o .lg-grid {
+    --lg-gy: 70px;
   }
 
   #column-box-o .img {
     left: 50%;
-    top: 40px;
+    /* Negative top pulls the badge up so it straddles the card's top
+       edge — roughly half in, half floating above it — instead of sitting
+       entirely inside the card like on desktop. Paired with the 80px
+       tablet badge size (see HomeServices.tsx), -40px centers that badge
+       exactly on the card's top border. Phones get a bigger badge and a
+       deeper offset below, at 575.98px. */
+    top: -40px;
     transform: translateX(-50%);
+  }
+
+  /* Tighter internal rhythm to match the trimmed card padding above —
+     scoped to this breakpoint only, so desktop spacing is untouched. */
+  #column-box-o .lg-title {
+    margin-bottom: 14px;
+  }
+
+  #column-box-o .lg-text {
+    margin-bottom: 20px;
+  }
+
+  #column-box-o .cta {
+    margin-top: 12px;
   }
 
   #steps-d .box {
@@ -1666,6 +1721,50 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   #column-box-o .lg-title,
   #steps-d .lg-title {
     font-size: 26px;
+  }
+
+  /* Phone-only: bigger badge (160px, set alongside `min-[576px]:w-20!` in
+     HomeServices.tsx), straddling the card's top edge at a true 50/50
+     split — matches the reference design at 320–430px. Tablet keeps the
+     more modest 80px/-40px pairing from the 991.98px block above. */
+  #column-box-o .img {
+    top: -80px;
+  }
+
+  #column-box-o .box {
+    padding: 104px 24px 32px;
+  }
+
+  /* Bigger badge here overhangs 80px above the card (vs. 40px on tablet),
+     so the row gap needs a bigger bump too — clears it with the same ~30px
+     buffer as the tablet rule above. */
+  #column-box-o .lg-grid {
+    --lg-gy: 110px;
+  }
+
+  /* True centering for the benefits list: the shared `.lg-list-check`
+     pattern pins its checkmark to `left: 0` of each full-width `li` via
+     `padding-left`, so `text-align: center` (inherited from `.lg-text`)
+     centers the text in an asymmetric box — the mark and its text drift
+     off-center together, and stop being visually paired. Turning each `li`
+     into a shrink-wrapped inline-flex row keeps the mark glued to its own
+     text, and centering the column of those rows centers the whole list as
+     a block instead of centering text inside a lopsided box. */
+  #column-box-o .lg-list-check ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #column-box-o .lg-list-check ul li {
+    display: inline-flex;
+    align-items: center;
+    text-align: left;
+  }
+
+  #column-box-o .lg-list-check ul li::before {
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   #testimonial-d .box {
@@ -1922,7 +2021,11 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 @media only screen and (max-width: 1199.98px) {
   #photo-content-c .top .lg-title,
   #photo-content-c .top .lg-text,
-  #photo-content-c .top .lg-text .lg-list-arrow-right h5 {
+  #photo-content-c .top .lg-text .lg-list-arrow-right h5,
+  /* .bottom had no mobile text-align override at all — it stayed
+     left-aligned on every viewport while .top (above) already centered. */
+  #photo-content-c .bottom .lg-title,
+  #photo-content-c .bottom .lg-text p {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -1946,6 +2049,14 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
   #photo-content-c .top .content {
     padding: 60px 40px;
+  }
+
+  /* The "bottom" row's markup puts `.content` before `.img` (unlike `.top`,
+     where the image is already first) — below the 992px point where the
+     columns stack, that reads as text-then-image. `order` puts the image
+     back on top to match every other stacked image/text split on the site. */
+  #photo-content-c .bottom .img {
+    order: -1;
   }
 }
 
@@ -2683,6 +2794,16 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   .photo-content-cu .img {
     padding-top: 56.25%;
   }
+
+  /* Title/lead had no mobile alignment rule at all and stayed left. The
+     arrow-bullet list (.lg-list-arrow-right) is deliberately left out here
+     — its rows are already individually `text-align: left` with the arrow
+     glyph pinned to their own left edge, so centering the list itself would
+     split the arrow away from its text. */
+  .photo-content-cu .lg-title,
+  .photo-content-cu .lg-text > p {
+    text-align: center;
+  }
 }
 
 @media only screen and (max-width: 575.98px) {
@@ -2691,7 +2812,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   }
 
   .photo-content-cu .content {
-    padding: 40px 30px;
+    padding: 32px 24px;
   }
 
   .photo-content-cu .lg-title {
@@ -2911,7 +3032,15 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   }
 }
 
-@media only screen and (max-width: 575.98px) {
+/* Was gated to <=575.98px only, leaving icon-left/text-right side-by-side
+   the whole way down through tablet (576-991.98px) — this widens the
+   icon-above-text mobile stack to match the tablet-down-to-mobile scope
+   these guidelines target, and trims the card's own padding to match. */
+@media only screen and (max-width: 991.98px) {
+  #column-box-i .box {
+    padding: 26px 22px;
+  }
+
   #column-box-i .icon,
   #column-box-i .content {
     padding: 0;
@@ -2922,7 +3051,9 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   #column-box-i .icon {
     margin-bottom: 20px;
   }
+}
 
+@media only screen and (max-width: 575.98px) {
   #column-box-i .lg-title {
     font-size: 30px;
     margin-left: auto;

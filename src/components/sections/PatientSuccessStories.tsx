@@ -101,18 +101,20 @@ export function PatientSuccessStories({
                 {lead ? <p className="mt-3 text-[16px] text-white/85">{lead}</p> : null}
               </div>
 
-              <div className="w-full rounded-2xl bg-white p-6 shadow-xl sm:max-w-[560px] sm:p-9">
-                <QuoteMark />
+              <div className="w-full rounded-2xl bg-white p-4 shadow-xl text-center sm:max-w-[560px] sm:p-9 sm:text-left">
+                <div className="flex justify-center sm:justify-start">
+                  <QuoteMark />
+                </div>
                 <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-[#15224c]">
                   {quote.map((paragraph) => (
                     <p key={paragraph.slice(0, 30)}>{paragraph}</p>
                   ))}
                 </div>
-                <div className="mt-6 flex items-center gap-3">
+                <div className="mt-6 flex items-center justify-center gap-3 sm:justify-start">
                   <GoogleLogo />
                   <div>
                     <p className="text-[14px] font-bold text-[#15224c]">{author}</p>
-                    <div className="mt-0.5 flex gap-0.5" aria-label="5 out of 5 stars">
+                    <div className="mt-0.5 flex justify-center gap-0.5 sm:justify-start" aria-label="5 out of 5 stars">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star key={i} size={14} className="fill-[#F5A623] text-[#F5A623]" aria-hidden />
                       ))}

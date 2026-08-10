@@ -1,35 +1,31 @@
-'use client'
-
-import { m, useReducedMotion } from 'framer-motion'
 import type * as React from 'react'
 
 interface StaggerGroupProps {
   children: React.ReactNode
   className?: string
-  /** Seconds between each child's reveal. */
+  /** Seconds between each child's reveal. Unused now — kept for API compatibility. */
   stagger?: number
   as?: 'div' | 'ul' | 'ol' | 'span'
 }
 
-/** Wraps a set of `StaggerItem`s; reveals them in sequence, once, on scroll into view. */
-export function StaggerGroup({ children, className, stagger = 0.08, as = 'div' }: StaggerGroupProps) {
-  const reduceMotion = useReducedMotion()
-  const Comp = m[as]
-
-  return (
-    <Comp
-      className={className}
-      initial="hidden"
-      whileInView="show"
-      // See Reveal.tsx: a positive bottom margin expands the trigger zone
-      // instead of shrinking it, so a fast/dragged scroll can't jump past
-      // it and strand children at `hidden` (opacity: 0) forever.
-      viewport={{ once: true, margin: '0px 0px 200px 0px' }}
-      variants={{ hidden: {}, show: { transition: { staggerChildren: reduceMotion ? 0 : stagger } } }}
-    >
-      {children}
-    </Comp>
-  )
+/**
+ * Plain passthrough wrapper — same API as before (so every existing call
+ * site keeps compiling unchanged), but no longer animates.
+ *
+ * This used to stagger its children in via framer-motion's `whileInView`,
+ * matching `Reveal`. In practice that `IntersectionObserver`-driven trigger
+ * would sometimes never fire — a fast/dragged scroll, a stale ref, whatever
+ * the exact cause — and children were left stuck at their `hidden` variant
+ * (`opacity: 0`, translated off-position) permanently. That's not just
+ * invisible: framer-motion still applies the `transform`/`opacity` via the
+ * DOM, and content sitting off-position with 0 opacity can fall out of
+ * normal hit-testing, which is why it also couldn't be text-selected.
+ * `Reveal` (see Reveal.tsx) hit the identical failure and was already
+ * stripped down to a plain wrapper — this mirrors that fix so content is
+ * simply visible immediately, all the time, with no observer to get stuck.
+ */
+export function StaggerGroup({ children, className, as: Comp = 'div' }: StaggerGroupProps) {
+  return <Comp className={className}>{children}</Comp>
 }
 
 interface StaggerItemProps {
@@ -39,28 +35,6 @@ interface StaggerItemProps {
   as?: 'div' | 'li' | 'span'
 }
 
-export function StaggerItem({ children, className, blur = false, as = 'div' }: StaggerItemProps) {
-  const reduceMotion = useReducedMotion()
-  const Comp = m[as]
-
-  return (
-    <Comp
-      className={className}
-      variants={{
-        hidden: {
-          opacity: 0,
-          y: reduceMotion ? 0 : 22,
-          filter: blur && !reduceMotion ? 'blur(8px)' : 'blur(0px)',
-        },
-        show: {
-          opacity: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          transition: { type: 'spring', stiffness: 130, damping: 18 },
-        },
-      }}
-    >
-      {children}
-    </Comp>
-  )
+export function StaggerItem({ children, className, as: Comp = 'div' }: StaggerItemProps) {
+  return <Comp className={className}>{children}</Comp>
 }

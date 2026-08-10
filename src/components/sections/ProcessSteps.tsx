@@ -1,7 +1,5 @@
 'use client'
 
-import { m, useReducedMotion } from 'framer-motion'
-
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
@@ -20,21 +18,17 @@ export function ProcessSteps({
   steps,
   background = 'alt',
 }: ProcessStepsProps) {
-  const reduceMotion = useReducedMotion()
-
   return (
     <Section background={background} spacing="lg">
       <Container>
         <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
 
         <ol className="relative mt-20 grid gap-14 md:grid-cols-3 md:gap-10">
-          {/* Spine — draws in left to right on scroll, desktop only. */}
-          <m.span
-            initial={{ scaleX: reduceMotion ? 1 : 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, margin: '0px 0px -100px 0px' }}
-            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-            style={{ transformOrigin: 'left' }}
+          {/* Spine — was an `m.span` drawing in via `whileInView`; that
+              observer can get stuck (see Reveal.tsx/Stagger.tsx), leaving it
+              at `scaleX: 0` — invisible — permanently. A static full-width
+              line can't get stuck. */}
+          <span
             className="absolute inset-x-0 top-6 hidden h-px bg-canvas-300 md:block"
             aria-hidden
           />

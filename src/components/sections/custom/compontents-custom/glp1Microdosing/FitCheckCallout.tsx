@@ -45,7 +45,7 @@ export function FitCheckCallout({
         </div>
 
         {/* ── Right: navy content panel ── */}
-        <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-12 sm:px-10 lg:pl-24 lg:py-16">
+        <div className="flex flex-col items-center justify-center bg-[#1a2744] px-6 py-10 text-center sm:px-10 sm:py-12 lg:items-start lg:pl-24 lg:py-16 lg:text-left">
 
           {/* Heading */}
           <h2
@@ -63,7 +63,7 @@ export function FitCheckCallout({
           )}
 
           {/* Bullet points */}
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-3 flex flex-col items-center space-y-2 lg:items-start">
             {points.map((point) => (
             <li key={point} className="flex items-center gap-2 text-white" style={{ fontSize: 16 }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M15.5 1L20.5 6L15.5 11" stroke="#519B98" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 6H1" stroke="#519B98" stroke-width="1.5" stroke-linecap="round"/></svg>

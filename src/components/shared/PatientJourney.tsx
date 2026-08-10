@@ -82,7 +82,10 @@ export function PatientJourney({
                   {/* Mobile layout (below sm): photo centered above the card, badge inline with the title */}
                   <div className="sm:hidden">
                     {imageSrc ? (
-                      <div className="relative z-20 mx-auto -mb-24 h-30 w-30 md:h-48 md:w-48 overflow-hidden rounded-full border border-[#89B3AA] bg-white p-0.75 shadow-md">
+                      // 160px, pulled up by half its own height (-mb-20 = -80px)
+                      // so it straddles the card's top edge at an even 50/50
+                      // split, matching the reference design.
+                      <div className="relative z-20 mx-auto -mb-20 h-40 w-40 overflow-hidden rounded-full border border-[#89B3AA] bg-white p-0.75 shadow-md">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={imageSrc}
@@ -93,7 +96,7 @@ export function PatientJourney({
                       </div>
                     ) : null}
 
-                    <div className="relative rounded-xl border border-slate-100/70 bg-white p-6 pt-28 shadow-[0_8px_35px_rgba(0,0,0,0.035)]">
+                    <div className="relative rounded-xl border border-slate-100/70 bg-white p-6 pt-[104px] shadow-[0_8px_35px_rgba(0,0,0,0.035)]">
                       <div className="flex items-start gap-4">
                         <div className="relative z-20 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#B88796] font-serif text-xl font-medium text-white shadow-sm">
                           {index + 1}

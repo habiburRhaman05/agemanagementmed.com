@@ -41,7 +41,7 @@ export function LabworkGuidanceBand({
         </div>
 
         {/* ── Right: navy content panel ── */}
-        <div className="flex flex-col justify-center bg-[#1a2744] px-8 py-10 sm:px-10 lg:px-20 lg:py-24">
+        <div className="flex flex-col items-center justify-center bg-[#1a2744] px-6 py-8 text-center sm:px-10 sm:py-10 lg:items-start lg:px-20 lg:py-24 lg:text-left">
           <h2 className="font-display text-[36px] font-semibold leading-snug text-white sm:text-[48px]">
             How We Use Labwork To<br className="hidden sm:block" /> Guide Your Plan
           </h2>
@@ -52,13 +52,13 @@ export function LabworkGuidanceBand({
             actually works.
           </p>
 
-          <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
+          <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-4 text-center sm:grid-cols-2 lg:text-left">
             {/* Left column */}
-            <div>
+            <div className="flex flex-col items-center lg:items-start">
               <p className="text-xs font-bold uppercase tracking-wide text-white/90">
                 We may review markers related to:
               </p>
-              <ul className="mt-2 space-y-1.5">
+              <ul className="mt-2 flex flex-col items-center space-y-1.5 lg:items-start">
                 {leftMarkers.map((item) => (
                       <li key={item} className="flex items-center gap-2 text-white" style={{ fontSize: 16 }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="12" viewBox="0 0 22 12" fill="none">
@@ -72,11 +72,11 @@ export function LabworkGuidanceBand({
             </div>
 
             {/* Right column */}
-            <div>
+            <div className="flex flex-col items-center lg:items-start">
               <p className="text-xs font-bold uppercase tracking-wide text-white/90">
                 These markers help explain things like:
               </p>
-              <ul className="mt-2 space-y-1.5">
+              <ul className="mt-2 flex flex-col items-center space-y-1.5 lg:items-start">
                 {rightMarkers.map((item) => (
                       <li key={item} className="flex items-center gap-2 text-white" style={{ fontSize: 16 }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="12" viewBox="0 0 22 12" fill="none">

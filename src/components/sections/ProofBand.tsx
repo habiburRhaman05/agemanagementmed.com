@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { m, useScroll, useTransform } from 'framer-motion'
+import { useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { Quote } from 'lucide-react'
 
@@ -119,14 +119,11 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
                 Recognized By
               </p>
               <ul className="flex flex-wrap items-center justify-center gap-x-16 gap-y-12">
-                {awards.map((award, i) => (
-                  <m.li 
-                    key={award.src}
-                    initial={{ opacity: 0, filter: 'blur(10px)' }}
-                    whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1, duration: 0.8 }}
-                  >
+                {/* Was an `m.li` fading in via `whileInView` — see
+                    Reveal.tsx/Stagger.tsx for why that observer can get
+                    permanently stuck and leave content invisible. */}
+                {awards.map((award) => (
+                  <li key={award.src}>
                     <Image
                       src={award.src}
                       alt={award.alt}
@@ -134,7 +131,7 @@ export function ProofBand({ eyebrow, stats, quotes, awards }: ProofBandProps) {
                       height={140}
                       className="h-14 w-auto object-contain opacity-50 grayscale transition-all duration-700 hover:opacity-100 hover:grayscale-0 hover:-translate-y-1"
                     />
-                  </m.li>
+                  </li>
                 ))}
               </ul>
             </div>

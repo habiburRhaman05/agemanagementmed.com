@@ -41,7 +41,7 @@ export function ChecklistCard({
   )
 
   const textBlock = (
-    <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12">
+    <div className="flex flex-col items-center justify-center px-6 py-8 text-center sm:px-10 sm:py-10 lg:items-start lg:px-12 lg:text-left">
       <h2 className="font-display text-[36px] font-medium leading-tight text-[#111214]">{heading}</h2>
       {lead ? (
         <p className="mt-4 text-[16px] font-normal leading-relaxed text-[#111214]">{lead}</p>
@@ -51,11 +51,11 @@ export function ChecklistCard({
         <p className="mt-6 text-[16px] font-semibold text-[#111214]">{itemsLabel}</p>
       ) : null}
 
-      <ul className="mt-3 space-y-2">
+      <ul className="mt-3 flex flex-col items-center space-y-2 lg:items-start">
         {items.map((item) => (
           <li key={item} className="flex items-start gap-2.5">
             <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-sage-600" strokeWidth={1.75} aria-hidden />
-            <span className="text-[16px] font-normal leading-snug text-[#111214]">{item}</span>
+            <span className="text-[16px] font-normal leading-snug text-[#111214] text-left">{item}</span>
           </li>
         ))}
       </ul>
@@ -80,9 +80,12 @@ export function ChecklistCard({
           {textBlock}
         </>
       ) : (
+        // See IconGridCard — same fix: `imageSide="right"` only swaps
+        // columns at `lg:`, so below that the image needs an explicit
+        // `order` to stay first instead of falling back to DOM order.
         <>
-          {textBlock}
-          {imageBlock}
+          <div className="order-2 lg:order-1">{textBlock}</div>
+          <div className="order-1 lg:order-2">{imageBlock}</div>
         </>
       )}
     </div>
