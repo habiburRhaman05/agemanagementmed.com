@@ -176,7 +176,21 @@ export function HeaderClient({ overlay = false, logoUrl, siteName, phone }: Head
                           <NavLabel label={item.label} />
                         </button>
                         <ChevronDown className="submenu-icon" size={10} aria-hidden />
-                        <ul>
+                        <ul
+                          onMouseEnter={() => {
+                            if (desktopCloseTimer.current) {
+                              clearTimeout(desktopCloseTimer.current)
+                              desktopCloseTimer.current = null
+                            }
+                          }}
+                          onMouseLeave={scheduleCloseDesktopMenu}
+                          onMouseDown={() => {
+                            if (desktopCloseTimer.current) {
+                              clearTimeout(desktopCloseTimer.current)
+                              desktopCloseTimer.current = null
+                            }
+                          }}
+                        >
                           {submenu.map((link) =>
                             link.href.startsWith('http') ? (
                               <li key={link.href} className="menu-li ">

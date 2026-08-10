@@ -175,7 +175,12 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 10;
+  /* Raised well above page content: the open mega-menu is a ~450px
+     absolutely-positioned panel hanging below this bar, so any positioned
+     hero element with a z-index above 10 used to paint over its lower half —
+     blocking pointer events so only the first few items were clickable and
+     closing the menu the moment the cursor crossed into the covering box. */
+  z-index: 1000;
 }
 
 #header.header-colored {
@@ -230,34 +235,38 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   padding-right: 18px;
 }
 
-/* Invisible hover bridge. The dropdown (`ul`, below) sits `margin-top: 12px`
+/* Invisible hover tunnel. The dropdown (`ul`, below) sits `margin-top: 12px`
    below the trigger, leaving a real 12px strip that belongs to neither the
-   trigger's own box nor the dropdown's box. The mouse crossing that strip to
-   reach the dropdown briefly hovers nothing that's a descendant of this `li`,
-   which reads as "left the menu" — closing (or scheduling a close of) a menu
-   the user is still trying to reach. This pseudo-element is invisible but is
-   a real descendant box spanning that gap, so hovering it still counts as
-   hovering the `li` and the dead zone disappears entirely.
+   trigger's own box nor the dropdown's box. But the dropdown is also ~450px
+   tall and much wider than the trigger, so a normal mouse path toward the
+   lower items slips off the dropdown's side or bottom into whatever's behind
+   the header, firing a real `mouseleave` and killing the menu before items
+   further down the list are reachable — the "only the first few items work"
+   bug. This pseudo-element is invisible but is a real descendant box: it
+   spans the 12px gap AND sits behind the whole open dropdown footprint, so
+   hovering anywhere over that rectangle still counts as hovering the `li`
+   and the dead zones disappear entirely.
 
-   Width matters here: the dropdown (`ul`, below) is `left: -20px` with
-   `min-width: 320px` — much wider than this trigger `li`, whose own box is
-   only as wide as its label. A bridge sized to the `li` (`right: -20px`)
-   only spans the left sliver of that 320px+ box, so a normal mouse path
-   toward items lower in the list (which sits further right than the
-   trigger label) slips off the bridge into whatever's behind the header,
-   firing a real `mouseleave` and killing the menu before those items are
-   reachable — the "only the first few items work" bug. Sizing the bridge
-   to match the dropdown's width (with a little slack for wrapped, wider
-   content) closes that gap for the whole box, not just the part under the
-   trigger. */
+   Layering: it sits *below* the dropdown (`ul` z-index is raised above it)
+   so it never intercepts a real click on a link, and it's painted above the
+   page content (``#header`` is z-index: 1000) so it beats any hero element
+   that would otherwise steal pointer events. It's only instantiated while
+   the menu is open, so the closed nav never leaves a big invisible hit-box
+   over the page. */
 #header .menu > ul > li.has-submenu::before {
   content: '';
+  display: none;
+  left: -24px;
   position: absolute;
-  left: -20px;
-  width: 340px;
   top: 100%;
-  height: 12px;
+  width: 368px;
+  height: 500px;
   z-index: 1;
+}
+
+#header .menu > ul > li.has-submenu:hover::before,
+#header .menu > ul > li.has-submenu.menu-li-open::before {
+  display: block;
 }
 
 #header .menu > ul > li:last-child {
@@ -345,7 +354,9 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   pointer-events: none;
   position: absolute;
   top: 100%;
-  z-index: 2;
+  /* Above the invisible hover tunnel (``::before`` z-index: 1) so real link
+     clicks always hit the panel, never the bridge beneath it. */
+  z-index: 50;
   transition: opacity 0.4s ease, margin-top 0.4s ease;
 }
 
