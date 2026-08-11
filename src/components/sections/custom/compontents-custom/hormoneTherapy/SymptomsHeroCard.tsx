@@ -123,7 +123,7 @@ export function SymptomsHeroCard({
                   <div className="space-y-5 mb-6 w-full">
                     {groups.map((group) => (
                       <div key={group.title}>
-                        <h3 className="text-[20px] font-semibold text-white mb-1.5">
+                        <h3 className="text-[20px] font-semibold text-white mb-1.5 text-left">
                           {group.title}
                         </h3>
                         {group.items?.length ? (
@@ -134,7 +134,7 @@ export function SymptomsHeroCard({
                           // a column — same fix as the homepage service
                           // checklist. lg+ reverts to the original flush-left
                           // list.
-                          <ul className="space-y-1 pl-1 flex flex-col items-center lg:items-stretch">
+                          <ul className="space-y-1 pl-1 flex flex-col sm:items-center items-start lg:items-stretch">
                             {group.items.map((item, idx) => (
                               <li key={idx} className="inline-flex items-start gap-2 text-base text-slate-200/90 font-normal text-left">
                                 <span className="text-[#519B99] shrink-0 font-sans">→</span>

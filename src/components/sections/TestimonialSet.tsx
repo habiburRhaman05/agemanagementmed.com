@@ -177,12 +177,12 @@ export function TestimonialSet({
               <AnimatePresence mode="wait" custom={direction} initial={false}>
                 <m.div
                   key={safeIndex}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.35, ease: 'easeInOut' }}
+                  // custom={direction}
+                  // variants={slideVariants}
+                  // initial="enter"
+                  // animate="center"
+                  // exit="exit"
+                  // transition={{ duration: 0.35, ease: 'easeInOut' }}
                   className="bg-white rounded-[24px] shadow-2xl p-6 sm:p-8 md:p-10 h-auto touch-pan-y"
                   // Touch/mouse swipe — previously only the arrow buttons could
                   // navigate, so a swipe (the natural mobile gesture for a

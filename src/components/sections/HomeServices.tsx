@@ -22,7 +22,7 @@ export function HomeServices({ eyebrow, title, lead }: HomeServicesProps) {
           <div className="lg-container">
             <h2 className="lg-top-title">{eyebrow}</h2>
             <h3 className="lg-title">{title}</h3>
-            <div className="lg-text lg-max-width-800">
+            <div className="lg-text lg-max-width-800 sm:pb-0 pb-20">
               <p>{lead}</p>
             </div>
           </div>
@@ -53,9 +53,9 @@ export function HomeServices({ eyebrow, title, lead }: HomeServicesProps) {
                     </div>
 
                     <div className="content mt-[16px]! md:mt-0!">
-                      <div className="top">
+                      <div className="top flex items-center justify-center flex-col">
                         <h3
-                          className={`lg-title${service.narrowTitle ? 'w-full' : ''} text-[30px]!`}
+                          className={`lg-title ${service.narrowTitle ? 'w-full' : ''} text-[30px]!`}
                         >
                           <Link href={service.href}>{service.title}</Link>
                         </h3>
@@ -66,11 +66,11 @@ export function HomeServices({ eyebrow, title, lead }: HomeServicesProps) {
                           </div>
                         ) : null}
 
-                        <div className="lg-text">
+                        <div className="lg-text w-full">
                           <div className="lg-list-check two-col">
-                            <ul>
+                            <ul className="w-full  sm:items-center items-start">
                               {service.benefits.map((benefit) => (
-                                <li key={benefit}>{benefit}</li>
+                                <li key={benefit} className="w-full ">{benefit}</li>
                               ))}
                             </ul>
                           </div>

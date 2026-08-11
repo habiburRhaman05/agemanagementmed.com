@@ -91,7 +91,7 @@ export function SafetyAndCandidacy({
 
           <ul className="space-y-2 my-2">
             {questions.map((question, idx) => (
-              <li key={idx} className="flex items-start justify-center lg:justify-start gap-2 text-[16px] text-[#111214] font-normal">
+              <li key={idx} className="flex items-start  lg:justify-start gap-2 text-[16px] text-[#111214] font-normal">
                 <span className="text-[#519B99] shrink-0 font-sans font-medium">→</span>
                 <span>{question}</span>
               </li>

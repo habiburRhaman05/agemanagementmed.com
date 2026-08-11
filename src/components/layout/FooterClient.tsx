@@ -151,7 +151,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
           </div>
         </div>
 
-        <div className=" flex items-center justify-between border-t border-canvas-300 py-6 text-center text-[14px] uppercase tracking-wide text-[#111214]">
+        <div className=" flex items-center flex-col sm:flex-row gap-y-2 justify-between border-t border-canvas-300 py-6 text-center text-[14px] uppercase tracking-wide text-[#111214]">
      <div className='flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5'>
            <span>
             Copyright &copy; {new Date().getFullYear()} {site.name}

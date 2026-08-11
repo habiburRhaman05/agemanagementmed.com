@@ -81,7 +81,7 @@ export function PatientBenefitsSection({
             {/* Benefits List */}
             <ul className="space-y-3">
               {benefits.map((benefit, idx) => (
-                <li key={idx} className="flex items-start justify-center lg:justify-start gap-2.5 text-[16px] text-[#111214] font-normal">
+                <li key={idx} className="flex items-start sm:justify-center text-left lg:justify-start gap-2.5 text-[16px] text-[#111214] font-normal">
                   <span className="text-[#519B99] shrink-0 font-sans font-medium">→</span>
                   <span>{benefit}</span>
                 </li>
