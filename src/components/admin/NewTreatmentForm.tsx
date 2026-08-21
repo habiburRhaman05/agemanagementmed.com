@@ -141,6 +141,12 @@ export function NewTreatmentForm() {
           seo: {
             title: values.seoTitle || values.heroTitle,
             description: values.seoDescription || values.heroLead,
+            h1: values.seoH1 || null,
+            ogTitle: values.seoOgTitle || null,
+            ogDescription: values.seoOgDescription || null,
+            ogType: values.seoOgType || null,
+            twitterTitle: values.seoTwitterTitle || null,
+            twitterDescription: values.seoTwitterDescription || null,
             canonical: values.href,
             keywords: values.seoKeywords || null,
             ogImageUrl: values.seoOgImageSrc || values.heroImageSrc || null,
@@ -353,6 +359,40 @@ export function NewTreatmentForm() {
           <input {...register('seoOgImageSrc')} placeholder="defaults to hero image" className={inputClass} />
           <FieldError message={errors.seoOgImageSrc?.message} />
         </div>
+        <div>
+          <label className="block text-xs font-medium text-gray-500">
+            H1 override <span className="font-normal text-gray-400">— replaces the hero heading on the page itself, not just &lt;title&gt;</span>
+          </label>
+          <input {...register('seoH1')} placeholder="Defaults to the hero title above" maxLength={120} className={inputClass} />
+          <FieldError message={errors.seoH1?.message} />
+        </div>
+
+        <div className="border-t border-canvas-200 pt-4">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Open Graph <span className="font-normal normal-case text-gray-400">— falls back to Meta title/description above when left blank</span>
+          </h3>
+          <div className="mt-3 space-y-3">
+            <input {...register('seoOgTitle')} placeholder="OG title" maxLength={70} className={inputClass} />
+            <FieldError message={errors.seoOgTitle?.message} />
+            <textarea {...register('seoOgDescription')} placeholder="OG description" maxLength={300} rows={2} className={inputClass} />
+            <FieldError message={errors.seoOgDescription?.message} />
+            <input {...register('seoOgType')} placeholder="OG type (defaults to “website”)" className={inputClass} />
+            <FieldError message={errors.seoOgType?.message} />
+          </div>
+        </div>
+
+        <div className="border-t border-canvas-200 pt-4">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Twitter Card <span className="font-normal normal-case text-gray-400">— falls back to Open Graph above when left blank</span>
+          </h3>
+          <div className="mt-3 space-y-3">
+            <input {...register('seoTwitterTitle')} placeholder="Twitter title" maxLength={70} className={inputClass} />
+            <FieldError message={errors.seoTwitterTitle?.message} />
+            <textarea {...register('seoTwitterDescription')} placeholder="Twitter description" maxLength={300} rows={2} className={inputClass} />
+            <FieldError message={errors.seoTwitterDescription?.message} />
+          </div>
+        </div>
+
         <label className="flex items-center gap-2">
           <input
             type="checkbox"

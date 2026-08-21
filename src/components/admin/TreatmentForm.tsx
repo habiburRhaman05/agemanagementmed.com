@@ -52,6 +52,12 @@ interface SeoData {
   ogImageUrl: string | null
   noindex: boolean
   schemaJsonLd: string | null
+  h1: string | null
+  ogTitle: string | null
+  ogDescription: string | null
+  ogType: string | null
+  twitterTitle: string | null
+  twitterDescription: string | null
 }
 
 const ADVANCED_KEYS = ['symptoms', 'sections', 'process', 'candidacy', 'providers', 'related', 'customsSection']
@@ -117,6 +123,12 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
       seoCanonical: seo?.canonical ?? treatment.href,
       seoKeywords: seo?.keywords ?? '',
       seoOgImageSrc: seo?.ogImageUrl ?? '',
+      seoH1: seo?.h1 ?? '',
+      seoOgTitle: seo?.ogTitle ?? '',
+      seoOgDescription: seo?.ogDescription ?? '',
+      seoOgType: seo?.ogType ?? '',
+      seoTwitterTitle: seo?.twitterTitle ?? '',
+      seoTwitterDescription: seo?.twitterDescription ?? '',
     },
   })
 
@@ -177,6 +189,12 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
             ogImageUrl: values.seoOgImageSrc || null,
             noindex: seoNoindex,
             schemaJsonLd: seoSchemaJsonLd.trim() || null,
+            h1: values.seoH1 || null,
+            ogTitle: values.seoOgTitle || null,
+            ogDescription: values.seoOgDescription || null,
+            ogType: values.seoOgType || null,
+            twitterTitle: values.seoTwitterTitle || null,
+            twitterDescription: values.seoTwitterDescription || null,
           },
         }),
       })
@@ -418,6 +436,13 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           <FieldError message={errors.seoKeywords?.message} />
         </div>
         <div>
+          <label className="block text-xs font-medium text-gray-500">
+            H1 override <span className="font-normal text-gray-400">— replaces the hero heading on the page itself, not just &lt;title&gt;</span>
+          </label>
+          <input {...register('seoH1')} placeholder="Defaults to the hero title above" maxLength={120} className={inputClass} />
+          <FieldError message={errors.seoH1?.message} />
+        </div>
+        <div>
           <ImageUploader
             label="Open Graph image"
             folder="treatments"
@@ -426,6 +451,33 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           />
           <FieldError message={errors.seoOgImageSrc?.message} />
         </div>
+
+        <div className="border-t border-canvas-200 pt-4">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Open Graph <span className="font-normal normal-case text-gray-400">— falls back to Meta title/description above when left blank</span>
+          </h3>
+          <div className="mt-3 space-y-3">
+            <input {...register('seoOgTitle')} placeholder="OG title" maxLength={70} className={inputClass} />
+            <FieldError message={errors.seoOgTitle?.message} />
+            <textarea {...register('seoOgDescription')} placeholder="OG description" maxLength={300} rows={2} className={inputClass} />
+            <FieldError message={errors.seoOgDescription?.message} />
+            <input {...register('seoOgType')} placeholder="OG type (defaults to “website”)" className={inputClass} />
+            <FieldError message={errors.seoOgType?.message} />
+          </div>
+        </div>
+
+        <div className="border-t border-canvas-200 pt-4">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Twitter Card <span className="font-normal normal-case text-gray-400">— falls back to Open Graph above when left blank</span>
+          </h3>
+          <div className="mt-3 space-y-3">
+            <input {...register('seoTwitterTitle')} placeholder="Twitter title" maxLength={70} className={inputClass} />
+            <FieldError message={errors.seoTwitterTitle?.message} />
+            <textarea {...register('seoTwitterDescription')} placeholder="Twitter description" maxLength={300} rows={2} className={inputClass} />
+            <FieldError message={errors.seoTwitterDescription?.message} />
+          </div>
+        </div>
+
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={seoNoindex} onChange={(e) => setSeoNoindex(e.target.checked)} className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600" />
           <span className="text-xs text-gray-600">No index</span>

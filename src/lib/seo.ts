@@ -75,6 +75,22 @@ export function buildMetadata(
 }
 
 /**
+ * `PageSeo.h1` for one path, if an admin has set one — a hero-`<h1>`
+ * override, distinct from `<title>`. Treatment pages and blog posts already
+ * read their own `seo.h1`/`post.seo.h1` inline (see content/treatments/main.ts
+ * and the blog post page); this is for the handful of static marketing pages
+ * (contact-us, our-experts, home, services) that never fetched *any* PageSeo
+ * data at all — their titles/descriptions are static content, so admins
+ * editing those paths in the SEO admin screen had no effect whatsoever.
+ * Callers still fall back to their existing hardcoded/content-file title
+ * unchanged when this returns `null`.
+ */
+export async function getPageH1(path: string): Promise<string | null> {
+  const row = await prisma.pageSeo.findUnique({ where: { path }, select: { h1: true } })
+  return row?.h1 || null
+}
+
+/**
  * Admin can set a raw JSON-LD override per path (`PageSeo.schemaJsonLd`).
  * Returns the parsed object if set and valid, else `null` so callers fall
  * back to auto-generated schema.

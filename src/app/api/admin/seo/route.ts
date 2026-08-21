@@ -33,6 +33,13 @@ const SeoSchema = z.object({
   ogImageUrl: z.string().max(500).optional().nullable(),
   noindex: z.boolean().optional(),
   schemaJsonLd: z.string().max(20000).optional().nullable(),
+  keywords: z.string().max(255).optional().nullable(),
+  h1: z.string().max(120).optional().nullable(),
+  ogTitle: z.string().max(70).optional().nullable(),
+  ogDescription: z.string().max(300).optional().nullable(),
+  ogType: z.string().max(50).optional().nullable(),
+  twitterTitle: z.string().max(70).optional().nullable(),
+  twitterDescription: z.string().max(300).optional().nullable(),
 })
 
 /** Every known path on the site, joined with its PageSeo row if one exists. */

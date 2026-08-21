@@ -22,6 +22,16 @@ export const blogFormSchema = z.object({
     ogImage: z.string().optional(),
     canonical: z.string().optional(),
     noindex: z.boolean(),
+    keywords: z.string().max(255, 'Meta keywords must be 255 characters or fewer').optional(),
+    h1: z.string().max(120, 'H1 must be 120 characters or fewer').optional(),
+    ogTitle: z.string().max(70, 'OG title must be 70 characters or fewer').optional(),
+    ogDescription: z.string().max(300, 'OG description must be 300 characters or fewer').optional(),
+    ogType: z.string().max(50).optional(),
+    twitterTitle: z.string().max(70, 'Twitter title must be 70 characters or fewer').optional(),
+    twitterDescription: z
+      .string()
+      .max(300, 'Twitter description must be 300 characters or fewer')
+      .optional(),
   }),
 })
 

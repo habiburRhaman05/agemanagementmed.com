@@ -27,6 +27,13 @@ const PostSchema = z.object({
       ogImage: z.string().optional().nullable(),
       canonical: z.string().optional().nullable(),
       noindex: z.boolean().default(false),
+      keywords: z.string().max(255).optional().nullable(),
+      h1: z.string().max(120).optional().nullable(),
+      ogTitle: z.string().max(70).optional().nullable(),
+      ogDescription: z.string().max(300).optional().nullable(),
+      ogType: z.string().max(50).optional().nullable(),
+      twitterTitle: z.string().max(70).optional().nullable(),
+      twitterDescription: z.string().max(300).optional().nullable(),
     })
     .optional()
     .nullable(),

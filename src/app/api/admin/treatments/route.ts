@@ -58,6 +58,12 @@ const CreateTreatmentSchema = z.object({
       ogImageUrl: z.string().optional().nullable(),
       noindex: z.boolean().optional(),
       schemaJsonLd: z.string().optional().nullable(),
+      h1: z.string().optional().nullable(),
+      ogTitle: z.string().optional().nullable(),
+      ogDescription: z.string().optional().nullable(),
+      ogType: z.string().optional().nullable(),
+      twitterTitle: z.string().optional().nullable(),
+      twitterDescription: z.string().optional().nullable(),
     })
     .optional(),
 })
@@ -121,6 +127,12 @@ export async function POST(request: Request) {
       ogImageUrl: seo?.ogImageUrl,
       noindex: seo?.noindex ?? false,
       schemaJsonLd: seo?.schemaJsonLd,
+      h1: seo?.h1,
+      ogTitle: seo?.ogTitle,
+      ogDescription: seo?.ogDescription,
+      ogType: seo?.ogType,
+      twitterTitle: seo?.twitterTitle,
+      twitterDescription: seo?.twitterDescription,
     },
   })
 

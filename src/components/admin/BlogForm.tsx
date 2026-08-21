@@ -41,6 +41,13 @@ interface Props {
       ogImage: string | null
       canonical: string | null
       noindex: boolean
+      keywords: string | null
+      h1: string | null
+      ogTitle: string | null
+      ogDescription: string | null
+      ogType: string | null
+      twitterTitle: string | null
+      twitterDescription: string | null
     } | null
   }
   categories: CategoryType[]
@@ -82,6 +89,13 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
         ogImage: post?.seo?.ogImage || '',
         canonical: post?.seo?.canonical || '',
         noindex: post?.seo?.noindex || false,
+        keywords: post?.seo?.keywords || '',
+        h1: post?.seo?.h1 || '',
+        ogTitle: post?.seo?.ogTitle || '',
+        ogDescription: post?.seo?.ogDescription || '',
+        ogType: post?.seo?.ogType || '',
+        twitterTitle: post?.seo?.twitterTitle || '',
+        twitterDescription: post?.seo?.twitterDescription || '',
       },
     },
   })
@@ -127,6 +141,13 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
         ogImage: data.seo.ogImage || null,
         canonical: data.seo.canonical || null,
         noindex: data.seo.noindex,
+        keywords: data.seo.keywords || null,
+        h1: data.seo.h1 || null,
+        ogTitle: data.seo.ogTitle || null,
+        ogDescription: data.seo.ogDescription || null,
+        ogType: data.seo.ogType || null,
+        twitterTitle: data.seo.twitterTitle || null,
+        twitterDescription: data.seo.twitterDescription || null,
       },
     }
 
@@ -439,6 +460,87 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                     className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                   />
                 </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-500">
+                    Meta keywords (comma-separated)
+                  </label>
+                  <input
+                    type="text"
+                    {...register('seo.keywords')}
+                    placeholder="hormone therapy, wellness, Savannah GA"
+                    className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+                  />
+                  <FieldError message={errors.seo?.keywords?.message} />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-500">
+                    H1 override <span className="font-normal text-gray-400">— replaces the article's on-page heading, not just &lt;title&gt;</span>
+                  </label>
+                  <input
+                    type="text"
+                    {...register('seo.h1')}
+                    maxLength={120}
+                    placeholder="Defaults to the post title"
+                    className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+                  />
+                  <FieldError message={errors.seo?.h1?.message} />
+                </div>
+
+                <div className="border-t border-canvas-200 pt-3">
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                    Open Graph <span className="font-normal normal-case text-gray-400">— falls back to Meta title/description above when left blank</span>
+                  </h4>
+                  <div className="mt-2 space-y-3">
+                    <input
+                      type="text"
+                      {...register('seo.ogTitle')}
+                      placeholder="OG title"
+                      maxLength={70}
+                      className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+                    />
+                    <FieldError message={errors.seo?.ogTitle?.message} />
+                    <textarea
+                      {...register('seo.ogDescription')}
+                      placeholder="OG description"
+                      maxLength={300}
+                      rows={2}
+                      className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+                    />
+                    <FieldError message={errors.seo?.ogDescription?.message} />
+                    <input
+                      type="text"
+                      {...register('seo.ogType')}
+                      placeholder="OG type (defaults to “article”)"
+                      className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+                    />
+                    <FieldError message={errors.seo?.ogType?.message} />
+                  </div>
+                </div>
+
+                <div className="border-t border-canvas-200 pt-3">
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                    Twitter Card <span className="font-normal normal-case text-gray-400">— falls back to Open Graph above when left blank</span>
+                  </h4>
+                  <div className="mt-2 space-y-3">
+                    <input
+                      type="text"
+                      {...register('seo.twitterTitle')}
+                      placeholder="Twitter title"
+                      maxLength={70}
+                      className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+                    />
+                    <FieldError message={errors.seo?.twitterTitle?.message} />
+                    <textarea
+                      {...register('seo.twitterDescription')}
+                      placeholder="Twitter description"
+                      maxLength={300}
+                      rows={2}
+                      className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+                    />
+                    <FieldError message={errors.seo?.twitterDescription?.message} />
+                  </div>
+                </div>
+
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"

@@ -174,8 +174,11 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
       <section className="relative overflow-hidden bg-[#0f1c3f] pt-36 pb-16 sm:pt-44 sm:pb-20">
         <Container className="relative text-center">
           <p className="text-[13px] font-bold tracking-[0.15em] text-white uppercase">Blog</p>
+          {/* PostSeo.h1 is a deliberate hero-H1 override, distinct from
+              metaTitle (<title>-only) — wins here when an admin has set one,
+              same pattern already used for treatment pages. */}
           <h1 className="mx-auto mt-4 max-w-3xl font-display text-[32px] leading-tight text-white sm:text-[44px]">
-            {post.title}
+            {post.seo?.h1 || post.title}
           </h1>
         </Container>
       </section>
@@ -262,7 +265,7 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
               </p>
 
               <h1 className="mt-3 font-display text-[28px] leading-tight text-[#15224c] sm:text-[34px] lg:text-[38px]">
-                {post.title}
+                {post.seo?.h1 || post.title}
               </h1>
 
               <div className="mt-4">
