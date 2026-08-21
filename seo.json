@@ -1,0 +1,4630 @@
+{
+  "https://www.agemanagementmed.com/platelet-rich-plasma-hair/": {
+    "url": "https://www.agemanagementmed.com/platelet-rich-plasma-hair/",
+    "sourceFile": "_platelet-rich-plasma-hair_.html",
+    "pageTitle": "PRP Hair Restoration in Savannah, GA | Hair Loss Treatment",
+    "metaTitle": "PRP Hair Restoration in Savannah, GA | Hair Loss Treatment",
+    "metaDescription": "PRP hair restoration in Savannah uses your body's growth factors to support natural hair regrowth and improve thinning or hair loss.",
+    "h1Hero": "PRP Hair Restoration and Hair Loss Treatment in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/platelet-rich-plasma-hair/",
+    "openGraph": {
+      "title": "PRP Hair Restoration in Savannah, GA  Hair Loss Treatment",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Hair Restoration Services",
+            "item": "https://www.agemanagementmed.com/platelet-rich-plasma-hair/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is PRP hair treatment painful?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most patients experience minimal discomfort. We use topical numbing agents and fine needles to ensure your comfort throughout the procedure."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many treatments will I need?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Typically, we recommend 3-4 initial treatments spaced 4-6 weeks apart, followed by maintenance treatments every 6-12 months."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When will I see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "While individual results vary, most patients begin noticing improvements in hair quality around 2-3 months, with optimal results visible at 6-12 months."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are there any side effects?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PRP is extremely safe since it uses your own blood. Some patients may experience mild scalp tenderness or slight swelling for 1-2 days post-treatment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can PRP be combined with other treatments?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! PRP complements other hair loss treatments including topical medications, laser therapy, and can enhance hair transplant results."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/concierge-medical-weight-loss/female/": {
+    "url": "https://www.agemanagementmed.com/concierge-medical-weight-loss/female/",
+    "sourceFile": "_concierge-medical-weight-loss_female_.html",
+    "pageTitle": "Medical Weight Loss for Women in Savannah, GA | SAMM",
+    "metaTitle": "Medical Weight Loss for Women in Savannah, GA | SAMM",
+    "metaDescription": "Personalized medical weight loss for women in Savannah using lab testing, body composition data, hormone insights, and ongoing provider guidance.",
+    "h1Hero": "Medical Weight Loss for Women",
+    "canonical": "https://www.agemanagementmed.com/concierge-medical-weight-loss/female/",
+    "openGraph": {
+      "title": "Medical Weight Loss for Women in Savannah, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Medical Weight Loss",
+            "item": "https://www.agemanagementmed.com/concierge-medical-weight-loss/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Medical Weight Loss for Women",
+            "item": "https://www.agemanagementmed.com/concierge-medical-weight-loss/female/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What makes medical weight loss different?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Medical weight loss uses lab testing, body composition data, and provider guidance to create a personalized plan instead of a generic program."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need labwork to start?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, in most cases. Labwork helps us understand your metabolism, hormones, and overall health so we can build an effective plan."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a body composition scan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is a scan that measures body fat, muscle mass, and other key metrics to give a more accurate picture than weight alone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How often will I have follow ups?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Follow ups are scheduled regularly so we can track progress and adjust your plan as needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are medications required?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not always. Some patients benefit from medication, while others succeed with lifestyle and metabolic support alone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How quickly will I see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Results vary, but most patients begin to see changes within the first few weeks as their plan is adjusted."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this program safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Your provider reviews your health history and labwork to ensure your plan is safe and appropriate."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/concierge-medical-weight-loss/male/": {
+    "url": "https://www.agemanagementmed.com/concierge-medical-weight-loss/male/",
+    "sourceFile": "_concierge-medical-weight-loss_male_.html",
+    "pageTitle": "Medical Weight Loss for Men in Savannah, GA | SAMM",
+    "metaTitle": "Medical Weight Loss for Men in Savannah, GA | SAMM",
+    "metaDescription": "Personalized medical weight loss for men in Savannah using lab testing, body composition data, metabolic insights, and ongoing provider guidance.",
+    "h1Hero": "Medical Weight Loss for Men",
+    "canonical": "https://www.agemanagementmed.com/concierge-medical-weight-loss/male/",
+    "openGraph": {
+      "title": "Medical Weight Loss for Men in Savannah, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Medical Weight Loss",
+            "item": "https://www.agemanagementmed.com/concierge-medical-weight-loss/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Medical Weight Loss for Men",
+            "item": "https://www.agemanagementmed.com/concierge-medical-weight-loss/male/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What makes medical weight loss different?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Medical weight loss uses lab testing, body composition data, and provider guidance to create a personalized plan instead of a generic program."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need labwork to start?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, in most cases. Labwork helps us understand your metabolism, hormones, and overall health so we can build an effective plan."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a body composition scan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is a scan that measures body fat, muscle mass, and other key metrics to give a more accurate picture than weight alone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How often will I have follow ups?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Follow ups are scheduled regularly so we can track progress and adjust your plan as needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are medications required?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not always. Some patients benefit from medication, while others succeed with lifestyle and metabolic support alone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How quickly will I see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Results vary, but most patients begin to see changes within the first few weeks as their plan is adjusted."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this program safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Your provider reviews your health history and labwork to ensure your plan is safe and appropriate."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/perimenopause-menopause/": {
+    "url": "https://www.agemanagementmed.com/perimenopause-menopause/",
+    "sourceFile": "_perimenopause-menopause_.html",
+    "pageTitle": "Perimenopause & Menopause Treatment in Savannah, GA | SAMM",
+    "metaTitle": "Perimenopause & Menopause Treatment in Savannah, GA | SAMM",
+    "metaDescription": "Personalized perimenopause and menopause care in Savannah with hormone testing and therapies for hot flashes, brain fog, mood, libido, and energy.",
+    "h1Hero": "Perimenopause and Menopause Treatment in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/perimenopause-menopause/",
+    "openGraph": {
+      "title": "Perimenopause & Menopause Treatment in Savannah, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Perimenopause & Menopause Relief Solutions",
+            "item": "https://www.agemanagementmed.com/perimenopause-menopause/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What's the difference between perimenopause and menopause?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Perimenopause is the transition phase leading up to menopause when hormone levels begin fluctuating. Menopause officially begins after 12 consecutive months without a menstrual cycle."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the early signs of perimenopause?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Early symptoms may include irregular periods, mood changes, fatigue, sleep issues, brain fog, low libido, and hot flashes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When should I consider hormone therapy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If symptoms are affecting your quality of life, daily routine, sleep, relationships, or energy levels, it may be time to consider a medical evaluation and discuss hormone therapy options."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can perimenopause cause weight gain?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Hormonal changes can affect metabolism, muscle mass, insulin sensitivity, and fat storage, making weight management more difficult."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is hormone therapy safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hormone therapy may be safe and effective for many women when carefully monitored by a qualified medical provider. Treatment plans should always be personalized based on medical history, symptoms, and labwork."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need lab testing before treatment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Comprehensive lab testing helps us understand hormone levels, thyroid function, metabolic health, and other important markers before creating a treatment plan."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does treatment take to work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Some women notice improvements within weeks, while others may need more time and ongoing adjustments depending on their symptoms and treatment plan."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/rejuvenation-enhancement/female/": {
+    "url": "https://www.agemanagementmed.com/rejuvenation-enhancement/female/",
+    "sourceFile": "_rejuvenation-enhancement_female_.html",
+    "pageTitle": "Women's Sexual Wellness in Savannah, GA | SAMM",
+    "metaTitle": "Women's Sexual Wellness in Savannah, GA | SAMM",
+    "metaDescription": "Explore women's sexual wellness treatments in Savannah for vaginal dryness, painful intercourse, low libido, sensitivity concerns, and confidence.",
+    "h1Hero": "Women's Sexual Wellness in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/rejuvenation-enhancement/female/",
+    "openGraph": {
+      "title": "Women's Sexual Wellness in Savannah, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Sexual Performance & Rejuvenation Therapies",
+            "item": "https://www.agemanagementmed.com/rejuvenation-enhancement/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Sexual Satisfaction for Women",
+            "item": "https://www.agemanagementmed.com/rejuvenation-enhancement/female/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What causes changes in sexual health for women?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Changes in female sexual wellness are often related to hormonal shifts, aging, childbirth, or menopause. These changes can affect vaginal tissue, lubrication, sensitivity, and overall comfort during intimacy. Treatments such as hormone therapy, laser vaginal rejuvenation, and PRP can help restore tissue health and sexual responsiveness."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can vaginal rejuvenation help with dryness or discomfort?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Treatments like CO2 laser therapy help stimulate collagen production in vaginal tissue, which can improve lubrication, elasticity, and overall tissue health. Many women notice reduced dryness and increased comfort during intimacy after treatment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the Plasma Shot (PRP therapy) for women?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PRP therapy, often referred to as the O-Shot, uses platelet-rich plasma from your own blood to stimulate tissue regeneration and improve circulation in areas involved in sexual response. This may help improve sensitivity, arousal, and orgasm quality for some women."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can these treatments help after menopause?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Many women seek treatment during or after menopause when hormonal changes lead to vaginal dryness, thinning tissue, and reduced libido. Treatments such as hormone therapy, PRP, and laser therapy can help restore comfort and sexual wellness."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there downtime after treatment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most treatments require little to no downtime. PRP treatments typically allow patients to resume normal activities immediately, while laser treatments may involve mild sensitivity or discharge for a short period."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many treatments are usually needed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The number of treatments depends on the therapy used and the patient's individual goals. Some PRP treatments may show results after one session, while laser therapy is often performed as a series of treatments followed by occasional maintenance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is vaginal rejuvenation safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vaginal rejuvenation treatments performed by trained medical professionals are generally safe and minimally invasive. At Savannah Age Management Medicine, all therapies are performed under medical supervision using established treatment protocols."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/rejuvenation-enhancement/male/": {
+    "url": "https://www.agemanagementmed.com/rejuvenation-enhancement/male/",
+    "sourceFile": "_rejuvenation-enhancement_male_.html",
+    "pageTitle": "ED & Low Libido Treatment in Savannah, GA | Men's Sexual Wellness",
+    "metaTitle": "ED & Low Libido Treatment in Savannah, GA | Men's Sexual Wellness",
+    "metaDescription": "Explore men's sexual wellness treatments in Savannah for erectile dysfunction, low libido, circulation, hormone balance, and sexual confidence.",
+    "h1Hero": "Erectile Dysfunction and Low Libido Treatment for Men in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/rejuvenation-enhancement/male/",
+    "openGraph": {
+      "title": "ED & Low Libido Treatment in Savannah, GA  Men's Sexual Wellness",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Sexual Performance & Rejuvenation Therapies",
+            "item": "https://www.agemanagementmed.com/rejuvenation-enhancement/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Sexual Drive for Men",
+            "item": "https://www.agemanagementmed.com/rejuvenation-enhancement/male/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What causes erectile dysfunction?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Erectile dysfunction can be caused by reduced blood flow, hormonal imbalance, nerve issues, stress, or underlying health conditions such as diabetes or cardiovascular disease."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is erectile dysfunction supported without medication?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Treatments such as shockwave therapy, hormone optimization, and PRP therapy can address the root causes of erectile dysfunction without relying solely on medication."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How quickly will I see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Some patients notice improvements within weeks, while others experience gradual progress over several months as tissue regeneration and circulation improve."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are these treatments safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "All therapies offered at our clinic are performed by trained medical professionals and use established medical protocols."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/glp-1-microdosing/female/": {
+    "url": "https://www.agemanagementmed.com/glp-1-microdosing/female/",
+    "sourceFile": "_glp-1-microdosing_female_.html",
+    "pageTitle": "GLP-1 Microdosing for Women in Savannah, GA | SAMM",
+    "metaTitle": "GLP-1 Microdosing for Women in Savannah, GA | SAMM",
+    "metaDescription": "Low-dose, lab-guided GLP-1 therapy for women in Savannah to quiet food noise, support metabolic health and insulin sensitivity, and help preserve lean muscle.",
+    "h1Hero": "GLP-1 Microdosing for Women",
+    "canonical": "https://www.agemanagementmed.com/glp-1-microdosing/female/",
+    "openGraph": {
+      "title": "GLP-1 Microdosing for Women in Savannah, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Glp 1 Microdosing/female",
+            "item": "https://www.agemanagementmed.com/glp-1-microdosing/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "GLP-1 Microdosing for Women",
+            "item": "https://www.agemanagementmed.com/glp-1-microdosing/female/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the difference between standard dosing and microdosing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard dosing follows a manufacturer's \"escalation\" schedule aimed at maximum weight loss. Microdosing uses significantly smaller amounts to achieve metabolic \"quiet\" and health benefits without the \"food aversion\" or GI distress."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will I still lose weight?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, but the focus is on quality weight loss. By losing weight more gradually at a lower dose, you are much more likely to preserve muscle mass and maintain your metabolic rate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I do this if I'm already on Hormone Replacement Therapy (BHRT)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. In fact, many patients find that microdosing GLP-1s is the \"missing piece\" that helps their BHRT work more effectively by fixing underlying insulin resistance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I know what my \"microdose\" is?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "That is where our expertise comes in. We start low and use your feedback—and your lab data—to find the exact level where your cravings vanish and your energy peaks."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/glp-1-microdosing/male/": {
+    "url": "https://www.agemanagementmed.com/glp-1-microdosing/male/",
+    "sourceFile": "_glp-1-microdosing_male_.html",
+    "pageTitle": "GLP-1 Microdosing for Men in Savannah, GA | SAMM",
+    "metaTitle": "GLP-1 Microdosing for Men in Savannah, GA | SAMM",
+    "metaDescription": "Low-dose, lab-guided GLP-1 therapy for men in Savannah to quiet food noise, support metabolic health and insulin sensitivity, and help preserve lean muscle.",
+    "h1Hero": "GLP-1 Microdosing for Men",
+    "canonical": "https://www.agemanagementmed.com/glp-1-microdosing/male/",
+    "openGraph": {
+      "title": "GLP-1 Microdosing for Men in Savannah, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Glp 1 Microdosing/male",
+            "item": "https://www.agemanagementmed.com/glp-1-microdosing/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "GLP-1 Microdosing for Men",
+            "item": "https://www.agemanagementmed.com/glp-1-microdosing/male/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the difference between standard dosing and microdosing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard dosing follows a manufacturer's \"escalation\" schedule aimed at maximum weight loss. Microdosing uses significantly smaller amounts to achieve metabolic \"quiet\" and health benefits without the \"food aversion\" or GI distress."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will I still lose weight?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, but the focus is on quality weight loss. By losing weight more gradually at a lower dose, you are much more likely to preserve muscle mass and maintain your metabolic rate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I do this if I'm already on Hormone Replacement Therapy (BHRT)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. In fact, many patients find that microdosing GLP-1s is the \"missing piece\" that helps their BHRT work more effectively by fixing underlying insulin resistance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I know what my \"microdose\" is?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "That is where our expertise comes in. We start low and use your feedback—and your lab data—to find the exact level where your cravings vanish and your energy peaks."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/platelet-rich-plasma-hair/male/": {
+    "url": "https://www.agemanagementmed.com/platelet-rich-plasma-hair/male/",
+    "sourceFile": "_platelet-rich-plasma-hair_male_.html",
+    "pageTitle": "PRP Hair Restoration for Men in Savannah, GA | SAMM",
+    "metaTitle": "PRP Hair Restoration for Men in Savannah, GA | SAMM",
+    "metaDescription": "PRP hair restoration for men in Savannah supports thinning hair, crown thinning, and receding hairlines using your body's natural growth factors.",
+    "h1Hero": "PRP Hair Restoration for Men in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/platelet-rich-plasma-hair/male/",
+    "openGraph": {
+      "title": "PRP Hair Restoration for Men in Savannah, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Hair Restoration Services",
+            "item": "https://www.agemanagementmed.com/platelet-rich-plasma-hair/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Platelet Rich Plasma (PRP) for Men",
+            "item": "https://www.agemanagementmed.com/platelet-rich-plasma-hair/male/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is PRP hair treatment painful?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most patients experience minimal discomfort. We use topical numbing agents and fine needles to ensure your comfort throughout the procedure."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many treatments will I need?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Typically, we recommend 3-4 initial treatments spaced 4-6 weeks apart, followed by maintenance treatments every 6-12 months."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When will I see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "While individual results vary, most patients begin noticing improvements in hair quality around 2-3 months, with optimal results visible at 6-12 months."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are there any side effects?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PRP is extremely safe since it uses your own blood. Some patients may experience mild scalp tenderness or slight swelling for 1-2 days post-treatment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can PRP be combined with other treatments?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! PRP complements other hair loss treatments including topical medications, laser therapy, and can enhance hair transplant results."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/": {
+    "url": "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/",
+    "sourceFile": "_bioidentical-hormone-replacement-therapy_.html",
+    "pageTitle": "Bioidentical Hormone Therapy in Savannah, GA | BHRT",
+    "metaTitle": "Bioidentical Hormone Therapy in Savannah, GA | BHRT",
+    "metaDescription": "Bioidentical hormone therapy in Savannah for men and women, with lab-guided care for energy, libido, sleep, mood, metabolism, and hormonal balance.",
+    "h1Hero": "Bioidentical Hormone Replacement Therapy in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/",
+    "openGraph": {
+      "title": "Bioidentical Hormone Therapy in Savannah, GA  BHRT",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bioidentical Hormone Replacement Therapy",
+            "item": "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": "Bioidentical Hormone Replacement Therapy (BHRT)",
+        "description": "Bioidentical Hormone Replacement Therapy (BHRT) for men and women is a specialty at Savannah Age Management Medicine. Each patient is assessed individually based on lab values and reported symptoms. Learn more about the BHRT program from Medical Director Harry Collins, DO, FACOG, and John Kurtz, PA, MPAS.",
+        "thumbnailUrl": "https://vumbnail.com/1081534475.jpg",
+        "uploadDate": "2025-05-05T11:53:00-04:00",
+        "duration": "PT1M59S",
+        "contentUrl": "https://vimeo.com/1081534475",
+        "embedUrl": "https://player.vimeo.com/video/1081534475",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Savannah Age Management Medicine",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.agemanagementmed.com/wp-content/uploads/logo.png"
+          }
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is BHRT?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bioidentical Hormone Replacement Therapy (BHRT) uses hormones that are chemically identical to the ones your body naturally produces. It is designed to restore balance and relieve symptoms of hormone deficiencies or imbalances, particularly during aging, menopause, or andropause."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Differences between BHRT, HRT, and TRT",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "BHRT is the most comprehensive way to treat dysregulated hormone levels in both men and women. Click the link below for more information on the differences between these treatment methods."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I know if I need BHRT?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Signs that males and females might need BHRT: Fatigue or energy loss, Loss of libido or arousal response, Irregular menstrual cycles, Hot flashes or night sweats, Mood changes or fluctuation, Memory issues, Weight gain, Sleep problems, Muscle loss."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is BHRT different from traditional hormone therapy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "BHRT hormones match your body's natural hormones exactly. Our program is designed to tailor dosing precisely to your levels, symptoms, and needs. For more even and sustained results, our program leverages injections rather than pellets."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Patients will begin to experience initial improvements in the first 2-3 weeks, with full benefits within 3-6 months. Regular monitoring and adjustment of medication levels may be required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What benefits can I expect from treatment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Benefits of BHRT include but are not limited to: Improved energy levels, Better sleep quality, Enhanced mood stability, Increased mental clarity, Improved libido, Better muscle tone, Reduced hot flashes, More stable weight management."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are hormone medications, lab work, and appointments included?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Patient cost includes appointment and assessment time, fitness evaluation and recommendation, body composition scans, nutritional guidance, in-office lab draws, quick care, and access to Fullscript supplements. The cost of labs and medications are up to the patient, or can be billed through insurance. Most insurance companies will cover the cost of lab work, but may not cover the cost of hormone medications. Please note that we do have a partnership with PatientFi to help make payments easier."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer pellets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. In our experience, pellets are invasive, difficult to manage, and do not evenly deliver hormones."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can your office serve as my Primary Care Physician?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We can offer Quick Care for things such as a sinus infection, COVID, Urinary Tract Infection,etc. However, we recommend you maintain a relationship with a Primary Care Physician or specialist for any chronic conditions you may have."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will you refill medications that I am currently taking from my other physicians such as blood pressure medication, cholesterol medication, heart medication, etc.",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. These are medications for chronic conditions that should be managed with your specialist or Primary Care Physician."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I have to come into the office every week to get my testosterone injections?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. We will teach you how to administer these medications on your own at home."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I need to see one of your providers during the year? Will I be able to make an appointment and be seen or will this be an extra fee?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Within reason, our providers will make themselves available to see you during the year if you have questions on your progress or treatment protocol. Additional services outside of the scope of BHRT can be administered for a fee."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Once I become a BHRT patient, do I receive a discount off of any of the other additional services that you offer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Active BHRT patients will receive 10% of all other services offered in the clinic."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/rejuvenation-enhancement/": {
+    "url": "https://www.agemanagementmed.com/rejuvenation-enhancement/",
+    "sourceFile": "_rejuvenation-enhancement_.html",
+    "pageTitle": "Sexual Wellness in Savannah, GA | ED, Low Libido & Intimacy",
+    "metaTitle": "Sexual Wellness in Savannah, GA | ED, Low Libido & Intimacy",
+    "metaDescription": "Explore sexual wellness treatments in Savannah for ED, low libido, and women's sexual health. Personalized care focused on confidence, comfort, and results.",
+    "h1Hero": "Sexual Wellness Treatments in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/rejuvenation-enhancement/",
+    "openGraph": {
+      "title": "Sexual Wellness in Savannah, GA  ED, Low Libido & Intimacy",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Sexual Performance & Rejuvenation Therapies",
+            "item": "https://www.agemanagementmed.com/rejuvenation-enhancement/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What causes low libido?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Low libido can be caused by hormone imbalances, stress, aging, or underlying health conditions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is erectile dysfunction treatable?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. ED is very common and can often be improved with the right medical approach."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are these treatments only for older adults?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Sexual health concerns can affect adults at many different ages."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need hormone testing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In many cases, yes. Hormone levels play a major role in sexual health and overall wellness."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are treatments personalized?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every plan is based on your symptoms, health history, and goals."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is treatment safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your provider will review your health history and determine what is appropriate for you."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How soon will I see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Results vary, but many patients begin to notice improvements within a few weeks depending on the treatment plan."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/concierge-medical-weight-loss/": {
+    "url": "https://www.agemanagementmed.com/concierge-medical-weight-loss/",
+    "sourceFile": "_concierge-medical-weight-loss_.html",
+    "pageTitle": "Medical Weight Loss in Savannah, GA | Concierge Program",
+    "metaTitle": "Medical Weight Loss in Savannah, GA | Concierge Program",
+    "metaDescription": "Personalized, doctor-led medical weight loss in Savannah using lab testing, metabolic insights, body composition scans, and ongoing provider care.",
+    "h1Hero": "Medical Weight Loss in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/concierge-medical-weight-loss/",
+    "openGraph": {
+      "title": "Medical Weight Loss in Savannah, GA  Concierge Program",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Medical Weight Loss",
+            "item": "https://www.agemanagementmed.com/concierge-medical-weight-loss/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What makes medical weight loss different?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Medical weight loss uses lab testing, body composition data, and provider guidance to create a personalized plan instead of a generic program."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need labwork to start?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, in most cases. Labwork helps us understand your metabolism, hormones, and overall health so we can build an effective plan."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a body composition scan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is a scan that measures body fat, muscle mass, and other key metrics to give a more accurate picture than weight alone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How often will I have follow ups?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Follow ups are scheduled regularly so we can track progress and adjust your plan as needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are medications required?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not always. Some patients benefit from medication, while others succeed with lifestyle and metabolic support alone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How quickly will I see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Results vary, but most patients begin to see changes within the first few weeks as their plan is adjusted."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this program safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Your provider reviews your health history and labwork to ensure your plan is safe and appropriate."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/laser-vaginal-therapy/": {
+    "url": "https://www.agemanagementmed.com/laser-vaginal-therapy/",
+    "sourceFile": "_laser-vaginal-therapy_.html",
+    "pageTitle": "Laser Vaginal Therapy in Savannah, GA | Vaginal Rejuvenation",
+    "metaTitle": "Laser Vaginal Therapy in Savannah, GA | Vaginal Rejuvenation",
+    "metaDescription": "Laser vaginal therapy in Savannah uses non-surgical CO2 laser technology to support vaginal dryness, laxity, comfort, lubrication, and intimacy concerns.",
+    "h1Hero": "Laser Vaginal Therapy",
+    "canonical": "https://www.agemanagementmed.com/laser-vaginal-therapy/",
+    "openGraph": {
+      "title": "Laser Vaginal Therapy in Savannah, GA  Vaginal Rejuvenation",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Laser Vaginal Therapy",
+            "item": "https://www.agemanagementmed.com/laser-vaginal-therapy/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Laser Vaginal Therapy painful?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most patients experience warmth or a slight prickling during treatment. Patients are able to complete the course of the treatment without general anesthesia."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many Laser Vaginal Therapy treatments will I need?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A standard vaginal rejuvenation protocol consists of three sessions, spaced four to six weeks apart. Some patients notice improvement after the first session; full results typically become apparent over two to three months as collagen continues to remodel. Annual maintenance treatments are recommended."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there any downtime?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "There is minimal downtime. We recommend avoiding intercourse, strenuous exercise, and tampon use for five to seven days before and after each session. Normal, low-impact daily activities can be resumed the same day."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who performs Laser Vaginal Therapy at SAMM?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Laser Vaginal Therapy is performed exclusively by our licensed physician, nurse practitioner, or physician assistant — the only providers legally authorized to perform ablative CO₂ laser procedures in Georgia. You'll receive a thorough consultation before any treatment is scheduled."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Laser Vaginal Therapy covered by insurance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Laser Vaginal Therapy is typically considered an elective aesthetic procedure and is not covered by most insurance plans. We're happy to discuss pricing and available payment options during your consultation."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/shockwave-therapy/": {
+    "url": "https://www.agemanagementmed.com/shockwave-therapy/",
+    "sourceFile": "_shockwave-therapy_.html",
+    "pageTitle": "Shockwave Therapy for ED in Savannah, GA | SAMM",
+    "metaTitle": "Shockwave Therapy for ED in Savannah, GA | SAMM",
+    "metaDescription": "Shockwave therapy for ED in Savannah uses acoustic wave treatment to support blood flow, erectile function, and men's sexual wellness without surgery.",
+    "h1Hero": "Shockwave Therapy for Erectile Dysfunction in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/shockwave-therapy/",
+    "openGraph": {
+      "title": "Shockwave Therapy for ED in Savannah, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Shockwave Therapy",
+            "item": "https://www.agemanagementmed.com/shockwave-therapy/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is shockwave therapy for ED painful?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most men describe the sensation as mild tapping or tingling. The device is applied externally and only topical anesthesia is required. Treatment sessions typically last 20 to 30 minutes, and most men resume normal activity the same day."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many shockwave therapy sessions will I need?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A standard protocol consists of six sessions, typically spaced one week apart. Some men notice changes during the course of treatment; any improvements often continue to develop over six to twelve weeks as tissue responds. Periodic maintenance sessions may be recommended based on individual results."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between shockwave therapy and acoustic wave therapy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The terms are often used interchangeably and refer to the same general category of low-intensity sound wave treatment. At SAMM, we use a professional-grade acoustic wave device to deliver targeted therapy — the same mechanism studied in clinical research on low-intensity extracorporeal shockwave therapy (LI-ESWT) for ED."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is shockwave therapy for ED FDA approved?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Shockwave therapy for erectile dysfunction is currently considered an emerging treatment option in the United States. While low-intensity shockwave therapy has FDA-cleared devices and is supported by leading European urology guidelines, it is classified as investigational by the American Urological Association, meaning clinical evidence continues to evolve. We discuss the current research and realistic expectations with every patient during consultation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can shockwave therapy help if pills are less effective?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Some men who have experienced reduced effectiveness with PDE5 inhibitors have reported improvement following a course of shockwave treatment, potentially due to enhanced vascular function. Results vary by individual, and this is discussed in detail at your consultation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who performs shockwave therapy at SAMM?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "All shockwave therapy treatments at Savannah Age Management Medicine are performed by our licensed physician, nurse practitioner, or physician assistant in a private, clinical setting. You will receive a thorough consultation and health history review before any treatment is scheduled."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is shockwave therapy for ED covered by insurance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Shockwave therapy for erectile dysfunction is typically not covered by insurance and is considered an elective procedure. Pricing and payment options are reviewed in full during your consultation with our team."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/our-experts/": {
+    "url": "https://www.agemanagementmed.com/our-experts/",
+    "sourceFile": "_our-experts_.html",
+    "pageTitle": "Meet the Experts | Savannah Age Management Medicine",
+    "metaTitle": "Meet the Experts | Savannah Age Management Medicine",
+    "metaDescription": "Meet SAMM's experienced hormone therapy, medical weight loss, aesthetics, and wellness providers serving patients in Pooler, Savannah, and Statesboro.",
+    "h1Hero": "Meet the Experts at Savannah Age Management Medicine",
+    "canonical": "https://www.agemanagementmed.com/our-experts/",
+    "openGraph": {
+      "title": "The Experts at Savannah Age Management Medicine",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Our Experts",
+            "item": "https://www.agemanagementmed.com/our-experts/"
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/office-policies/": {
+    "url": "https://www.agemanagementmed.com/office-policies/",
+    "sourceFile": "_office-policies_.html",
+    "pageTitle": "Office Policies | Savannah Age Management Medicine",
+    "metaTitle": "Office Policies | Savannah Age Management Medicine",
+    "metaDescription": "Review SAMM office policies for appointments, cancellations, missed visits, patient expectations, and how to contact the clinic.",
+    "h1Hero": "Office Policies",
+    "canonical": "https://www.agemanagementmed.com/office-policies/",
+    "openGraph": {
+      "title": "Office Policies  Savannah Age Management Medicine",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Office Policies",
+            "item": "https://www.agemanagementmed.com/office-policies/"
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/newsletter/": {
+    "url": "https://www.agemanagementmed.com/newsletter/",
+    "sourceFile": "_newsletter_.html",
+    "pageTitle": "Wellness Newsletter | Savannah Age Management Medicine",
+    "metaTitle": "Wellness Newsletter | Savannah Age Management Medicine",
+    "metaDescription": "Sign up for SAMM's wellness newsletter for updates on hormone therapy, medical weight loss, events, treatment specials, and new services.",
+    "h1Hero": "Join Savannah's Wellness Insiders",
+    "canonical": "https://www.agemanagementmed.com/newsletter/",
+    "openGraph": {
+      "title": "Join Savannah's Wellness Insiders Newsletter",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Newsletter",
+            "item": "https://www.agemanagementmed.com/newsletter/"
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/in-the-news/": {
+    "url": "https://www.agemanagementmed.com/in-the-news/",
+    "sourceFile": "_in-the-news_.html",
+    "pageTitle": "In the News | Savannah Age Management Medicine",
+    "metaTitle": "In the News | Savannah Age Management Medicine",
+    "metaDescription": "View media coverage, awards, announcements, and featured stories from Savannah Age Management Medicine in Savannah, Pooler, and Statesboro.",
+    "h1Hero": "In the News",
+    "canonical": "https://www.agemanagementmed.com/in-the-news/",
+    "openGraph": {
+      "title": "In The News at Savannah Age Management Medicine",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "In The News",
+            "item": "https://www.agemanagementmed.com/in-the-news/"
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/statesboro/": {
+    "url": "https://www.agemanagementmed.com/statesboro/",
+    "sourceFile": "_statesboro_.html",
+    "pageTitle": "Hormone Therapy & Medical Weight Loss in Statesboro, GA | SAMM",
+    "metaTitle": "Hormone Therapy & Medical Weight Loss in Statesboro, GA | SAMM",
+    "metaDescription": "Visit SAMM's Statesboro clinic for hormone therapy, medical weight loss, GLP-1 support, clinical skincare, and lab-guided wellness care.",
+    "h1Hero": "Savannah Age Management Medicine is now in Statesboro!",
+    "canonical": "https://www.agemanagementmed.com/statesboro/",
+    "openGraph": {
+      "title": "Hormone Therapy & Medical Weight Loss in Statesboro, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Statesboro",
+            "item": "https://www.agemanagementmed.com/statesboro/"
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://agemanagementmed.com/": {
+    "url": "https://agemanagementmed.com/",
+    "sourceFile": "_index_.html",
+    "pageTitle": "Hormone Therapy & Weight Loss Clinic in Savannah, GA | SAMM",
+    "metaTitle": "Hormone Therapy & Weight Loss Clinic in Savannah, GA | SAMM",
+    "metaDescription": "Savannah Age Management Medicine offers hormone therapy, medical weight loss, PRP, sexual wellness, and age management care in Pooler and Statesboro, GA.",
+    "h1Hero": "Optimize your health. Optimize your life.",
+    "canonical": "https://www.agemanagementmed.com/",
+    "openGraph": {
+      "title": "Hormone Therapy & Weight Loss Clinic in Savannah, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/financing-options/": {
+    "url": "https://www.agemanagementmed.com/financing-options/",
+    "sourceFile": "_financing-options_.html",
+    "pageTitle": "Financing Options for Hormone Therapy & Weight Loss | Savannah Age Management Medicine",
+    "metaTitle": "Financing Options for Hormone Therapy & Weight Loss | Savannah Age Management Medicine",
+    "metaDescription": "Treat Now, Pay Later with Cherry & Savannah Age Management Medicine LLC",
+    "h1Hero": "Financing Options for Hormone Therapy & Weight Loss",
+    "canonical": "https://www.agemanagementmed.com/financing-options/",
+    "openGraph": {
+      "title": "Financing Options for Hormone Therapy & Weight Loss  Savannah Age Management Medicine",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Financing Options",
+            "item": "https://www.agemanagementmed.com/financing-options/"
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/contact-us/": {
+    "url": "https://www.agemanagementmed.com/contact-us/",
+    "sourceFile": "_contact-us_.html",
+    "pageTitle": "Contact Us at Savannah Age Management Medicine",
+    "metaTitle": "Contact Us at Savannah Age Management Medicine",
+    "metaDescription": "Contact Savannah Age Management Medicine to schedule a consultation or ask about hormone therapy, weight loss, and wellness services.",
+    "h1Hero": "Connect with us at Savannah Age Management Medicine!",
+    "canonical": "https://www.agemanagementmed.com/contact-us/",
+    "openGraph": {
+      "title": "Contact Us at Savannah Age Management Medicine",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Contact Us",
+            "item": "https://www.agemanagementmed.com/contact-us/"
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/blog/": {
+    "url": "https://www.agemanagementmed.com/blog/",
+    "sourceFile": "_blog_.html",
+    "pageTitle": "Blog",
+    "metaTitle": "Blog",
+    "metaDescription": "Explore articles about health optimization, hormone balance, weight management, regenerative therapies, and overall well-being.",
+    "h1Hero": "Blog",
+    "canonical": "https://www.agemanagementmed.com/blog/",
+    "openGraph": {
+      "title": "Blog",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.agemanagementmed.com/blog/"
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/blog/hormone-health-explained/": {
+    "url": "https://www.agemanagementmed.com/blog/hormone-health-explained/",
+    "sourceFile": "_blog_hormone-health-explained_.html",
+    "pageTitle": "Vitamin D, K2 & Hormone Health | Why Labs Matter",
+    "metaTitle": "Vitamin D, K2 & Hormone Health | Why Labs Matter",
+    "metaDescription": "Learn why vitamin D and K2 may come up in hormone labwork and how SAMM evaluates nutrients, metabolism, bone health, and hormones together.",
+    "h1Hero": "Vitamin D, K2 & Hormone Health | Why Labs Matter",
+    "canonical": "https://www.agemanagementmed.com/blog/hormone-health-explained/",
+    "openGraph": {
+      "title": "Vitamin D, K2 & Hormone Health  Why Labs Matter",
+      "description": null,
+      "image": "",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.agemanagementmed.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Hormone Health Explained",
+            "item": "https://www.agemanagementmed.com/blog/hormone-health-explained/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do vitamin D3 and K2 help with hormones?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "They may support systems involved in hormone function, but they are not direct hormone treatments. Their role depends on your overall clinical picture."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does vitamin D boost estrogen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vitamin D does not directly “boost” estrogen. It may influence broader regulatory pathways, but hormone levels are controlled through more complex mechanisms."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why am I gaining weight despite diet and exercise?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hormonal changes during perimenopause can make weight management more difficult despite healthy habits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a regular blood test show vitamin D?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Vitamin D is commonly measured through a 25-hydroxy vitamin D blood test."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between vitamins D and K2?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vitamin D helps regulate calcium absorption. Vitamin K2 helps direct where calcium goes in the body."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can low vitamin D affect how you feel?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Low levels may be associated with symptoms like fatigue or low energy, but these symptoms are not specific and require broader evaluation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I take vitamin D and K2 together?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not necessarily. Whether either is recommended depends on labwork and clinical context."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can supplements fix a hormone imbalance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Hormone imbalances typically involve multiple systems and require a comprehensive approach, not a single supplement."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why did my provider check vitamin D during hormone testing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because nutrient status can provide additional context about metabolic and overall health, which may influence symptoms and treatment planning."
+            }
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Vitamin D, K2 & Hormone Health | Why Labs Matter",
+        "image": "https://waldoughmediaclients.s3.us-east-2.amazonaws.com/wwwagemanagementmedcom/blog/image1-260522014722.jpg",
+        "datePublished": "May 21, 2026",
+        "author": {
+          "@type": "Organization",
+          "name": "Savannah Age Management Medicine"
+        }
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/blog/semaglutide-vs-tirzepatide-for-weight-loss-how-clinicians-decide/": {
+    "url": "https://www.agemanagementmed.com/blog/semaglutide-vs-tirzepatide-for-weight-loss-how-clinicians-decide/",
+    "sourceFile": "_blog_semaglutide-vs-tirzepatide-for-weight-loss-how-clinicians-decide_.html",
+    "pageTitle": "Semaglutide vs Tirzepatide for Weight Loss | SAMM",
+    "metaTitle": "Semaglutide vs Tirzepatide for Weight Loss | SAMM",
+    "metaDescription": "Compare semaglutide vs tirzepatide for weight loss, including how clinicians evaluate safety, tolerance, metabolic health, and supervised options.",
+    "h1Hero": "Semaglutide vs Tirzepatide for Weight Loss | SAMM",
+    "canonical": "https://www.agemanagementmed.com/blog/semaglutide-vs-tirzepatide-for-weight-loss-how-clinicians-decide/",
+    "openGraph": {
+      "title": "Semaglutide vs Tirzepatide for Weight Loss  SAMM",
+      "description": null,
+      "image": "",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.agemanagementmed.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Semaglutide Vs Tirzepatide For Weight Loss How Clinicians Decide",
+            "item": "https://www.agemanagementmed.com/blog/semaglutide-vs-tirzepatide-for-weight-loss-how-clinicians-decide/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the difference between semaglutide and tirzepatide?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Semaglutide targets GLP-1 receptors, while tirzepatide targets both GIP and GLP-1 receptors. This difference influences metabolic signaling and treatment selection."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is tirzepatide stronger than semaglutide?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not necessarily. Clinical effectiveness depends on individual metabolic response and tolerance rather than a simple potency comparison."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which medication causes more weight loss?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Some patients experience greater weight loss with one therapy than with the other, but outcomes vary widely."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can non-diabetics use semaglutide or tirzepatide?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, these medications may be prescribed for weight management in non-diabetic patients when clinically appropriate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are semaglutide and tirzepatide safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "When prescribed and monitored by a clinician, both therapies can be used safely in appropriate candidates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if I stop taking a GLP-1 medication?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Appetite and metabolic patterns may return to baseline. Lifestyle strategies are essential to maintain results."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do clinicians decide which medication to prescribe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Decisions are based on symptom review, lab results, metabolic markers, body composition data, and treatment goals."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need medical supervision while using these medications?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Regular monitoring helps manage side effects and ensures treatment remains aligned with your health needs."
+            }
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Semaglutide vs Tirzepatide for Weight Loss | SAMM",
+        "image": "https://waldoughmediaclients.s3.us-east-2.amazonaws.com/wwwagemanagementmedcom/blog/image1-260429053027.png",
+        "datePublished": "April 29, 2026",
+        "author": {
+          "@type": "Organization",
+          "name": "Savannah Age Management Medicine"
+        }
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/blog/low-testosterone-and-erectile-dysfunction/": {
+    "url": "https://www.agemanagementmed.com/blog/low-testosterone-and-erectile-dysfunction/",
+    "sourceFile": "_blog_low-testosterone-and-erectile-dysfunction_.html",
+    "pageTitle": "Can Low Testosterone Cause Erectile Dysfunction? | SAMM",
+    "metaTitle": "Can Low Testosterone Cause Erectile Dysfunction? | SAMM",
+    "metaDescription": "Learn how low testosterone can contribute to erectile dysfunction, why ED is often vascular or metabolic, and when lab testing may help.",
+    "h1Hero": "Can Low Testosterone Cause Erectile Dysfunction? | SAMM",
+    "canonical": "https://www.agemanagementmed.com/blog/low-testosterone-and-erectile-dysfunction/",
+    "openGraph": {
+      "title": "Can Low Testosterone Cause Erectile Dysfunction?  SAMM",
+      "description": null,
+      "image": "",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.agemanagementmed.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Low Testosterone And Erectile Dysfunction",
+            "item": "https://www.agemanagementmed.com/blog/low-testosterone-and-erectile-dysfunction/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can low testosterone cause erectile dysfunction?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Low testosterone can contribute to ED, especially through reduced libido and impaired sexual response, but it is not the most common cause."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I know if ED is hormonal or circulatory?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hormonal ED often presents with low libido first. Circulatory ED is more common and involves blood flow limitations, often tied to metabolic or cardiovascular factors."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What testosterone level affects erections?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "There is no single cutoff that predicts ED. Symptoms, clinical context, and lab results matter more than a single number."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does treating low testosterone fix ED?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sometimes, if low testosterone is truly contributing. But many men have ED from vascular, psychological, or medication-related causes, so treatment depends on the full evaluation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When should I get tested for ED?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If ED persists, affects quality of life, or occurs alongside low libido or risk factors like obesity, diabetes, or sleep issues, testing is appropriate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can weight, sleep, or stress cause ED?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Metabolic health, poor sleep, and chronic stress are major contributors, especially in younger men."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens after an ED evaluation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A clinician reviews symptoms, risk factors, hormone labs, and broader health contributors, then discusses appropriate treatment options based on cause."
+            }
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Can Low Testosterone Cause Erectile Dysfunction? | SAMM",
+        "image": "https://waldoughmediaclients.s3.us-east-2.amazonaws.com/wwwagemanagementmedcom/blog/pexels-olly-3766217-260313050540.jpg",
+        "datePublished": "March 13, 2026",
+        "author": {
+          "@type": "Organization",
+          "name": "Savannah Age Management Medicine"
+        }
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/blog/low-testosterone-symptoms-for-men-in-their-40s/": {
+    "url": "https://www.agemanagementmed.com/blog/low-testosterone-symptoms-for-men-in-their-40s/",
+    "sourceFile": "_blog_low-testosterone-symptoms-for-men-in-their-40s_.html",
+    "pageTitle": "Low Testosterone Symptoms in Men Before 40 | SAMM",
+    "metaTitle": "Low Testosterone Symptoms in Men Before 40 | SAMM",
+    "metaDescription": "Learn common low testosterone symptoms in men, why signs can appear before 40, and when lab testing and clinical evaluation may be appropriate.",
+    "h1Hero": "Low Testosterone Symptoms in Men Before 40 | SAMM",
+    "canonical": "https://www.agemanagementmed.com/blog/low-testosterone-symptoms-for-men-in-their-40s/",
+    "openGraph": {
+      "title": "Low Testosterone Symptoms in Men Before 40  SAMM",
+      "description": null,
+      "image": "",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.agemanagementmed.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Low Testosterone Symptoms For Men In Their 40s",
+            "item": "https://www.agemanagementmed.com/blog/low-testosterone-symptoms-for-men-in-their-40s/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What are the most common symptoms of low testosterone in men?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The most common include low libido, erectile changes, fatigue, low motivation, depressed mood, increased body fat, and reduced muscle mass. Symptoms often cluster rather than appearing in isolation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I know if it's stress or low testosterone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can't reliably tell by symptoms alone. Stress, sleep deprivation, and hormone imbalance overlap heavily. Proper testing and clinician review are the only ways to differentiate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What testosterone level is considered low?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This is determined on an individual basis. Symptoms and overall clinical symptoms are taken into consideration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When should men get tested?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If symptoms persist, affect quality of life, or are accompanied by risk factors like obesity, diabetes, or sleep apnea, testing is reasonable, regardless of age."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is low testosterone diagnosed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Through a combination of symptom assessment, medical history, physical exam, and bloodwork. Diagnosis is never based solely on labs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can weight and sleep affect testosterone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Obesity, poor sleep, and sleep apnea are strongly associated with lower testosterone levels."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens after a low testosterone diagnosis?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your clinician will review options, which may include lifestyle changes, addressing underlying conditions, and potentially hormone therapy. Treatment is individualized."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is treatment safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "When properly prescribed and monitored by a clinician, hormone therapy can be used safely. That's why evaluation and ongoing follow-up are essential."
+            }
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Low Testosterone Symptoms in Men Before 40 | SAMM",
+        "image": "https://waldoughmediaclients.s3.us-east-2.amazonaws.com/wwwagemanagementmedcom/blog/pexels-olly-874158-260206035409.jpg",
+        "datePublished": "February 6, 2026",
+        "author": {
+          "@type": "Organization",
+          "name": "Savannah Age Management Medicine"
+        }
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  }
+}

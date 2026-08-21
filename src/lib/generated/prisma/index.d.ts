@@ -6022,6 +6022,14 @@ export namespace Prisma {
     ogImage: string | null
     canonical: string | null
     noindex: boolean | null
+    keywords: string | null
+    h1: string | null
+    ogTitle: string | null
+    ogDescription: string | null
+    ogType: string | null
+    twitterTitle: string | null
+    twitterDescription: string | null
+    schemaJsonLd: string | null
   }
 
   export type PostSeoMaxAggregateOutputType = {
@@ -6032,6 +6040,14 @@ export namespace Prisma {
     ogImage: string | null
     canonical: string | null
     noindex: boolean | null
+    keywords: string | null
+    h1: string | null
+    ogTitle: string | null
+    ogDescription: string | null
+    ogType: string | null
+    twitterTitle: string | null
+    twitterDescription: string | null
+    schemaJsonLd: string | null
   }
 
   export type PostSeoCountAggregateOutputType = {
@@ -6042,6 +6058,14 @@ export namespace Prisma {
     ogImage: number
     canonical: number
     noindex: number
+    keywords: number
+    h1: number
+    ogTitle: number
+    ogDescription: number
+    ogType: number
+    twitterTitle: number
+    twitterDescription: number
+    schemaJsonLd: number
     _all: number
   }
 
@@ -6054,6 +6078,14 @@ export namespace Prisma {
     ogImage?: true
     canonical?: true
     noindex?: true
+    keywords?: true
+    h1?: true
+    ogTitle?: true
+    ogDescription?: true
+    ogType?: true
+    twitterTitle?: true
+    twitterDescription?: true
+    schemaJsonLd?: true
   }
 
   export type PostSeoMaxAggregateInputType = {
@@ -6064,6 +6096,14 @@ export namespace Prisma {
     ogImage?: true
     canonical?: true
     noindex?: true
+    keywords?: true
+    h1?: true
+    ogTitle?: true
+    ogDescription?: true
+    ogType?: true
+    twitterTitle?: true
+    twitterDescription?: true
+    schemaJsonLd?: true
   }
 
   export type PostSeoCountAggregateInputType = {
@@ -6074,6 +6114,14 @@ export namespace Prisma {
     ogImage?: true
     canonical?: true
     noindex?: true
+    keywords?: true
+    h1?: true
+    ogTitle?: true
+    ogDescription?: true
+    ogType?: true
+    twitterTitle?: true
+    twitterDescription?: true
+    schemaJsonLd?: true
     _all?: true
   }
 
@@ -6157,6 +6205,14 @@ export namespace Prisma {
     ogImage: string | null
     canonical: string | null
     noindex: boolean
+    keywords: string | null
+    h1: string | null
+    ogTitle: string | null
+    ogDescription: string | null
+    ogType: string | null
+    twitterTitle: string | null
+    twitterDescription: string | null
+    schemaJsonLd: string | null
     _count: PostSeoCountAggregateOutputType | null
     _min: PostSeoMinAggregateOutputType | null
     _max: PostSeoMaxAggregateOutputType | null
@@ -6184,6 +6240,14 @@ export namespace Prisma {
     ogImage?: boolean
     canonical?: boolean
     noindex?: boolean
+    keywords?: boolean
+    h1?: boolean
+    ogTitle?: boolean
+    ogDescription?: boolean
+    ogType?: boolean
+    twitterTitle?: boolean
+    twitterDescription?: boolean
+    schemaJsonLd?: boolean
     post?: boolean | PostDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["postSeo"]>
 
@@ -6195,6 +6259,14 @@ export namespace Prisma {
     ogImage?: boolean
     canonical?: boolean
     noindex?: boolean
+    keywords?: boolean
+    h1?: boolean
+    ogTitle?: boolean
+    ogDescription?: boolean
+    ogType?: boolean
+    twitterTitle?: boolean
+    twitterDescription?: boolean
+    schemaJsonLd?: boolean
     post?: boolean | PostDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["postSeo"]>
 
@@ -6206,6 +6278,14 @@ export namespace Prisma {
     ogImage?: boolean
     canonical?: boolean
     noindex?: boolean
+    keywords?: boolean
+    h1?: boolean
+    ogTitle?: boolean
+    ogDescription?: boolean
+    ogType?: boolean
+    twitterTitle?: boolean
+    twitterDescription?: boolean
+    schemaJsonLd?: boolean
     post?: boolean | PostDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["postSeo"]>
 
@@ -6217,9 +6297,17 @@ export namespace Prisma {
     ogImage?: boolean
     canonical?: boolean
     noindex?: boolean
+    keywords?: boolean
+    h1?: boolean
+    ogTitle?: boolean
+    ogDescription?: boolean
+    ogType?: boolean
+    twitterTitle?: boolean
+    twitterDescription?: boolean
+    schemaJsonLd?: boolean
   }
 
-  export type PostSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "postId" | "metaTitle" | "metaDesc" | "ogImage" | "canonical" | "noindex", ExtArgs["result"]["postSeo"]>
+  export type PostSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "postId" | "metaTitle" | "metaDesc" | "ogImage" | "canonical" | "noindex" | "keywords" | "h1" | "ogTitle" | "ogDescription" | "ogType" | "twitterTitle" | "twitterDescription" | "schemaJsonLd", ExtArgs["result"]["postSeo"]>
   export type PostSeoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     post?: boolean | PostDefaultArgs<ExtArgs>
   }
@@ -6243,6 +6331,14 @@ export namespace Prisma {
       ogImage: string | null
       canonical: string | null
       noindex: boolean
+      keywords: string | null
+      h1: string | null
+      ogTitle: string | null
+      ogDescription: string | null
+      ogType: string | null
+      twitterTitle: string | null
+      twitterDescription: string | null
+      schemaJsonLd: string | null
     }, ExtArgs["result"]["postSeo"]>
     composites: {}
   }
@@ -6674,6 +6770,14 @@ export namespace Prisma {
     readonly ogImage: FieldRef<"PostSeo", 'String'>
     readonly canonical: FieldRef<"PostSeo", 'String'>
     readonly noindex: FieldRef<"PostSeo", 'Boolean'>
+    readonly keywords: FieldRef<"PostSeo", 'String'>
+    readonly h1: FieldRef<"PostSeo", 'String'>
+    readonly ogTitle: FieldRef<"PostSeo", 'String'>
+    readonly ogDescription: FieldRef<"PostSeo", 'String'>
+    readonly ogType: FieldRef<"PostSeo", 'String'>
+    readonly twitterTitle: FieldRef<"PostSeo", 'String'>
+    readonly twitterDescription: FieldRef<"PostSeo", 'String'>
+    readonly schemaJsonLd: FieldRef<"PostSeo", 'String'>
   }
     
 
@@ -18997,6 +19101,12 @@ export namespace Prisma {
     schemaJsonLd: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    h1: string | null
+    ogTitle: string | null
+    ogDescription: string | null
+    ogType: string | null
+    twitterTitle: string | null
+    twitterDescription: string | null
   }
 
   export type PageSeoMaxAggregateOutputType = {
@@ -19011,6 +19121,12 @@ export namespace Prisma {
     schemaJsonLd: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    h1: string | null
+    ogTitle: string | null
+    ogDescription: string | null
+    ogType: string | null
+    twitterTitle: string | null
+    twitterDescription: string | null
   }
 
   export type PageSeoCountAggregateOutputType = {
@@ -19025,6 +19141,12 @@ export namespace Prisma {
     schemaJsonLd: number
     createdAt: number
     updatedAt: number
+    h1: number
+    ogTitle: number
+    ogDescription: number
+    ogType: number
+    twitterTitle: number
+    twitterDescription: number
     _all: number
   }
 
@@ -19041,6 +19163,12 @@ export namespace Prisma {
     schemaJsonLd?: true
     createdAt?: true
     updatedAt?: true
+    h1?: true
+    ogTitle?: true
+    ogDescription?: true
+    ogType?: true
+    twitterTitle?: true
+    twitterDescription?: true
   }
 
   export type PageSeoMaxAggregateInputType = {
@@ -19055,6 +19183,12 @@ export namespace Prisma {
     schemaJsonLd?: true
     createdAt?: true
     updatedAt?: true
+    h1?: true
+    ogTitle?: true
+    ogDescription?: true
+    ogType?: true
+    twitterTitle?: true
+    twitterDescription?: true
   }
 
   export type PageSeoCountAggregateInputType = {
@@ -19069,6 +19203,12 @@ export namespace Prisma {
     schemaJsonLd?: true
     createdAt?: true
     updatedAt?: true
+    h1?: true
+    ogTitle?: true
+    ogDescription?: true
+    ogType?: true
+    twitterTitle?: true
+    twitterDescription?: true
     _all?: true
   }
 
@@ -19156,6 +19296,12 @@ export namespace Prisma {
     schemaJsonLd: string | null
     createdAt: Date
     updatedAt: Date
+    h1: string | null
+    ogTitle: string | null
+    ogDescription: string | null
+    ogType: string | null
+    twitterTitle: string | null
+    twitterDescription: string | null
     _count: PageSeoCountAggregateOutputType | null
     _min: PageSeoMinAggregateOutputType | null
     _max: PageSeoMaxAggregateOutputType | null
@@ -19187,6 +19333,12 @@ export namespace Prisma {
     schemaJsonLd?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    h1?: boolean
+    ogTitle?: boolean
+    ogDescription?: boolean
+    ogType?: boolean
+    twitterTitle?: boolean
+    twitterDescription?: boolean
   }, ExtArgs["result"]["pageSeo"]>
 
   export type PageSeoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -19201,6 +19353,12 @@ export namespace Prisma {
     schemaJsonLd?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    h1?: boolean
+    ogTitle?: boolean
+    ogDescription?: boolean
+    ogType?: boolean
+    twitterTitle?: boolean
+    twitterDescription?: boolean
   }, ExtArgs["result"]["pageSeo"]>
 
   export type PageSeoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -19215,6 +19373,12 @@ export namespace Prisma {
     schemaJsonLd?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    h1?: boolean
+    ogTitle?: boolean
+    ogDescription?: boolean
+    ogType?: boolean
+    twitterTitle?: boolean
+    twitterDescription?: boolean
   }, ExtArgs["result"]["pageSeo"]>
 
   export type PageSeoSelectScalar = {
@@ -19229,9 +19393,15 @@ export namespace Prisma {
     schemaJsonLd?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    h1?: boolean
+    ogTitle?: boolean
+    ogDescription?: boolean
+    ogType?: boolean
+    twitterTitle?: boolean
+    twitterDescription?: boolean
   }
 
-  export type PageSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "path" | "title" | "description" | "keywords" | "ogImageUrl" | "canonical" | "noindex" | "schemaJsonLd" | "createdAt" | "updatedAt", ExtArgs["result"]["pageSeo"]>
+  export type PageSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "path" | "title" | "description" | "keywords" | "ogImageUrl" | "canonical" | "noindex" | "schemaJsonLd" | "createdAt" | "updatedAt" | "h1" | "ogTitle" | "ogDescription" | "ogType" | "twitterTitle" | "twitterDescription", ExtArgs["result"]["pageSeo"]>
 
   export type $PageSeoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PageSeo"
@@ -19248,6 +19418,12 @@ export namespace Prisma {
       schemaJsonLd: string | null
       createdAt: Date
       updatedAt: Date
+      h1: string | null
+      ogTitle: string | null
+      ogDescription: string | null
+      ogType: string | null
+      twitterTitle: string | null
+      twitterDescription: string | null
     }, ExtArgs["result"]["pageSeo"]>
     composites: {}
   }
@@ -19682,6 +19858,12 @@ export namespace Prisma {
     readonly schemaJsonLd: FieldRef<"PageSeo", 'String'>
     readonly createdAt: FieldRef<"PageSeo", 'DateTime'>
     readonly updatedAt: FieldRef<"PageSeo", 'DateTime'>
+    readonly h1: FieldRef<"PageSeo", 'String'>
+    readonly ogTitle: FieldRef<"PageSeo", 'String'>
+    readonly ogDescription: FieldRef<"PageSeo", 'String'>
+    readonly ogType: FieldRef<"PageSeo", 'String'>
+    readonly twitterTitle: FieldRef<"PageSeo", 'String'>
+    readonly twitterDescription: FieldRef<"PageSeo", 'String'>
   }
     
 
@@ -22414,7 +22596,15 @@ export namespace Prisma {
     metaDesc: 'metaDesc',
     ogImage: 'ogImage',
     canonical: 'canonical',
-    noindex: 'noindex'
+    noindex: 'noindex',
+    keywords: 'keywords',
+    h1: 'h1',
+    ogTitle: 'ogTitle',
+    ogDescription: 'ogDescription',
+    ogType: 'ogType',
+    twitterTitle: 'twitterTitle',
+    twitterDescription: 'twitterDescription',
+    schemaJsonLd: 'schemaJsonLd'
   };
 
   export type PostSeoScalarFieldEnum = (typeof PostSeoScalarFieldEnum)[keyof typeof PostSeoScalarFieldEnum]
@@ -22591,7 +22781,13 @@ export namespace Prisma {
     noindex: 'noindex',
     schemaJsonLd: 'schemaJsonLd',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    h1: 'h1',
+    ogTitle: 'ogTitle',
+    ogDescription: 'ogDescription',
+    ogType: 'ogType',
+    twitterTitle: 'twitterTitle',
+    twitterDescription: 'twitterDescription'
   };
 
   export type PageSeoScalarFieldEnum = (typeof PageSeoScalarFieldEnum)[keyof typeof PageSeoScalarFieldEnum]
@@ -23021,6 +23217,14 @@ export namespace Prisma {
     ogImage?: StringNullableFilter<"PostSeo"> | string | null
     canonical?: StringNullableFilter<"PostSeo"> | string | null
     noindex?: BoolFilter<"PostSeo"> | boolean
+    keywords?: StringNullableFilter<"PostSeo"> | string | null
+    h1?: StringNullableFilter<"PostSeo"> | string | null
+    ogTitle?: StringNullableFilter<"PostSeo"> | string | null
+    ogDescription?: StringNullableFilter<"PostSeo"> | string | null
+    ogType?: StringNullableFilter<"PostSeo"> | string | null
+    twitterTitle?: StringNullableFilter<"PostSeo"> | string | null
+    twitterDescription?: StringNullableFilter<"PostSeo"> | string | null
+    schemaJsonLd?: StringNullableFilter<"PostSeo"> | string | null
     post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }
 
@@ -23032,6 +23236,14 @@ export namespace Prisma {
     ogImage?: SortOrderInput | SortOrder
     canonical?: SortOrderInput | SortOrder
     noindex?: SortOrder
+    keywords?: SortOrderInput | SortOrder
+    h1?: SortOrderInput | SortOrder
+    ogTitle?: SortOrderInput | SortOrder
+    ogDescription?: SortOrderInput | SortOrder
+    ogType?: SortOrderInput | SortOrder
+    twitterTitle?: SortOrderInput | SortOrder
+    twitterDescription?: SortOrderInput | SortOrder
+    schemaJsonLd?: SortOrderInput | SortOrder
     post?: PostOrderByWithRelationInput
   }
 
@@ -23046,6 +23258,14 @@ export namespace Prisma {
     ogImage?: StringNullableFilter<"PostSeo"> | string | null
     canonical?: StringNullableFilter<"PostSeo"> | string | null
     noindex?: BoolFilter<"PostSeo"> | boolean
+    keywords?: StringNullableFilter<"PostSeo"> | string | null
+    h1?: StringNullableFilter<"PostSeo"> | string | null
+    ogTitle?: StringNullableFilter<"PostSeo"> | string | null
+    ogDescription?: StringNullableFilter<"PostSeo"> | string | null
+    ogType?: StringNullableFilter<"PostSeo"> | string | null
+    twitterTitle?: StringNullableFilter<"PostSeo"> | string | null
+    twitterDescription?: StringNullableFilter<"PostSeo"> | string | null
+    schemaJsonLd?: StringNullableFilter<"PostSeo"> | string | null
     post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }, "id" | "postId">
 
@@ -23057,6 +23277,14 @@ export namespace Prisma {
     ogImage?: SortOrderInput | SortOrder
     canonical?: SortOrderInput | SortOrder
     noindex?: SortOrder
+    keywords?: SortOrderInput | SortOrder
+    h1?: SortOrderInput | SortOrder
+    ogTitle?: SortOrderInput | SortOrder
+    ogDescription?: SortOrderInput | SortOrder
+    ogType?: SortOrderInput | SortOrder
+    twitterTitle?: SortOrderInput | SortOrder
+    twitterDescription?: SortOrderInput | SortOrder
+    schemaJsonLd?: SortOrderInput | SortOrder
     _count?: PostSeoCountOrderByAggregateInput
     _max?: PostSeoMaxOrderByAggregateInput
     _min?: PostSeoMinOrderByAggregateInput
@@ -23073,6 +23301,14 @@ export namespace Prisma {
     ogImage?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
     canonical?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
     noindex?: BoolWithAggregatesFilter<"PostSeo"> | boolean
+    keywords?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
+    h1?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
+    ogTitle?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
+    ogDescription?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
+    ogType?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
+    twitterTitle?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
+    twitterDescription?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
+    schemaJsonLd?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
   }
 
   export type CategoryWhereInput = {
@@ -23880,6 +24116,12 @@ export namespace Prisma {
     schemaJsonLd?: StringNullableFilter<"PageSeo"> | string | null
     createdAt?: DateTimeFilter<"PageSeo"> | Date | string
     updatedAt?: DateTimeFilter<"PageSeo"> | Date | string
+    h1?: StringNullableFilter<"PageSeo"> | string | null
+    ogTitle?: StringNullableFilter<"PageSeo"> | string | null
+    ogDescription?: StringNullableFilter<"PageSeo"> | string | null
+    ogType?: StringNullableFilter<"PageSeo"> | string | null
+    twitterTitle?: StringNullableFilter<"PageSeo"> | string | null
+    twitterDescription?: StringNullableFilter<"PageSeo"> | string | null
   }
 
   export type PageSeoOrderByWithRelationInput = {
@@ -23894,6 +24136,12 @@ export namespace Prisma {
     schemaJsonLd?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    h1?: SortOrderInput | SortOrder
+    ogTitle?: SortOrderInput | SortOrder
+    ogDescription?: SortOrderInput | SortOrder
+    ogType?: SortOrderInput | SortOrder
+    twitterTitle?: SortOrderInput | SortOrder
+    twitterDescription?: SortOrderInput | SortOrder
   }
 
   export type PageSeoWhereUniqueInput = Prisma.AtLeast<{
@@ -23911,6 +24159,12 @@ export namespace Prisma {
     schemaJsonLd?: StringNullableFilter<"PageSeo"> | string | null
     createdAt?: DateTimeFilter<"PageSeo"> | Date | string
     updatedAt?: DateTimeFilter<"PageSeo"> | Date | string
+    h1?: StringNullableFilter<"PageSeo"> | string | null
+    ogTitle?: StringNullableFilter<"PageSeo"> | string | null
+    ogDescription?: StringNullableFilter<"PageSeo"> | string | null
+    ogType?: StringNullableFilter<"PageSeo"> | string | null
+    twitterTitle?: StringNullableFilter<"PageSeo"> | string | null
+    twitterDescription?: StringNullableFilter<"PageSeo"> | string | null
   }, "id" | "path">
 
   export type PageSeoOrderByWithAggregationInput = {
@@ -23925,6 +24179,12 @@ export namespace Prisma {
     schemaJsonLd?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    h1?: SortOrderInput | SortOrder
+    ogTitle?: SortOrderInput | SortOrder
+    ogDescription?: SortOrderInput | SortOrder
+    ogType?: SortOrderInput | SortOrder
+    twitterTitle?: SortOrderInput | SortOrder
+    twitterDescription?: SortOrderInput | SortOrder
     _count?: PageSeoCountOrderByAggregateInput
     _max?: PageSeoMaxOrderByAggregateInput
     _min?: PageSeoMinOrderByAggregateInput
@@ -23945,6 +24205,12 @@ export namespace Prisma {
     schemaJsonLd?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"PageSeo"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PageSeo"> | Date | string
+    h1?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    ogTitle?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    ogDescription?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    ogType?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    twitterTitle?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    twitterDescription?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
   }
 
   export type TestimonialWhereInput = {
@@ -24429,6 +24695,14 @@ export namespace Prisma {
     ogImage?: string | null
     canonical?: string | null
     noindex?: boolean
+    keywords?: string | null
+    h1?: string | null
+    ogTitle?: string | null
+    ogDescription?: string | null
+    ogType?: string | null
+    twitterTitle?: string | null
+    twitterDescription?: string | null
+    schemaJsonLd?: string | null
     post: PostCreateNestedOneWithoutSeoInput
   }
 
@@ -24440,6 +24714,14 @@ export namespace Prisma {
     ogImage?: string | null
     canonical?: string | null
     noindex?: boolean
+    keywords?: string | null
+    h1?: string | null
+    ogTitle?: string | null
+    ogDescription?: string | null
+    ogType?: string | null
+    twitterTitle?: string | null
+    twitterDescription?: string | null
+    schemaJsonLd?: string | null
   }
 
   export type PostSeoUpdateInput = {
@@ -24449,6 +24731,14 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    h1?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogType?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
     post?: PostUpdateOneRequiredWithoutSeoNestedInput
   }
 
@@ -24460,6 +24750,14 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    h1?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogType?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PostSeoCreateManyInput = {
@@ -24470,6 +24768,14 @@ export namespace Prisma {
     ogImage?: string | null
     canonical?: string | null
     noindex?: boolean
+    keywords?: string | null
+    h1?: string | null
+    ogTitle?: string | null
+    ogDescription?: string | null
+    ogType?: string | null
+    twitterTitle?: string | null
+    twitterDescription?: string | null
+    schemaJsonLd?: string | null
   }
 
   export type PostSeoUpdateManyMutationInput = {
@@ -24479,6 +24785,14 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    h1?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogType?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PostSeoUncheckedUpdateManyInput = {
@@ -24489,6 +24803,14 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    h1?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogType?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CategoryCreateInput = {
@@ -25399,6 +25721,12 @@ export namespace Prisma {
     schemaJsonLd?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    h1?: string | null
+    ogTitle?: string | null
+    ogDescription?: string | null
+    ogType?: string | null
+    twitterTitle?: string | null
+    twitterDescription?: string | null
   }
 
   export type PageSeoUncheckedCreateInput = {
@@ -25413,6 +25741,12 @@ export namespace Prisma {
     schemaJsonLd?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    h1?: string | null
+    ogTitle?: string | null
+    ogDescription?: string | null
+    ogType?: string | null
+    twitterTitle?: string | null
+    twitterDescription?: string | null
   }
 
   export type PageSeoUpdateInput = {
@@ -25427,6 +25761,12 @@ export namespace Prisma {
     schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    h1?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogType?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PageSeoUncheckedUpdateInput = {
@@ -25441,6 +25781,12 @@ export namespace Prisma {
     schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    h1?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogType?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PageSeoCreateManyInput = {
@@ -25455,6 +25801,12 @@ export namespace Prisma {
     schemaJsonLd?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    h1?: string | null
+    ogTitle?: string | null
+    ogDescription?: string | null
+    ogType?: string | null
+    twitterTitle?: string | null
+    twitterDescription?: string | null
   }
 
   export type PageSeoUpdateManyMutationInput = {
@@ -25469,6 +25821,12 @@ export namespace Prisma {
     schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    h1?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogType?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PageSeoUncheckedUpdateManyInput = {
@@ -25483,6 +25841,12 @@ export namespace Prisma {
     schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    h1?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogType?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TestimonialCreateInput = {
@@ -26057,6 +26421,14 @@ export namespace Prisma {
     ogImage?: SortOrder
     canonical?: SortOrder
     noindex?: SortOrder
+    keywords?: SortOrder
+    h1?: SortOrder
+    ogTitle?: SortOrder
+    ogDescription?: SortOrder
+    ogType?: SortOrder
+    twitterTitle?: SortOrder
+    twitterDescription?: SortOrder
+    schemaJsonLd?: SortOrder
   }
 
   export type PostSeoMaxOrderByAggregateInput = {
@@ -26067,6 +26439,14 @@ export namespace Prisma {
     ogImage?: SortOrder
     canonical?: SortOrder
     noindex?: SortOrder
+    keywords?: SortOrder
+    h1?: SortOrder
+    ogTitle?: SortOrder
+    ogDescription?: SortOrder
+    ogType?: SortOrder
+    twitterTitle?: SortOrder
+    twitterDescription?: SortOrder
+    schemaJsonLd?: SortOrder
   }
 
   export type PostSeoMinOrderByAggregateInput = {
@@ -26077,6 +26457,14 @@ export namespace Prisma {
     ogImage?: SortOrder
     canonical?: SortOrder
     noindex?: SortOrder
+    keywords?: SortOrder
+    h1?: SortOrder
+    ogTitle?: SortOrder
+    ogDescription?: SortOrder
+    ogType?: SortOrder
+    twitterTitle?: SortOrder
+    twitterDescription?: SortOrder
+    schemaJsonLd?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -26647,6 +27035,12 @@ export namespace Prisma {
     schemaJsonLd?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    h1?: SortOrder
+    ogTitle?: SortOrder
+    ogDescription?: SortOrder
+    ogType?: SortOrder
+    twitterTitle?: SortOrder
+    twitterDescription?: SortOrder
   }
 
   export type PageSeoMaxOrderByAggregateInput = {
@@ -26661,6 +27055,12 @@ export namespace Prisma {
     schemaJsonLd?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    h1?: SortOrder
+    ogTitle?: SortOrder
+    ogDescription?: SortOrder
+    ogType?: SortOrder
+    twitterTitle?: SortOrder
+    twitterDescription?: SortOrder
   }
 
   export type PageSeoMinOrderByAggregateInput = {
@@ -26675,6 +27075,12 @@ export namespace Prisma {
     schemaJsonLd?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    h1?: SortOrder
+    ogTitle?: SortOrder
+    ogDescription?: SortOrder
+    ogType?: SortOrder
+    twitterTitle?: SortOrder
+    twitterDescription?: SortOrder
   }
 
   export type TestimonialCountOrderByAggregateInput = {
@@ -27504,6 +27910,14 @@ export namespace Prisma {
     ogImage?: string | null
     canonical?: string | null
     noindex?: boolean
+    keywords?: string | null
+    h1?: string | null
+    ogTitle?: string | null
+    ogDescription?: string | null
+    ogType?: string | null
+    twitterTitle?: string | null
+    twitterDescription?: string | null
+    schemaJsonLd?: string | null
   }
 
   export type PostSeoUncheckedCreateWithoutPostInput = {
@@ -27513,6 +27927,14 @@ export namespace Prisma {
     ogImage?: string | null
     canonical?: string | null
     noindex?: boolean
+    keywords?: string | null
+    h1?: string | null
+    ogTitle?: string | null
+    ogDescription?: string | null
+    ogType?: string | null
+    twitterTitle?: string | null
+    twitterDescription?: string | null
+    schemaJsonLd?: string | null
   }
 
   export type PostSeoCreateOrConnectWithoutPostInput = {
@@ -27618,6 +28040,14 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    h1?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogType?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PostSeoUncheckedUpdateWithoutPostInput = {
@@ -27627,6 +28057,14 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    h1?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogType?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PostCreateWithoutSeoInput = {

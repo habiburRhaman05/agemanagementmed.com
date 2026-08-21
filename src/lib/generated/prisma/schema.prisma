@@ -60,6 +60,16 @@ model PostSeo {
   ogImage   String?
   canonical String?
   noindex   Boolean @default(false)
+
+  // --- Added for source-site SEO parity (schema-only, not yet backed by DB data) ---
+  keywords           String? // comma-separated meta keywords, admin-editable
+  h1                 String? // hero H1 override — distinct from metaTitle, which is <title> only
+  ogTitle            String? // falls back to metaTitle when unset
+  ogDescription      String? // falls back to metaDesc when unset
+  ogType             String?
+  twitterTitle       String? // falls back to ogTitle/metaTitle when unset
+  twitterDescription String? // falls back to ogDescription/metaDesc when unset
+  schemaJsonLd       String? // optional raw JSON-LD override, admin-editable, validated as JSON — mirrors PageSeo.schemaJsonLd, previously missing here
 }
 
 model Category {
@@ -230,6 +240,14 @@ model PageSeo {
   schemaJsonLd String? // optional raw JSON-LD override, admin-editable, validated as JSON
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
+  // --- Added for source-site SEO parity (schema-only, not yet backed by DB data) ---
+  h1                 String? // hero H1 override — distinct from `title`, which is <title> only
+  ogTitle            String? // falls back to `title` when unset
+  ogDescription      String? // falls back to `description` when unset
+  ogType             String?
+  twitterTitle       String? // falls back to ogTitle/title when unset
+  twitterDescription String? // falls back to ogDescription/description when unset
 }
 
 // Admin-managed testimonials shown on the marketing site. Separate from the

@@ -164,7 +164,15 @@ exports.Prisma.PostSeoScalarFieldEnum = {
   metaDesc: 'metaDesc',
   ogImage: 'ogImage',
   canonical: 'canonical',
-  noindex: 'noindex'
+  noindex: 'noindex',
+  keywords: 'keywords',
+  h1: 'h1',
+  ogTitle: 'ogTitle',
+  ogDescription: 'ogDescription',
+  ogType: 'ogType',
+  twitterTitle: 'twitterTitle',
+  twitterDescription: 'twitterDescription',
+  schemaJsonLd: 'schemaJsonLd'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
@@ -305,7 +313,13 @@ exports.Prisma.PageSeoScalarFieldEnum = {
   noindex: 'noindex',
   schemaJsonLd: 'schemaJsonLd',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  h1: 'h1',
+  ogTitle: 'ogTitle',
+  ogDescription: 'ogDescription',
+  ogType: 'ogType',
+  twitterTitle: 'twitterTitle',
+  twitterDescription: 'twitterDescription'
 };
 
 exports.Prisma.TestimonialScalarFieldEnum = {

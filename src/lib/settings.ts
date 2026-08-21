@@ -14,6 +14,8 @@ export interface SiteSettingsData {
   defaultSeoTitle: string | null
   defaultSeoDescription: string | null
   defaultOgImageUrl: string | null
+  googleAnalyticsId: string | null
+  metaPixelId: string | null
   headerScripts: string | null
   footerScripts: string | null
 }
@@ -35,6 +37,8 @@ const FALLBACK: SiteSettingsData = {
   defaultSeoTitle: null,
   defaultSeoDescription: null,
   defaultOgImageUrl: null,
+  googleAnalyticsId: null,
+  metaPixelId: null,
   headerScripts: null,
   footerScripts: null,
 }
@@ -56,6 +60,8 @@ export const getSiteSettings = unstable_cache(
       defaultSeoTitle: row.defaultSeoTitle,
       defaultSeoDescription: row.defaultSeoDescription,
       defaultOgImageUrl: row.defaultOgImageUrl,
+      googleAnalyticsId: row.googleAnalyticsId,
+      metaPixelId: row.metaPixelId,
       headerScripts: row.headerScripts,
       footerScripts: row.footerScripts,
     }

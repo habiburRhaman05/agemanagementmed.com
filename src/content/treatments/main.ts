@@ -32,6 +32,12 @@ interface PageSeoRow {
   canonical: string | null
   ogImageUrl: string | null
   noindex: boolean
+  h1: string | null
+  ogTitle: string | null
+  ogDescription: string | null
+  ogType: string | null
+  twitterTitle: string | null
+  twitterDescription: string | null
 }
 
 async function resolveSeo(href: string, seoRow: PageSeoRow | null): Promise<Seo> {
@@ -43,6 +49,12 @@ async function resolveSeo(href: string, seoRow: PageSeoRow | null): Promise<Seo>
       keywords: seoRow.keywords ?? undefined,
       ogImage: seoRow.ogImageUrl ? { src: seoRow.ogImageUrl, alt: seoRow.title } : undefined,
       noindex: seoRow.noindex,
+      h1: seoRow.h1 ?? undefined,
+      ogTitle: seoRow.ogTitle ?? undefined,
+      ogDescription: seoRow.ogDescription ?? undefined,
+      ogType: seoRow.ogType ?? undefined,
+      twitterTitle: seoRow.twitterTitle ?? undefined,
+      twitterDescription: seoRow.twitterDescription ?? undefined,
     }
   }
 
@@ -59,6 +71,12 @@ async function resolveSeo(href: string, seoRow: PageSeoRow | null): Promise<Seo>
         ? { src: settings.defaultOgImageUrl, alt: href }
         : undefined,
     noindex: seoRow?.noindex ?? false,
+    h1: seoRow?.h1 ?? undefined,
+    ogTitle: seoRow?.ogTitle ?? undefined,
+    ogDescription: seoRow?.ogDescription ?? undefined,
+    ogType: seoRow?.ogType ?? undefined,
+    twitterTitle: seoRow?.twitterTitle ?? undefined,
+    twitterDescription: seoRow?.twitterDescription ?? undefined,
   }
 }
 
@@ -116,7 +134,12 @@ async function toTreatment(row: TreatmentRow, seoRow: PageSeoRow | null): Promis
   const hero: Treatment['hero'] = {
     ...(rawHero as object),
     eyebrow: rawHero?.eyebrow ?? shortName,
-    title: rawHero?.title ?? name,
+    // seo.h1 (PageSeo.h1) wins when an admin has explicitly set one — that's
+    // the actual rendered <h1> in HeroEditorial, not just <head> metadata.
+    // Falls through to the treatment's own authored hero title unchanged for
+    // every page that hasn't had an h1 override seeded, so this is a no-op
+    // everywhere except the pages it was deliberately set on.
+    title: seo.h1 ?? rawHero?.title ?? name,
     lead: rawHero?.lead ?? summary,
     image: rawHero?.image ?? cardImage,
     ctas: rawHero?.ctas ?? (closingCta.cta ? [closingCta.cta] : []),

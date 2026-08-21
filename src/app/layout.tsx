@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Bodoni_Moda, Manrope } from 'next/font/google'
+import Script from 'next/script'
 
 import './globals.css'
 
@@ -83,6 +84,43 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <head dangerouslySetInnerHTML={{ __html: settings.headerScripts }} />
       ) : null}
       <body className="font-sans antialiased">
+        {/*
+          `googleAnalyticsId`/`metaPixelId` are structured admin fields, distinct
+          from the raw-HTML `headerScripts`/`footerScripts` fields above (which
+          stay free for GTM containers or any other custom snippet). Until this
+          fix, those two IDs were saved in SiteSettings and shown in the admin
+          UI but never actually rendered anywhere — real IDs, zero effect on
+          the page, which is why tag-inspector tools found nothing installed.
+        */}
+        {settings.googleAnalyticsId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${settings.googleAnalyticsId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${settings.googleAnalyticsId}');`}
+            </Script>
+          </>
+        ) : null}
+
+        {settings.metaPixelId ? (
+          <Script id="meta-pixel-init" strategy="afterInteractive">
+            {`!function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '${settings.metaPixelId}');
+              fbq('track', 'PageView');`}
+          </Script>
+        ) : null}
 
         {children}
         {settings.footerScripts ? (

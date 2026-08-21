@@ -15,9 +15,9 @@ export interface Special {
 /** Copy migrated from the live /specials/ page — real offers, not invented. */
 export const specialsContent = {
   seo: {
-    title: 'Wellness Specials | Savannah Age Management Medicine',
+    title: 'Wellness Specials in Pooler & Statesboro, GA | SAMM',
     description:
-      'Explore current health and wellness specials, available for a limited time at our Statesboro and Pooler locations.',
+      `Explore current wellness specials for hormone therapy, GLP-1, sexual wellness, aesthetics, and more at SAMM's Pooler and Statesboro locations.`,
     canonical: '/specials',
   } satisfies Seo,
 

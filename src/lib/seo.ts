@@ -28,6 +28,14 @@ export function buildMetadata(
     ...(options?.additionalImages?.map((i) => i.url) ?? []),
   ]
 
+  // OG/Twitter copy falls back through title/description when not explicitly
+  // set — most pages have never diverged these, so this preserves today's
+  // output exactly for every page that doesn't set the new fields.
+  const ogTitle = seo.ogTitle || seo.title
+  const ogDescription = seo.ogDescription || seo.description
+  const twitterTitle = seo.twitterTitle || ogTitle
+  const twitterDescription = seo.twitterDescription || ogDescription
+
   return {
     title: seo.title,
     description: seo.description,
@@ -46,18 +54,18 @@ export function buildMetadata(
           },
         },
     openGraph: {
-      title: seo.title,
-      description: seo.description,
+      title: ogTitle,
+      description: ogDescription,
       url,
       siteName: site.name,
       locale: 'en_US',
-      type: 'website',
+      type: (seo.ogType as 'website' | 'article' | undefined) ?? 'website',
       images: ogImages.length > 0 ? ogImages : undefined,
     },
     twitter: {
       card: 'summary_large_image',
-      title: seo.title,
-      description: seo.description,
+      title: twitterTitle,
+      description: twitterDescription,
       images: twitterImages.length > 0 ? twitterImages : undefined,
     },
     other: {

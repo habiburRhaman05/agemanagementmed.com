@@ -30,6 +30,15 @@ export interface Seo {
   keywords?: string
   ogImage?: Media
   noindex?: boolean
+  /** Hero H1 override — distinct from `title`, which is `<title>` only. When set, the page's rendered H1 uses this instead of its default. */
+  h1?: string
+  /** Falls back to `title`/`description` in buildMetadata when unset — set only to diverge OG copy from the `<title>`/meta description. */
+  ogTitle?: string
+  ogDescription?: string
+  ogType?: string
+  /** Falls back to ogTitle/title and ogDescription/description in buildMetadata when unset. */
+  twitterTitle?: string
+  twitterDescription?: string
 }
 
 /* ── Design Override System ────────────────────────────────────────── */
