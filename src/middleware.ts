@@ -8,8 +8,48 @@ const API_ROUTES = ['/api']
 // Public API routes that don't require authentication (login, logout, etc.)
 const PUBLIC_API_ROUTES = ['/api/admin/auth/login', '/api/admin/auth/logout', '/api/upload']
 
+/**
+ * Legacy/stale URLs → their current canonical page, issued as real 301s.
+ * `/aesthetics` used to live at `src/app/(marketing)/aesthetics/page.tsx`
+ * calling `redirect()`, which is a 307 — a permanent redirect stuck on a
+ * temporary status code is exactly the "long-term 302/307 hurts SEO" issue
+ * these were flagged for, so it's handled here instead and that page removed.
+ */
+const EXTERNAL_REDIRECTS: Record<string, string> = {
+  '/aesthetics': 'https://www.savannahskinmed.com/',
+}
+
+const PATH_REDIRECTS: Record<string, string> = {
+  '/bhrt-male': '/bioidentical-hormone-replacement-therapy/male',
+  '/bhrt-female': '/bioidentical-hormone-replacement-therapy/female',
+  '/platelet-rich-plasma-therapy': '/platelet-rich-plasma-hair',
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+
+  // --- Force https + canonical host on production traffic ---
+  // Vercel already terminates TLS, but a client that reaches the origin over
+  // plain http (or an old bookmark/link pointing at the non-canonical host)
+  // gets bounced with a real 301 rather than served insecurely.
+  const forwardedProto = request.headers.get('x-forwarded-proto')
+  const isInsecure = forwardedProto ? forwardedProto !== 'https' : request.nextUrl.protocol === 'http:'
+  if (process.env.NODE_ENV === 'production' && isInsecure) {
+    const secureUrl = request.nextUrl.clone()
+    secureUrl.protocol = 'https:'
+    return NextResponse.redirect(secureUrl, 301)
+  }
+
+  // --- Legacy URL redirects ---
+  const normalizedPath = pathname.replace(/\/+$/, '') || '/'
+  const externalTarget = EXTERNAL_REDIRECTS[normalizedPath]
+  if (externalTarget) {
+    return NextResponse.redirect(externalTarget, 301)
+  }
+  const internalTarget = PATH_REDIRECTS[normalizedPath]
+  if (internalTarget) {
+    return NextResponse.redirect(new URL(internalTarget, request.url), 301)
+  }
 
   // Only protect /admin and /api routes
   const isAdminRoute = ADMIN_ROUTES.some((route) => pathname.startsWith(route))
