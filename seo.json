@@ -4626,5 +4626,890 @@
         "present": true
       }
     }
+  },
+  "https://www.agemanagementmed.com/specials/": {
+    "url": "https://www.agemanagementmed.com/specials/",
+    "sourceFile": "_specials_.html",
+    "pageTitle": "Wellness Specials in Pooler & Statesboro, GA | SAMM",
+    "metaTitle": "Wellness Specials in Pooler & Statesboro, GA | SAMM",
+    "metaDescription": "Explore current wellness specials for hormone therapy, GLP-1, sexual wellness, aesthetics, and more at SAMM's Pooler and Statesboro locations.",
+    "h1Hero": "Wellness Specials",
+    "canonical": "https://www.agemanagementmed.com/specials/",
+    "openGraph": {
+      "title": "Wellness Specials in Pooler & Statesboro, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Specials",
+            "item": "https://www.agemanagementmed.com/specials/"
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/bhrt-hrt-trt/": {
+    "url": "https://www.agemanagementmed.com/bhrt-hrt-trt/",
+    "sourceFile": "_bhrt-hrt-trt_.html",
+    "pageTitle": "BHRT vs HRT vs TRT: What's the Difference? | SAMM",
+    "metaTitle": "BHRT vs HRT vs TRT: What's the Difference? | SAMM",
+    "metaDescription": "Compare BHRT, HRT, and TRT, including how each works, who may benefit, and why SAMM takes a broader hormone optimization approach.",
+    "h1Hero": "BHRT vs HRT vs TRT: What's the Difference?",
+    "canonical": "https://www.agemanagementmed.com/bhrt-hrt-trt/",
+    "openGraph": {
+      "title": "BHRT vs HRT vs TRT: What's the Difference?  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bhrt Hrt Trt",
+            "item": "https://www.agemanagementmed.com/bhrt-hrt-trt/"
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/male/": {
+    "url": "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/male/",
+    "sourceFile": "_bioidentical-hormone-replacement-therapy_male_.html",
+    "pageTitle": "BHRT for Men in Savannah, GA | Bioidentical Hormone Therapy",
+    "metaTitle": "BHRT for Men in Savannah, GA | Bioidentical Hormone Therapy",
+    "metaDescription": "BHRT for men in Savannah for low testosterone symptoms, energy, libido, mood, and performance, with lab-guided hormone care.",
+    "h1Hero": "BHRT for Men in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/male/",
+    "openGraph": {
+      "title": "BHRT for Men in Savannah, GA  Bioidentical Hormone Therapy",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bioidentical Hormone Replacement Therapy",
+            "item": "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Bioidentical Hormone Replacement Therapy (BHRT) for Men",
+            "item": "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/male/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": "Bioidentical Hormone Replacement Therapy (BHRT)",
+        "description": "Bioidentical Hormone Replacement Therapy (BHRT) for men and women is a specialty at Savannah Age Management Medicine. Each patient is assessed individually based on lab values and reported symptoms. Learn more about the BHRT program from Medical Director Harry Collins, DO, FACOG, and John Kurtz, PA, MPAS.",
+        "thumbnailUrl": "https://vumbnail.com/1081534475.jpg",
+        "uploadDate": "2025-05-05T11:53:00-04:00",
+        "duration": "PT1M59S",
+        "contentUrl": "https://vimeo.com/1081534475",
+        "embedUrl": "https://player.vimeo.com/video/1081534475",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Savannah Age Management Medicine",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.agemanagementmed.com/wp-content/uploads/logo.png"
+          }
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is BHRT?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bioidentical Hormone Replacement Therapy (BHRT) uses hormones that are chemically identical to the ones your body naturally produces. It is designed to restore balance and relieve symptoms of hormone deficiencies or imbalances, particularly during aging, menopause, or andropause."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Differences between BHRT, HRT, and TRT",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "BHRT is the most comprehensive way to treat dysregulated hormone levels in both men and women. Click the link below for more information on the differences between these treatment methods."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I know if I need BHRT?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Signs that males and females might need BHRT: Fatigue or energy loss, Loss of libido or arousal response, Irregular menstrual cycles, Hot flashes or night sweats, Mood changes or fluctuation, Memory issues, Weight gain, Sleep problems, Muscle loss."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is BHRT different from traditional hormone therapy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "BHRT hormones match your body's natural hormones exactly. Our program is designed to tailor dosing precisely to your levels, symptoms, and needs. For more even and sustained results, our program leverages injections rather than pellets."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Patients will begin to experience initial improvements in the first 2-3 weeks, with full benefits within 3-6 months. Regular monitoring and adjustment of medication levels may be required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What benefits can I expect from treatment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Benefits of BHRT include but are not limited to: Improved energy levels, Better sleep quality, Enhanced mood stability, Increased mental clarity, Improved libido, Better muscle tone, Reduced hot flashes, More stable weight management."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer pellets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. In our experience, pellets are invasive, difficult to manage, and do not evenly deliver hormones."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can your office serve as my Primary Care Physician?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We can offer Quick Care for things such as a sinus infection, COVID, Urinary Tract Infection,etc. However, we recommend you maintain a relationship with a Primary Care Physician or specialist for any chronic conditions you may have."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will you refill medications that I am currently taking from my other physicians such as blood pressure medication, cholesterol medication, heart medication, etc.",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. These are medications for chronic conditions that should be managed with your specialist or Primary Care Physician."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I have to come into the office every week to get my testosterone injections?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. We will teach you how to administer these medications on your own at home."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I need to see one of your providers during the year? Will I be able to make an appointment and be seen or will this be an extra fee?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Within reason, our providers will make themselves available to see you during the year if you have questions on your progress or treatment protocol. Additional services outside of the scope of BHRT can be administered for a fee."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Once I become a BHRT patient, do I receive a discount off of any of the other additional services that you offer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Active BHRT patients will receive 10% of all other services offered in the clinic."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/female/": {
+    "url": "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/female/",
+    "sourceFile": "_bioidentical-hormone-replacement-therapy_female_.html",
+    "pageTitle": "BHRT for Women in Savannah, GA | Hormone Therapy",
+    "metaTitle": "BHRT for Women in Savannah, GA | Hormone Therapy",
+    "metaDescription": "BHRT for women in Savannah to support menopause symptoms, energy, mood, metabolism, sleep, and hormonal balance with personalized care.",
+    "h1Hero": "BHRT for Women in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/female/",
+    "openGraph": {
+      "title": "BHRT for Women in Savannah, GA  Hormone Therapy",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bioidentical Hormone Replacement Therapy",
+            "item": "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Bioidentical Hormone Therapy (BHRT) for Women",
+            "item": "https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/female/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": "Bioidentical Hormone Replacement Therapy (BHRT)",
+        "description": "Bioidentical Hormone Replacement Therapy (BHRT) for men and women is a specialty at Savannah Age Management Medicine. Each patient is assessed individually based on lab values and reported symptoms. Learn more about the BHRT program from Medical Director Harry Collins, DO, FACOG, and John Kurtz, PA, MPAS.",
+        "thumbnailUrl": "https://vumbnail.com/1081534475.jpg",
+        "uploadDate": "2025-05-05T11:53:00-04:00",
+        "duration": "PT1M59S",
+        "contentUrl": "https://vimeo.com/1081534475",
+        "embedUrl": "https://player.vimeo.com/video/1081534475",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Savannah Age Management Medicine",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.agemanagementmed.com/wp-content/uploads/logo.png"
+          }
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I know if my symptoms are hormone-related?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Symptoms like fatigue, mood changes, sleep disruption, and menopause symptoms may be hormone-related. SAMM evaluates symptoms alongside lab testing to determine hormonal influence."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is BHRT safe for women?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "BHRT is prescribed and monitored by medical professionals. Providers review medical history, risk factors, and treatment goals to determine whether therapy is appropriate for each patient."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does hormone therapy take to work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Symptom improvement varies by individual. Providers monitor both lab results and symptom changes over time and adjust treatment accordingly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will BHRT affect fertility?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hormone therapy can influence reproductive hormones. Women planning pregnancy should discuss fertility goals with providers before beginning treatment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need ongoing monitoring during BHRT?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. SAMM monitors hormone levels and symptom changes through follow-ups and lab testing to ensure safe, personalized treatment optimization."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
+  },
+  "https://www.agemanagementmed.com/platelet-rich-plasma-hair/female/": {
+    "url": "https://www.agemanagementmed.com/platelet-rich-plasma-hair/female/",
+    "sourceFile": "_platelet-rich-plasma-hair_female_.html",
+    "pageTitle": "PRP Hair Restoration for Women in Savannah, GA | SAMM",
+    "metaTitle": "PRP Hair Restoration for Women in Savannah, GA | SAMM",
+    "metaDescription": "PRP hair restoration for women in Savannah uses growth factors from your blood to support thinning hair, hair density, and natural regrowth.",
+    "h1Hero": "PRP Hair Restoration for Women in Savannah, GA",
+    "canonical": "https://www.agemanagementmed.com/platelet-rich-plasma-hair/female/",
+    "openGraph": {
+      "title": "PRP Hair Restoration for Women in Savannah, GA  SAMM",
+      "description": null,
+      "image": "/themes/default/assets/images/share.jpg",
+      "type": null
+    },
+    "twitter": {
+      "title": null,
+      "description": null
+    },
+    "robotsMeta": "index, follow",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Savannah Age Management Medicine - Health & Wellness",
+        "image": [
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "200 Blue Moon Xing Suite 102",
+          "addressLocality": "Pooler",
+          "addressRegion": "GA",
+          "postalCode": "31322",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0807431,
+          "longitude": -81.2886384
+        },
+        "url": "https://www.agemanagementmed.com/",
+        "telephone": "+19129256911",
+        "medicalSpecialty": [
+          "PrimaryCare",
+          "Dermatology",
+          "Physiotherapy",
+          "DietNutrition",
+          "Endocrine"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "priceRange": "$$",
+        "availableService": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Bioidentical Hormone Replacement Therapy"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Platelet Rich Plasma Therapy (PRP)"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Sexual Performance & Rejuvenation"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Concierge Medical Weight Loss"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.agemanagementmed.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Hair Restoration Services",
+            "item": "https://www.agemanagementmed.com/platelet-rich-plasma-hair/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Platelet Rich Plasma (PRP) for Women",
+            "item": "https://www.agemanagementmed.com/platelet-rich-plasma-hair/female/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is PRP hair treatment painful?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most patients experience minimal discomfort. We use topical numbing agents and fine needles to ensure your comfort throughout the procedure."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many treatments will I need?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Typically, we recommend 3-4 initial treatments spaced 4-6 weeks apart, followed by maintenance treatments every 6-12 months."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When will I see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "While individual results vary, most patients begin noticing improvements in hair quality around 2-3 months, with optimal results visible at 6-12 months."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are there any side effects?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PRP is extremely safe since it uses your own blood. Some patients may experience mild scalp tenderness or slight swelling for 1-2 days post-treatment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can PRP be combined with other treatments?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! PRP complements other hair loss treatments including topical medications, laser therapy, and can enhance hair transplant results."
+            }
+          }
+        ]
+      }
+    ],
+    "tracking": {
+      "metaPixel": {
+        "present": true,
+        "pixelId": "1113520899741041"
+      },
+      "googleTagManager": {
+        "present": false
+      },
+      "googleAnalytics": {
+        "present": true,
+        "measurementId": "G-5M5JLGB845"
+      },
+      "hotjar": {
+        "present": false
+      },
+      "metricool": {
+        "present": true
+      },
+      "plausible": {
+        "present": true
+      }
+    }
   }
 }

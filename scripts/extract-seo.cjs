@@ -44,7 +44,16 @@ const PAGES_BATCH_3 = [
   { url: 'https://www.agemanagementmed.com/blog/low-testosterone-symptoms-for-men-in-their-40s/', file: '_blog_low-testosterone-symptoms-for-men-in-their-40s_.html' },
 ]
 
-const PAGES = [...PAGES_BATCH_1, ...PAGES_BATCH_2, ...PAGES_BATCH_3]
+// Batch 4 — the 5 pages that were flagged as gaps across several prior checks
+const PAGES_BATCH_4 = [
+  { url: 'https://www.agemanagementmed.com/specials/', file: '_specials_.html' },
+  { url: 'https://www.agemanagementmed.com/bhrt-hrt-trt/', file: '_bhrt-hrt-trt_.html' },
+  { url: 'https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/male/', file: '_bioidentical-hormone-replacement-therapy_male_.html' },
+  { url: 'https://www.agemanagementmed.com/bioidentical-hormone-replacement-therapy/female/', file: '_bioidentical-hormone-replacement-therapy_female_.html' },
+  { url: 'https://www.agemanagementmed.com/platelet-rich-plasma-hair/female/', file: '_platelet-rich-plasma-hair_female_.html' },
+]
+
+const PAGES = [...PAGES_BATCH_1, ...PAGES_BATCH_2, ...PAGES_BATCH_3, ...PAGES_BATCH_4]
 
 function matchOne(html, re) {
   const m = html.match(re)

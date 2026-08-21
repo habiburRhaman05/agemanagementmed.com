@@ -7,7 +7,8 @@
  * ready:
  *
  *   npx tsx prisma/seed-seo.ts            # dry run — prints the plan, writes nothing
- *   npx tsx prisma/seed-seo.ts --write     # actually upserts
+ *   npx tsx prisma/seed-seo.ts --write     # actually upserts every page in seo.json
+ *   npx tsx prisma/seed-seo.ts --write --only=/a,/b   # upsert ONLY these normalized paths, leave every other page untouched
  *
  * Routing:
  *   - `/blog/<slug>` (an actual post, not the index) -> PostSeo, matched by
@@ -119,8 +120,21 @@ function blogSlugFromPath(p: string): string | null {
   return match ? match[1] : null
 }
 
+/** `--only=/a,/b` restricts processing to just those normalized paths — every other page in seo.json is left completely alone. */
+function parseOnlyFilter(): Set<string> | null {
+  const arg = process.argv.find((a) => a.startsWith('--only='))
+  if (!arg) return null
+  const paths = arg
+    .slice('--only='.length)
+    .split(',')
+    .map((p) => p.trim())
+    .filter(Boolean)
+  return new Set(paths)
+}
+
 async function main() {
   const write = process.argv.includes('--write')
+  const only = parseOnlyFilter()
 
   if (!fs.existsSync(SEO_JSON_PATH)) {
     console.error(`seo.json not found at ${SEO_JSON_PATH} — run scripts/extract-seo.cjs first.`)
@@ -130,9 +144,16 @@ async function main() {
 
   const raw = fs.readFileSync(SEO_JSON_PATH, 'utf8')
   const pages: Record<string, ExtractedPage> = JSON.parse(raw)
-  const entries = Object.values(pages)
+  let entries = Object.values(pages)
 
-  console.log(`Loaded ${entries.length} page(s) from seo.json`)
+  if (only) {
+    entries = entries.filter((page) => only.has(toPath(page.url)))
+  }
+
+  console.log(`Loaded ${Object.keys(pages).length} page(s) from seo.json`)
+  if (only) {
+    console.log(`--only filter active: processing ${entries.length} of ${Object.keys(pages).length} page(s) — [${[...only].join(', ')}]`)
+  }
   console.log(`Mode: ${write ? 'WRITE' : 'DRY RUN (pass --write to apply)'}`)
   console.log(`schemaJsonLd: ${INCLUDE_SCHEMA_JSON_LD ? 'INCLUDED' : 'skipped (flag is false)'}\n`)
 
