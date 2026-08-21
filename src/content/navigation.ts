@@ -63,7 +63,7 @@ export const footerNav = {
     // No dedicated financing page exists in this app yet — points at Contact
     // until one is built.
     { label: 'Financing Options', href: '/contact-us' },
-    { label: 'Office Policies', href: '/office-policy' },
+    { label: 'Office Policies', href: '/office-policies' },
     { label: 'Blog', href: '/blog' },
     { label: 'In The News', href: '/in-the-news' },
     { label: 'Wellness Specials', href: '/specials' },

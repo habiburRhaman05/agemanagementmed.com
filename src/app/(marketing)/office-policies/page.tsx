@@ -22,7 +22,7 @@ export const metadata = buildMetadata({
   title: 'Office Policies | Savannah Age Management Medicine',
   description:
     "Review Savannah Age Management Medicine's office policies, including appointment cancellations, no-show guidelines, appointment reminders, and contact information.",
-  canonical: '/office-policy',
+  canonical: '/office-policies',
 })
 
 export default function OfficePolicyPage() {

@@ -160,11 +160,24 @@ export const getTreatmentBySlug = cache(async (slug: string): Promise<Treatment 
   )()
 })
 
-/** Keyed by route path (`Treatment.href`) — the lookup for `app/[...slug]/page.tsx`. Public-only (`status: published`); draft rows 404 on the live site but remain visible/editable in admin. */
+/**
+ * Keyed by route path (`Treatment.href`) — the lookup for `app/[...slug]/page.tsx`.
+ * Public-only (`status: published`); draft rows 404 on the live site but remain
+ * visible/editable in admin.
+ *
+ * `href` arrives here already slash-free (`hrefFromSlug` in the page never
+ * produces a trailing slash), but `Treatment.href` is a free-text admin field
+ * and has been saved with a trailing slash before — an exact-match `findFirst`
+ * then 404s a page that visibly exists in the DB. Matching both forms makes
+ * that class of admin typo harmless instead of a silent 404.
+ */
 export const getTreatmentByHref = cache(async (href: string): Promise<Treatment | undefined> => {
+  const withSlash = href === '/' ? href : `${href}/`
   return unstable_cache(
     async () => {
-      const row = await prisma.treatment.findFirst({ where: { href, status: 'published' } })
+      const row = await prisma.treatment.findFirst({
+        where: { href: { in: [href, withSlash] }, status: 'published' },
+      })
       if (!row) return undefined
       const seoRow = await prisma.pageSeo.findUnique({ where: { path: row.href } })
       return toTreatment(row, seoRow)

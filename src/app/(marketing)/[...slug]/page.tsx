@@ -25,6 +25,7 @@ import { StatesboroLayout } from '@/components/sections/custom/templates-custom/
 import NotFound from '../not-found'
 import { RejuvenationEnhancementLayout } from '@/components/sections/custom/templates-custom/RejuvenationEnhancementLayout'
 import { RejuvenationEnhancementOfferLayout } from '@/components/sections/custom/templates-custom/RejuvenationEnhancementOfferLayout'
+import { PlateletRichPlasmaHair } from '@/components/sections/custom/templates-custom/PlateletRichPlasmaHair'
 
 
 
@@ -75,10 +76,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
     
         case "weight-loss-women":
           return <WeightLossFeMaleLayout treatment={treatment}/>
+        case "concierge-medical-weight-loss":
+          return <WeightLossFeMaleLayout treatment={treatment}/>
         case "hair-restoration-women":
           return <HairRestoreFemaleLayout treatment={treatment}/>
         case "platelet-rich-plasma-hair":
-          return <HairRestoreFemaleLayout treatment={treatment}/>
+          return <PlateletRichPlasmaHair treatment={treatment}/>
         case "hair-restoration-men":
           return <HairRestoreMaleLayout treatment={treatment}/>
         case "sexual-wellness-men":
@@ -119,6 +122,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
        return <NotFound/>
     }
   }
+
 
   return (
     <>

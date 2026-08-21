@@ -34,7 +34,7 @@ const bestResults = [
   'Patients who want to enhance hair transplant results',
 ]
 
-const HowPRPTreatsHairLoss: React.FC = () => {
+const HowPRPTreatsHairLoss = ({customImage}) => {
   return (
     <>
       {/* <div className="lg-flexspace-100 !bg-white" /> */}
@@ -137,7 +137,7 @@ const HowPRPTreatsHairLoss: React.FC = () => {
               <div className="img lg-col-lg-5">
                 <div
                   className="img-box h-70 sm:h-90 lg:h-125"
-                  style={{ backgroundImage: `url('${bestResultsPhoto}')` }}
+                  style={{ backgroundImage: `url('${customImage || bestResultsPhoto}')` }}
                   role="img"
                   aria-label="Smiling patient after treatment"
                 />
