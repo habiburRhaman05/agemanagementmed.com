@@ -26,6 +26,7 @@ import NotFound from '../not-found'
 import { RejuvenationEnhancementLayout } from '@/components/sections/custom/templates-custom/RejuvenationEnhancementLayout'
 import { RejuvenationEnhancementOfferLayout } from '@/components/sections/custom/templates-custom/RejuvenationEnhancementOfferLayout'
 import { PlateletRichPlasmaHair } from '@/components/sections/custom/templates-custom/PlateletRichPlasmaHair'
+import { HormoneTherapyCommonLayout } from '@/components/sections/custom/templates-custom/HormoneTherapyCommonLayout'
 
 
 
@@ -111,7 +112,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
         case "rejuvenation-enhancement":
           return <RejuvenationEnhancementLayout treatment={treatment}/>
         case "bioidentical-hormone-replacement-therapy":
-          return <HormoneTherapyMenLayout treatment={treatment}/>
+          return <HormoneTherapyCommonLayout treatment={treatment}/>
         case "concierge-medical-weight-loss":
           return <WeightLossMaleLayout treatment={treatment}/>
         case "platelet-rich-plasma-hair":
