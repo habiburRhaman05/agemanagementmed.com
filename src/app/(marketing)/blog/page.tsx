@@ -45,14 +45,14 @@ function BlogHero() {
   return (
     <section className="relative isolate flex min-h-[360px] items-end overflow-hidden pt-36 pb-12 sm:min-h-[440px] sm:pb-16 lg:pt-44">
       <Image
-        src="/images/photo-content-56-img.jpg"
+        src="https://res.cloudinary.com/khs2rcsr/image/upload/v1786254414/hero-13-bg_xi7jhs.jpg"
         alt=""
         fill
         priority
         sizes="100vw"
         className="absolute inset-0 -z-10 object-cover object-[center_25%]"
       />
-      <div className="absolute inset-0 -z-10 bg-[#0f1c3f]/55" aria-hidden />
+      {/* <div className="absolute inset-0 -z-10 bg-[#0f1c3f]/55" aria-hidden /> */}
 
       <Container className="relative">
         <h1 className="font-display text-[40px] text-white sm:text-[56px]">Blog</h1>
