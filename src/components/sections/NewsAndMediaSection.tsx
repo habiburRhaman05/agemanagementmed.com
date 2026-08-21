@@ -144,7 +144,7 @@ export function NewsAndMediaSection({
         >
           <Image
             src="/images/wtoc-logo.png"
-            alt="WTOC 11 — Live. Local. Now."
+            alt="WTOC - Live. Local. Now"
             width={220}
             height={74}
             className="h-auto w-44 sm:w-56"

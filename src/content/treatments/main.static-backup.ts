@@ -1064,7 +1064,7 @@ export const treatments: Treatment[] = [
         ],
         image: {
           src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-img.png',
-          alt: 'The BHRT evaluation and treatment process',
+          alt: 'Patient Appointment',
         },
         imageSide: 'left',
       },
@@ -1099,7 +1099,7 @@ export const treatments: Treatment[] = [
         ],
         image: {
           src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-2-img.png',
-          alt: 'A SAMM provider explaining a personalized treatment plan',
+          alt: 'Doctor Research',
         },
         imageSide: 'left',
       },
@@ -1118,7 +1118,7 @@ export const treatments: Treatment[] = [
         ],
         image: {
           src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-3-img.png',
-          alt: 'A comprehensive consultation appointment',
+          alt: 'Men Interaction',
         },
       },
       {
@@ -2612,7 +2612,7 @@ treatmentsPorcess:
         ],
         image: {
           src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-img.png',
-          alt: 'A SAMM provider preparing an in-clinic treatment',
+          alt: 'Patient Appointment',
         },
         imageSide: 'right',
       },
