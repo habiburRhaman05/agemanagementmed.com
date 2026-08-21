@@ -1,5 +1,6 @@
 import { WeightLossClosingCTA } from '../compontents-custom/weight-loss/male/WeightLossClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
+import { pillars } from '@/content/treatments'
 import type { Treatment } from '@/types/content'
 import PersonalizedMan from '../compontents-custom/weight-loss/male/PersonalizedMan'
 import WhatsIncluded from '../compontents-custom/weight-loss/male/WhatsIncluded'
@@ -14,6 +15,8 @@ interface TreatmentTemplateProps {
 }
 
 export async function WeightLossMaleLayout({ treatment }: TreatmentTemplateProps) {
+  const pillar = pillars[treatment.pillar]
+
   return (
     <>
       {/* <HeroEditorial  image={treatment.hero?.image} /> */}
@@ -22,7 +25,11 @@ export async function WeightLossMaleLayout({ treatment }: TreatmentTemplateProps
         {...treatment.hero}
         fullHeight
         textWidth='900'
-        
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: pillar.label, href: pillar.href },
+          { label: treatment.shortName, href: treatment.href },
+        ]}
       />
       <div className="lg-flexspace-100" />
 
