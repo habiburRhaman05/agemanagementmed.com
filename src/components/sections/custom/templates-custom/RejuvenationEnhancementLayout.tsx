@@ -39,6 +39,8 @@ import { Services } from '@/components/shared/Services'
 import { getServices } from '@/content/services'
 import { IconGridPanelGroup, DualIconGridBanner } from '../compontents-custom/rejuvenation/IconGridPanel'
 import { ChecklistPanelGroup } from '../compontents-custom/rejuvenation/ChecklistPanel'
+import { WhyMedicalApproachPanel } from '../compontents-custom/rejuvenation/hub/WhyMedicalApproachPanel'
+import { MidPageCTA } from '../compontents-custom/shared/MidPageCTA'
 
 
 function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
@@ -237,6 +239,20 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
           },
         ]}
       />
+
+      <MidPageCTA
+        backgroundImage="/hero-30-bg.jpg"
+        backgroundPosition="center"
+        title="Take the First Step Toward Feeling Like Yourself Again"
+        body="You do not have to figure this out on your own."
+        titleWidth="550"
+        paraWidth="525"
+        ctaLabel="Schedule A Consultation To Review Symptoms And Hormone Labs"
+        align="full"
+        gradient={false}
+      />
+
+      <WhyMedicalApproachPanel />
 
       <TestimonialSet
       width="w-full mx-auto"
