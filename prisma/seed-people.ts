@@ -16,7 +16,7 @@ const people = [
     credentials: 'DO, FACOG',
     role: 'Medical Director · Age Management Medicine Specialist',
     portraitSrc: 'https://assets.cdn.filesafe.space/MchptoGAJlN1a0TmPjaq/media/6a686e97b7fe5a8e312fa2b9.png',
-    portraitAlt: 'Dr. Harry S. Collins, DO, FACOG',
+    portraitAlt: 'Harry S. Collins, DO, FACOG, Medical Director',
     summary:
       'Founder of SAMM and a Life Fellow of the American College of Obstetricians and Gynecologists, certified in Age Management Medicine.',
     bio: [
@@ -87,7 +87,7 @@ const people = [
     credentials: null,
     role: 'Exercise Physiologist and Nutritionist',
     portraitSrc: '/images/teams/team-5-img.png',
-    portraitAlt: 'Tamara Bell, Exercise Physiologist',
+    portraitAlt: 'Tamara Bell',
     summary: 'Exercise Physiologist and Nutritionist, an integral team member for the past 10 years.',
     bio: [
       'Tamara has been an integral team member for the past 10 years, leveraging her expertise as an Exercise Physiologist and Nutritionist. She provides personalized care to help you reach your fitness and nutrition goals.',
@@ -103,7 +103,7 @@ const people = [
     credentials: null,
     role: 'Office Manager',
     portraitSrc: '/images/teams/team-6-img.png',
-    portraitAlt: 'Elaine Gayheart, Office Manager',
+    portraitAlt: 'Elaine Gayheart',
     summary: 'A decade of emergency medicine experience across ambulance and urgent care settings.',
     bio: [
       'With a decade of experience in emergency medicine across ambulance and urgent care settings, Elaine Gayheart brings valuable expertise to our team. Her strong background in ensuring accurate, HIPAA-compliant documentation and her exceptional organizational skills make her an asset in maintaining our high standards of patient care and clinic operations.',
@@ -119,7 +119,7 @@ const people = [
     credentials: null,
     role: 'Patient Service Specialist',
     portraitSrc: '/images/teams/team-7-img.png',
-    portraitAlt: 'Brittany Moore, Patient Service Specialist',
+    portraitAlt: 'Brittany Moore',
     summary: 'Business management background bringing leadership, organization, and communication to the front office.',
     bio: [
       'Brittany Moore is a dedicated professional and proud mother of three with a Bachelor of Science in Business Management, specializing in Small Business & Entrepreneurship and Human Resource Management. With a strong background in business operations, management, and front office administration, she brings valuable leadership, organization, and communication skills that help create an efficient and welcoming environment for both patients and staff.',
@@ -135,7 +135,7 @@ const people = [
     credentials: null,
     role: 'Patient Service Specialist',
     portraitSrc: '/images/teams/team-8-img.png',
-    portraitAlt: 'Ashspernette Douglas, Patient Service Specialist',
+    portraitAlt: 'Ashspernette Douglas',
     summary: 'Certified Registered Medical Assistant with over 14 years of experience in the medical field.',
     bio: [
       'Ashspernette (Ash) Douglas is a Certified Registered Medical Assistant with over 14 years of experience in the medical field. She is passionate about helping others and meeting new people from all walks of life.',

@@ -99,11 +99,11 @@ export const homeContent = {
       { value: '8', label: 'Providers and care team members' },
     ],
     awards: [
-      { src: '/images/award-11-img.png', alt: 'Best of Savannah award' },
-      { src: '/images/award-13-img.png', alt: 'Regional excellence award' },
-      { src: '/images/award-15-img.png', alt: 'Best of Savannah Doctors award' },
-      { src: '/images/award-17-img.png', alt: 'Community recognition award' },
-      { src: '/images/award-19-img.png', alt: 'Wellness practice award' },
+      { src: '/images/award-11-img.png', alt: 'Best of Pooler 2025 Winner' },
+      { src: '/images/award-13-img.png', alt: 'Best Awards of Savannah 2024 Winner' },
+      { src: '/images/award-15-img.png', alt: 'Best Awards of Savannah 2023 Winner' },
+      { src: '/images/award-17-img.png', alt: 'Best Awards of Savannah 2021 Winner' },
+      { src: '/images/award-19-img.png', alt: 'Best Awards of Savannah 2019 Winner' },
     ] satisfies Award[],
   },
 
