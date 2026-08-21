@@ -80,10 +80,13 @@ export function NewsletterForm() {
             placeholder="First Name"
             className={`mt-2 ${darkInputClass}`}
             aria-invalid={Boolean(errors.firstName)}
+            aria-describedby={errors.firstName ? 'firstName-error' : undefined}
             {...register('firstName')}
           />
           {errors.firstName ? (
-            <p className="mt-1.5 text-body-sm text-rose-300">{errors.firstName.message}</p>
+            <p id="firstName-error" role="alert" className="mt-1.5 text-body-sm text-rose-300">
+              {errors.firstName.message}
+            </p>
           ) : null}
         </div>
 
@@ -97,10 +100,13 @@ export function NewsletterForm() {
             placeholder="Last Name"
             className={`mt-2 ${darkInputClass}`}
             aria-invalid={Boolean(errors.lastName)}
+            aria-describedby={errors.lastName ? 'lastName-error' : undefined}
             {...register('lastName')}
           />
           {errors.lastName ? (
-            <p className="mt-1.5 text-body-sm text-rose-300">{errors.lastName.message}</p>
+            <p id="lastName-error" role="alert" className="mt-1.5 text-body-sm text-rose-300">
+              {errors.lastName.message}
+            </p>
           ) : null}
         </div>
       </div>
@@ -116,9 +122,14 @@ export function NewsletterForm() {
           placeholder="Email"
           className={`mt-2 ${darkInputClass}`}
           aria-invalid={Boolean(errors.email)}
+          aria-describedby={errors.email ? 'email-error' : undefined}
           {...register('email')}
         />
-        {errors.email ? <p className="mt-1.5 text-body-sm text-rose-300">{errors.email.message}</p> : null}
+        {errors.email ? (
+          <p id="email-error" role="alert" className="mt-1.5 text-body-sm text-rose-300">
+            {errors.email.message}
+          </p>
+        ) : null}
       </div>
 
       <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:w-auto">
