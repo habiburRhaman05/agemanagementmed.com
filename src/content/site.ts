@@ -43,6 +43,8 @@ export const locations: Location[] = [
     city: 'Pooler',
     state: 'GA',
     zip: '31322',
+    // Matches the live site's LocalBusiness/MedicalClinic JSON-LD exactly.
+    geo: { latitude: 32.0807431, longitude: -81.2886384 },
     hours: [
       { days: 'Mon – Thu', time: '9:00 AM – 5:00 PM' },
       { days: 'Friday', time: '9:00 AM – 3:00 PM' },
@@ -66,3 +68,21 @@ export const locations: Location[] = [
     mapEmbedUrl: 'https://www.google.com/maps?q=5+Oak+Street+Statesboro+GA+30458&output=embed',
   },
 ]
+
+/**
+ * Practice-wide facts used to build the sitewide MedicalClinic/LocalBusiness
+ * JSON-LD (see buildOrganizationSchema in lib/seo.ts) — kept here rather than
+ * inline in the schema builder so non-dev edits (a new specialty, a changed
+ * price range) don't require touching schema-generation code.
+ */
+export const organizationSchemaFacts = {
+  medicalSpecialty: ['PrimaryCare', 'Dermatology', 'Physiotherapy', 'DietNutrition', 'Endocrine'],
+  priceRange: '$$',
+  availableServices: [
+    { type: 'MedicalProcedure', name: 'Bioidentical Hormone Replacement Therapy' },
+    { type: 'MedicalTherapy', name: 'Platelet Rich Plasma Therapy (PRP)' },
+    { type: 'MedicalTherapy', name: 'Sexual Performance & Rejuvenation' },
+    { type: 'MedicalTherapy', name: 'Concierge Medical Weight Loss' },
+    { type: 'MedicalTherapy', name: 'GLP-1 Microdosing' },
+  ] as const,
+} as const

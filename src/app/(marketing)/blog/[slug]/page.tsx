@@ -12,9 +12,10 @@ import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
+import { JsonLd } from '@/components/seo/JsonLd'
 import { getPostBySlug, getPosts } from '@/actions/blog'
 import { site } from '@/content/site'
-import { buildMetadata } from '@/lib/seo'
+import { buildArticleSchema, buildBreadcrumbSchema, buildMetadata } from '@/lib/seo'
 import type { Metadata } from 'next'
 
 export const revalidate = 3600
@@ -410,6 +411,24 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={buildArticleSchema({
+          title: post.title,
+          excerpt: post.excerpt,
+          image: post.seo?.ogImage || post.featuredImage,
+          publishedAt: post.publishedAt,
+          updatedAt: post.updatedAt,
+          authorName: post.author?.name,
+          href: `/blog/${post.slug}`,
+        })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: post.title, href: `/blog/${post.slug}` },
+        ])!}
+      />
       <Header overlay />
       <ReadingProgressBar />
 

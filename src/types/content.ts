@@ -256,6 +256,8 @@ export interface Location {
   zip: string
   hours: OfficeHours[]
   mapEmbedUrl: string
+  /** Used for the LocalBusiness/MedicalClinic JSON-LD `geo` property. */
+  geo?: { latitude: number; longitude: number }
 }
 
 export interface Award {
