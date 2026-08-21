@@ -34,7 +34,7 @@ const bestResults = [
   'Patients who want to enhance hair transplant results',
 ]
 
-const HowPRPTreatsHairLoss = ({customImage}:{customImage:string}) => {
+const HowPRPTreatsHairLoss = ({customImage}:{customImage?:string}) => {
   return (
     <>
       {/* <div className="lg-flexspace-100 !bg-white" /> */}
