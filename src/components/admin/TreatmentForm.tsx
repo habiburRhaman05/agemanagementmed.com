@@ -20,7 +20,7 @@ interface TreatmentData {
   hero?: {
     eyebrow?: string
     title?: string
-    lead?: string
+    lead?: string | string[]
     image?: { src: string; alt: string }
     ctas?: Cta[]
   }
@@ -81,6 +81,14 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
   const [heroCtas, setHeroCtas] = useState<Cta[]>(treatment.data.hero?.ctas ?? [])
   const [faqs, setFaqs] = useState(treatment.data.faqs ?? [])
 
+  const heroLeadRaw = treatment.data.hero?.lead
+  const [leadMode, setLeadMode] = useState<'single' | 'multiple'>(
+    Array.isArray(heroLeadRaw) ? 'multiple' : 'single',
+  )
+  const [leadItems, setLeadItems] = useState<string[]>(
+    Array.isArray(heroLeadRaw) && heroLeadRaw.length ? heroLeadRaw : [''],
+  )
+
   const moveFaq = (index: number, direction: -1 | 1) => {
     const target = index + direction
     if (target < 0 || target >= faqs.length) return
@@ -111,7 +119,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
      
       heroEyebrow: treatment.data.hero?.eyebrow ?? '',
       heroTitle: treatment.data.hero?.title ?? '',
-      heroLead: treatment.data.hero?.lead ?? '',
+      heroLead: typeof heroLeadRaw === 'string' ? heroLeadRaw : '',
       heroImageSrc: treatment.data.hero?.image?.src ?? '',
       heroImageAlt: treatment.data.hero?.image?.alt ?? '',
       closingTitle: treatment.data.closingCta?.title ?? '',
@@ -137,6 +145,17 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
   const onValid = async (values: EditTreatmentValues) => {
     setSubmitError('')
     setSeoSchemaError('')
+
+    const trimmedLeadItems = leadItems.map((t) => t.trim()).filter(Boolean)
+    const leadValue: string | string[] =
+      leadMode === 'multiple' ? trimmedLeadItems : values.heroLead ?? ''
+
+    if (leadMode === 'multiple' ? trimmedLeadItems.length === 0 : !leadValue) {
+      const message = 'Hero lead is required — enter at least one paragraph.'
+      setSubmitError(message)
+      toast.error(message)
+      return
+    }
 
     let advanced: Record<string, unknown>
     try {
@@ -169,7 +188,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
             hero: {
               eyebrow: values.heroEyebrow || undefined,
               title: values.heroTitle,
-              lead: values.heroLead,
+              lead: leadValue,
               image: { src: values.heroImageSrc, alt: values.heroImageAlt },
               ctas: heroCtas,
             },
@@ -290,9 +309,60 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           <FieldError message={errors.heroTitle?.message} />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-500">Lead</label>
-          <textarea {...register('heroLead')} rows={3} className={inputClass} />
-          <FieldError message={errors.heroLead?.message} />
+          <div className="flex items-center justify-between">
+            <label className="block text-xs font-medium text-gray-500">Lead</label>
+            <div className="inline-flex rounded-lg border border-canvas-300 p-0.5 text-xs">
+              <button
+                type="button"
+                onClick={() => setLeadMode('single')}
+                className={`rounded-md px-2 py-1 font-medium ${leadMode === 'single' ? 'bg-sage-600 text-white' : 'text-gray-500 hover:text-ink-950'}`}
+              >
+                Single paragraph
+              </button>
+              <button
+                type="button"
+                onClick={() => setLeadMode('multiple')}
+                className={`rounded-md px-2 py-1 font-medium ${leadMode === 'multiple' ? 'bg-sage-600 text-white' : 'text-gray-500 hover:text-ink-950'}`}
+              >
+                Multiple paragraphs
+              </button>
+            </div>
+          </div>
+
+          {leadMode === 'single' ? (
+            <>
+              <textarea {...register('heroLead')} rows={3} className={`mt-2 ${inputClass}`} />
+              <FieldError message={errors.heroLead?.message} />
+            </>
+          ) : (
+            <div className="mt-2 space-y-2">
+              {leadItems.map((item, i) => (
+                <div key={i} className="flex gap-2">
+                  <textarea
+                    value={item}
+                    onChange={(e) => setLeadItems(leadItems.map((t, j) => (j === i ? e.target.value : t)))}
+                    placeholder={`Paragraph ${i + 1}`}
+                    rows={2}
+                    className={inputClass}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setLeadItems(leadItems.length > 1 ? leadItems.filter((_, j) => j !== i) : [''])}
+                    className="shrink-0 self-start rounded-lg p-2 text-gray-400 hover:bg-red-50 hover:text-red-600"
+                  >
+                    <Trash2 className="size-4" />
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() => setLeadItems([...leadItems, ''])}
+                className="inline-flex items-center gap-1 text-xs font-medium text-sage-700 hover:text-sage-700"
+              >
+                <Plus className="size-3.5" /> Add paragraph
+              </button>
+            </div>
+          )}
         </div>
         <div>
           <ImageUploader

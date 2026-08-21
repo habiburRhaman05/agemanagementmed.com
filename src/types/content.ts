@@ -305,7 +305,8 @@ export interface Treatment extends TreatmentSummary {
   hero: {
     eyebrow: string
     title: string
-    lead: string
+    /** A single lead paragraph, or several rendered as separate paragraphs — see `HeroEditorial`. */
+    lead: string | string[]
     image: Media
     ctas: Cta[],
     actions?: {

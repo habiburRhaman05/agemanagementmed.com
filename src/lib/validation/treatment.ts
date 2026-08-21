@@ -15,7 +15,12 @@ export const treatmentCoreSchema = z.object({
   cardBenefits: z.string().optional(),
   heroEyebrow: z.string().optional(),
   heroTitle: z.string().min(1, 'Hero title is required'),
-  heroLead: z.string().min(1, 'Hero lead is required'),
+  // A single lead paragraph is entered here; when the admin switches to
+  // "multiple paragraphs" mode the lead text instead comes from the form's
+  // own `leadItems` array state (see TreatmentForm/NewTreatmentForm) — so
+  // this can't stay a hard `min(1)` requirement. Each form enforces "at
+  // least one non-empty paragraph across whichever mode is active" itself.
+  heroLead: z.string().optional(),
   heroImageSrc: z.string().min(1, 'Hero image URL is required'),
   heroImageAlt: z.string().optional(),
   closingTitle: z.string().optional(),

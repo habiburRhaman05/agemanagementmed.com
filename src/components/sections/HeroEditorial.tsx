@@ -47,7 +47,7 @@ interface HeroActions {
 interface HeroEditorialProps {
   eyebrow?: string;
   title: string;
-  lead: string;
+  lead: string | string[];
   lead2?: string;
   textWidth?: string;
   image: Media;

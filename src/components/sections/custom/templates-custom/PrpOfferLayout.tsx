@@ -38,9 +38,8 @@ export async function PrpOfferLayout({ treatment }: TreatmentTemplateProps) {
     <>
       <HeroImmersive
         {...treatment.hero}
+        lead={Array.isArray(treatment.hero.lead) ? treatment.hero.lead.join(' ') : treatment.hero.lead}
         videoUrl={"https://player.vimeo.com/video/1081611626?h"}
-        
-       
       />
 
       <PrpOfferSymptomsSection
