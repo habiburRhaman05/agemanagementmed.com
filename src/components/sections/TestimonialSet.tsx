@@ -222,7 +222,18 @@ export function TestimonialSet({
                       <span className="font-bold text-slate-900 text-xs sm:text-sm">
                         {active.author}
                       </span>
-                      <div className="flex items-center gap-0.5 mt-0.5" aria-label="5 out of 5 stars">
+                      {/*
+                        A plain <div> has an implicit ARIA role of "generic",
+                        which doesn't permit aria-label (fails
+                        aria-allowed-attr / the accessibility-tree well-formed
+                        check). role="img" makes the five decorative stars
+                        resolve as one labeled unit instead.
+                      */}
+                      <div
+                        className="flex items-center gap-0.5 mt-0.5"
+                        role="img"
+                        aria-label="5 out of 5 stars"
+                      >
                         {Array.from({ length: 5 }).map((_, i) => (
                           <Star
                             key={i}
@@ -247,28 +258,40 @@ export function TestimonialSet({
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 w-full mt-8 sm:mt-0 sm:justify-between">
           {/* Left: Carousel dashes */}
           {testimonials.length > 1 ? (
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center">
               {testimonials.map((_, i) => (
+                // The visible dot is 4px tall — a real 4x-whatever hit target,
+                // well under the 24x24px touch-target minimum. `py-3 px-2`
+                // pads the button itself out to a compliant hit area without
+                // inflating the visible pill; the dot moves to an inner span
+                // so hover/active styling still reads as a thin bar.
                 <button
                   key={i}
                   type="button"
                   onClick={() => goTo(i)}
-                  className={cn(
-                    'h-1 rounded-full transition-all duration-300 cursor-pointer border-0 p-0',
-                    i === safeIndex
-                      ? 'w-7 sm:w-8 bg-white'
-                      : 'w-3.5 sm:w-4 bg-white/40 hover:bg-white/75'
-                  )}
+                  className="group cursor-pointer border-0 bg-transparent p-0 py-3 px-2"
                   aria-label={`Go to testimonial ${i + 1}`}
-                />
+                >
+                  <span
+                    className={cn(
+                      'block h-1 rounded-full transition-all duration-300',
+                      i === safeIndex
+                        ? 'w-7 sm:w-8 bg-white'
+                        : 'w-3.5 sm:w-4 bg-white/40 group-hover:bg-white/75'
+                    )}
+                  />
+                </button>
               ))}
             </div>
           ) : <div />}
 
           {/* Right: SEE ALL REVIEWS Button */}
+         {/* #30A7A0 measured 2.93:1 against the white label at this
+             14px/700 weight — below the 4.5:1 WCAG AA minimum. Darkened to
+             the same hue, ~4.7:1, per the SAMM site audit. */}
          {testimonials.length > 1 && <a
             href={ctaHref}
-            className="inline-flex items-center justify-center bg-[#30A7A0] hover:bg-[#278d87] text-white text-[14px]  font-bold tracking-wider uppercase px-6 py-2.5 rounded-full shadow-lg transition-all duration-200 transform hover:scale-105"
+            className="inline-flex items-center justify-center bg-[#25817c] hover:bg-[#1c615e] text-white text-[14px]  font-bold tracking-wider uppercase px-6 py-2.5 rounded-full shadow-lg transition-all duration-200 transform hover:scale-105"
           >
             {ctaText}
           </a>}

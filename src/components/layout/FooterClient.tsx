@@ -68,9 +68,20 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
               </a>
             </div>
 
-            <button   className="mt-6 bg-[#519B99] py-3 text-white rounded-3xl text-[14px] font-bold   w-[275px] hover:bg-[#559795]  uppercase tracking-wide">
-              <Link href="/newsletter">Join our newsletter</Link>
-            </button>
+            {/*
+              #519B99 measured 3.23:1 against the white label at this
+              14px/700 weight — below the 4.5:1 WCAG AA minimum. Darkened to
+              the same hue, ~4.6:1, per the SAMM site audit. Also un-nested
+              from a wrapping <button> (a <button> containing an <a> is
+              invalid HTML and gives the element two conflicting interactive
+              roles) — the link itself now carries the button styling.
+            */}
+            <Link
+              href="/newsletter"
+              className="mt-6 flex items-center justify-center bg-[#427f7d] py-3 text-white rounded-3xl text-[14px] font-bold w-[275px] hover:bg-[#346463] uppercase tracking-wide"
+            >
+              Join our newsletter
+            </Link>
           </div>
 
           {/* Contact info: both locations, address + hours */}

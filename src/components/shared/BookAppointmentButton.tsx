@@ -10,9 +10,11 @@ type Variant = 'navy' | 'white' | 'teal';
 
 const variants: Record<Variant, string> = {
   // Brand teal — the one background color every AppointmentButton variant uses.
-  navy: 'bg-[#519B99] text-white hover:opacity-90',
-  white: 'bg-[#519B99] text-white hover:opacity-90',
-  teal: 'bg-[#519B99] text-white hover:opacity-90',
+  // #519B99 measured 3.23:1 against the white label at this 14px/700 weight —
+  // below the 4.5:1 WCAG AA minimum. Darkened to the same hue, ~4.6:1.
+  navy: 'bg-[#427f7d] text-white hover:opacity-90',
+  white: 'bg-[#427f7d] text-white hover:opacity-90',
+  teal: 'bg-[#427f7d] text-white hover:opacity-90',
 };
 
 type BookAppointmentButtonProps = {
