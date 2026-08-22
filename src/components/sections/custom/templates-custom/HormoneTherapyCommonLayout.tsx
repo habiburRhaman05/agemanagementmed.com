@@ -40,13 +40,15 @@ export async function HormoneTherapyCommonLayout({ treatment }: TreatmentTemplat
 
   return (
     <>
-      <MaleHeroBanner
-        title="Bioidentical Hormone Replacement Therapy (BHRT) For Men"
-        lead="Optimize Testosterone. Restore Energy. Reclaim Your Edge."
-        image={treatment.hero?.image}
+      <HeroEditorial
+    {...treatment.hero}
+
+fullHeight
       />
 
-      <HubIntroBenefits />
+      <div className='sm:mt-20 mt-8'>
+        <HubIntroBenefits />
+      </div>
 
       <WelcomeVideo title="Tools Of Transformation: BHRT" videoHref="https://vimeo.com/1081534475" />
 <PatientJourney 
@@ -82,39 +84,6 @@ title='Your Patient Journey'
 
  
 
-      {/* <LegacyIncludedGrid
-        title="Cost & What's Included: Transparent Pricing, No Guesswork"
-        lead="What's typically included as a patient:"
-        included={[
-          { icon: bhrtIcons.costConsultation, title: 'Provider Visits And Hormone Assessments' },
-          { icon: bhrtIcons.patientBodyComposition, title: 'Body Composition Analysis' },
-          { icon: bhrtIcons.patientNutritionalGuidance, title: 'Nutritional Guidance' },
-          { icon: bhrtIcons.patientFunctionalMovement, title: 'Functional Movement Recommendations' },
-          { icon: bhrtIcons.costLabTesting, title: 'In-Office Lab Draws' },
-          { icon: bhrtIcons.patientTreatmentOptimization, title: 'Ongoing Treatment Optimization' },
-          { icon: bhrtIcons.patientQuickcare, title: 'QuickCare Access' },
-          { icon: bhrtIcons.patientMembershipPricing, title: 'Member Pricing On Supplements And Additional Services' },
-        ]}
-        separateLabel="What is typically separate:"
-        separate={[
-          { icon: bhrtIcons.costLabTesting, title: 'Lab Testing (Often Covered By Insurance)' },
-          { icon: bhrtIcons.patientSavingsSupplements, title: 'Hormone Medications (Coverage Varies By Plan)' },
-        ]}
-        note="Insurance commonly covers lab work but may not cover hormone medications. Flexible financing options are available through PatientFi to help make treatment more accessible."
-      />
-
-      <PatientBenefitsSection
-        imageSrc="/photo-content-40-img.jpg"
-        imageAlt="A provider shaking hands with a male patient"
-        title="Patient Benefits"
-        subtitle="As A Savannah Age Management Medicine Patient, You Receive:"
-        benefits={[
-          'Priority access to care',
-          'Personalized treatment optimization',
-          'Exclusive member pricing on additional services',
-          'Integrated wellness support beyond hormones',
-        ]}
-      /> */}
 
       <BeforeAfterSliderSection 
 
@@ -139,20 +108,25 @@ title='Your Patient Journey'
 
       {treatment.faqs.length ? (
         <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
+       
+          title={`Frequently asked questions`}
+          lead='Deciding on Bioidentical Hormone Replacement Therapy (BHRT) is important, and you likely have questions. Here are answers to common questions to help you make an informed decision.'
           items={treatment.faqs}
         />
       ) : null}
 
-      <HomeServices eyebrow='' title='Explore Other Treatments We Offer' lead='We go beyond hormonal health to provide a wide range of treatments tailored to support your overall wellness, vitality, and confidence.' />
+      <div className='pb-10'>
+        <HomeServices eyebrow='' title='Explore Other Treatments We Offer' lead='We go beyond hormonal health to provide a wide range of treatments tailored to support your overall wellness, vitality, and confidence.' />
+      </div>
 
 
       <TestimonialSet
         eyebrow="Patient Testimonials"
-        title="Real stories of real transformation."
+        title="Real success stories"
         lead="See how we've helped our clients transform their lives."
         testimonials={testimonials}
+        backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1787370832/testimonial-2-bg_1_wvumgb.jpg'
+
       />
 
       <WhoWeAreBand
@@ -160,15 +134,9 @@ title='Your Patient Journey'
         title="Leaders In Age Management And Wellness"
         body="The Savannah Age Management Medicine team is dedicated to improving your quality of life through advanced age management practices. We pair years of experience, the latest research and technology and a commitment to personalized solutions for unprecedented results. Enjoy a warm, welcoming approach to health optimization."
         cta={{ label: 'Our experts', href: '/our-experts' }}
+           image='https://res.cloudinary.com/khs2rcsr/image/upload/v1785860659/contact-3-img_os4jyj.jpg'
       />
 
-      {/* <ClosingCTA 
-     
-        title="Leaders In Age Management And Wellness"
-        body="The Savannah Age Management Medicine team is dedicated to improving your quality of life through advanced age management practices. We pair years of experience, the latest research and technology and a commitment to personalized solutions for unprecedented results. Enjoy a warm, welcoming approach to health optimization."
-        cta={{ label: 'Our experts', href: '/our-experts' }}
-        centered={false}
-      backgroundImage="/images/hero-2-bg (1).jpg" /> */}
 
       <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-2-bg (1).jpg" />
 

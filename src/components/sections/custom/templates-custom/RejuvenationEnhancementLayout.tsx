@@ -74,6 +74,8 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
           { label: pillar.label, href: pillar.href },
           { label: treatment.shortName, href: treatment.href },
         ]}
+        textWidth='800'
+        
       />
 
       <DualIconGridBanner

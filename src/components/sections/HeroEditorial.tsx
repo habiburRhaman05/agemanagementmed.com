@@ -205,7 +205,7 @@ export function HeroEditorial({
           >
             <p
              className={cn(
-              "mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6",
+              "mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal  text-white/90 md:mt-6",
               heroPara
             )}
             >
@@ -215,7 +215,7 @@ export function HeroEditorial({
           </div>
             }) :  <p
             className={cn(
-              "mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6",
+              "mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal  text-white/90 md:mt-6",
               heroPara
             )}
           >

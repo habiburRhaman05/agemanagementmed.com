@@ -89,10 +89,10 @@ export function HubIncludedCarousel() {
 
   return (
     <div id="slider-o" style={{ backgroundColor: '#fff' }}>
-      <div className="group">
+      <div className="py-20">
         <div className="lg-max-width-1440">
           <div className="lg-container">
-            <div className="content-nav lg-grid lg-items-end">
+            <div className=" flex items-center justify-between">
               <div className="lg-content lg-col-md">
                 <h2 className="lg-title">Included As A Patient</h2>
 
@@ -101,7 +101,7 @@ export function HubIncludedCarousel() {
                 </div>
               </div>
 
-              <div className="nav lg-col-md-auto">
+              <div className="nav ">
                 <button
                   type="button"
                   className="arrow arrow-left"
@@ -132,14 +132,14 @@ export function HubIncludedCarousel() {
           </div>
         </div>
 
-        <div className="swiper" ref={emblaRef}>
+        <div className="swiper mt-10" ref={emblaRef}>
           <div className="swiper-wrapper flex">
             {items.map((item) => (
               <div className="swiper-slide" key={item.number}>
                 <div className="box background-img">
                   <div className="content">
                     <div
-                      className="icon [&>svg]:h-14 [&>svg]:w-14"
+                      className="icon [&>svg]:h-20 [&>svg]:w-20"
                       dangerouslySetInnerHTML={{ __html: item.icon }}
                     />
 

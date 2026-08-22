@@ -1,6 +1,7 @@
 import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 
 import { bhrtHubIcons } from './bhrt-hub-icons'
+import BookAppointmentButton from '@/components/shared/BookAppointmentButton';
 
 const supports: { icon: string; label: string }[] = [
   { icon: bhrtHubIcons.sexualWellness, label: 'Enhance Sexual Wellness - Boost libido and improve overall sexual function.' },
@@ -30,7 +31,7 @@ export function HubIntroBenefits() {
             <div className="top lg-grid">
               <div
                 className="img lg-col-xl-5"
-                style={{ backgroundImage: "url('/photo-content-72-img.jpg')" }}
+                style={{ backgroundImage: "url('https://res.cloudinary.com/khs2rcsr/image/upload/v1787369949/photo-content-72-img_stcudn.jpg')" }}
                 role="img"
                 aria-label="A couple embracing at home"
               />
@@ -59,7 +60,7 @@ export function HubIntroBenefits() {
               </div>
             </div>
 
-            <div className="bottom">
+            <div className="bottom w-full">
               <div className="content">
                 <div className="lg-grid lg-items-center">
                   <div className="left lg-col-xl-6">
@@ -95,11 +96,12 @@ export function HubIntroBenefits() {
                 </div>
               </div>
 
-              <div className="cta">
-                <LegacyCtaLink href="/book-appointment" className="lg-btn lg-btn-arrow-right">
-                  Schedule a consultation
-                </LegacyCtaLink>
-              </div>
+     <div className='w-full justify-center mt-6 flex items-center'>
+            <BookAppointmentButton>
+             Schedule a consultation
+           </BookAppointmentButton>
+
+     </div>
             </div>
           </div>
         </div>
