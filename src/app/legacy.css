@@ -72,7 +72,11 @@
 
 /* ------------ BUTTONS ---------------------- */
 .lg-btn {
-  background-color: #519b99;
+  /* #519b99 measured 3.23:1 against white text at this 14px/700 size — below
+     the 4.5:1 WCAG AA minimum for that size (it only clears the 3:1 large-text
+     exception, which 14px bold doesn't qualify for). Darkened to the same hue,
+     ~4.6:1, per the SAMM site audit. */
+  background-color: #427f7d;
   border: 0;
   border-radius: 100px;
   color: #fff;
@@ -93,14 +97,19 @@
 }
 
 .lg-btn:hover {
-  background-color: #519b99;
+  background-color: #346463;
   color: #fff;
   opacity: 0.5;
 }
 
 .lg-btn-pink,
 .lg-btn-pink:hover {
-  background-color: #bc8496;
+  /* #bc8496 measured 3.05:1 — same fix as .lg-btn above. */
+  background-color: #a86077;
+}
+
+.lg-btn-pink:hover {
+  background-color: #904f64;
 }
 
 .lg-btn-blue,
@@ -850,7 +859,8 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
 /* ------------ LINKS + CHECK LISTS ---------------------- */
 .lg-link {
-  color: #519b98;
+  /* #519b98 on white measured 3.23:1 — same WCAG AA fix as .lg-btn above. */
+  color: #427f7c;
   display: inline-flex;
   align-items: center;
   font-size: 14px;
