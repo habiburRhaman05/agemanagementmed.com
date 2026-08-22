@@ -305,21 +305,33 @@ exports.Prisma.PersonScalarFieldEnum = {
 exports.Prisma.PageSeoScalarFieldEnum = {
   id: 'id',
   path: 'path',
-  title: 'title',
-  description: 'description',
+  url: 'url',
+  sourceFile: 'sourceFile',
+  pageTitle: 'pageTitle',
+  metaTitle: 'metaTitle',
+  metaDescription: 'metaDescription',
   keywords: 'keywords',
-  ogImageUrl: 'ogImageUrl',
+  h1Hero: 'h1Hero',
   canonical: 'canonical',
-  noindex: 'noindex',
-  schemaJsonLd: 'schemaJsonLd',
+  robotsMeta: 'robotsMeta',
+  openGraph: 'openGraph',
+  twitter: 'twitter',
+  jsonLd: 'jsonLd',
+  metaPixelPresent: 'metaPixelPresent',
+  metaPixelId: 'metaPixelId',
+  googleTagManagerPresent: 'googleTagManagerPresent',
+  googleTagManagerId: 'googleTagManagerId',
+  googleAnalyticsPresent: 'googleAnalyticsPresent',
+  googleAnalyticsMeasurementId: 'googleAnalyticsMeasurementId',
+  hotjarPresent: 'hotjarPresent',
+  hotjarSiteId: 'hotjarSiteId',
+  metricoolPresent: 'metricoolPresent',
+  plausiblePresent: 'plausiblePresent',
+  sitemapInclude: 'sitemapInclude',
+  sitemapPriority: 'sitemapPriority',
+  sitemapChangefreq: 'sitemapChangefreq',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  h1: 'h1',
-  ogTitle: 'ogTitle',
-  ogDescription: 'ogDescription',
-  ogType: 'ogType',
-  twitterTitle: 'twitterTitle',
-  twitterDescription: 'twitterDescription'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.TestimonialScalarFieldEnum = {
@@ -363,12 +375,12 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.JsonNullValueInput = {
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull
 };
 
-exports.Prisma.NullableJsonNullValueInput = {
-  DbNull: Prisma.DbNull,
+exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
 

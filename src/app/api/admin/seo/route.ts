@@ -4,6 +4,7 @@ import { z } from 'zod'
 
 import { getAllTreatments } from '@/content/treatments/main'
 import { getCurrentAdmin } from '@/lib/auth'
+import { fromPageSeoRow, toPageSeoWrite } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
 
 /**
@@ -59,7 +60,7 @@ export async function GET() {
   const pages = knownPages.map(({ path, label }) => ({
     path,
     label,
-    seo: seoByPath.get(path) ?? null,
+    seo: fromPageSeoRow(seoByPath.get(path) ?? null),
   }))
 
   return NextResponse.json({ pages })
@@ -81,11 +82,12 @@ export async function PATCH(request: Request) {
   }
 
   const { path, ...data } = parsed.data
+  const write = toPageSeoWrite(data)
 
   const row = await prisma.pageSeo.upsert({
     where: { path },
-    update: data,
-    create: { path, ...data },
+    update: write,
+    create: { path, ...write },
   })
 
   revalidateTag('treatments', 'max')

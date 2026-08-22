@@ -15,6 +15,8 @@ import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { getPostBySlug, getPosts } from '@/actions/blog'
 import { site } from '@/content/site'
+import { fromPageSeoRow } from '@/lib/pageSeoAdmin'
+import { prisma } from '@/lib/prisma'
 import { buildArticleSchema, buildBreadcrumbSchema, buildMetadata } from '@/lib/seo'
 import type { Metadata } from 'next'
 
@@ -34,14 +36,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       return buildMetadata({ title: 'Not Found', description: '', canonical: '' })
     }
 
-    const ogImageSrc = post.seo?.ogImage || post.featuredImage
+    // PageSeo (path-keyed, the site's one admin-managed SEO source) wins
+    // field-by-field; PostSeo (post-keyed) is only a fallback for posts that
+    // have never had a PageSeo row set, with the post's own content as the
+    // last resort so a page is never blank.
+    const path = `/blog/${post.slug}`
+    const pageSeo = fromPageSeoRow(await prisma.pageSeo.findUnique({ where: { path } }))
+
+    const ogImageSrc = pageSeo?.ogImageUrl || post.seo?.ogImage || post.featuredImage
 
     return buildMetadata({
-      title: post.seo?.metaTitle || `${post.title} | Savannah Age Management Medicine`,
-      description: post.seo?.metaDesc || post.excerpt || '',
-      canonical: post.seo?.canonical || `/blog/${post.slug}`,
-      noindex: post.seo?.noindex ?? false,
+      title: pageSeo?.title || post.seo?.metaTitle || `${post.title} | Savannah Age Management Medicine`,
+      description: pageSeo?.description || post.seo?.metaDesc || post.excerpt || '',
+      canonical: pageSeo?.canonical || post.seo?.canonical || path,
+      noindex: pageSeo ? pageSeo.noindex : (post.seo?.noindex ?? false),
       ogImage: ogImageSrc ? { src: ogImageSrc, alt: post.title } : undefined,
+      ogTitle: pageSeo?.ogTitle || post.seo?.ogTitle || undefined,
+      ogDescription: pageSeo?.ogDescription || post.seo?.ogDescription || undefined,
+      ogType: pageSeo?.ogType || post.seo?.ogType || undefined,
+      twitterTitle: pageSeo?.twitterTitle || post.seo?.twitterTitle || undefined,
+      twitterDescription: pageSeo?.twitterDescription || post.seo?.twitterDescription || undefined,
     })
   } catch {
     return buildMetadata({ title: 'Not Found', description: '', canonical: '' })

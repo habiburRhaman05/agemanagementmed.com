@@ -10,6 +10,7 @@ import { homeContent } from '../src/content/pages/home'
 import { site } from '../src/content/site'
 // Historical/rollback reference (plan.md Phase 10.4) — main.ts itself is now DB-backed.
 import { treatments } from '../src/content/treatments/main.static-backup'
+import { toPageSeoWrite } from '../src/lib/pageSeoAdmin'
 import type { Seo } from '../src/types/content'
 
 const adapter = new PrismaPg({
@@ -26,23 +27,17 @@ const staticPageSeo: Record<string, Seo> = {
 }
 
 async function upsertPageSeo(path: string, seo: Seo) {
+  const write = toPageSeoWrite({
+    title: seo.title,
+    description: seo.description,
+    canonical: seo.canonical,
+    ogImageUrl: seo.ogImage?.src ?? null,
+    noindex: seo.noindex ?? false,
+  })
   await prisma.pageSeo.upsert({
     where: { path },
-    update: {
-      title: seo.title,
-      description: seo.description,
-      canonical: seo.canonical,
-      ogImageUrl: seo.ogImage?.src,
-      noindex: seo.noindex ?? false,
-    },
-    create: {
-      path,
-      title: seo.title,
-      description: seo.description,
-      canonical: seo.canonical,
-      ogImageUrl: seo.ogImage?.src,
-      noindex: seo.noindex ?? false,
-    },
+    update: write,
+    create: { path, ...write },
   })
 }
 

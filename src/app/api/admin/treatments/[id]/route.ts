@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import { z } from 'zod'
 
 import { getCurrentAdmin } from '@/lib/auth'
+import { fromPageSeoRow, toPageSeoWrite } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
 
 /**
@@ -48,7 +49,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
   if (!row) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
   const seo = await prisma.pageSeo.findUnique({ where: { path: row.href } })
-  return NextResponse.json({ treatment: row, seo })
+  return NextResponse.json({ treatment: row, seo: fromPageSeoRow(seo) })
 }
 
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -95,24 +96,16 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   })
 
   if (seo) {
+    const write = toPageSeoWrite(seo)
     await prisma.pageSeo.upsert({
       where: { path: row.href },
-      update: seo,
+      update: write,
       create: {
         path: row.href,
-        title: seo.title ?? row.href,
-        description: seo.description ?? '',
-        canonical: seo.canonical ?? row.href,
-        keywords: seo.keywords,
-        ogImageUrl: seo.ogImageUrl,
-        noindex: seo.noindex ?? false,
-        schemaJsonLd: seo.schemaJsonLd,
-        h1: seo.h1,
-        ogTitle: seo.ogTitle,
-        ogDescription: seo.ogDescription,
-        ogType: seo.ogType,
-        twitterTitle: seo.twitterTitle,
-        twitterDescription: seo.twitterDescription,
+        ...write,
+        metaTitle: write.metaTitle ?? row.href,
+        metaDescription: write.metaDescription ?? '',
+        canonical: write.canonical ?? row.href,
       },
     })
   }

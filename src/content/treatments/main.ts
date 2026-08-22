@@ -1,6 +1,7 @@
 import { unstable_cache } from 'next/cache'
 import { cache } from 'react'
 
+import { fromPageSeoRow, type PageSeoDbRow } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
 import type { Audience, Media, Pillar, Seo, Treatment } from '@/types/content'
 
@@ -25,58 +26,47 @@ interface TreatmentRow {
   data: unknown
 }
 
-interface PageSeoRow {
-  title: string | null
-  description: string | null
-  keywords: string | null
-  canonical: string | null
-  ogImageUrl: string | null
-  noindex: boolean
-  h1: string | null
-  ogTitle: string | null
-  ogDescription: string | null
-  ogType: string | null
-  twitterTitle: string | null
-  twitterDescription: string | null
-}
+type PageSeoRow = PageSeoDbRow
 
 async function resolveSeo(href: string, seoRow: PageSeoRow | null): Promise<Seo> {
-  if (seoRow?.title && seoRow.description) {
+  const flat = fromPageSeoRow(seoRow)
+
+  if (flat?.title && flat.description) {
     return {
-      title: seoRow.title,
-      description: seoRow.description,
-      canonical: seoRow.canonical ?? href,
-      keywords: seoRow.keywords ?? undefined,
-      ogImage: seoRow.ogImageUrl ? { src: seoRow.ogImageUrl, alt: seoRow.title } : undefined,
-      noindex: seoRow.noindex,
-      h1: seoRow.h1 ?? undefined,
-      ogTitle: seoRow.ogTitle ?? undefined,
-      ogDescription: seoRow.ogDescription ?? undefined,
-      ogType: seoRow.ogType ?? undefined,
-      twitterTitle: seoRow.twitterTitle ?? undefined,
-      twitterDescription: seoRow.twitterDescription ?? undefined,
+      title: flat.title,
+      description: flat.description,
+      canonical: flat.canonical ?? href,
+      keywords: flat.keywords ?? undefined,
+      ogImage: flat.ogImageUrl ? { src: flat.ogImageUrl, alt: flat.title } : undefined,
+      noindex: flat.noindex,
+      h1: flat.h1 ?? undefined,
+      ogTitle: flat.ogTitle ?? undefined,
+      ogDescription: flat.ogDescription ?? undefined,
+      ogType: flat.ogType ?? undefined,
+      twitterTitle: flat.twitterTitle ?? undefined,
+      twitterDescription: flat.twitterDescription ?? undefined,
     }
   }
 
   // Three-tier fallback: PageSeo row -> SiteSettings defaults -> a safe, never-blank minimum.
   const settings = await prisma.siteSettings.findUnique({ where: { id: 'singleton' } })
   return {
-    title: seoRow?.title ?? settings?.defaultSeoTitle ?? href,
-    description: seoRow?.description ?? settings?.defaultSeoDescription ?? '',
-    canonical: seoRow?.canonical ?? href,
-    keywords: seoRow?.keywords ?? undefined,
-    ogImage: seoRow?.ogImageUrl
-      ? { src: seoRow.ogImageUrl, alt: seoRow.title ?? href }
+    title: flat?.title ?? settings?.defaultSeoTitle ?? href,
+    description: flat?.description ?? settings?.defaultSeoDescription ?? '',
+    canonical: flat?.canonical ?? href,
+    keywords: flat?.keywords ?? undefined,
+    ogImage: flat?.ogImageUrl
+      ? { src: flat.ogImageUrl, alt: flat.title ?? href }
       : settings?.defaultOgImageUrl
         ? { src: settings.defaultOgImageUrl, alt: href }
         : undefined,
-    noindex: seoRow?.noindex ?? false,
-    h1: seoRow?.h1 ?? undefined,
-    ogTitle: seoRow?.ogTitle ?? undefined,
-    ogDescription: seoRow?.ogDescription ?? undefined,
-    ogType: seoRow?.ogType ?? undefined,
-    twitterTitle: seoRow?.twitterTitle ?? undefined,
-    twitterDescription: seoRow?.twitterDescription ?? undefined,
+    noindex: flat?.noindex ?? false,
+    h1: flat?.h1 ?? undefined,
+    ogTitle: flat?.ogTitle ?? undefined,
+    ogDescription: flat?.ogDescription ?? undefined,
+    ogType: flat?.ogType ?? undefined,
+    twitterTitle: flat?.twitterTitle ?? undefined,
+    twitterDescription: flat?.twitterDescription ?? undefined,
   }
 }
 

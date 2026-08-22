@@ -86,23 +86,19 @@ export function buildMetadata(
  * unchanged when this returns `null`.
  */
 export async function getPageH1(path: string): Promise<string | null> {
-  const row = await prisma.pageSeo.findUnique({ where: { path }, select: { h1: true } })
-  return row?.h1 || null
+  const row = await prisma.pageSeo.findUnique({ where: { path }, select: { h1Hero: true } })
+  return row?.h1Hero || null
 }
 
 /**
- * Admin can set a raw JSON-LD override per path (`PageSeo.schemaJsonLd`).
- * Returns the parsed object if set and valid, else `null` so callers fall
- * back to auto-generated schema.
+ * Admin can set a raw JSON-LD override per path (`PageSeo.jsonLd`).
+ * Returns the object if set, else `null` so callers fall back to
+ * auto-generated schema. Stored as a parsed `Json` column, not a string.
  */
 export async function getSchemaOverride(path: string): Promise<Record<string, unknown> | null> {
-  const row = await prisma.pageSeo.findUnique({ where: { path } })
-  if (!row?.schemaJsonLd) return null
-  try {
-    return JSON.parse(row.schemaJsonLd)
-  } catch {
-    return null
-  }
+  const row = await prisma.pageSeo.findUnique({ where: { path }, select: { jsonLd: true } })
+  if (!row?.jsonLd || typeof row.jsonLd !== 'object') return null
+  return row.jsonLd as Record<string, unknown>
 }
 
 /**

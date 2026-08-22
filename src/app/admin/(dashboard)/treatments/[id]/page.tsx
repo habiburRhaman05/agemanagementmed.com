@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { TreatmentForm } from '@/components/admin/TreatmentForm'
+import { fromPageSeoRow } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
 
 export default async function EditTreatmentPage({ params }: { params: Promise<{ id: string }> }) {
@@ -32,7 +33,7 @@ export default async function EditTreatmentPage({ params }: { params: Promise<{ 
           order: row.order,
           data: row.data as never,
         }}
-        seo={seo}
+        seo={fromPageSeoRow(seo)}
       />
     </div>
   )

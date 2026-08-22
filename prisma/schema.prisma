@@ -69,7 +69,7 @@ model PostSeo {
   ogType              String?
   twitterTitle        String? // falls back to ogTitle/metaTitle when unset
   twitterDescription  String? // falls back to ogDescription/metaDesc when unset
-  schemaJsonLd        String? // optional raw JSON-LD override, admin-editable, validated as JSON — mirrors PageSeo.schemaJsonLd, previously missing here
+  schemaJsonLd        Json? // optional raw JSON-LD override, admin-editable, validated as JSON — mirrors PageSeo.schemaJsonLd, previously missing here
 }
 
 model Category {
@@ -229,31 +229,49 @@ model Person {
 // Generic — reused for EVERY page on the site, not just treatments: home, contact-us,
 // our-experts, blog index, aesthetics, etc. One model, one admin screen, all SEO.
 model PageSeo {
-  id           String   @id @default(cuid())
-  path         String   @unique // '/', '/contact-us', '/bioidentical-hormone-replacement-therapy/male'
-  title        String?
-  description  String?
-  keywords     String? // comma-separated meta keywords, admin-editable
-  ogImageUrl   String?
-  canonical    String?
-  noindex      Boolean  @default(false)
-  schemaJsonLd String? // optional raw JSON-LD override, admin-editable, validated as JSON
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id String @id @default(cuid())
+  path String @unique
+  url String?
+  sourceFile String?
+  pageTitle String?
+  metaTitle String?
+  metaDescription String?
+  keywords String?
 
-  // --- Added for source-site SEO parity (schema-only, not yet backed by DB data) ---
-  h1                 String? // hero H1 override — distinct from `title`, which is <title> only
-  ogTitle            String? // falls back to `title` when unset
-  ogDescription      String? // falls back to `description` when unset
-  ogType             String?
-  twitterTitle       String? // falls back to ogTitle/title when unset
-  twitterDescription String? // falls back to ogDescription/description when unset
+  h1Hero String?
+  canonical String?
+  robotsMeta String?
+
+  openGraph Json?
+
+  twitter Json?
+
+  jsonLd Json?
+
+  metaPixelPresent Boolean @default(false)
+  metaPixelId String?
+
+  googleTagManagerPresent Boolean @default(false)
+  googleTagManagerId String?
+
+  googleAnalyticsPresent Boolean @default(false)
+  googleAnalyticsMeasurementId String?
+
+  hotjarPresent Boolean @default(false)
+  hotjarSiteId String?
+
+  metricoolPresent Boolean @default(false)
+
+  plausiblePresent Boolean @default(false)
+
+  sitemapInclude Boolean @default(true)
+  sitemapPriority Float?
+  sitemapChangefreq String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-// Admin-managed testimonials shown on the marketing site. Separate from the
-// curated static `src/content/shared/testimonials.ts` list (sourced from
-// Google reviews) — this table is the editable pool admins add to directly
-// from the dashboard, with richer per-entry detail than the static shape.
 model Testimonial {
   id        String    @id @default(cuid())
   name      String

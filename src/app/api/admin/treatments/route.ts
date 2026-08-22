@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import { z } from 'zod'
 
 import { getCurrentAdmin } from '@/lib/auth'
+import { toPageSeoWrite } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
 
 const HeroSchema = z.object({
@@ -115,25 +116,11 @@ export async function POST(request: Request) {
     data: { slug, href, pillar, audience, kind, status, order, data: JSON.parse(JSON.stringify(rest)) },
   })
 
+  const seoWrite = toPageSeoWrite(seo ?? {})
   await prisma.pageSeo.upsert({
     where: { path: href },
-    update: seo ?? {},
-    create: {
-      path: href,
-      title: seo?.title,
-      description: seo?.description,
-      canonical: seo?.canonical,
-      keywords: seo?.keywords,
-      ogImageUrl: seo?.ogImageUrl,
-      noindex: seo?.noindex ?? false,
-      schemaJsonLd: seo?.schemaJsonLd,
-      h1: seo?.h1,
-      ogTitle: seo?.ogTitle,
-      ogDescription: seo?.ogDescription,
-      ogType: seo?.ogType,
-      twitterTitle: seo?.twitterTitle,
-      twitterDescription: seo?.twitterDescription,
-    },
+    update: seoWrite,
+    create: { path: href, ...seoWrite },
   })
 
   revalidateTag('treatments', 'max')
