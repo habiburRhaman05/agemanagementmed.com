@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { LucideIcon } from 'lucide-react'
-import type { ReactNode } from 'react'
+import type { ComponentType, ReactNode, SVGProps } from 'react'
 
 import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
@@ -11,7 +10,8 @@ import { Button } from '@/components/ui/Button'
 import type { Media } from '@/types/content'
 
 export interface IconGridItem {
-  icon: LucideIcon
+  /** Any SVG component — Lucide icons and the hand-drawn brand icons both fit. */
+  icon: ComponentType<SVGProps<SVGSVGElement>>
   label: string
 }
 
@@ -23,6 +23,12 @@ export interface IconGridCardProps {
   lead?: string
   itemsLabel?: string
   items: IconGridItem[]
+  /**
+   * `badge` wraps each icon in a filled circle (the look Lucide glyphs need to
+   * carry weight). `bare` draws the icon on its own, for the brand's
+   * hand-drawn line icons that already read at full size.
+   */
+  iconStyle?: 'badge' | 'bare'
   closingParagraphs?: ReactNode[]
   cta?: { label: string; href: string }
 }
@@ -36,6 +42,7 @@ export function IconGridCard({
   lead,
   itemsLabel,
   items,
+  iconStyle = 'badge',
   closingParagraphs,
   cta,
 }: IconGridCardProps) {
@@ -76,13 +83,17 @@ export function IconGridCard({
       <ul className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
         {items.map((item) => (
           <li key={item.label} className="flex items-center gap-3">
-            <span
-              className={`flex size-9 shrink-0 items-center justify-center rounded-full ${
-                dark ? 'bg-sage-600/15 text-sage-400' : 'bg-sage-100 text-sage-700'
-              }`}
-            >
-              <item.icon className="size-4" strokeWidth={1.75} aria-hidden />
-            </span>
+            {iconStyle === 'badge' ? (
+              <span
+                className={`flex size-9 shrink-0 items-center justify-center rounded-full ${
+                  dark ? 'bg-sage-600/15 text-sage-400' : 'bg-sage-100 text-sage-700'
+                }`}
+              >
+                <item.icon className="size-4" strokeWidth={1.75} aria-hidden />
+              </span>
+            ) : (
+              <item.icon className="size-7 shrink-0" aria-hidden />
+            )}
             <span className={`text-[16px] font-normal leading-snug ${dark ? 'text-canvas-50/90' : 'text-[#111214]'}`}>
               {item.label}
             </span>

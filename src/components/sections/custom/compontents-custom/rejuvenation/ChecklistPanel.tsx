@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import { CheckCircle2 } from 'lucide-react'
 import type { ReactNode } from 'react'
 
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
 import type { Media } from '@/types/content'
+import { ArrowBulletIcon } from './icons'
 
 export interface ChecklistCardProps {
   imageSide?: 'left' | 'right'
@@ -51,11 +51,11 @@ export function ChecklistCard({
         <p className="mt-6 text-[16px] font-semibold text-[#111214]">{itemsLabel}</p>
       ) : null}
 
-      <ul className="mt-3 flex flex-col items-center space-y-2 lg:items-start">
+      <ul className="mt-3 flex flex-col items-start space-y-2.5">
         {items.map((item) => (
-          <li key={item} className="flex items-start gap-2.5">
-            <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-sage-600" strokeWidth={1.75} aria-hidden />
-            <span className="text-[16px] font-normal leading-snug text-[#111214] text-left">{item}</span>
+          <li key={item} className="flex items-center gap-3">
+            <ArrowBulletIcon className="w-[22px] shrink-0" aria-hidden />
+            <span className="text-left text-[16px] font-normal leading-snug text-[#111214]">{item}</span>
           </li>
         ))}
       </ul>

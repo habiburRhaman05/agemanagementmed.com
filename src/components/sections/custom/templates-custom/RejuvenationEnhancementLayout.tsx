@@ -1,22 +1,3 @@
-import {
-  Droplets,
-  Stethoscope,
-  ClipboardList,
-  Target,
-  RefreshCw,
-  Smile,
-  Heart,
-  Zap,
-  HeartHandshake,
-  Scale,
-  Activity,
-  Leaf,
-  AlertCircle,
-  HeartCrack,
-  TrendingDown,
-  Frown,
-  BatteryLow,
-} from 'lucide-react'
 import Link from 'next/link'
 
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
@@ -37,8 +18,24 @@ import { ProviderSpotlightCard } from '../compontents-custom/prp/ProviderSpotlig
 import { OtherTreatmentsGrid } from '../compontents-custom/prp/OtherTreatmentsGrid'
 import { Services } from '@/components/shared/Services'
 import { getServices } from '@/content/services'
-import { IconGridPanelGroup, DualIconGridBanner } from '../compontents-custom/rejuvenation/IconGridPanel'
+import { IconGridPanelGroup } from '../compontents-custom/rejuvenation/IconGridPanel'
 import { ChecklistPanelGroup } from '../compontents-custom/rejuvenation/ChecklistPanel'
+import { PhotoArrowListQuadPanel } from '../compontents-custom/rejuvenation/PhotoArrowListQuadPanel'
+import { FullBleedIconListSection } from '../compontents-custom/rejuvenation/FullBleedIconListSection'
+import {
+  BloodFlowIcon,
+  EnergyMetabolismIcon,
+  ErectileDysfunctionIcon,
+  HormoneBalanceIcon,
+  HormoneChangesIcon,
+  IntimacySnowflakeIcon,
+  LifestyleIcon,
+  LowLibidoIcon,
+  PerformanceHourglassIcon,
+  ReducedStaminaIcon,
+  SensitivityNodesIcon,
+  VaginalDrynessIcon,
+} from '../compontents-custom/rejuvenation/icons'
 import { WhyMedicalApproachPanel } from '../compontents-custom/rejuvenation/hub/WhyMedicalApproachPanel'
 import { MidPageCTA } from '../compontents-custom/shared/MidPageCTA'
 
@@ -78,24 +75,34 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
         
       />
 
-      <DualIconGridBanner
-        columns={[
+      <PhotoArrowListQuadPanel
+        rows={[
           {
+            image: {
+              src: '/images/services/sexualwilens.png',
+              alt: 'A couple smiling together in bed',
+            },
+            imageSide: 'left',
             heading: 'Why Patients Choose Our Approach',
             items: [
-              { icon: Stethoscope, label: 'Care Led By Medical Providers' },
-              { icon: ClipboardList, label: 'Personalized Treatment Plans' },
-              { icon: Target, label: 'Focus On Root Causes, Not Quick Fixes' },
-              { icon: RefreshCw, label: 'Ongoing Support And Adjustments' },
+              'Care Led By Medical Providers',
+              'Personalized Treatment Plans',
+              'Focus On Root Causes, Not Quick Fixes',
+              'Ongoing Support And Adjustments',
             ],
           },
           {
+            image: {
+              src: '/images/treatments/laser-vaginal-therapy/hero.jpg',
+              alt: 'An older couple embracing outdoors',
+            },
+            imageSide: 'right',
             heading: 'What Patients Typically Experience',
             items: [
-              { icon: Smile, label: 'Improved Confidence' },
-              { icon: Heart, label: 'Increased Desire And Satisfaction' },
-              { icon: Zap, label: 'Better Energy And Mood' },
-              { icon: HeartHandshake, label: 'More Comfort During Intimacy' },
+              'Improved Confidence',
+              'Increased Desire And Satisfaction',
+              'Better Energy And Mood',
+              'More Comfort During Intimacy',
             ],
           },
         ]}
@@ -113,11 +120,14 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
             heading: 'A Personalized Approach To Sexual Wellness',
             lead: 'There is no one-size-fits-all solution when it comes to sexual health.',
             itemsLabel: 'We look at the full picture, including:',
+            iconStyle: 'bare',
+            // Interleaved so the row-major grid renders the source's
+            // column-major order: Hormone/Energy left, Blood Flow/Lifestyle right.
             items: [
-              { icon: Scale, label: 'Hormone Balance' },
-              { icon: Droplets, label: 'Blood Flow And Circulation' },
-              { icon: Zap, label: 'Energy Levels And Metabolism' },
-              { icon: Leaf, label: 'Overall Health And Lifestyle' },
+              { icon: HormoneBalanceIcon, label: 'Hormone Balance' },
+              { icon: BloodFlowIcon, label: 'Blood Flow And Circulation' },
+              { icon: EnergyMetabolismIcon, label: 'Energy Levels And Metabolism' },
+              { icon: LifestyleIcon, label: 'Overall Health And Lifestyle' },
             ],
             closingParagraphs: [
               'From there, we create a plan that fits your body and your goals.',
@@ -144,46 +154,74 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
             heading: 'Common Concerns We Treat',
             lead: 'If something feels off, there is usually a reason behind it.',
             itemsLabel: 'We commonly help patients with:',
+            iconStyle: 'bare',
             items: [
-              { icon: AlertCircle, label: 'Erectile Dysfunction (ED)' },
-              { icon: Droplets, label: 'Vaginal Dryness' },
-              { icon: HeartCrack, label: 'Low Libido Or Loss Of Desire' },
-              { icon: Frown, label: 'Pain With Intimacy' },
-              { icon: TrendingDown, label: 'Difficulty With Performance' },
-              { icon: Activity, label: 'Hormone Related Changes' },
+              { icon: ErectileDysfunctionIcon, label: 'Erectile Dysfunction (ED)' },
+              { icon: VaginalDrynessIcon, label: 'Vaginal Dryness' },
+              { icon: LowLibidoIcon, label: 'Low Libido Or Loss Of Desire' },
+              { icon: IntimacySnowflakeIcon, label: 'Pain With Intimacy' },
+              { icon: PerformanceHourglassIcon, label: 'Difficulty With Performance' },
+              { icon: HormoneChangesIcon, label: 'Hormone Related Changes' },
             ],
             closingParagraphs: ['Our goal is to identify the cause and help you move forward with a clear plan.'],
           },
         ]}
       />
 
-      <DualIconGridBanner
-        columns={[
-          {
-            heading: 'Sexual Wellness For Men',
-            lead: 'For men, sexual health concerns often show up as changes in performance, energy, or confidence.',
-            items: [
-              { icon: AlertCircle, label: 'Erectile Dysfunction' },
-              { icon: BatteryLow, label: 'Reduced Stamina' },
-              { icon: TrendingDown, label: 'Low Testosterone' },
-              { icon: HeartCrack, label: 'Decreased Libido' },
-            ],
-            closingParagraphs: ['These symptoms are often tied to hormone levels, circulation, or overall health.'],
-            cta: { label: 'Explore Male Sexual Health Treatment Options', href: '/rejuvenation-enhancement/male' },
-          },
-          {
-            heading: 'Sexual Wellness For Women',
-            lead: 'For women, sexual health can be affected by hormone changes, especially during and after menopause.',
-            items: [
-              { icon: HeartCrack, label: 'Low Libido' },
-              { icon: Frown, label: 'Pain During Intimacy' },
-              { icon: Droplets, label: 'Vaginal Dryness' },
-              { icon: Activity, label: 'Changes In Sensitivity' },
-            ],
-            closingParagraphs: ['These issues are often treatable with the right approach.'],
-            cta: { label: 'Explore Female Sexual Health Treatment Options', href: '/rejuvenation-enhancement/female' },
-          },
+      <FullBleedIconListSection
+        image={{
+          src: '/images/treatments/sexual-wellness-men/hero.jpg',
+          alt: 'A confident, distinguished middle-aged man',
+        }}
+        imageSide="left"
+        heading="Sexual Wellness for Men"
+        lead="For men, sexual health concerns often show up as changes in performance, energy, or confidence."
+        itemsLabel="Common issues include:"
+        items={[
+          { icon: ErectileDysfunctionIcon, label: 'Erectile Dysfunction' },
+          { icon: ReducedStaminaIcon, label: 'Reduced Stamina' },
+          { icon: PerformanceHourglassIcon, label: 'Low Testosterone' },
+          { icon: LowLibidoIcon, label: 'Decreased Libido' },
         ]}
+        closingParagraphs={['These symptoms are often tied to hormone levels, circulation, or overall health.']}
+        cta={{
+          label: 'Explore male sexual health treatment options',
+          href: '/rejuvenation-enhancement/male',
+        }}
+      />
+
+      <TestimonialSet
+        width="w-full mx-auto"
+        title="Real success stories"
+        eyebrow="Patient Testimonials"
+        testimonials={(treatment.testimonials ?? []).map((t, i) => ({
+          id: `${treatment.slug}-testimonial-${i}`,
+          quote: t.text,
+          author: t.name,
+          source: t.source === 'google' ? 'google' : 'site',
+        }))}
+      />
+
+      <FullBleedIconListSection
+        image={{
+          src: '/images/treatments/sexual-wellness-women/hero.jpg',
+          alt: 'A close, tender moment between a couple',
+        }}
+        imageSide="right"
+        heading="Sexual Wellness for Women"
+        lead="For women, sexual health can be affected by hormone changes, especially during and after menopause."
+        itemsLabel="Common concerns include:"
+        items={[
+          { icon: LowLibidoIcon, label: 'Low Libido' },
+          { icon: IntimacySnowflakeIcon, label: 'Pain During Intimacy' },
+          { icon: VaginalDrynessIcon, label: 'Vaginal Dryness' },
+          { icon: SensitivityNodesIcon, label: 'Changes In Sensitivity' },
+        ]}
+        closingParagraphs={['These issues are often treatable with the right approach.']}
+        cta={{
+          label: 'Explore female sexual health treatment options',
+          href: '/rejuvenation-enhancement/female',
+        }}
       />
 
       <ChecklistPanelGroup
@@ -209,7 +247,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
               src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338054/photo-content-92-img_nitez0.jpg',
               alt: 'A provider reviewing lab results with a patient',
             },
-            heading: 'What To Expect During Your Consultation',
+            heading: 'What to Expect During Your Consultation',
             lead: 'Your first visit is focused on understanding your concerns and goals.',
             itemsLabel: 'We will:',
             items: [
@@ -249,25 +287,12 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
         body="You do not have to figure this out on your own."
         titleWidth="550"
         paraWidth="525"
-        ctaLabel="Schedule A Consultation To Review Symptoms And Hormone Labs"
+        ctaLabel="Schedule A Consultation To Review ED Symptoms And Hormone Labs"
         align="full"
         gradient={false}
       />
 
       <WhyMedicalApproachPanel />
-
-      <TestimonialSet
-      width="w-full mx-auto"
-      title='Real success stories'
-      eyebrow='Patient Testimonials'
-      testimonials={(treatment.testimonials ?? []).map((t, i) => ({
-        id: `${treatment.slug}-testimonial-${i}`,
-        quote: t.text,
-        author: t.name,
-        source: t.source === 'google' ? 'google' : 'site',
-      }))}
-      />
-      
 
       {treatment.faqs.length ? (
         <FAQAccordion
