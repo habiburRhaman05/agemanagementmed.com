@@ -3,6 +3,7 @@ import { Footer } from '@/components/layout/Footer'
 import { ScrollFeatures } from '@/components/layout/ScrollFeatures'
 import { PageTransition } from '@/components/shared/PageTransition'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { site } from '@/content/site'
 import { buildOrganizationSchema } from '@/lib/seo'
 import { getSiteSettings } from '@/lib/settings'
 
@@ -18,6 +19,7 @@ export default async function MarketingLayout({ children }: { children: React.Re
           siteName: settings.siteName,
           phone: settings.phone,
           email: settings.email,
+          images: settings.logoUrl ? [new URL(settings.logoUrl, site.url).toString()] : undefined,
         })}
       />
       <a

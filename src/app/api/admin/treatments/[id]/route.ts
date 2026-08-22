@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import { z } from 'zod'
 
 import { getCurrentAdmin } from '@/lib/auth'
+import { fromPageSeoRow, toPageSeoWrite } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
 
 /**
@@ -32,6 +33,12 @@ const UpdateTreatmentSchema = z.object({
       ogImageUrl: z.string().optional().nullable(),
       noindex: z.boolean().optional(),
       schemaJsonLd: z.string().optional().nullable(),
+      h1: z.string().optional().nullable(),
+      ogTitle: z.string().optional().nullable(),
+      ogDescription: z.string().optional().nullable(),
+      ogType: z.string().optional().nullable(),
+      twitterTitle: z.string().optional().nullable(),
+      twitterDescription: z.string().optional().nullable(),
     })
     .optional(),
 })
@@ -42,7 +49,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
   if (!row) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
   const seo = await prisma.pageSeo.findUnique({ where: { path: row.href } })
-  return NextResponse.json({ treatment: row, seo })
+  return NextResponse.json({ treatment: row, seo: fromPageSeoRow(seo) })
 }
 
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -89,18 +96,16 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   })
 
   if (seo) {
+    const write = toPageSeoWrite(seo)
     await prisma.pageSeo.upsert({
       where: { path: row.href },
-      update: seo,
+      update: write,
       create: {
         path: row.href,
-        title: seo.title ?? row.href,
-        description: seo.description ?? '',
-        canonical: seo.canonical ?? row.href,
-        keywords: seo.keywords,
-        ogImageUrl: seo.ogImageUrl,
-        noindex: seo.noindex ?? false,
-        schemaJsonLd: seo.schemaJsonLd,
+        ...write,
+        metaTitle: write.metaTitle ?? row.href,
+        metaDescription: write.metaDescription ?? '',
+        canonical: write.canonical ?? row.href,
       },
     })
   }

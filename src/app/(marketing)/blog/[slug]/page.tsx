@@ -12,9 +12,12 @@ import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
+import { JsonLd } from '@/components/seo/JsonLd'
 import { getPostBySlug, getPosts } from '@/actions/blog'
 import { site } from '@/content/site'
-import { buildMetadata } from '@/lib/seo'
+import { fromPageSeoRow } from '@/lib/pageSeoAdmin'
+import { prisma } from '@/lib/prisma'
+import { buildArticleSchema, buildBreadcrumbSchema, buildMetadata } from '@/lib/seo'
 import type { Metadata } from 'next'
 
 export const revalidate = 3600
@@ -33,14 +36,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       return buildMetadata({ title: 'Not Found', description: '', canonical: '' })
     }
 
-    const ogImageSrc = post.seo?.ogImage || post.featuredImage
+    // PageSeo (path-keyed, the site's one admin-managed SEO source) wins
+    // field-by-field; PostSeo (post-keyed) is only a fallback for posts that
+    // have never had a PageSeo row set, with the post's own content as the
+    // last resort so a page is never blank.
+    const path = `/blog/${post.slug}`
+    const pageSeo = fromPageSeoRow(await prisma.pageSeo.findUnique({ where: { path } }))
+
+    const ogImageSrc = pageSeo?.ogImageUrl || post.seo?.ogImage || post.featuredImage
 
     return buildMetadata({
-      title: post.seo?.metaTitle || `${post.title} | Savannah Age Management Medicine`,
-      description: post.seo?.metaDesc || post.excerpt || '',
-      canonical: post.seo?.canonical || `/blog/${post.slug}`,
-      noindex: post.seo?.noindex ?? false,
+      title: pageSeo?.title || post.seo?.metaTitle || `${post.title} | Savannah Age Management Medicine`,
+      description: pageSeo?.description || post.seo?.metaDesc || post.excerpt || '',
+      canonical: pageSeo?.canonical || post.seo?.canonical || path,
+      noindex: pageSeo ? pageSeo.noindex : (post.seo?.noindex ?? false),
       ogImage: ogImageSrc ? { src: ogImageSrc, alt: post.title } : undefined,
+      ogTitle: pageSeo?.ogTitle || post.seo?.ogTitle || undefined,
+      ogDescription: pageSeo?.ogDescription || post.seo?.ogDescription || undefined,
+      ogType: pageSeo?.ogType || post.seo?.ogType || undefined,
+      twitterTitle: pageSeo?.twitterTitle || post.seo?.twitterTitle || undefined,
+      twitterDescription: pageSeo?.twitterDescription || post.seo?.twitterDescription || undefined,
     })
   } catch {
     return buildMetadata({ title: 'Not Found', description: '', canonical: '' })
@@ -173,8 +188,11 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
       <section className="relative overflow-hidden bg-[#0f1c3f] pt-36 pb-16 sm:pt-44 sm:pb-20">
         <Container className="relative text-center">
           <p className="text-[13px] font-bold tracking-[0.15em] text-white uppercase">Blog</p>
+          {/* PostSeo.h1 is a deliberate hero-H1 override, distinct from
+              metaTitle (<title>-only) — wins here when an admin has set one,
+              same pattern already used for treatment pages. */}
           <h1 className="mx-auto mt-4 max-w-3xl font-display text-[32px] leading-tight text-white sm:text-[44px]">
-            {post.title}
+            {post.seo?.h1 || post.title}
           </h1>
         </Container>
       </section>
@@ -261,7 +279,7 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
               </p>
 
               <h1 className="mt-3 font-display text-[28px] leading-tight text-[#15224c] sm:text-[34px] lg:text-[38px]">
-                {post.title}
+                {post.seo?.h1 || post.title}
               </h1>
 
               <div className="mt-4">
@@ -410,6 +428,24 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={buildArticleSchema({
+          title: post.title,
+          excerpt: post.excerpt,
+          image: post.seo?.ogImage || post.featuredImage,
+          publishedAt: post.publishedAt,
+          updatedAt: post.updatedAt,
+          authorName: post.author?.name,
+          href: `/blog/${post.slug}`,
+        })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: post.title, href: `/blog/${post.slug}` },
+        ])!}
+      />
       <Header overlay />
       <ReadingProgressBar />
 

@@ -38,7 +38,13 @@ const FALLBACK: SiteSettingsData = {
   defaultSeoDescription: null,
   defaultOgImageUrl: null,
   googleAnalyticsId: null,
-  metaPixelId: null,
+  // The live site's real Meta Pixel ID (see seo.json's `tracking.metaPixel`,
+  // and the /1113520899741041 asset folder in the download/ backup — the
+  // pixel proxies its events through a path named after its own ID). Kept
+  // as a fallback, same as every other field here, rather than only in the
+  // DB: admin can still override it from Settings, but the pixel now fires
+  // even before anyone fills that field in.
+  metaPixelId: '1113520899741041',
   headerScripts: null,
   footerScripts: null,
 }
@@ -61,7 +67,17 @@ export const getSiteSettings = unstable_cache(
       defaultSeoDescription: row.defaultSeoDescription,
       defaultOgImageUrl: row.defaultOgImageUrl,
       googleAnalyticsId: row.googleAnalyticsId,
-      metaPixelId: row.metaPixelId,
+      // `getSiteSettings` only falls back to FALLBACK wholesale when the row
+      // itself is missing — once a SiteSettings row exists (it does; the
+      // admin has already customized siteName), every field below read
+      // straight from the row with no per-field rescue. That's correct for
+      // things that should genuinely go blank when unset (an OG image, a
+      // custom header script) — but it silently dropped the Meta Pixel: the
+      // ID lives in seo.json/the live site, nobody has entered it into the
+      // admin Settings UI yet, so `row.metaPixelId` was `null` and the
+      // pixel script in layout.tsx never rendered. `??` restores the
+      // fallback here the same way `siteName`/`logoUrl`/etc. already work.
+      metaPixelId: row.metaPixelId ?? FALLBACK.metaPixelId,
       headerScripts: row.headerScripts,
       footerScripts: row.footerScripts,
     }

@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { format } from 'date-fns'
 import { AlertCircle, Calendar as CalendarIcon, CheckCircle2, Clock, MapPin, User } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -120,6 +120,26 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
   const selectedDate = watch('date')
   const selectedTime = watch('time')
 
+  // react-hook-form's `shouldFocusError` (on by default) moves focus to the
+  // first invalid field automatically — but only for fields it holds a real
+  // DOM ref to via `register()`. `date` and `time` are driven by
+  // `Controller`/`setValue` instead (a popover trigger and a button-grid
+  // aren't native inputs `register()` can target), so on a validation
+  // failure limited to just those two, focus silently stayed on the submit
+  // button and nothing told a keyboard/screen-reader user which field to
+  // fix. This picks up exactly that gap without touching the fields RHF
+  // already handles correctly.
+  const dateButtonRef = useRef<HTMLButtonElement>(null)
+  const timeGroupRef = useRef<HTMLDivElement>(null)
+  const onInvalid = (formErrors: typeof errors) => {
+    if (formErrors.name || formErrors.email || formErrors.phone || formErrors.location) return
+    if (formErrors.date) {
+      dateButtonRef.current?.focus()
+    } else if (formErrors.time) {
+      timeGroupRef.current?.focus()
+    }
+  }
+
   const [bookingState, setBookingState] = useState<ActionResult | null>(null)
 
   const onSubmit = async () => {
@@ -142,7 +162,7 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit, onInvalid)}
       noValidate
       className="mx-auto w-full max-w-5xl"
     >
@@ -232,6 +252,7 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
                     errors.location ? 'border-rose-500' : 'border-canvas-300',
                   )}
                   aria-invalid={Boolean(errors.location)}
+                  aria-describedby={errors.location ? 'location-error' : undefined}
                   {...register('location')}
                 >
                   <option value="">Select a clinic location…</option>
@@ -289,6 +310,7 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
                     <Popover>
                       <PopoverTrigger asChild>
                         <button
+                          ref={dateButtonRef}
                           type="button"
                           className={cn(
                             'flex h-14 w-full items-center gap-3 rounded-xl border px-4 text-body transition-colors duration-200',
@@ -297,6 +319,7 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
                             errors.date ? 'border-rose-500 bg-rose-50' : 'border-canvas-300 bg-white',
                           )}
                           aria-invalid={Boolean(errors.date)}
+                          aria-describedby={errors.date ? 'date-error' : undefined}
                         >
                           <CalendarIcon className="size-4 text-sage-600 shrink-0" />
                           {field.value ? format(field.value, 'EEEE, MMMM d, yyyy') : 'Pick a date'}
@@ -323,15 +346,30 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
 
               {/* Time slot grid */}
               <div>
-                <Label className="flex items-center gap-1.5 mb-3">
+                <Label id="time-slot-label" className="flex items-center gap-1.5 mb-3">
                   <Clock className="size-3.5 text-sage-600" />
                   Select Time <span className="text-rose-600">*</span>
                 </Label>
-                <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+                {/* Was a bare grid of buttons with only a color change to show
+                    selection — nothing conveyed "one of these 13 things is
+                    picked" to a screen reader at all. `radiogroup`/`radio` +
+                    `aria-checked` gives it the same name/role/value a native
+                    radio set would have, and `aria-describedby` connects it
+                    to the error message below like every other field. */}
+                <div
+                  ref={timeGroupRef}
+                  tabIndex={-1}
+                  role="radiogroup"
+                  aria-labelledby="time-slot-label"
+                  aria-describedby={errors.time ? 'time-error' : undefined}
+                  className="grid grid-cols-3 gap-2 sm:grid-cols-4 focus:outline-none"
+                >
                   {timeSlots.map((slot) => (
                     <button
                       key={slot}
                       type="button"
+                      role="radio"
+                      aria-checked={selectedTime === slot}
                       onClick={() => setValue('time', slot, { shouldValidate: true })}
                       className={cn(
                         'rounded-xl border py-2.5 text-body-sm font-medium transition-all duration-200 hover:-translate-y-0.5',

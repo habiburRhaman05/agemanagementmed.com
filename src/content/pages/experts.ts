@@ -59,15 +59,15 @@ export const expertsContent = {
   } satisfies BenefitListData,
 
   awards: [
-    { src: '/images/award-11-img.png', alt: 'Best of Savannah award' },
-    { src: '/images/award-12-img.png', alt: 'Regional excellence award' },
-    { src: '/images/award-13-img.png', alt: 'Best of Savannah Doctors award' },
-    { src: '/images/award-14-img.png', alt: 'Community recognition award' },
-    { src: '/images/award-15-img.png', alt: 'Wellness practice award' },
-    { src: '/images/award-16-img.png', alt: 'Wellness practice award' },
-    { src: '/images/award-17-img.png', alt: 'Wellness practice award' },
-    { src: '/images/award-18-img.png', alt: 'Wellness practice award' },
-    { src: '/images/award-19-img.png', alt: 'Wellness practice award' },
+    { src: '/images/award-11-img.png', alt: 'Best of Pooler 2025 Winner' },
+    { src: '/images/award-12-img.png', alt: 'Best Awards of Savannah 2025' },
+    { src: '/images/award-13-img.png', alt: 'Best Awards of Savannah 2024 Winner' },
+    { src: '/images/award-14-img.png', alt: 'Best Awards of Savannah 2024 Winner' },
+    { src: '/images/award-15-img.png', alt: 'Best Awards of Savannah 2023 Winner' },
+    { src: '/images/award-16-img.png', alt: 'Best Awards of Savannah 2022 Winner' },
+    { src: '/images/award-17-img.png', alt: 'Best Awards of Savannah 2021 Winner' },
+    { src: '/images/award-18-img.png', alt: 'Best Awards of Savannah 2020 Winner' },
+    { src: '/images/award-19-img.png', alt: 'Best Awards of Savannah 2019 Winner' },
   ] satisfies Award[],
 
   press: [

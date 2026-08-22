@@ -13,6 +13,7 @@ interface TreatmentTemplateProps {
 }
 
 export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProps) {
+  const pillar = pillars[treatment.pillar]
 
   return (
     <>
@@ -20,6 +21,11 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
         {...treatment.hero}
         overideMinheight='min-h-[850px]!'
         textWidth='800'
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: pillar.label, href: pillar.href },
+          { label: treatment.shortName, href: treatment.href },
+        ]}
       />
 
    <div className='flex flex-col gap-y-10 bg-[#fff]'>

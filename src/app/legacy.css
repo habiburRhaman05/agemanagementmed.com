@@ -1204,6 +1204,306 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   width: 100%;
 }
 
+/* ------------ COLUMN BOX OVERLAP 2 (#column-box-o-2) ----------------------
+   Ported for the BHRT hub page's "Explore Other Treatments We Offer" cross-sell
+   cards — a smaller sibling of #column-box-o (top-left image overlap instead
+   of vertically-centered left overlap; fixed top offset, not centered). */
+#column-box-o-2 {
+  position: relative;
+}
+
+#column-box-o-2 .lg-grid {
+  --lg-gx: 30px;
+  --lg-gy: 30px;
+}
+
+#column-box-o-2 .box {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  margin-left: 50px;
+  padding: 40px 30px 40px 80px;
+  position: relative;
+}
+
+#column-box-o-2 .img {
+  left: -47.5px;
+  position: absolute;
+  top: 30px;
+}
+
+#column-box-o-2 .img::after {
+  border: 1px solid #7aaba9;
+  border-radius: 100%;
+  content: '';
+  height: calc(100% + 10px);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  width: calc(100% + 10px);
+  transform: translate(-50%, -50%);
+}
+
+#column-box-o-2 .content {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+#column-box-o-2 .top {
+  flex: 0 1 auto;
+  width: 100%;
+}
+
+#column-box-o-2 .lg-title {
+  color: #14214b;
+  font-size: 20px;
+  margin-bottom: 25px;
+  text-transform: capitalize;
+}
+
+#column-box-o-2 .lg-text {
+  margin-bottom: 25px;
+}
+
+#column-box-o-2 .lg-text p {
+  font-size: 14px;
+}
+
+#column-box-o-2 .lg-text > *:last-child {
+  margin-bottom: 0;
+}
+
+#column-box-o-2 .cta {
+  align-self: flex-end;
+  width: 100%;
+}
+
+@media only screen and (max-width: 575.98px) {
+  #column-box-o-2 .lg-grid {
+    --lg-gy: 80px;
+  }
+
+  #column-box-o-2 .box {
+    margin-left: 0;
+    padding: 80px 30px 40px;
+  }
+
+  #column-box-o-2 .img {
+    left: 50%;
+    top: -47.5px;
+    transform: translateX(-50%);
+  }
+
+  #column-box-o-2 .content {
+    text-align: center;
+  }
+
+  #column-box-o-2 .lg-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ------------ GRID COLUMN / UTILITY ADDITIONS (BHRT hub) ----------------------
+   Small gaps the existing grid/spacer/max-width utilities above didn't cover yet. */
+.lg-col-xl-4 {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1200px) {
+  .lg-col-xl-4 {
+    width: 33.333333%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .lg-col-md-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+}
+
+.lg-max-width-850 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 850px;
+}
+
+.lg-flexspace-70 {
+  margin-top: 100px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .lg-flexspace-70 {
+    margin-top: 70px;
+  }
+}
+
+/* ------------ SLIDER OVERLAP (#slider-o) ----------------------
+   Ported for the BHRT hub page's "Included As A Patient" horizontal card
+   carousel (7 numbered items). Bootstrap's Swiper markup/classes map onto
+   the project's own carousel wiring (see the .tsx component for how
+   swiper-slide/swiper-button-disabled equivalents are implemented with
+   embla-carousel, already used elsewhere on the site). */
+#slider-o {
+  position: relative;
+}
+
+#slider-o .lg-content {
+  padding-right: 50px;
+}
+
+#slider-o .lg-title {
+  color: #14214b;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+#slider-o .lg-text > *:last-child {
+  margin-bottom: 0;
+}
+
+#slider-o .nav .arrow:first-child {
+  margin-right: 10px;
+}
+
+#slider-o .arrow[disabled] {
+  background-color: transparent;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#slider-o .swiper {
+  overflow: hidden;
+  padding-left: 40px;
+  padding-right: 24px;
+}
+
+#slider-o .swiper-slide {
+  flex: 0 0 auto;
+  height: auto;
+  width: 400px;
+  margin-right: 24px;
+}
+
+#slider-o .swiper .box {
+  display: flex;
+  flex-wrap: wrap;
+  background: linear-gradient(180deg, #f8f8f8 0%, #fff 100%);
+  border: 1px solid #519b98;
+  border-radius: 20px;
+  height: 100%;
+  padding: 35px;
+}
+
+#slider-o .swiper .content {
+  flex: 0 1 auto;
+  margin-bottom: 0;
+  padding-right: 0;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  z-index: 2;
+}
+
+#slider-o .swiper .icon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 90px;
+  margin-bottom: 60px;
+}
+
+#slider-o .swiper .number-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+#slider-o .swiper .number {
+  flex: 0 0 auto;
+  background-color: #bc8496;
+  border-radius: 48px;
+  color: #fff;
+  font-family: var(--font-display), 'Bodoni-72', serif;
+  font-size: 17px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  width: 24px;
+}
+
+#slider-o .swiper .number-title .lg-title {
+  flex: 1 1 0;
+  padding-left: 10px;
+  color: #0b2055;
+  font-size: 24px;
+  line-height: 1em;
+  margin-bottom: 0;
+  text-transform: capitalize;
+}
+
+@media only screen and (max-width: 1199.98px) {
+  #slider-o .swiper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  #slider-o .lg-content {
+    margin-bottom: 30px;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  #slider-o .nav {
+    justify-content: center;
+  }
+
+  #slider-o .swiper .icon {
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  #slider-o .swiper .content {
+    text-align: center;
+  }
+
+  #slider-o .swiper .number-title {
+    justify-content: center;
+    text-align: center;
+  }
+
+  #slider-o .swiper .number,
+  #slider-o .swiper .number-title .lg-title {
+    flex: 0 1 auto;
+    padding: 0;
+  }
+
+  #slider-o .swiper .number {
+    margin-bottom: 15px;
+  }
+
+  #slider-o .swiper .number-title .lg-title {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  #slider-o .swiper .box {
+    padding: 35px 30px;
+  }
+
+  #slider-o .lg-title {
+    font-size: 36px;
+  }
+}
+
 /* ------------ WELCOME VIDEO (.video-d) ----------------------
    The source wraps the heading and video in a pale blue band. */
 .lg-welcome-band {

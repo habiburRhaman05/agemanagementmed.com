@@ -5,10 +5,11 @@ import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { NewsAndMediaSection } from '@/components/sections/NewsAndMediaSection'
 import { PeopleGrid } from '@/components/sections/PeopleGrid'
+import { JsonLd } from '@/components/seo/JsonLd'
 import { getNewsItems } from '@/actions/news'
 import { expertsContent } from '@/content/pages/experts'
 import { getAllPeople } from '@/content/people'
-import { buildMetadata } from '@/lib/seo'
+import { buildMetadata, buildPersonSchema, getPageH1 } from '@/lib/seo'
 import type { ContentSummary } from '@/types/content'
 import type { VideoThumbnailItem } from '@/components/features/VideoThumbnailGrid'
 import { TransformHealthBanner } from '@/components/sections/TransformHealthBanner'
@@ -45,6 +46,9 @@ export const metadata = buildMetadata(expertsContent.seo)
 export default async function ExpertsPage() {
   const people = await getAllPeople()
   const allNews = await getNewsItems()
+  // PageSeo.h1 for '/our-experts' — this page never fetched PageSeo before,
+  // so an admin setting an H1 override here had zero effect.
+  const h1Override = await getPageH1('/our-experts')
 console.log(allNews);
 
   const news: ContentSummary[] = FEATURED_NEWS_LINKS.map(
@@ -75,9 +79,13 @@ console.log(allNews);
 
   return (
     <>
+      {people.map((person) => (
+        <JsonLd key={person.slug} data={buildPersonSchema(person)} />
+      ))}
       <Header overlay />
       <HeroEditorial
         {...expertsContent.hero}
+        title={h1Override || expertsContent.hero.title}
         hideDefaultCta
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Our Experts', href: '/our-experts' }]}
         containerOverride="pb-20 pt-35 md:pb-35 md:pt-50 lg:pb-55 lg:pt-75"

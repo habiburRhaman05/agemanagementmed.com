@@ -20,7 +20,7 @@ interface TreatmentData {
   hero?: {
     eyebrow?: string
     title?: string
-    lead?: string
+    lead?: string | string[]
     image?: { src: string; alt: string }
     ctas?: Cta[]
   }
@@ -52,6 +52,12 @@ interface SeoData {
   ogImageUrl: string | null
   noindex: boolean
   schemaJsonLd: string | null
+  h1: string | null
+  ogTitle: string | null
+  ogDescription: string | null
+  ogType: string | null
+  twitterTitle: string | null
+  twitterDescription: string | null
 }
 
 const ADVANCED_KEYS = ['symptoms', 'sections', 'process', 'candidacy', 'providers', 'related', 'customsSection']
@@ -74,6 +80,14 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
 
   const [heroCtas, setHeroCtas] = useState<Cta[]>(treatment.data.hero?.ctas ?? [])
   const [faqs, setFaqs] = useState(treatment.data.faqs ?? [])
+
+  const heroLeadRaw = treatment.data.hero?.lead
+  const [leadMode, setLeadMode] = useState<'single' | 'multiple'>(
+    Array.isArray(heroLeadRaw) ? 'multiple' : 'single',
+  )
+  const [leadItems, setLeadItems] = useState<string[]>(
+    Array.isArray(heroLeadRaw) && heroLeadRaw.length ? heroLeadRaw : [''],
+  )
 
   const moveFaq = (index: number, direction: -1 | 1) => {
     const target = index + direction
@@ -105,7 +119,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
      
       heroEyebrow: treatment.data.hero?.eyebrow ?? '',
       heroTitle: treatment.data.hero?.title ?? '',
-      heroLead: treatment.data.hero?.lead ?? '',
+      heroLead: typeof heroLeadRaw === 'string' ? heroLeadRaw : '',
       heroImageSrc: treatment.data.hero?.image?.src ?? '',
       heroImageAlt: treatment.data.hero?.image?.alt ?? '',
       closingTitle: treatment.data.closingCta?.title ?? '',
@@ -117,6 +131,12 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
       seoCanonical: seo?.canonical ?? treatment.href,
       seoKeywords: seo?.keywords ?? '',
       seoOgImageSrc: seo?.ogImageUrl ?? '',
+      seoH1: seo?.h1 ?? '',
+      seoOgTitle: seo?.ogTitle ?? '',
+      seoOgDescription: seo?.ogDescription ?? '',
+      seoOgType: seo?.ogType ?? '',
+      seoTwitterTitle: seo?.twitterTitle ?? '',
+      seoTwitterDescription: seo?.twitterDescription ?? '',
     },
   })
 
@@ -125,6 +145,17 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
   const onValid = async (values: EditTreatmentValues) => {
     setSubmitError('')
     setSeoSchemaError('')
+
+    const trimmedLeadItems = leadItems.map((t) => t.trim()).filter(Boolean)
+    const leadValue: string | string[] =
+      leadMode === 'multiple' ? trimmedLeadItems : values.heroLead ?? ''
+
+    if (leadMode === 'multiple' ? trimmedLeadItems.length === 0 : !leadValue) {
+      const message = 'Hero lead is required — enter at least one paragraph.'
+      setSubmitError(message)
+      toast.error(message)
+      return
+    }
 
     let advanced: Record<string, unknown>
     try {
@@ -157,7 +188,7 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
             hero: {
               eyebrow: values.heroEyebrow || undefined,
               title: values.heroTitle,
-              lead: values.heroLead,
+              lead: leadValue,
               image: { src: values.heroImageSrc, alt: values.heroImageAlt },
               ctas: heroCtas,
             },
@@ -177,6 +208,12 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
             ogImageUrl: values.seoOgImageSrc || null,
             noindex: seoNoindex,
             schemaJsonLd: seoSchemaJsonLd.trim() || null,
+            h1: values.seoH1 || null,
+            ogTitle: values.seoOgTitle || null,
+            ogDescription: values.seoOgDescription || null,
+            ogType: values.seoOgType || null,
+            twitterTitle: values.seoTwitterTitle || null,
+            twitterDescription: values.seoTwitterDescription || null,
           },
         }),
       })
@@ -272,9 +309,60 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           <FieldError message={errors.heroTitle?.message} />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-500">Lead</label>
-          <textarea {...register('heroLead')} rows={3} className={inputClass} />
-          <FieldError message={errors.heroLead?.message} />
+          <div className="flex items-center justify-between">
+            <label className="block text-xs font-medium text-gray-500">Lead</label>
+            <div className="inline-flex rounded-lg border border-canvas-300 p-0.5 text-xs">
+              <button
+                type="button"
+                onClick={() => setLeadMode('single')}
+                className={`rounded-md px-2 py-1 font-medium ${leadMode === 'single' ? 'bg-sage-600 text-white' : 'text-gray-500 hover:text-ink-950'}`}
+              >
+                Single paragraph
+              </button>
+              <button
+                type="button"
+                onClick={() => setLeadMode('multiple')}
+                className={`rounded-md px-2 py-1 font-medium ${leadMode === 'multiple' ? 'bg-sage-600 text-white' : 'text-gray-500 hover:text-ink-950'}`}
+              >
+                Multiple paragraphs
+              </button>
+            </div>
+          </div>
+
+          {leadMode === 'single' ? (
+            <>
+              <textarea {...register('heroLead')} rows={3} className={`mt-2 ${inputClass}`} />
+              <FieldError message={errors.heroLead?.message} />
+            </>
+          ) : (
+            <div className="mt-2 space-y-2">
+              {leadItems.map((item, i) => (
+                <div key={i} className="flex gap-2">
+                  <textarea
+                    value={item}
+                    onChange={(e) => setLeadItems(leadItems.map((t, j) => (j === i ? e.target.value : t)))}
+                    placeholder={`Paragraph ${i + 1}`}
+                    rows={2}
+                    className={inputClass}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setLeadItems(leadItems.length > 1 ? leadItems.filter((_, j) => j !== i) : [''])}
+                    className="shrink-0 self-start rounded-lg p-2 text-gray-400 hover:bg-red-50 hover:text-red-600"
+                  >
+                    <Trash2 className="size-4" />
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() => setLeadItems([...leadItems, ''])}
+                className="inline-flex items-center gap-1 text-xs font-medium text-sage-700 hover:text-sage-700"
+              >
+                <Plus className="size-3.5" /> Add paragraph
+              </button>
+            </div>
+          )}
         </div>
         <div>
           <ImageUploader
@@ -418,6 +506,13 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           <FieldError message={errors.seoKeywords?.message} />
         </div>
         <div>
+          <label className="block text-xs font-medium text-gray-500">
+            H1 override <span className="font-normal text-gray-400">— replaces the hero heading on the page itself, not just &lt;title&gt;</span>
+          </label>
+          <input {...register('seoH1')} placeholder="Defaults to the hero title above" maxLength={120} className={inputClass} />
+          <FieldError message={errors.seoH1?.message} />
+        </div>
+        <div>
           <ImageUploader
             label="Open Graph image"
             folder="treatments"
@@ -426,6 +521,33 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           />
           <FieldError message={errors.seoOgImageSrc?.message} />
         </div>
+
+        <div className="border-t border-canvas-200 pt-4">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Open Graph <span className="font-normal normal-case text-gray-400">— falls back to Meta title/description above when left blank</span>
+          </h3>
+          <div className="mt-3 space-y-3">
+            <input {...register('seoOgTitle')} placeholder="OG title" maxLength={70} className={inputClass} />
+            <FieldError message={errors.seoOgTitle?.message} />
+            <textarea {...register('seoOgDescription')} placeholder="OG description" maxLength={300} rows={2} className={inputClass} />
+            <FieldError message={errors.seoOgDescription?.message} />
+            <input {...register('seoOgType')} placeholder="OG type (defaults to “website”)" className={inputClass} />
+            <FieldError message={errors.seoOgType?.message} />
+          </div>
+        </div>
+
+        <div className="border-t border-canvas-200 pt-4">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Twitter Card <span className="font-normal normal-case text-gray-400">— falls back to Open Graph above when left blank</span>
+          </h3>
+          <div className="mt-3 space-y-3">
+            <input {...register('seoTwitterTitle')} placeholder="Twitter title" maxLength={70} className={inputClass} />
+            <FieldError message={errors.seoTwitterTitle?.message} />
+            <textarea {...register('seoTwitterDescription')} placeholder="Twitter description" maxLength={300} rows={2} className={inputClass} />
+            <FieldError message={errors.seoTwitterDescription?.message} />
+          </div>
+        </div>
+
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={seoNoindex} onChange={(e) => setSeoNoindex(e.target.checked)} className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600" />
           <span className="text-xs text-gray-600">No index</span>

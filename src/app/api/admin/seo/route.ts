@@ -4,6 +4,7 @@ import { z } from 'zod'
 
 import { getAllTreatments } from '@/content/treatments/main'
 import { getCurrentAdmin } from '@/lib/auth'
+import { fromPageSeoRow, toPageSeoWrite } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
 
 /**
@@ -33,6 +34,13 @@ const SeoSchema = z.object({
   ogImageUrl: z.string().max(500).optional().nullable(),
   noindex: z.boolean().optional(),
   schemaJsonLd: z.string().max(20000).optional().nullable(),
+  keywords: z.string().max(255).optional().nullable(),
+  h1: z.string().max(120).optional().nullable(),
+  ogTitle: z.string().max(70).optional().nullable(),
+  ogDescription: z.string().max(300).optional().nullable(),
+  ogType: z.string().max(50).optional().nullable(),
+  twitterTitle: z.string().max(70).optional().nullable(),
+  twitterDescription: z.string().max(300).optional().nullable(),
 })
 
 /** Every known path on the site, joined with its PageSeo row if one exists. */
@@ -52,7 +60,7 @@ export async function GET() {
   const pages = knownPages.map(({ path, label }) => ({
     path,
     label,
-    seo: seoByPath.get(path) ?? null,
+    seo: fromPageSeoRow(seoByPath.get(path) ?? null),
   }))
 
   return NextResponse.json({ pages })
@@ -74,11 +82,12 @@ export async function PATCH(request: Request) {
   }
 
   const { path, ...data } = parsed.data
+  const write = toPageSeoWrite(data)
 
   const row = await prisma.pageSeo.upsert({
     where: { path },
-    update: data,
-    create: { path, ...data },
+    update: write,
+    create: { path, ...write },
   })
 
   revalidateTag('treatments', 'max')

@@ -46,86 +46,43 @@ function ArrowSvg({ className }: { className?: string }) {
   )
 }
 
-function TreatmentCard({ data }: { data: TreatmentOptionCard }) {
-  const isFeatured = Boolean(data.featured)
+function TreatmentCard({ service }: { service: TreatmentOptionCard }) {
+  const isFeatured = Boolean(service.featured)
 
   return (
-    <div
-      className={cn(
-        'rounded-[28px] p-8 sm:p-10 lg:p-12',
-        isFeatured ? 'bg-[#0f1c3f]' : 'border border-ink-950/10 bg-white'
-      )}
-    >
-      <div className="flex flex-col items-start gap-8 sm:flex-row sm:gap-10 lg:gap-12">
-        <div className="shrink-0 rounded-full border border-[#519B99]/70 p-2 sm:p-2.5">
-          <div
-            className={cn(
-              'size-32 overflow-hidden rounded-full bg-cover bg-center sm:size-40 lg:size-50',
-              data.imageBg ?? 'bg-canvas-200'
-            )}
-            style={{ backgroundImage: `url('${data.image}')` }}
-            role="img"
-            aria-label={data.title}
-          />
-        </div>
+  <div className="lg-col-lg-6">
+                  <div className="box">
+                    <div className="img">
+              
+                      <img
+                        src={service.image}
+                        alt={service.label}
+                        width={150}
+                        height={150}
+                        loading="lazy"
+                        className="w-40! h-40! min-[576px]:w-20! min-[576px]:h-20! min-[992px]:w-[150px]! min-[992px]:h-[150px]!"
+                      />
+                    </div>
 
-        <div className="flex-1">
-          <h3
-            className={cn(
-              'font-display text-[24px] leading-tight sm:text-[28px] lg:text-[32px]',
-              isFeatured ? 'text-white' : 'text-ink-950'
-            )}
-          >
-            {data.title}
-          </h3>
-          <p
-            className={cn(
-              'mt-3 text-[15px] leading-relaxed font-light sm:text-[16px]',
-              isFeatured ? 'text-white/80' : 'text-canvas-600'
-            )}
-          >
-            {data.description}
-          </p>
+                    <div className="content mt-[16px]! md:mt-0!">
+                      <div className="top flex items-center justify-center flex-col">
+                        <h3
+                          className={`lg-title  text-[30px]!`}
+                        >
+                          <Link href={""}>{service.title}</Link>
+                        </h3>
 
-          <p
-            className={cn(
-              'mt-6 text-[13px] font-bold tracking-wide uppercase',
-              isFeatured ? 'text-white' : 'text-ink-950'
-            )}
-          >
-            {data.label}
-          </p>
-          <ul className="mt-3 grid grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
-            {data.bullets.map((bullet) => (
-              <li
-                key={bullet}
-                className={cn(
-                  'flex items-center gap-2.5 text-[15px] font-light sm:text-[16px]',
-                  isFeatured ? 'text-white/90' : 'text-canvas-600'
-                )}
-              >
-                <ArrowSvg className="text-[#519B99]" />
-                <span>{bullet}</span>
-              </li>
-            ))}
-          </ul>
+                        {service.description ? (
+                          <div className="lg-text">
+                            <p>{service.description}</p>
+                          </div>
+                        ) : null}
+                      </div>
 
-          {data.cta ? (
-            data.cta.href === '/book-appointment' ? (
-              <BookAppointmentButton className="mt-7">{data.cta.label}</BookAppointmentButton>
-            ) : (
-              <Link
-                href={data.cta.href}
-                className="group mt-7 inline-flex items-center gap-3 rounded-full bg-[#519B99] px-8 py-[15px] font-sans text-[14px] font-bold tracking-[0.15em] text-white uppercase transition-colors duration-300 hover:bg-[#458785]"
-              >
-                {data.cta.label}
-                <ArrowSvg className="transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            )
-          ) : null}
-        </div>
-      </div>
-    </div>
+  
+                    </div>
+                  </div>
+                </div>
   )
 }
 
@@ -136,18 +93,59 @@ function TreatmentCard({ data }: { data: TreatmentOptionCard }) {
  */
 export function TreatmentOptionsStack({ eyebrow, title, lead, treatments }: TreatmentOptionsStackProps) {
   return (
-    <Section className='bg-white' spacing="md">
+    <Section className='bg-[#F4F6F1]' spacing="md">
       <Container>
         <SectionHeader eyebrow={eyebrow} title={title} lead={lead} align="center" />
-<div className="radial-gradient"></div>
-        <div className="mt-10 space-y-6 sm:space-y-8">
-          {treatments.map((treatment) => (
-            <Reveal key={treatment.title}>
-              <TreatmentCard data={treatment} />
-            </Reveal>
-          ))}
-        </div>
       </Container>
+
+  <div id="column-box-o" className='mt-8'>
+        <div className="lg-max-width-1440">
+          <div className="lg-container">
+            <div className="lg-grid">
+              {treatments.map((service) => (
+                <div className="lg-col-lg-6" >
+                  <div className="box">
+                    <div className="img">
+                      {/* Fixed 150px circular badge inside a ported layout —
+                          matches the source markup exactly. */}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={service.image}
+                  
+                        width={150}
+                        height={150}
+                        loading="lazy"
+                        className="w-40! h-40! min-[576px]:w-20! min-[576px]:h-20! min-[992px]:w-[150px]! min-[992px]:h-[150px]!"
+                      />
+                    </div>
+
+                    <div className="content mt-[16px]! md:mt-0!">
+                      <div className="top flex items-center justify-center flex-col">
+                        <h3
+                          className={`lg-title ${service.title ? 'w-full' : ''} text-[30px]!`}
+                        >
+                          <Link href={""}>{service.title}</Link>
+                        </h3>
+
+                        {service.description ? (
+                          <div className="lg-text">
+                            <p>{service.description}</p>
+                          </div>
+                        ) : null}
+
+                       
+                      </div>
+
+                      
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </Section>
   )
 }

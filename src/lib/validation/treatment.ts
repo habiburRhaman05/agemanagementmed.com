@@ -15,7 +15,12 @@ export const treatmentCoreSchema = z.object({
   cardBenefits: z.string().optional(),
   heroEyebrow: z.string().optional(),
   heroTitle: z.string().min(1, 'Hero title is required'),
-  heroLead: z.string().min(1, 'Hero lead is required'),
+  // A single lead paragraph is entered here; when the admin switches to
+  // "multiple paragraphs" mode the lead text instead comes from the form's
+  // own `leadItems` array state (see TreatmentForm/NewTreatmentForm) — so
+  // this can't stay a hard `min(1)` requirement. Each form enforces "at
+  // least one non-empty paragraph across whichever mode is active" itself.
+  heroLead: z.string().optional(),
   heroImageSrc: z.string().min(1, 'Hero image URL is required'),
   heroImageAlt: z.string().optional(),
   closingTitle: z.string().optional(),
@@ -26,6 +31,18 @@ export const treatmentCoreSchema = z.object({
   seoDescription: z.string().max(300, 'Meta description must be 300 characters or fewer').optional(),
   seoKeywords: z.string().max(255, 'Meta keywords must be 255 characters or fewer').optional(),
   seoOgImageSrc: z.string().optional(),
+  // PageSeo has carried these since it was extended for source-site SEO
+  // parity, but no admin form ever rendered inputs for them — the fields
+  // existed in the schema and the DB, with no way to actually set them.
+  seoH1: z.string().max(120, 'H1 must be 120 characters or fewer').optional(),
+  seoOgTitle: z.string().max(70, 'OG title must be 70 characters or fewer').optional(),
+  seoOgDescription: z.string().max(300, 'OG description must be 300 characters or fewer').optional(),
+  seoOgType: z.string().max(50).optional(),
+  seoTwitterTitle: z.string().max(70, 'Twitter title must be 70 characters or fewer').optional(),
+  seoTwitterDescription: z
+    .string()
+    .max(300, 'Twitter description must be 300 characters or fewer')
+    .optional(),
 })
 
 export type TreatmentCoreValues = z.infer<typeof treatmentCoreSchema>

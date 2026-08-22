@@ -40,7 +40,7 @@ export const specialsContent = {
         'DOUBLE The Referral Rewards! All Patients Who Refer Other Patients Will Receive $100 Instead Of $50 To Their Account, Through The End Of June.',
       image: {
         src: '/images/grid-3-img.jpg',
-        alt: 'Refer a friend — double rewards',
+        alt: 'Sharing Is Caring!',
       },
       locations: ['savannah-pooler', 'statesboro'],
       ctaLabel: 'Claim',

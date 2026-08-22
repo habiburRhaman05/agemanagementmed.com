@@ -9,6 +9,8 @@ import BookAppointmentButton from "@/components/shared/BookAppointmentButton";
 import { Container } from "@/components/shared/Container";
 import { Button } from "@/components/ui/Button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildBreadcrumbSchema } from "@/lib/breadcrumb-schema";
 import { cn } from "@/lib/utils";
 import type { Cta, Media } from "@/types/content";
 
@@ -45,7 +47,7 @@ interface HeroActions {
 interface HeroEditorialProps {
   eyebrow?: string;
   title: string;
-  lead: string;
+  lead: string | string[];
   lead2?: string;
   textWidth?: string;
   image: Media;
@@ -166,20 +168,25 @@ export function HeroEditorial({
   console.log(ctas);
   
 
+  // `breadcrumbs` was threaded into every caller of this component but never
+  // actually used — no visual trail, no schema. Emitting BreadcrumbList JSON-LD
+  // here means every existing call site that already passes `breadcrumbs`
+  // (our-experts, several treatment pages) picks it up for free.
+  const breadcrumbSchema = breadcrumbs?.length ? buildBreadcrumbSchema(breadcrumbs) : null;
+
   return (
     <section
 
       id="banner-d"
-      
+
       style={
     {
       backgroundImage:`url(${image.src})`
     }
       }
     >
-     
+      {breadcrumbSchema ? <JsonLd data={breadcrumbSchema} /> : null}
 
-      
       <div className={'mx-auto w-full max-w-[80rem] px-2 lg:px-12 relative z-20  lg-container'}>
         <div className={cn(`text-center sm:text-left ${textWidth ? `max-w-${textWidth}px` : "max-w-[700px]"}`, heroDiv)}>
           <h1
@@ -198,7 +205,7 @@ export function HeroEditorial({
           >
             <p
              className={cn(
-              "mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6",
+              "mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal  text-white/90 md:mt-6",
               heroPara
             )}
             >
@@ -208,7 +215,7 @@ export function HeroEditorial({
           </div>
             }) :  <p
             className={cn(
-              "mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal leading-relaxed text-white/90 md:mt-6",
+              "mt-4 max-w-2xl text-[18px] lg:text-[20px] font-normal  text-white/90 md:mt-6",
               heroPara
             )}
           >

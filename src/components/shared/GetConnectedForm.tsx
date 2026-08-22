@@ -3,7 +3,7 @@
 import { bookAppointment, type ActionResult } from '@/actions/appointment'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AlertCircle, CheckCircle2, ChevronDown, X } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -65,6 +65,23 @@ export function BookingForm({
   const [bookingState, setBookingState] = useState<ActionResult | null>(null)
   const [showThankYou, setShowThankYou] = useState(false)
 
+  // The success dialog was a plain `<div>` with no dialog semantics: no
+  // `role`/`aria-modal` (so a screen reader has no idea it's a modal, or
+  // that the page behind it is inert), no focus moved into it on open (focus
+  // stays on the submit button, now hidden behind the overlay), and no
+  // Escape-to-close. This wires up the minimum WCAG-correct behavior without
+  // pulling in a full dialog component for what's a single confirmation box.
+  const thankYouPanelRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!showThankYou) return
+    thankYouPanelRef.current?.focus()
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowThankYou(false)
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [showThankYou])
+
   return (
     <>
       <form
@@ -99,12 +116,16 @@ export function BookingForm({
 
         {/* Name Field */}
         <div>
+          <label htmlFor="name" className="sr-only">
+            Name
+          </label>
           <input
             id="name"
             type="text"
             placeholder="Name"
             autoComplete="name"
             aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? 'name-error' : undefined}
             className="w-full h-13 sm:h-14 rounded-xl border border-white/20 bg-[#060E26]/50 focus:bg-[#060E26] px-4 sm:px-5 text-white placeholder:text-white/70 text-base sm:text-lg focus:border-teal-400 focus:outline-none transition-all"
             {...register('name')}
           />
@@ -113,12 +134,16 @@ export function BookingForm({
 
         {/* Email Field */}
         <div>
+          <label htmlFor="email" className="sr-only">
+            E-mail address
+          </label>
           <input
             id="email"
             type="email"
             placeholder="E-mail Address"
             autoComplete="email"
             aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? 'email-error' : undefined}
             className="w-full h-13 sm:h-14 rounded-xl border border-white/20 bg-[#060E26]/50 focus:bg-[#060E26] px-4 sm:px-5 text-white placeholder:text-white/70 text-base sm:text-lg focus:border-teal-400 focus:outline-none transition-all"
             {...register('email')}
           />
@@ -127,12 +152,16 @@ export function BookingForm({
 
         {/* Phone Field */}
         <div>
+          <label htmlFor="phone" className="sr-only">
+            Phone
+          </label>
           <input
             id="phone"
             type="tel"
             placeholder="Phone"
             autoComplete="tel"
             aria-invalid={Boolean(errors.phone)}
+            aria-describedby={errors.phone ? 'phone-error' : undefined}
             className="w-full h-13 sm:h-14 rounded-xl border border-white/20 bg-[#060E26]/50 focus:bg-[#060E26] px-4 sm:px-5 text-white placeholder:text-white/70 text-base sm:text-lg focus:border-teal-400 focus:outline-none transition-all"
             {...register('phone')}
           />
@@ -150,6 +179,8 @@ export function BookingForm({
           <div className="relative flex items-center">
             <select
               id="location"
+              aria-invalid={Boolean(errors.location)}
+              aria-describedby={errors.location ? 'location-error' : undefined}
               className="w-full appearance-none bg-transparent pr-8 py-0.5 text-white text-base sm:text-lg font-normal focus:outline-none cursor-pointer [&>option]:bg-[#0E1738] [&>option]:text-white"
               {...register('location')}
             >
@@ -184,20 +215,33 @@ export function BookingForm({
 
       {/* Thank You Success Modal */}
       {showThankYou && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm transition-opacity animate-in fade-in">
-          <div className="relative w-full max-w-md transform overflow-hidden rounded-2xl bg-[#0E1738] border border-white/10 p-6 text-center shadow-2xl transition-all animate-in zoom-in-95 duration-300 sm:p-8 text-white">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm transition-opacity animate-in fade-in"
+          onClick={() => setShowThankYou(false)}
+        >
+          <div
+            ref={thankYouPanelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="get-connected-thank-you-title"
+            tabIndex={-1}
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-md transform overflow-hidden rounded-2xl bg-[#0E1738] border border-white/10 p-6 text-center shadow-2xl transition-all animate-in zoom-in-95 duration-300 sm:p-8 text-white focus:outline-none"
+          >
             <button
+              type="button"
+              aria-label="Close"
               onClick={() => setShowThankYou(false)}
               className="absolute right-4 top-4 rounded-full p-1 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
             >
-              <X className="h-5 w-5" />
+              <X className="h-5 w-5" aria-hidden />
             </button>
 
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#4DA89E]/20 text-[#4DA89E]">
-              <CheckCircle2 className="h-10 w-10" />
+              <CheckCircle2 className="h-10 w-10" aria-hidden />
             </div>
 
-            <h3 className="mt-4 font-serif text-2xl font-bold text-white">
+            <h3 id="get-connected-thank-you-title" className="mt-4 font-serif text-2xl font-bold text-white">
               Thank You!
             </h3>
             <p className="mt-2 text-sm text-white/80 leading-relaxed">
@@ -205,6 +249,7 @@ export function BookingForm({
             </p>
 
             <button
+              type="button"
               onClick={() => setShowThankYou(false)}
               className="mt-6 w-full h-12 rounded-full bg-[#4DA89E] hover:bg-[#42968D] text-white font-bold tracking-wider text-sm uppercase transition-all"
             >

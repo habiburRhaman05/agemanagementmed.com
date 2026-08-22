@@ -47,6 +47,9 @@ export function NewTreatmentForm() {
   const [heroCtas, setHeroCtas] = useState<Cta[]>([{ label: 'Book a Consultation', href: '/book-appointment' }])
   const [faqs, setFaqs] = useState<{ question: string; answer: string }[]>([])
 
+  const [leadMode, setLeadMode] = useState<'single' | 'multiple'>('single')
+  const [leadItems, setLeadItems] = useState<string[]>([''])
+
   const [seoNoindex, setSeoNoindex] = useState(false)
   const [seoSchemaJsonLd, setSeoSchemaJsonLd] = useState('')
   const [seoSchemaError, setSeoSchemaError] = useState('')
@@ -106,6 +109,17 @@ export function NewTreatmentForm() {
       }
     }
 
+    const trimmedLeadItems = leadItems.map((t) => t.trim()).filter(Boolean)
+    const leadValue: string | string[] = leadMode === 'multiple' ? trimmedLeadItems : values.heroLead ?? ''
+    const leadForSummary = leadMode === 'multiple' ? trimmedLeadItems.join(' ') : values.heroLead ?? ''
+
+    if (leadMode === 'multiple' ? trimmedLeadItems.length === 0 : !leadValue) {
+      const message = 'Hero lead is required — enter at least one paragraph.'
+      setSubmitError(message)
+      toast.error(message)
+      return
+    }
+
     const pillar = inferPillar(`${values.slug} ${values.heroTitle}`)
 
     try {
@@ -122,13 +136,13 @@ export function NewTreatmentForm() {
           order: 0,
           name: values.heroTitle,
           shortName: values.heroTitle,
-          summary: values.heroLead,
+          summary: leadForSummary,
           cardImage: { src: values.heroImageSrc, alt: values.heroImageAlt || values.heroTitle },
           cardBenefits: [],
           hero: {
             eyebrow: values.heroEyebrow || undefined,
             title: values.heroTitle,
-            lead: values.heroLead,
+            lead: leadValue,
             image: { src: values.heroImageSrc, alt: values.heroImageAlt || values.heroTitle },
             ctas: heroCtas.filter((c) => c.label && c.href),
           },
@@ -140,7 +154,13 @@ export function NewTreatmentForm() {
           },
           seo: {
             title: values.seoTitle || values.heroTitle,
-            description: values.seoDescription || values.heroLead,
+            description: values.seoDescription || leadForSummary,
+            h1: values.seoH1 || null,
+            ogTitle: values.seoOgTitle || null,
+            ogDescription: values.seoOgDescription || null,
+            ogType: values.seoOgType || null,
+            twitterTitle: values.seoTwitterTitle || null,
+            twitterDescription: values.seoTwitterDescription || null,
             canonical: values.href,
             keywords: values.seoKeywords || null,
             ogImageUrl: values.seoOgImageSrc || values.heroImageSrc || null,
@@ -237,9 +257,60 @@ export function NewTreatmentForm() {
           <FieldError message={errors.heroTitle?.message} />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-500">Lead</label>
-          <textarea {...register('heroLead')} rows={3} className={inputClass} />
-          <FieldError message={errors.heroLead?.message} />
+          <div className="flex items-center justify-between">
+            <label className="block text-xs font-medium text-gray-500">Lead</label>
+            <div className="inline-flex rounded-lg border border-canvas-300 p-0.5 text-xs">
+              <button
+                type="button"
+                onClick={() => setLeadMode('single')}
+                className={`rounded-md px-2 py-1 font-medium ${leadMode === 'single' ? 'bg-sage-600 text-white' : 'text-gray-500 hover:text-ink-950'}`}
+              >
+                Single paragraph
+              </button>
+              <button
+                type="button"
+                onClick={() => setLeadMode('multiple')}
+                className={`rounded-md px-2 py-1 font-medium ${leadMode === 'multiple' ? 'bg-sage-600 text-white' : 'text-gray-500 hover:text-ink-950'}`}
+              >
+                Multiple paragraphs
+              </button>
+            </div>
+          </div>
+
+          {leadMode === 'single' ? (
+            <>
+              <textarea {...register('heroLead')} rows={3} className={`mt-2 ${inputClass}`} />
+              <FieldError message={errors.heroLead?.message} />
+            </>
+          ) : (
+            <div className="mt-2 space-y-2">
+              {leadItems.map((item, i) => (
+                <div key={i} className="flex gap-2">
+                  <textarea
+                    value={item}
+                    onChange={(e) => setLeadItems(leadItems.map((t, j) => (j === i ? e.target.value : t)))}
+                    placeholder={`Paragraph ${i + 1}`}
+                    rows={2}
+                    className={inputClass}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setLeadItems(leadItems.length > 1 ? leadItems.filter((_, j) => j !== i) : [''])}
+                    className="shrink-0 self-start rounded-lg p-2 text-gray-400 hover:bg-red-50 hover:text-red-600"
+                  >
+                    <Trash2 className="size-4" />
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() => setLeadItems([...leadItems, ''])}
+                className="inline-flex items-center gap-1 text-xs font-medium text-sage-700 hover:text-sage-800"
+              >
+                <Plus className="size-3.5" /> Add paragraph
+              </button>
+            </div>
+          )}
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
@@ -353,6 +424,40 @@ export function NewTreatmentForm() {
           <input {...register('seoOgImageSrc')} placeholder="defaults to hero image" className={inputClass} />
           <FieldError message={errors.seoOgImageSrc?.message} />
         </div>
+        <div>
+          <label className="block text-xs font-medium text-gray-500">
+            H1 override <span className="font-normal text-gray-400">— replaces the hero heading on the page itself, not just &lt;title&gt;</span>
+          </label>
+          <input {...register('seoH1')} placeholder="Defaults to the hero title above" maxLength={120} className={inputClass} />
+          <FieldError message={errors.seoH1?.message} />
+        </div>
+
+        <div className="border-t border-canvas-200 pt-4">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Open Graph <span className="font-normal normal-case text-gray-400">— falls back to Meta title/description above when left blank</span>
+          </h3>
+          <div className="mt-3 space-y-3">
+            <input {...register('seoOgTitle')} placeholder="OG title" maxLength={70} className={inputClass} />
+            <FieldError message={errors.seoOgTitle?.message} />
+            <textarea {...register('seoOgDescription')} placeholder="OG description" maxLength={300} rows={2} className={inputClass} />
+            <FieldError message={errors.seoOgDescription?.message} />
+            <input {...register('seoOgType')} placeholder="OG type (defaults to “website”)" className={inputClass} />
+            <FieldError message={errors.seoOgType?.message} />
+          </div>
+        </div>
+
+        <div className="border-t border-canvas-200 pt-4">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Twitter Card <span className="font-normal normal-case text-gray-400">— falls back to Open Graph above when left blank</span>
+          </h3>
+          <div className="mt-3 space-y-3">
+            <input {...register('seoTwitterTitle')} placeholder="Twitter title" maxLength={70} className={inputClass} />
+            <FieldError message={errors.seoTwitterTitle?.message} />
+            <textarea {...register('seoTwitterDescription')} placeholder="Twitter description" maxLength={300} rows={2} className={inputClass} />
+            <FieldError message={errors.seoTwitterDescription?.message} />
+          </div>
+        </div>
+
         <label className="flex items-center gap-2">
           <input
             type="checkbox"

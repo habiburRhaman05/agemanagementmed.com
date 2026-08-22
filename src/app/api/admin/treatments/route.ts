@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import { z } from 'zod'
 
 import { getCurrentAdmin } from '@/lib/auth'
+import { toPageSeoWrite } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
 
 const HeroSchema = z.object({
@@ -58,6 +59,12 @@ const CreateTreatmentSchema = z.object({
       ogImageUrl: z.string().optional().nullable(),
       noindex: z.boolean().optional(),
       schemaJsonLd: z.string().optional().nullable(),
+      h1: z.string().optional().nullable(),
+      ogTitle: z.string().optional().nullable(),
+      ogDescription: z.string().optional().nullable(),
+      ogType: z.string().optional().nullable(),
+      twitterTitle: z.string().optional().nullable(),
+      twitterDescription: z.string().optional().nullable(),
     })
     .optional(),
 })
@@ -109,19 +116,11 @@ export async function POST(request: Request) {
     data: { slug, href, pillar, audience, kind, status, order, data: JSON.parse(JSON.stringify(rest)) },
   })
 
+  const seoWrite = toPageSeoWrite(seo ?? {})
   await prisma.pageSeo.upsert({
     where: { path: href },
-    update: seo ?? {},
-    create: {
-      path: href,
-      title: seo?.title,
-      description: seo?.description,
-      canonical: seo?.canonical,
-      keywords: seo?.keywords,
-      ogImageUrl: seo?.ogImageUrl,
-      noindex: seo?.noindex ?? false,
-      schemaJsonLd: seo?.schemaJsonLd,
-    },
+    update: seoWrite,
+    create: { path: href, ...seoWrite },
   })
 
   revalidateTag('treatments', 'max')

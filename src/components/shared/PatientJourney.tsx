@@ -86,10 +86,9 @@ export function PatientJourney({
                       // so it straddles the card's top edge at an even 50/50
                       // split, matching the reference design.
                       <div className="relative z-20 mx-auto -mb-20 h-40 w-40 overflow-hidden rounded-full border border-[#89B3AA] bg-white p-0.75 shadow-md">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
+                        {/* eslint-disable-next-line @next/next/no-img-element */}                          <img
                           src={imageSrc}
-                          alt={step.title}
+                          alt={step.image?.alt || step.title}
                           className="h-full w-full rounded-full object-cover"
                           loading="lazy"
                         />
@@ -139,7 +138,7 @@ export function PatientJourney({
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={imageSrc}
-                          alt={step.title}
+                          alt={step.image?.alt || step.title}
                           className="h-full w-full rounded-full object-cover"
                           loading="lazy"
                         />

@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 import { SeoTable } from '@/components/admin/SeoTable'
 import { TableSkeleton } from '@/components/admin/TableSkeleton'
 import { getAllTreatments } from '@/content/treatments/main'
+import { fromPageSeoRow } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
 
 const STATIC_PAGES = [
@@ -26,7 +27,7 @@ async function SeoTableSection() {
   const seoByPath = new Map(seoRows.map((row) => [row.path, row]))
 
   const pages = [...STATIC_PAGES, ...treatments.map((t) => ({ path: t.href, label: t.name }))].map(
-    ({ path, label }) => ({ path, label, seo: seoByPath.get(path) ?? null }),
+    ({ path, label }) => ({ path, label, seo: fromPageSeoRow(seoByPath.get(path) ?? null) }),
   )
 
   return <SeoTable pages={pages} />

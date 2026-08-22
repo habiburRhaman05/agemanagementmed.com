@@ -186,7 +186,8 @@ export interface BenefitListData {
 export interface ProcessStep {
   title: string
   body: string
-  url?:string
+  url?: string
+  image?: Media
 }
 
 export interface ProcessStepsData {
@@ -256,6 +257,8 @@ export interface Location {
   zip: string
   hours: OfficeHours[]
   mapEmbedUrl: string
+  /** Used for the LocalBusiness/MedicalClinic JSON-LD `geo` property. */
+  geo?: { latitude: number; longitude: number }
 }
 
 export interface Award {
@@ -302,7 +305,8 @@ export interface Treatment extends TreatmentSummary {
   hero: {
     eyebrow: string
     title: string
-    lead: string
+    /** A single lead paragraph, or several rendered as separate paragraphs — see `HeroEditorial`. */
+    lead: string | string[]
     image: Media
     ctas: Cta[],
     actions?: {

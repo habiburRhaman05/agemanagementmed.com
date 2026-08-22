@@ -6029,7 +6029,6 @@ export namespace Prisma {
     ogType: string | null
     twitterTitle: string | null
     twitterDescription: string | null
-    schemaJsonLd: string | null
   }
 
   export type PostSeoMaxAggregateOutputType = {
@@ -6047,7 +6046,6 @@ export namespace Prisma {
     ogType: string | null
     twitterTitle: string | null
     twitterDescription: string | null
-    schemaJsonLd: string | null
   }
 
   export type PostSeoCountAggregateOutputType = {
@@ -6085,7 +6083,6 @@ export namespace Prisma {
     ogType?: true
     twitterTitle?: true
     twitterDescription?: true
-    schemaJsonLd?: true
   }
 
   export type PostSeoMaxAggregateInputType = {
@@ -6103,7 +6100,6 @@ export namespace Prisma {
     ogType?: true
     twitterTitle?: true
     twitterDescription?: true
-    schemaJsonLd?: true
   }
 
   export type PostSeoCountAggregateInputType = {
@@ -6212,7 +6208,7 @@ export namespace Prisma {
     ogType: string | null
     twitterTitle: string | null
     twitterDescription: string | null
-    schemaJsonLd: string | null
+    schemaJsonLd: JsonValue | null
     _count: PostSeoCountAggregateOutputType | null
     _min: PostSeoMinAggregateOutputType | null
     _max: PostSeoMaxAggregateOutputType | null
@@ -6338,7 +6334,7 @@ export namespace Prisma {
       ogType: string | null
       twitterTitle: string | null
       twitterDescription: string | null
-      schemaJsonLd: string | null
+      schemaJsonLd: Prisma.JsonValue | null
     }, ExtArgs["result"]["postSeo"]>
     composites: {}
   }
@@ -6777,7 +6773,7 @@ export namespace Prisma {
     readonly ogType: FieldRef<"PostSeo", 'String'>
     readonly twitterTitle: FieldRef<"PostSeo", 'String'>
     readonly twitterDescription: FieldRef<"PostSeo", 'String'>
-    readonly schemaJsonLd: FieldRef<"PostSeo", 'String'>
+    readonly schemaJsonLd: FieldRef<"PostSeo", 'Json'>
   }
     
 
@@ -19085,130 +19081,208 @@ export namespace Prisma {
 
   export type AggregatePageSeo = {
     _count: PageSeoCountAggregateOutputType | null
+    _avg: PageSeoAvgAggregateOutputType | null
+    _sum: PageSeoSumAggregateOutputType | null
     _min: PageSeoMinAggregateOutputType | null
     _max: PageSeoMaxAggregateOutputType | null
+  }
+
+  export type PageSeoAvgAggregateOutputType = {
+    sitemapPriority: number | null
+  }
+
+  export type PageSeoSumAggregateOutputType = {
+    sitemapPriority: number | null
   }
 
   export type PageSeoMinAggregateOutputType = {
     id: string | null
     path: string | null
-    title: string | null
-    description: string | null
+    url: string | null
+    sourceFile: string | null
+    pageTitle: string | null
+    metaTitle: string | null
+    metaDescription: string | null
     keywords: string | null
-    ogImageUrl: string | null
+    h1Hero: string | null
     canonical: string | null
-    noindex: boolean | null
-    schemaJsonLd: string | null
+    robotsMeta: string | null
+    metaPixelPresent: boolean | null
+    metaPixelId: string | null
+    googleTagManagerPresent: boolean | null
+    googleTagManagerId: string | null
+    googleAnalyticsPresent: boolean | null
+    googleAnalyticsMeasurementId: string | null
+    hotjarPresent: boolean | null
+    hotjarSiteId: string | null
+    metricoolPresent: boolean | null
+    plausiblePresent: boolean | null
+    sitemapInclude: boolean | null
+    sitemapPriority: number | null
+    sitemapChangefreq: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    h1: string | null
-    ogTitle: string | null
-    ogDescription: string | null
-    ogType: string | null
-    twitterTitle: string | null
-    twitterDescription: string | null
   }
 
   export type PageSeoMaxAggregateOutputType = {
     id: string | null
     path: string | null
-    title: string | null
-    description: string | null
+    url: string | null
+    sourceFile: string | null
+    pageTitle: string | null
+    metaTitle: string | null
+    metaDescription: string | null
     keywords: string | null
-    ogImageUrl: string | null
+    h1Hero: string | null
     canonical: string | null
-    noindex: boolean | null
-    schemaJsonLd: string | null
+    robotsMeta: string | null
+    metaPixelPresent: boolean | null
+    metaPixelId: string | null
+    googleTagManagerPresent: boolean | null
+    googleTagManagerId: string | null
+    googleAnalyticsPresent: boolean | null
+    googleAnalyticsMeasurementId: string | null
+    hotjarPresent: boolean | null
+    hotjarSiteId: string | null
+    metricoolPresent: boolean | null
+    plausiblePresent: boolean | null
+    sitemapInclude: boolean | null
+    sitemapPriority: number | null
+    sitemapChangefreq: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    h1: string | null
-    ogTitle: string | null
-    ogDescription: string | null
-    ogType: string | null
-    twitterTitle: string | null
-    twitterDescription: string | null
   }
 
   export type PageSeoCountAggregateOutputType = {
     id: number
     path: number
-    title: number
-    description: number
+    url: number
+    sourceFile: number
+    pageTitle: number
+    metaTitle: number
+    metaDescription: number
     keywords: number
-    ogImageUrl: number
+    h1Hero: number
     canonical: number
-    noindex: number
-    schemaJsonLd: number
+    robotsMeta: number
+    openGraph: number
+    twitter: number
+    jsonLd: number
+    metaPixelPresent: number
+    metaPixelId: number
+    googleTagManagerPresent: number
+    googleTagManagerId: number
+    googleAnalyticsPresent: number
+    googleAnalyticsMeasurementId: number
+    hotjarPresent: number
+    hotjarSiteId: number
+    metricoolPresent: number
+    plausiblePresent: number
+    sitemapInclude: number
+    sitemapPriority: number
+    sitemapChangefreq: number
     createdAt: number
     updatedAt: number
-    h1: number
-    ogTitle: number
-    ogDescription: number
-    ogType: number
-    twitterTitle: number
-    twitterDescription: number
     _all: number
   }
 
 
+  export type PageSeoAvgAggregateInputType = {
+    sitemapPriority?: true
+  }
+
+  export type PageSeoSumAggregateInputType = {
+    sitemapPriority?: true
+  }
+
   export type PageSeoMinAggregateInputType = {
     id?: true
     path?: true
-    title?: true
-    description?: true
+    url?: true
+    sourceFile?: true
+    pageTitle?: true
+    metaTitle?: true
+    metaDescription?: true
     keywords?: true
-    ogImageUrl?: true
+    h1Hero?: true
     canonical?: true
-    noindex?: true
-    schemaJsonLd?: true
+    robotsMeta?: true
+    metaPixelPresent?: true
+    metaPixelId?: true
+    googleTagManagerPresent?: true
+    googleTagManagerId?: true
+    googleAnalyticsPresent?: true
+    googleAnalyticsMeasurementId?: true
+    hotjarPresent?: true
+    hotjarSiteId?: true
+    metricoolPresent?: true
+    plausiblePresent?: true
+    sitemapInclude?: true
+    sitemapPriority?: true
+    sitemapChangefreq?: true
     createdAt?: true
     updatedAt?: true
-    h1?: true
-    ogTitle?: true
-    ogDescription?: true
-    ogType?: true
-    twitterTitle?: true
-    twitterDescription?: true
   }
 
   export type PageSeoMaxAggregateInputType = {
     id?: true
     path?: true
-    title?: true
-    description?: true
+    url?: true
+    sourceFile?: true
+    pageTitle?: true
+    metaTitle?: true
+    metaDescription?: true
     keywords?: true
-    ogImageUrl?: true
+    h1Hero?: true
     canonical?: true
-    noindex?: true
-    schemaJsonLd?: true
+    robotsMeta?: true
+    metaPixelPresent?: true
+    metaPixelId?: true
+    googleTagManagerPresent?: true
+    googleTagManagerId?: true
+    googleAnalyticsPresent?: true
+    googleAnalyticsMeasurementId?: true
+    hotjarPresent?: true
+    hotjarSiteId?: true
+    metricoolPresent?: true
+    plausiblePresent?: true
+    sitemapInclude?: true
+    sitemapPriority?: true
+    sitemapChangefreq?: true
     createdAt?: true
     updatedAt?: true
-    h1?: true
-    ogTitle?: true
-    ogDescription?: true
-    ogType?: true
-    twitterTitle?: true
-    twitterDescription?: true
   }
 
   export type PageSeoCountAggregateInputType = {
     id?: true
     path?: true
-    title?: true
-    description?: true
+    url?: true
+    sourceFile?: true
+    pageTitle?: true
+    metaTitle?: true
+    metaDescription?: true
     keywords?: true
-    ogImageUrl?: true
+    h1Hero?: true
     canonical?: true
-    noindex?: true
-    schemaJsonLd?: true
+    robotsMeta?: true
+    openGraph?: true
+    twitter?: true
+    jsonLd?: true
+    metaPixelPresent?: true
+    metaPixelId?: true
+    googleTagManagerPresent?: true
+    googleTagManagerId?: true
+    googleAnalyticsPresent?: true
+    googleAnalyticsMeasurementId?: true
+    hotjarPresent?: true
+    hotjarSiteId?: true
+    metricoolPresent?: true
+    plausiblePresent?: true
+    sitemapInclude?: true
+    sitemapPriority?: true
+    sitemapChangefreq?: true
     createdAt?: true
     updatedAt?: true
-    h1?: true
-    ogTitle?: true
-    ogDescription?: true
-    ogType?: true
-    twitterTitle?: true
-    twitterDescription?: true
     _all?: true
   }
 
@@ -19250,6 +19324,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: PageSeoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PageSeoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: PageSeoMinAggregateInputType
@@ -19280,6 +19366,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: PageSeoCountAggregateInputType | true
+    _avg?: PageSeoAvgAggregateInputType
+    _sum?: PageSeoSumAggregateInputType
     _min?: PageSeoMinAggregateInputType
     _max?: PageSeoMaxAggregateInputType
   }
@@ -19287,22 +19375,36 @@ export namespace Prisma {
   export type PageSeoGroupByOutputType = {
     id: string
     path: string
-    title: string | null
-    description: string | null
+    url: string | null
+    sourceFile: string | null
+    pageTitle: string | null
+    metaTitle: string | null
+    metaDescription: string | null
     keywords: string | null
-    ogImageUrl: string | null
+    h1Hero: string | null
     canonical: string | null
-    noindex: boolean
-    schemaJsonLd: string | null
+    robotsMeta: string | null
+    openGraph: JsonValue | null
+    twitter: JsonValue | null
+    jsonLd: JsonValue | null
+    metaPixelPresent: boolean
+    metaPixelId: string | null
+    googleTagManagerPresent: boolean
+    googleTagManagerId: string | null
+    googleAnalyticsPresent: boolean
+    googleAnalyticsMeasurementId: string | null
+    hotjarPresent: boolean
+    hotjarSiteId: string | null
+    metricoolPresent: boolean
+    plausiblePresent: boolean
+    sitemapInclude: boolean
+    sitemapPriority: number | null
+    sitemapChangefreq: string | null
     createdAt: Date
     updatedAt: Date
-    h1: string | null
-    ogTitle: string | null
-    ogDescription: string | null
-    ogType: string | null
-    twitterTitle: string | null
-    twitterDescription: string | null
     _count: PageSeoCountAggregateOutputType | null
+    _avg: PageSeoAvgAggregateOutputType | null
+    _sum: PageSeoSumAggregateOutputType | null
     _min: PageSeoMinAggregateOutputType | null
     _max: PageSeoMaxAggregateOutputType | null
   }
@@ -19324,84 +19426,132 @@ export namespace Prisma {
   export type PageSeoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     path?: boolean
-    title?: boolean
-    description?: boolean
+    url?: boolean
+    sourceFile?: boolean
+    pageTitle?: boolean
+    metaTitle?: boolean
+    metaDescription?: boolean
     keywords?: boolean
-    ogImageUrl?: boolean
+    h1Hero?: boolean
     canonical?: boolean
-    noindex?: boolean
-    schemaJsonLd?: boolean
+    robotsMeta?: boolean
+    openGraph?: boolean
+    twitter?: boolean
+    jsonLd?: boolean
+    metaPixelPresent?: boolean
+    metaPixelId?: boolean
+    googleTagManagerPresent?: boolean
+    googleTagManagerId?: boolean
+    googleAnalyticsPresent?: boolean
+    googleAnalyticsMeasurementId?: boolean
+    hotjarPresent?: boolean
+    hotjarSiteId?: boolean
+    metricoolPresent?: boolean
+    plausiblePresent?: boolean
+    sitemapInclude?: boolean
+    sitemapPriority?: boolean
+    sitemapChangefreq?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    h1?: boolean
-    ogTitle?: boolean
-    ogDescription?: boolean
-    ogType?: boolean
-    twitterTitle?: boolean
-    twitterDescription?: boolean
   }, ExtArgs["result"]["pageSeo"]>
 
   export type PageSeoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     path?: boolean
-    title?: boolean
-    description?: boolean
+    url?: boolean
+    sourceFile?: boolean
+    pageTitle?: boolean
+    metaTitle?: boolean
+    metaDescription?: boolean
     keywords?: boolean
-    ogImageUrl?: boolean
+    h1Hero?: boolean
     canonical?: boolean
-    noindex?: boolean
-    schemaJsonLd?: boolean
+    robotsMeta?: boolean
+    openGraph?: boolean
+    twitter?: boolean
+    jsonLd?: boolean
+    metaPixelPresent?: boolean
+    metaPixelId?: boolean
+    googleTagManagerPresent?: boolean
+    googleTagManagerId?: boolean
+    googleAnalyticsPresent?: boolean
+    googleAnalyticsMeasurementId?: boolean
+    hotjarPresent?: boolean
+    hotjarSiteId?: boolean
+    metricoolPresent?: boolean
+    plausiblePresent?: boolean
+    sitemapInclude?: boolean
+    sitemapPriority?: boolean
+    sitemapChangefreq?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    h1?: boolean
-    ogTitle?: boolean
-    ogDescription?: boolean
-    ogType?: boolean
-    twitterTitle?: boolean
-    twitterDescription?: boolean
   }, ExtArgs["result"]["pageSeo"]>
 
   export type PageSeoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     path?: boolean
-    title?: boolean
-    description?: boolean
+    url?: boolean
+    sourceFile?: boolean
+    pageTitle?: boolean
+    metaTitle?: boolean
+    metaDescription?: boolean
     keywords?: boolean
-    ogImageUrl?: boolean
+    h1Hero?: boolean
     canonical?: boolean
-    noindex?: boolean
-    schemaJsonLd?: boolean
+    robotsMeta?: boolean
+    openGraph?: boolean
+    twitter?: boolean
+    jsonLd?: boolean
+    metaPixelPresent?: boolean
+    metaPixelId?: boolean
+    googleTagManagerPresent?: boolean
+    googleTagManagerId?: boolean
+    googleAnalyticsPresent?: boolean
+    googleAnalyticsMeasurementId?: boolean
+    hotjarPresent?: boolean
+    hotjarSiteId?: boolean
+    metricoolPresent?: boolean
+    plausiblePresent?: boolean
+    sitemapInclude?: boolean
+    sitemapPriority?: boolean
+    sitemapChangefreq?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    h1?: boolean
-    ogTitle?: boolean
-    ogDescription?: boolean
-    ogType?: boolean
-    twitterTitle?: boolean
-    twitterDescription?: boolean
   }, ExtArgs["result"]["pageSeo"]>
 
   export type PageSeoSelectScalar = {
     id?: boolean
     path?: boolean
-    title?: boolean
-    description?: boolean
+    url?: boolean
+    sourceFile?: boolean
+    pageTitle?: boolean
+    metaTitle?: boolean
+    metaDescription?: boolean
     keywords?: boolean
-    ogImageUrl?: boolean
+    h1Hero?: boolean
     canonical?: boolean
-    noindex?: boolean
-    schemaJsonLd?: boolean
+    robotsMeta?: boolean
+    openGraph?: boolean
+    twitter?: boolean
+    jsonLd?: boolean
+    metaPixelPresent?: boolean
+    metaPixelId?: boolean
+    googleTagManagerPresent?: boolean
+    googleTagManagerId?: boolean
+    googleAnalyticsPresent?: boolean
+    googleAnalyticsMeasurementId?: boolean
+    hotjarPresent?: boolean
+    hotjarSiteId?: boolean
+    metricoolPresent?: boolean
+    plausiblePresent?: boolean
+    sitemapInclude?: boolean
+    sitemapPriority?: boolean
+    sitemapChangefreq?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    h1?: boolean
-    ogTitle?: boolean
-    ogDescription?: boolean
-    ogType?: boolean
-    twitterTitle?: boolean
-    twitterDescription?: boolean
   }
 
-  export type PageSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "path" | "title" | "description" | "keywords" | "ogImageUrl" | "canonical" | "noindex" | "schemaJsonLd" | "createdAt" | "updatedAt" | "h1" | "ogTitle" | "ogDescription" | "ogType" | "twitterTitle" | "twitterDescription", ExtArgs["result"]["pageSeo"]>
+  export type PageSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "path" | "url" | "sourceFile" | "pageTitle" | "metaTitle" | "metaDescription" | "keywords" | "h1Hero" | "canonical" | "robotsMeta" | "openGraph" | "twitter" | "jsonLd" | "metaPixelPresent" | "metaPixelId" | "googleTagManagerPresent" | "googleTagManagerId" | "googleAnalyticsPresent" | "googleAnalyticsMeasurementId" | "hotjarPresent" | "hotjarSiteId" | "metricoolPresent" | "plausiblePresent" | "sitemapInclude" | "sitemapPriority" | "sitemapChangefreq" | "createdAt" | "updatedAt", ExtArgs["result"]["pageSeo"]>
 
   export type $PageSeoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PageSeo"
@@ -19409,21 +19559,33 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       path: string
-      title: string | null
-      description: string | null
+      url: string | null
+      sourceFile: string | null
+      pageTitle: string | null
+      metaTitle: string | null
+      metaDescription: string | null
       keywords: string | null
-      ogImageUrl: string | null
+      h1Hero: string | null
       canonical: string | null
-      noindex: boolean
-      schemaJsonLd: string | null
+      robotsMeta: string | null
+      openGraph: Prisma.JsonValue | null
+      twitter: Prisma.JsonValue | null
+      jsonLd: Prisma.JsonValue | null
+      metaPixelPresent: boolean
+      metaPixelId: string | null
+      googleTagManagerPresent: boolean
+      googleTagManagerId: string | null
+      googleAnalyticsPresent: boolean
+      googleAnalyticsMeasurementId: string | null
+      hotjarPresent: boolean
+      hotjarSiteId: string | null
+      metricoolPresent: boolean
+      plausiblePresent: boolean
+      sitemapInclude: boolean
+      sitemapPriority: number | null
+      sitemapChangefreq: string | null
       createdAt: Date
       updatedAt: Date
-      h1: string | null
-      ogTitle: string | null
-      ogDescription: string | null
-      ogType: string | null
-      twitterTitle: string | null
-      twitterDescription: string | null
     }, ExtArgs["result"]["pageSeo"]>
     composites: {}
   }
@@ -19849,21 +20011,33 @@ export namespace Prisma {
   interface PageSeoFieldRefs {
     readonly id: FieldRef<"PageSeo", 'String'>
     readonly path: FieldRef<"PageSeo", 'String'>
-    readonly title: FieldRef<"PageSeo", 'String'>
-    readonly description: FieldRef<"PageSeo", 'String'>
+    readonly url: FieldRef<"PageSeo", 'String'>
+    readonly sourceFile: FieldRef<"PageSeo", 'String'>
+    readonly pageTitle: FieldRef<"PageSeo", 'String'>
+    readonly metaTitle: FieldRef<"PageSeo", 'String'>
+    readonly metaDescription: FieldRef<"PageSeo", 'String'>
     readonly keywords: FieldRef<"PageSeo", 'String'>
-    readonly ogImageUrl: FieldRef<"PageSeo", 'String'>
+    readonly h1Hero: FieldRef<"PageSeo", 'String'>
     readonly canonical: FieldRef<"PageSeo", 'String'>
-    readonly noindex: FieldRef<"PageSeo", 'Boolean'>
-    readonly schemaJsonLd: FieldRef<"PageSeo", 'String'>
+    readonly robotsMeta: FieldRef<"PageSeo", 'String'>
+    readonly openGraph: FieldRef<"PageSeo", 'Json'>
+    readonly twitter: FieldRef<"PageSeo", 'Json'>
+    readonly jsonLd: FieldRef<"PageSeo", 'Json'>
+    readonly metaPixelPresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly metaPixelId: FieldRef<"PageSeo", 'String'>
+    readonly googleTagManagerPresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly googleTagManagerId: FieldRef<"PageSeo", 'String'>
+    readonly googleAnalyticsPresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly googleAnalyticsMeasurementId: FieldRef<"PageSeo", 'String'>
+    readonly hotjarPresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly hotjarSiteId: FieldRef<"PageSeo", 'String'>
+    readonly metricoolPresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly plausiblePresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly sitemapInclude: FieldRef<"PageSeo", 'Boolean'>
+    readonly sitemapPriority: FieldRef<"PageSeo", 'Float'>
+    readonly sitemapChangefreq: FieldRef<"PageSeo", 'String'>
     readonly createdAt: FieldRef<"PageSeo", 'DateTime'>
     readonly updatedAt: FieldRef<"PageSeo", 'DateTime'>
-    readonly h1: FieldRef<"PageSeo", 'String'>
-    readonly ogTitle: FieldRef<"PageSeo", 'String'>
-    readonly ogDescription: FieldRef<"PageSeo", 'String'>
-    readonly ogType: FieldRef<"PageSeo", 'String'>
-    readonly twitterTitle: FieldRef<"PageSeo", 'String'>
-    readonly twitterDescription: FieldRef<"PageSeo", 'String'>
   }
     
 
@@ -22773,21 +22947,33 @@ export namespace Prisma {
   export const PageSeoScalarFieldEnum: {
     id: 'id',
     path: 'path',
-    title: 'title',
-    description: 'description',
+    url: 'url',
+    sourceFile: 'sourceFile',
+    pageTitle: 'pageTitle',
+    metaTitle: 'metaTitle',
+    metaDescription: 'metaDescription',
     keywords: 'keywords',
-    ogImageUrl: 'ogImageUrl',
+    h1Hero: 'h1Hero',
     canonical: 'canonical',
-    noindex: 'noindex',
-    schemaJsonLd: 'schemaJsonLd',
+    robotsMeta: 'robotsMeta',
+    openGraph: 'openGraph',
+    twitter: 'twitter',
+    jsonLd: 'jsonLd',
+    metaPixelPresent: 'metaPixelPresent',
+    metaPixelId: 'metaPixelId',
+    googleTagManagerPresent: 'googleTagManagerPresent',
+    googleTagManagerId: 'googleTagManagerId',
+    googleAnalyticsPresent: 'googleAnalyticsPresent',
+    googleAnalyticsMeasurementId: 'googleAnalyticsMeasurementId',
+    hotjarPresent: 'hotjarPresent',
+    hotjarSiteId: 'hotjarSiteId',
+    metricoolPresent: 'metricoolPresent',
+    plausiblePresent: 'plausiblePresent',
+    sitemapInclude: 'sitemapInclude',
+    sitemapPriority: 'sitemapPriority',
+    sitemapChangefreq: 'sitemapChangefreq',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    h1: 'h1',
-    ogTitle: 'ogTitle',
-    ogDescription: 'ogDescription',
-    ogType: 'ogType',
-    twitterTitle: 'twitterTitle',
-    twitterDescription: 'twitterDescription'
+    updatedAt: 'updatedAt'
   };
 
   export type PageSeoScalarFieldEnum = (typeof PageSeoScalarFieldEnum)[keyof typeof PageSeoScalarFieldEnum]
@@ -22843,19 +23029,19 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const JsonNullValueInput: {
-    JsonNull: typeof JsonNull
-  };
-
-  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
-
-
   export const NullableJsonNullValueInput: {
     DbNull: typeof DbNull,
     JsonNull: typeof JsonNull
   };
 
   export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -23224,7 +23410,7 @@ export namespace Prisma {
     ogType?: StringNullableFilter<"PostSeo"> | string | null
     twitterTitle?: StringNullableFilter<"PostSeo"> | string | null
     twitterDescription?: StringNullableFilter<"PostSeo"> | string | null
-    schemaJsonLd?: StringNullableFilter<"PostSeo"> | string | null
+    schemaJsonLd?: JsonNullableFilter<"PostSeo">
     post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }
 
@@ -23265,7 +23451,7 @@ export namespace Prisma {
     ogType?: StringNullableFilter<"PostSeo"> | string | null
     twitterTitle?: StringNullableFilter<"PostSeo"> | string | null
     twitterDescription?: StringNullableFilter<"PostSeo"> | string | null
-    schemaJsonLd?: StringNullableFilter<"PostSeo"> | string | null
+    schemaJsonLd?: JsonNullableFilter<"PostSeo">
     post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }, "id" | "postId">
 
@@ -23308,7 +23494,7 @@ export namespace Prisma {
     ogType?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
     twitterTitle?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
     twitterDescription?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
-    schemaJsonLd?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
+    schemaJsonLd?: JsonNullableWithAggregatesFilter<"PostSeo">
   }
 
   export type CategoryWhereInput = {
@@ -24107,41 +24293,65 @@ export namespace Prisma {
     NOT?: PageSeoWhereInput | PageSeoWhereInput[]
     id?: StringFilter<"PageSeo"> | string
     path?: StringFilter<"PageSeo"> | string
-    title?: StringNullableFilter<"PageSeo"> | string | null
-    description?: StringNullableFilter<"PageSeo"> | string | null
+    url?: StringNullableFilter<"PageSeo"> | string | null
+    sourceFile?: StringNullableFilter<"PageSeo"> | string | null
+    pageTitle?: StringNullableFilter<"PageSeo"> | string | null
+    metaTitle?: StringNullableFilter<"PageSeo"> | string | null
+    metaDescription?: StringNullableFilter<"PageSeo"> | string | null
     keywords?: StringNullableFilter<"PageSeo"> | string | null
-    ogImageUrl?: StringNullableFilter<"PageSeo"> | string | null
+    h1Hero?: StringNullableFilter<"PageSeo"> | string | null
     canonical?: StringNullableFilter<"PageSeo"> | string | null
-    noindex?: BoolFilter<"PageSeo"> | boolean
-    schemaJsonLd?: StringNullableFilter<"PageSeo"> | string | null
+    robotsMeta?: StringNullableFilter<"PageSeo"> | string | null
+    openGraph?: JsonNullableFilter<"PageSeo">
+    twitter?: JsonNullableFilter<"PageSeo">
+    jsonLd?: JsonNullableFilter<"PageSeo">
+    metaPixelPresent?: BoolFilter<"PageSeo"> | boolean
+    metaPixelId?: StringNullableFilter<"PageSeo"> | string | null
+    googleTagManagerPresent?: BoolFilter<"PageSeo"> | boolean
+    googleTagManagerId?: StringNullableFilter<"PageSeo"> | string | null
+    googleAnalyticsPresent?: BoolFilter<"PageSeo"> | boolean
+    googleAnalyticsMeasurementId?: StringNullableFilter<"PageSeo"> | string | null
+    hotjarPresent?: BoolFilter<"PageSeo"> | boolean
+    hotjarSiteId?: StringNullableFilter<"PageSeo"> | string | null
+    metricoolPresent?: BoolFilter<"PageSeo"> | boolean
+    plausiblePresent?: BoolFilter<"PageSeo"> | boolean
+    sitemapInclude?: BoolFilter<"PageSeo"> | boolean
+    sitemapPriority?: FloatNullableFilter<"PageSeo"> | number | null
+    sitemapChangefreq?: StringNullableFilter<"PageSeo"> | string | null
     createdAt?: DateTimeFilter<"PageSeo"> | Date | string
     updatedAt?: DateTimeFilter<"PageSeo"> | Date | string
-    h1?: StringNullableFilter<"PageSeo"> | string | null
-    ogTitle?: StringNullableFilter<"PageSeo"> | string | null
-    ogDescription?: StringNullableFilter<"PageSeo"> | string | null
-    ogType?: StringNullableFilter<"PageSeo"> | string | null
-    twitterTitle?: StringNullableFilter<"PageSeo"> | string | null
-    twitterDescription?: StringNullableFilter<"PageSeo"> | string | null
   }
 
   export type PageSeoOrderByWithRelationInput = {
     id?: SortOrder
     path?: SortOrder
-    title?: SortOrderInput | SortOrder
-    description?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    sourceFile?: SortOrderInput | SortOrder
+    pageTitle?: SortOrderInput | SortOrder
+    metaTitle?: SortOrderInput | SortOrder
+    metaDescription?: SortOrderInput | SortOrder
     keywords?: SortOrderInput | SortOrder
-    ogImageUrl?: SortOrderInput | SortOrder
+    h1Hero?: SortOrderInput | SortOrder
     canonical?: SortOrderInput | SortOrder
-    noindex?: SortOrder
-    schemaJsonLd?: SortOrderInput | SortOrder
+    robotsMeta?: SortOrderInput | SortOrder
+    openGraph?: SortOrderInput | SortOrder
+    twitter?: SortOrderInput | SortOrder
+    jsonLd?: SortOrderInput | SortOrder
+    metaPixelPresent?: SortOrder
+    metaPixelId?: SortOrderInput | SortOrder
+    googleTagManagerPresent?: SortOrder
+    googleTagManagerId?: SortOrderInput | SortOrder
+    googleAnalyticsPresent?: SortOrder
+    googleAnalyticsMeasurementId?: SortOrderInput | SortOrder
+    hotjarPresent?: SortOrder
+    hotjarSiteId?: SortOrderInput | SortOrder
+    metricoolPresent?: SortOrder
+    plausiblePresent?: SortOrder
+    sitemapInclude?: SortOrder
+    sitemapPriority?: SortOrderInput | SortOrder
+    sitemapChangefreq?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    h1?: SortOrderInput | SortOrder
-    ogTitle?: SortOrderInput | SortOrder
-    ogDescription?: SortOrderInput | SortOrder
-    ogType?: SortOrderInput | SortOrder
-    twitterTitle?: SortOrderInput | SortOrder
-    twitterDescription?: SortOrderInput | SortOrder
   }
 
   export type PageSeoWhereUniqueInput = Prisma.AtLeast<{
@@ -24150,44 +24360,70 @@ export namespace Prisma {
     AND?: PageSeoWhereInput | PageSeoWhereInput[]
     OR?: PageSeoWhereInput[]
     NOT?: PageSeoWhereInput | PageSeoWhereInput[]
-    title?: StringNullableFilter<"PageSeo"> | string | null
-    description?: StringNullableFilter<"PageSeo"> | string | null
+    url?: StringNullableFilter<"PageSeo"> | string | null
+    sourceFile?: StringNullableFilter<"PageSeo"> | string | null
+    pageTitle?: StringNullableFilter<"PageSeo"> | string | null
+    metaTitle?: StringNullableFilter<"PageSeo"> | string | null
+    metaDescription?: StringNullableFilter<"PageSeo"> | string | null
     keywords?: StringNullableFilter<"PageSeo"> | string | null
-    ogImageUrl?: StringNullableFilter<"PageSeo"> | string | null
+    h1Hero?: StringNullableFilter<"PageSeo"> | string | null
     canonical?: StringNullableFilter<"PageSeo"> | string | null
-    noindex?: BoolFilter<"PageSeo"> | boolean
-    schemaJsonLd?: StringNullableFilter<"PageSeo"> | string | null
+    robotsMeta?: StringNullableFilter<"PageSeo"> | string | null
+    openGraph?: JsonNullableFilter<"PageSeo">
+    twitter?: JsonNullableFilter<"PageSeo">
+    jsonLd?: JsonNullableFilter<"PageSeo">
+    metaPixelPresent?: BoolFilter<"PageSeo"> | boolean
+    metaPixelId?: StringNullableFilter<"PageSeo"> | string | null
+    googleTagManagerPresent?: BoolFilter<"PageSeo"> | boolean
+    googleTagManagerId?: StringNullableFilter<"PageSeo"> | string | null
+    googleAnalyticsPresent?: BoolFilter<"PageSeo"> | boolean
+    googleAnalyticsMeasurementId?: StringNullableFilter<"PageSeo"> | string | null
+    hotjarPresent?: BoolFilter<"PageSeo"> | boolean
+    hotjarSiteId?: StringNullableFilter<"PageSeo"> | string | null
+    metricoolPresent?: BoolFilter<"PageSeo"> | boolean
+    plausiblePresent?: BoolFilter<"PageSeo"> | boolean
+    sitemapInclude?: BoolFilter<"PageSeo"> | boolean
+    sitemapPriority?: FloatNullableFilter<"PageSeo"> | number | null
+    sitemapChangefreq?: StringNullableFilter<"PageSeo"> | string | null
     createdAt?: DateTimeFilter<"PageSeo"> | Date | string
     updatedAt?: DateTimeFilter<"PageSeo"> | Date | string
-    h1?: StringNullableFilter<"PageSeo"> | string | null
-    ogTitle?: StringNullableFilter<"PageSeo"> | string | null
-    ogDescription?: StringNullableFilter<"PageSeo"> | string | null
-    ogType?: StringNullableFilter<"PageSeo"> | string | null
-    twitterTitle?: StringNullableFilter<"PageSeo"> | string | null
-    twitterDescription?: StringNullableFilter<"PageSeo"> | string | null
   }, "id" | "path">
 
   export type PageSeoOrderByWithAggregationInput = {
     id?: SortOrder
     path?: SortOrder
-    title?: SortOrderInput | SortOrder
-    description?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    sourceFile?: SortOrderInput | SortOrder
+    pageTitle?: SortOrderInput | SortOrder
+    metaTitle?: SortOrderInput | SortOrder
+    metaDescription?: SortOrderInput | SortOrder
     keywords?: SortOrderInput | SortOrder
-    ogImageUrl?: SortOrderInput | SortOrder
+    h1Hero?: SortOrderInput | SortOrder
     canonical?: SortOrderInput | SortOrder
-    noindex?: SortOrder
-    schemaJsonLd?: SortOrderInput | SortOrder
+    robotsMeta?: SortOrderInput | SortOrder
+    openGraph?: SortOrderInput | SortOrder
+    twitter?: SortOrderInput | SortOrder
+    jsonLd?: SortOrderInput | SortOrder
+    metaPixelPresent?: SortOrder
+    metaPixelId?: SortOrderInput | SortOrder
+    googleTagManagerPresent?: SortOrder
+    googleTagManagerId?: SortOrderInput | SortOrder
+    googleAnalyticsPresent?: SortOrder
+    googleAnalyticsMeasurementId?: SortOrderInput | SortOrder
+    hotjarPresent?: SortOrder
+    hotjarSiteId?: SortOrderInput | SortOrder
+    metricoolPresent?: SortOrder
+    plausiblePresent?: SortOrder
+    sitemapInclude?: SortOrder
+    sitemapPriority?: SortOrderInput | SortOrder
+    sitemapChangefreq?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    h1?: SortOrderInput | SortOrder
-    ogTitle?: SortOrderInput | SortOrder
-    ogDescription?: SortOrderInput | SortOrder
-    ogType?: SortOrderInput | SortOrder
-    twitterTitle?: SortOrderInput | SortOrder
-    twitterDescription?: SortOrderInput | SortOrder
     _count?: PageSeoCountOrderByAggregateInput
+    _avg?: PageSeoAvgOrderByAggregateInput
     _max?: PageSeoMaxOrderByAggregateInput
     _min?: PageSeoMinOrderByAggregateInput
+    _sum?: PageSeoSumOrderByAggregateInput
   }
 
   export type PageSeoScalarWhereWithAggregatesInput = {
@@ -24196,21 +24432,33 @@ export namespace Prisma {
     NOT?: PageSeoScalarWhereWithAggregatesInput | PageSeoScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"PageSeo"> | string
     path?: StringWithAggregatesFilter<"PageSeo"> | string
-    title?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    description?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    url?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    sourceFile?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    pageTitle?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    metaTitle?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    metaDescription?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
     keywords?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    ogImageUrl?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    h1Hero?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
     canonical?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    noindex?: BoolWithAggregatesFilter<"PageSeo"> | boolean
-    schemaJsonLd?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    robotsMeta?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    openGraph?: JsonNullableWithAggregatesFilter<"PageSeo">
+    twitter?: JsonNullableWithAggregatesFilter<"PageSeo">
+    jsonLd?: JsonNullableWithAggregatesFilter<"PageSeo">
+    metaPixelPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    metaPixelId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    googleTagManagerPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    googleTagManagerId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    googleAnalyticsPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    googleAnalyticsMeasurementId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    hotjarPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    hotjarSiteId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    metricoolPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    plausiblePresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    sitemapInclude?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    sitemapPriority?: FloatNullableWithAggregatesFilter<"PageSeo"> | number | null
+    sitemapChangefreq?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"PageSeo"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PageSeo"> | Date | string
-    h1?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    ogTitle?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    ogDescription?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    ogType?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    twitterTitle?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    twitterDescription?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
   }
 
   export type TestimonialWhereInput = {
@@ -24702,7 +24950,7 @@ export namespace Prisma {
     ogType?: string | null
     twitterTitle?: string | null
     twitterDescription?: string | null
-    schemaJsonLd?: string | null
+    schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
     post: PostCreateNestedOneWithoutSeoInput
   }
 
@@ -24721,7 +24969,7 @@ export namespace Prisma {
     ogType?: string | null
     twitterTitle?: string | null
     twitterDescription?: string | null
-    schemaJsonLd?: string | null
+    schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type PostSeoUpdateInput = {
@@ -24738,7 +24986,7 @@ export namespace Prisma {
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
     twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
     post?: PostUpdateOneRequiredWithoutSeoNestedInput
   }
 
@@ -24757,7 +25005,7 @@ export namespace Prisma {
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
     twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type PostSeoCreateManyInput = {
@@ -24775,7 +25023,7 @@ export namespace Prisma {
     ogType?: string | null
     twitterTitle?: string | null
     twitterDescription?: string | null
-    schemaJsonLd?: string | null
+    schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type PostSeoUpdateManyMutationInput = {
@@ -24792,7 +25040,7 @@ export namespace Prisma {
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
     twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type PostSeoUncheckedUpdateManyInput = {
@@ -24810,7 +25058,7 @@ export namespace Prisma {
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
     twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type CategoryCreateInput = {
@@ -25712,141 +25960,225 @@ export namespace Prisma {
   export type PageSeoCreateInput = {
     id?: string
     path: string
-    title?: string | null
-    description?: string | null
+    url?: string | null
+    sourceFile?: string | null
+    pageTitle?: string | null
+    metaTitle?: string | null
+    metaDescription?: string | null
     keywords?: string | null
-    ogImageUrl?: string | null
+    h1Hero?: string | null
     canonical?: string | null
-    noindex?: boolean
-    schemaJsonLd?: string | null
+    robotsMeta?: string | null
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaPixelPresent?: boolean
+    metaPixelId?: string | null
+    googleTagManagerPresent?: boolean
+    googleTagManagerId?: string | null
+    googleAnalyticsPresent?: boolean
+    googleAnalyticsMeasurementId?: string | null
+    hotjarPresent?: boolean
+    hotjarSiteId?: string | null
+    metricoolPresent?: boolean
+    plausiblePresent?: boolean
+    sitemapInclude?: boolean
+    sitemapPriority?: number | null
+    sitemapChangefreq?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    h1?: string | null
-    ogTitle?: string | null
-    ogDescription?: string | null
-    ogType?: string | null
-    twitterTitle?: string | null
-    twitterDescription?: string | null
   }
 
   export type PageSeoUncheckedCreateInput = {
     id?: string
     path: string
-    title?: string | null
-    description?: string | null
+    url?: string | null
+    sourceFile?: string | null
+    pageTitle?: string | null
+    metaTitle?: string | null
+    metaDescription?: string | null
     keywords?: string | null
-    ogImageUrl?: string | null
+    h1Hero?: string | null
     canonical?: string | null
-    noindex?: boolean
-    schemaJsonLd?: string | null
+    robotsMeta?: string | null
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaPixelPresent?: boolean
+    metaPixelId?: string | null
+    googleTagManagerPresent?: boolean
+    googleTagManagerId?: string | null
+    googleAnalyticsPresent?: boolean
+    googleAnalyticsMeasurementId?: string | null
+    hotjarPresent?: boolean
+    hotjarSiteId?: string | null
+    metricoolPresent?: boolean
+    plausiblePresent?: boolean
+    sitemapInclude?: boolean
+    sitemapPriority?: number | null
+    sitemapChangefreq?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    h1?: string | null
-    ogTitle?: string | null
-    ogDescription?: string | null
-    ogType?: string | null
-    twitterTitle?: string | null
-    twitterDescription?: string | null
   }
 
   export type PageSeoUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
-    title?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
+    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     keywords?: NullableStringFieldUpdateOperationsInput | string | null
-    ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
-    noindex?: BoolFieldUpdateOperationsInput | boolean
-    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
+    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
+    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
+    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
+    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
+    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
+    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
+    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    h1?: NullableStringFieldUpdateOperationsInput | string | null
-    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    ogType?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PageSeoUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
-    title?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
+    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     keywords?: NullableStringFieldUpdateOperationsInput | string | null
-    ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
-    noindex?: BoolFieldUpdateOperationsInput | boolean
-    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
+    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
+    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
+    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
+    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
+    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
+    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
+    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    h1?: NullableStringFieldUpdateOperationsInput | string | null
-    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    ogType?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PageSeoCreateManyInput = {
     id?: string
     path: string
-    title?: string | null
-    description?: string | null
+    url?: string | null
+    sourceFile?: string | null
+    pageTitle?: string | null
+    metaTitle?: string | null
+    metaDescription?: string | null
     keywords?: string | null
-    ogImageUrl?: string | null
+    h1Hero?: string | null
     canonical?: string | null
-    noindex?: boolean
-    schemaJsonLd?: string | null
+    robotsMeta?: string | null
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaPixelPresent?: boolean
+    metaPixelId?: string | null
+    googleTagManagerPresent?: boolean
+    googleTagManagerId?: string | null
+    googleAnalyticsPresent?: boolean
+    googleAnalyticsMeasurementId?: string | null
+    hotjarPresent?: boolean
+    hotjarSiteId?: string | null
+    metricoolPresent?: boolean
+    plausiblePresent?: boolean
+    sitemapInclude?: boolean
+    sitemapPriority?: number | null
+    sitemapChangefreq?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    h1?: string | null
-    ogTitle?: string | null
-    ogDescription?: string | null
-    ogType?: string | null
-    twitterTitle?: string | null
-    twitterDescription?: string | null
   }
 
   export type PageSeoUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
-    title?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
+    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     keywords?: NullableStringFieldUpdateOperationsInput | string | null
-    ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
-    noindex?: BoolFieldUpdateOperationsInput | boolean
-    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
+    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
+    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
+    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
+    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
+    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
+    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
+    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    h1?: NullableStringFieldUpdateOperationsInput | string | null
-    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    ogType?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PageSeoUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
-    title?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
+    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     keywords?: NullableStringFieldUpdateOperationsInput | string | null
-    ogImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
-    noindex?: BoolFieldUpdateOperationsInput | boolean
-    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
+    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
+    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
+    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
+    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
+    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
+    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
+    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    h1?: NullableStringFieldUpdateOperationsInput | string | null
-    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    ogType?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TestimonialCreateInput = {
@@ -26407,6 +26739,29 @@ export namespace Prisma {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type PostScalarRelationFilter = {
     is?: PostWhereInput
@@ -26446,7 +26801,6 @@ export namespace Prisma {
     ogType?: SortOrder
     twitterTitle?: SortOrder
     twitterDescription?: SortOrder
-    schemaJsonLd?: SortOrder
   }
 
   export type PostSeoMinOrderByAggregateInput = {
@@ -26464,7 +26818,6 @@ export namespace Prisma {
     ogType?: SortOrder
     twitterTitle?: SortOrder
     twitterDescription?: SortOrder
-    schemaJsonLd?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -26473,6 +26826,32 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type CategoryCountOrderByAggregateInput = {
@@ -26915,29 +27294,6 @@ export namespace Prisma {
   export type NewsItemSumOrderByAggregateInput = {
     order?: SortOrder
   }
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type PersonCountOrderByAggregateInput = {
     id?: SortOrder
@@ -26996,91 +27352,130 @@ export namespace Prisma {
   export type PersonSumOrderByAggregateInput = {
     order?: SortOrder
   }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
 
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type PageSeoCountOrderByAggregateInput = {
     id?: SortOrder
     path?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
+    url?: SortOrder
+    sourceFile?: SortOrder
+    pageTitle?: SortOrder
+    metaTitle?: SortOrder
+    metaDescription?: SortOrder
     keywords?: SortOrder
-    ogImageUrl?: SortOrder
+    h1Hero?: SortOrder
     canonical?: SortOrder
-    noindex?: SortOrder
-    schemaJsonLd?: SortOrder
+    robotsMeta?: SortOrder
+    openGraph?: SortOrder
+    twitter?: SortOrder
+    jsonLd?: SortOrder
+    metaPixelPresent?: SortOrder
+    metaPixelId?: SortOrder
+    googleTagManagerPresent?: SortOrder
+    googleTagManagerId?: SortOrder
+    googleAnalyticsPresent?: SortOrder
+    googleAnalyticsMeasurementId?: SortOrder
+    hotjarPresent?: SortOrder
+    hotjarSiteId?: SortOrder
+    metricoolPresent?: SortOrder
+    plausiblePresent?: SortOrder
+    sitemapInclude?: SortOrder
+    sitemapPriority?: SortOrder
+    sitemapChangefreq?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    h1?: SortOrder
-    ogTitle?: SortOrder
-    ogDescription?: SortOrder
-    ogType?: SortOrder
-    twitterTitle?: SortOrder
-    twitterDescription?: SortOrder
+  }
+
+  export type PageSeoAvgOrderByAggregateInput = {
+    sitemapPriority?: SortOrder
   }
 
   export type PageSeoMaxOrderByAggregateInput = {
     id?: SortOrder
     path?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
+    url?: SortOrder
+    sourceFile?: SortOrder
+    pageTitle?: SortOrder
+    metaTitle?: SortOrder
+    metaDescription?: SortOrder
     keywords?: SortOrder
-    ogImageUrl?: SortOrder
+    h1Hero?: SortOrder
     canonical?: SortOrder
-    noindex?: SortOrder
-    schemaJsonLd?: SortOrder
+    robotsMeta?: SortOrder
+    metaPixelPresent?: SortOrder
+    metaPixelId?: SortOrder
+    googleTagManagerPresent?: SortOrder
+    googleTagManagerId?: SortOrder
+    googleAnalyticsPresent?: SortOrder
+    googleAnalyticsMeasurementId?: SortOrder
+    hotjarPresent?: SortOrder
+    hotjarSiteId?: SortOrder
+    metricoolPresent?: SortOrder
+    plausiblePresent?: SortOrder
+    sitemapInclude?: SortOrder
+    sitemapPriority?: SortOrder
+    sitemapChangefreq?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    h1?: SortOrder
-    ogTitle?: SortOrder
-    ogDescription?: SortOrder
-    ogType?: SortOrder
-    twitterTitle?: SortOrder
-    twitterDescription?: SortOrder
   }
 
   export type PageSeoMinOrderByAggregateInput = {
     id?: SortOrder
     path?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
+    url?: SortOrder
+    sourceFile?: SortOrder
+    pageTitle?: SortOrder
+    metaTitle?: SortOrder
+    metaDescription?: SortOrder
     keywords?: SortOrder
-    ogImageUrl?: SortOrder
+    h1Hero?: SortOrder
     canonical?: SortOrder
-    noindex?: SortOrder
-    schemaJsonLd?: SortOrder
+    robotsMeta?: SortOrder
+    metaPixelPresent?: SortOrder
+    metaPixelId?: SortOrder
+    googleTagManagerPresent?: SortOrder
+    googleTagManagerId?: SortOrder
+    googleAnalyticsPresent?: SortOrder
+    googleAnalyticsMeasurementId?: SortOrder
+    hotjarPresent?: SortOrder
+    hotjarSiteId?: SortOrder
+    metricoolPresent?: SortOrder
+    plausiblePresent?: SortOrder
+    sitemapInclude?: SortOrder
+    sitemapPriority?: SortOrder
+    sitemapChangefreq?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    h1?: SortOrder
-    ogTitle?: SortOrder
-    ogDescription?: SortOrder
-    ogType?: SortOrder
-    twitterTitle?: SortOrder
-    twitterDescription?: SortOrder
+  }
+
+  export type PageSeoSumOrderByAggregateInput = {
+    sitemapPriority?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type TestimonialCountOrderByAggregateInput = {
@@ -27509,6 +27904,14 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -27682,6 +28085,29 @@ export namespace Prisma {
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
   }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -27732,28 +28158,21 @@ export namespace Prisma {
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
   }
-  export type NestedJsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type PostCreateWithoutAuthorInput = {
@@ -27917,7 +28336,7 @@ export namespace Prisma {
     ogType?: string | null
     twitterTitle?: string | null
     twitterDescription?: string | null
-    schemaJsonLd?: string | null
+    schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type PostSeoUncheckedCreateWithoutPostInput = {
@@ -27934,7 +28353,7 @@ export namespace Prisma {
     ogType?: string | null
     twitterTitle?: string | null
     twitterDescription?: string | null
-    schemaJsonLd?: string | null
+    schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type PostSeoCreateOrConnectWithoutPostInput = {
@@ -28047,7 +28466,7 @@ export namespace Prisma {
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
     twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type PostSeoUncheckedUpdateWithoutPostInput = {
@@ -28064,7 +28483,7 @@ export namespace Prisma {
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
     twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    schemaJsonLd?: NullableStringFieldUpdateOperationsInput | string | null
+    schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type PostCreateWithoutSeoInput = {

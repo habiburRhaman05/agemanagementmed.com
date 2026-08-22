@@ -14,6 +14,19 @@ const STATIC_ROUTES: Array<{ path: string; changeFrequency: MetadataRoute.Sitema
   { path: '/in-the-news', changeFrequency: 'weekly', priority: 0.6 },
   { path: '/privacy-policy', changeFrequency: 'yearly', priority: 0.3 },
   { path: '/terms-and-conditions', changeFrequency: 'yearly', priority: 0.3 },
+  // These four real content pages exist under `(marketing)` but were never
+  // added here — they render fine and are linkable, just invisible to
+  // crawlers relying on the sitemap to discover them.
+  { path: '/financing-options', changeFrequency: 'yearly', priority: 0.4 },
+  { path: '/office-policies', changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/specials', changeFrequency: 'weekly', priority: 0.7 },
+  { path: '/newsletter', changeFrequency: 'monthly', priority: 0.4 },
+  // Deliberately NOT included: /thank-you, /newsletter-thankyou (post-submit
+  // confirmation screens — no unique content, shouldn't be a search
+  // landing page), /schedule-consultation, /lead-magnet, /conversational-ai
+  // (funnel/campaign pages, not general site navigation). None of these
+  // currently set `noindex` either — worth a follow-up if they're meant to
+  // stay out of search entirely rather than just out of the sitemap.
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

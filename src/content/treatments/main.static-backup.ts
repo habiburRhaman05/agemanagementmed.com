@@ -183,7 +183,7 @@ export const treatments: Treatment[] = [
           'After completing his residency in obstetrics and gynecology at Walter Reed Army Medical Center, Dr. Collins served as Command Physician during Operation Urgent Fury in Grenada, retiring from the U.S. Army Medical Corps as a Lt. Colonel. He trained under Dr. David Matlock at The Laser Vaginal Rejuvenation Institute of Los Angeles and has dedicated his career to hormone optimization and age management medicine.',
           'Today, Dr. Collins brings his extensive expertise in bio-identical hormone optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
         ],
-        images: [{ src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' }],
+        images: [{ src: '/images/teams/team-1-img.png', alt: 'Harry S. Collins, DO, FACOG, Medical Director' }],
       },
     ],
 
@@ -469,7 +469,7 @@ export const treatments: Treatment[] = [
           'After completing his residency in obstetrics and gynecology at Walter Reed Army Medical Center, Dr. Collins served as Command Physician during Operation Urgent Fury in Grenada, retiring from the U.S. Army Medical Corps as a Lt. Colonel. He trained under Dr. David Matlock at The Laser Vaginal Rejuvenation Institute of Los Angeles and has dedicated his career to hormone optimization and age management medicine.',
           'Today, Dr. Collins brings his extensive expertise in bio-identical hormone optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
         ],
-        images: [{ src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' }],
+        images: [{ src: '/images/teams/team-1-img.png', alt: 'Harry S. Collins, DO, FACOG, Medical Director' }],
       },
     ],
 
@@ -812,7 +812,7 @@ export const treatments: Treatment[] = [
           'After completing his residency in obstetrics and gynecology at Walter Reed Army Medical Center, Dr. Collins served as Command Physician during Operation Urgent Fury in Grenada, retiring from the U.S. Army Medical Corps as a Lt. Colonel. He has dedicated his career to hormone optimization and age management medicine.',
           'Today, Dr. Collins brings his extensive expertise in bio-identical hormone optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
         ],
-        images: [{ src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' }],
+        images: [{ src: '/images/teams/team-1-img.png', alt: 'Harry S. Collins, DO, FACOG, Medical Director' }],
       },
     ],
 
@@ -1064,7 +1064,7 @@ export const treatments: Treatment[] = [
         ],
         image: {
           src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-img.png',
-          alt: 'The BHRT evaluation and treatment process',
+          alt: 'Patient Appointment',
         },
         imageSide: 'left',
       },
@@ -1099,7 +1099,7 @@ export const treatments: Treatment[] = [
         ],
         image: {
           src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-2-img.png',
-          alt: 'A SAMM provider explaining a personalized treatment plan',
+          alt: 'Doctor Research',
         },
         imageSide: 'left',
       },
@@ -1118,7 +1118,7 @@ export const treatments: Treatment[] = [
         ],
         image: {
           src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-3-img.png',
-          alt: 'A comprehensive consultation appointment',
+          alt: 'Men Interaction',
         },
       },
       {
@@ -1416,7 +1416,7 @@ export const treatments: Treatment[] = [
           'After completing his residency in obstetrics and gynecology at Walter Reed Army Medical Center, Dr. Collins served as Command Physician during Operation Urgent Fury in Grenada, retiring from the U.S. Army Medical Corps as a Lt. Colonel. He trained under Dr. David Matlock at The Laser Vaginal Rejuvenation Institute of Los Angeles and has dedicated his career to hormone optimization and age management medicine.',
           'Today, Dr. Collins brings his extensive expertise in bio-identical hormone optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
         ],
-        images: [{ src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' }],
+        images: [{ src: '/images/teams/team-1-img.png', alt: 'Harry S. Collins, DO, FACOG, Medical Director' }],
       },
     ],
 
@@ -1820,7 +1820,7 @@ treatmentsPorcess:
           'After completing his residency in obstetrics and gynecology at Walter Reed Army Medical Center, Dr. Collins served as Command Physician during Operation Urgent Fury in Grenada, retiring from the U.S. Army Medical Corps as a Lt. Colonel. He trained under Dr. David Matlock at The Laser Vaginal Rejuvenation Institute of Los Angeles and has dedicated his career to hormone optimization and age management medicine.',
           'Today, Dr. Collins brings his extensive expertise in bio-identical hormone optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
         ],
-        images: [{ src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' }],
+        images: [{ src: '/images/teams/team-1-img.png', alt: 'Harry S. Collins, DO, FACOG, Medical Director' }],
       },
     ],
 
@@ -1979,7 +1979,7 @@ treatmentsPorcess:
           'Dr. Harry Collins is a Life Fellow of the American College of Obstetricians and Gynecologists and is certified in Age Management Medicine through the Cenegenics Medical Institute. He trained under Dr. David Matlock at The Laser Vaginal Rejuvenation Institute of Los Angeles, and has dedicated his career to hormone optimization and age management medicine.',
           'Today, Dr. Collins brings his extensive expertise in laser vaginal rejuvenation and bio-identical hormone optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
         ],
-        images: [{ src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' }],
+        images: [{ src: '/images/teams/team-1-img.png', alt: 'Harry S. Collins, DO, FACOG, Medical Director' }],
       },
       {
         type: 'notice',
@@ -2212,7 +2212,7 @@ treatmentsPorcess:
           'After completing his residency in obstetrics and gynecology at Walter Reed Army Medical Center, Dr. Collins served as Command Physician during Operation Urgent Fury in Grenada, retiring from the U.S. Army Medical Corps as a Lt. Colonel. He has dedicated his career to hormone optimization and age management medicine.',
           'Today, Dr. Collins brings his extensive expertise in bio-identical hormone optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
         ],
-        images: [{ src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' }],
+        images: [{ src: '/images/teams/team-1-img.png', alt: 'Harry S. Collins, DO, FACOG, Medical Director' }],
       },
     ],
 
@@ -2500,7 +2500,7 @@ treatmentsPorcess:
           'Dr. Harry Collins is a Life Fellow of the American College of Obstetricians and Gynecologists and is certified in Age Management Medicine through the Cenegenics Medical Institute. He trained under Dr. David Matlock at The Laser Vaginal Rejuvenation Institute of Los Angeles, and has dedicated his career to hormone optimization and age management medicine.',
           'Today, Dr. Collins brings his extensive expertise in laser vaginal rejuvenation and bio-identical hormone optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
         ],
-        images: [{ src: '/images/teams/team-1-img.png', alt: 'Dr. Harry S. Collins, DO, FACOG' }],
+        images: [{ src: '/images/teams/team-1-img.png', alt: 'Harry S. Collins, DO, FACOG, Medical Director' }],
       },
     ],
 
@@ -2612,7 +2612,7 @@ treatmentsPorcess:
         ],
         image: {
           src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-img.png',
-          alt: 'A SAMM provider preparing an in-clinic treatment',
+          alt: 'Patient Appointment',
         },
         imageSide: 'right',
       },

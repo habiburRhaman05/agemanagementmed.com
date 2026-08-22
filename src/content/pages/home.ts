@@ -60,16 +60,19 @@ export const homeContent = {
         title: 'Personalized Consultation',
         body: 'In our initial consultation, the Savannah Age Management Medicine clinic team will sit with you to learn about your current health challenges, your goals, and what\'s getting in the way of living life to the fullest.',
         url: '/steps-img.png',
+        image: { src: '/steps-img.png', alt: 'Patient Appointment' },
       },
       {
         title: 'Convenient Lab Work',
         body: "After your consultation, we'll do a complete analysis of your health metrics to find the root cause of your symptoms, craft a treatment plan, and outline a schedule for regular check-ins.",
         url: '/steps-2-img.png',
+        image: { src: '/steps-2-img.png', alt: 'Doctor Research' },
       },
       {
         title: 'Tailored Treatment Plan',
         body: "Following the latest in bio-identical hormone research and other advanced treatments, we'll make sure your plan always reflects the best protocol for you, any additional health concerns and ensure your plan continues to feel comprehensive and personalized.",
         url: '/steps-3-img.png',
+        image: { src: '/steps-3-img.png', alt: 'Men Interaction' },
       },
     ],
    
@@ -99,11 +102,11 @@ export const homeContent = {
       { value: '8', label: 'Providers and care team members' },
     ],
     awards: [
-      { src: '/images/award-11-img.png', alt: 'Best of Savannah award' },
-      { src: '/images/award-13-img.png', alt: 'Regional excellence award' },
-      { src: '/images/award-15-img.png', alt: 'Best of Savannah Doctors award' },
-      { src: '/images/award-17-img.png', alt: 'Community recognition award' },
-      { src: '/images/award-19-img.png', alt: 'Wellness practice award' },
+      { src: '/images/award-11-img.png', alt: 'Best of Pooler 2025 Winner' },
+      { src: '/images/award-13-img.png', alt: 'Best Awards of Savannah 2024 Winner' },
+      { src: '/images/award-15-img.png', alt: 'Best Awards of Savannah 2023 Winner' },
+      { src: '/images/award-17-img.png', alt: 'Best Awards of Savannah 2021 Winner' },
+      { src: '/images/award-19-img.png', alt: 'Best Awards of Savannah 2019 Winner' },
     ] satisfies Award[],
   },
 

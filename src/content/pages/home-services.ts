@@ -55,7 +55,7 @@ export const homeServices: HomeServiceCard[] = [
     href: '/concierge-medical-weight-loss',
     image:
       'https://www.agemanagementmed.com/themes/default/assets/images/column-box-6-img.png',
-    imageAlt: 'Weight Loss',
+    imageAlt: 'Muscle Pain',
     summary: 'Expert, personalized weight management.',
     benefits: [
       'Safe & sustainable',

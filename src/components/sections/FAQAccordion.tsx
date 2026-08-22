@@ -101,6 +101,15 @@ export function FAQAccordion({ eyebrow, title, lead, items }: FAQAccordionProps)
                           id={panelId}
                           role="region"
                           aria-labelledby={buttonId}
+                          // The collapse is a CSS grid-row transition (0fr →
+                          // 1fr), not `display: none` — the answer text stays
+                          // in the DOM the whole time so it can animate
+                          // smoothly. Without this, a screen reader's virtual
+                          // cursor reads every answer linearly regardless of
+                          // which ones are actually expanded, defeating the
+                          // point of the accordion. `aria-hidden` doesn't
+                          // touch layout/CSS, so the animation is unaffected.
+                          aria-hidden={!isOpen}
                           className="content"
                         >
                           <div className="box">

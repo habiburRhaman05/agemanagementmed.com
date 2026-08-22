@@ -5,8 +5,10 @@ import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { SectionRenderer } from '@/components/sections/SectionRenderer'
 import { TestimonialSet } from '@/components/sections/TestimonialSet'
+import { JsonLd } from '@/components/seo/JsonLd'
 import { pillars } from '@/content/treatments'
 import { getPublishedTestimonials } from '@/content/testimonials'
+import { buildBreadcrumbSchema } from '@/lib/breadcrumb-schema'
 import type { Treatment } from '@/types/content'
 import { bhrtIcons } from '../compontents-custom/hormoneTherapy/bhrt-icons'
 import { ProgramStepsTimeline } from '../compontents-custom/hormoneTherapy/ProgramStepsTimeline'
@@ -28,8 +30,15 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
   const pillar = pillars[treatment.pillar]
   const testimonials = await getPublishedTestimonials()
 
+  const bcSchema = buildBreadcrumbSchema([
+    { label: 'Home', href: '/' },
+    { label: pillar.label, href: pillar.href },
+    { label: treatment.shortName, href: treatment.href },
+  ])
+
   return (
     <>
+      {bcSchema ? <JsonLd data={bcSchema} /> : null}
       <MaleHeroBanner
         title="Bioidentical Hormone Replacement Therapy (BHRT) For Men"
         lead="Optimize Testosterone. Restore Energy. Reclaim Your Edge."

@@ -4,7 +4,7 @@ import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { SectionRenderer } from '@/components/sections/SectionRenderer'
-import { TestimonialSet } from '@/components/sections/TestimonialSet'
+
 import { pillars } from '@/content/treatments'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import type { Treatment } from '@/types/content'
@@ -19,122 +19,71 @@ import { PatientSuccessStories } from '@/components/sections/PatientSuccessStori
 import { MaleHeroBanner } from '../compontents-custom/hormoneTherapy/MaleHeroBanner'
 import { PatientBenefitsSection } from '../compontents-custom/hormoneTherapy/PatientBenefitsSection'
 import { LegacyIncludedGrid } from '../compontents-custom/shared/LegacyIncludedGrid'
+import { HubIntroBenefits } from '../compontents-custom/hormoneTherapy/hub/HubIntroBenefits'
+import { HubIncludedCarousel } from '../compontents-custom/hormoneTherapy/hub/HubIncludedCarousel'
+import { HubOtherTreatments } from '../compontents-custom/hormoneTherapy/hub/HubOtherTreatments'
+import { WelcomeVideo } from '@/components/sections/WelcomeVideo'
+import { PatientJourney } from '@/components/shared/PatientJourney'
+import { HomeServices } from '../../HomeServices'
+import dynamic from 'next/dynamic'
+import { WhoWeAreBand } from '../compontents-custom/hormoneTherapy/hub/WhoWeAreBand'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
 }
-
+const TestimonialSet = dynamic(() =>
+  import('@/components/sections/TestimonialSet').then((mod) => mod.TestimonialSet),
+)
 export async function HormoneTherapyCommonLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
   const testimonials = await getPublishedTestimonials()
 
   return (
     <>
-      <MaleHeroBanner
-        title="Bioidentical Hormone Replacement Therapy (BHRT) For Men"
-        lead="Optimize Testosterone. Restore Energy. Reclaim Your Edge."
-        image={treatment.hero?.image}
+      <HeroEditorial
+    {...treatment.hero}
+
+fullHeight
       />
 
-      {treatment.symptoms ? (
-        <SymptomsHeroCard
-          image={{...treatment.hero.image,src:"/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-73-img.jpg"}}
-          heading={treatment.symptoms.title}
-          lead={treatment.symptoms.lead ?? ''}
-          groups={treatment.symptoms.items}
-          closingNote="Diminished hormone levels can slow you down physically and mentally, keeping you from enjoying the activities and lifestyle you once loved. You don't have to accept this as “normal aging.”"
-        />
-      ) : null}
+      <div className='sm:mt-20 mt-8'>
+        <HubIntroBenefits />
+      </div>
+
+      <WelcomeVideo title="Tools Of Transformation: BHRT" videoHref="https://vimeo.com/1081534475" />
+<PatientJourney 
+title='Your Patient Journey'
+    lead="This isn't just about feeling better... it's about feeling better than ever."
+    steps={
+      [
+         {
+        title: 'Personalized Consultation',
+        body: 'In our initial consultation, the Savannah Age Management Medicine clinic team will sit with you to learn about your current health challenges, your goals, and what\'s getting in the way of living life to the fullest.',
+        url: '/steps-img.png',
+        image: { src: '/steps-img.png', alt: 'Patient Appointment' },
+      },
+      {
+        title: 'Convenient Lab Work',
+        body: "After your consultation, we'll do a complete analysis of your health metrics to find the root cause of your symptoms, craft a treatment plan, and outline a schedule for regular check-ins.",
+        url: '/steps-2-img.png',
+        image: { src: '/steps-2-img.png', alt: 'Doctor Research' },
+      },
+      {
+        title: 'Tailored Treatment Plan',
+        body: "Following the latest in bio-identical hormone research and other advanced treatments, we'll make sure your plan always reflects the best protocol for you, any additional health concerns and ensure your plan continues to feel comprehensive and personalized.",
+        url: '/steps-3-img.png',
+        image: { src: '/steps-3-img.png', alt: 'Men Interaction' },
+      },
+      ]
+    }
+/>
 
     
 
-      {treatment.process ? (
-        <ProgramStepsTimeline
-          title={treatment.process.title}
-          steps={treatment.process.steps}
-          stepImages={[
-            '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-img.png',
-            '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-2-img.png',
-            '/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-3-img.png',
-          ]}
-        />
-      ) : null}
+      <HubIncludedCarousel />
 
-      <SafetyAndCandidacy
-        bg="bg-white"
-        image={{
-          src: '/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-38-img.jpg',
-          alt: 'A provider reviewing treatment safety with a male patient',
-        }}
-        imageSide="right"
-        heading="Monitoring & Adjustments: How We Track Progress"
-        subtitle="Ongoing Lab Monitoring & Symptom Review"
-        paragraphs={[
-          'Hormone optimization is not a one-time event - it\'s an ongoing process.',
-          'At Savannah Age Management Medicine, we continuously monitor both lab values and symptom improvement to ensure your treatment remains safe, effective, and aligned with your goals. Your plan may be adjusted over time based on:',
-        ]}
-        questions={[
-          'Follow-up lab results',
-          'Symptom changes',
-          'Lifestyle, training, or health changes',
-        ]}
-        closingParagraph="Follow-up cadence and lab intervals will be confirmed with the clinical team prior to publishing final timelines."
-      />
-      <SafetyAndCandidacy
-        bg=""
-        image={{
-          src: '/photo-content-39-img.jpg',
-          alt: 'A provider reviewing treatment safety with a male patient',
-        }}
-        imageSide="left"
-        heading="Safety & What To Know Before Starting BHRT"
-        paragraphs={[
-          'BHRT is highly individualized and not appropriate for everyone. Before starting treatment, our providers carefully review your medical history, labs, and risk factors.',
-        ]}
-        questionsLabel="Common patient questions we address:"
-        questions={[
-          'Is testosterone therapy safe long-term?',
-          'What are the potential risks or side effects?',
-          'Could BHRT affect fertility?',
-          'Who may not be a good candidate for therapy?',
-        ]}
-        closingParagraph="Men with certain medical conditions may require additional evaluation or alternative approaches. Your safety is our priority, and treatment decisions are made collaboratively with you."
-        disclaimer="BHRT is a medical treatment and should only be initiated under the supervision of a qualified healthcare provider. Individual results vary, and hormone therapy is not intended to diagnose, treat, cure, or prevent disease."
-      />
+ 
 
-      <LegacyIncludedGrid
-        title="Cost & What's Included: Transparent Pricing, No Guesswork"
-        lead="What's typically included as a patient:"
-        included={[
-          { icon: bhrtIcons.costConsultation, title: 'Provider Visits And Hormone Assessments' },
-          { icon: bhrtIcons.patientBodyComposition, title: 'Body Composition Analysis' },
-          { icon: bhrtIcons.patientNutritionalGuidance, title: 'Nutritional Guidance' },
-          { icon: bhrtIcons.patientFunctionalMovement, title: 'Functional Movement Recommendations' },
-          { icon: bhrtIcons.costLabTesting, title: 'In-Office Lab Draws' },
-          { icon: bhrtIcons.patientTreatmentOptimization, title: 'Ongoing Treatment Optimization' },
-          { icon: bhrtIcons.patientQuickcare, title: 'QuickCare Access' },
-          { icon: bhrtIcons.patientMembershipPricing, title: 'Member Pricing On Supplements And Additional Services' },
-        ]}
-        separateLabel="What is typically separate:"
-        separate={[
-          { icon: bhrtIcons.costLabTesting, title: 'Lab Testing (Often Covered By Insurance)' },
-          { icon: bhrtIcons.patientSavingsSupplements, title: 'Hormone Medications (Coverage Varies By Plan)' },
-        ]}
-        note="Insurance commonly covers lab work but may not cover hormone medications. Flexible financing options are available through PatientFi to help make treatment more accessible."
-      />
-
-      <PatientBenefitsSection
-        imageSrc="/photo-content-40-img.jpg"
-        imageAlt="A provider shaking hands with a male patient"
-        title="Patient Benefits"
-        subtitle="As A Savannah Age Management Medicine Patient, You Receive:"
-        benefits={[
-          'Priority access to care',
-          'Personalized treatment optimization',
-          'Exclusive member pricing on additional services',
-          'Integrated wellness support beyond hormones',
-        ]}
-      />
 
       <BeforeAfterSliderSection 
 
@@ -155,50 +104,46 @@ export async function HormoneTherapyCommonLayout({ treatment }: TreatmentTemplat
         ]}
       />
 
-      <SymptomsLabsReviewPanel />
+  
 
       {treatment.faqs.length ? (
         <FAQAccordion
-          eyebrow="Frequently asked"
-          title={`${treatment.shortName} questions`}
+       
+          title={`Frequently asked questions`}
+          lead='Deciding on Bioidentical Hormone Replacement Therapy (BHRT) is important, and you likely have questions. Here are answers to common questions to help you make an informed decision.'
           items={treatment.faqs}
         />
       ) : null}
 
+      <div className='pb-10'>
+        <HomeServices eyebrow='' title='Explore Other Treatments We Offer' lead='We go beyond hormonal health to provide a wide range of treatments tailored to support your overall wellness, vitality, and confidence.' />
+      </div>
+
+
+      <TestimonialSet
+        eyebrow="Patient Testimonials"
+        title="Real success stories"
+        lead="See how we've helped our clients transform their lives."
+        testimonials={testimonials}
+        backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1787370832/testimonial-2-bg_1_wvumgb.jpg'
+
+      />
+
+      <WhoWeAreBand
+        eyebrow="Who We Are"
+        title="Leaders In Age Management And Wellness"
+        body="The Savannah Age Management Medicine team is dedicated to improving your quality of life through advanced age management practices. We pair years of experience, the latest research and technology and a commitment to personalized solutions for unprecedented results. Enjoy a warm, welcoming approach to health optimization."
+        cta={{ label: 'Our experts', href: '/our-experts' }}
+           image='https://res.cloudinary.com/khs2rcsr/image/upload/v1785860659/contact-3-img_os4jyj.jpg'
+      />
+
+
       <ClosingCTA {...treatment.closingCta} backgroundImage="/images/hero-2-bg (1).jpg" />
 
       
-      <TrustMarkers
-        reviewer={{
-          name: 'Dr. Harry S. Collins, DO, FACOG, Medical Director',
-          subtitle: 'Age Management Medicine Specialist',
-          bio: [
-            'Dr. Harry Collins is a Life Fellow of the American College of Obstetricians and Gynecologists and is certified in Age Management Medicine through the prestigious Cenegenics Medical Institute. He earned his BA in biology from the University of Colorado (Denver) with distinction before receiving his Doctor of Osteopathic Medicine from Kansas City University of Medicine and Biosciences.',
-            'After completing his residency in obstetrics and gynecology at Walter Reed Army Medical Center, Dr. Collins served as Command Physician during Operation Urgent Fury in Grenada, retiring from the U.S. Army Medical Corps as a Lt. Colonel. He trained under Dr. David Matlock at The Laser Vaginal Rejuvenation Institute of Los Angeles and has dedicated his career to hormone optimization and age management medicine.',
-            'Today, Dr. Collins brings his extensive expertise in Bio-Identical Hormone Optimization to the Southeast, combining his military medical experience with advanced training in age management medicine to provide comprehensive care for his patients.',
-          ],
-          portrait: {
-            src: '/images/teams/team-1-img.png',
-            alt: 'Dr. Harry Collins, founder and medical director of Savannah Age Management Medicine',
-          },
-        }}
-      />
+   
 
-      <PatientSuccessStories
-        eyebrow="Patient reviews"
-        title="Real Success Stories"
-        lead="See how we've helped our clients transform their lives."
-        backgroundImage="/HormoneTherapy/superlang.jpg"
-        backgroundPosition="75% top"
-        backgroundSize="auto 140%"
-        quote={[
-          'As a former D1 athlete with seven varsity letters, fitness has always been central to my life. In my seventies, aging challenges emerged — fatigue, poor sleep, and weight gain to nearly 230 pounds despite staying active.',
-          'After hearing Dr. Collins discuss Optimal Hormone Therapy, I had my testosterone tested, which revealed severely low levels. Within three weeks of starting twice-weekly T shots and supplements, I noticed improvements. My enhanced stamina enabled longer workouts, and I began building muscle at 72.',
-          'The program costs were modest, including ongoing prescriptions and blood reviews. Dr. Collins never pressured me and even suggested where to find the best supplement prices. His thorough physicals go beyond standard bloodwork, and both my wife and I are grateful for how this treatment has helped maintain my active lifestyle. I dropped to my high school weight of 200 pounds, and my bloodwork improved significantly.',
-        ]}
-        author="David P."
-      />
-
+   
 
     </>
   )

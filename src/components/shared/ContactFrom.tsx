@@ -3,7 +3,7 @@
 import { bookAppointment, type ActionResult } from '@/actions/appointment'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AlertCircle, CheckCircle2, X } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -44,6 +44,20 @@ export function ContactForm({ submitLabel, variant = 'light' }: ContactFormProps
   const [bookingState, setBookingState] = useState<ActionResult | null>(null)
   // Modal state to handle local success instead of page redirect
   const [showThankYou, setShowThankYou] = useState(false)
+
+  // Same fix as GetConnectedForm's identical modal: role/aria-modal so
+  // assistive tech knows it's a dialog, focus moved into it on open instead
+  // of staying on the now-hidden submit button, and Escape to dismiss.
+  const thankYouPanelRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!showThankYou) return
+    thankYouPanelRef.current?.focus()
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowThankYou(false)
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [showThankYou])
 
   const darkInputClass =
     'h-[60px] rounded-[10px] border border-white/30 bg-transparent px-6 text-white placeholder:text-white focus:border-white focus-visible:outline-none'
@@ -201,24 +215,36 @@ export function ContactForm({ submitLabel, variant = 'light' }: ContactFormProps
 
       {/* ─── Thank You Modal ─── */}
       {showThankYou && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm transition-opacity animate-in fade-in">
-          <div className="relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center shadow-2xl transition-all animate-in zoom-in-95 duration-300 sm:p-10">
-            
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm transition-opacity animate-in fade-in"
+          onClick={() => setShowThankYou(false)}
+        >
+          <div
+            ref={thankYouPanelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-form-thank-you-title"
+            tabIndex={-1}
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center shadow-2xl transition-all animate-in zoom-in-95 duration-300 sm:p-10 focus:outline-none"
+          >
             {/* Close Button */}
             <button
+              type="button"
+              aria-label="Close"
               onClick={() => setShowThankYou(false)}
               className="absolute right-4 top-4 rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700"
             >
-              <X className="h-5 w-5" />
+              <X className="h-5 w-5" aria-hidden />
             </button>
 
             {/* Success Icon */}
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-sage-100 text-sage-600">
-              <CheckCircle2 className="h-10 w-10" />
+              <CheckCircle2 className="h-10 w-10" aria-hidden />
             </div>
 
             {/* Success Text */}
-            <h3 className="mt-4 font-serif text-2xl font-bold text-navy-900">
+            <h3 id="contact-form-thank-you-title" className="mt-4 font-serif text-2xl font-bold text-navy-900">
               Thank you!
             </h3>
             <p className="mt-2 text-body-sm text-canvas-600">
@@ -226,8 +252,8 @@ export function ContactForm({ submitLabel, variant = 'light' }: ContactFormProps
             </p>
 
             {/* Action Button */}
-            <Button 
-              onClick={() => setShowThankYou(false)} 
+            <Button
+              onClick={() => setShowThankYou(false)}
               className="mt-6 w-full bg-sage-600 text-white hover:bg-sage-700"
             >
               Got it
