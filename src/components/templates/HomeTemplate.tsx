@@ -92,7 +92,7 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
         title="Ready to transform your health?"
         body="Take the first step towards a healthier, more vibrant you."
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
-        backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1787305502/hero-29-bg_xzb0sa.jpg'
+        backgroundImage='/themes/default/assets/images/hero-29-bg_xzb0sa.jpg'
       />
     </div>
   )

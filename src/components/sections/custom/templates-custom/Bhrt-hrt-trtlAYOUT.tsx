@@ -42,7 +42,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
       <SafetyAndCandidacy
         bg=""
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469122/bhrt-therapy-1_l5crff.jpg',
+          src: '/themes/default/assets/images/bhrt-therapy-1_l5crff.jpg',
           alt: 'A woman stretching outdoors as part of an active, healthy lifestyle',
         }}
         imageSide="left"
@@ -60,7 +60,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
             paragraph:
               'An umbrella term referring to the broader approach to hormonal balance that addresses various hormonal needs across different life stages. This approach may or may not be bioidentical.',
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469157/photo-content-22-img_t5x05r.jpg',
+              src: '/themes/default/assets/images/photo-content-22-img_t5x05r.jpg',
               alt: 'A woman reviewing paperwork at home',
               focalPoint: 'top',
             },
@@ -70,7 +70,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
             paragraph:
               'Testosterone replacement therapy (TRT) is designed for individuals experiencing low testosterone and can significantly improve quality of life. However, for men, a protocol that includes only testosterone is often incomplete, as proper hormone balance typically requires addressing other key hormones as well. Similarly, for women, a hormone optimization plan that excludes testosterone may not fully support overall well-being. A truly effective approach considers the broader hormonal picture to ensure optimal health and symptom relief.',
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469215/bhrt-therapy-2_a6fw5h.jpg',
+              src: '/themes/default/assets/images/bhrt-therapy-2_a6fw5h.jpg',
               alt: 'A man being active outdoors in the mountains',
               focalPoint: 'top',
             },
@@ -80,7 +80,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
             paragraph:
               'The most advanced and synchronous approach to hormone optimization. Unlike synthetic hormone treatments, bioidentical hormones are molecularly identical to the hormones naturally produced by your body. These are the hormones that we leverage at Savannah Age Management Medicine to get the best results for our patients.',
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469249/photo-content-24-img_t5dmp1.jpg',
+              src: '/themes/default/assets/images/photo-content-24-img_t5dmp1.jpg',
               alt: 'A couple enjoying time together outdoors',
               focalPoint: 'top',
             },
@@ -91,7 +91,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
 
       <TextImagePanel
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469289/photo-content-25-img_ohyzgw.jpg',
+          src: '/themes/default/assets/images/photo-content-25-img_ohyzgw.jpg',
           alt: 'A woman looking fatigued while working at her laptop',
           focalPoint: 'top',
         }}
@@ -112,7 +112,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
 
       <TextImagePanel
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470190/bhrt-comprehence_lb683e.jpg',
+          src: '/themes/default/assets/images/bhrt-comprehence_lb683e.jpg',
           alt: 'A provider consulting with a patient in Pooler, GA',
           focalPoint: 'top',
         }}
@@ -132,7 +132,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
 
       <TextImagePanel
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470222/unique-compreence_eozbll.jpg',
+          src: '/themes/default/assets/images/unique-compreence_eozbll.jpg',
           alt: 'Two providers reviewing lab paperwork together',
           focalPoint: 'top',
         }}
@@ -153,7 +153,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
 
       <TextImagePanel
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470245/benifit-bhrt_l8h8uu.jpg',
+          src: '/themes/default/assets/images/benifit-bhrt_l8h8uu.jpg',
           alt: 'A happy couple enjoying time together outdoors',
           focalPoint: 'top',
         }}
@@ -201,7 +201,7 @@ quote:"This is my 13th year with SAM. What a relaxed office environment, and Dr.
 '
       title='What Our Patients Say'
      height='650'
-     backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1786254314/testimonial-9-bg_fsgwrv.jpg'
+     backgroundImage='/themes/default/assets/images/testimonial-9-bg_fsgwrv.jpg'
       />
 
       {treatment.faqs.length ? (
@@ -212,7 +212,7 @@ quote:"This is my 13th year with SAM. What a relaxed office environment, and Dr.
         />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} textWidth='800' centered backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1786254414/hero-13-bg_xi7jhs.jpg' />
+      <ClosingCTA {...treatment.closingCta} textWidth='800' centered backgroundImage='/themes/default/assets/images/hero-13-bg_xi7jhs.jpg' />
     </>
   )
 }

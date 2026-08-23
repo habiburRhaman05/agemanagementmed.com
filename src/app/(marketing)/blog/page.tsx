@@ -45,7 +45,7 @@ function BlogHero() {
   return (
     <section className="relative isolate flex min-h-[360px] items-end overflow-hidden pt-36 pb-12 sm:min-h-[440px] sm:pb-16 lg:pt-44">
       <Image
-        src="https://res.cloudinary.com/khs2rcsr/image/upload/v1786254414/hero-13-bg_xi7jhs.jpg"
+        src="/themes/default/assets/images/hero-13-bg_xi7jhs.jpg"
         alt=""
         fill
         priority

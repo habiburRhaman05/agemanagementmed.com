@@ -8,9 +8,9 @@ import { prpIcons } from '../female/prp-icons'
  */
 
 const heroPhoto =
-  'https://res.cloudinary.com/khs2rcsr/image/upload/v1785306021/hair-treatment-image-male_dik98b.jpg'
+  '/themes/default/assets/images/hair-treatment-image-male_dik98b.jpg'
 const bestResultsPhoto =
-  'https://res.cloudinary.com/khs2rcsr/image/upload/v1785599006/men-hair-restoration_krr29t.jpg'
+  '/themes/default/assets/images/men-hair-restoration_krr29t.jpg'
 
 const growthFactors = [
   'Stimulate dormant hair follicles',

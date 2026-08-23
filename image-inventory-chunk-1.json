@@ -1,0 +1,1668 @@
+{
+  "chunk": 1,
+  "of": 4,
+  "count": 8,
+  "image_ids": [
+    "IMG-001",
+    "IMG-002",
+    "IMG-003",
+    "IMG-004",
+    "IMG-021",
+    "IMG-031",
+    "IMG-038",
+    "IMG-040"
+  ],
+  "images": [
+    {
+      "image_id": "IMG-001",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/share.jpg",
+      "current_reference_examples": [
+        "/themes/default/assets/images/share.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/share.jpg",
+      "usages": [
+        {
+          "source_file": "seo.json",
+          "source_line": 13,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 186,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 2,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 2,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 381,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 3,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 3,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 576,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 4,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 4,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 765,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 5,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 5,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 960,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 6,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 6,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1131,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 7,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 7,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1302,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 8,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 8,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1473,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 9,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 9,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1652,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 10,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 10,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1908,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 11,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 11,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2097,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 12,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 12,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2286,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 13,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 13,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2459,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 14,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 14,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2648,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 15,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 15,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2775,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 16,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 16,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2902,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 17,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 17,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3029,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 18,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 18,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3156,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 19,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 19,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3283,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 20,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 20,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3404,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 21,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 21,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3531,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 22,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 22,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3658,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 23,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 23,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4641,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 24,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 24,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4768,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 25,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 25,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4895,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 26,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 26,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 5149,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 27,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 27,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 5347,
+          "source_text": "/themes/default/assets/images/share.jpg",
+          "occurrence_in_source_file": 28,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 28,
+          "current_reference": "/themes/default/assets/images/share.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "seo.json",
+        "first_source_line": 13
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 28,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/share.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 28
+      }
+    },
+    {
+      "image_id": "IMG-002",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/photo-1x1.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+      "usages": [
+        {
+          "source_file": "seo.json",
+          "source_line": 27,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 200,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 2,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 2,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 395,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 3,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 3,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 590,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 4,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 4,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 779,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 5,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 5,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 974,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 6,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 6,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1145,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 7,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 7,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1316,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 8,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 8,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1487,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 9,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 9,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1666,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 10,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 10,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1922,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 11,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 11,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2111,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 12,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 12,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2300,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 13,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 13,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2473,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 14,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 14,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2662,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 15,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 15,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2789,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 16,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 16,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2916,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 17,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 17,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3043,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 18,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 18,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3170,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 19,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 19,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3297,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 20,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 20,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3418,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 21,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 21,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3545,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 22,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 22,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3672,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 23,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 23,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3799,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 24,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 24,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4021,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 25,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 25,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4235,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 26,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 26,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4441,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 27,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 27,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4655,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 28,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 28,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4782,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 29,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 29,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4909,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 30,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 30,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 5163,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 31,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 31,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 5361,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg",
+          "occurrence_in_source_file": 32,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 32,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-1x1.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "seo.json",
+        "first_source_line": 27
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 32,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/photo-1x1.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 32
+      }
+    },
+    {
+      "image_id": "IMG-003",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/photo-4x3.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+      "usages": [
+        {
+          "source_file": "seo.json",
+          "source_line": 28,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 201,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 2,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 2,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 396,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 3,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 3,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 591,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 4,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 4,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 780,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 5,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 5,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 975,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 6,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 6,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1146,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 7,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 7,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1317,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 8,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 8,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1488,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 9,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 9,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1667,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 10,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 10,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1923,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 11,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 11,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2112,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 12,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 12,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2301,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 13,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 13,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2474,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 14,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 14,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2663,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 15,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 15,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2790,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 16,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 16,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2917,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 17,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 17,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3044,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 18,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 18,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3171,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 19,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 19,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3298,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 20,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 20,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3419,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 21,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 21,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3546,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 22,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 22,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3673,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 23,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 23,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3800,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 24,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 24,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4022,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 25,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 25,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4236,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 26,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 26,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4442,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 27,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 27,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4656,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 28,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 28,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4783,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 29,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 29,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4910,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 30,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 30,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 5164,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 31,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 31,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 5362,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg",
+          "occurrence_in_source_file": 32,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 32,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-4x3.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "seo.json",
+        "first_source_line": 28
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 32,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/photo-4x3.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 32
+      }
+    },
+    {
+      "image_id": "IMG-004",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/photo-16x9.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+      "usages": [
+        {
+          "source_file": "seo.json",
+          "source_line": 29,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 202,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 2,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 2,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 397,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 3,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 3,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 592,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 4,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 4,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 781,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 5,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 5,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 976,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 6,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 6,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1147,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 7,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 7,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1318,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 8,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 8,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1489,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 9,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 9,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1668,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 10,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 10,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 1924,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 11,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 11,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2113,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 12,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 12,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2302,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 13,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 13,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2475,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 14,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 14,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2664,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 15,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 15,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2791,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 16,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 16,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 2918,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 17,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 17,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3045,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 18,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 18,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3172,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 19,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 19,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3299,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 20,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 20,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3420,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 21,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 21,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3547,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 22,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 22,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3674,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 23,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 23,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 3801,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 24,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 24,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4023,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 25,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 25,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4237,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 26,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 26,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4443,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 27,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 27,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4657,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 28,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 28,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4784,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 29,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 29,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 4911,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 30,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 30,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 5165,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 31,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 31,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        },
+        {
+          "source_file": "seo.json",
+          "source_line": 5363,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg",
+          "occurrence_in_source_file": 32,
+          "page_route": null,
+          "component": "seo",
+          "section_or_prop": null,
+          "item_order": 32,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-16x9.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "seo.json",
+        "first_source_line": 29
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 32,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/photo-16x9.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 32
+      }
+    },
+    {
+      "image_id": "IMG-021",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/banner-20-bg.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/banner-20-bg.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/banner-20-bg.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/ContactHero.tsx",
+          "source_line": 19,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/banner-20-bg.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "ContactHero",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/banner-20-bg.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/ContactHero.tsx",
+        "first_source_line": 19
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/banner-20-bg.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-031",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/video-12-img.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/video-12-img.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/video-12-img.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/NewsAndMediaSection.tsx",
+          "source_line": 25,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/video-12-img.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "NewsAndMediaSection",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/video-12-img.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/NewsAndMediaSection.tsx",
+        "first_source_line": 25
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/video-12-img.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-038",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/photo-content-74-img.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-74-img.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-74-img.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/hormoneTherapy/SymptomsLabsReviewPanel.tsx",
+          "source_line": 29,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-74-img.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "SymptomsLabsReviewPanel",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-74-img.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/hormoneTherapy/SymptomsLabsReviewPanel.tsx",
+        "first_source_line": 29
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/photo-content-74-img.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-040",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/column-box-5-img.png",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/column-box-5-img.png"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-5-img.png",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/hormoneTherapy/hub/HubOtherTreatments.tsx",
+          "source_line": 14,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-5-img.png",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "HubOtherTreatments",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-5-img.png"
+        },
+        {
+          "source_file": "src/content/pages/home-services.ts",
+          "source_line": 33,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-5-img.png",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "home-services",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-5-img.png"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/hormoneTherapy/hub/HubOtherTreatments.tsx",
+        "first_source_line": 14
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 2,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/column-box-5-img.png",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 2
+      }
+    }
+  ]
+}

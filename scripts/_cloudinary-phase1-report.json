@@ -1,0 +1,1515 @@
+{
+  "generated_at": "2026-08-23T05:57:53.512Z",
+  "images": [
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785303991/hair-image_cb9wro.jpg",
+      "filename": "hair-image_cb9wro.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hair-image_cb9wro.jpg",
+      "dest_file": "public/themes/default/assets/images/hair-image_cb9wro.jpg",
+      "byte_size": 132036,
+      "sha256": "66bd4d82b25f45c849054776eee904feb6bc37f7aadba6d3ba82b18b00ad9581",
+      "dimensions": {
+        "width": 1028,
+        "height": 1374,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/female/HowPRPTreatsHairLoss.tsx",
+          "line": 9,
+          "lineText": "const heroPhoto = 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785303991/hair-image_cb9wro.jpg'"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785304360/bets-result-in-see_y9elck.jpg",
+      "filename": "bets-result-in-see_y9elck.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/bets-result-in-see_y9elck.jpg",
+      "dest_file": "public/themes/default/assets/images/bets-result-in-see_y9elck.jpg",
+      "byte_size": 66505,
+      "sha256": "f606e45e4ea1135a0b55efd62de87534bc5c2d5ebf732f4a985cee8924ba5a9b",
+      "dimensions": {
+        "width": 771,
+        "height": 765,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/female/HowPRPTreatsHairLoss.tsx",
+          "line": 11,
+          "lineText": "'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304360/bets-result-in-see_y9elck.jpg'"
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/PlateletRichPlasmaHair.tsx",
+          "line": 39,
+          "lineText": "<HowPRPTreatsHairLoss customImage={\"https://res.cloudinary.com/khs2rcsr/image/upload/v1785304360/bets-result-in-see_y9elck.jpg\"} />"
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785304803/hair-treatment-step-2-female_u1mico.jpg",
+      "filename": "hair-treatment-step-2-female_u1mico.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hair-treatment-step-2-female_u1mico.jpg",
+      "dest_file": "public/themes/default/assets/images/hair-treatment-step-2-female_u1mico.jpg",
+      "byte_size": 37342,
+      "sha256": "81f88fbece7ff3d1e7cdfaa9bba71c53cbd53f7d0db750ec61850a5ec161c01e",
+      "dimensions": {
+        "width": 808,
+        "height": 556,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/female/PRPTreatmentProcess.tsx",
+          "line": 29,
+          "lineText": "url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304803/hair-treatment-step-2-female_u1mico.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785304804/hair-treatment-step-1-female_b95t44.jpg",
+      "filename": "hair-treatment-step-1-female_b95t44.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hair-treatment-step-1-female_b95t44.jpg",
+      "dest_file": "public/themes/default/assets/images/hair-treatment-step-1-female_b95t44.jpg",
+      "byte_size": 82205,
+      "sha256": "212f48f7a7b6f61974304ea90c3754919dd923d82805284c285e20fd1038d11f",
+      "dimensions": {
+        "width": 808,
+        "height": 556,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/female/PRPTreatmentProcess.tsx",
+          "line": 19,
+          "lineText": "url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304804/hair-treatment-step-1-female_b95t44.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785304804/hair-treatment-step-3-female_y7wzqe.jpg",
+      "filename": "hair-treatment-step-3-female_y7wzqe.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hair-treatment-step-3-female_y7wzqe.jpg",
+      "dest_file": "public/themes/default/assets/images/hair-treatment-step-3-female_y7wzqe.jpg",
+      "byte_size": 184348,
+      "sha256": "f0320ae8fe0ddc642d90fb27ef167bb333427d9690cb862f178ea478618cb8d2",
+      "dimensions": {
+        "width": 607,
+        "height": 417,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/female/PRPTreatmentProcess.tsx",
+          "line": 37,
+          "lineText": "url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304804/hair-treatment-step-3-female_y7wzqe.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785304804/hair-treatment-step-5-female_awrdtf.jpg",
+      "filename": "hair-treatment-step-5-female_awrdtf.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hair-treatment-step-5-female_awrdtf.jpg",
+      "dest_file": "public/themes/default/assets/images/hair-treatment-step-5-female_awrdtf.jpg",
+      "byte_size": 246280,
+      "sha256": "7ac03bf27420008fc503d5c0fb2a63f320a5a03f1f3a78cc940bf8855c44ff54",
+      "dimensions": {
+        "width": 607,
+        "height": 417,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/female/PRPTreatmentProcess.tsx",
+          "line": 52,
+          "lineText": "url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304804/hair-treatment-step-5-female_awrdtf.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785304805/hair-treatment-step-4-female_wqfqfc.jpg",
+      "filename": "hair-treatment-step-4-female_wqfqfc.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hair-treatment-step-4-female_wqfqfc.jpg",
+      "dest_file": "public/themes/default/assets/images/hair-treatment-step-4-female_wqfqfc.jpg",
+      "byte_size": 263246,
+      "sha256": "c88e730a2d1283f8703675f2b3ab75eb82cce978291a75c7f795ace11e231dbf",
+      "dimensions": {
+        "width": 607,
+        "height": 417,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/female/PRPTreatmentProcess.tsx",
+          "line": 44,
+          "lineText": "url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304805/hair-treatment-step-4-female_wqfqfc.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785306021/hair-treatment-image-male_dik98b.jpg",
+      "filename": "hair-treatment-image-male_dik98b.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hair-treatment-image-male_dik98b.jpg",
+      "dest_file": "public/themes/default/assets/images/hair-treatment-image-male_dik98b.jpg",
+      "byte_size": 205114,
+      "sha256": "0e2cd4e495cb94baa21182c752cc0b8498aad9f780be97b3be382b68b6542aac",
+      "dimensions": {
+        "width": 771,
+        "height": 1031,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/male/HowPRPTreatsHairLoss.tsx",
+          "line": 11,
+          "lineText": "'https://res.cloudinary.com/khs2rcsr/image/upload/v1785306021/hair-treatment-image-male_dik98b.jpg'"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785318718/photo-content-45-img_wwkjto.jpg",
+      "filename": "photo-content-45-img_wwkjto.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/photo-content-45-img_wwkjto.jpg",
+      "dest_file": "public/themes/default/assets/images/photo-content-45-img_wwkjto.jpg",
+      "byte_size": 114549,
+      "sha256": "f69dee324f7fd3bb78810d62ff4bd27509564410df396f12b8ba6b8013ce90f3",
+      "dimensions": {
+        "width": 771,
+        "height": 1200,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/SexualWellnessMaleLayout.tsx",
+          "line": 34,
+          "lineText": "src:\"https://res.cloudinary.com/khs2rcsr/image/upload/v1785318718/photo-content-45-img_wwkjto.jpg\","
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785318812/shock-wase-image_p7iv6g.png",
+      "filename": "shock-wase-image_p7iv6g.png",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/shock-wase-image_p7iv6g.png",
+      "dest_file": "public/themes/default/assets/images/shock-wase-image_p7iv6g.png",
+      "byte_size": 274010,
+      "sha256": "0927a0df588a5338c8f19afcb5ca29fe4d21d0c84896d4cee49415c76815c87e",
+      "dimensions": {
+        "width": 539,
+        "height": 539,
+        "format": "png"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementOfferLayout.tsx",
+          "line": 117,
+          "lineText": "image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318812/shock-wase-image_p7iv6g.png',"
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/SexualWellnessMaleLayout.tsx",
+          "line": 84,
+          "lineText": "image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318812/shock-wase-image_p7iv6g.png',"
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785318893/column-box-8-img_cwog8d.png",
+      "filename": "column-box-8-img_cwog8d.png",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/column-box-8-img_cwog8d.png",
+      "dest_file": "public/themes/default/assets/images/column-box-8-img_cwog8d.png",
+      "byte_size": 341984,
+      "sha256": "1fc9a708e67a978eff5d5d00e1a66c8a632ed219ac0f3be7a9be56f0ee473f8a",
+      "dimensions": {
+        "width": 539,
+        "height": 539,
+        "format": "png"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementOfferLayout.tsx",
+          "line": 132,
+          "lineText": "image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318893/column-box-8-img_cwog8d.png',"
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/SexualWellnessMaleLayout.tsx",
+          "line": 99,
+          "lineText": "image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318893/column-box-8-img_cwog8d.png',"
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785318936/sexul-perfromance_opewpn.png",
+      "filename": "sexul-perfromance_opewpn.png",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/sexul-perfromance_opewpn.png",
+      "dest_file": "public/themes/default/assets/images/sexul-perfromance_opewpn.png",
+      "byte_size": 138875,
+      "sha256": "99089181f1fd2244458ee62f8de12a47e6788293eece189dd5920cc649100667",
+      "dimensions": {
+        "width": 539,
+        "height": 539,
+        "format": "png"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementOfferLayout.tsx",
+          "line": 145,
+          "lineText": "image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318936/sexul-perfromance_opewpn.png',"
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/SexualWellnessMaleLayout.tsx",
+          "line": 112,
+          "lineText": "image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318936/sexul-perfromance_opewpn.png',"
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785318977/subliment_yul0z2.png",
+      "filename": "subliment_yul0z2.png",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/subliment_yul0z2.png",
+      "dest_file": "public/themes/default/assets/images/subliment_yul0z2.png",
+      "byte_size": 116504,
+      "sha256": "1e3c8810df24cb874df97e4dc76b9dd1e12d0bf4613097e06ea262c702239c05",
+      "dimensions": {
+        "width": 539,
+        "height": 539,
+        "format": "png"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementOfferLayout.tsx",
+          "line": 158,
+          "lineText": "image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318977/subliment_yul0z2.png',"
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/SexualWellnessMaleLayout.tsx",
+          "line": 125,
+          "lineText": "image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318977/subliment_yul0z2.png',"
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785336801/ChatGPT_Image_Jul_29_2026_08_52_07_PM_dyqlrx.png",
+      "filename": "ChatGPT_Image_Jul_29_2026_08_52_07_PM_dyqlrx.png",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/ChatGPT_Image_Jul_29_2026_08_52_07_PM_dyqlrx.png",
+      "dest_file": "public/themes/default/assets/images/ChatGPT_Image_Jul_29_2026_08_52_07_PM_dyqlrx.png",
+      "byte_size": 1920317,
+      "sha256": "a4bcb25efc6ebbf7a05558268be70927c598d51daab534a34916d84c4f4dea6a",
+      "dimensions": {
+        "width": 1122,
+        "height": 1402,
+        "format": "png"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hormoneTherapy/SymptomsHeroCard.tsx",
+          "line": 76,
+          "lineText": "const imageSrc = image?.src || 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785336801/ChatGPT_Image_Jul_29_2026_08_52_07_PM_dyqlrx.png'"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785337975/donnt-ignorre-sympth_j7eqyv.jpg",
+      "filename": "donnt-ignorre-sympth_j7eqyv.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/donnt-ignorre-sympth_j7eqyv.jpg",
+      "dest_file": "public/themes/default/assets/images/donnt-ignorre-sympth_j7eqyv.jpg",
+      "byte_size": 86735,
+      "sha256": "85dfb836fb471c76a7f1ef9a4b92e39244f1b2e0d11ae3f5c5a5bb6e33edb298",
+      "dimensions": {
+        "width": 1069,
+        "height": 900,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+          "line": 65,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785337975/donnt-ignorre-sympth_j7eqyv.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785338006/under-symptth_rcghu3.jpg",
+      "filename": "under-symptth_rcghu3.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/under-symptth_rcghu3.jpg",
+      "dest_file": "public/themes/default/assets/images/under-symptth_rcghu3.jpg",
+      "byte_size": 188397,
+      "sha256": "f3dcde2ffe8d1b0cd9c41d5d8691a856d7e1e5239bb16ded2d9407b70cce78b6",
+      "dimensions": {
+        "width": 1258,
+        "height": 1928,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+          "line": 77,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338006/under-symptth_rcghu3.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785338030/why-life-chnage_jjgcsr.jpg",
+      "filename": "why-life-chnage_jjgcsr.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/why-life-chnage_jjgcsr.jpg",
+      "dest_file": "public/themes/default/assets/images/why-life-chnage_jjgcsr.jpg",
+      "byte_size": 113460,
+      "sha256": "5917140402b3a5caee785e2794b578b2b1d57c4b403ddb543260f2facb99a427",
+      "dimensions": {
+        "width": 861,
+        "height": 900,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+          "line": 104,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338030/why-life-chnage_jjgcsr.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785338054/photo-content-92-img_nitez0.jpg",
+      "filename": "photo-content-92-img_nitez0.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/photo-content-92-img_nitez0.jpg",
+      "dest_file": "public/themes/default/assets/images/photo-content-92-img_nitez0.jpg",
+      "byte_size": 99553,
+      "sha256": "8b384e35d07168729e2e0e6ba8331613e56b6068c6c7395dd182714bd1755310",
+      "dimensions": {
+        "width": 999,
+        "height": 1380,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+          "line": 116,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338054/photo-content-92-img_nitez0.jpg',"
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+          "line": 247,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338054/photo-content-92-img_nitez0.jpg',"
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785338093/why-woman-chose-samm_g7evxb.jpg",
+      "filename": "why-woman-chose-samm_g7evxb.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/why-woman-chose-samm_g7evxb.jpg",
+      "dest_file": "public/themes/default/assets/images/why-woman-chose-samm_g7evxb.jpg",
+      "byte_size": 97532,
+      "sha256": "e3d3dccdb5589282c1fd0310f6ca22586a632e8cfa88a9531cb41c4089a76b2e",
+      "dimensions": {
+        "width": 1148,
+        "height": 812,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+          "line": 186,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338093/why-woman-chose-samm_g7evxb.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785338393/What_Patients_Often_vuuuis.jpg",
+      "filename": "What_Patients_Often_vuuuis.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/What_Patients_Often_vuuuis.jpg",
+      "dest_file": "public/themes/default/assets/images/What_Patients_Often_vuuuis.jpg",
+      "byte_size": 93220,
+      "sha256": "73d414c615d51e2236cccdd8d6130c47c3d74f470b4cc767667a06a54a6ec2e5",
+      "dimensions": {
+        "width": 1120,
+        "height": 1200,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+          "line": 220,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338393/What_Patients_Often_vuuuis.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785339098/How_We_Use_Labwor_mzioxu.jpg",
+      "filename": "How_We_Use_Labwor_mzioxu.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/How_We_Use_Labwor_mzioxu.jpg",
+      "dest_file": "public/themes/default/assets/images/How_We_Use_Labwor_mzioxu.jpg",
+      "byte_size": 100655,
+      "sha256": "39823097100d2ef085bdca1fc8b5198cda4ddc0021cfbcad0a9026497efa32f0",
+      "dimensions": {
+        "width": 900,
+        "height": 1350,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/weight-loss/male/LabworkGuidanceSection.tsx",
+          "line": 20,
+          "lineText": "\"url('https://res.cloudinary.com/khs2rcsr/image/upload/v1785339098/How_We_Use_Labwor_mzioxu.jpg')\","
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785341609/A_Sophisticated_Approach_To_Sustainable_Metabolic_Health_t0butq.jpg",
+      "filename": "A_Sophisticated_Approach_To_Sustainable_Metabolic_Health_t0butq.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/A_Sophisticated_Approach_To_Sustainable_Metabolic_Health_t0butq.jpg",
+      "dest_file": "public/themes/default/assets/images/A_Sophisticated_Approach_To_Sustainable_Metabolic_Health_t0butq.jpg",
+      "byte_size": 312109,
+      "sha256": "bd451a89e2290b29fc4e98664df927dcb35c96fdf0c3373df8da7e8babcba67b",
+      "dimensions": {
+        "width": 1069,
+        "height": 1640,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/GlpMicrodosingMaleLayout.tsx",
+          "line": 47,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341609/A_Sophisticated_Approach_To_Sustainable_Metabolic_Health_t0butq.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785341630/photo-content-86-img_vh2zio.jpg",
+      "filename": "photo-content-86-img_vh2zio.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/photo-content-86-img_vh2zio.jpg",
+      "dest_file": "public/themes/default/assets/images/photo-content-86-img_vh2zio.jpg",
+      "byte_size": 190072,
+      "sha256": "8ed758955d4c375f4c4192c528386028fa050964350edd2820d464d3cba56eb8",
+      "dimensions": {
+        "width": 1076,
+        "height": 1887,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/GlpMicrodosingMaleLayout.tsx",
+          "line": 19,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341630/photo-content-86-img_vh2zio.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785341657/photo-content-87-img_ufo98g.jpg",
+      "filename": "photo-content-87-img_ufo98g.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/photo-content-87-img_ufo98g.jpg",
+      "dest_file": "public/themes/default/assets/images/photo-content-87-img_ufo98g.jpg",
+      "byte_size": 196869,
+      "sha256": "53c35047615fb12b59cc853708b1a9735f35faea9d146a8c199b190bcace646a",
+      "dimensions": {
+        "width": 1415,
+        "height": 1360,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/GlpMicrodosingMaleLayout.tsx",
+          "line": 164,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341657/photo-content-87-img_ufo98g.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785348763/sexual-wellniess_j4jzp4.jpg",
+      "filename": "sexual-wellniess_j4jzp4.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/sexual-wellniess_j4jzp4.jpg",
+      "dest_file": "public/themes/default/assets/images/sexual-wellniess_j4jzp4.jpg",
+      "byte_size": 128621,
+      "sha256": "328878abb0e52aac47fca465d6771ba08c03ed556a29b90598cd0fb91f0bd709",
+      "dimensions": {
+        "width": 771,
+        "height": 1200,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/weight-loss/female/FemaleSexualHealthConcerns.tsx",
+          "line": 84,
+          "lineText": "src=\"https://res.cloudinary.com/khs2rcsr/image/upload/v1785348763/sexual-wellniess_j4jzp4.jpg\""
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785348927/shock-wase_a81nyl.jpg",
+      "filename": "shock-wase_a81nyl.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/shock-wase_a81nyl.jpg",
+      "dest_file": "public/themes/default/assets/images/shock-wase_a81nyl.jpg",
+      "byte_size": 95079,
+      "sha256": "5bcd9385ba62fea68c90546ff9ee1feb025d973e69eb2a27b56aa6af7fb79287",
+      "dimensions": {
+        "width": 1028,
+        "height": 1200,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+          "line": 266,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785348927/shock-wase_a81nyl.jpg',"
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/ShockwaveTherapyLayout.tsx",
+          "line": 35,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785348927/shock-wase_a81nyl.jpg',"
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785348989/benifits-shock-wave_fyyyuk.jpg",
+      "filename": "benifits-shock-wave_fyyyuk.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/benifits-shock-wave_fyyyuk.jpg",
+      "dest_file": "public/themes/default/assets/images/benifits-shock-wave_fyyyuk.jpg",
+      "byte_size": 115477,
+      "sha256": "914dd036ddf9ed9edaa28ef32ab3ec2ff8000287465b36f4e5f1af709c558eb7",
+      "dimensions": {
+        "width": 1244,
+        "height": 1500,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/ShockwaveTherapyLayout.tsx",
+          "line": 47,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785348989/benifits-shock-wave_fyyyuk.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785350545/photo-content-38-img_lxshmc.jpg",
+      "filename": "photo-content-38-img_lxshmc.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/photo-content-38-img_lxshmc.jpg",
+      "dest_file": "public/themes/default/assets/images/photo-content-38-img_lxshmc.jpg",
+      "byte_size": 58036,
+      "sha256": "fee7c022ada61b01f16974b24dc5c4bf6db523195372e64205d0e5bc58fba3eb",
+      "dimensions": {
+        "width": 771,
+        "height": 900,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hormoneTherapy/PatientBenefitsSection.tsx",
+          "line": 34,
+          "lineText": "imageSrc = 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350545/photo-content-38-img_lxshmc.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351200/after-2-img_iquqib.jpg",
+      "filename": "after-2-img_iquqib.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/after-2-img_iquqib.jpg",
+      "dest_file": "public/themes/default/assets/images/after-2-img_iquqib.jpg",
+      "byte_size": 83618,
+      "sha256": "be42cf523055036bc259dc5d8f555073a46931dfa6bf51c4805320cfef2e6091",
+      "dimensions": {
+        "width": 772,
+        "height": 948,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/HormoneTherapyCommonLayout.tsx",
+          "line": 100,
+          "lineText": "afterImage: \"https://res.cloudinary.com/khs2rcsr/image/upload/v1785351200/after-2-img_iquqib.jpg\","
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/HormoneTherapyMenLayout.tsx",
+          "line": 160,
+          "lineText": "afterImage: \"https://res.cloudinary.com/khs2rcsr/image/upload/v1785351200/after-2-img_iquqib.jpg\","
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351202/before-2-img_mqiped.jpg",
+      "filename": "before-2-img_mqiped.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/before-2-img_mqiped.jpg",
+      "dest_file": "public/themes/default/assets/images/before-2-img_mqiped.jpg",
+      "byte_size": 91066,
+      "sha256": "dd72686b644429e7f292b780242a9022d0dcf5cdb681073f617f7f1fc42f36dc",
+      "dimensions": {
+        "width": 771,
+        "height": 948,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/HormoneTherapyCommonLayout.tsx",
+          "line": 99,
+          "lineText": "beforeImage: \"https://res.cloudinary.com/khs2rcsr/image/upload/v1785351202/before-2-img_mqiped.jpg\","
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/HormoneTherapyMenLayout.tsx",
+          "line": 159,
+          "lineText": "beforeImage: \"https://res.cloudinary.com/khs2rcsr/image/upload/v1785351202/before-2-img_mqiped.jpg\","
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351203/after-img_uwehcq.jpg",
+      "filename": "after-img_uwehcq.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/after-img_uwehcq.jpg",
+      "dest_file": "public/themes/default/assets/images/after-img_uwehcq.jpg",
+      "byte_size": 113753,
+      "sha256": "c53793c8252f72f319eca71e8fb77e4020126462af612541b5c9544a03b47fc3",
+      "dimensions": {
+        "width": 772,
+        "height": 949,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/HormoneTherapyCommonLayout.tsx",
+          "line": 95,
+          "lineText": "afterImage: \"https://res.cloudinary.com/khs2rcsr/image/upload/v1785351203/after-img_uwehcq.jpg\","
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/HormoneTherapyMenLayout.tsx",
+          "line": 155,
+          "lineText": "afterImage: \"https://res.cloudinary.com/khs2rcsr/image/upload/v1785351203/after-img_uwehcq.jpg\","
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351204/before-img_jzflom.jpg",
+      "filename": "before-img_jzflom.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/before-img_jzflom.jpg",
+      "dest_file": "public/themes/default/assets/images/before-img_jzflom.jpg",
+      "byte_size": 68519,
+      "sha256": "619d3debe8ddec63a0ff06452def5b55f30820422034568a075d23a922c0d6b6",
+      "dimensions": {
+        "width": 771,
+        "height": 949,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/HormoneTherapyCommonLayout.tsx",
+          "line": 94,
+          "lineText": "beforeImage: \"https://res.cloudinary.com/khs2rcsr/image/upload/v1785351204/before-img_jzflom.jpg\","
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/HormoneTherapyMenLayout.tsx",
+          "line": 154,
+          "lineText": "beforeImage: \"https://res.cloudinary.com/khs2rcsr/image/upload/v1785351204/before-img_jzflom.jpg\","
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785406940/fitness-woman-measuring-her-body-isolated-weight-loss-concepts_231208-10391_pchkxx.avif",
+      "filename": "fitness-woman-measuring-her-body-isolated-weight-loss-concepts_231208-10391_pchkxx.avif",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/fitness-woman-measuring-her-body-isolated-weight-loss-concepts_231208-10391_pchkxx.avif",
+      "dest_file": "public/themes/default/assets/images/fitness-woman-measuring-her-body-isolated-weight-loss-concepts_231208-10391_pchkxx.avif",
+      "byte_size": 15402,
+      "sha256": "28db05bae3d7323c79c90649148ccf49338443a9fd38c9b2121363a7cfcdb224",
+      "dimensions": {
+        "width": 417,
+        "height": 626,
+        "format": "heif"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+          "line": 96,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785406940/fitness-woman-measuring-her-body-isolated-weight-loss-concepts_231208-10391_pchkxx.avif',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785407018/photo-content-54-img_uz9klt.jpg",
+      "filename": "photo-content-54-img_uz9klt.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/photo-content-54-img_uz9klt.jpg",
+      "dest_file": "public/themes/default/assets/images/photo-content-54-img_uz9klt.jpg",
+      "byte_size": 89056,
+      "sha256": "0a52fa9166c8ca773c31b23cd8d0052b21b485766746565019675b1eaa75e045",
+      "dimensions": {
+        "width": 1028,
+        "height": 1200,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+          "line": 151,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785407018/photo-content-54-img_uz9klt.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785469122/bhrt-therapy-1_l5crff.jpg",
+      "filename": "bhrt-therapy-1_l5crff.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/bhrt-therapy-1_l5crff.jpg",
+      "dest_file": "public/themes/default/assets/images/bhrt-therapy-1_l5crff.jpg",
+      "byte_size": 65370,
+      "sha256": "5edf69941d3cf766287186ad5807a7292ceaea99ecaa24644ef1a3878abf2c19",
+      "dimensions": {
+        "width": 771,
+        "height": 737,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+          "line": 45,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469122/bhrt-therapy-1_l5crff.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785469157/photo-content-22-img_t5x05r.jpg",
+      "filename": "photo-content-22-img_t5x05r.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/photo-content-22-img_t5x05r.jpg",
+      "dest_file": "public/themes/default/assets/images/photo-content-22-img_t5x05r.jpg",
+      "byte_size": 49276,
+      "sha256": "9c155f41dadba504f55366047c57541a970b19c4f8445267e28343a08c5bcddc",
+      "dimensions": {
+        "width": 770,
+        "height": 563,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+          "line": 63,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469157/photo-content-22-img_t5x05r.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785469215/bhrt-therapy-2_a6fw5h.jpg",
+      "filename": "bhrt-therapy-2_a6fw5h.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/bhrt-therapy-2_a6fw5h.jpg",
+      "dest_file": "public/themes/default/assets/images/bhrt-therapy-2_a6fw5h.jpg",
+      "byte_size": 63666,
+      "sha256": "1c7d72a0b91b7e90fbd4ac7804c828d33b333b608e28c3925e5449f8801cb0f2",
+      "dimensions": {
+        "width": 770,
+        "height": 690,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+          "line": 73,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469215/bhrt-therapy-2_a6fw5h.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785469249/photo-content-24-img_t5dmp1.jpg",
+      "filename": "photo-content-24-img_t5dmp1.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/photo-content-24-img_t5dmp1.jpg",
+      "dest_file": "public/themes/default/assets/images/photo-content-24-img_t5dmp1.jpg",
+      "byte_size": 49990,
+      "sha256": "b8f05769cb1eb70c5ec37dd9bf2b2c98723a754400019f5142d46620b6982629",
+      "dimensions": {
+        "width": 770,
+        "height": 563,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+          "line": 83,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469249/photo-content-24-img_t5dmp1.jpg',"
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+          "line": 232,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469249/photo-content-24-img_t5dmp1.jpg',"
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785469289/photo-content-25-img_ohyzgw.jpg",
+      "filename": "photo-content-25-img_ohyzgw.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/photo-content-25-img_ohyzgw.jpg",
+      "dest_file": "public/themes/default/assets/images/photo-content-25-img_ohyzgw.jpg",
+      "byte_size": 62161,
+      "sha256": "13d168fb645bd4897702f1a226fef855ea5d817ea914b176d39ea654a86adc52",
+      "dimensions": {
+        "width": 789,
+        "height": 779,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+          "line": 94,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469289/photo-content-25-img_ohyzgw.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785470190/bhrt-comprehence_lb683e.jpg",
+      "filename": "bhrt-comprehence_lb683e.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/bhrt-comprehence_lb683e.jpg",
+      "dest_file": "public/themes/default/assets/images/bhrt-comprehence_lb683e.jpg",
+      "byte_size": 98349,
+      "sha256": "335e817d254ca3e529e09c42fef66ee1699881e77bd0946b71e260cbd821281c",
+      "dimensions": {
+        "width": 1052,
+        "height": 900,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+          "line": 115,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470190/bhrt-comprehence_lb683e.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785470222/unique-compreence_eozbll.jpg",
+      "filename": "unique-compreence_eozbll.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/unique-compreence_eozbll.jpg",
+      "dest_file": "public/themes/default/assets/images/unique-compreence_eozbll.jpg",
+      "byte_size": 76267,
+      "sha256": "16040b774b35c8eb7b52087e5e63bb0f1a3f225c2fc317212f4b2c312382d9f3",
+      "dimensions": {
+        "width": 789,
+        "height": 674,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+          "line": 135,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470222/unique-compreence_eozbll.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785470245/benifit-bhrt_l8h8uu.jpg",
+      "filename": "benifit-bhrt_l8h8uu.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/benifit-bhrt_l8h8uu.jpg",
+      "dest_file": "public/themes/default/assets/images/benifit-bhrt_l8h8uu.jpg",
+      "byte_size": 76811,
+      "sha256": "a5325a67eedd5861504efa8656ea3d7321ec88d42f330d0cadef874419bc5f1b",
+      "dimensions": {
+        "width": 789,
+        "height": 826,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+          "line": 156,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470245/benifit-bhrt_l8h8uu.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785470601/jhon_kurtz_ovd4j1.png",
+      "filename": "jhon_kurtz_ovd4j1.png",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/jhon_kurtz_ovd4j1.png",
+      "dest_file": "public/themes/default/assets/images/jhon_kurtz_ovd4j1.png",
+      "byte_size": 201580,
+      "sha256": "ad376d78c2d40b776b22455d11ba2ea27d0a0aba76f6efafad301c6a864c4391",
+      "dimensions": {
+        "width": 773,
+        "height": 772,
+        "format": "png"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/PrpOfferLayout.tsx",
+          "line": 141,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470601/jhon_kurtz_ovd4j1.png',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785474802/customized-facial_bs4wui.webp",
+      "filename": "customized-facial_bs4wui.webp",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/customized-facial_bs4wui.webp",
+      "dest_file": "public/themes/default/assets/images/customized-facial_bs4wui.webp",
+      "byte_size": 77964,
+      "sha256": "e95054ea8ae680f4bd13c636a2672a1138dcff71c708209b27cd50d8f48cafbb",
+      "dimensions": {
+        "width": 1080,
+        "height": 1080,
+        "format": "webp"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+          "line": 118,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785474802/customized-facial_bs4wui.webp',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785474849/Dermalogica_Facial-1_sbowfo.webp",
+      "filename": "Dermalogica_Facial-1_sbowfo.webp",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/Dermalogica_Facial-1_sbowfo.webp",
+      "dest_file": "public/themes/default/assets/images/Dermalogica_Facial-1_sbowfo.webp",
+      "byte_size": 29574,
+      "sha256": "9e6de8a179444667d16fdbc63a4e917d6207a08bdbf1bca18fe742448914d262",
+      "dimensions": {
+        "width": 700,
+        "height": 600,
+        "format": "webp"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+          "line": 129,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785474849/Dermalogica_Facial-1_sbowfo.webp',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785474917/daimond-facrila_z2gvhf.webp",
+      "filename": "daimond-facrila_z2gvhf.webp",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/daimond-facrila_z2gvhf.webp",
+      "dest_file": "public/themes/default/assets/images/daimond-facrila_z2gvhf.webp",
+      "byte_size": 23428,
+      "sha256": "75bf76f23489e5c47bc7f0f4178899892244cf85ad1039e5c977d7402285477d",
+      "dimensions": {
+        "width": 777,
+        "height": 777,
+        "format": "webp"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+          "line": 140,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785474917/daimond-facrila_z2gvhf.webp',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785475006/iv-im_fcdnry.webp",
+      "filename": "iv-im_fcdnry.webp",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/iv-im_fcdnry.webp",
+      "dest_file": "public/themes/default/assets/images/iv-im_fcdnry.webp",
+      "byte_size": 44966,
+      "sha256": "848635ce38fa2beeb85d2de974394f8415508fa71a0c251d39e967231a9947ff",
+      "dimensions": {
+        "width": 550,
+        "height": 519,
+        "format": "webp"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+          "line": 151,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785475006/iv-im_fcdnry.webp',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785475166/hormone-replacement_zvjw8a.avif",
+      "filename": "hormone-replacement_zvjw8a.avif",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hormone-replacement_zvjw8a.avif",
+      "dest_file": "public/themes/default/assets/images/hormone-replacement_zvjw8a.avif",
+      "byte_size": 19873,
+      "sha256": "17aa892c2ecc28f216b75f9d20043c8bb6abaca891f2d6515661e999ad68f1b0",
+      "dimensions": {
+        "width": 1200,
+        "height": 900,
+        "format": "heif"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+          "line": 117,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785475166/hormone-replacement_zvjw8a.avif',"
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+          "line": 107,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785475166/hormone-replacement_zvjw8a.avif',"
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785599006/men-hair-restoration_krr29t.jpg",
+      "filename": "men-hair-restoration_krr29t.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/men-hair-restoration_krr29t.jpg",
+      "dest_file": "public/themes/default/assets/images/men-hair-restoration_krr29t.jpg",
+      "byte_size": 137242,
+      "sha256": "33a0fbe83a5507ee8f549c62fbca2a4abf4f0dac59e922d3337f458d7e8f55b4",
+      "dimensions": {
+        "width": 1028,
+        "height": 1020,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/male/HowPRPTreatsHairLoss.tsx",
+          "line": 13,
+          "lineText": "'https://res.cloudinary.com/khs2rcsr/image/upload/v1785599006/men-hair-restoration_krr29t.jpg'"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785817252/video-11-img_f8wfjb.gif",
+      "filename": "video-11-img_f8wfjb.gif",
+      "is_gif": true,
+      "local_path": "/themes/default/assets/images/video-11-img_f8wfjb.gif",
+      "dest_file": "public/themes/default/assets/images/video-11-img_f8wfjb.gif",
+      "byte_size": 5609002,
+      "sha256": "913b9eba6e8a923eb0e52ab5c84429362e5db9be076e0a8851a59e689c121297",
+      "dimensions": {
+        "width": 730,
+        "height": 410,
+        "format": "gif"
+      },
+      "occurrences": [
+        {
+          "file": "src/content/pages/home-media.ts",
+          "line": 14,
+          "lineText": "'https://res.cloudinary.com/khs2rcsr/image/upload/v1785817252/video-11-img_f8wfjb.gif',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1785860659/contact-3-img_os4jyj.jpg",
+      "filename": "contact-3-img_os4jyj.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/contact-3-img_os4jyj.jpg",
+      "dest_file": "public/themes/default/assets/images/contact-3-img_os4jyj.jpg",
+      "byte_size": 255971,
+      "sha256": "3e6a9c905ee224e873c8d9af223246d946104c71edb9d751a04412caeb05ccfb",
+      "dimensions": {
+        "width": 2250,
+        "height": 1500,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/HormoneTherapyCommonLayout.tsx",
+          "line": 137,
+          "lineText": "image='https://res.cloudinary.com/khs2rcsr/image/upload/v1785860659/contact-3-img_os4jyj.jpg'"
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementOfferLayout.tsx",
+          "line": 216,
+          "lineText": "image='https://res.cloudinary.com/khs2rcsr/image/upload/v1785860659/contact-3-img_os4jyj.jpg'"
+        },
+        {
+          "file": "src/content/pages/contact-media.ts",
+          "line": 8,
+          "lineText": "infoPhoto: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785860659/contact-3-img_os4jyj.jpg',"
+        }
+      ],
+      "occurrence_count": 3
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1786128022/hero-2-bg_ynbqdu.jpg",
+      "filename": "hero-2-bg_ynbqdu.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hero-2-bg_ynbqdu.jpg",
+      "dest_file": "public/themes/default/assets/images/hero-2-bg_ynbqdu.jpg",
+      "byte_size": 183213,
+      "sha256": "31248499dd95b7bb4865b5bdfa3ca3b1c9fea2f9780b91b96dfb71642ce0c192",
+      "dimensions": {
+        "width": 2875,
+        "height": 899,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/content/pages/home-media.ts",
+          "line": 24,
+          "lineText": "closingBackground: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786128022/hero-2-bg_ynbqdu.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1786131809/pprr-5_lwkuyi.jpg",
+      "filename": "pprr-5_lwkuyi.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/pprr-5_lwkuyi.jpg",
+      "dest_file": "public/themes/default/assets/images/pprr-5_lwkuyi.jpg",
+      "byte_size": 77477,
+      "sha256": "8dddd0398cc16f784e0ef229f04713500477ed23a3edb83729a247a939ffa634",
+      "dimensions": {
+        "width": 809,
+        "height": 556,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/male/PRPTreatmentProcess.tsx",
+          "line": 53,
+          "lineText": "url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131809/pprr-5_lwkuyi.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1786131810/ppr-4_k8cgor.jpg",
+      "filename": "ppr-4_k8cgor.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/ppr-4_k8cgor.jpg",
+      "dest_file": "public/themes/default/assets/images/ppr-4_k8cgor.jpg",
+      "byte_size": 114217,
+      "sha256": "15345754dfcecb48bf2010344402b4b231a5a3e3086f22991c6c67ca35c0e5b5",
+      "dimensions": {
+        "width": 809,
+        "height": 556,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/male/PRPTreatmentProcess.tsx",
+          "line": 45,
+          "lineText": "url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131810/ppr-4_k8cgor.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1786131811/ppr-3_dx0mel.jpg",
+      "filename": "ppr-3_dx0mel.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/ppr-3_dx0mel.jpg",
+      "dest_file": "public/themes/default/assets/images/ppr-3_dx0mel.jpg",
+      "byte_size": 184348,
+      "sha256": "f0320ae8fe0ddc642d90fb27ef167bb333427d9690cb862f178ea478618cb8d2",
+      "dimensions": {
+        "width": 607,
+        "height": 417,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/male/PRPTreatmentProcess.tsx",
+          "line": 38,
+          "lineText": "url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131811/ppr-3_dx0mel.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1786131812/pprr-2_anhbzg.jpg",
+      "filename": "pprr-2_anhbzg.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/pprr-2_anhbzg.jpg",
+      "dest_file": "public/themes/default/assets/images/pprr-2_anhbzg.jpg",
+      "byte_size": 57622,
+      "sha256": "d2a24df1c89ecf95f8be98b59bc32c0e9ab57ca84ce3302845b2e2bc20f15973",
+      "dimensions": {
+        "width": 808,
+        "height": 556,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/male/PRPTreatmentProcess.tsx",
+          "line": 30,
+          "lineText": "url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131812/pprr-2_anhbzg.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1786131814/ppr-t-11_kvil8k.jpg",
+      "filename": "ppr-t-11_kvil8k.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/ppr-t-11_kvil8k.jpg",
+      "dest_file": "public/themes/default/assets/images/ppr-t-11_kvil8k.jpg",
+      "byte_size": 310519,
+      "sha256": "245c432e65ed782c5dbf7f00f987b8a96ead3eca8832b6dd106d7dacfc38c4af",
+      "dimensions": {
+        "width": 606,
+        "height": 417,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hair-restore/male/PRPTreatmentProcess.tsx",
+          "line": 20,
+          "lineText": "url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131814/ppr-t-11_kvil8k.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1786254314/testimonial-9-bg_fsgwrv.jpg",
+      "filename": "testimonial-9-bg_fsgwrv.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/testimonial-9-bg_fsgwrv.jpg",
+      "dest_file": "public/themes/default/assets/images/testimonial-9-bg_fsgwrv.jpg",
+      "byte_size": 127323,
+      "sha256": "b8288099f7e23d956638c01f951bff9d9fcecf56a8ea57ad6bc4e9a1167ec1e4",
+      "dimensions": {
+        "width": 2160,
+        "height": 1016,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+          "line": 204,
+          "lineText": "backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1786254314/testimonial-9-bg_fsgwrv.jpg'"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1786254414/hero-13-bg_xi7jhs.jpg",
+      "filename": "hero-13-bg_xi7jhs.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hero-13-bg_xi7jhs.jpg",
+      "dest_file": "public/themes/default/assets/images/hero-13-bg_xi7jhs.jpg",
+      "byte_size": 54893,
+      "sha256": "ffe16ea10d3227d657ccd5844570b22a4d3baca1ce8c542586650fe97d822ba1",
+      "dimensions": {
+        "width": 2160,
+        "height": 674,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/app/(marketing)/blog/page.tsx",
+          "line": 48,
+          "lineText": "src=\"https://res.cloudinary.com/khs2rcsr/image/upload/v1786254414/hero-13-bg_xi7jhs.jpg\""
+        },
+        {
+          "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+          "line": 215,
+          "lineText": "<ClosingCTA {...treatment.closingCta} textWidth='800' centered backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1786254414/hero-13-bg_xi7jhs.jpg' />"
+        }
+      ],
+      "occurrence_count": 2
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1786257656/photo-content-11-img_hdhnzm.jpg",
+      "filename": "photo-content-11-img_hdhnzm.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/photo-content-11-img_hdhnzm.jpg",
+      "dest_file": "public/themes/default/assets/images/photo-content-11-img_hdhnzm.jpg",
+      "byte_size": 194269,
+      "sha256": "8294c38ed4267aa86a2ae3d7bac6f2dfac02f1b2a66e4d0d9935b0257026f45b",
+      "dimensions": {
+        "width": 771,
+        "height": 826,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/PrpOfferLayout.tsx",
+          "line": 47,
+          "lineText": "src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786257656/photo-content-11-img_hdhnzm.jpg',"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1786257977/testimonial-10-bg_naq3hm.jpg",
+      "filename": "testimonial-10-bg_naq3hm.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/testimonial-10-bg_naq3hm.jpg",
+      "dest_file": "public/themes/default/assets/images/testimonial-10-bg_naq3hm.jpg",
+      "byte_size": 318458,
+      "sha256": "70e38865cbdb163905bc50f8f4b5a48346376b086ecee2ffd96276b99ec50ff2",
+      "dimensions": {
+        "width": 2159,
+        "height": 1199,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/PrpOfferLayout.tsx",
+          "line": 134,
+          "lineText": "backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1786257977/testimonial-10-bg_naq3hm.jpg'"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1787295108/hero-14-bg_pv3kst.jpg",
+      "filename": "hero-14-bg_pv3kst.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hero-14-bg_pv3kst.jpg",
+      "dest_file": "public/themes/default/assets/images/hero-14-bg_pv3kst.jpg",
+      "byte_size": 120713,
+      "sha256": "1bb116b30c12b4a74df900691515da394901c7330516634a1892230bb04494aa",
+      "dimensions": {
+        "width": 2160,
+        "height": 641,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/PlateletRichPlasmaHair.tsx",
+          "line": 63,
+          "lineText": "backgroundImage=\"https://res.cloudinary.com/khs2rcsr/image/upload/v1787295108/hero-14-bg_pv3kst.jpg\""
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1787305502/hero-29-bg_xzb0sa.jpg",
+      "filename": "hero-29-bg_xzb0sa.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/hero-29-bg_xzb0sa.jpg",
+      "dest_file": "public/themes/default/assets/images/hero-29-bg_xzb0sa.jpg",
+      "byte_size": 113316,
+      "sha256": "58b51a2673419312f0f65bdd1f3ccba307333bb040357edaa8f7eeb1965fcd9a",
+      "dimensions": {
+        "width": 2160,
+        "height": 600,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/templates/HomeTemplate.tsx",
+          "line": 95,
+          "lineText": "backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1787305502/hero-29-bg_xzb0sa.jpg'"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1787369949/photo-content-72-img_stcudn.jpg",
+      "filename": "photo-content-72-img_stcudn.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/photo-content-72-img_stcudn.jpg",
+      "dest_file": "public/themes/default/assets/images/photo-content-72-img_stcudn.jpg",
+      "byte_size": 178657,
+      "sha256": "928c535dcd521a3c3b776888fd2edfb6a106d3edbf5154d006dbe27054c9e2ff",
+      "dimensions": {
+        "width": 1028,
+        "height": 1300,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/compontents-custom/hormoneTherapy/hub/HubIntroBenefits.tsx",
+          "line": 34,
+          "lineText": "style={{ backgroundImage: \"url('https://res.cloudinary.com/khs2rcsr/image/upload/v1787369949/photo-content-72-img_stcudn.jpg')\" }}"
+        }
+      ],
+      "occurrence_count": 1
+    },
+    {
+      "url": "https://res.cloudinary.com/khs2rcsr/image/upload/v1787370832/testimonial-2-bg_1_wvumgb.jpg",
+      "filename": "testimonial-2-bg_1_wvumgb.jpg",
+      "is_gif": false,
+      "local_path": "/themes/default/assets/images/testimonial-2-bg_1_wvumgb.jpg",
+      "dest_file": "public/themes/default/assets/images/testimonial-2-bg_1_wvumgb.jpg",
+      "byte_size": 213964,
+      "sha256": "8a5913801ab3bdb06d5ae728ca2a7bbc782adf5f752b9207841f36f65e1150cb",
+      "dimensions": {
+        "width": 2880,
+        "height": 1501,
+        "format": "jpeg"
+      },
+      "occurrences": [
+        {
+          "file": "src/components/sections/custom/templates-custom/HormoneTherapyCommonLayout.tsx",
+          "line": 128,
+          "lineText": "backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1787370832/testimonial-2-bg_1_wvumgb.jpg'"
+        }
+      ],
+      "occurrence_count": 1
+    }
+  ]
+}

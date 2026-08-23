@@ -1,0 +1,359 @@
+{
+  "chunk": 2,
+  "of": 4,
+  "count": 8,
+  "image_ids": [
+    "IMG-041",
+    "IMG-042",
+    "IMG-043",
+    "IMG-044",
+    "IMG-045",
+    "IMG-046",
+    "IMG-047",
+    "IMG-048"
+  ],
+  "images": [
+    {
+      "image_id": "IMG-041",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/column-box-3-img.png",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/column-box-3-img.png"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-3-img.png",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/hormoneTherapy/hub/HubOtherTreatments.tsx",
+          "source_line": 22,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-3-img.png",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "HubOtherTreatments",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-3-img.png"
+        },
+        {
+          "source_file": "src/content/pages/home-services.ts",
+          "source_line": 43,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-3-img.png",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "home-services",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-3-img.png"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/hormoneTherapy/hub/HubOtherTreatments.tsx",
+        "first_source_line": 22
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 2,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/column-box-3-img.png",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 2
+      }
+    },
+    {
+      "image_id": "IMG-042",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/column-box-6-img.png",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/column-box-6-img.png"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-6-img.png",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/hormoneTherapy/hub/HubOtherTreatments.tsx",
+          "source_line": 29,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-6-img.png",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "HubOtherTreatments",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-6-img.png"
+        },
+        {
+          "source_file": "src/content/pages/home-services.ts",
+          "source_line": 57,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-6-img.png",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "home-services",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-6-img.png"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/hormoneTherapy/hub/HubOtherTreatments.tsx",
+        "first_source_line": 29
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 2,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/column-box-6-img.png",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 2
+      }
+    },
+    {
+      "image_id": "IMG-043",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/photo-content-67-img.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-67-img.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-67-img.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/WhoThisProgramIsFor.tsx",
+          "source_line": 20,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-67-img.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "WhoThisProgramIsFor",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-67-img.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/WhoThisProgramIsFor.tsx",
+        "first_source_line": 20
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/photo-content-67-img.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-044",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/photo-content-68-img.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-68-img.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-68-img.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/WhoThisProgramIsFor.tsx",
+          "source_line": 76,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-68-img.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "WhoThisProgramIsFor",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-68-img.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/WhoThisProgramIsFor.tsx",
+        "first_source_line": 76
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/photo-content-68-img.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-045",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/photo-content-69-img.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-69-img.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-69-img.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/WhyThisApproachWorks.tsx",
+          "source_line": 21,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-69-img.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "WhyThisApproachWorks",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-69-img.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/WhyThisApproachWorks.tsx",
+        "first_source_line": 21
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/photo-content-69-img.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-046",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/hero-25-bg.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/hero-25-bg.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/hero-25-bg.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/WeightLossClosingCTA.tsx",
+          "source_line": 4,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/hero-25-bg.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "WeightLossClosingCTA",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/hero-25-bg.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/WeightLossClosingCTA.tsx",
+        "first_source_line": 4
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/hero-25-bg.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-047",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/photo-content-64-img.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-64-img.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-64-img.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/PersonalizedMan.tsx",
+          "source_line": 13,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-64-img.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "PersonalizedMan",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-64-img.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/PersonalizedMan.tsx",
+        "first_source_line": 13
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/photo-content-64-img.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-048",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/photo-content-65-img.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-65-img.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-65-img.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/PersonalizedMan.tsx",
+          "source_line": 14,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-65-img.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "PersonalizedMan",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-65-img.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/weight-loss/male/PersonalizedMan.tsx",
+        "first_source_line": 14
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/photo-content-65-img.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    }
+  ]
+}

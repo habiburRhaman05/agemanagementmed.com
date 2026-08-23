@@ -1,0 +1,1526 @@
+{
+  "400": [
+    {
+      "src": "https://picsum.photos/seed/statesboro-rebecca-spacek/400/400",
+      "alt": "Rebecca Spacek, Laser Practitioner & Aesthetician",
+      "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+      "line": 44,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "https://picsum.photos/seed/statesboro-tamara-bell/400/400",
+      "alt": "Tamara Bell, Exercise Physiologist and Nutritionist",
+      "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+      "line": 58,
+      "pattern": "object-literal"
+    }
+  ],
+  "1200": [
+    {
+      "src": "https://picsum.photos/seed/samm-newsletter-hero/1600/1200",
+      "alt": "",
+      "file": "src/app/(marketing)/newsletter/page.tsx",
+      "line": 28,
+      "pattern": "jsx"
+    }
+  ],
+  "hero-13-bg_xi7jhs.jpg": [
+    {
+      "src": "/themes/default/assets/images/hero-13-bg_xi7jhs.jpg",
+      "alt": "",
+      "file": "src/app/(marketing)/blog/page.tsx",
+      "line": 47,
+      "pattern": "jsx"
+    }
+  ],
+  "samm-logo.png": [
+    {
+      "src": "/images/samm-logo.png",
+      "alt": null,
+      "file": "src/components/layout/HeaderClient.tsx",
+      "line": 136,
+      "pattern": "jsx"
+    }
+  ],
+  "award-11-img.png": [
+    {
+      "src": "/images/award-11-img.png",
+      "alt": "Best of Pooler 2025 Winner",
+      "file": "src/components/sections/AwardsSection.tsx",
+      "line": 24,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-11-img.png",
+      "alt": "Best of Pooler 2025 Winner",
+      "file": "src/content/pages/experts.ts",
+      "line": 62,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-11-img.png",
+      "alt": "Best of Pooler 2025 Winner",
+      "file": "src/content/pages/home.ts",
+      "line": 105,
+      "pattern": "object-literal"
+    }
+  ],
+  "award-12-img.png": [
+    {
+      "src": "/images/award-12-img.png",
+      "alt": "Best Awards of Savannah 2025",
+      "file": "src/components/sections/AwardsSection.tsx",
+      "line": 25,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-12-img.png",
+      "alt": "Best Awards of Savannah 2025",
+      "file": "src/content/pages/experts.ts",
+      "line": 63,
+      "pattern": "object-literal"
+    }
+  ],
+  "award-13-img.png": [
+    {
+      "src": "/images/award-13-img.png",
+      "alt": "Best Awards of Savannah 2024 Winner",
+      "file": "src/components/sections/AwardsSection.tsx",
+      "line": 26,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-13-img.png",
+      "alt": "Best Awards of Savannah 2024 Winner",
+      "file": "src/content/pages/experts.ts",
+      "line": 64,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-13-img.png",
+      "alt": "Best Awards of Savannah 2024 Winner",
+      "file": "src/content/pages/home.ts",
+      "line": 106,
+      "pattern": "object-literal"
+    }
+  ],
+  "award-14-img.png": [
+    {
+      "src": "/images/award-14-img.png",
+      "alt": "Best Awards of Savannah 2024 Winner",
+      "file": "src/components/sections/AwardsSection.tsx",
+      "line": 27,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-14-img.png",
+      "alt": "Best Awards of Savannah 2024 Winner",
+      "file": "src/content/pages/experts.ts",
+      "line": 65,
+      "pattern": "object-literal"
+    }
+  ],
+  "award-15-img.png": [
+    {
+      "src": "/images/award-15-img.png",
+      "alt": "Best Awards of Savannah 2023 Winner",
+      "file": "src/components/sections/AwardsSection.tsx",
+      "line": 28,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-15-img.png",
+      "alt": "Best Awards of Savannah 2023 Winner",
+      "file": "src/content/pages/experts.ts",
+      "line": 66,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-15-img.png",
+      "alt": "Best Awards of Savannah 2023 Winner",
+      "file": "src/content/pages/home.ts",
+      "line": 107,
+      "pattern": "object-literal"
+    }
+  ],
+  "award-16-img.png": [
+    {
+      "src": "/images/award-16-img.png",
+      "alt": "Best Awards of Savannah 2022 Winner",
+      "file": "src/components/sections/AwardsSection.tsx",
+      "line": 29,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-16-img.png",
+      "alt": "Best Awards of Savannah 2022 Winner",
+      "file": "src/content/pages/experts.ts",
+      "line": 67,
+      "pattern": "object-literal"
+    }
+  ],
+  "award-17-img.png": [
+    {
+      "src": "/images/award-17-img.png",
+      "alt": "Best Awards of Savannah 2021 Winner",
+      "file": "src/components/sections/AwardsSection.tsx",
+      "line": 30,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-17-img.png",
+      "alt": "Best Awards of Savannah 2021 Winner",
+      "file": "src/content/pages/experts.ts",
+      "line": 68,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-17-img.png",
+      "alt": "Best Awards of Savannah 2021 Winner",
+      "file": "src/content/pages/home.ts",
+      "line": 108,
+      "pattern": "object-literal"
+    }
+  ],
+  "award-18-img.png": [
+    {
+      "src": "/images/award-18-img.png",
+      "alt": "Best Awards of Savannah 2020 Winner",
+      "file": "src/components/sections/AwardsSection.tsx",
+      "line": 31,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-18-img.png",
+      "alt": "Best Awards of Savannah 2020 Winner",
+      "file": "src/content/pages/experts.ts",
+      "line": 69,
+      "pattern": "object-literal"
+    }
+  ],
+  "award-19-img.png": [
+    {
+      "src": "/images/award-19-img.png",
+      "alt": "Best Awards of Savannah 2019 Winner",
+      "file": "src/components/sections/AwardsSection.tsx",
+      "line": 32,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-19-img.png",
+      "alt": "Best Awards of Savannah 2019 Winner",
+      "file": "src/content/pages/experts.ts",
+      "line": 70,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/award-19-img.png",
+      "alt": "Best Awards of Savannah 2019 Winner",
+      "file": "src/content/pages/home.ts",
+      "line": 109,
+      "pattern": "object-literal"
+    }
+  ],
+  "hero-banner-bg.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/hero-banner-bg.jpg",
+      "alt": "Bioidentical Hormone Replacement Therapy for Men",
+      "file": "src/components/sections/custom/compontents-custom/hormoneTherapy/MaleHeroBanner.tsx",
+      "line": 32,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/hero-banner-bg.jpg",
+      "alt": "A man in natural light, representing restored strength and vitality",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 24,
+      "pattern": "object-literal"
+    }
+  ],
+  "column-box-7-img.jpg": [
+    {
+      "src": "/images/column-box-7-img.jpg",
+      "alt": "Woman smiling outdoors",
+      "file": "src/components/sections/custom/compontents-custom/hormoneTherapy/SymptomsGridStatic.tsx",
+      "line": 104,
+      "pattern": "jsx"
+    }
+  ],
+  "sexual-wellniess_j4jzp4.jpg": [
+    {
+      "src": "/themes/default/assets/images/sexual-wellniess_j4jzp4.jpg",
+      "alt": "A woman reflecting on changes to her intimacy and wellness",
+      "file": "src/components/sections/custom/compontents-custom/weight-loss/female/FemaleSexualHealthConcerns.tsx",
+      "line": 83,
+      "pattern": "jsx"
+    }
+  ],
+  "hero.jpg": [
+    {
+      "src": "/images/treatments/weight-loss-men/hero.jpg",
+      "alt": "A man committed to his weight loss journey",
+      "file": "src/components/sections/custom/compontents-custom/weight-loss/male/WeightLossMaleHeroBanner.tsx",
+      "line": 26,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/laser-vaginal-therapy/hero.jpg",
+      "alt": "An older couple embracing outdoors",
+      "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+      "line": 96,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/sexual-wellness-men/hero.jpg",
+      "alt": "A confident, distinguished middle-aged man",
+      "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+      "line": 173,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/sexual-wellness-women/hero.jpg",
+      "alt": "A close, tender moment between a couple",
+      "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+      "line": 207,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/weight-loss-men/hero.jpg",
+      "alt": "An active man building strength in the gym",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 558,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/aesthetics/hero.jpg",
+      "alt": "A clinical team performing a precise medical aesthetics treatment",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 934,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bhrt-hrt-trt/hero.jpg",
+      "alt": "A provider reviewing a hormone therapy plan with a patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1007,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bhrt-hrt-trt/hero.jpg",
+      "alt": "A provider reviewing a hormone therapy plan with a patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1021,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/glp1-microdosing-women/hero.jpg",
+      "alt": "An active woman staying hydrated outdoors",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1331,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/glp1-microdosing-women/hero.jpg",
+      "alt": "An active woman staying hydrated outdoors",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1342,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/hair-restoration-men/hero.jpg",
+      "alt": "A confident man with a full, healthy head of hair",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1504,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/hair-restoration-men/hero.jpg",
+      "alt": "A confident man with a full, healthy head of hair",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1515,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/hair-restoration-women/hero.jpg",
+      "alt": "A woman with full, healthy, voluminous hair in golden-hour light",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1732,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/hair-restoration-women/hero.jpg",
+      "alt": "A woman with full, healthy, voluminous hair in golden-hour light",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1743,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/laser-vaginal-therapy/hero.jpg",
+      "alt": "A couple embracing warmly outdoors",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1911,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/laser-vaginal-therapy/hero.jpg",
+      "alt": "A couple embracing warmly outdoors",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1922,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/perimenopause-menopause/hero.jpg",
+      "alt": "An active mature woman, strength training",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2061,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/perimenopause-menopause/hero.jpg",
+      "alt": "An active mature woman, strength training",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2071,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/perimenopause-menopause/hero.jpg",
+      "alt": "An active mature woman, strength training",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2141,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/sexual-wellness-men/hero.jpg",
+      "alt": "A confident, distinguished middle-aged man",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2308,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/sexual-wellness-women/hero.jpg",
+      "alt": "A close, tender moment between a couple",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2450,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/sexual-wellness-women/hero.jpg",
+      "alt": "A close, tender moment between a couple",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2460,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/shockwave-therapy/hero.jpg",
+      "alt": "An athletic man in a gym, representing restored strength and vitality",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2587,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/shockwave-therapy/hero.jpg",
+      "alt": "An athletic man in a gym, representing restored strength and vitality",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2598,
+      "pattern": "object-literal"
+    }
+  ],
+  "bhrt-therapy-1_l5crff.jpg": [
+    {
+      "src": "/themes/default/assets/images/bhrt-therapy-1_l5crff.jpg",
+      "alt": "A woman stretching outdoors as part of an active, healthy lifestyle",
+      "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+      "line": 45,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-22-img_t5x05r.jpg": [
+    {
+      "src": "/themes/default/assets/images/photo-content-22-img_t5x05r.jpg",
+      "alt": "A woman reviewing paperwork at home",
+      "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+      "line": 63,
+      "pattern": "object-literal"
+    }
+  ],
+  "bhrt-therapy-2_a6fw5h.jpg": [
+    {
+      "src": "/themes/default/assets/images/bhrt-therapy-2_a6fw5h.jpg",
+      "alt": "A man being active outdoors in the mountains",
+      "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+      "line": 73,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-24-img_t5dmp1.jpg": [
+    {
+      "src": "/themes/default/assets/images/photo-content-24-img_t5dmp1.jpg",
+      "alt": "A couple enjoying time together outdoors",
+      "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+      "line": 83,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/themes/default/assets/images/photo-content-24-img_t5dmp1.jpg",
+      "alt": "A couple enjoying time together outdoors",
+      "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+      "line": 232,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-25-img_ohyzgw.jpg": [
+    {
+      "src": "/themes/default/assets/images/photo-content-25-img_ohyzgw.jpg",
+      "alt": "A woman looking fatigued while working at her laptop",
+      "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+      "line": 94,
+      "pattern": "object-literal"
+    }
+  ],
+  "bhrt-comprehence_lb683e.jpg": [
+    {
+      "src": "/themes/default/assets/images/bhrt-comprehence_lb683e.jpg",
+      "alt": "A provider consulting with a patient in Pooler, GA",
+      "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+      "line": 115,
+      "pattern": "object-literal"
+    }
+  ],
+  "unique-compreence_eozbll.jpg": [
+    {
+      "src": "/themes/default/assets/images/unique-compreence_eozbll.jpg",
+      "alt": "Two providers reviewing lab paperwork together",
+      "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+      "line": 135,
+      "pattern": "object-literal"
+    }
+  ],
+  "benifit-bhrt_l8h8uu.jpg": [
+    {
+      "src": "/themes/default/assets/images/benifit-bhrt_l8h8uu.jpg",
+      "alt": "A happy couple enjoying time together outdoors",
+      "file": "src/components/sections/custom/templates-custom/Bhrt-hrt-trtlAYOUT.tsx",
+      "line": 156,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-86-img.jpg": [
+    {
+      "src": "/images/photo-content-86-img.jpg",
+      "alt": "Hands preparing a precision peptide injection pen",
+      "file": "src/components/sections/custom/templates-custom/GlpMicrodosingFemaleLayout.tsx",
+      "line": 18,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-88-img.jpg": [
+    {
+      "src": "/images/photo-content-88-img.jpg",
+      "alt": "A woman measuring her waist to track metabolic progress",
+      "file": "src/components/sections/custom/templates-custom/GlpMicrodosingFemaleLayout.tsx",
+      "line": 44,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-89-img.jpg": [
+    {
+      "src": "/specials/photo-content-89-img.jpg",
+      "alt": "A woman smiling during a consultation walk outdoors",
+      "file": "src/components/sections/custom/templates-custom/GlpMicrodosingFemaleLayout.tsx",
+      "line": 155,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-86-img_vh2zio.jpg": [
+    {
+      "src": "/themes/default/assets/images/photo-content-86-img_vh2zio.jpg",
+      "alt": "Hands preparing a precision peptide injection pen",
+      "file": "src/components/sections/custom/templates-custom/GlpMicrodosingMaleLayout.tsx",
+      "line": 19,
+      "pattern": "object-literal"
+    }
+  ],
+  "A_Sophisticated_Approach_To_Sustainable_Metabolic_Health_t0butq.jpg": [
+    {
+      "src": "/themes/default/assets/images/A_Sophisticated_Approach_To_Sustainable_Metabolic_Health_t0butq.jpg",
+      "alt": "A man measuring his waist to track metabolic progress",
+      "file": "src/components/sections/custom/templates-custom/GlpMicrodosingMaleLayout.tsx",
+      "line": 47,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-87-img_ufo98g.jpg": [
+    {
+      "src": "/themes/default/assets/images/photo-content-87-img_ufo98g.jpg",
+      "alt": "A man smiling during a consultation walk outdoors",
+      "file": "src/components/sections/custom/templates-custom/GlpMicrodosingMaleLayout.tsx",
+      "line": 164,
+      "pattern": "object-literal"
+    }
+  ],
+  "steps-img.png": [
+    {
+      "src": "/steps-img.png",
+      "alt": "Patient Appointment",
+      "file": "src/components/sections/custom/templates-custom/HormoneTherapyCommonLayout.tsx",
+      "line": 63,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/steps-img.png",
+      "alt": "Patient Appointment",
+      "file": "src/content/pages/home.ts",
+      "line": 63,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-img.png",
+      "alt": "Patient Appointment",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1066,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-img.png",
+      "alt": "Patient Appointment",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2614,
+      "pattern": "object-literal"
+    }
+  ],
+  "steps-2-img.png": [
+    {
+      "src": "/steps-2-img.png",
+      "alt": "Doctor Research",
+      "file": "src/components/sections/custom/templates-custom/HormoneTherapyCommonLayout.tsx",
+      "line": 69,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/steps-2-img.png",
+      "alt": "Doctor Research",
+      "file": "src/content/pages/home.ts",
+      "line": 69,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-2-img.png",
+      "alt": "Doctor Research",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1101,
+      "pattern": "object-literal"
+    }
+  ],
+  "steps-3-img.png": [
+    {
+      "src": "/steps-3-img.png",
+      "alt": "Men Interaction",
+      "file": "src/components/sections/custom/templates-custom/HormoneTherapyCommonLayout.tsx",
+      "line": 75,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/steps-3-img.png",
+      "alt": "Men Interaction",
+      "file": "src/content/pages/home.ts",
+      "line": 75,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/steps-3-img.png",
+      "alt": "Men Interaction",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1120,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-38-img.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-38-img.jpg",
+      "alt": "A provider reviewing treatment safety with a male patient",
+      "file": "src/components/sections/custom/templates-custom/HormoneTherapyMenLayout.tsx",
+      "line": 75,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-38-img.jpg",
+      "alt": "A clinician holding a blood sample for hormone lab testing",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 87,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-38-img.jpg",
+      "alt": "A clinician holding a blood sample for lab testing",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1171,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-38-img.jpg",
+      "alt": "A clinician holding a blood sample for lab testing",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1181,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-38-img.jpg",
+      "alt": "A clinician holding a blood sample for lab testing",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2366,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-39-img.jpg": [
+    {
+      "src": "/photo-content-39-img.jpg",
+      "alt": "A provider reviewing treatment safety with a male patient",
+      "file": "src/components/sections/custom/templates-custom/HormoneTherapyMenLayout.tsx",
+      "line": 95,
+      "pattern": "object-literal"
+    }
+  ],
+  "team-1-img.png": [
+    {
+      "src": "/images/teams/team-1-img.png",
+      "alt": "Dr. Harry Collins, founder and medical director of Savannah Age Management Medicine",
+      "file": "src/components/sections/custom/templates-custom/HormoneTherapyMenLayout.tsx",
+      "line": 190,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/teams/team-1-img.png",
+      "alt": "Dr. Harry Collins, founder and medical director of Savannah Age Management Medicine",
+      "file": "src/content/pages/home.ts",
+      "line": 89,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/teams/team-1-img.png",
+      "alt": "Harry S. Collins, DO, FACOG, Medical Director",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 186,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/teams/team-1-img.png",
+      "alt": "Harry S. Collins, DO, FACOG, Medical Director",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 472,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/teams/team-1-img.png",
+      "alt": "Harry S. Collins, DO, FACOG, Medical Director",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 815,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/teams/team-1-img.png",
+      "alt": "Harry S. Collins, DO, FACOG, Medical Director",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1419,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/teams/team-1-img.png",
+      "alt": "Harry S. Collins, DO, FACOG, Medical Director",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1823,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/teams/team-1-img.png",
+      "alt": "Harry S. Collins, DO, FACOG, Medical Director",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1982,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/teams/team-1-img.png",
+      "alt": "Harry S. Collins, DO, FACOG, Medical Director",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2215,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/teams/team-1-img.png",
+      "alt": "Harry S. Collins, DO, FACOG, Medical Director",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2503,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-42-img.jpg": [
+    {
+      "src": "/images/photo-content-42-img.jpg",
+      "alt": "A SAMM provider reviewing a patient’s hormone treatment plan",
+      "file": "src/components/sections/custom/templates-custom/HormoneTherapyWomenLayout.tsx",
+      "line": 49,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-43-img.jpg": [
+    {
+      "src": "/images/photo-content-43-img.jpg",
+      "alt": "A SAMM provider discussing BHRT safety and candidacy with a patient",
+      "file": "src/components/sections/custom/templates-custom/HormoneTherapyWomenLayout.tsx",
+      "line": 68,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-44-img.png": [
+    {
+      "src": "/images/photo-content-44-img.png",
+      "alt": "Harry S. Collins, DO, FACOG, Medical Director",
+      "file": "src/components/sections/custom/templates-custom/HormoneTherapyWomenLayout.tsx",
+      "line": 120,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-47-img.jpg": [
+    {
+      "src": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-47-img.jpg",
+      "alt": "A relaxed patient before a Laser Vaginal Therapy treatment",
+      "file": "src/components/sections/custom/templates-custom/LaserTreatmentLayout.tsx",
+      "line": 35,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-71-img.jpg": [
+    {
+      "src": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-71-img.jpg",
+      "alt": "A patient discussing Laser Vaginal Therapy benefits with a provider",
+      "file": "src/components/sections/custom/templates-custom/LaserTreatmentLayout.tsx",
+      "line": 46,
+      "pattern": "object-literal"
+    }
+  ],
+  "donnt-ignorre-sympth_j7eqyv.jpg": [
+    {
+      "src": "/themes/default/assets/images/donnt-ignorre-sympth_j7eqyv.jpg",
+      "alt": "A woman speaking with her provider about her symptoms",
+      "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+      "line": 65,
+      "pattern": "object-literal"
+    }
+  ],
+  "under-symptth_rcghu3.jpg": [
+    {
+      "src": "/themes/default/assets/images/under-symptth_rcghu3.jpg",
+      "alt": "Common Symptoms Of Perimenopause And Menopause",
+      "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+      "line": 77,
+      "pattern": "object-literal"
+    }
+  ],
+  "why-life-chnage_jjgcsr.jpg": [
+    {
+      "src": "/themes/default/assets/images/why-life-chnage_jjgcsr.jpg",
+      "alt": "A woman practicing a healthy, active lifestyle",
+      "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+      "line": 104,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-92-img_nitez0.jpg": [
+    {
+      "src": "/themes/default/assets/images/photo-content-92-img_nitez0.jpg",
+      "alt": "A provider reviewing lab results with a patient",
+      "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+      "line": 116,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/themes/default/assets/images/photo-content-92-img_nitez0.jpg",
+      "alt": "A provider reviewing lab results with a patient",
+      "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+      "line": 247,
+      "pattern": "object-literal"
+    }
+  ],
+  "why-woman-chose-samm_g7evxb.jpg": [
+    {
+      "src": "/themes/default/assets/images/why-woman-chose-samm_g7evxb.jpg",
+      "alt": "A patient consulting with her SAMM provider",
+      "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+      "line": 186,
+      "pattern": "object-literal"
+    }
+  ],
+  "What_Patients_Often_vuuuis.jpg": [
+    {
+      "src": "/themes/default/assets/images/What_Patients_Often_vuuuis.jpg",
+      "alt": "A woman enjoying renewed energy and confidence",
+      "file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+      "line": 220,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-11-img_hdhnzm.jpg": [
+    {
+      "src": "/themes/default/assets/images/photo-content-11-img_hdhnzm.jpg",
+      "alt": "An active man serving a tennis ball outdoors",
+      "file": "src/components/sections/custom/templates-custom/PrpOfferLayout.tsx",
+      "line": 47,
+      "pattern": "object-literal"
+    }
+  ],
+  "jhon_kurtz_ovd4j1.png": [
+    {
+      "src": "/themes/default/assets/images/jhon_kurtz_ovd4j1.png",
+      "alt": "John Kurtz, MPAS, PA-C",
+      "file": "src/components/sections/custom/templates-custom/PrpOfferLayout.tsx",
+      "line": 141,
+      "pattern": "object-literal"
+    }
+  ],
+  "sexualwilens.png": [
+    {
+      "src": "/images/services/sexualwilens.png",
+      "alt": "A couple smiling together in bed",
+      "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+      "line": 82,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/services/sexualwilens.png",
+      "alt": "A couple embracing, representing renewed intimacy and confidence",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2298,
+      "pattern": "object-literal"
+    }
+  ],
+  "hormone-replacement_zvjw8a.avif": [
+    {
+      "src": "/themes/default/assets/images/hormone-replacement_zvjw8a.avif",
+      "alt": "A couple relaxing together at home",
+      "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+      "line": 117,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/themes/default/assets/images/hormone-replacement_zvjw8a.avif",
+      "alt": "Couple relaxing together at home after bioidentical hormone replacement therapy",
+      "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+      "line": 107,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-54-img_uz9klt.jpg": [
+    {
+      "src": "/themes/default/assets/images/photo-content-54-img_uz9klt.jpg",
+      "alt": "A close-up portrait of a patient reflecting on her health",
+      "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+      "line": 151,
+      "pattern": "object-literal"
+    }
+  ],
+  "shock-wase_a81nyl.jpg": [
+    {
+      "src": "/themes/default/assets/images/shock-wase_a81nyl.jpg",
+      "alt": "A relaxed patient resting comfortably before treatment",
+      "file": "src/components/sections/custom/templates-custom/RejuvenationEnhancementLayout.tsx",
+      "line": 266,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/themes/default/assets/images/shock-wase_a81nyl.jpg",
+      "alt": "A relaxed patient resting comfortably before treatment",
+      "file": "src/components/sections/custom/templates-custom/ShockwaveTherapyLayout.tsx",
+      "line": 35,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-45-img_wwkjto.jpg": [
+    {
+      "src": "/themes/default/assets/images/photo-content-45-img_wwkjto.jpg",
+      "alt": "Common Signs Of Declining Sexual Function In Men",
+      "file": "src/components/sections/custom/templates-custom/SexualWellnessMaleLayout.tsx",
+      "line": 34,
+      "pattern": "object-literal"
+    }
+  ],
+  "benifits-shock-wave_fyyyuk.jpg": [
+    {
+      "src": "/themes/default/assets/images/benifits-shock-wave_fyyyuk.jpg",
+      "alt": "A man reviewing his treatment plan on a tablet",
+      "file": "src/components/sections/custom/templates-custom/ShockwaveTherapyLayout.tsx",
+      "line": 47,
+      "pattern": "object-literal"
+    }
+  ],
+  "fitness-woman-measuring-her-body-isolated-weight-loss-concepts_231208-10391_pchkxx.avif": [
+    {
+      "src": "/themes/default/assets/images/fitness-woman-measuring-her-body-isolated-weight-loss-concepts_231208-10391_pchkxx.avif",
+      "alt": "Woman measuring her waist to track medical weight loss progress",
+      "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+      "line": 96,
+      "pattern": "object-literal"
+    }
+  ],
+  "customized-facial_bs4wui.webp": [
+    {
+      "src": "/themes/default/assets/images/customized-facial_bs4wui.webp",
+      "alt": "Esthetician applying a customized facial treatment to a client's skin",
+      "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+      "line": 118,
+      "pattern": "object-literal"
+    }
+  ],
+  "Dermalogica_Facial-1_sbowfo.webp": [
+    {
+      "src": "/themes/default/assets/images/Dermalogica_Facial-1_sbowfo.webp",
+      "alt": "Esthetician performing a MicroPeel exfoliating facial treatment",
+      "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+      "line": 129,
+      "pattern": "object-literal"
+    }
+  ],
+  "daimond-facrila_z2gvhf.webp": [
+    {
+      "src": "/themes/default/assets/images/daimond-facrila_z2gvhf.webp",
+      "alt": "Esthetician performing a DiamondGlow hydrating facial treatment",
+      "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+      "line": 140,
+      "pattern": "object-literal"
+    }
+  ],
+  "iv-im_fcdnry.webp": [
+    {
+      "src": "/themes/default/assets/images/iv-im_fcdnry.webp",
+      "alt": "Provider administering an IV nutrient infusion treatment",
+      "file": "src/components/sections/custom/templates-custom/StatesboroLayout.tsx",
+      "line": 151,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-5-img.jpg": [
+    {
+      "src": "/images/photo-content-5-img.jpg",
+      "alt": "A woman stepping on a scale in a kitchen",
+      "file": "src/components/sections/custom/templates-custom/WeightLossFemaleLayout.tsx",
+      "line": 41,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-51-img.jpg": [
+    {
+      "src": "/images/photo-content-51-img.jpg",
+      "alt": "A woman in athletic wear stretching her leg",
+      "file": "src/components/sections/custom/templates-custom/WeightLossFemaleLayout.tsx",
+      "line": 56,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-52-img.jpg": [
+    {
+      "src": "/images/photo-content-52-img.jpg",
+      "alt": "A close-up portrait of a patient talking to a provider",
+      "file": "src/components/sections/custom/templates-custom/WeightLossFemaleLayout.tsx",
+      "line": 78,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-53-img.jpg": [
+    {
+      "src": "/images/photo-content-53-img.jpg",
+      "alt": "A patient reviewing her plan with a provider",
+      "file": "src/components/sections/custom/templates-custom/WeightLossFemaleLayout.tsx",
+      "line": 131,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-54-img.jpg": [
+    {
+      "src": "/images/photo-content-54-img.jpg",
+      "alt": "A provider reviewing a patient’s health history",
+      "file": "src/components/sections/custom/templates-custom/WeightLossFemaleLayout.tsx",
+      "line": 152,
+      "pattern": "object-literal"
+    }
+  ],
+  "video-12-img.jpg": [
+    {
+      "src": "https://www.agemanagementmed.com/themes/default/assets/images/video-12-img.jpg",
+      "alt": "John Halbert Morning Break",
+      "file": "src/components/sections/NewsAndMediaSection.tsx",
+      "line": 25,
+      "pattern": "object-literal"
+    }
+  ],
+  "video-2-img.jpg": [
+    {
+      "src": "/images/video-2-img.jpg",
+      "alt": "Importance of Hormone Treatment",
+      "file": "src/components/sections/NewsAndMediaSection.tsx",
+      "line": 33,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/video-2-img.jpg",
+      "alt": "Raechel Halbert Pooler Magazine",
+      "file": "src/components/sections/NewsAndMediaSection.tsx",
+      "line": 60,
+      "pattern": "object-literal"
+    }
+  ],
+  "video-3-img.jpg": [
+    {
+      "src": "/images/video-3-img.jpg",
+      "alt": "Patient Turns Into Employee At Clinic",
+      "file": "src/components/sections/NewsAndMediaSection.tsx",
+      "line": 39,
+      "pattern": "object-literal"
+    }
+  ],
+  "video-4-img.jpg": [
+    {
+      "src": "/images/video-4-img.jpg",
+      "alt": "Tips To Reclaim Your Energy",
+      "file": "src/components/sections/NewsAndMediaSection.tsx",
+      "line": 45,
+      "pattern": "object-literal"
+    }
+  ],
+  "video-1-img.jpg": [
+    {
+      "src": "/images/video-1-img.jpg",
+      "alt": "Grand Opening Statesboro Location",
+      "file": "src/components/sections/NewsAndMediaSection.tsx",
+      "line": 70,
+      "pattern": "object-literal"
+    }
+  ],
+  "wtoc-logo.png": [
+    {
+      "src": "/images/wtoc-logo.png",
+      "alt": "WTOC - Live. Local. Now",
+      "file": "src/components/sections/NewsAndMediaSection.tsx",
+      "line": 145,
+      "pattern": "jsx"
+    }
+  ],
+  "image1-260608052536.jpg": [
+    {
+      "src": "https://waldoughmediaclients.s3.us-east-2.amazonaws.com/wwwagemanagementmedcom/blog/image1-260608052536.jpg",
+      "alt": "Perimenopause Symptoms: When Lifestyle Changes Are Not Enough",
+      "file": "src/content/pages/blog.ts",
+      "line": 29,
+      "pattern": "object-literal"
+    }
+  ],
+  "image1-260522014722.jpg": [
+    {
+      "src": "https://waldoughmediaclients.s3.us-east-2.amazonaws.com/wwwagemanagementmedcom/blog/image1-260522014722.jpg",
+      "alt": "Vitamin D, K2 & Hormone Health | Why Labs Matter",
+      "file": "src/content/pages/blog.ts",
+      "line": 40,
+      "pattern": "object-literal"
+    }
+  ],
+  "image1-260429053027.png": [
+    {
+      "src": "https://waldoughmediaclients.s3.us-east-2.amazonaws.com/wwwagemanagementmedcom/blog/image1-260429053027.png",
+      "alt": "Semaglutide vs Tirzepatide for Weight Loss | SAMM",
+      "file": "src/content/pages/blog.ts",
+      "line": 51,
+      "pattern": "object-literal"
+    }
+  ],
+  "pexels-olly-3766217-260313050540.jpg": [
+    {
+      "src": "https://waldoughmediaclients.s3.us-east-2.amazonaws.com/wwwagemanagementmedcom/blog/pexels-olly-3766217-260313050540.jpg",
+      "alt": "Can Low Testosterone Cause Erectile Dysfunction? | SAMM",
+      "file": "src/content/pages/blog.ts",
+      "line": 62,
+      "pattern": "object-literal"
+    }
+  ],
+  "pexels-olly-874158-260206035409.jpg": [
+    {
+      "src": "https://waldoughmediaclients.s3.us-east-2.amazonaws.com/wwwagemanagementmedcom/blog/pexels-olly-874158-260206035409.jpg",
+      "alt": "Low Testosterone Symptoms in Men Before 40 | SAMM",
+      "file": "src/content/pages/blog.ts",
+      "line": 74,
+      "pattern": "object-literal"
+    }
+  ],
+  "banner-bg.jpg": [
+    {
+      "src": "/images/teams/banner-bg.jpg",
+      "alt": "Dr. Harry Collins, founder of Savannah Age Management Medicine",
+      "file": "src/content/pages/experts.ts",
+      "line": 17,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/banner-bg.jpg",
+      "alt": "A mother and daughter embracing outdoors, representing restored balance and wellbeing",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 334,
+      "pattern": "object-literal"
+    }
+  ],
+  "patient-benifit.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/patient-benifit.jpg",
+      "alt": "A SAMM provider greeting a patient in the clinic",
+      "file": "src/content/pages/experts.ts",
+      "line": 30,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/patient-benifit.jpg",
+      "alt": "A SAMM provider greeting a male patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 14,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/patient-benifit.jpg",
+      "alt": "A SAMM provider greeting a male patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 618,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/patient-benifit.jpg",
+      "alt": "A SAMM provider greeting a patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1045,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/patient-benifit.jpg",
+      "alt": "A SAMM provider greeting a male patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1243,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/patient-benifit.jpg",
+      "alt": "A SAMM provider greeting a male patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2632,
+      "pattern": "object-literal"
+    }
+  ],
+  "banner-18-bg.jpg": [
+    {
+      "src": "/images/banner-18-bg.jpg",
+      "alt": "A family together outdoors, representing sustained health and vitality",
+      "file": "src/content/pages/home.ts",
+      "line": 27,
+      "pattern": "object-literal"
+    }
+  ],
+  "testimonial-bg.jpg": [
+    {
+      "src": "/images/testimonial-bg.jpg",
+      "alt": "Two patients embracing and laughing outdoors",
+      "file": "src/content/pages/home.ts",
+      "line": 48,
+      "pattern": "object-literal"
+    }
+  ],
+  "banner-27-bg.jpg": [
+    {
+      "src": "/images/banner-27-bg.jpg",
+      "alt": "A couple laughing together outdoors",
+      "file": "src/content/pages/specials.ts",
+      "line": 29,
+      "pattern": "object-literal"
+    }
+  ],
+  "grid-3-img.jpg": [
+    {
+      "src": "/images/grid-3-img.jpg",
+      "alt": "Sharing Is Caring!",
+      "file": "src/content/pages/specials.ts",
+      "line": 42,
+      "pattern": "object-literal"
+    }
+  ],
+  "safety.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/safety.jpg",
+      "alt": "A SAMM provider reviewing a treatment plan with a male patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 104,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/safety.jpg",
+      "alt": "A SAMM provider consulting with a male patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 606,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/safety.jpg",
+      "alt": "A SAMM provider reviewing a treatment plan with a patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1056,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/safety.jpg",
+      "alt": "A SAMM provider consulting with a male patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1226,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/safety.jpg",
+      "alt": "A SAMM provider consulting with a male patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1642,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/safety.jpg",
+      "alt": "A SAMM provider consulting with a male patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2349,
+      "pattern": "object-literal"
+    }
+  ],
+  "sympth.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/sympth.jpg",
+      "alt": "A SAMM patient during an in-office visit",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 142,
+      "pattern": "object-literal"
+    }
+  ],
+  "before-img-1.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/before-img-1.jpg",
+      "alt": "Patient before BHRT treatment",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 156,
+      "pattern": "object-literal"
+    }
+  ],
+  "after-img-1.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/after-img-1.jpg",
+      "alt": "Patient after BHRT treatment",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 160,
+      "pattern": "object-literal"
+    }
+  ],
+  "before-2-img.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/before-2-img.jpg",
+      "alt": "Patient before BHRT treatment",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 166,
+      "pattern": "object-literal"
+    }
+  ],
+  "after-2-img.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/after-2-img.jpg",
+      "alt": "Patient after BHRT treatment",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 170,
+      "pattern": "object-literal"
+    }
+  ],
+  "Symptoms.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Symptoms.jpg",
+      "alt": "A woman resting outdoors, representing restored energy and balance",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 324,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Symptoms.jpg",
+      "alt": "A woman resting outdoors, representing restored energy and balance",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1084,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Symptoms.jpg",
+      "alt": "A woman resting outdoors, representing restored energy and balance",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2086,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Symptoms.jpg",
+      "alt": "A woman resting outdoors, representing restored energy and balance",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2184,
+      "pattern": "object-literal"
+    }
+  ],
+  "Safety.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Safety.jpg",
+      "alt": "A SAMM provider reviewing a treatment plan with a patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 421,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Safety.jpg",
+      "alt": "A SAMM provider reviewing a treatment plan with a patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 789,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Safety.jpg",
+      "alt": "A SAMM provider reviewing a treatment plan with a patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 969,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Safety.jpg",
+      "alt": "A SAMM provider reviewing a treatment plan with a patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1388,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Safety.jpg",
+      "alt": "A SAMM provider reviewing a treatment plan with a patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1809,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Safety.jpg",
+      "alt": "A SAMM provider reviewing a treatment plan with a patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2122,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Safety.jpg",
+      "alt": "A SAMM provider reviewing a treatment plan with a patient",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2477,
+      "pattern": "object-literal"
+    }
+  ],
+  "Monitoring.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Monitoring.jpg",
+      "alt": "A SAMM clinician reviewing a patient's lab and treatment notes",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 439,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Monitoring.jpg",
+      "alt": "A SAMM clinician reviewing a patient's lab and treatment notes",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 801,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Monitoring.jpg",
+      "alt": "A SAMM clinician reviewing a patient's lab and treatment notes",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1137,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Monitoring.jpg",
+      "alt": "A SAMM clinician reviewing a patient's lab and treatment notes",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1405,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Monitoring.jpg",
+      "alt": "A SAMM clinician reviewing a patient's lab and treatment notes",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2110,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Monitoring.jpg",
+      "alt": "A SAMM clinician reviewing a patient's lab and treatment notes",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2201,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/female/Monitoring.jpg",
+      "alt": "A SAMM clinician reviewing a patient's lab and treatment notes",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 2489,
+      "pattern": "object-literal"
+    }
+  ],
+  "image-4.png": [
+    {
+      "src": "/images/services/image-4.png",
+      "alt": "A patient measuring their waist during a body composition check",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 548,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/services/image-4.png",
+      "alt": "A patient measuring their waist during a body composition check",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 732,
+      "pattern": "object-literal"
+    },
+    {
+      "src": "/images/services/image-4.png",
+      "alt": "A patient measuring their waist during a body composition check",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 742,
+      "pattern": "object-literal"
+    }
+  ],
+  "image-1.png": [
+    {
+      "src": "/images/services/image-1.png",
+      "alt": "A couple embracing and smiling outdoors",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 924,
+      "pattern": "object-literal"
+    }
+  ],
+  "photo-content-73-img.jpg": [
+    {
+      "src": "/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-73-img.jpg",
+      "alt": "A clinician holding a blood sample for hormone lab testing",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1034,
+      "pattern": "object-literal"
+    }
+  ],
+  "gentle-precise.jpg": [
+    {
+      "src": "/images/treatments/laser-vaginal-therapy/gentle-precise.jpg",
+      "alt": "Laser vaginal therapy in-office treatment",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1940,
+      "pattern": "object-literal"
+    }
+  ],
+  "benefits.jpg": [
+    {
+      "src": "/images/treatments/laser-vaginal-therapy/benefits.jpg",
+      "alt": "Woman feeling confident and comfortable",
+      "file": "src/content/treatments/main.static-backup.ts",
+      "line": 1956,
+      "pattern": "object-literal"
+    }
+  ]
+}

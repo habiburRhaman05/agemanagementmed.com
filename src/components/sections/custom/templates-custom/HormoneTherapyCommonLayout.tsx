@@ -91,13 +91,13 @@ title='Your Patient Journey'
         description="Explore the actual transformations achieved through our advanced treatments. These are real patient outcomes, showing the power of our technology and expertise."
         slides={[
           {
-            beforeImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351204/before-img_jzflom.jpg",
-            afterImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351203/after-img_uwehcq.jpg",
+            beforeImage: "/themes/default/assets/images/before-img_jzflom.jpg",
+            afterImage: "/themes/default/assets/images/after-img_uwehcq.jpg",
             alt: "Hair restoration patient"
           },
           {
-            beforeImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351202/before-2-img_mqiped.jpg",
-            afterImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351200/after-2-img_iquqib.jpg",
+            beforeImage: "/themes/default/assets/images/before-2-img_mqiped.jpg",
+            afterImage: "/themes/default/assets/images/after-2-img_iquqib.jpg",
             alt: "Skin rejuvenation patient"
           },
          
@@ -125,7 +125,7 @@ title='Your Patient Journey'
         title="Real success stories"
         lead="See how we've helped our clients transform their lives."
         testimonials={testimonials}
-        backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1787370832/testimonial-2-bg_1_wvumgb.jpg'
+        backgroundImage='/themes/default/assets/images/testimonial-2-bg_1_wvumgb.jpg'
 
       />
 
@@ -134,7 +134,7 @@ title='Your Patient Journey'
         title="Leaders In Age Management And Wellness"
         body="The Savannah Age Management Medicine team is dedicated to improving your quality of life through advanced age management practices. We pair years of experience, the latest research and technology and a commitment to personalized solutions for unprecedented results. Enjoy a warm, welcoming approach to health optimization."
         cta={{ label: 'Our experts', href: '/our-experts' }}
-           image='https://res.cloudinary.com/khs2rcsr/image/upload/v1785860659/contact-3-img_os4jyj.jpg'
+           image='/themes/default/assets/images/contact-3-img_os4jyj.jpg'
       />
 
 

@@ -137,7 +137,7 @@ export function HeaderClient({ overlay = false, logoUrl, siteName, phone }: Head
                     src="/images/samm-logo.png"
                     width={192}
                     height={88}
-                    alt={siteName}
+                    alt={`${siteName} Logo`}
                     className="w-[107px]! h-auto! sm:w-30! md:w-35! lg:w-40!"
                   />
                 </Link>

@@ -73,7 +73,7 @@ export function SymptomsHeroCard({
   closingNote = 'Diminished hormone levels can slow you down physically and mentally, keeping you from enjoying the activities and lifestyle you once loved. You don\'t have to accept this as "normal aging."',
   ctaLabel = 'SCHEDULE A CONSULTATION',
 }: SymptomsHeroCardProps) {
-  const imageSrc = image?.src || 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785336801/ChatGPT_Image_Jul_29_2026_08_52_07_PM_dyqlrx.png'
+  const imageSrc = image?.src || '/themes/default/assets/images/ChatGPT_Image_Jul_29_2026_08_52_07_PM_dyqlrx.png'
   const imageAlt = image?.alt || heading
 
   return (

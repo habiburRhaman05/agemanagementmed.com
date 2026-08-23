@@ -1,0 +1,337 @@
+{
+  "chunk": 3,
+  "of": 4,
+  "count": 8,
+  "image_ids": [
+    "IMG-050",
+    "IMG-051",
+    "IMG-052",
+    "IMG-053",
+    "IMG-055",
+    "IMG-066",
+    "IMG-067",
+    "IMG-068"
+  ],
+  "images": [
+    {
+      "image_id": "IMG-050",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/column-box-14-img.png",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/column-box-14-img.png"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-14-img.png",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/weight-loss/female/TreatmentOptions.tsx",
+          "source_line": 37,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-14-img.png",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "TreatmentOptions",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-14-img.png"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/weight-loss/female/TreatmentOptions.tsx",
+        "first_source_line": 37
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/column-box-14-img.png",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-051",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/column-box-12-img.png",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/column-box-12-img.png"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-12-img.png",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/weight-loss/female/TreatmentOptions.tsx",
+          "source_line": 53,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-12-img.png",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "TreatmentOptions",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-12-img.png"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/weight-loss/female/TreatmentOptions.tsx",
+        "first_source_line": 53
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/column-box-12-img.png",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-052",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/column-box-16-img.png",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/column-box-16-img.png"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-16-img.png",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/weight-loss/female/TreatmentOptions.tsx",
+          "source_line": 68,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-16-img.png",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "TreatmentOptions",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-16-img.png"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/weight-loss/female/TreatmentOptions.tsx",
+        "first_source_line": 68
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/column-box-16-img.png",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-053",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/column-box-15-img.png",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/column-box-15-img.png"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-15-img.png",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/weight-loss/female/TreatmentOptions.tsx",
+          "source_line": 82,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-15-img.png",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "TreatmentOptions",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-15-img.png"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/weight-loss/female/TreatmentOptions.tsx",
+        "first_source_line": 82
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/column-box-15-img.png",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-055",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/hero-14-bg.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/hero-14-bg.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/hero-14-bg.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/compontents-custom/hair-restore/male/RestoreHairClosingBand.tsx",
+          "source_line": 27,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/hero-14-bg.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "RestoreHairClosingBand",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/hero-14-bg.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/compontents-custom/hair-restore/male/RestoreHairClosingBand.tsx",
+        "first_source_line": 27
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/hero-14-bg.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-066",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/photo-content-47-img.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-47-img.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-47-img.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/templates-custom/LaserTreatmentLayout.tsx",
+          "source_line": 35,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-47-img.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "LaserTreatmentLayout",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-47-img.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/templates-custom/LaserTreatmentLayout.tsx",
+        "first_source_line": 35
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/photo-content-47-img.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-067",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/photo-content-71-img.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-71-img.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-71-img.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/templates-custom/LaserTreatmentLayout.tsx",
+          "source_line": 46,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-71-img.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "LaserTreatmentLayout",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/photo-content-71-img.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/templates-custom/LaserTreatmentLayout.tsx",
+        "first_source_line": 46
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/photo-content-71-img.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-068",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/hero-35-bg.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/hero-35-bg.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/hero-35-bg.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+          "source_line": 203,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/hero-35-bg.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "PerimenopauseMenopauseLayout",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/hero-35-bg.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+        "first_source_line": 203
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/hero-35-bg.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    }
+  ]
+}

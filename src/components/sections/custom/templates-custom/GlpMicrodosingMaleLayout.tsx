@@ -16,7 +16,7 @@ interface TreatmentTemplateProps {
 
 /** Shared across the men's/women's light card per the source design — same asset, no gendered variant. */
 const DATA_DRIVEN_IMAGE = {
-  src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341630/photo-content-86-img_vh2zio.jpg',
+  src: '/themes/default/assets/images/photo-content-86-img_vh2zio.jpg',
   alt: 'Hands preparing a precision peptide injection pen',
 }
 
@@ -44,7 +44,7 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
       <MetabolicOverviewCards
         darkCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341609/A_Sophisticated_Approach_To_Sustainable_Metabolic_Health_t0butq.jpg',
+            src: '/themes/default/assets/images/A_Sophisticated_Approach_To_Sustainable_Metabolic_Health_t0butq.jpg',
             alt: 'A man measuring his waist to track metabolic progress',
           },
           heading: 'A Sophisticated Approach To Sustainable Metabolic Health',
@@ -161,7 +161,7 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
       <Reveal>
       <FitCheckCallout
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785341657/photo-content-87-img_ufo98g.jpg',
+          src: '/themes/default/assets/images/photo-content-87-img_ufo98g.jpg',
           alt: 'A man smiling during a consultation walk outdoors',
         }}
         heading="Is Microdosing the Right Fit for You?"

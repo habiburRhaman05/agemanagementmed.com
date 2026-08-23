@@ -47,7 +47,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
           
             className="flex flex-col items-center text-center order-last md:col-span-12 xl:order-none xl:col-span-3 xl:items-start xl:text-left"
           >
-            <Image src={logoUrl} alt={siteName} width={227} height={104} />
+            <Image src={logoUrl} alt={`${siteName} Logo`} width={227} height={104} />
 
             <SocialLinks links={socialLinks} variant="navy" className="mt-6 flex gap-3" />
 

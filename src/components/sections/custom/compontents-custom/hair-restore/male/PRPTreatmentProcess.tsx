@@ -17,7 +17,7 @@ const steps: Step[] = [
   {
     number: 1,
     imageAlt: "Provider examining a patient's scalp during a consultation",
-    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131814/ppr-t-11_kvil8k.jpg',
+    url: '/themes/default/assets/images/ppr-t-11_kvil8k.jpg',
     title: 'Consultation & Assessment',
     description:
       'Our expert team evaluates your hair loss pattern, discusses your goals, and determines if PRP is right for you.',
@@ -27,7 +27,7 @@ const steps: Step[] = [
     imageAlt: "Clinician drawing blood from a patient's arm",
     title: 'Blood Draw',
     description: 'A small amount of blood (similar to routine lab work) is drawn from your arm.',
-    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131812/pprr-2_anhbzg.jpg',
+    url: '/themes/default/assets/images/pprr-2_anhbzg.jpg',
   },
   {
     number: 3,
@@ -35,14 +35,14 @@ const steps: Step[] = [
     title: 'Platelet Concentration',
     description:
       'Your blood is processed in a specialized centrifuge to separate and concentrate the platelets.',
-    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131811/ppr-3_dx0mel.jpg',
+    url: '/themes/default/assets/images/ppr-3_dx0mel.jpg',
   },
   {
     number: 4,
     imageAlt: "Clinician preparing a patient's scalp for treatment",
     title: 'Scalp Preparation',
     description: 'The treatment area is cleansed and a topical numbing agent is applied for comfort.',
-    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131810/ppr-4_k8cgor.jpg',
+    url: '/themes/default/assets/images/ppr-4_k8cgor.jpg',
   },
   {
     number: 5,
@@ -50,7 +50,7 @@ const steps: Step[] = [
     title: 'PRP Injection',
     description:
       'The concentrated platelet-rich plasma is carefully injected into targeted areas of your scalp using fine needles.',
-    url: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786131809/pprr-5_lwkuyi.jpg',
+    url: '/themes/default/assets/images/pprr-5_lwkuyi.jpg',
   },
 ]
 

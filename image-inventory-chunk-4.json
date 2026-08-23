@@ -1,0 +1,255 @@
+{
+  "chunk": 4,
+  "of": 4,
+  "count": 6,
+  "image_ids": [
+    "IMG-069",
+    "IMG-070",
+    "IMG-085",
+    "IMG-102",
+    "IMG-103",
+    "IMG-106"
+  ],
+  "images": [
+    {
+      "image_id": "IMG-069",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/testimonial-17-bg.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/testimonial-17-bg.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/testimonial-17-bg.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+          "source_line": 246,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/testimonial-17-bg.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "PerimenopauseMenopauseLayout",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/testimonial-17-bg.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+        "first_source_line": 246
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/testimonial-17-bg.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-070",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/hero-36-bg.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/hero-36-bg.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/hero-36-bg.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+          "source_line": 254,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/hero-36-bg.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "PerimenopauseMenopauseLayout",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/hero-36-bg.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/templates-custom/PerimenopauseMenopauseLayout.tsx",
+        "first_source_line": 254
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/hero-36-bg.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-085",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/hero-31-bg.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/hero-31-bg.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/hero-31-bg.jpg",
+      "usages": [
+        {
+          "source_file": "src/components/sections/custom/templates-custom/GlpMicrodosingMaleLayout.tsx",
+          "source_line": 101,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/hero-31-bg.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "GlpMicrodosingMaleLayout",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/hero-31-bg.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/components/sections/custom/templates-custom/GlpMicrodosingMaleLayout.tsx",
+        "first_source_line": 101
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/hero-31-bg.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-102",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/hero-18-bg.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/hero-18-bg.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/hero-18-bg.jpg",
+      "usages": [
+        {
+          "source_file": "src/content/pages/home-media.ts",
+          "source_line": 17,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/hero-18-bg.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "home-media",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/hero-18-bg.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/content/pages/home-media.ts",
+        "first_source_line": 17
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/hero-18-bg.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-103",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/testimonial-bg.jpg",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/testimonial-bg.jpg"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/testimonial-bg.jpg",
+      "usages": [
+        {
+          "source_file": "src/content/pages/home-media.ts",
+          "source_line": 21,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/testimonial-bg.jpg",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "home-media",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/testimonial-bg.jpg"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/content/pages/home-media.ts",
+        "first_source_line": 21
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/testimonial-bg.jpg",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    },
+    {
+      "image_id": "IMG-106",
+      "image_category": "legacy_themes",
+      "migration_required": true,
+      "original_local_path": "/themes/default/assets/images/column-box-img.png",
+      "current_reference_examples": [
+        "https://www.agemanagementmed.com/themes/default/assets/images/column-box-img.png"
+      ],
+      "new_hostinger_url": null,
+      "target_url_rule": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-img.png",
+      "usages": [
+        {
+          "source_file": "src/content/pages/home-services.ts",
+          "source_line": 25,
+          "source_text": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-img.png",
+          "occurrence_in_source_file": 1,
+          "page_route": null,
+          "component": "home-services",
+          "section_or_prop": null,
+          "item_order": 1,
+          "current_reference": "https://www.agemanagementmed.com/themes/default/assets/images/column-box-img.png"
+        }
+      ],
+      "discovery": {
+        "first_source_file": "src/content/pages/home-services.ts",
+        "first_source_line": 25
+      },
+      "is_duplicate": false,
+      "duplicate_of": null,
+      "migration_status": "pending_upload",
+      "url_mapping_key": "image_id",
+      "usage_count": 1,
+      "replacement_identity": {
+        "match_by": "image_id + exact current_reference",
+        "exact_legacy_path": "/themes/default/assets/images/column-box-img.png",
+        "target_field": "new_hostinger_url",
+        "replacement_allowed_when": "new_hostinger_url is non-null AND upload_verified is true",
+        "replace_only_usages": 1
+      }
+    }
+  ]
+}

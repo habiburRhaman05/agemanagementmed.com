@@ -1,6 +1,6 @@
 'use client'
 
-import { Upload, X, Link as LinkIcon, ImageIcon, AlertCircle, CheckCircle2, Loader2, FileImage } from 'lucide-react'
+import { Upload, X, Link as LinkIcon, ImageIcon, AlertCircle, CheckCircle2, Loader2, FileImage, HardDrive } from 'lucide-react'
 import { useCallback, useRef, useState } from 'react'
 
 /* ── Props ────────────────────────────────────────────────────────── */
@@ -41,7 +41,7 @@ export function ImageUploader({
   const inputRef = useRef<HTMLInputElement>(null)
   const urlInputRef = useRef<HTMLInputElement>(null)
 
-  const [mode, setMode] = useState<'upload' | 'url'>(value ? 'url' : 'upload')
+  const [mode, setMode] = useState<'upload' | 'local' | 'url'>(value ? 'url' : 'upload')
   const [uploadState, setUploadState] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle')
   const [progress, setProgress] = useState(0)
   const [errorMsg, setErrorMsg] = useState('')
@@ -85,9 +85,14 @@ export function ImageUploader({
       try {
         const formData = new FormData()
         formData.append('file', file)
-        formData.append('folder', folder)
 
-        const res = await fetch('/api/upload', {
+        // "Local Upload" saves straight onto this app's own filesystem
+        // (public/themes/default/images or /files) instead of Cloudinary —
+        // same UI, different endpoint, and no `folder` concept there.
+        const endpoint = mode === 'local' ? '/api/upload/local' : '/api/upload'
+        if (endpoint === '/api/upload') formData.append('folder', folder)
+
+        const res = await fetch(endpoint, {
           method: 'POST',
           body: formData,
         })
@@ -114,7 +119,7 @@ export function ImageUploader({
         setErrorMsg(err instanceof Error ? err.message : 'Upload failed. Please try again.')
       }
     },
-    [folder, onChange, maxSize],
+    [folder, onChange, maxSize, mode],
   )
 
   const handleFileChange = useCallback(
@@ -188,6 +193,12 @@ export function ImageUploader({
     setErrorMsg('')
   }, [])
 
+  const switchToLocal = useCallback(() => {
+    setMode('local')
+    setUploadState('idle')
+    setErrorMsg('')
+  }, [])
+
   const switchToUrl = useCallback(() => {
     setMode('url')
     setUploadState('idle')
@@ -223,6 +234,18 @@ export function ImageUploader({
         >
           <FileImage className="size-3.5" />
           Upload
+        </button>
+        <button
+          type="button"
+          onClick={switchToLocal}
+          className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+            mode === 'local'
+              ? 'bg-sage-100 text-sage-700'
+              : 'bg-canvas-100 text-gray-500 hover:bg-canvas-200'
+          }`}
+        >
+          <HardDrive className="size-3.5" />
+          Local Upload
         </button>
         <button
           type="button"
@@ -267,8 +290,8 @@ export function ImageUploader({
         </div>
       )}
 
-      {/* ── Upload Mode ───────────────────────────────────────────── */}
-      {mode === 'upload' && (
+      {/* ── Upload / Local Upload Modes — same drop zone, different endpoint ── */}
+      {(mode === 'upload' || mode === 'local') && (
         <>
           {/* Drop zone */}
           <div
@@ -340,6 +363,9 @@ export function ImageUploader({
                 </p>
                 <p className="text-xs text-gray-400">
                   PNG, JPG, WebP, GIF, AVIF — up to 10MB
+                </p>
+                <p className="text-[11px] text-gray-400">
+                  {mode === 'local' ? 'Saved on this server (public/themes/default/images)' : 'Saved to Cloudinary'}
                 </p>
               </div>
             )}

@@ -32,7 +32,7 @@ export async function ShockwaveTherapyLayout({ treatment }: TreatmentTemplatePro
       <TreatmentBenefitsIntro
         darkCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785348927/shock-wase_a81nyl.jpg',
+            src: '/themes/default/assets/images/shock-wase_a81nyl.jpg',
             alt: 'A relaxed patient resting comfortably before treatment',
           },
           heading: 'Low-Intensity Shockwave Therapy',
@@ -44,7 +44,7 @@ export async function ShockwaveTherapyLayout({ treatment }: TreatmentTemplatePro
         }}
         lightCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785348989/benifits-shock-wave_fyyyuk.jpg',
+            src: '/themes/default/assets/images/benifits-shock-wave_fyyyuk.jpg',
             alt: 'A man reviewing his treatment plan on a tablet',
           },
           heading: 'Treatment Benefits',

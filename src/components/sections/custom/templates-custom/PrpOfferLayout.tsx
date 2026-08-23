@@ -44,7 +44,7 @@ export async function PrpOfferLayout({ treatment }: TreatmentTemplateProps) {
 
       <PrpOfferSymptomsSection
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1786257656/photo-content-11-img_hdhnzm.jpg',
+          src: '/themes/default/assets/images/photo-content-11-img_hdhnzm.jpg',
           alt: 'An active man serving a tennis ball outdoors',
         }}
         heading="Why Choose PRP Therapy?"
@@ -131,14 +131,14 @@ export async function PrpOfferLayout({ treatment }: TreatmentTemplateProps) {
         source:"google",
         id:"1"
       }]}
-      backgroundImage='https://res.cloudinary.com/khs2rcsr/image/upload/v1786257977/testimonial-10-bg_naq3hm.jpg'
+      backgroundImage='/themes/default/assets/images/testimonial-10-bg_naq3hm.jpg'
       />
       
       <ProviderSpotlightCard
         eyebrow="Physician Associate"
         name="John Kurtz, MPAS, PA-C"
         photo={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785470601/jhon_kurtz_ovd4j1.png',
+          src: '/themes/default/assets/images/jhon_kurtz_ovd4j1.png',
           alt: 'John Kurtz, MPAS, PA-C',
         }}
         paragraphs={[

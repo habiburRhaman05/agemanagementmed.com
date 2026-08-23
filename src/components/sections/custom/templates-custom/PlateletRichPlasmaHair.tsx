@@ -36,7 +36,7 @@ export async function PlateletRichPlasmaHair({ treatment }: TreatmentTemplatePro
         ]}
       />
 
-      <HowPRPTreatsHairLoss customImage={"https://res.cloudinary.com/khs2rcsr/image/upload/v1785304360/bets-result-in-see_y9elck.jpg"} />
+      <HowPRPTreatsHairLoss customImage={"/themes/default/assets/images/bets-result-in-see_y9elck.jpg"} />
       <PRPTreatmentProcess />
       <ResultsAndTimeline/>
 
@@ -60,7 +60,7 @@ export async function PlateletRichPlasmaHair({ treatment }: TreatmentTemplatePro
         title="Restore Your Hair Naturally!"
         body="Take the first step toward thicker, healthier hair with PRP therapy. Our expert team is ready to help you achieve your hair restoration goals using this revolutionary, natural treatment."
         cta={{ label: 'SCHEDULE A CONSULTATION →', href: '/book-appointment' }}
-        backgroundImage="https://res.cloudinary.com/khs2rcsr/image/upload/v1787295108/hero-14-bg_pv3kst.jpg"
+        backgroundImage="/themes/default/assets/images/hero-14-bg_pv3kst.jpg"
         note="*Individual results may vary. A consultation with our medical team is required to determine if PRP hair therapy is appropriate for your specific condition.*"
       />
     </>

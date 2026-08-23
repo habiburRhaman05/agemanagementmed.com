@@ -114,7 +114,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
             tone: 'light',
             imageSide: 'left',
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785475166/hormone-replacement_zvjw8a.avif',
+              src: '/themes/default/assets/images/hormone-replacement_zvjw8a.avif',
               alt: 'A couple relaxing together at home',
             },
             heading: 'A Personalized Approach To Sexual Wellness',
@@ -148,7 +148,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
             tone: 'light',
             imageSide: 'right',
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785407018/photo-content-54-img_uz9klt.jpg',
+              src: '/themes/default/assets/images/photo-content-54-img_uz9klt.jpg',
               alt: 'A close-up portrait of a patient reflecting on her health',
             },
             heading: 'Common Concerns We Treat',
@@ -229,7 +229,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
           {
             imageSide: 'right',
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785469249/photo-content-24-img_t5dmp1.jpg',
+              src: '/themes/default/assets/images/photo-content-24-img_t5dmp1.jpg',
               alt: 'A couple enjoying time together outdoors',
             },
             heading: 'How Hormones Impact Sexual Health',
@@ -244,7 +244,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
           {
             imageSide: 'left',
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338054/photo-content-92-img_nitez0.jpg',
+              src: '/themes/default/assets/images/photo-content-92-img_nitez0.jpg',
               alt: 'A provider reviewing lab results with a patient',
             },
             heading: 'What to Expect During Your Consultation',
@@ -263,7 +263,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
           {
             imageSide: 'left',
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785348927/shock-wase_a81nyl.jpg',
+              src: '/themes/default/assets/images/shock-wase_a81nyl.jpg',
               alt: 'A relaxed patient resting comfortably before treatment',
             },
             heading: 'Is Treatment Right For You',

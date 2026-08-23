@@ -31,7 +31,7 @@ export function HubIntroBenefits() {
             <div className="top lg-grid">
               <div
                 className="img lg-col-xl-5"
-                style={{ backgroundImage: "url('https://res.cloudinary.com/khs2rcsr/image/upload/v1787369949/photo-content-72-img_stcudn.jpg')" }}
+                style={{ backgroundImage: "url('/themes/default/assets/images/photo-content-72-img_stcudn.jpg')" }}
                 role="img"
                 aria-label="A couple embracing at home"
               />

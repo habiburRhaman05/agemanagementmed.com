@@ -17,7 +17,7 @@ export function LabworkGuidanceSection() {
                 className="img-box"
                 style={{
                   backgroundImage:
-                    "url('https://res.cloudinary.com/khs2rcsr/image/upload/v1785339098/How_We_Use_Labwor_mzioxu.jpg')",
+                    "url('/themes/default/assets/images/How_We_Use_Labwor_mzioxu.jpg')",
                 }}
                 role="img"
                 aria-label="A physician greeting a patient during a weight loss consultation"

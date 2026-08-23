@@ -6,9 +6,9 @@ import { prpIcons } from './prp-icons'
  * styling lives in src/app/legacy.css.
  */
 
-const heroPhoto = 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785303991/hair-image_cb9wro.jpg'
+const heroPhoto = '/themes/default/assets/images/hair-image_cb9wro.jpg'
 const bestResultsPhoto =
-  'https://res.cloudinary.com/khs2rcsr/image/upload/v1785304360/bets-result-in-see_y9elck.jpg'
+  '/themes/default/assets/images/bets-result-in-see_y9elck.jpg'
 
 const growthFactors = [
   'Stimulate dormant hair follicles',

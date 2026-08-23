@@ -31,7 +31,7 @@ export function PatientBenefitsSection({
   title = 'Patient Benefits',
   subtitle = 'As A Savannah Age Management Medicine Patient, You Receive:',
   benefits = DEFAULT_BENEFITS,
-  imageSrc = 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785350545/photo-content-38-img_lxshmc.jpg',
+  imageSrc = '/themes/default/assets/images/photo-content-38-img_lxshmc.jpg',
   imageAlt = 'A provider shaking hands with a male patient',
   className,
 }: PatientBenefitsSectionProps) {

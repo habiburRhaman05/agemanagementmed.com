@@ -114,7 +114,7 @@ export async function RejuvenationEnhancementOfferLayout({ treatment }: Treatmen
             lead="Tailored to your needs, these services support lasting improvements in libido, performance, and satisfaction."
             treatments={[
               {
-                image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318812/shock-wase-image_p7iv6g.png',
+                image: '/themes/default/assets/images/shock-wase-image_p7iv6g.png',
                 title: 'Shockwave Therapy For Erectile Dysfunction',
                 description:
                   'Shockwave therapy uses acoustic wave technology to stimulate blood vessel growth and improve circulation within penile tissue. Many men experience gradual improvements in erectile quality over several weeks as circulation improves.',
@@ -129,7 +129,7 @@ export async function RejuvenationEnhancementOfferLayout({ treatment }: Treatmen
                 featured: true,
               },
               {
-                image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318893/column-box-8-img_cwog8d.png',
+                image: '/themes/default/assets/images/column-box-8-img_cwog8d.png',
                 title: 'Bioidentical Hormone Replacement Therapy (BHRT)',
                 description:
                   'Low testosterone can significantly impact libido, energy, mood, and erectile function. Bioidentical Hormone Replacement Therapy helps restore hormonal balance and optimize testosterone levels.',
@@ -142,7 +142,7 @@ export async function RejuvenationEnhancementOfferLayout({ treatment }: Treatmen
                 ],
               },
               {
-                image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318936/sexul-perfromance_opewpn.png',
+                image: '/themes/default/assets/images/sexul-perfromance_opewpn.png',
                 title: "PRP Therapy For Men's Sexual Performance",
                 description:
                   "Platelet-Rich Plasma (PRP) therapy uses growth factors from your own blood to promote tissue regeneration and improve erectile function. PRP may also stimulate new blood vessel formation, improving circulation and overall penile health.",
@@ -155,7 +155,7 @@ export async function RejuvenationEnhancementOfferLayout({ treatment }: Treatmen
                 ],
               },
               {
-                image: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785318977/subliment_yul0z2.png',
+                image: '/themes/default/assets/images/subliment_yul0z2.png',
                 title: 'Supplementation & Pharmaceutical Support',
                 description:
                   'Our medical team evaluates your overall health, hormone levels, and cardiovascular factors to determine whether medications, supplements, or a combination approach may be beneficial.',
@@ -213,7 +213,7 @@ export async function RejuvenationEnhancementOfferLayout({ treatment }: Treatmen
               title="Leaders In Age Management And Wellness"
               body="The Savannah Age Management Medicine team is dedicated to improving your quality of life through advanced age management practices. We pair years of experience, the latest research and technology and a commitment to personalized solutions for unprecedented results. Enjoy a warm, welcoming approach to health optimization."
               cta={{ label: 'Our experts', href: '/our-experts' }}
-                 image='https://res.cloudinary.com/khs2rcsr/image/upload/v1785860659/contact-3-img_os4jyj.jpg'
+                 image='/themes/default/assets/images/contact-3-img_os4jyj.jpg'
             />
 
       <ClosingCTA {...treatment.closingCta} />

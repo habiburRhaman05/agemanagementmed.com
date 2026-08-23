@@ -5,7 +5,7 @@
  */
 export const contactMedia = {
   /** Photo beside the "Contact Information" list. */
-  infoPhoto: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785860659/contact-3-img_os4jyj.jpg',
+  infoPhoto: '/themes/default/assets/images/contact-3-img_os4jyj.jpg',
 
   /** Background behind the dark "Get In Touch With Us!" form card. */
   formBackground: '',

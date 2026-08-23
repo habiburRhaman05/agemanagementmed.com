@@ -62,7 +62,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
       <SymptomsIntroCards
         darkCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785337975/donnt-ignorre-sympth_j7eqyv.jpg',
+            src: '/themes/default/assets/images/donnt-ignorre-sympth_j7eqyv.jpg',
             alt: 'A woman speaking with her provider about her symptoms',
           },
           heading: "Don't Ignore Your Symptoms",
@@ -74,7 +74,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         }}
         lightCard={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338006/under-symptth_rcghu3.jpg',
+            src: '/themes/default/assets/images/under-symptth_rcghu3.jpg',
             alt: 'Common Symptoms Of Perimenopause And Menopause',
           },
           heading: 'Common Symptoms Of Perimenopause And Menopause',
@@ -101,7 +101,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
       <LifestyleAndEvaluation
         lifestylePanel={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338030/why-life-chnage_jjgcsr.jpg',
+            src: '/themes/default/assets/images/why-life-chnage_jjgcsr.jpg',
             alt: 'A woman practicing a healthy, active lifestyle',
           },
           heading: "Why Lifestyle Changes Aren't Always Enough",
@@ -113,7 +113,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         }}
         evaluationPanel={{
           image: {
-            src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338054/photo-content-92-img_nitez0.jpg',
+            src: '/themes/default/assets/images/photo-content-92-img_nitez0.jpg',
             alt: 'A provider reviewing lab results with a patient',
           },
           heading: 'How We Evaluate and Treat Menopausal Hormonal Imbalance',
@@ -183,7 +183,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
 
       <TextImagePanel
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338093/why-woman-chose-samm_g7evxb.jpg',
+          src: '/themes/default/assets/images/why-woman-chose-samm_g7evxb.jpg',
           alt: 'A patient consulting with her SAMM provider',
         }}
         imageSide="left"
@@ -217,7 +217,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
       <TextImagePanel
       bg='bg-[#F7F8F2]'
         image={{
-          src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785338393/What_Patients_Often_vuuuis.jpg',
+          src: '/themes/default/assets/images/What_Patients_Often_vuuuis.jpg',
           alt: 'A woman enjoying renewed energy and confidence',
         }}
         imageSide="right"

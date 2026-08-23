@@ -151,13 +151,13 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
         description="Explore the actual transformations achieved through our advanced treatments. These are real patient outcomes, showing the power of our technology and expertise."
         slides={[
           {
-            beforeImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351204/before-img_jzflom.jpg",
-            afterImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351203/after-img_uwehcq.jpg",
+            beforeImage: "/themes/default/assets/images/before-img_jzflom.jpg",
+            afterImage: "/themes/default/assets/images/after-img_uwehcq.jpg",
             alt: "Hair restoration patient"
           },
           {
-            beforeImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351202/before-2-img_mqiped.jpg",
-            afterImage: "https://res.cloudinary.com/khs2rcsr/image/upload/v1785351200/after-2-img_iquqib.jpg",
+            beforeImage: "/themes/default/assets/images/before-2-img_mqiped.jpg",
+            afterImage: "/themes/default/assets/images/after-2-img_iquqib.jpg",
             alt: "Skin rejuvenation patient"
           },
          

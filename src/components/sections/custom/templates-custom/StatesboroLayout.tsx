@@ -93,7 +93,7 @@ const statesboroExperts = await getAllPeople()
         items={[
           {
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785406940/fitness-woman-measuring-her-body-isolated-weight-loss-concepts_231208-10391_pchkxx.avif',
+              src: '/themes/default/assets/images/fitness-woman-measuring-her-body-isolated-weight-loss-concepts_231208-10391_pchkxx.avif',
               alt: 'Woman measuring her waist to track medical weight loss progress',
             },
             title: 'Concierge Medical Weight Loss',
@@ -104,7 +104,7 @@ const statesboroExperts = await getAllPeople()
           },
           {
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785475166/hormone-replacement_zvjw8a.avif',
+              src: '/themes/default/assets/images/hormone-replacement_zvjw8a.avif',
               alt: 'Couple relaxing together at home after bioidentical hormone replacement therapy',
             },
             title: 'Bioidentical Hormone Therapy (BHRT)',
@@ -115,7 +115,7 @@ const statesboroExperts = await getAllPeople()
           },
           {
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785474802/customized-facial_bs4wui.webp',
+              src: '/themes/default/assets/images/customized-facial_bs4wui.webp',
               alt: "Esthetician applying a customized facial treatment to a client's skin",
             },
             title: 'Customized Facials',
@@ -126,7 +126,7 @@ const statesboroExperts = await getAllPeople()
           },
           {
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785474849/Dermalogica_Facial-1_sbowfo.webp',
+              src: '/themes/default/assets/images/Dermalogica_Facial-1_sbowfo.webp',
               alt: 'Esthetician performing a MicroPeel exfoliating facial treatment',
             },
             title: 'MicroPeel Facials',
@@ -137,7 +137,7 @@ const statesboroExperts = await getAllPeople()
           },
           {
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785474917/daimond-facrila_z2gvhf.webp',
+              src: '/themes/default/assets/images/daimond-facrila_z2gvhf.webp',
               alt: 'Esthetician performing a DiamondGlow hydrating facial treatment',
             },
             title: 'Diamond Glow Hydrating Facial',
@@ -148,7 +148,7 @@ const statesboroExperts = await getAllPeople()
           },
           {
             image: {
-              src: 'https://res.cloudinary.com/khs2rcsr/image/upload/v1785475006/iv-im_fcdnry.webp',
+              src: '/themes/default/assets/images/iv-im_fcdnry.webp',
               alt: 'Provider administering an IV nutrient infusion treatment',
             },
             title: 'IV & IM Nutrient Therapy',
