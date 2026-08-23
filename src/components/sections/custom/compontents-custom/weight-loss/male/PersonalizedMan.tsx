@@ -10,8 +10,8 @@ import { MidPageCTA } from '../../shared/MidPageCTA'
  * the styling lives in src/app/legacy.css.
  */
 
-const approachPhoto = 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-64-img.jpg'
-const bodyCompPhoto = 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-65-img.jpg'
+const approachPhoto = '/themes/default/assets/images/photo-content-64-img.jpg'
+const bodyCompPhoto = '/themes/default/assets/images/photo-content-65-img.jpg'
 
 const focusItems = [
   'Understanding why weight gain is happening',

@@ -17,7 +17,7 @@ const WhoThisProgramIsFor: React.FC = () => {
                 className="img lg-col-lg-5"
                 style={{
                   backgroundImage:
-                    "url('https://www.agemanagementmed.com/themes/default/assets/images/photo-content-67-img.jpg')",
+                    "url('/themes/default/assets/images/photo-content-67-img.jpg')",
                 }}
                 role="img"
                 aria-label="A patient discussing their weight loss goals with a provider"
@@ -73,7 +73,7 @@ const WhoThisProgramIsFor: React.FC = () => {
                 className="img lg-col-lg-5 lg-order-lg-2"
                 style={{
                   backgroundImage:
-                    "url('https://www.agemanagementmed.com/themes/default/assets/images/photo-content-68-img.jpg')",
+                    "url('/themes/default/assets/images/photo-content-68-img.jpg')",
                 }}
                 role="img"
                 aria-label="A provider reviewing a patient's measurements during a check-in"

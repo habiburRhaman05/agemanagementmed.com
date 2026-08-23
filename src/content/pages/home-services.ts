@@ -22,7 +22,7 @@ export const homeServices: HomeServiceCard[] = [
     title: 'Bioidentical Hormone Replacement Therapy (BHRT) for men & women',
     href: '/bioidentical-hormone-replacement-therapy',
     image:
-      'https://www.agemanagementmed.com/themes/default/assets/images/column-box-img.png',
+      '/themes/default/assets/images/column-box-img.png',
     imageAlt: 'Happy People',
     benefits: ['Boost energy', 'Stabilize mood', 'Build muscle', 'Enhance libido'],
   },
@@ -30,7 +30,7 @@ export const homeServices: HomeServiceCard[] = [
     title: 'Platelet-Rich Plasma (PRP) therapy',
     href: '/platelet-rich-plasma-hair',
     image:
-      'https://www.agemanagementmed.com/themes/default/assets/images/column-box-5-img.png',
+      '/themes/default/assets/images/column-box-5-img.png',
     imageAlt: 'Muscle Pain',
     summary: 'Supports muscle healing and tissue repair.',
     benefits: ['Targeted relief', 'Stimulates healing', 'Versatile treatment', 'Non-surgical'],
@@ -40,7 +40,7 @@ export const homeServices: HomeServiceCard[] = [
     title: 'Sexual Performance Enhancement & Rejuvenation',
     href: '/rejuvenation-enhancement',
     image:
-      'https://www.agemanagementmed.com/themes/default/assets/images/column-box-3-img.png',
+      '/themes/default/assets/images/column-box-3-img.png',
     imageAlt: 'Happy Couple',
     summary: 'Boost libido, support response, enhance intimacy.',
     benefits: [
@@ -54,7 +54,7 @@ export const homeServices: HomeServiceCard[] = [
     title: 'Concierge medical weight loss',
     href: '/concierge-medical-weight-loss',
     image:
-      'https://www.agemanagementmed.com/themes/default/assets/images/column-box-6-img.png',
+      '/themes/default/assets/images/column-box-6-img.png',
     imageAlt: 'Muscle Pain',
     summary: 'Expert, personalized weight management.',
     benefits: [

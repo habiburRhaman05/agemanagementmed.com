@@ -24,7 +24,7 @@ export function RestoreHairClosingBand({
   ctaLabel = 'Schedule a consultation',
   ctaHref = '/book-appointment',
   disclaimer = 'Individual results may vary. A consultation with our medical team is required to determine if PRP hair therapy is appropriate for your specific condition.',
-  backgroundImage = 'https://www.agemanagementmed.com/themes/default/assets/images/hero-14-bg.jpg',
+  backgroundImage = '/themes/default/assets/images/hero-14-bg.jpg',
 }: RestoreHairClosingBandProps) {
   return (
     <section

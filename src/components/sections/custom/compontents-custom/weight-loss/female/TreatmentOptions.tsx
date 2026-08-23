@@ -34,7 +34,7 @@ interface TreatmentData {
 const treatments: TreatmentData[] = [
   {
     image:
-      "https://www.agemanagementmed.com/themes/default/assets/images/column-box-14-img.png",
+      "/themes/default/assets/images/column-box-14-img.png",
     title: "Laser Vaginal Rejuvenation (CO2 Laser)",
     description:
       "Laser vaginal rejuvenation uses fractional CO2 laser energy to stimulate collagen production and restore the structure of vaginal tissue.",
@@ -50,7 +50,7 @@ const treatments: TreatmentData[] = [
   },
   {
     image:
-      "https://www.agemanagementmed.com/themes/default/assets/images/column-box-12-img.png",
+      "/themes/default/assets/images/column-box-12-img.png",
     imageBg: "bg-[#A9B979]",
     title: "Bioidentical Hormone Replacement Therapy (BHRT)",
     description:
@@ -65,7 +65,7 @@ const treatments: TreatmentData[] = [
   },
   {
     image:
-      "https://www.agemanagementmed.com/themes/default/assets/images/column-box-16-img.png",
+      "/themes/default/assets/images/column-box-16-img.png",
     title: "PRP Therapy For Female Sexual Wellness",
     description:
       "PRP therapy uses platelets from your own blood to stimulate cellular regeneration and nerve function in sensitive areas.",
@@ -79,7 +79,7 @@ const treatments: TreatmentData[] = [
   },
   {
     image:
-      "https://www.agemanagementmed.com/themes/default/assets/images/column-box-15-img.png",
+      "/themes/default/assets/images/column-box-15-img.png",
     title: "Supplementation & Hormonal Support",
     description:
       "Hormonal changes, stress, and lifestyle factors can all influence libido, arousal, and overall sexual wellness.",

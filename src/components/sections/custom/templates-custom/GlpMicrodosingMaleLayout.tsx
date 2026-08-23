@@ -98,7 +98,7 @@ export async function GlpMicrodosingMaleLayout({ treatment }: TreatmentTemplateP
 
       <Reveal>
       <MidPageCTA
-        backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-31-bg.jpg"
+        backgroundImage="/themes/default/assets/images/hero-31-bg.jpg"
         backgroundPosition="72% top"
         title="Ready to Feel Like Yourself Again?"
         body="Take the next step toward personalized hormone optimization and long-term wellness."

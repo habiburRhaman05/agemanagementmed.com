@@ -11,7 +11,7 @@ interface CrossSellCard {
 
 const cards: CrossSellCard[] = [
   {
-    image: 'https://www.agemanagementmed.com/themes/default/assets/images/column-box-5-img.png',
+    image: '/themes/default/assets/images/column-box-5-img.png',
     alt: 'Muscle Pain',
     title: 'Platelet-Rich Plasma (PRP) therapy',
     narrow: true,
@@ -19,14 +19,14 @@ const cards: CrossSellCard[] = [
     href: '/platelet-rich-plasma-therapy',
   },
   {
-    image: 'https://www.agemanagementmed.com/themes/default/assets/images/column-box-3-img.png',
+    image: '/themes/default/assets/images/column-box-3-img.png',
     alt: 'Muscle Pain',
     title: 'Sexual Performance Enhancement & Rejuvenation',
     text: 'Boost intimacy and confidence with non-invasive treatments tailored to your needs.',
     href: '/rejuvenation-enhancement',
   },
   {
-    image: 'https://www.agemanagementmed.com/themes/default/assets/images/column-box-6-img.png',
+    image: '/themes/default/assets/images/column-box-6-img.png',
     alt: 'Happy Couple',
     title: 'Concierge medical weight loss',
     narrow: true,

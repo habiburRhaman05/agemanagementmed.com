@@ -14,11 +14,11 @@ export const homeMedia = {
     'https://res.cloudinary.com/khs2rcsr/image/upload/v1785817252/video-11-img_f8wfjb.gif',
 
   /** Background behind the "Who We Are" statement band. */
-  whoWeAreBackground: 'https://www.agemanagementmed.com/themes/default/assets/images/hero-18-bg.jpg',
+  whoWeAreBackground: '/themes/default/assets/images/hero-18-bg.jpg',
 
   /** Background behind the testimonials band. */
   testimonialsBackground:
-    'https://www.agemanagementmed.com/themes/default/assets/images/testimonial-bg.jpg',
+    '/themes/default/assets/images/testimonial-bg.jpg',
 
   /** Background behind the closing "Ready to transform your health?" band. */
   closingBackground: '/themes/default/assets/images/hero-2-bg_ynbqdu.jpg',

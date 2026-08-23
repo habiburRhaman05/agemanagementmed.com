@@ -200,7 +200,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
       />
 
       <MidPageCTA
-        backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-35-bg.jpg"
+        backgroundImage="/themes/default/assets/images/hero-35-bg.jpg"
         backgroundPosition="80% center"
         title="Ready To Get Answers?"
         body="You deserve more than temporary fixes or generic advice. Our team can help identify the root causes behind your symptoms and create a plan designed specifically for you."
@@ -243,7 +243,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
           title="What our patients say"
           testimonials={testimonials}
           background="alt"
-          backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/testimonial-17-bg.jpg"
+          backgroundImage="/themes/default/assets/images/testimonial-17-bg.jpg"
         />
       ) : null}
 
@@ -251,7 +251,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
         <FAQAccordion title="Menopause and Perimenopause FAQs" items={treatment.faqs} />
       ) : null}
 
-      <PremenopauseCta {...treatment.closingCta} backgroundImage="https://www.agemanagementmed.com/themes/default/assets/images/hero-36-bg.jpg" />
+      <PremenopauseCta {...treatment.closingCta} backgroundImage="/themes/default/assets/images/hero-36-bg.jpg" />
     </>
   )
 }

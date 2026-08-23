@@ -22,7 +22,7 @@ const DEFAULT_VIDEOS: VideoThumbnailItem[] = [
   {
     title: 'John Halbert - Morning Break',
     image: {
-      src: 'https://www.agemanagementmed.com/themes/default/assets/images/video-12-img.jpg',
+      src: '/themes/default/assets/images/video-12-img.jpg',
       alt: 'John Halbert Morning Break',
     },
     href: 'https://www.wtoc.com/2025/08/20/platelet-rich-plasma-therapy-recreational-athletes/',

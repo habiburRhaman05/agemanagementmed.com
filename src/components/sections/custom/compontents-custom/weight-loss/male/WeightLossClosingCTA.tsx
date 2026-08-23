@@ -1,7 +1,7 @@
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 
 const IMAGE_URL =
-  'https://www.agemanagementmed.com/themes/default/assets/images/hero-25-bg.jpg'
+  '/themes/default/assets/images/hero-25-bg.jpg'
 
 /**
  * Closing CTA band for the Male Weight Loss page — reuses the shared

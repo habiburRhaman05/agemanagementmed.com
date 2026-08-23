@@ -32,7 +32,7 @@ export async function LaserTreatMentLayout({ treatment }: TreatmentTemplateProps
       <TreatmentBenefitsIntro
         darkCard={{
           image: {
-            src: 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-47-img.jpg',
+            src: '/themes/default/assets/images/photo-content-47-img.jpg',
             alt: 'A relaxed patient before a Laser Vaginal Therapy treatment',
           },
           heading: 'Gentle and Precise, Designed for Intimate Areas',
@@ -43,7 +43,7 @@ export async function LaserTreatMentLayout({ treatment }: TreatmentTemplateProps
         }}
         lightCard={{
           image: {
-            src: 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-71-img.jpg',
+            src: '/themes/default/assets/images/photo-content-71-img.jpg',
             alt: 'A patient discussing Laser Vaginal Therapy benefits with a provider',
           },
           heading: 'Benefits of Laser Vaginal Therapy',

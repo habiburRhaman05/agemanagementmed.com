@@ -18,7 +18,7 @@ interface Props {
 }
 
 const WhyThisApproachWorks: React.FC<Props> = ({ image }) => {
-  const finalImage = image || 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-69-img.jpg';
+  const finalImage = image || '/themes/default/assets/images/photo-content-69-img.jpg';
   
   return (
     <section className="w-full overflow-hidden bg-[#1a2744]">

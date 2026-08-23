@@ -16,7 +16,7 @@ export function ContactHero({ title, lead }: ContactHeroProps) {
       className="relative flex min-h-[700px] items-center bg-cover bg-no-repeat px-4 py-24 sm:min-h-[650px] sm:py-32 lg:min-h-[850px] lg:py-0"
       style={{
         backgroundImage:
-          "url('https://www.agemanagementmed.com/themes/default/assets/images/banner-20-bg.jpg')",
+          "url('/themes/default/assets/images/banner-20-bg.jpg')",
         backgroundPosition: '50% 75%',
       }}
     >

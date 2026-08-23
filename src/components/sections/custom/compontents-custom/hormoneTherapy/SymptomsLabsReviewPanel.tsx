@@ -26,7 +26,7 @@ export function SymptomsLabsReviewPanel({
   title = 'Symptoms + Labs Review',
   subtitle = 'Not Sure If Low Testosterone Is Holding You Back?',
   body = 'Review your symptoms and labs with our clinical team and get clear answers - no pressure, no guesswork.',
-  imageSrc = 'https://www.agemanagementmed.com/themes/default/assets/images/photo-content-74-img.jpg',
+  imageSrc = '/themes/default/assets/images/photo-content-74-img.jpg',
   imageAlt = 'A patient reviewing symptoms and labs with a provider',
   className,
 }: SymptomsLabsReviewPanelProps) {
