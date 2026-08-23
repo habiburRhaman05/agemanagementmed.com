@@ -3,12 +3,21 @@ import TextHero from '@/components/sections/TextHero';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { buildMetadata, resolveStaticPageSeo } from '@/lib/seo';
 
-
-
-// export async function generateMetadata(): Promise<Metadata> {
-//   // return buildPageMetadata('/privacy-policy');
-// }
+// This page had no metadata export at all before — falling through to the
+// root layout's site-wide defaults on every request. Title/description below
+// come straight from production's own <title>/<meta description>.
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata(
+    await resolveStaticPageSeo('/privacy-policy', {
+      title: 'Privacy Policy | Savannah Age Management Medicine',
+      description:
+        'Learn how Savannah Age Management Medicine collects, uses, and protects your personal and health information.',
+      canonical: '/privacy-policy',
+    }),
+  );
+}
 
 /* The notice renders its inline <span> copy in a soft blue and its <strong>
    copy in navy; links sit a shade brighter. Both tokens live here so the

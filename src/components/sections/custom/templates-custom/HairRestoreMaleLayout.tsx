@@ -20,7 +20,7 @@ export async function HairRestoreMaleLayout({ treatment }: TreatmentTemplateProp
       <HeroEditorial
         {...treatment.hero}
         overideMinheight='min-h-[850px]!'
-        textWidth='800'
+       
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

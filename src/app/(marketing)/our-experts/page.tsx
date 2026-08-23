@@ -9,11 +9,11 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { getNewsItems } from '@/actions/news'
 import { expertsContent } from '@/content/pages/experts'
 import { getAllPeople } from '@/content/people'
-import { buildMetadata, buildPersonSchema, getPageH1 } from '@/lib/seo'
+import { buildMetadata, buildPersonSchema, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 import type { ContentSummary } from '@/types/content'
 import type { VideoThumbnailItem } from '@/components/features/VideoThumbnailGrid'
 import { TransformHealthBanner } from '@/components/sections/TransformHealthBanner'
-
+import type { Metadata } from 'next'
 
 // Curated subset for this page, in display order — press coverage as full
 // cards, video/TV mentions as a compact watch grid. The full archive lives
@@ -41,7 +41,9 @@ const FEATURED_VIDEO_LINKS = [
   'wtoc.com/2026/02/04/tips-maintain-your-energy-throughout-day',
 ]
 
-export const metadata = buildMetadata(expertsContent.seo)
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata(await resolveStaticPageSeo('/our-experts', expertsContent.seo))
+}
 
 export default async function ExpertsPage() {
   const people = await getAllPeople()

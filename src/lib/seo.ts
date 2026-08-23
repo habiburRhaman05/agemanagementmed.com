@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { locations, organizationSchemaFacts, site } from '@/content/site'
+import { fromPageSeoRow } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
 import type { FaqItem, Person, Seo } from '@/types/content'
 
@@ -88,6 +89,57 @@ export function buildMetadata(
 export async function getPageH1(path: string): Promise<string | null> {
   const row = await prisma.pageSeo.findUnique({ where: { path }, select: { h1Hero: true } })
   return row?.h1Hero || null
+}
+
+/**
+ * Overlays a path's `PageSeo` row (title, description, OG, Twitter,
+ * keywords, noindex — everything the admin SEO screen edits) onto a page's
+ * hardcoded fallback `Seo` object. DB values win when the admin has set
+ * them; any field never touched in the admin falls straight through to the
+ * content file unchanged, so this is safe to add to every static page.
+ *
+ * The static marketing pages (home, contact-us, our-experts, etc.) build
+ * their `Seo` object entirely from a content file and never fetched *any*
+ * `PageSeo` row — `getPageH1`/`getSchemaOverride` above patch the h1 and
+ * JSON-LD pieces of that same gap, but title/description/OG/Twitter still
+ * came from the content file only, so admin edits to those fields had no
+ * effect on these pages. This closes the rest of it.
+ */
+export async function resolveStaticPageSeo(path: string, fallback: Seo): Promise<Seo> {
+  const row = await prisma.pageSeo.findUnique({
+    where: { path },
+    select: {
+      metaTitle: true,
+      metaDescription: true,
+      canonical: true,
+      keywords: true,
+      h1Hero: true,
+      robotsMeta: true,
+      openGraph: true,
+      twitter: true,
+      jsonLd: true,
+    },
+  })
+  const flat = fromPageSeoRow(row)
+  if (!flat) return fallback
+
+  return {
+    ...fallback,
+    title: flat.title || fallback.title,
+    description: flat.description || fallback.description,
+    canonical: flat.canonical || fallback.canonical,
+    keywords: flat.keywords || fallback.keywords,
+    noindex: flat.noindex || fallback.noindex,
+    h1: flat.h1 || fallback.h1,
+    ogTitle: flat.ogTitle || fallback.ogTitle,
+    ogDescription: flat.ogDescription || fallback.ogDescription,
+    ogType: flat.ogType || fallback.ogType,
+    twitterTitle: flat.twitterTitle || fallback.twitterTitle,
+    twitterDescription: flat.twitterDescription || fallback.twitterDescription,
+    ogImage: flat.ogImageUrl
+      ? { src: flat.ogImageUrl, alt: fallback.ogImage?.alt ?? fallback.title }
+      : fallback.ogImage,
+  }
 }
 
 /**

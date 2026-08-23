@@ -6,15 +6,21 @@ import { NewsletterForm } from '@/components/shared/NewsletterForm'
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
-import { getSiteSettings } from '@/lib/settings'
-import { buildMetadata } from '@/lib/seo'
+import type { Metadata } from 'next'
 
-export const metadata = buildMetadata({
-  title: "Join Our Newsletter | Savannah Age Management Medicine",
-  description:
-    "Join Savannah's Wellness Insiders for educational updates, event invitations, treatment specials, and new offerings from Savannah Age Management Medicine.",
-  canonical: '/newsletter',
-})
+import { getSiteSettings } from '@/lib/settings'
+import { buildMetadata, resolveStaticPageSeo } from '@/lib/seo'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata(
+    await resolveStaticPageSeo('/newsletter', {
+      title: 'Join Our Newsletter | Savannah Age Management Medicine',
+      description:
+        "Join Savannah's Wellness Insiders for educational updates, event invitations, treatment specials, and new offerings from Savannah Age Management Medicine.",
+      canonical: '/newsletter',
+    }),
+  )
+}
 
 export default async function NewsletterPage() {
   const settings = await getSiteSettings()

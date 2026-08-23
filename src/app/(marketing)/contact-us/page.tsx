@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 import { Header } from '@/components/layout/Header'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { ContactHero } from '@/components/sections/ContactHero'
@@ -5,9 +7,11 @@ import { ContactInfoSection } from '@/components/sections/ContactInfoSection'
 import { ContactMapForm } from '@/components/sections/ContactMapForm'
 import { contactContent } from '@/content/pages/contact'
 import { locations } from '@/content/site'
-import { buildMetadata, getPageH1 } from '@/lib/seo'
+import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 
-export const metadata = buildMetadata(contactContent.seo)
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata(await resolveStaticPageSeo('/contact-us', contactContent.seo))
+}
 
 export default async function ContactPage() {
   // PageSeo.h1 for '/contact-us' — this page never fetched PageSeo at all

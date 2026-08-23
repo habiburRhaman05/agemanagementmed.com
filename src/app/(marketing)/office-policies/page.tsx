@@ -13,17 +13,23 @@ import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
 import { JsonLd } from '@/components/seo/JsonLd'
+import type { Metadata } from 'next'
+
 import { site } from '@/content/site'
-import { buildMetadata } from '@/lib/seo'
+import { buildMetadata, resolveStaticPageSeo } from '@/lib/seo'
 import { Header } from '@/components/layout/Header'
 import TextHero from '@/components/sections/TextHero'
 
-export const metadata = buildMetadata({
-  title: 'Office Policies | Savannah Age Management Medicine',
-  description:
-    "Review Savannah Age Management Medicine's office policies, including appointment cancellations, no-show guidelines, appointment reminders, and contact information.",
-  canonical: '/office-policies',
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata(
+    await resolveStaticPageSeo('/office-policies', {
+      title: 'Office Policies | Savannah Age Management Medicine',
+      description:
+        "Review Savannah Age Management Medicine's office policies, including appointment cancellations, no-show guidelines, appointment reminders, and contact information.",
+      canonical: '/office-policies',
+    }),
+  )
+}
 
 export default function OfficePolicyPage() {
   return (

@@ -5,10 +5,14 @@ import { SpecialsGrid } from '@/components/sections/SpecialsGrid'
 import { SpecialsClosingCTA } from '@/components/sections/custom/compontents-custom/specials/SpecialsClosingCTA'
 import { SpecialsHero } from '@/components/sections/custom/templates-custom/SpecialsHero'
 import { Reveal } from '@/components/shared/Reveal'
-import { specialsContent } from '@/content/pages/specials'
-import { buildMetadata } from '@/lib/seo'
+import type { Metadata } from 'next'
 
-export const metadata = buildMetadata(specialsContent.seo)
+import { specialsContent } from '@/content/pages/specials'
+import { buildMetadata, resolveStaticPageSeo } from '@/lib/seo'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata(await resolveStaticPageSeo('/specials', specialsContent.seo))
+}
 
 export default function SpecialsPage() {
   return (

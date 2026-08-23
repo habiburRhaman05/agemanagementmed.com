@@ -1,9 +1,13 @@
+import type { Metadata } from 'next'
+
 import { Header } from '@/components/layout/Header'
 import { HomeTemplate } from '@/components/templates/HomeTemplate'
 import { homeContent } from '@/content/pages/home'
-import { buildMetadata, getPageH1 } from '@/lib/seo'
+import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 
-export const metadata = buildMetadata(homeContent.seo)
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata(await resolveStaticPageSeo('/', homeContent.seo))
+}
 
 export default async function HomePage() {
   // PageSeo.h1 for '/' — the homepage never fetched PageSeo before, so an

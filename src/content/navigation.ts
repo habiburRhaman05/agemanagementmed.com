@@ -60,9 +60,7 @@ export const footerNav = {
   practice: [
     { label: 'Home', href: '/' },
     { label: 'Our Experts', href: '/our-experts' },
-    // No dedicated financing page exists in this app yet — points at Contact
-    // until one is built.
-    { label: 'Financing Options', href: '/contact-us' },
+    { label: 'Financing Options', href: '/financing-options' },
     { label: 'Office Policies', href: '/office-policies' },
     { label: 'Blog', href: '/blog' },
     { label: 'In The News', href: '/in-the-news' },
