@@ -28,15 +28,26 @@ const PATH_REDIRECTS: Record<string, string> = {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // --- Force https + canonical host on production traffic ---
+  // --- Force https + canonical (www) host on production traffic ---
   // Vercel already terminates TLS, but a client that reaches the origin over
-  // plain http (or an old bookmark/link pointing at the non-canonical host)
-  // gets bounced with a real 301 rather than served insecurely.
+  // plain http, or the bare `agemanagementmed.com` host (client audit asked
+  // for this — see docx "Additional 301s"), gets bounced with a real 301
+  // rather than served insecurely or under the wrong host.
+  //
+  // The redirect target is built from the *incoming* Host header rather than
+  // `request.nextUrl.clone()`: on at least one deployment target, hitting the
+  // app directly by IP still resolves `nextUrl.host` to "localhost"
+  // regardless of the real host requested, which turned this into a
+  // dead-end redirect to `https://localhost:3000/`. Reading the header
+  // directly sidesteps that.
   const forwardedProto = request.headers.get('x-forwarded-proto')
   const isInsecure = forwardedProto ? forwardedProto !== 'https' : request.nextUrl.protocol === 'http:'
-  if (process.env.NODE_ENV === 'production' && isInsecure) {
-    const secureUrl = request.nextUrl.clone()
-    secureUrl.protocol = 'https:'
+  const incomingHost = request.headers.get('x-forwarded-host') ?? request.headers.get('host') ?? request.nextUrl.host
+  const canonicalHost = incomingHost === 'agemanagementmed.com' ? 'www.agemanagementmed.com' : incomingHost
+  const isWrongHost = incomingHost !== canonicalHost
+
+  if (process.env.NODE_ENV === 'production' && (isInsecure || isWrongHost)) {
+    const secureUrl = new URL(`${pathname}${request.nextUrl.search}`, `https://${canonicalHost}`)
     return NextResponse.redirect(secureUrl, 301)
   }
 
