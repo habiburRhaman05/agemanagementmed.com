@@ -4,6 +4,12 @@ import Link from 'next/link'
 import { AspectImage } from '@/components/ui/AspectImage'
 import type { ContentSummary } from '@/types/content'
 
+/**
+ * Card copy order matches production's press cards exactly: category label
+ * (its own bold uppercase line) → headline → date (its own line, below the
+ * headline, not merged with the category) → excerpt → a solid pill CTA —
+ * not the "eyebrow · date" one-liner + plain text link this card used to render.
+ */
 function CardBody({ item, compact }: { item: ContentSummary; compact?: boolean }) {
   return (
     <>
@@ -22,11 +28,9 @@ function CardBody({ item, compact }: { item: ContentSummary; compact?: boolean }
       ) : null}
 
       <div className={compact ? 'flex flex-1 flex-col p-4' : 'flex flex-1 flex-col p-6'}>
-        {item.eyebrow || item.date ? (
-          <p className={`flex items-center gap-2 text-body-sm text-canvas-600 ${compact ? 'mb-2' : 'mb-3'}`}>
-            {item.eyebrow ? <span className="text-sage-700">{item.eyebrow}</span> : null}
-            {item.eyebrow && item.date ? <span aria-hidden>·</span> : null}
-            {item.date ? <span>{item.date}</span> : null}
+        {item.eyebrow ? (
+          <p className={`text-body-sm font-semibold tracking-wide text-canvas-700 uppercase ${compact ? 'mb-2' : 'mb-3'}`}>
+            {item.eyebrow}
           </p>
         ) : null}
 
@@ -34,11 +38,15 @@ function CardBody({ item, compact }: { item: ContentSummary; compact?: boolean }
           {item.title}
         </h3>
 
+        {item.date ? <p className="mt-2 text-body-sm text-canvas-500">{item.date}</p> : null}
+
         {item.excerpt ? (
           <p className={`text-body-sm text-canvas-600 ${compact ? 'mt-2 line-clamp-2' : 'mt-2.5'}`}>{item.excerpt}</p>
         ) : null}
 
-        <span className={`inline-flex items-center gap-2 text-body-sm font-semibold text-sage-700 ${compact ? 'mt-3' : 'mt-5'}`}>
+        <span
+          className={`inline-flex w-fit items-center gap-2 rounded-full bg-[#427f7d] px-5 py-2.5 text-body-sm font-bold tracking-wide text-white uppercase transition-colors group-hover:bg-[#346463] ${compact ? 'mt-3' : 'mt-5'}`}
+        >
           Read more
           <ArrowRight
             className="size-4 transition-transform duration-200 group-hover:translate-x-1"

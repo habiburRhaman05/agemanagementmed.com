@@ -36,15 +36,13 @@ export default async function NewsPage() {
 
   return (
     <>
-      <Header />
+      <Header overlay />
       <HeroCompact
-        align="center"
-        eyebrow="Press"
         title="In The News"
-        lead="Press coverage and media features of Savannah Age Management Medicine."
-        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'In The News', href: '/in-the-news' }]}
+        lead="Explore how our approach to modern wellness continues to make an impact in our community and beyond."
+        backgroundImage="/themes/default/assets/images/banner-28-bg.jpg"
       />
-      <ContentGrid eyebrow="As seen on" title="In the news" items={items} columns={4} compact />
+      <ContentGrid title="Media Coverage & Featured Stories" items={items} columns={3} />
 
       {/*
         Production's closing "Ready to transform your health?" band on this
