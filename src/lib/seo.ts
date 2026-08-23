@@ -38,7 +38,13 @@ export function buildMetadata(
   const twitterDescription = seo.twitterDescription || ogDescription
 
   return {
-    title: seo.title,
+    // `{ absolute: ... }` bypasses the root layout's `%s | SAMM` title
+    // template entirely. Every caller here already hands over a complete,
+    // final title (most of the client-audit "Recommended Title" values
+    // already end in "| SAMM" themselves) — a plain string title would let
+    // the template append "| SAMM" a second time on top of that, which is
+    // exactly the double-suffix bug this was fixed for.
+    title: { absolute: seo.title },
     description: seo.description,
     keywords: seo.keywords || options?.keywords || undefined,
     alternates: { canonical: url },

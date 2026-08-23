@@ -4,7 +4,7 @@ import { LegalDocument } from '@/components/sections/LegalDocument'
 import type { Metadata } from 'next'
 
 import { officePoliciesHtml } from '@/content/office-policies'
-import { buildMetadata, resolveStaticPageSeo } from '@/lib/seo'
+import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata(
@@ -17,13 +17,15 @@ export async function generateMetadata(): Promise<Metadata> {
   )
 }
 
-export default function Page() {
+export default async function Page() {
+  const h1Override = await getPageH1('/terms-and-conditions')
+
   return (
     <>
       <Header />
       <HeroCompact
         eyebrow="Legal"
-        title="Terms & Conditions"
+        title={h1Override || 'Terms & Conditions'}
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Terms & Conditions', href: '/terms-and-conditions' },

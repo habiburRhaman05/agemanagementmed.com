@@ -8,18 +8,21 @@ import { Reveal } from '@/components/shared/Reveal'
 import type { Metadata } from 'next'
 
 import { specialsContent } from '@/content/pages/specials'
-import { buildMetadata, resolveStaticPageSeo } from '@/lib/seo'
+import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata(await resolveStaticPageSeo('/specials', specialsContent.seo))
 }
 
-export default function SpecialsPage() {
+export default async function SpecialsPage() {
+  const h1Override = await getPageH1('/specials')
+
   return (
     <>
       <Header />
       <SpecialsHero
         {...specialsContent.hero}
+        title={h1Override || specialsContent.hero.title}
         hideDefaultCta
         centerUntilTablet
         containerOverride="py-35 md:py-50 lg:pt-[201px] lg:pb-[94px]"

@@ -2,7 +2,7 @@ import { Header } from '@/components/layout/Header'
 import TextHero from '@/components/sections/TextHero'
 import React from 'react'
 import type { Metadata } from 'next'
-import { buildMetadata, resolveStaticPageSeo } from '@/lib/seo'
+import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 
 // This page had no metadata export at all before — falling through to the
 // root layout's site-wide defaults on every request.
@@ -17,12 +17,14 @@ export async function generateMetadata(): Promise<Metadata> {
   )
 }
 
-const FinancingOptions = () => {
+const FinancingOptions = async () => {
+  const h1Override = await getPageH1('/financing-options')
+
   return (
     <div>
         <Header />
         <TextHero
-        title='Financing Options'
+        title={h1Override || 'Financing Options'}
         />
     </div>
   )

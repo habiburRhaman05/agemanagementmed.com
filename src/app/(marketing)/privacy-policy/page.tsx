@@ -3,7 +3,7 @@ import TextHero from '@/components/sections/TextHero';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { buildMetadata, resolveStaticPageSeo } from '@/lib/seo';
+import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo';
 
 // This page had no metadata export at all before — falling through to the
 // root layout's site-wide defaults on every request. Title/description below
@@ -129,12 +129,14 @@ const ccpaCategories: Array<[string, string, 'YES' | 'NO']> = [
   ['L. Sensitive Personal Information', '', 'NO'],
 ];
 
-export default function PrivacyPolicyPage() {
+export default async function PrivacyPolicyPage() {
+  const h1Override = await getPageH1('/privacy-policy')
+
   return (
     <>
       {/* <PageJsonLd route="/privacy-policy" /> */}
       <Header />
-      <TextHero title="Privacy Policy" />
+      <TextHero title={h1Override || 'Privacy Policy'} />
 
       <section className="section bg-white">
         <div className="shell-narrow">

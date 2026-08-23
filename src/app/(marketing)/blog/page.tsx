@@ -3,17 +3,23 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { format } from 'date-fns'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import type { Metadata } from 'next'
 
 import { Header } from '@/components/layout/Header'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { Container } from '@/components/shared/Container'
 import { blogContent } from '@/content/pages/blog'
 import { cn } from '@/lib/utils'
-import { buildMetadata } from '@/lib/seo'
+import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 import { getPosts } from '@/actions/blog'
 import type { ContentSummary } from '@/types/content'
 
-export const metadata = buildMetadata(blogContent.seo)
+// This page never fetched PageSeo at all before — an admin editing /blog's
+// title/description/OG in the SEO screen had zero effect, and the H1 below
+// was a hardcoded "Blog" string that didn't even read blogContent.hero.title.
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata(await resolveStaticPageSeo('/blog', blogContent.seo))
+}
 
 export const dynamic = 'force-dynamic'
 
@@ -41,7 +47,7 @@ function ArrowSvg({ className }: { className?: string }) {
 
 /* ── Hero — full-bleed brand photo, navy scrim, left-aligned title ──── */
 
-function BlogHero() {
+function BlogHero({ h1 }: { h1: string }) {
   return (
     <section className="relative isolate flex min-h-[360px] items-end overflow-hidden pt-36 pb-12 sm:min-h-[440px] sm:pb-16 lg:pt-44">
       <Image
@@ -55,7 +61,7 @@ function BlogHero() {
       {/* <div className="absolute inset-0 -z-10 bg-[#0f1c3f]/55" aria-hidden /> */}
 
       <Container className="relative">
-        <h1 className="font-display text-[40px] text-white sm:text-[56px]">Blog</h1>
+        <h1 className="font-display text-[40px] text-white sm:text-[56px]">{h1}</h1>
         {blogContent.hero.lead ? (
           <p className="mt-3 max-w-2xl text-[16px] font-light text-white/85">
             {blogContent.hero.lead}
@@ -245,12 +251,13 @@ export default async function BlogIndexPage({
 }) {
   const params = await searchParams
   const currentPage = Math.max(1, Number(params.page) || 1)
+  const h1Override = await getPageH1('/blog')
 
   return (
     <>
       <Header overlay />
 
-      <BlogHero />
+      <BlogHero h1={h1Override || blogContent.hero.title} />
 
       {/* ── Blog grid — DB-driven, streamed via Suspense ────────────────── */}
       <Suspense fallback={<BlogGridSkeleton />}>

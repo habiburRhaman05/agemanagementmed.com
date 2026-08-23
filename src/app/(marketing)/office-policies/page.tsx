@@ -16,7 +16,7 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import type { Metadata } from 'next'
 
 import { site } from '@/content/site'
-import { buildMetadata, resolveStaticPageSeo } from '@/lib/seo'
+import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 import { Header } from '@/components/layout/Header'
 import TextHero from '@/components/sections/TextHero'
 
@@ -31,13 +31,13 @@ export async function generateMetadata(): Promise<Metadata> {
   )
 }
 
-export default function OfficePolicyPage() {
+export default async function OfficePolicyPage() {
+  const h1Override = await getPageH1('/office-policies')
+
   return (
     <>
       <Header />
-     <TextHero
-     
-     title=' Office Policies'/>
+      <TextHero title={h1Override || 'Office Policies'} />
 
       <Section spacing="lg" className="bg-white">
         <Container>

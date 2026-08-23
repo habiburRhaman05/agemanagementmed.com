@@ -9,7 +9,7 @@ import { Section } from '@/components/shared/Section'
 import type { Metadata } from 'next'
 
 import { getSiteSettings } from '@/lib/settings'
-import { buildMetadata, resolveStaticPageSeo } from '@/lib/seo'
+import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata(
@@ -24,6 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function NewsletterPage() {
   const settings = await getSiteSettings()
+  const h1Override = await getPageH1('/newsletter')
 
   return (
     <>
@@ -47,9 +48,13 @@ export default async function NewsletterPage() {
             <div className="mx-auto max-w-2xl rounded-3xl border border-white/10 bg-ink-950/60 p-6 shadow-2xl backdrop-blur-sm sm:p-10 lg:p-12">
               <div className="text-center">
                 <h1 className="font-display text-display-md text-white">
-                  Join Savannah&apos;s
-                  <br />
-                  Wellness Insiders
+                  {h1Override || (
+                    <>
+                      Join Savannah&apos;s
+                      <br />
+                      Wellness Insiders
+                    </>
+                  )}
                 </h1>
                 <p className="mx-auto mt-4 max-w-xl text-body leading-relaxed text-canvas-50/70">
                   Join our community of health-forward individuals. Enter your email below to
