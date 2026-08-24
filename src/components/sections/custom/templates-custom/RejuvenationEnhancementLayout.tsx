@@ -38,6 +38,7 @@ import {
 } from '../compontents-custom/rejuvenation/icons'
 import { WhyMedicalApproachPanel } from '../compontents-custom/rejuvenation/hub/WhyMedicalApproachPanel'
 import { MidPageCTA } from '../compontents-custom/shared/MidPageCTA'
+import { getPublishedTestimonials } from '@/content/testimonials'
 
 
 function isTypedSection(section: TreatmentSection): section is TreatmentBlockData {
@@ -53,6 +54,8 @@ interface TreatmentTemplateProps {
 export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemplateProps) {
   const pillar = pillars[treatment.pillar]
   const isFemale = treatment.href.includes('/female')
+    const testimonials = await getPublishedTestimonials()
+  
   return (
     <>
       <HeroEditorial
@@ -79,7 +82,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
         rows={[
           {
             image: {
-              src: '/images/services/sexualwilens.png',
+              src: '/themes/default/assets/images/photo-content-75-img.jpg',
               alt: 'A couple smiling together in bed',
             },
             imageSide: 'left',
@@ -93,7 +96,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
           },
           {
             image: {
-              src: '/images/treatments/laser-vaginal-therapy/hero.jpg',
+              src: '/themes/default/assets/images/photo-content-76-img.jpg',
               alt: 'An older couple embracing outdoors',
             },
             imageSide: 'right',
@@ -114,7 +117,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
             tone: 'light',
             imageSide: 'left',
             image: {
-              src: '/themes/default/assets/images/hormone-replacement_zvjw8a.avif',
+              src: '/themes/default/assets/images/photo-content-77-img.jpg',
               alt: 'A couple relaxing together at home',
             },
             heading: 'A Personalized Approach To Sexual Wellness',
@@ -148,7 +151,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
             tone: 'light',
             imageSide: 'right',
             image: {
-              src: '/themes/default/assets/images/photo-content-54-img_uz9klt.jpg',
+              src: '/themes/default/assets/images/photo-content-78-img.jpg',
               alt: 'A close-up portrait of a patient reflecting on her health',
             },
             heading: 'Common Concerns We Treat',
@@ -168,9 +171,10 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
         ]}
       />
 
+
       <FullBleedIconListSection
         image={{
-          src: '/images/treatments/sexual-wellness-men/hero.jpg',
+          src: '/themes/default/assets/images/photo-content-79-img.jpg',
           alt: 'A confident, distinguished middle-aged man',
         }}
         imageSide="left"
@@ -190,24 +194,23 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
         }}
       />
 
-      <TestimonialSet
+ 
+     <TestimonialSet
         width="w-full mx-auto"
         title="Real success stories"
         eyebrow="Patient Testimonials"
-        testimonials={(treatment.testimonials ?? []).map((t, i) => ({
-          id: `${treatment.slug}-testimonial-${i}`,
-          quote: t.text,
-          author: t.name,
-          source: t.source === 'google' ? 'google' : 'site',
-        }))}
+        lead={`See how we've helped our clients transform their lives.`}
+        testimonials={testimonials}
+        backgroundImage='/themes/default/assets/images/testimonial-18-bg.jpg'
+        height='900px'
       />
 
       <FullBleedIconListSection
         image={{
-          src: '/images/treatments/sexual-wellness-women/hero.jpg',
+          src: '/themes/default/assets/images/photo-content-80-img.jpg',
           alt: 'A close, tender moment between a couple',
         }}
-        imageSide="right"
+        imageSide="left"
         heading="Sexual Wellness for Women"
         lead="For women, sexual health can be affected by hormone changes, especially during and after menopause."
         itemsLabel="Common concerns include:"
@@ -229,7 +232,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
           {
             imageSide: 'right',
             image: {
-              src: '/themes/default/assets/images/photo-content-24-img_t5dmp1.jpg',
+              src: '/themes/default/assets/images/photo-content-81-img.jpg',
               alt: 'A couple enjoying time together outdoors',
             },
             heading: 'How Hormones Impact Sexual Health',
@@ -244,7 +247,8 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
           {
             imageSide: 'left',
             image: {
-              src: '/themes/default/assets/images/photo-content-92-img_nitez0.jpg',
+                            src: '/themes/default/assets/images/photo-content-82-img.jpg',
+
               alt: 'A provider reviewing lab results with a patient',
             },
             heading: 'What to Expect During Your Consultation',
@@ -261,9 +265,10 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
             ],
           },
           {
-            imageSide: 'left',
+            imageSide: 'right',
             image: {
-              src: '/themes/default/assets/images/shock-wase_a81nyl.jpg',
+                           src: '/themes/default/assets/images/photo-content-83-img.jpg',
+
               alt: 'A relaxed patient resting comfortably before treatment',
             },
             heading: 'Is Treatment Right For You',
@@ -281,11 +286,11 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
       />
 
       <MidPageCTA
-        backgroundImage="/hero-30-bg.jpg"
+        backgroundImage="/themes/default/assets/images/hero-30-bg.jpg"
         backgroundPosition="center"
         title="Take the First Step Toward Feeling Like Yourself Again"
         body="You do not have to figure this out on your own."
-        titleWidth="550"
+        titleWidth="700"
         paraWidth="525"
         ctaLabel="Schedule A Consultation To Review ED Symptoms And Hormone Labs"
         align="full"
@@ -302,7 +307,19 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
         />
       ) : null}
 
-      <ClosingCTA {...treatment.closingCta} />
+      <ClosingCTA 
+      
+      title='Ready to Improve Your Confidence and Comfort'
+      body='A personalized plan can make a real difference.
+
+'
+textWidth={"600"}
+cta={{
+  label:"Book Schedule",
+  href:"#"
+}}
+      backgroundImage='/themes/default/assets/images/hero-7-bg.jpg'
+     />
     </>
   )
 }

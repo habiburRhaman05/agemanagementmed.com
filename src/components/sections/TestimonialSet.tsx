@@ -111,7 +111,7 @@ export function TestimonialSet({
         // section doesn't force a full 100vh of mostly-empty space around a
         // short mobile card. `sm` and up keep the original full-bleed
         // photo-band height.
-        height ? 'h-[640px]' : 'sm:min-h-screen'
+        height ? height : 'sm:min-h-screen'
       )}
       style={{
         backgroundImage: `url('${backgroundImage}')`,

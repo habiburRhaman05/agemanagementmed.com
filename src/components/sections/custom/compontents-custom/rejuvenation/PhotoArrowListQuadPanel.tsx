@@ -25,7 +25,7 @@ export function PhotoArrowListQuadPanel({ rows }: { rows: PhotoArrowListRow[] })
     <Section background="page" spacing="sm">
       <Container>
         <Reveal>
-          <div className="overflow-hidden rounded-3xl shadow-xl">
+          <div className="overflow-hidden rounded-xl shadow-xl">
             {rows.map((row) => {
               const imageBlock = (
                 <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-full">

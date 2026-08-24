@@ -70,7 +70,7 @@ export function ChecklistCard({
 
   return (
     <div
-      className={`grid overflow-hidden rounded-3xl border border-canvas-300/60 bg-canvas-50 shadow-sm ${
+      className={`grid overflow-hidden rounded-xl border border-canvas-300/60 bg-white shadow-sm ${
         imageSide === 'left' ? 'lg:grid-cols-[42%_58%]' : 'lg:grid-cols-[58%_42%]'
       }`}
     >
@@ -108,8 +108,8 @@ export function ChecklistPanel(props: ChecklistCardProps) {
 /** Groups multiple cards inside one Section with a tight gap. */
 export function ChecklistPanelGroup({ panels }: { panels: ChecklistCardProps[] }) {
   return (
-    <Section background="page" spacing="md">
-      <Container>
+    <Section className='bg-canvas-50' >
+      <Container className='lg:px-0'>
         <div className="space-y-6">
           {panels.map((panel, index) => (
             <Reveal key={panel.heading} delay={index * 80}>

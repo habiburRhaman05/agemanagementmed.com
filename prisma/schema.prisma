@@ -1,7 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
+  provider   = "prisma-client-js"
+  output     = "../src/lib/generated/prisma"
   engineType = "binary"
-  output   = "../src/lib/generated/prisma"
 }
 
 datasource db {
@@ -9,23 +9,23 @@ datasource db {
 }
 
 model Admin {
-  id        String    @id @default(cuid())
-  email     String    @unique
+  id        String   @id @default(cuid())
+  email     String   @unique
   name      String
-  password  String    // bcrypt hash
-  role      String    @default("admin")
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  password  String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   posts     Post[]
 }
 
 model Session {
-  id        String   @id @default(cuid())
-  adminId   String?
-  adminToken String? // for session-less token tracking
-  token     String   @unique
-  expiresAt DateTime
-  createdAt DateTime @default(now())
+  id         String   @id @default(cuid())
+  adminId    String?
+  adminToken String?
+  token      String   @unique
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
 }
 
 model Post {
@@ -33,43 +33,40 @@ model Post {
   title         String
   slug          String    @unique
   excerpt       String?
-  content       String?   // TipTap JSON output
-  contentHtml   String?   // Pre-rendered HTML for public display
+  content       String?
+  contentHtml   String?
   featuredImage String?
-  status        String    @default("draft") // draft | published | archived
+  status        String    @default("draft")
   publishedAt   DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   deletedAt     DateTime?
-  readingTime   Int?      // minutes
-
-  categoryId String?
-  category   Category? @relation(fields: [categoryId], references: [id])
-  authorId   String?
-  author     Admin?    @relation(fields: [authorId], references: [id])
-  tags       BlogTag[]
-  seo        PostSeo?
+  readingTime   Int?
+  categoryId    String?
+  authorId      String?
+  tags          BlogTag[]
+  author        Admin?    @relation(fields: [authorId], references: [id])
+  category      Category? @relation(fields: [categoryId], references: [id])
+  seo           PostSeo?
 }
 
 model PostSeo {
-  id        String  @id @default(cuid())
-  postId    String  @unique
-  post      Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
-  metaTitle String?
-  metaDesc  String?
-  ogImage   String?
-  canonical String?
-  noindex   Boolean @default(false)
-
-  // --- Added for source-site SEO parity (schema-only, not yet backed by DB data) ---
-  keywords            String? // comma-separated meta keywords, admin-editable
-  h1                  String? // hero H1 override — distinct from metaTitle, which is <title> only
-  ogTitle             String? // falls back to metaTitle when unset
-  ogDescription       String? // falls back to metaDesc when unset
-  ogType              String?
-  twitterTitle        String? // falls back to ogTitle/metaTitle when unset
-  twitterDescription  String? // falls back to ogDescription/metaDesc when unset
-  schemaJsonLd        Json? // optional raw JSON-LD override, admin-editable, validated as JSON — mirrors PageSeo.schemaJsonLd, previously missing here
+  id                 String  @id @default(cuid())
+  postId             String  @unique
+  metaTitle          String?
+  metaDesc           String?
+  ogImage            String?
+  canonical          String?
+  noindex            Boolean @default(false)
+  h1                 String?
+  keywords           String?
+  ogDescription      String?
+  ogTitle            String?
+  ogType             String?
+  twitterDescription String?
+  twitterTitle       String?
+  schemaJsonLd       Json?
+  post               Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
 
 model Category {
@@ -81,24 +78,24 @@ model Category {
 }
 
 model Tag {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  slug      String   @unique
-  createdAt DateTime @default(now())
+  id        String    @id @default(cuid())
+  name      String    @unique
+  slug      String    @unique
+  createdAt DateTime  @default(now())
   posts     BlogTag[]
 }
 
 model BlogTag {
   postId String
   tagId  String
-  post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
-  tag    Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
 
   @@id([postId, tagId])
 }
 
 model Appointment {
-  id            String   @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String
   email         String
   phone         String?
@@ -106,25 +103,21 @@ model Appointment {
   message       String?
   preferredDate DateTime?
   preferredTime String?
-  status        String   @default("pending") // pending | confirmed | completed | cancelled
-  notes         String?  // admin notes
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  status        String    @default("pending")
+  notes         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
 
-// Lightweight lead capture — deliberately separate from `Appointment`
-// (which represents an actual scheduling intent with preferred date/time).
-// A `Lead` is a simpler "contact me" / newsletter-style submission, e.g. the
-// `formSource: 'lead'` variant of the hero CTA form.
 model Lead {
   id         String   @id @default(cuid())
   name       String
   email      String
   phone      String?
   message    String?
-  sourcePath String? // which page/form this came from, e.g. '/aesthetics'
-  status     String   @default("new") // new | contacted | converted | archived
-  notes      String? // admin notes
+  sourcePath String?
+  status     String   @default("new")
+  notes      String?
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
@@ -146,66 +139,55 @@ model NewsletterSubscriber {
   createdAt DateTime @default(now())
 }
 
-// Service cards shown on the homepage "Our Services" grid — replaces the static
-// `src/content/feature.ts` array. Admins manage these from the dashboard.
 model Service {
-  id            String   @id @default(cuid())
-  slug          String   @unique
-  href          String
-  shortName     String
-  summary       String
-  cardImageSrc  String
-  cardImageAlt  String
-  cardBenefits  Json     // string[] — e.g. ["Boost energy", "Build muscle"]
-  order         Int      @default(0)
-  status        String   @default("published") // draft | published
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  shortName    String
+  summary      String
+  cardImageSrc String
+  cardImageAlt String
+  cardBenefits Json
+  order        Int      @default(0)
+  status       String   @default("published")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  href         String
 
   @@index([status, order])
 }
 
 model Treatment {
   id        String    @id @default(cuid())
-  slug      String    @unique // matches current Treatment.slug in main.ts
-  href      String    @unique // matches current Treatment.href (the route path)
+  slug      String    @unique
+  href      String    @unique
   pillar    String
   audience  String?
-  kind      String // 'variant' | 'hub' | 'modality'
-  status    String    @default("published") // draft | published
+  kind      String
+  status    String    @default("published")
   order     Int       @default(0)
-  data      Json // everything else on the Treatment object (hero, symptoms, sections,
-  // process, pricing, candidacy, faqs, closingCta, related, providers,
-  // customsSection) as one JSON blob — the TS `Treatment` shape and every
-  // existing component prop never has to change.
+  data      Json
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 }
 
-// Press coverage shown on the public /in-the-news page — replaces the
-// previously-hardcoded `expertsContent.press` list in src/content/pages/experts.ts.
 model NewsItem {
   id             String   @id @default(cuid())
   title          String
   thumbnailUrl   String
   newsLink       String
-  source         String? // publication name, e.g. "Savannah Business Journal"
-  publishedLabel String? // free-text date as given by the source, e.g. "February 19, 2026"
-  description    String? // short excerpt shown on the public card
-  type           String   @default("article") // article | video
   order          Int      @default(0)
   published      Boolean  @default(true)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+  description    String?
+  publishedLabel String?
+  source         String?
+  type           String   @default("article")
 
   @@index([published, order])
 }
 
-// Providers and staff shown on /our-experts, the homepage team teaser, and as
-// per-treatment "your care team" credits. Replaces the static
-// `src/content/people/index.ts` array — same shape (`Person` in
-// src/types/content.ts), now admin-editable.
 model Person {
   id          String   @id @default(cuid())
   slug        String   @unique
@@ -215,10 +197,10 @@ model Person {
   portraitSrc String
   portraitAlt String
   summary     String
-  bio         Json // string[] — one paragraph per entry
-  specialties Json? // string[] | null
-  featured    Boolean  @default(false) // shown in the homepage team teaser (first 4, historically)
-  status      String   @default("published") // draft | published
+  bio         Json
+  specialties Json?
+  featured    Boolean  @default(false)
+  status      String   @default("published")
   order       Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -226,69 +208,54 @@ model Person {
   @@index([status, order])
 }
 
-// Generic — reused for EVERY page on the site, not just treatments: home, contact-us,
-// our-experts, blog index, aesthetics, etc. One model, one admin screen, all SEO.
 model PageSeo {
-  id String @id @default(cuid())
-  path String @unique
-  url String?
-  sourceFile String?
-  pageTitle String?
-  metaTitle String?
-  metaDescription String?
-  keywords String?
-
-  h1Hero String?
-  canonical String?
-  robotsMeta String?
-
-  openGraph Json?
-
-  twitter Json?
-
-  jsonLd Json?
-
-  metaPixelPresent Boolean @default(false)
-  metaPixelId String?
-
-  googleTagManagerPresent Boolean @default(false)
-  googleTagManagerId String?
-
-  googleAnalyticsPresent Boolean @default(false)
+  id                           String   @id @default(cuid())
+  path                         String   @unique
+  canonical                    String?
+  createdAt                    DateTime @default(now())
+  updatedAt                    DateTime @updatedAt
+  keywords                     String?
   googleAnalyticsMeasurementId String?
-
-  hotjarPresent Boolean @default(false)
-  hotjarSiteId String?
-
-  metricoolPresent Boolean @default(false)
-
-  plausiblePresent Boolean @default(false)
-
-  sitemapInclude Boolean @default(true)
-  sitemapPriority Float?
-  sitemapChangefreq String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  googleAnalyticsPresent       Boolean  @default(false)
+  googleTagManagerId           String?
+  googleTagManagerPresent      Boolean  @default(false)
+  h1Hero                       String?
+  hotjarPresent                Boolean  @default(false)
+  hotjarSiteId                 String?
+  jsonLd                       Json?
+  metaDescription              String?
+  metaPixelId                  String?
+  metaPixelPresent             Boolean  @default(false)
+  metaTitle                    String?
+  metricoolPresent             Boolean  @default(false)
+  openGraph                    Json?
+  pageTitle                    String?
+  plausiblePresent             Boolean  @default(false)
+  robotsMeta                   String?
+  sitemapChangefreq            String?
+  sitemapInclude               Boolean  @default(true)
+  sitemapPriority              Float?
+  sourceFile                   String?
+  twitter                      Json?
+  url                          String?
 }
 
 model Testimonial {
-  id        String    @id @default(cuid())
+  id        String   @id @default(cuid())
   name      String
-  roleLabel String? // e.g. "Patient", "Verified Patient", a job title
-  treatment String? // which treatment/service this testimonial references
+  roleLabel String?
+  treatment String?
   quote     String
-  rating    Int       @default(5) // 1-5
+  rating    Int      @default(5)
   photoUrl  String?
-  source    String    @default("site") // "google" | "site"
-  featured  Boolean   @default(false) // pinned to the top of the public list
-  status    String    @default("published") // draft | published
-  order     Int       @default(0)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  featured  Boolean  @default(false)
+  status    String   @default("published")
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  source    String   @default("site")
 }
 
-// Singleton — one row, id fixed to "singleton". Logo, favicon, socials, tracking scripts.
 model SiteSettings {
   id                    String   @id @default("singleton")
   siteName              String?
@@ -298,13 +265,13 @@ model SiteSettings {
   faviconUrl            String?
   phone                 String?
   email                 String?
-  socialLinks           Json? // { facebook?, instagram?, youtube?, linkedin?, tiktok? }
+  socialLinks           Json?
   defaultSeoTitle       String?
   defaultSeoDescription String?
   defaultOgImageUrl     String?
+  headerScripts         String?
+  footerScripts         String?
+  updatedAt             DateTime @updatedAt
   googleAnalyticsId     String?
   metaPixelId           String?
-  headerScripts         String? // raw HTML injected just before </head> — GTM, meta pixel, etc.
-  footerScripts         String? // raw HTML injected just before </body>
-  updatedAt             DateTime @updatedAt
 }

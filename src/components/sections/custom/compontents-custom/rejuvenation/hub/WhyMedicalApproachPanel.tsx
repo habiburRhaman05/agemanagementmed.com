@@ -12,7 +12,7 @@ export function WhyMedicalApproachPanel() {
         <div className="img lg-col-lg-5">
           <div
             className="img-box"
-            style={{ backgroundImage: "url('/photo-content-84-img.jpg')", backgroundPosition: '50% 25%' }}
+            style={{ backgroundImage: "url('/themes/default/assets/images/photo-content-84-img.jpg')", backgroundPosition: '50% 25%' }}
             role="img"
             aria-label="A patient consulting with a provider"
           />

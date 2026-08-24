@@ -165,13 +165,13 @@ exports.Prisma.PostSeoScalarFieldEnum = {
   ogImage: 'ogImage',
   canonical: 'canonical',
   noindex: 'noindex',
-  keywords: 'keywords',
   h1: 'h1',
-  ogTitle: 'ogTitle',
+  keywords: 'keywords',
   ogDescription: 'ogDescription',
+  ogTitle: 'ogTitle',
   ogType: 'ogType',
-  twitterTitle: 'twitterTitle',
   twitterDescription: 'twitterDescription',
+  twitterTitle: 'twitterTitle',
   schemaJsonLd: 'schemaJsonLd'
 };
 
@@ -242,7 +242,6 @@ exports.Prisma.NewsletterSubscriberScalarFieldEnum = {
 exports.Prisma.ServiceScalarFieldEnum = {
   id: 'id',
   slug: 'slug',
-  href: 'href',
   shortName: 'shortName',
   summary: 'summary',
   cardImageSrc: 'cardImageSrc',
@@ -251,7 +250,8 @@ exports.Prisma.ServiceScalarFieldEnum = {
   order: 'order',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  href: 'href'
 };
 
 exports.Prisma.TreatmentScalarFieldEnum = {
@@ -274,14 +274,14 @@ exports.Prisma.NewsItemScalarFieldEnum = {
   title: 'title',
   thumbnailUrl: 'thumbnailUrl',
   newsLink: 'newsLink',
-  source: 'source',
-  publishedLabel: 'publishedLabel',
-  description: 'description',
-  type: 'type',
   order: 'order',
   published: 'published',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  description: 'description',
+  publishedLabel: 'publishedLabel',
+  source: 'source',
+  type: 'type'
 };
 
 exports.Prisma.PersonScalarFieldEnum = {
@@ -305,33 +305,33 @@ exports.Prisma.PersonScalarFieldEnum = {
 exports.Prisma.PageSeoScalarFieldEnum = {
   id: 'id',
   path: 'path',
-  url: 'url',
-  sourceFile: 'sourceFile',
-  pageTitle: 'pageTitle',
-  metaTitle: 'metaTitle',
-  metaDescription: 'metaDescription',
-  keywords: 'keywords',
-  h1Hero: 'h1Hero',
   canonical: 'canonical',
-  robotsMeta: 'robotsMeta',
-  openGraph: 'openGraph',
-  twitter: 'twitter',
-  jsonLd: 'jsonLd',
-  metaPixelPresent: 'metaPixelPresent',
-  metaPixelId: 'metaPixelId',
-  googleTagManagerPresent: 'googleTagManagerPresent',
-  googleTagManagerId: 'googleTagManagerId',
-  googleAnalyticsPresent: 'googleAnalyticsPresent',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  keywords: 'keywords',
   googleAnalyticsMeasurementId: 'googleAnalyticsMeasurementId',
+  googleAnalyticsPresent: 'googleAnalyticsPresent',
+  googleTagManagerId: 'googleTagManagerId',
+  googleTagManagerPresent: 'googleTagManagerPresent',
+  h1Hero: 'h1Hero',
   hotjarPresent: 'hotjarPresent',
   hotjarSiteId: 'hotjarSiteId',
+  jsonLd: 'jsonLd',
+  metaDescription: 'metaDescription',
+  metaPixelId: 'metaPixelId',
+  metaPixelPresent: 'metaPixelPresent',
+  metaTitle: 'metaTitle',
   metricoolPresent: 'metricoolPresent',
+  openGraph: 'openGraph',
+  pageTitle: 'pageTitle',
   plausiblePresent: 'plausiblePresent',
+  robotsMeta: 'robotsMeta',
+  sitemapChangefreq: 'sitemapChangefreq',
   sitemapInclude: 'sitemapInclude',
   sitemapPriority: 'sitemapPriority',
-  sitemapChangefreq: 'sitemapChangefreq',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  sourceFile: 'sourceFile',
+  twitter: 'twitter',
+  url: 'url'
 };
 
 exports.Prisma.TestimonialScalarFieldEnum = {
@@ -342,12 +342,12 @@ exports.Prisma.TestimonialScalarFieldEnum = {
   quote: 'quote',
   rating: 'rating',
   photoUrl: 'photoUrl',
-  source: 'source',
   featured: 'featured',
   status: 'status',
   order: 'order',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  source: 'source'
 };
 
 exports.Prisma.SiteSettingsScalarFieldEnum = {
@@ -363,11 +363,11 @@ exports.Prisma.SiteSettingsScalarFieldEnum = {
   defaultSeoTitle: 'defaultSeoTitle',
   defaultSeoDescription: 'defaultSeoDescription',
   defaultOgImageUrl: 'defaultOgImageUrl',
-  googleAnalyticsId: 'googleAnalyticsId',
-  metaPixelId: 'metaPixelId',
   headerScripts: 'headerScripts',
   footerScripts: 'footerScripts',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  googleAnalyticsId: 'googleAnalyticsId',
+  metaPixelId: 'metaPixelId'
 };
 
 exports.Prisma.SortOrder = {

@@ -4956,9 +4956,9 @@ export namespace Prisma {
     readingTime?: boolean
     categoryId?: boolean
     authorId?: boolean
-    category?: boolean | Post$categoryArgs<ExtArgs>
-    author?: boolean | Post$authorArgs<ExtArgs>
     tags?: boolean | Post$tagsArgs<ExtArgs>
+    author?: boolean | Post$authorArgs<ExtArgs>
+    category?: boolean | Post$categoryArgs<ExtArgs>
     seo?: boolean | Post$seoArgs<ExtArgs>
     _count?: boolean | PostCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["post"]>
@@ -4979,8 +4979,8 @@ export namespace Prisma {
     readingTime?: boolean
     categoryId?: boolean
     authorId?: boolean
-    category?: boolean | Post$categoryArgs<ExtArgs>
     author?: boolean | Post$authorArgs<ExtArgs>
+    category?: boolean | Post$categoryArgs<ExtArgs>
   }, ExtArgs["result"]["post"]>
 
   export type PostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4999,8 +4999,8 @@ export namespace Prisma {
     readingTime?: boolean
     categoryId?: boolean
     authorId?: boolean
-    category?: boolean | Post$categoryArgs<ExtArgs>
     author?: boolean | Post$authorArgs<ExtArgs>
+    category?: boolean | Post$categoryArgs<ExtArgs>
   }, ExtArgs["result"]["post"]>
 
   export type PostSelectScalar = {
@@ -5023,27 +5023,27 @@ export namespace Prisma {
 
   export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "excerpt" | "content" | "contentHtml" | "featuredImage" | "status" | "publishedAt" | "createdAt" | "updatedAt" | "deletedAt" | "readingTime" | "categoryId" | "authorId", ExtArgs["result"]["post"]>
   export type PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    category?: boolean | Post$categoryArgs<ExtArgs>
-    author?: boolean | Post$authorArgs<ExtArgs>
     tags?: boolean | Post$tagsArgs<ExtArgs>
+    author?: boolean | Post$authorArgs<ExtArgs>
+    category?: boolean | Post$categoryArgs<ExtArgs>
     seo?: boolean | Post$seoArgs<ExtArgs>
     _count?: boolean | PostCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    category?: boolean | Post$categoryArgs<ExtArgs>
     author?: boolean | Post$authorArgs<ExtArgs>
+    category?: boolean | Post$categoryArgs<ExtArgs>
   }
   export type PostIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    category?: boolean | Post$categoryArgs<ExtArgs>
     author?: boolean | Post$authorArgs<ExtArgs>
+    category?: boolean | Post$categoryArgs<ExtArgs>
   }
 
   export type $PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Post"
     objects: {
-      category: Prisma.$CategoryPayload<ExtArgs> | null
-      author: Prisma.$AdminPayload<ExtArgs> | null
       tags: Prisma.$BlogTagPayload<ExtArgs>[]
+      author: Prisma.$AdminPayload<ExtArgs> | null
+      category: Prisma.$CategoryPayload<ExtArgs> | null
       seo: Prisma.$PostSeoPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -5456,9 +5456,9 @@ export namespace Prisma {
    */
   export interface Prisma__PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    category<T extends Post$categoryArgs<ExtArgs> = {}>(args?: Subset<T, Post$categoryArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    author<T extends Post$authorArgs<ExtArgs> = {}>(args?: Subset<T, Post$authorArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     tags<T extends Post$tagsArgs<ExtArgs> = {}>(args?: Subset<T, Post$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    author<T extends Post$authorArgs<ExtArgs> = {}>(args?: Subset<T, Post$authorArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    category<T extends Post$categoryArgs<ExtArgs> = {}>(args?: Subset<T, Post$categoryArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     seo<T extends Post$seoArgs<ExtArgs> = {}>(args?: Subset<T, Post$seoArgs<ExtArgs>>): Prisma__PostSeoClient<$Result.GetResult<Prisma.$PostSeoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5905,22 +5905,27 @@ export namespace Prisma {
   }
 
   /**
-   * Post.category
+   * Post.tags
    */
-  export type Post$categoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Post$tagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the BlogTag
      */
-    select?: CategorySelect<ExtArgs> | null
+    select?: BlogTagSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
+     * Omit specific fields from the BlogTag
      */
-    omit?: CategoryOmit<ExtArgs> | null
+    omit?: BlogTagOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CategoryInclude<ExtArgs> | null
-    where?: CategoryWhereInput
+    include?: BlogTagInclude<ExtArgs> | null
+    where?: BlogTagWhereInput
+    orderBy?: BlogTagOrderByWithRelationInput | BlogTagOrderByWithRelationInput[]
+    cursor?: BlogTagWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BlogTagScalarFieldEnum | BlogTagScalarFieldEnum[]
   }
 
   /**
@@ -5943,27 +5948,22 @@ export namespace Prisma {
   }
 
   /**
-   * Post.tags
+   * Post.category
    */
-  export type Post$tagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Post$categoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BlogTag
+     * Select specific fields to fetch from the Category
      */
-    select?: BlogTagSelect<ExtArgs> | null
+    select?: CategorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the BlogTag
+     * Omit specific fields from the Category
      */
-    omit?: BlogTagOmit<ExtArgs> | null
+    omit?: CategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BlogTagInclude<ExtArgs> | null
-    where?: BlogTagWhereInput
-    orderBy?: BlogTagOrderByWithRelationInput | BlogTagOrderByWithRelationInput[]
-    cursor?: BlogTagWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BlogTagScalarFieldEnum | BlogTagScalarFieldEnum[]
+    include?: CategoryInclude<ExtArgs> | null
+    where?: CategoryWhereInput
   }
 
   /**
@@ -6022,13 +6022,13 @@ export namespace Prisma {
     ogImage: string | null
     canonical: string | null
     noindex: boolean | null
-    keywords: string | null
     h1: string | null
-    ogTitle: string | null
+    keywords: string | null
     ogDescription: string | null
+    ogTitle: string | null
     ogType: string | null
-    twitterTitle: string | null
     twitterDescription: string | null
+    twitterTitle: string | null
   }
 
   export type PostSeoMaxAggregateOutputType = {
@@ -6039,13 +6039,13 @@ export namespace Prisma {
     ogImage: string | null
     canonical: string | null
     noindex: boolean | null
-    keywords: string | null
     h1: string | null
-    ogTitle: string | null
+    keywords: string | null
     ogDescription: string | null
+    ogTitle: string | null
     ogType: string | null
-    twitterTitle: string | null
     twitterDescription: string | null
+    twitterTitle: string | null
   }
 
   export type PostSeoCountAggregateOutputType = {
@@ -6056,13 +6056,13 @@ export namespace Prisma {
     ogImage: number
     canonical: number
     noindex: number
-    keywords: number
     h1: number
-    ogTitle: number
+    keywords: number
     ogDescription: number
+    ogTitle: number
     ogType: number
-    twitterTitle: number
     twitterDescription: number
+    twitterTitle: number
     schemaJsonLd: number
     _all: number
   }
@@ -6076,13 +6076,13 @@ export namespace Prisma {
     ogImage?: true
     canonical?: true
     noindex?: true
-    keywords?: true
     h1?: true
-    ogTitle?: true
+    keywords?: true
     ogDescription?: true
+    ogTitle?: true
     ogType?: true
-    twitterTitle?: true
     twitterDescription?: true
+    twitterTitle?: true
   }
 
   export type PostSeoMaxAggregateInputType = {
@@ -6093,13 +6093,13 @@ export namespace Prisma {
     ogImage?: true
     canonical?: true
     noindex?: true
-    keywords?: true
     h1?: true
-    ogTitle?: true
+    keywords?: true
     ogDescription?: true
+    ogTitle?: true
     ogType?: true
-    twitterTitle?: true
     twitterDescription?: true
+    twitterTitle?: true
   }
 
   export type PostSeoCountAggregateInputType = {
@@ -6110,13 +6110,13 @@ export namespace Prisma {
     ogImage?: true
     canonical?: true
     noindex?: true
-    keywords?: true
     h1?: true
-    ogTitle?: true
+    keywords?: true
     ogDescription?: true
+    ogTitle?: true
     ogType?: true
-    twitterTitle?: true
     twitterDescription?: true
+    twitterTitle?: true
     schemaJsonLd?: true
     _all?: true
   }
@@ -6201,13 +6201,13 @@ export namespace Prisma {
     ogImage: string | null
     canonical: string | null
     noindex: boolean
-    keywords: string | null
     h1: string | null
-    ogTitle: string | null
+    keywords: string | null
     ogDescription: string | null
+    ogTitle: string | null
     ogType: string | null
-    twitterTitle: string | null
     twitterDescription: string | null
+    twitterTitle: string | null
     schemaJsonLd: JsonValue | null
     _count: PostSeoCountAggregateOutputType | null
     _min: PostSeoMinAggregateOutputType | null
@@ -6236,13 +6236,13 @@ export namespace Prisma {
     ogImage?: boolean
     canonical?: boolean
     noindex?: boolean
-    keywords?: boolean
     h1?: boolean
-    ogTitle?: boolean
+    keywords?: boolean
     ogDescription?: boolean
+    ogTitle?: boolean
     ogType?: boolean
-    twitterTitle?: boolean
     twitterDescription?: boolean
+    twitterTitle?: boolean
     schemaJsonLd?: boolean
     post?: boolean | PostDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["postSeo"]>
@@ -6255,13 +6255,13 @@ export namespace Prisma {
     ogImage?: boolean
     canonical?: boolean
     noindex?: boolean
-    keywords?: boolean
     h1?: boolean
-    ogTitle?: boolean
+    keywords?: boolean
     ogDescription?: boolean
+    ogTitle?: boolean
     ogType?: boolean
-    twitterTitle?: boolean
     twitterDescription?: boolean
+    twitterTitle?: boolean
     schemaJsonLd?: boolean
     post?: boolean | PostDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["postSeo"]>
@@ -6274,13 +6274,13 @@ export namespace Prisma {
     ogImage?: boolean
     canonical?: boolean
     noindex?: boolean
-    keywords?: boolean
     h1?: boolean
-    ogTitle?: boolean
+    keywords?: boolean
     ogDescription?: boolean
+    ogTitle?: boolean
     ogType?: boolean
-    twitterTitle?: boolean
     twitterDescription?: boolean
+    twitterTitle?: boolean
     schemaJsonLd?: boolean
     post?: boolean | PostDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["postSeo"]>
@@ -6293,17 +6293,17 @@ export namespace Prisma {
     ogImage?: boolean
     canonical?: boolean
     noindex?: boolean
-    keywords?: boolean
     h1?: boolean
-    ogTitle?: boolean
+    keywords?: boolean
     ogDescription?: boolean
+    ogTitle?: boolean
     ogType?: boolean
-    twitterTitle?: boolean
     twitterDescription?: boolean
+    twitterTitle?: boolean
     schemaJsonLd?: boolean
   }
 
-  export type PostSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "postId" | "metaTitle" | "metaDesc" | "ogImage" | "canonical" | "noindex" | "keywords" | "h1" | "ogTitle" | "ogDescription" | "ogType" | "twitterTitle" | "twitterDescription" | "schemaJsonLd", ExtArgs["result"]["postSeo"]>
+  export type PostSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "postId" | "metaTitle" | "metaDesc" | "ogImage" | "canonical" | "noindex" | "h1" | "keywords" | "ogDescription" | "ogTitle" | "ogType" | "twitterDescription" | "twitterTitle" | "schemaJsonLd", ExtArgs["result"]["postSeo"]>
   export type PostSeoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     post?: boolean | PostDefaultArgs<ExtArgs>
   }
@@ -6327,13 +6327,13 @@ export namespace Prisma {
       ogImage: string | null
       canonical: string | null
       noindex: boolean
-      keywords: string | null
       h1: string | null
-      ogTitle: string | null
+      keywords: string | null
       ogDescription: string | null
+      ogTitle: string | null
       ogType: string | null
-      twitterTitle: string | null
       twitterDescription: string | null
+      twitterTitle: string | null
       schemaJsonLd: Prisma.JsonValue | null
     }, ExtArgs["result"]["postSeo"]>
     composites: {}
@@ -6766,13 +6766,13 @@ export namespace Prisma {
     readonly ogImage: FieldRef<"PostSeo", 'String'>
     readonly canonical: FieldRef<"PostSeo", 'String'>
     readonly noindex: FieldRef<"PostSeo", 'Boolean'>
-    readonly keywords: FieldRef<"PostSeo", 'String'>
     readonly h1: FieldRef<"PostSeo", 'String'>
-    readonly ogTitle: FieldRef<"PostSeo", 'String'>
+    readonly keywords: FieldRef<"PostSeo", 'String'>
     readonly ogDescription: FieldRef<"PostSeo", 'String'>
+    readonly ogTitle: FieldRef<"PostSeo", 'String'>
     readonly ogType: FieldRef<"PostSeo", 'String'>
-    readonly twitterTitle: FieldRef<"PostSeo", 'String'>
     readonly twitterDescription: FieldRef<"PostSeo", 'String'>
+    readonly twitterTitle: FieldRef<"PostSeo", 'String'>
     readonly schemaJsonLd: FieldRef<"PostSeo", 'Json'>
   }
     
@@ -14575,7 +14575,6 @@ export namespace Prisma {
   export type ServiceMinAggregateOutputType = {
     id: string | null
     slug: string | null
-    href: string | null
     shortName: string | null
     summary: string | null
     cardImageSrc: string | null
@@ -14584,12 +14583,12 @@ export namespace Prisma {
     status: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    href: string | null
   }
 
   export type ServiceMaxAggregateOutputType = {
     id: string | null
     slug: string | null
-    href: string | null
     shortName: string | null
     summary: string | null
     cardImageSrc: string | null
@@ -14598,12 +14597,12 @@ export namespace Prisma {
     status: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    href: string | null
   }
 
   export type ServiceCountAggregateOutputType = {
     id: number
     slug: number
-    href: number
     shortName: number
     summary: number
     cardImageSrc: number
@@ -14613,6 +14612,7 @@ export namespace Prisma {
     status: number
     createdAt: number
     updatedAt: number
+    href: number
     _all: number
   }
 
@@ -14628,7 +14628,6 @@ export namespace Prisma {
   export type ServiceMinAggregateInputType = {
     id?: true
     slug?: true
-    href?: true
     shortName?: true
     summary?: true
     cardImageSrc?: true
@@ -14637,12 +14636,12 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     updatedAt?: true
+    href?: true
   }
 
   export type ServiceMaxAggregateInputType = {
     id?: true
     slug?: true
-    href?: true
     shortName?: true
     summary?: true
     cardImageSrc?: true
@@ -14651,12 +14650,12 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     updatedAt?: true
+    href?: true
   }
 
   export type ServiceCountAggregateInputType = {
     id?: true
     slug?: true
-    href?: true
     shortName?: true
     summary?: true
     cardImageSrc?: true
@@ -14666,6 +14665,7 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     updatedAt?: true
+    href?: true
     _all?: true
   }
 
@@ -14758,7 +14758,6 @@ export namespace Prisma {
   export type ServiceGroupByOutputType = {
     id: string
     slug: string
-    href: string
     shortName: string
     summary: string
     cardImageSrc: string
@@ -14768,6 +14767,7 @@ export namespace Prisma {
     status: string
     createdAt: Date
     updatedAt: Date
+    href: string
     _count: ServiceCountAggregateOutputType | null
     _avg: ServiceAvgAggregateOutputType | null
     _sum: ServiceSumAggregateOutputType | null
@@ -14792,7 +14792,6 @@ export namespace Prisma {
   export type ServiceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     slug?: boolean
-    href?: boolean
     shortName?: boolean
     summary?: boolean
     cardImageSrc?: boolean
@@ -14802,12 +14801,12 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    href?: boolean
   }, ExtArgs["result"]["service"]>
 
   export type ServiceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     slug?: boolean
-    href?: boolean
     shortName?: boolean
     summary?: boolean
     cardImageSrc?: boolean
@@ -14817,12 +14816,12 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    href?: boolean
   }, ExtArgs["result"]["service"]>
 
   export type ServiceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     slug?: boolean
-    href?: boolean
     shortName?: boolean
     summary?: boolean
     cardImageSrc?: boolean
@@ -14832,12 +14831,12 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    href?: boolean
   }, ExtArgs["result"]["service"]>
 
   export type ServiceSelectScalar = {
     id?: boolean
     slug?: boolean
-    href?: boolean
     shortName?: boolean
     summary?: boolean
     cardImageSrc?: boolean
@@ -14847,9 +14846,10 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    href?: boolean
   }
 
-  export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "href" | "shortName" | "summary" | "cardImageSrc" | "cardImageAlt" | "cardBenefits" | "order" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["service"]>
+  export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "shortName" | "summary" | "cardImageSrc" | "cardImageAlt" | "cardBenefits" | "order" | "status" | "createdAt" | "updatedAt" | "href", ExtArgs["result"]["service"]>
 
   export type $ServicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Service"
@@ -14857,7 +14857,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       slug: string
-      href: string
       shortName: string
       summary: string
       cardImageSrc: string
@@ -14867,6 +14866,7 @@ export namespace Prisma {
       status: string
       createdAt: Date
       updatedAt: Date
+      href: string
     }, ExtArgs["result"]["service"]>
     composites: {}
   }
@@ -15292,7 +15292,6 @@ export namespace Prisma {
   interface ServiceFieldRefs {
     readonly id: FieldRef<"Service", 'String'>
     readonly slug: FieldRef<"Service", 'String'>
-    readonly href: FieldRef<"Service", 'String'>
     readonly shortName: FieldRef<"Service", 'String'>
     readonly summary: FieldRef<"Service", 'String'>
     readonly cardImageSrc: FieldRef<"Service", 'String'>
@@ -15302,6 +15301,7 @@ export namespace Prisma {
     readonly status: FieldRef<"Service", 'String'>
     readonly createdAt: FieldRef<"Service", 'DateTime'>
     readonly updatedAt: FieldRef<"Service", 'DateTime'>
+    readonly href: FieldRef<"Service", 'String'>
   }
     
 
@@ -16819,14 +16819,14 @@ export namespace Prisma {
     title: string | null
     thumbnailUrl: string | null
     newsLink: string | null
-    source: string | null
-    publishedLabel: string | null
-    description: string | null
-    type: string | null
     order: number | null
     published: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    description: string | null
+    publishedLabel: string | null
+    source: string | null
+    type: string | null
   }
 
   export type NewsItemMaxAggregateOutputType = {
@@ -16834,14 +16834,14 @@ export namespace Prisma {
     title: string | null
     thumbnailUrl: string | null
     newsLink: string | null
-    source: string | null
-    publishedLabel: string | null
-    description: string | null
-    type: string | null
     order: number | null
     published: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    description: string | null
+    publishedLabel: string | null
+    source: string | null
+    type: string | null
   }
 
   export type NewsItemCountAggregateOutputType = {
@@ -16849,14 +16849,14 @@ export namespace Prisma {
     title: number
     thumbnailUrl: number
     newsLink: number
-    source: number
-    publishedLabel: number
-    description: number
-    type: number
     order: number
     published: number
     createdAt: number
     updatedAt: number
+    description: number
+    publishedLabel: number
+    source: number
+    type: number
     _all: number
   }
 
@@ -16874,14 +16874,14 @@ export namespace Prisma {
     title?: true
     thumbnailUrl?: true
     newsLink?: true
-    source?: true
-    publishedLabel?: true
-    description?: true
-    type?: true
     order?: true
     published?: true
     createdAt?: true
     updatedAt?: true
+    description?: true
+    publishedLabel?: true
+    source?: true
+    type?: true
   }
 
   export type NewsItemMaxAggregateInputType = {
@@ -16889,14 +16889,14 @@ export namespace Prisma {
     title?: true
     thumbnailUrl?: true
     newsLink?: true
-    source?: true
-    publishedLabel?: true
-    description?: true
-    type?: true
     order?: true
     published?: true
     createdAt?: true
     updatedAt?: true
+    description?: true
+    publishedLabel?: true
+    source?: true
+    type?: true
   }
 
   export type NewsItemCountAggregateInputType = {
@@ -16904,14 +16904,14 @@ export namespace Prisma {
     title?: true
     thumbnailUrl?: true
     newsLink?: true
-    source?: true
-    publishedLabel?: true
-    description?: true
-    type?: true
     order?: true
     published?: true
     createdAt?: true
     updatedAt?: true
+    description?: true
+    publishedLabel?: true
+    source?: true
+    type?: true
     _all?: true
   }
 
@@ -17006,14 +17006,14 @@ export namespace Prisma {
     title: string
     thumbnailUrl: string
     newsLink: string
-    source: string | null
-    publishedLabel: string | null
-    description: string | null
-    type: string
     order: number
     published: boolean
     createdAt: Date
     updatedAt: Date
+    description: string | null
+    publishedLabel: string | null
+    source: string | null
+    type: string
     _count: NewsItemCountAggregateOutputType | null
     _avg: NewsItemAvgAggregateOutputType | null
     _sum: NewsItemSumAggregateOutputType | null
@@ -17040,14 +17040,14 @@ export namespace Prisma {
     title?: boolean
     thumbnailUrl?: boolean
     newsLink?: boolean
-    source?: boolean
-    publishedLabel?: boolean
-    description?: boolean
-    type?: boolean
     order?: boolean
     published?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    description?: boolean
+    publishedLabel?: boolean
+    source?: boolean
+    type?: boolean
   }, ExtArgs["result"]["newsItem"]>
 
   export type NewsItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -17055,14 +17055,14 @@ export namespace Prisma {
     title?: boolean
     thumbnailUrl?: boolean
     newsLink?: boolean
-    source?: boolean
-    publishedLabel?: boolean
-    description?: boolean
-    type?: boolean
     order?: boolean
     published?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    description?: boolean
+    publishedLabel?: boolean
+    source?: boolean
+    type?: boolean
   }, ExtArgs["result"]["newsItem"]>
 
   export type NewsItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -17070,14 +17070,14 @@ export namespace Prisma {
     title?: boolean
     thumbnailUrl?: boolean
     newsLink?: boolean
-    source?: boolean
-    publishedLabel?: boolean
-    description?: boolean
-    type?: boolean
     order?: boolean
     published?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    description?: boolean
+    publishedLabel?: boolean
+    source?: boolean
+    type?: boolean
   }, ExtArgs["result"]["newsItem"]>
 
   export type NewsItemSelectScalar = {
@@ -17085,17 +17085,17 @@ export namespace Prisma {
     title?: boolean
     thumbnailUrl?: boolean
     newsLink?: boolean
-    source?: boolean
-    publishedLabel?: boolean
-    description?: boolean
-    type?: boolean
     order?: boolean
     published?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    description?: boolean
+    publishedLabel?: boolean
+    source?: boolean
+    type?: boolean
   }
 
-  export type NewsItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnailUrl" | "newsLink" | "source" | "publishedLabel" | "description" | "type" | "order" | "published" | "createdAt" | "updatedAt", ExtArgs["result"]["newsItem"]>
+  export type NewsItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnailUrl" | "newsLink" | "order" | "published" | "createdAt" | "updatedAt" | "description" | "publishedLabel" | "source" | "type", ExtArgs["result"]["newsItem"]>
 
   export type $NewsItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "NewsItem"
@@ -17105,14 +17105,14 @@ export namespace Prisma {
       title: string
       thumbnailUrl: string
       newsLink: string
-      source: string | null
-      publishedLabel: string | null
-      description: string | null
-      type: string
       order: number
       published: boolean
       createdAt: Date
       updatedAt: Date
+      description: string | null
+      publishedLabel: string | null
+      source: string | null
+      type: string
     }, ExtArgs["result"]["newsItem"]>
     composites: {}
   }
@@ -17540,14 +17540,14 @@ export namespace Prisma {
     readonly title: FieldRef<"NewsItem", 'String'>
     readonly thumbnailUrl: FieldRef<"NewsItem", 'String'>
     readonly newsLink: FieldRef<"NewsItem", 'String'>
-    readonly source: FieldRef<"NewsItem", 'String'>
-    readonly publishedLabel: FieldRef<"NewsItem", 'String'>
-    readonly description: FieldRef<"NewsItem", 'String'>
-    readonly type: FieldRef<"NewsItem", 'String'>
     readonly order: FieldRef<"NewsItem", 'Int'>
     readonly published: FieldRef<"NewsItem", 'Boolean'>
     readonly createdAt: FieldRef<"NewsItem", 'DateTime'>
     readonly updatedAt: FieldRef<"NewsItem", 'DateTime'>
+    readonly description: FieldRef<"NewsItem", 'String'>
+    readonly publishedLabel: FieldRef<"NewsItem", 'String'>
+    readonly source: FieldRef<"NewsItem", 'String'>
+    readonly type: FieldRef<"NewsItem", 'String'>
   }
     
 
@@ -19098,91 +19098,91 @@ export namespace Prisma {
   export type PageSeoMinAggregateOutputType = {
     id: string | null
     path: string | null
-    url: string | null
-    sourceFile: string | null
-    pageTitle: string | null
-    metaTitle: string | null
-    metaDescription: string | null
-    keywords: string | null
-    h1Hero: string | null
     canonical: string | null
-    robotsMeta: string | null
-    metaPixelPresent: boolean | null
-    metaPixelId: string | null
-    googleTagManagerPresent: boolean | null
-    googleTagManagerId: string | null
-    googleAnalyticsPresent: boolean | null
-    googleAnalyticsMeasurementId: string | null
-    hotjarPresent: boolean | null
-    hotjarSiteId: string | null
-    metricoolPresent: boolean | null
-    plausiblePresent: boolean | null
-    sitemapInclude: boolean | null
-    sitemapPriority: number | null
-    sitemapChangefreq: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    keywords: string | null
+    googleAnalyticsMeasurementId: string | null
+    googleAnalyticsPresent: boolean | null
+    googleTagManagerId: string | null
+    googleTagManagerPresent: boolean | null
+    h1Hero: string | null
+    hotjarPresent: boolean | null
+    hotjarSiteId: string | null
+    metaDescription: string | null
+    metaPixelId: string | null
+    metaPixelPresent: boolean | null
+    metaTitle: string | null
+    metricoolPresent: boolean | null
+    pageTitle: string | null
+    plausiblePresent: boolean | null
+    robotsMeta: string | null
+    sitemapChangefreq: string | null
+    sitemapInclude: boolean | null
+    sitemapPriority: number | null
+    sourceFile: string | null
+    url: string | null
   }
 
   export type PageSeoMaxAggregateOutputType = {
     id: string | null
     path: string | null
-    url: string | null
-    sourceFile: string | null
-    pageTitle: string | null
-    metaTitle: string | null
-    metaDescription: string | null
-    keywords: string | null
-    h1Hero: string | null
     canonical: string | null
-    robotsMeta: string | null
-    metaPixelPresent: boolean | null
-    metaPixelId: string | null
-    googleTagManagerPresent: boolean | null
-    googleTagManagerId: string | null
-    googleAnalyticsPresent: boolean | null
-    googleAnalyticsMeasurementId: string | null
-    hotjarPresent: boolean | null
-    hotjarSiteId: string | null
-    metricoolPresent: boolean | null
-    plausiblePresent: boolean | null
-    sitemapInclude: boolean | null
-    sitemapPriority: number | null
-    sitemapChangefreq: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    keywords: string | null
+    googleAnalyticsMeasurementId: string | null
+    googleAnalyticsPresent: boolean | null
+    googleTagManagerId: string | null
+    googleTagManagerPresent: boolean | null
+    h1Hero: string | null
+    hotjarPresent: boolean | null
+    hotjarSiteId: string | null
+    metaDescription: string | null
+    metaPixelId: string | null
+    metaPixelPresent: boolean | null
+    metaTitle: string | null
+    metricoolPresent: boolean | null
+    pageTitle: string | null
+    plausiblePresent: boolean | null
+    robotsMeta: string | null
+    sitemapChangefreq: string | null
+    sitemapInclude: boolean | null
+    sitemapPriority: number | null
+    sourceFile: string | null
+    url: string | null
   }
 
   export type PageSeoCountAggregateOutputType = {
     id: number
     path: number
-    url: number
-    sourceFile: number
-    pageTitle: number
-    metaTitle: number
-    metaDescription: number
-    keywords: number
-    h1Hero: number
     canonical: number
-    robotsMeta: number
-    openGraph: number
-    twitter: number
-    jsonLd: number
-    metaPixelPresent: number
-    metaPixelId: number
-    googleTagManagerPresent: number
-    googleTagManagerId: number
-    googleAnalyticsPresent: number
-    googleAnalyticsMeasurementId: number
-    hotjarPresent: number
-    hotjarSiteId: number
-    metricoolPresent: number
-    plausiblePresent: number
-    sitemapInclude: number
-    sitemapPriority: number
-    sitemapChangefreq: number
     createdAt: number
     updatedAt: number
+    keywords: number
+    googleAnalyticsMeasurementId: number
+    googleAnalyticsPresent: number
+    googleTagManagerId: number
+    googleTagManagerPresent: number
+    h1Hero: number
+    hotjarPresent: number
+    hotjarSiteId: number
+    jsonLd: number
+    metaDescription: number
+    metaPixelId: number
+    metaPixelPresent: number
+    metaTitle: number
+    metricoolPresent: number
+    openGraph: number
+    pageTitle: number
+    plausiblePresent: number
+    robotsMeta: number
+    sitemapChangefreq: number
+    sitemapInclude: number
+    sitemapPriority: number
+    sourceFile: number
+    twitter: number
+    url: number
     _all: number
   }
 
@@ -19198,91 +19198,91 @@ export namespace Prisma {
   export type PageSeoMinAggregateInputType = {
     id?: true
     path?: true
-    url?: true
-    sourceFile?: true
-    pageTitle?: true
-    metaTitle?: true
-    metaDescription?: true
-    keywords?: true
-    h1Hero?: true
     canonical?: true
-    robotsMeta?: true
-    metaPixelPresent?: true
-    metaPixelId?: true
-    googleTagManagerPresent?: true
-    googleTagManagerId?: true
-    googleAnalyticsPresent?: true
-    googleAnalyticsMeasurementId?: true
-    hotjarPresent?: true
-    hotjarSiteId?: true
-    metricoolPresent?: true
-    plausiblePresent?: true
-    sitemapInclude?: true
-    sitemapPriority?: true
-    sitemapChangefreq?: true
     createdAt?: true
     updatedAt?: true
+    keywords?: true
+    googleAnalyticsMeasurementId?: true
+    googleAnalyticsPresent?: true
+    googleTagManagerId?: true
+    googleTagManagerPresent?: true
+    h1Hero?: true
+    hotjarPresent?: true
+    hotjarSiteId?: true
+    metaDescription?: true
+    metaPixelId?: true
+    metaPixelPresent?: true
+    metaTitle?: true
+    metricoolPresent?: true
+    pageTitle?: true
+    plausiblePresent?: true
+    robotsMeta?: true
+    sitemapChangefreq?: true
+    sitemapInclude?: true
+    sitemapPriority?: true
+    sourceFile?: true
+    url?: true
   }
 
   export type PageSeoMaxAggregateInputType = {
     id?: true
     path?: true
-    url?: true
-    sourceFile?: true
-    pageTitle?: true
-    metaTitle?: true
-    metaDescription?: true
-    keywords?: true
-    h1Hero?: true
     canonical?: true
-    robotsMeta?: true
-    metaPixelPresent?: true
-    metaPixelId?: true
-    googleTagManagerPresent?: true
-    googleTagManagerId?: true
-    googleAnalyticsPresent?: true
-    googleAnalyticsMeasurementId?: true
-    hotjarPresent?: true
-    hotjarSiteId?: true
-    metricoolPresent?: true
-    plausiblePresent?: true
-    sitemapInclude?: true
-    sitemapPriority?: true
-    sitemapChangefreq?: true
     createdAt?: true
     updatedAt?: true
+    keywords?: true
+    googleAnalyticsMeasurementId?: true
+    googleAnalyticsPresent?: true
+    googleTagManagerId?: true
+    googleTagManagerPresent?: true
+    h1Hero?: true
+    hotjarPresent?: true
+    hotjarSiteId?: true
+    metaDescription?: true
+    metaPixelId?: true
+    metaPixelPresent?: true
+    metaTitle?: true
+    metricoolPresent?: true
+    pageTitle?: true
+    plausiblePresent?: true
+    robotsMeta?: true
+    sitemapChangefreq?: true
+    sitemapInclude?: true
+    sitemapPriority?: true
+    sourceFile?: true
+    url?: true
   }
 
   export type PageSeoCountAggregateInputType = {
     id?: true
     path?: true
-    url?: true
-    sourceFile?: true
-    pageTitle?: true
-    metaTitle?: true
-    metaDescription?: true
-    keywords?: true
-    h1Hero?: true
     canonical?: true
-    robotsMeta?: true
-    openGraph?: true
-    twitter?: true
-    jsonLd?: true
-    metaPixelPresent?: true
-    metaPixelId?: true
-    googleTagManagerPresent?: true
-    googleTagManagerId?: true
-    googleAnalyticsPresent?: true
-    googleAnalyticsMeasurementId?: true
-    hotjarPresent?: true
-    hotjarSiteId?: true
-    metricoolPresent?: true
-    plausiblePresent?: true
-    sitemapInclude?: true
-    sitemapPriority?: true
-    sitemapChangefreq?: true
     createdAt?: true
     updatedAt?: true
+    keywords?: true
+    googleAnalyticsMeasurementId?: true
+    googleAnalyticsPresent?: true
+    googleTagManagerId?: true
+    googleTagManagerPresent?: true
+    h1Hero?: true
+    hotjarPresent?: true
+    hotjarSiteId?: true
+    jsonLd?: true
+    metaDescription?: true
+    metaPixelId?: true
+    metaPixelPresent?: true
+    metaTitle?: true
+    metricoolPresent?: true
+    openGraph?: true
+    pageTitle?: true
+    plausiblePresent?: true
+    robotsMeta?: true
+    sitemapChangefreq?: true
+    sitemapInclude?: true
+    sitemapPriority?: true
+    sourceFile?: true
+    twitter?: true
+    url?: true
     _all?: true
   }
 
@@ -19375,33 +19375,33 @@ export namespace Prisma {
   export type PageSeoGroupByOutputType = {
     id: string
     path: string
-    url: string | null
-    sourceFile: string | null
-    pageTitle: string | null
-    metaTitle: string | null
-    metaDescription: string | null
-    keywords: string | null
-    h1Hero: string | null
     canonical: string | null
-    robotsMeta: string | null
-    openGraph: JsonValue | null
-    twitter: JsonValue | null
-    jsonLd: JsonValue | null
-    metaPixelPresent: boolean
-    metaPixelId: string | null
-    googleTagManagerPresent: boolean
-    googleTagManagerId: string | null
-    googleAnalyticsPresent: boolean
-    googleAnalyticsMeasurementId: string | null
-    hotjarPresent: boolean
-    hotjarSiteId: string | null
-    metricoolPresent: boolean
-    plausiblePresent: boolean
-    sitemapInclude: boolean
-    sitemapPriority: number | null
-    sitemapChangefreq: string | null
     createdAt: Date
     updatedAt: Date
+    keywords: string | null
+    googleAnalyticsMeasurementId: string | null
+    googleAnalyticsPresent: boolean
+    googleTagManagerId: string | null
+    googleTagManagerPresent: boolean
+    h1Hero: string | null
+    hotjarPresent: boolean
+    hotjarSiteId: string | null
+    jsonLd: JsonValue | null
+    metaDescription: string | null
+    metaPixelId: string | null
+    metaPixelPresent: boolean
+    metaTitle: string | null
+    metricoolPresent: boolean
+    openGraph: JsonValue | null
+    pageTitle: string | null
+    plausiblePresent: boolean
+    robotsMeta: string | null
+    sitemapChangefreq: string | null
+    sitemapInclude: boolean
+    sitemapPriority: number | null
+    sourceFile: string | null
+    twitter: JsonValue | null
+    url: string | null
     _count: PageSeoCountAggregateOutputType | null
     _avg: PageSeoAvgAggregateOutputType | null
     _sum: PageSeoSumAggregateOutputType | null
@@ -19426,132 +19426,132 @@ export namespace Prisma {
   export type PageSeoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     path?: boolean
-    url?: boolean
-    sourceFile?: boolean
-    pageTitle?: boolean
-    metaTitle?: boolean
-    metaDescription?: boolean
-    keywords?: boolean
-    h1Hero?: boolean
     canonical?: boolean
-    robotsMeta?: boolean
-    openGraph?: boolean
-    twitter?: boolean
-    jsonLd?: boolean
-    metaPixelPresent?: boolean
-    metaPixelId?: boolean
-    googleTagManagerPresent?: boolean
-    googleTagManagerId?: boolean
-    googleAnalyticsPresent?: boolean
-    googleAnalyticsMeasurementId?: boolean
-    hotjarPresent?: boolean
-    hotjarSiteId?: boolean
-    metricoolPresent?: boolean
-    plausiblePresent?: boolean
-    sitemapInclude?: boolean
-    sitemapPriority?: boolean
-    sitemapChangefreq?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    keywords?: boolean
+    googleAnalyticsMeasurementId?: boolean
+    googleAnalyticsPresent?: boolean
+    googleTagManagerId?: boolean
+    googleTagManagerPresent?: boolean
+    h1Hero?: boolean
+    hotjarPresent?: boolean
+    hotjarSiteId?: boolean
+    jsonLd?: boolean
+    metaDescription?: boolean
+    metaPixelId?: boolean
+    metaPixelPresent?: boolean
+    metaTitle?: boolean
+    metricoolPresent?: boolean
+    openGraph?: boolean
+    pageTitle?: boolean
+    plausiblePresent?: boolean
+    robotsMeta?: boolean
+    sitemapChangefreq?: boolean
+    sitemapInclude?: boolean
+    sitemapPriority?: boolean
+    sourceFile?: boolean
+    twitter?: boolean
+    url?: boolean
   }, ExtArgs["result"]["pageSeo"]>
 
   export type PageSeoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     path?: boolean
-    url?: boolean
-    sourceFile?: boolean
-    pageTitle?: boolean
-    metaTitle?: boolean
-    metaDescription?: boolean
-    keywords?: boolean
-    h1Hero?: boolean
     canonical?: boolean
-    robotsMeta?: boolean
-    openGraph?: boolean
-    twitter?: boolean
-    jsonLd?: boolean
-    metaPixelPresent?: boolean
-    metaPixelId?: boolean
-    googleTagManagerPresent?: boolean
-    googleTagManagerId?: boolean
-    googleAnalyticsPresent?: boolean
-    googleAnalyticsMeasurementId?: boolean
-    hotjarPresent?: boolean
-    hotjarSiteId?: boolean
-    metricoolPresent?: boolean
-    plausiblePresent?: boolean
-    sitemapInclude?: boolean
-    sitemapPriority?: boolean
-    sitemapChangefreq?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    keywords?: boolean
+    googleAnalyticsMeasurementId?: boolean
+    googleAnalyticsPresent?: boolean
+    googleTagManagerId?: boolean
+    googleTagManagerPresent?: boolean
+    h1Hero?: boolean
+    hotjarPresent?: boolean
+    hotjarSiteId?: boolean
+    jsonLd?: boolean
+    metaDescription?: boolean
+    metaPixelId?: boolean
+    metaPixelPresent?: boolean
+    metaTitle?: boolean
+    metricoolPresent?: boolean
+    openGraph?: boolean
+    pageTitle?: boolean
+    plausiblePresent?: boolean
+    robotsMeta?: boolean
+    sitemapChangefreq?: boolean
+    sitemapInclude?: boolean
+    sitemapPriority?: boolean
+    sourceFile?: boolean
+    twitter?: boolean
+    url?: boolean
   }, ExtArgs["result"]["pageSeo"]>
 
   export type PageSeoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     path?: boolean
-    url?: boolean
-    sourceFile?: boolean
-    pageTitle?: boolean
-    metaTitle?: boolean
-    metaDescription?: boolean
-    keywords?: boolean
-    h1Hero?: boolean
     canonical?: boolean
-    robotsMeta?: boolean
-    openGraph?: boolean
-    twitter?: boolean
-    jsonLd?: boolean
-    metaPixelPresent?: boolean
-    metaPixelId?: boolean
-    googleTagManagerPresent?: boolean
-    googleTagManagerId?: boolean
-    googleAnalyticsPresent?: boolean
-    googleAnalyticsMeasurementId?: boolean
-    hotjarPresent?: boolean
-    hotjarSiteId?: boolean
-    metricoolPresent?: boolean
-    plausiblePresent?: boolean
-    sitemapInclude?: boolean
-    sitemapPriority?: boolean
-    sitemapChangefreq?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    keywords?: boolean
+    googleAnalyticsMeasurementId?: boolean
+    googleAnalyticsPresent?: boolean
+    googleTagManagerId?: boolean
+    googleTagManagerPresent?: boolean
+    h1Hero?: boolean
+    hotjarPresent?: boolean
+    hotjarSiteId?: boolean
+    jsonLd?: boolean
+    metaDescription?: boolean
+    metaPixelId?: boolean
+    metaPixelPresent?: boolean
+    metaTitle?: boolean
+    metricoolPresent?: boolean
+    openGraph?: boolean
+    pageTitle?: boolean
+    plausiblePresent?: boolean
+    robotsMeta?: boolean
+    sitemapChangefreq?: boolean
+    sitemapInclude?: boolean
+    sitemapPriority?: boolean
+    sourceFile?: boolean
+    twitter?: boolean
+    url?: boolean
   }, ExtArgs["result"]["pageSeo"]>
 
   export type PageSeoSelectScalar = {
     id?: boolean
     path?: boolean
-    url?: boolean
-    sourceFile?: boolean
-    pageTitle?: boolean
-    metaTitle?: boolean
-    metaDescription?: boolean
-    keywords?: boolean
-    h1Hero?: boolean
     canonical?: boolean
-    robotsMeta?: boolean
-    openGraph?: boolean
-    twitter?: boolean
-    jsonLd?: boolean
-    metaPixelPresent?: boolean
-    metaPixelId?: boolean
-    googleTagManagerPresent?: boolean
-    googleTagManagerId?: boolean
-    googleAnalyticsPresent?: boolean
-    googleAnalyticsMeasurementId?: boolean
-    hotjarPresent?: boolean
-    hotjarSiteId?: boolean
-    metricoolPresent?: boolean
-    plausiblePresent?: boolean
-    sitemapInclude?: boolean
-    sitemapPriority?: boolean
-    sitemapChangefreq?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    keywords?: boolean
+    googleAnalyticsMeasurementId?: boolean
+    googleAnalyticsPresent?: boolean
+    googleTagManagerId?: boolean
+    googleTagManagerPresent?: boolean
+    h1Hero?: boolean
+    hotjarPresent?: boolean
+    hotjarSiteId?: boolean
+    jsonLd?: boolean
+    metaDescription?: boolean
+    metaPixelId?: boolean
+    metaPixelPresent?: boolean
+    metaTitle?: boolean
+    metricoolPresent?: boolean
+    openGraph?: boolean
+    pageTitle?: boolean
+    plausiblePresent?: boolean
+    robotsMeta?: boolean
+    sitemapChangefreq?: boolean
+    sitemapInclude?: boolean
+    sitemapPriority?: boolean
+    sourceFile?: boolean
+    twitter?: boolean
+    url?: boolean
   }
 
-  export type PageSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "path" | "url" | "sourceFile" | "pageTitle" | "metaTitle" | "metaDescription" | "keywords" | "h1Hero" | "canonical" | "robotsMeta" | "openGraph" | "twitter" | "jsonLd" | "metaPixelPresent" | "metaPixelId" | "googleTagManagerPresent" | "googleTagManagerId" | "googleAnalyticsPresent" | "googleAnalyticsMeasurementId" | "hotjarPresent" | "hotjarSiteId" | "metricoolPresent" | "plausiblePresent" | "sitemapInclude" | "sitemapPriority" | "sitemapChangefreq" | "createdAt" | "updatedAt", ExtArgs["result"]["pageSeo"]>
+  export type PageSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "path" | "canonical" | "createdAt" | "updatedAt" | "keywords" | "googleAnalyticsMeasurementId" | "googleAnalyticsPresent" | "googleTagManagerId" | "googleTagManagerPresent" | "h1Hero" | "hotjarPresent" | "hotjarSiteId" | "jsonLd" | "metaDescription" | "metaPixelId" | "metaPixelPresent" | "metaTitle" | "metricoolPresent" | "openGraph" | "pageTitle" | "plausiblePresent" | "robotsMeta" | "sitemapChangefreq" | "sitemapInclude" | "sitemapPriority" | "sourceFile" | "twitter" | "url", ExtArgs["result"]["pageSeo"]>
 
   export type $PageSeoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PageSeo"
@@ -19559,33 +19559,33 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       path: string
-      url: string | null
-      sourceFile: string | null
-      pageTitle: string | null
-      metaTitle: string | null
-      metaDescription: string | null
-      keywords: string | null
-      h1Hero: string | null
       canonical: string | null
-      robotsMeta: string | null
-      openGraph: Prisma.JsonValue | null
-      twitter: Prisma.JsonValue | null
-      jsonLd: Prisma.JsonValue | null
-      metaPixelPresent: boolean
-      metaPixelId: string | null
-      googleTagManagerPresent: boolean
-      googleTagManagerId: string | null
-      googleAnalyticsPresent: boolean
-      googleAnalyticsMeasurementId: string | null
-      hotjarPresent: boolean
-      hotjarSiteId: string | null
-      metricoolPresent: boolean
-      plausiblePresent: boolean
-      sitemapInclude: boolean
-      sitemapPriority: number | null
-      sitemapChangefreq: string | null
       createdAt: Date
       updatedAt: Date
+      keywords: string | null
+      googleAnalyticsMeasurementId: string | null
+      googleAnalyticsPresent: boolean
+      googleTagManagerId: string | null
+      googleTagManagerPresent: boolean
+      h1Hero: string | null
+      hotjarPresent: boolean
+      hotjarSiteId: string | null
+      jsonLd: Prisma.JsonValue | null
+      metaDescription: string | null
+      metaPixelId: string | null
+      metaPixelPresent: boolean
+      metaTitle: string | null
+      metricoolPresent: boolean
+      openGraph: Prisma.JsonValue | null
+      pageTitle: string | null
+      plausiblePresent: boolean
+      robotsMeta: string | null
+      sitemapChangefreq: string | null
+      sitemapInclude: boolean
+      sitemapPriority: number | null
+      sourceFile: string | null
+      twitter: Prisma.JsonValue | null
+      url: string | null
     }, ExtArgs["result"]["pageSeo"]>
     composites: {}
   }
@@ -20011,33 +20011,33 @@ export namespace Prisma {
   interface PageSeoFieldRefs {
     readonly id: FieldRef<"PageSeo", 'String'>
     readonly path: FieldRef<"PageSeo", 'String'>
-    readonly url: FieldRef<"PageSeo", 'String'>
-    readonly sourceFile: FieldRef<"PageSeo", 'String'>
-    readonly pageTitle: FieldRef<"PageSeo", 'String'>
-    readonly metaTitle: FieldRef<"PageSeo", 'String'>
-    readonly metaDescription: FieldRef<"PageSeo", 'String'>
-    readonly keywords: FieldRef<"PageSeo", 'String'>
-    readonly h1Hero: FieldRef<"PageSeo", 'String'>
     readonly canonical: FieldRef<"PageSeo", 'String'>
-    readonly robotsMeta: FieldRef<"PageSeo", 'String'>
-    readonly openGraph: FieldRef<"PageSeo", 'Json'>
-    readonly twitter: FieldRef<"PageSeo", 'Json'>
-    readonly jsonLd: FieldRef<"PageSeo", 'Json'>
-    readonly metaPixelPresent: FieldRef<"PageSeo", 'Boolean'>
-    readonly metaPixelId: FieldRef<"PageSeo", 'String'>
-    readonly googleTagManagerPresent: FieldRef<"PageSeo", 'Boolean'>
-    readonly googleTagManagerId: FieldRef<"PageSeo", 'String'>
-    readonly googleAnalyticsPresent: FieldRef<"PageSeo", 'Boolean'>
-    readonly googleAnalyticsMeasurementId: FieldRef<"PageSeo", 'String'>
-    readonly hotjarPresent: FieldRef<"PageSeo", 'Boolean'>
-    readonly hotjarSiteId: FieldRef<"PageSeo", 'String'>
-    readonly metricoolPresent: FieldRef<"PageSeo", 'Boolean'>
-    readonly plausiblePresent: FieldRef<"PageSeo", 'Boolean'>
-    readonly sitemapInclude: FieldRef<"PageSeo", 'Boolean'>
-    readonly sitemapPriority: FieldRef<"PageSeo", 'Float'>
-    readonly sitemapChangefreq: FieldRef<"PageSeo", 'String'>
     readonly createdAt: FieldRef<"PageSeo", 'DateTime'>
     readonly updatedAt: FieldRef<"PageSeo", 'DateTime'>
+    readonly keywords: FieldRef<"PageSeo", 'String'>
+    readonly googleAnalyticsMeasurementId: FieldRef<"PageSeo", 'String'>
+    readonly googleAnalyticsPresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly googleTagManagerId: FieldRef<"PageSeo", 'String'>
+    readonly googleTagManagerPresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly h1Hero: FieldRef<"PageSeo", 'String'>
+    readonly hotjarPresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly hotjarSiteId: FieldRef<"PageSeo", 'String'>
+    readonly jsonLd: FieldRef<"PageSeo", 'Json'>
+    readonly metaDescription: FieldRef<"PageSeo", 'String'>
+    readonly metaPixelId: FieldRef<"PageSeo", 'String'>
+    readonly metaPixelPresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly metaTitle: FieldRef<"PageSeo", 'String'>
+    readonly metricoolPresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly openGraph: FieldRef<"PageSeo", 'Json'>
+    readonly pageTitle: FieldRef<"PageSeo", 'String'>
+    readonly plausiblePresent: FieldRef<"PageSeo", 'Boolean'>
+    readonly robotsMeta: FieldRef<"PageSeo", 'String'>
+    readonly sitemapChangefreq: FieldRef<"PageSeo", 'String'>
+    readonly sitemapInclude: FieldRef<"PageSeo", 'Boolean'>
+    readonly sitemapPriority: FieldRef<"PageSeo", 'Float'>
+    readonly sourceFile: FieldRef<"PageSeo", 'String'>
+    readonly twitter: FieldRef<"PageSeo", 'Json'>
+    readonly url: FieldRef<"PageSeo", 'String'>
   }
     
 
@@ -20439,12 +20439,12 @@ export namespace Prisma {
     quote: string | null
     rating: number | null
     photoUrl: string | null
-    source: string | null
     featured: boolean | null
     status: string | null
     order: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    source: string | null
   }
 
   export type TestimonialMaxAggregateOutputType = {
@@ -20455,12 +20455,12 @@ export namespace Prisma {
     quote: string | null
     rating: number | null
     photoUrl: string | null
-    source: string | null
     featured: boolean | null
     status: string | null
     order: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    source: string | null
   }
 
   export type TestimonialCountAggregateOutputType = {
@@ -20471,12 +20471,12 @@ export namespace Prisma {
     quote: number
     rating: number
     photoUrl: number
-    source: number
     featured: number
     status: number
     order: number
     createdAt: number
     updatedAt: number
+    source: number
     _all: number
   }
 
@@ -20499,12 +20499,12 @@ export namespace Prisma {
     quote?: true
     rating?: true
     photoUrl?: true
-    source?: true
     featured?: true
     status?: true
     order?: true
     createdAt?: true
     updatedAt?: true
+    source?: true
   }
 
   export type TestimonialMaxAggregateInputType = {
@@ -20515,12 +20515,12 @@ export namespace Prisma {
     quote?: true
     rating?: true
     photoUrl?: true
-    source?: true
     featured?: true
     status?: true
     order?: true
     createdAt?: true
     updatedAt?: true
+    source?: true
   }
 
   export type TestimonialCountAggregateInputType = {
@@ -20531,12 +20531,12 @@ export namespace Prisma {
     quote?: true
     rating?: true
     photoUrl?: true
-    source?: true
     featured?: true
     status?: true
     order?: true
     createdAt?: true
     updatedAt?: true
+    source?: true
     _all?: true
   }
 
@@ -20634,12 +20634,12 @@ export namespace Prisma {
     quote: string
     rating: number
     photoUrl: string | null
-    source: string
     featured: boolean
     status: string
     order: number
     createdAt: Date
     updatedAt: Date
+    source: string
     _count: TestimonialCountAggregateOutputType | null
     _avg: TestimonialAvgAggregateOutputType | null
     _sum: TestimonialSumAggregateOutputType | null
@@ -20669,12 +20669,12 @@ export namespace Prisma {
     quote?: boolean
     rating?: boolean
     photoUrl?: boolean
-    source?: boolean
     featured?: boolean
     status?: boolean
     order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    source?: boolean
   }, ExtArgs["result"]["testimonial"]>
 
   export type TestimonialSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -20685,12 +20685,12 @@ export namespace Prisma {
     quote?: boolean
     rating?: boolean
     photoUrl?: boolean
-    source?: boolean
     featured?: boolean
     status?: boolean
     order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    source?: boolean
   }, ExtArgs["result"]["testimonial"]>
 
   export type TestimonialSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -20701,12 +20701,12 @@ export namespace Prisma {
     quote?: boolean
     rating?: boolean
     photoUrl?: boolean
-    source?: boolean
     featured?: boolean
     status?: boolean
     order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    source?: boolean
   }, ExtArgs["result"]["testimonial"]>
 
   export type TestimonialSelectScalar = {
@@ -20717,15 +20717,15 @@ export namespace Prisma {
     quote?: boolean
     rating?: boolean
     photoUrl?: boolean
-    source?: boolean
     featured?: boolean
     status?: boolean
     order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    source?: boolean
   }
 
-  export type TestimonialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "roleLabel" | "treatment" | "quote" | "rating" | "photoUrl" | "source" | "featured" | "status" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["testimonial"]>
+  export type TestimonialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "roleLabel" | "treatment" | "quote" | "rating" | "photoUrl" | "featured" | "status" | "order" | "createdAt" | "updatedAt" | "source", ExtArgs["result"]["testimonial"]>
 
   export type $TestimonialPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Testimonial"
@@ -20738,12 +20738,12 @@ export namespace Prisma {
       quote: string
       rating: number
       photoUrl: string | null
-      source: string
       featured: boolean
       status: string
       order: number
       createdAt: Date
       updatedAt: Date
+      source: string
     }, ExtArgs["result"]["testimonial"]>
     composites: {}
   }
@@ -21174,12 +21174,12 @@ export namespace Prisma {
     readonly quote: FieldRef<"Testimonial", 'String'>
     readonly rating: FieldRef<"Testimonial", 'Int'>
     readonly photoUrl: FieldRef<"Testimonial", 'String'>
-    readonly source: FieldRef<"Testimonial", 'String'>
     readonly featured: FieldRef<"Testimonial", 'Boolean'>
     readonly status: FieldRef<"Testimonial", 'String'>
     readonly order: FieldRef<"Testimonial", 'Int'>
     readonly createdAt: FieldRef<"Testimonial", 'DateTime'>
     readonly updatedAt: FieldRef<"Testimonial", 'DateTime'>
+    readonly source: FieldRef<"Testimonial", 'String'>
   }
     
 
@@ -21573,11 +21573,11 @@ export namespace Prisma {
     defaultSeoTitle: string | null
     defaultSeoDescription: string | null
     defaultOgImageUrl: string | null
-    googleAnalyticsId: string | null
-    metaPixelId: string | null
     headerScripts: string | null
     footerScripts: string | null
     updatedAt: Date | null
+    googleAnalyticsId: string | null
+    metaPixelId: string | null
   }
 
   export type SiteSettingsMaxAggregateOutputType = {
@@ -21592,11 +21592,11 @@ export namespace Prisma {
     defaultSeoTitle: string | null
     defaultSeoDescription: string | null
     defaultOgImageUrl: string | null
-    googleAnalyticsId: string | null
-    metaPixelId: string | null
     headerScripts: string | null
     footerScripts: string | null
     updatedAt: Date | null
+    googleAnalyticsId: string | null
+    metaPixelId: string | null
   }
 
   export type SiteSettingsCountAggregateOutputType = {
@@ -21612,11 +21612,11 @@ export namespace Prisma {
     defaultSeoTitle: number
     defaultSeoDescription: number
     defaultOgImageUrl: number
-    googleAnalyticsId: number
-    metaPixelId: number
     headerScripts: number
     footerScripts: number
     updatedAt: number
+    googleAnalyticsId: number
+    metaPixelId: number
     _all: number
   }
 
@@ -21633,11 +21633,11 @@ export namespace Prisma {
     defaultSeoTitle?: true
     defaultSeoDescription?: true
     defaultOgImageUrl?: true
-    googleAnalyticsId?: true
-    metaPixelId?: true
     headerScripts?: true
     footerScripts?: true
     updatedAt?: true
+    googleAnalyticsId?: true
+    metaPixelId?: true
   }
 
   export type SiteSettingsMaxAggregateInputType = {
@@ -21652,11 +21652,11 @@ export namespace Prisma {
     defaultSeoTitle?: true
     defaultSeoDescription?: true
     defaultOgImageUrl?: true
-    googleAnalyticsId?: true
-    metaPixelId?: true
     headerScripts?: true
     footerScripts?: true
     updatedAt?: true
+    googleAnalyticsId?: true
+    metaPixelId?: true
   }
 
   export type SiteSettingsCountAggregateInputType = {
@@ -21672,11 +21672,11 @@ export namespace Prisma {
     defaultSeoTitle?: true
     defaultSeoDescription?: true
     defaultOgImageUrl?: true
-    googleAnalyticsId?: true
-    metaPixelId?: true
     headerScripts?: true
     footerScripts?: true
     updatedAt?: true
+    googleAnalyticsId?: true
+    metaPixelId?: true
     _all?: true
   }
 
@@ -21765,11 +21765,11 @@ export namespace Prisma {
     defaultSeoTitle: string | null
     defaultSeoDescription: string | null
     defaultOgImageUrl: string | null
-    googleAnalyticsId: string | null
-    metaPixelId: string | null
     headerScripts: string | null
     footerScripts: string | null
     updatedAt: Date
+    googleAnalyticsId: string | null
+    metaPixelId: string | null
     _count: SiteSettingsCountAggregateOutputType | null
     _min: SiteSettingsMinAggregateOutputType | null
     _max: SiteSettingsMaxAggregateOutputType | null
@@ -21802,11 +21802,11 @@ export namespace Prisma {
     defaultSeoTitle?: boolean
     defaultSeoDescription?: boolean
     defaultOgImageUrl?: boolean
-    googleAnalyticsId?: boolean
-    metaPixelId?: boolean
     headerScripts?: boolean
     footerScripts?: boolean
     updatedAt?: boolean
+    googleAnalyticsId?: boolean
+    metaPixelId?: boolean
   }, ExtArgs["result"]["siteSettings"]>
 
   export type SiteSettingsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -21822,11 +21822,11 @@ export namespace Prisma {
     defaultSeoTitle?: boolean
     defaultSeoDescription?: boolean
     defaultOgImageUrl?: boolean
-    googleAnalyticsId?: boolean
-    metaPixelId?: boolean
     headerScripts?: boolean
     footerScripts?: boolean
     updatedAt?: boolean
+    googleAnalyticsId?: boolean
+    metaPixelId?: boolean
   }, ExtArgs["result"]["siteSettings"]>
 
   export type SiteSettingsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -21842,11 +21842,11 @@ export namespace Prisma {
     defaultSeoTitle?: boolean
     defaultSeoDescription?: boolean
     defaultOgImageUrl?: boolean
-    googleAnalyticsId?: boolean
-    metaPixelId?: boolean
     headerScripts?: boolean
     footerScripts?: boolean
     updatedAt?: boolean
+    googleAnalyticsId?: boolean
+    metaPixelId?: boolean
   }, ExtArgs["result"]["siteSettings"]>
 
   export type SiteSettingsSelectScalar = {
@@ -21862,14 +21862,14 @@ export namespace Prisma {
     defaultSeoTitle?: boolean
     defaultSeoDescription?: boolean
     defaultOgImageUrl?: boolean
-    googleAnalyticsId?: boolean
-    metaPixelId?: boolean
     headerScripts?: boolean
     footerScripts?: boolean
     updatedAt?: boolean
+    googleAnalyticsId?: boolean
+    metaPixelId?: boolean
   }
 
-  export type SiteSettingsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "siteName" | "tagline" | "logoUrl" | "logoDarkUrl" | "faviconUrl" | "phone" | "email" | "socialLinks" | "defaultSeoTitle" | "defaultSeoDescription" | "defaultOgImageUrl" | "googleAnalyticsId" | "metaPixelId" | "headerScripts" | "footerScripts" | "updatedAt", ExtArgs["result"]["siteSettings"]>
+  export type SiteSettingsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "siteName" | "tagline" | "logoUrl" | "logoDarkUrl" | "faviconUrl" | "phone" | "email" | "socialLinks" | "defaultSeoTitle" | "defaultSeoDescription" | "defaultOgImageUrl" | "headerScripts" | "footerScripts" | "updatedAt" | "googleAnalyticsId" | "metaPixelId", ExtArgs["result"]["siteSettings"]>
 
   export type $SiteSettingsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "SiteSettings"
@@ -21887,11 +21887,11 @@ export namespace Prisma {
       defaultSeoTitle: string | null
       defaultSeoDescription: string | null
       defaultOgImageUrl: string | null
-      googleAnalyticsId: string | null
-      metaPixelId: string | null
       headerScripts: string | null
       footerScripts: string | null
       updatedAt: Date
+      googleAnalyticsId: string | null
+      metaPixelId: string | null
     }, ExtArgs["result"]["siteSettings"]>
     composites: {}
   }
@@ -22327,11 +22327,11 @@ export namespace Prisma {
     readonly defaultSeoTitle: FieldRef<"SiteSettings", 'String'>
     readonly defaultSeoDescription: FieldRef<"SiteSettings", 'String'>
     readonly defaultOgImageUrl: FieldRef<"SiteSettings", 'String'>
-    readonly googleAnalyticsId: FieldRef<"SiteSettings", 'String'>
-    readonly metaPixelId: FieldRef<"SiteSettings", 'String'>
     readonly headerScripts: FieldRef<"SiteSettings", 'String'>
     readonly footerScripts: FieldRef<"SiteSettings", 'String'>
     readonly updatedAt: FieldRef<"SiteSettings", 'DateTime'>
+    readonly googleAnalyticsId: FieldRef<"SiteSettings", 'String'>
+    readonly metaPixelId: FieldRef<"SiteSettings", 'String'>
   }
     
 
@@ -22771,13 +22771,13 @@ export namespace Prisma {
     ogImage: 'ogImage',
     canonical: 'canonical',
     noindex: 'noindex',
-    keywords: 'keywords',
     h1: 'h1',
-    ogTitle: 'ogTitle',
+    keywords: 'keywords',
     ogDescription: 'ogDescription',
+    ogTitle: 'ogTitle',
     ogType: 'ogType',
-    twitterTitle: 'twitterTitle',
     twitterDescription: 'twitterDescription',
+    twitterTitle: 'twitterTitle',
     schemaJsonLd: 'schemaJsonLd'
   };
 
@@ -22872,7 +22872,6 @@ export namespace Prisma {
   export const ServiceScalarFieldEnum: {
     id: 'id',
     slug: 'slug',
-    href: 'href',
     shortName: 'shortName',
     summary: 'summary',
     cardImageSrc: 'cardImageSrc',
@@ -22881,7 +22880,8 @@ export namespace Prisma {
     order: 'order',
     status: 'status',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    href: 'href'
   };
 
   export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
@@ -22910,14 +22910,14 @@ export namespace Prisma {
     title: 'title',
     thumbnailUrl: 'thumbnailUrl',
     newsLink: 'newsLink',
-    source: 'source',
-    publishedLabel: 'publishedLabel',
-    description: 'description',
-    type: 'type',
     order: 'order',
     published: 'published',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    description: 'description',
+    publishedLabel: 'publishedLabel',
+    source: 'source',
+    type: 'type'
   };
 
   export type NewsItemScalarFieldEnum = (typeof NewsItemScalarFieldEnum)[keyof typeof NewsItemScalarFieldEnum]
@@ -22947,33 +22947,33 @@ export namespace Prisma {
   export const PageSeoScalarFieldEnum: {
     id: 'id',
     path: 'path',
-    url: 'url',
-    sourceFile: 'sourceFile',
-    pageTitle: 'pageTitle',
-    metaTitle: 'metaTitle',
-    metaDescription: 'metaDescription',
-    keywords: 'keywords',
-    h1Hero: 'h1Hero',
     canonical: 'canonical',
-    robotsMeta: 'robotsMeta',
-    openGraph: 'openGraph',
-    twitter: 'twitter',
-    jsonLd: 'jsonLd',
-    metaPixelPresent: 'metaPixelPresent',
-    metaPixelId: 'metaPixelId',
-    googleTagManagerPresent: 'googleTagManagerPresent',
-    googleTagManagerId: 'googleTagManagerId',
-    googleAnalyticsPresent: 'googleAnalyticsPresent',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    keywords: 'keywords',
     googleAnalyticsMeasurementId: 'googleAnalyticsMeasurementId',
+    googleAnalyticsPresent: 'googleAnalyticsPresent',
+    googleTagManagerId: 'googleTagManagerId',
+    googleTagManagerPresent: 'googleTagManagerPresent',
+    h1Hero: 'h1Hero',
     hotjarPresent: 'hotjarPresent',
     hotjarSiteId: 'hotjarSiteId',
+    jsonLd: 'jsonLd',
+    metaDescription: 'metaDescription',
+    metaPixelId: 'metaPixelId',
+    metaPixelPresent: 'metaPixelPresent',
+    metaTitle: 'metaTitle',
     metricoolPresent: 'metricoolPresent',
+    openGraph: 'openGraph',
+    pageTitle: 'pageTitle',
     plausiblePresent: 'plausiblePresent',
+    robotsMeta: 'robotsMeta',
+    sitemapChangefreq: 'sitemapChangefreq',
     sitemapInclude: 'sitemapInclude',
     sitemapPriority: 'sitemapPriority',
-    sitemapChangefreq: 'sitemapChangefreq',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    sourceFile: 'sourceFile',
+    twitter: 'twitter',
+    url: 'url'
   };
 
   export type PageSeoScalarFieldEnum = (typeof PageSeoScalarFieldEnum)[keyof typeof PageSeoScalarFieldEnum]
@@ -22987,12 +22987,12 @@ export namespace Prisma {
     quote: 'quote',
     rating: 'rating',
     photoUrl: 'photoUrl',
-    source: 'source',
     featured: 'featured',
     status: 'status',
     order: 'order',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    source: 'source'
   };
 
   export type TestimonialScalarFieldEnum = (typeof TestimonialScalarFieldEnum)[keyof typeof TestimonialScalarFieldEnum]
@@ -23011,11 +23011,11 @@ export namespace Prisma {
     defaultSeoTitle: 'defaultSeoTitle',
     defaultSeoDescription: 'defaultSeoDescription',
     defaultOgImageUrl: 'defaultOgImageUrl',
-    googleAnalyticsId: 'googleAnalyticsId',
-    metaPixelId: 'metaPixelId',
     headerScripts: 'headerScripts',
     footerScripts: 'footerScripts',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    googleAnalyticsId: 'googleAnalyticsId',
+    metaPixelId: 'metaPixelId'
   };
 
   export type SiteSettingsScalarFieldEnum = (typeof SiteSettingsScalarFieldEnum)[keyof typeof SiteSettingsScalarFieldEnum]
@@ -23295,9 +23295,9 @@ export namespace Prisma {
     readingTime?: IntNullableFilter<"Post"> | number | null
     categoryId?: StringNullableFilter<"Post"> | string | null
     authorId?: StringNullableFilter<"Post"> | string | null
-    category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
-    author?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
     tags?: BlogTagListRelationFilter
+    author?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
+    category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
     seo?: XOR<PostSeoNullableScalarRelationFilter, PostSeoWhereInput> | null
   }
 
@@ -23317,9 +23317,9 @@ export namespace Prisma {
     readingTime?: SortOrderInput | SortOrder
     categoryId?: SortOrderInput | SortOrder
     authorId?: SortOrderInput | SortOrder
-    category?: CategoryOrderByWithRelationInput
-    author?: AdminOrderByWithRelationInput
     tags?: BlogTagOrderByRelationAggregateInput
+    author?: AdminOrderByWithRelationInput
+    category?: CategoryOrderByWithRelationInput
     seo?: PostSeoOrderByWithRelationInput
   }
 
@@ -23342,9 +23342,9 @@ export namespace Prisma {
     readingTime?: IntNullableFilter<"Post"> | number | null
     categoryId?: StringNullableFilter<"Post"> | string | null
     authorId?: StringNullableFilter<"Post"> | string | null
-    category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
-    author?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
     tags?: BlogTagListRelationFilter
+    author?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
+    category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
     seo?: XOR<PostSeoNullableScalarRelationFilter, PostSeoWhereInput> | null
   }, "id" | "slug">
 
@@ -23403,13 +23403,13 @@ export namespace Prisma {
     ogImage?: StringNullableFilter<"PostSeo"> | string | null
     canonical?: StringNullableFilter<"PostSeo"> | string | null
     noindex?: BoolFilter<"PostSeo"> | boolean
-    keywords?: StringNullableFilter<"PostSeo"> | string | null
     h1?: StringNullableFilter<"PostSeo"> | string | null
-    ogTitle?: StringNullableFilter<"PostSeo"> | string | null
+    keywords?: StringNullableFilter<"PostSeo"> | string | null
     ogDescription?: StringNullableFilter<"PostSeo"> | string | null
+    ogTitle?: StringNullableFilter<"PostSeo"> | string | null
     ogType?: StringNullableFilter<"PostSeo"> | string | null
-    twitterTitle?: StringNullableFilter<"PostSeo"> | string | null
     twitterDescription?: StringNullableFilter<"PostSeo"> | string | null
+    twitterTitle?: StringNullableFilter<"PostSeo"> | string | null
     schemaJsonLd?: JsonNullableFilter<"PostSeo">
     post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }
@@ -23422,13 +23422,13 @@ export namespace Prisma {
     ogImage?: SortOrderInput | SortOrder
     canonical?: SortOrderInput | SortOrder
     noindex?: SortOrder
-    keywords?: SortOrderInput | SortOrder
     h1?: SortOrderInput | SortOrder
-    ogTitle?: SortOrderInput | SortOrder
+    keywords?: SortOrderInput | SortOrder
     ogDescription?: SortOrderInput | SortOrder
+    ogTitle?: SortOrderInput | SortOrder
     ogType?: SortOrderInput | SortOrder
-    twitterTitle?: SortOrderInput | SortOrder
     twitterDescription?: SortOrderInput | SortOrder
+    twitterTitle?: SortOrderInput | SortOrder
     schemaJsonLd?: SortOrderInput | SortOrder
     post?: PostOrderByWithRelationInput
   }
@@ -23444,13 +23444,13 @@ export namespace Prisma {
     ogImage?: StringNullableFilter<"PostSeo"> | string | null
     canonical?: StringNullableFilter<"PostSeo"> | string | null
     noindex?: BoolFilter<"PostSeo"> | boolean
-    keywords?: StringNullableFilter<"PostSeo"> | string | null
     h1?: StringNullableFilter<"PostSeo"> | string | null
-    ogTitle?: StringNullableFilter<"PostSeo"> | string | null
+    keywords?: StringNullableFilter<"PostSeo"> | string | null
     ogDescription?: StringNullableFilter<"PostSeo"> | string | null
+    ogTitle?: StringNullableFilter<"PostSeo"> | string | null
     ogType?: StringNullableFilter<"PostSeo"> | string | null
-    twitterTitle?: StringNullableFilter<"PostSeo"> | string | null
     twitterDescription?: StringNullableFilter<"PostSeo"> | string | null
+    twitterTitle?: StringNullableFilter<"PostSeo"> | string | null
     schemaJsonLd?: JsonNullableFilter<"PostSeo">
     post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }, "id" | "postId">
@@ -23463,13 +23463,13 @@ export namespace Prisma {
     ogImage?: SortOrderInput | SortOrder
     canonical?: SortOrderInput | SortOrder
     noindex?: SortOrder
-    keywords?: SortOrderInput | SortOrder
     h1?: SortOrderInput | SortOrder
-    ogTitle?: SortOrderInput | SortOrder
+    keywords?: SortOrderInput | SortOrder
     ogDescription?: SortOrderInput | SortOrder
+    ogTitle?: SortOrderInput | SortOrder
     ogType?: SortOrderInput | SortOrder
-    twitterTitle?: SortOrderInput | SortOrder
     twitterDescription?: SortOrderInput | SortOrder
+    twitterTitle?: SortOrderInput | SortOrder
     schemaJsonLd?: SortOrderInput | SortOrder
     _count?: PostSeoCountOrderByAggregateInput
     _max?: PostSeoMaxOrderByAggregateInput
@@ -23487,13 +23487,13 @@ export namespace Prisma {
     ogImage?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
     canonical?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
     noindex?: BoolWithAggregatesFilter<"PostSeo"> | boolean
-    keywords?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
     h1?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
-    ogTitle?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
+    keywords?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
     ogDescription?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
+    ogTitle?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
     ogType?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
-    twitterTitle?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
     twitterDescription?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
+    twitterTitle?: StringNullableWithAggregatesFilter<"PostSeo"> | string | null
     schemaJsonLd?: JsonNullableWithAggregatesFilter<"PostSeo">
   }
 
@@ -23922,7 +23922,6 @@ export namespace Prisma {
     NOT?: ServiceWhereInput | ServiceWhereInput[]
     id?: StringFilter<"Service"> | string
     slug?: StringFilter<"Service"> | string
-    href?: StringFilter<"Service"> | string
     shortName?: StringFilter<"Service"> | string
     summary?: StringFilter<"Service"> | string
     cardImageSrc?: StringFilter<"Service"> | string
@@ -23932,12 +23931,12 @@ export namespace Prisma {
     status?: StringFilter<"Service"> | string
     createdAt?: DateTimeFilter<"Service"> | Date | string
     updatedAt?: DateTimeFilter<"Service"> | Date | string
+    href?: StringFilter<"Service"> | string
   }
 
   export type ServiceOrderByWithRelationInput = {
     id?: SortOrder
     slug?: SortOrder
-    href?: SortOrder
     shortName?: SortOrder
     summary?: SortOrder
     cardImageSrc?: SortOrder
@@ -23947,6 +23946,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    href?: SortOrder
   }
 
   export type ServiceWhereUniqueInput = Prisma.AtLeast<{
@@ -23955,7 +23955,6 @@ export namespace Prisma {
     AND?: ServiceWhereInput | ServiceWhereInput[]
     OR?: ServiceWhereInput[]
     NOT?: ServiceWhereInput | ServiceWhereInput[]
-    href?: StringFilter<"Service"> | string
     shortName?: StringFilter<"Service"> | string
     summary?: StringFilter<"Service"> | string
     cardImageSrc?: StringFilter<"Service"> | string
@@ -23965,12 +23964,12 @@ export namespace Prisma {
     status?: StringFilter<"Service"> | string
     createdAt?: DateTimeFilter<"Service"> | Date | string
     updatedAt?: DateTimeFilter<"Service"> | Date | string
+    href?: StringFilter<"Service"> | string
   }, "id" | "slug">
 
   export type ServiceOrderByWithAggregationInput = {
     id?: SortOrder
     slug?: SortOrder
-    href?: SortOrder
     shortName?: SortOrder
     summary?: SortOrder
     cardImageSrc?: SortOrder
@@ -23980,6 +23979,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    href?: SortOrder
     _count?: ServiceCountOrderByAggregateInput
     _avg?: ServiceAvgOrderByAggregateInput
     _max?: ServiceMaxOrderByAggregateInput
@@ -23993,7 +23993,6 @@ export namespace Prisma {
     NOT?: ServiceScalarWhereWithAggregatesInput | ServiceScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Service"> | string
     slug?: StringWithAggregatesFilter<"Service"> | string
-    href?: StringWithAggregatesFilter<"Service"> | string
     shortName?: StringWithAggregatesFilter<"Service"> | string
     summary?: StringWithAggregatesFilter<"Service"> | string
     cardImageSrc?: StringWithAggregatesFilter<"Service"> | string
@@ -24003,6 +24002,7 @@ export namespace Prisma {
     status?: StringWithAggregatesFilter<"Service"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Service"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Service"> | Date | string
+    href?: StringWithAggregatesFilter<"Service"> | string
   }
 
   export type TreatmentWhereInput = {
@@ -24102,14 +24102,14 @@ export namespace Prisma {
     title?: StringFilter<"NewsItem"> | string
     thumbnailUrl?: StringFilter<"NewsItem"> | string
     newsLink?: StringFilter<"NewsItem"> | string
-    source?: StringNullableFilter<"NewsItem"> | string | null
-    publishedLabel?: StringNullableFilter<"NewsItem"> | string | null
-    description?: StringNullableFilter<"NewsItem"> | string | null
-    type?: StringFilter<"NewsItem"> | string
     order?: IntFilter<"NewsItem"> | number
     published?: BoolFilter<"NewsItem"> | boolean
     createdAt?: DateTimeFilter<"NewsItem"> | Date | string
     updatedAt?: DateTimeFilter<"NewsItem"> | Date | string
+    description?: StringNullableFilter<"NewsItem"> | string | null
+    publishedLabel?: StringNullableFilter<"NewsItem"> | string | null
+    source?: StringNullableFilter<"NewsItem"> | string | null
+    type?: StringFilter<"NewsItem"> | string
   }
 
   export type NewsItemOrderByWithRelationInput = {
@@ -24117,14 +24117,14 @@ export namespace Prisma {
     title?: SortOrder
     thumbnailUrl?: SortOrder
     newsLink?: SortOrder
-    source?: SortOrderInput | SortOrder
-    publishedLabel?: SortOrderInput | SortOrder
-    description?: SortOrderInput | SortOrder
-    type?: SortOrder
     order?: SortOrder
     published?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    description?: SortOrderInput | SortOrder
+    publishedLabel?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    type?: SortOrder
   }
 
   export type NewsItemWhereUniqueInput = Prisma.AtLeast<{
@@ -24135,14 +24135,14 @@ export namespace Prisma {
     title?: StringFilter<"NewsItem"> | string
     thumbnailUrl?: StringFilter<"NewsItem"> | string
     newsLink?: StringFilter<"NewsItem"> | string
-    source?: StringNullableFilter<"NewsItem"> | string | null
-    publishedLabel?: StringNullableFilter<"NewsItem"> | string | null
-    description?: StringNullableFilter<"NewsItem"> | string | null
-    type?: StringFilter<"NewsItem"> | string
     order?: IntFilter<"NewsItem"> | number
     published?: BoolFilter<"NewsItem"> | boolean
     createdAt?: DateTimeFilter<"NewsItem"> | Date | string
     updatedAt?: DateTimeFilter<"NewsItem"> | Date | string
+    description?: StringNullableFilter<"NewsItem"> | string | null
+    publishedLabel?: StringNullableFilter<"NewsItem"> | string | null
+    source?: StringNullableFilter<"NewsItem"> | string | null
+    type?: StringFilter<"NewsItem"> | string
   }, "id">
 
   export type NewsItemOrderByWithAggregationInput = {
@@ -24150,14 +24150,14 @@ export namespace Prisma {
     title?: SortOrder
     thumbnailUrl?: SortOrder
     newsLink?: SortOrder
-    source?: SortOrderInput | SortOrder
-    publishedLabel?: SortOrderInput | SortOrder
-    description?: SortOrderInput | SortOrder
-    type?: SortOrder
     order?: SortOrder
     published?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    description?: SortOrderInput | SortOrder
+    publishedLabel?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    type?: SortOrder
     _count?: NewsItemCountOrderByAggregateInput
     _avg?: NewsItemAvgOrderByAggregateInput
     _max?: NewsItemMaxOrderByAggregateInput
@@ -24173,14 +24173,14 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"NewsItem"> | string
     thumbnailUrl?: StringWithAggregatesFilter<"NewsItem"> | string
     newsLink?: StringWithAggregatesFilter<"NewsItem"> | string
-    source?: StringNullableWithAggregatesFilter<"NewsItem"> | string | null
-    publishedLabel?: StringNullableWithAggregatesFilter<"NewsItem"> | string | null
-    description?: StringNullableWithAggregatesFilter<"NewsItem"> | string | null
-    type?: StringWithAggregatesFilter<"NewsItem"> | string
     order?: IntWithAggregatesFilter<"NewsItem"> | number
     published?: BoolWithAggregatesFilter<"NewsItem"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"NewsItem"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"NewsItem"> | Date | string
+    description?: StringNullableWithAggregatesFilter<"NewsItem"> | string | null
+    publishedLabel?: StringNullableWithAggregatesFilter<"NewsItem"> | string | null
+    source?: StringNullableWithAggregatesFilter<"NewsItem"> | string | null
+    type?: StringWithAggregatesFilter<"NewsItem"> | string
   }
 
   export type PersonWhereInput = {
@@ -24293,65 +24293,65 @@ export namespace Prisma {
     NOT?: PageSeoWhereInput | PageSeoWhereInput[]
     id?: StringFilter<"PageSeo"> | string
     path?: StringFilter<"PageSeo"> | string
-    url?: StringNullableFilter<"PageSeo"> | string | null
-    sourceFile?: StringNullableFilter<"PageSeo"> | string | null
-    pageTitle?: StringNullableFilter<"PageSeo"> | string | null
-    metaTitle?: StringNullableFilter<"PageSeo"> | string | null
-    metaDescription?: StringNullableFilter<"PageSeo"> | string | null
-    keywords?: StringNullableFilter<"PageSeo"> | string | null
-    h1Hero?: StringNullableFilter<"PageSeo"> | string | null
     canonical?: StringNullableFilter<"PageSeo"> | string | null
-    robotsMeta?: StringNullableFilter<"PageSeo"> | string | null
-    openGraph?: JsonNullableFilter<"PageSeo">
-    twitter?: JsonNullableFilter<"PageSeo">
-    jsonLd?: JsonNullableFilter<"PageSeo">
-    metaPixelPresent?: BoolFilter<"PageSeo"> | boolean
-    metaPixelId?: StringNullableFilter<"PageSeo"> | string | null
-    googleTagManagerPresent?: BoolFilter<"PageSeo"> | boolean
-    googleTagManagerId?: StringNullableFilter<"PageSeo"> | string | null
-    googleAnalyticsPresent?: BoolFilter<"PageSeo"> | boolean
-    googleAnalyticsMeasurementId?: StringNullableFilter<"PageSeo"> | string | null
-    hotjarPresent?: BoolFilter<"PageSeo"> | boolean
-    hotjarSiteId?: StringNullableFilter<"PageSeo"> | string | null
-    metricoolPresent?: BoolFilter<"PageSeo"> | boolean
-    plausiblePresent?: BoolFilter<"PageSeo"> | boolean
-    sitemapInclude?: BoolFilter<"PageSeo"> | boolean
-    sitemapPriority?: FloatNullableFilter<"PageSeo"> | number | null
-    sitemapChangefreq?: StringNullableFilter<"PageSeo"> | string | null
     createdAt?: DateTimeFilter<"PageSeo"> | Date | string
     updatedAt?: DateTimeFilter<"PageSeo"> | Date | string
+    keywords?: StringNullableFilter<"PageSeo"> | string | null
+    googleAnalyticsMeasurementId?: StringNullableFilter<"PageSeo"> | string | null
+    googleAnalyticsPresent?: BoolFilter<"PageSeo"> | boolean
+    googleTagManagerId?: StringNullableFilter<"PageSeo"> | string | null
+    googleTagManagerPresent?: BoolFilter<"PageSeo"> | boolean
+    h1Hero?: StringNullableFilter<"PageSeo"> | string | null
+    hotjarPresent?: BoolFilter<"PageSeo"> | boolean
+    hotjarSiteId?: StringNullableFilter<"PageSeo"> | string | null
+    jsonLd?: JsonNullableFilter<"PageSeo">
+    metaDescription?: StringNullableFilter<"PageSeo"> | string | null
+    metaPixelId?: StringNullableFilter<"PageSeo"> | string | null
+    metaPixelPresent?: BoolFilter<"PageSeo"> | boolean
+    metaTitle?: StringNullableFilter<"PageSeo"> | string | null
+    metricoolPresent?: BoolFilter<"PageSeo"> | boolean
+    openGraph?: JsonNullableFilter<"PageSeo">
+    pageTitle?: StringNullableFilter<"PageSeo"> | string | null
+    plausiblePresent?: BoolFilter<"PageSeo"> | boolean
+    robotsMeta?: StringNullableFilter<"PageSeo"> | string | null
+    sitemapChangefreq?: StringNullableFilter<"PageSeo"> | string | null
+    sitemapInclude?: BoolFilter<"PageSeo"> | boolean
+    sitemapPriority?: FloatNullableFilter<"PageSeo"> | number | null
+    sourceFile?: StringNullableFilter<"PageSeo"> | string | null
+    twitter?: JsonNullableFilter<"PageSeo">
+    url?: StringNullableFilter<"PageSeo"> | string | null
   }
 
   export type PageSeoOrderByWithRelationInput = {
     id?: SortOrder
     path?: SortOrder
-    url?: SortOrderInput | SortOrder
-    sourceFile?: SortOrderInput | SortOrder
-    pageTitle?: SortOrderInput | SortOrder
-    metaTitle?: SortOrderInput | SortOrder
-    metaDescription?: SortOrderInput | SortOrder
-    keywords?: SortOrderInput | SortOrder
-    h1Hero?: SortOrderInput | SortOrder
     canonical?: SortOrderInput | SortOrder
-    robotsMeta?: SortOrderInput | SortOrder
-    openGraph?: SortOrderInput | SortOrder
-    twitter?: SortOrderInput | SortOrder
-    jsonLd?: SortOrderInput | SortOrder
-    metaPixelPresent?: SortOrder
-    metaPixelId?: SortOrderInput | SortOrder
-    googleTagManagerPresent?: SortOrder
-    googleTagManagerId?: SortOrderInput | SortOrder
-    googleAnalyticsPresent?: SortOrder
-    googleAnalyticsMeasurementId?: SortOrderInput | SortOrder
-    hotjarPresent?: SortOrder
-    hotjarSiteId?: SortOrderInput | SortOrder
-    metricoolPresent?: SortOrder
-    plausiblePresent?: SortOrder
-    sitemapInclude?: SortOrder
-    sitemapPriority?: SortOrderInput | SortOrder
-    sitemapChangefreq?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    keywords?: SortOrderInput | SortOrder
+    googleAnalyticsMeasurementId?: SortOrderInput | SortOrder
+    googleAnalyticsPresent?: SortOrder
+    googleTagManagerId?: SortOrderInput | SortOrder
+    googleTagManagerPresent?: SortOrder
+    h1Hero?: SortOrderInput | SortOrder
+    hotjarPresent?: SortOrder
+    hotjarSiteId?: SortOrderInput | SortOrder
+    jsonLd?: SortOrderInput | SortOrder
+    metaDescription?: SortOrderInput | SortOrder
+    metaPixelId?: SortOrderInput | SortOrder
+    metaPixelPresent?: SortOrder
+    metaTitle?: SortOrderInput | SortOrder
+    metricoolPresent?: SortOrder
+    openGraph?: SortOrderInput | SortOrder
+    pageTitle?: SortOrderInput | SortOrder
+    plausiblePresent?: SortOrder
+    robotsMeta?: SortOrderInput | SortOrder
+    sitemapChangefreq?: SortOrderInput | SortOrder
+    sitemapInclude?: SortOrder
+    sitemapPriority?: SortOrderInput | SortOrder
+    sourceFile?: SortOrderInput | SortOrder
+    twitter?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
   }
 
   export type PageSeoWhereUniqueInput = Prisma.AtLeast<{
@@ -24360,65 +24360,65 @@ export namespace Prisma {
     AND?: PageSeoWhereInput | PageSeoWhereInput[]
     OR?: PageSeoWhereInput[]
     NOT?: PageSeoWhereInput | PageSeoWhereInput[]
-    url?: StringNullableFilter<"PageSeo"> | string | null
-    sourceFile?: StringNullableFilter<"PageSeo"> | string | null
-    pageTitle?: StringNullableFilter<"PageSeo"> | string | null
-    metaTitle?: StringNullableFilter<"PageSeo"> | string | null
-    metaDescription?: StringNullableFilter<"PageSeo"> | string | null
-    keywords?: StringNullableFilter<"PageSeo"> | string | null
-    h1Hero?: StringNullableFilter<"PageSeo"> | string | null
     canonical?: StringNullableFilter<"PageSeo"> | string | null
-    robotsMeta?: StringNullableFilter<"PageSeo"> | string | null
-    openGraph?: JsonNullableFilter<"PageSeo">
-    twitter?: JsonNullableFilter<"PageSeo">
-    jsonLd?: JsonNullableFilter<"PageSeo">
-    metaPixelPresent?: BoolFilter<"PageSeo"> | boolean
-    metaPixelId?: StringNullableFilter<"PageSeo"> | string | null
-    googleTagManagerPresent?: BoolFilter<"PageSeo"> | boolean
-    googleTagManagerId?: StringNullableFilter<"PageSeo"> | string | null
-    googleAnalyticsPresent?: BoolFilter<"PageSeo"> | boolean
-    googleAnalyticsMeasurementId?: StringNullableFilter<"PageSeo"> | string | null
-    hotjarPresent?: BoolFilter<"PageSeo"> | boolean
-    hotjarSiteId?: StringNullableFilter<"PageSeo"> | string | null
-    metricoolPresent?: BoolFilter<"PageSeo"> | boolean
-    plausiblePresent?: BoolFilter<"PageSeo"> | boolean
-    sitemapInclude?: BoolFilter<"PageSeo"> | boolean
-    sitemapPriority?: FloatNullableFilter<"PageSeo"> | number | null
-    sitemapChangefreq?: StringNullableFilter<"PageSeo"> | string | null
     createdAt?: DateTimeFilter<"PageSeo"> | Date | string
     updatedAt?: DateTimeFilter<"PageSeo"> | Date | string
+    keywords?: StringNullableFilter<"PageSeo"> | string | null
+    googleAnalyticsMeasurementId?: StringNullableFilter<"PageSeo"> | string | null
+    googleAnalyticsPresent?: BoolFilter<"PageSeo"> | boolean
+    googleTagManagerId?: StringNullableFilter<"PageSeo"> | string | null
+    googleTagManagerPresent?: BoolFilter<"PageSeo"> | boolean
+    h1Hero?: StringNullableFilter<"PageSeo"> | string | null
+    hotjarPresent?: BoolFilter<"PageSeo"> | boolean
+    hotjarSiteId?: StringNullableFilter<"PageSeo"> | string | null
+    jsonLd?: JsonNullableFilter<"PageSeo">
+    metaDescription?: StringNullableFilter<"PageSeo"> | string | null
+    metaPixelId?: StringNullableFilter<"PageSeo"> | string | null
+    metaPixelPresent?: BoolFilter<"PageSeo"> | boolean
+    metaTitle?: StringNullableFilter<"PageSeo"> | string | null
+    metricoolPresent?: BoolFilter<"PageSeo"> | boolean
+    openGraph?: JsonNullableFilter<"PageSeo">
+    pageTitle?: StringNullableFilter<"PageSeo"> | string | null
+    plausiblePresent?: BoolFilter<"PageSeo"> | boolean
+    robotsMeta?: StringNullableFilter<"PageSeo"> | string | null
+    sitemapChangefreq?: StringNullableFilter<"PageSeo"> | string | null
+    sitemapInclude?: BoolFilter<"PageSeo"> | boolean
+    sitemapPriority?: FloatNullableFilter<"PageSeo"> | number | null
+    sourceFile?: StringNullableFilter<"PageSeo"> | string | null
+    twitter?: JsonNullableFilter<"PageSeo">
+    url?: StringNullableFilter<"PageSeo"> | string | null
   }, "id" | "path">
 
   export type PageSeoOrderByWithAggregationInput = {
     id?: SortOrder
     path?: SortOrder
-    url?: SortOrderInput | SortOrder
-    sourceFile?: SortOrderInput | SortOrder
-    pageTitle?: SortOrderInput | SortOrder
-    metaTitle?: SortOrderInput | SortOrder
-    metaDescription?: SortOrderInput | SortOrder
-    keywords?: SortOrderInput | SortOrder
-    h1Hero?: SortOrderInput | SortOrder
     canonical?: SortOrderInput | SortOrder
-    robotsMeta?: SortOrderInput | SortOrder
-    openGraph?: SortOrderInput | SortOrder
-    twitter?: SortOrderInput | SortOrder
-    jsonLd?: SortOrderInput | SortOrder
-    metaPixelPresent?: SortOrder
-    metaPixelId?: SortOrderInput | SortOrder
-    googleTagManagerPresent?: SortOrder
-    googleTagManagerId?: SortOrderInput | SortOrder
-    googleAnalyticsPresent?: SortOrder
-    googleAnalyticsMeasurementId?: SortOrderInput | SortOrder
-    hotjarPresent?: SortOrder
-    hotjarSiteId?: SortOrderInput | SortOrder
-    metricoolPresent?: SortOrder
-    plausiblePresent?: SortOrder
-    sitemapInclude?: SortOrder
-    sitemapPriority?: SortOrderInput | SortOrder
-    sitemapChangefreq?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    keywords?: SortOrderInput | SortOrder
+    googleAnalyticsMeasurementId?: SortOrderInput | SortOrder
+    googleAnalyticsPresent?: SortOrder
+    googleTagManagerId?: SortOrderInput | SortOrder
+    googleTagManagerPresent?: SortOrder
+    h1Hero?: SortOrderInput | SortOrder
+    hotjarPresent?: SortOrder
+    hotjarSiteId?: SortOrderInput | SortOrder
+    jsonLd?: SortOrderInput | SortOrder
+    metaDescription?: SortOrderInput | SortOrder
+    metaPixelId?: SortOrderInput | SortOrder
+    metaPixelPresent?: SortOrder
+    metaTitle?: SortOrderInput | SortOrder
+    metricoolPresent?: SortOrder
+    openGraph?: SortOrderInput | SortOrder
+    pageTitle?: SortOrderInput | SortOrder
+    plausiblePresent?: SortOrder
+    robotsMeta?: SortOrderInput | SortOrder
+    sitemapChangefreq?: SortOrderInput | SortOrder
+    sitemapInclude?: SortOrder
+    sitemapPriority?: SortOrderInput | SortOrder
+    sourceFile?: SortOrderInput | SortOrder
+    twitter?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
     _count?: PageSeoCountOrderByAggregateInput
     _avg?: PageSeoAvgOrderByAggregateInput
     _max?: PageSeoMaxOrderByAggregateInput
@@ -24432,33 +24432,33 @@ export namespace Prisma {
     NOT?: PageSeoScalarWhereWithAggregatesInput | PageSeoScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"PageSeo"> | string
     path?: StringWithAggregatesFilter<"PageSeo"> | string
-    url?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    sourceFile?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    pageTitle?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    metaTitle?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    metaDescription?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    keywords?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    h1Hero?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
     canonical?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    robotsMeta?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    openGraph?: JsonNullableWithAggregatesFilter<"PageSeo">
-    twitter?: JsonNullableWithAggregatesFilter<"PageSeo">
-    jsonLd?: JsonNullableWithAggregatesFilter<"PageSeo">
-    metaPixelPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
-    metaPixelId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    googleTagManagerPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
-    googleTagManagerId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    googleAnalyticsPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
-    googleAnalyticsMeasurementId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    hotjarPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
-    hotjarSiteId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
-    metricoolPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
-    plausiblePresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
-    sitemapInclude?: BoolWithAggregatesFilter<"PageSeo"> | boolean
-    sitemapPriority?: FloatNullableWithAggregatesFilter<"PageSeo"> | number | null
-    sitemapChangefreq?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"PageSeo"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PageSeo"> | Date | string
+    keywords?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    googleAnalyticsMeasurementId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    googleAnalyticsPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    googleTagManagerId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    googleTagManagerPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    h1Hero?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    hotjarPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    hotjarSiteId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    jsonLd?: JsonNullableWithAggregatesFilter<"PageSeo">
+    metaDescription?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    metaPixelId?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    metaPixelPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    metaTitle?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    metricoolPresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    openGraph?: JsonNullableWithAggregatesFilter<"PageSeo">
+    pageTitle?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    plausiblePresent?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    robotsMeta?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    sitemapChangefreq?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    sitemapInclude?: BoolWithAggregatesFilter<"PageSeo"> | boolean
+    sitemapPriority?: FloatNullableWithAggregatesFilter<"PageSeo"> | number | null
+    sourceFile?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    twitter?: JsonNullableWithAggregatesFilter<"PageSeo">
+    url?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
   }
 
   export type TestimonialWhereInput = {
@@ -24472,12 +24472,12 @@ export namespace Prisma {
     quote?: StringFilter<"Testimonial"> | string
     rating?: IntFilter<"Testimonial"> | number
     photoUrl?: StringNullableFilter<"Testimonial"> | string | null
-    source?: StringFilter<"Testimonial"> | string
     featured?: BoolFilter<"Testimonial"> | boolean
     status?: StringFilter<"Testimonial"> | string
     order?: IntFilter<"Testimonial"> | number
     createdAt?: DateTimeFilter<"Testimonial"> | Date | string
     updatedAt?: DateTimeFilter<"Testimonial"> | Date | string
+    source?: StringFilter<"Testimonial"> | string
   }
 
   export type TestimonialOrderByWithRelationInput = {
@@ -24488,12 +24488,12 @@ export namespace Prisma {
     quote?: SortOrder
     rating?: SortOrder
     photoUrl?: SortOrderInput | SortOrder
-    source?: SortOrder
     featured?: SortOrder
     status?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    source?: SortOrder
   }
 
   export type TestimonialWhereUniqueInput = Prisma.AtLeast<{
@@ -24507,12 +24507,12 @@ export namespace Prisma {
     quote?: StringFilter<"Testimonial"> | string
     rating?: IntFilter<"Testimonial"> | number
     photoUrl?: StringNullableFilter<"Testimonial"> | string | null
-    source?: StringFilter<"Testimonial"> | string
     featured?: BoolFilter<"Testimonial"> | boolean
     status?: StringFilter<"Testimonial"> | string
     order?: IntFilter<"Testimonial"> | number
     createdAt?: DateTimeFilter<"Testimonial"> | Date | string
     updatedAt?: DateTimeFilter<"Testimonial"> | Date | string
+    source?: StringFilter<"Testimonial"> | string
   }, "id">
 
   export type TestimonialOrderByWithAggregationInput = {
@@ -24523,12 +24523,12 @@ export namespace Prisma {
     quote?: SortOrder
     rating?: SortOrder
     photoUrl?: SortOrderInput | SortOrder
-    source?: SortOrder
     featured?: SortOrder
     status?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    source?: SortOrder
     _count?: TestimonialCountOrderByAggregateInput
     _avg?: TestimonialAvgOrderByAggregateInput
     _max?: TestimonialMaxOrderByAggregateInput
@@ -24547,12 +24547,12 @@ export namespace Prisma {
     quote?: StringWithAggregatesFilter<"Testimonial"> | string
     rating?: IntWithAggregatesFilter<"Testimonial"> | number
     photoUrl?: StringNullableWithAggregatesFilter<"Testimonial"> | string | null
-    source?: StringWithAggregatesFilter<"Testimonial"> | string
     featured?: BoolWithAggregatesFilter<"Testimonial"> | boolean
     status?: StringWithAggregatesFilter<"Testimonial"> | string
     order?: IntWithAggregatesFilter<"Testimonial"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Testimonial"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Testimonial"> | Date | string
+    source?: StringWithAggregatesFilter<"Testimonial"> | string
   }
 
   export type SiteSettingsWhereInput = {
@@ -24571,11 +24571,11 @@ export namespace Prisma {
     defaultSeoTitle?: StringNullableFilter<"SiteSettings"> | string | null
     defaultSeoDescription?: StringNullableFilter<"SiteSettings"> | string | null
     defaultOgImageUrl?: StringNullableFilter<"SiteSettings"> | string | null
-    googleAnalyticsId?: StringNullableFilter<"SiteSettings"> | string | null
-    metaPixelId?: StringNullableFilter<"SiteSettings"> | string | null
     headerScripts?: StringNullableFilter<"SiteSettings"> | string | null
     footerScripts?: StringNullableFilter<"SiteSettings"> | string | null
     updatedAt?: DateTimeFilter<"SiteSettings"> | Date | string
+    googleAnalyticsId?: StringNullableFilter<"SiteSettings"> | string | null
+    metaPixelId?: StringNullableFilter<"SiteSettings"> | string | null
   }
 
   export type SiteSettingsOrderByWithRelationInput = {
@@ -24591,11 +24591,11 @@ export namespace Prisma {
     defaultSeoTitle?: SortOrderInput | SortOrder
     defaultSeoDescription?: SortOrderInput | SortOrder
     defaultOgImageUrl?: SortOrderInput | SortOrder
-    googleAnalyticsId?: SortOrderInput | SortOrder
-    metaPixelId?: SortOrderInput | SortOrder
     headerScripts?: SortOrderInput | SortOrder
     footerScripts?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
+    googleAnalyticsId?: SortOrderInput | SortOrder
+    metaPixelId?: SortOrderInput | SortOrder
   }
 
   export type SiteSettingsWhereUniqueInput = Prisma.AtLeast<{
@@ -24614,11 +24614,11 @@ export namespace Prisma {
     defaultSeoTitle?: StringNullableFilter<"SiteSettings"> | string | null
     defaultSeoDescription?: StringNullableFilter<"SiteSettings"> | string | null
     defaultOgImageUrl?: StringNullableFilter<"SiteSettings"> | string | null
-    googleAnalyticsId?: StringNullableFilter<"SiteSettings"> | string | null
-    metaPixelId?: StringNullableFilter<"SiteSettings"> | string | null
     headerScripts?: StringNullableFilter<"SiteSettings"> | string | null
     footerScripts?: StringNullableFilter<"SiteSettings"> | string | null
     updatedAt?: DateTimeFilter<"SiteSettings"> | Date | string
+    googleAnalyticsId?: StringNullableFilter<"SiteSettings"> | string | null
+    metaPixelId?: StringNullableFilter<"SiteSettings"> | string | null
   }, "id">
 
   export type SiteSettingsOrderByWithAggregationInput = {
@@ -24634,11 +24634,11 @@ export namespace Prisma {
     defaultSeoTitle?: SortOrderInput | SortOrder
     defaultSeoDescription?: SortOrderInput | SortOrder
     defaultOgImageUrl?: SortOrderInput | SortOrder
-    googleAnalyticsId?: SortOrderInput | SortOrder
-    metaPixelId?: SortOrderInput | SortOrder
     headerScripts?: SortOrderInput | SortOrder
     footerScripts?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
+    googleAnalyticsId?: SortOrderInput | SortOrder
+    metaPixelId?: SortOrderInput | SortOrder
     _count?: SiteSettingsCountOrderByAggregateInput
     _max?: SiteSettingsMaxOrderByAggregateInput
     _min?: SiteSettingsMinOrderByAggregateInput
@@ -24660,11 +24660,11 @@ export namespace Prisma {
     defaultSeoTitle?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
     defaultSeoDescription?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
     defaultOgImageUrl?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
-    googleAnalyticsId?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
-    metaPixelId?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
     headerScripts?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
     footerScripts?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
     updatedAt?: DateTimeWithAggregatesFilter<"SiteSettings"> | Date | string
+    googleAnalyticsId?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
+    metaPixelId?: StringNullableWithAggregatesFilter<"SiteSettings"> | string | null
   }
 
   export type AdminCreateInput = {
@@ -24818,9 +24818,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     deletedAt?: Date | string | null
     readingTime?: number | null
-    category?: CategoryCreateNestedOneWithoutPostsInput
-    author?: AdminCreateNestedOneWithoutPostsInput
     tags?: BlogTagCreateNestedManyWithoutPostInput
+    author?: AdminCreateNestedOneWithoutPostsInput
+    category?: CategoryCreateNestedOneWithoutPostsInput
     seo?: PostSeoCreateNestedOneWithoutPostInput
   }
 
@@ -24858,9 +24858,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     readingTime?: NullableIntFieldUpdateOperationsInput | number | null
-    category?: CategoryUpdateOneWithoutPostsNestedInput
-    author?: AdminUpdateOneWithoutPostsNestedInput
     tags?: BlogTagUpdateManyWithoutPostNestedInput
+    author?: AdminUpdateOneWithoutPostsNestedInput
+    category?: CategoryUpdateOneWithoutPostsNestedInput
     seo?: PostSeoUpdateOneWithoutPostNestedInput
   }
 
@@ -24943,13 +24943,13 @@ export namespace Prisma {
     ogImage?: string | null
     canonical?: string | null
     noindex?: boolean
-    keywords?: string | null
     h1?: string | null
-    ogTitle?: string | null
+    keywords?: string | null
     ogDescription?: string | null
+    ogTitle?: string | null
     ogType?: string | null
-    twitterTitle?: string | null
     twitterDescription?: string | null
+    twitterTitle?: string | null
     schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
     post: PostCreateNestedOneWithoutSeoInput
   }
@@ -24962,13 +24962,13 @@ export namespace Prisma {
     ogImage?: string | null
     canonical?: string | null
     noindex?: boolean
-    keywords?: string | null
     h1?: string | null
-    ogTitle?: string | null
+    keywords?: string | null
     ogDescription?: string | null
+    ogTitle?: string | null
     ogType?: string | null
-    twitterTitle?: string | null
     twitterDescription?: string | null
+    twitterTitle?: string | null
     schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -24979,13 +24979,13 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
-    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     h1?: NullableStringFieldUpdateOperationsInput | string | null
-    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
     post?: PostUpdateOneRequiredWithoutSeoNestedInput
   }
@@ -24998,13 +24998,13 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
-    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     h1?: NullableStringFieldUpdateOperationsInput | string | null
-    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -25016,13 +25016,13 @@ export namespace Prisma {
     ogImage?: string | null
     canonical?: string | null
     noindex?: boolean
-    keywords?: string | null
     h1?: string | null
-    ogTitle?: string | null
+    keywords?: string | null
     ogDescription?: string | null
+    ogTitle?: string | null
     ogType?: string | null
-    twitterTitle?: string | null
     twitterDescription?: string | null
+    twitterTitle?: string | null
     schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -25033,13 +25033,13 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
-    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     h1?: NullableStringFieldUpdateOperationsInput | string | null
-    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -25051,13 +25051,13 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
-    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     h1?: NullableStringFieldUpdateOperationsInput | string | null
-    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -25519,7 +25519,6 @@ export namespace Prisma {
   export type ServiceCreateInput = {
     id?: string
     slug: string
-    href: string
     shortName: string
     summary: string
     cardImageSrc: string
@@ -25529,12 +25528,12 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    href: string
   }
 
   export type ServiceUncheckedCreateInput = {
     id?: string
     slug: string
-    href: string
     shortName: string
     summary: string
     cardImageSrc: string
@@ -25544,12 +25543,12 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    href: string
   }
 
   export type ServiceUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    href?: StringFieldUpdateOperationsInput | string
     shortName?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     cardImageSrc?: StringFieldUpdateOperationsInput | string
@@ -25559,12 +25558,12 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    href?: StringFieldUpdateOperationsInput | string
   }
 
   export type ServiceUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    href?: StringFieldUpdateOperationsInput | string
     shortName?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     cardImageSrc?: StringFieldUpdateOperationsInput | string
@@ -25574,12 +25573,12 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    href?: StringFieldUpdateOperationsInput | string
   }
 
   export type ServiceCreateManyInput = {
     id?: string
     slug: string
-    href: string
     shortName: string
     summary: string
     cardImageSrc: string
@@ -25589,12 +25588,12 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    href: string
   }
 
   export type ServiceUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    href?: StringFieldUpdateOperationsInput | string
     shortName?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     cardImageSrc?: StringFieldUpdateOperationsInput | string
@@ -25604,12 +25603,12 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    href?: StringFieldUpdateOperationsInput | string
   }
 
   export type ServiceUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    href?: StringFieldUpdateOperationsInput | string
     shortName?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     cardImageSrc?: StringFieldUpdateOperationsInput | string
@@ -25619,6 +25618,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    href?: StringFieldUpdateOperationsInput | string
   }
 
   export type TreatmentCreateInput = {
@@ -25731,14 +25731,14 @@ export namespace Prisma {
     title: string
     thumbnailUrl: string
     newsLink: string
-    source?: string | null
-    publishedLabel?: string | null
-    description?: string | null
-    type?: string
     order?: number
     published?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    description?: string | null
+    publishedLabel?: string | null
+    source?: string | null
+    type?: string
   }
 
   export type NewsItemUncheckedCreateInput = {
@@ -25746,14 +25746,14 @@ export namespace Prisma {
     title: string
     thumbnailUrl: string
     newsLink: string
-    source?: string | null
-    publishedLabel?: string | null
-    description?: string | null
-    type?: string
     order?: number
     published?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    description?: string | null
+    publishedLabel?: string | null
+    source?: string | null
+    type?: string
   }
 
   export type NewsItemUpdateInput = {
@@ -25761,14 +25761,14 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
     newsLink?: StringFieldUpdateOperationsInput | string
-    source?: NullableStringFieldUpdateOperationsInput | string | null
-    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     published?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
   }
 
   export type NewsItemUncheckedUpdateInput = {
@@ -25776,14 +25776,14 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
     newsLink?: StringFieldUpdateOperationsInput | string
-    source?: NullableStringFieldUpdateOperationsInput | string | null
-    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     published?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
   }
 
   export type NewsItemCreateManyInput = {
@@ -25791,14 +25791,14 @@ export namespace Prisma {
     title: string
     thumbnailUrl: string
     newsLink: string
-    source?: string | null
-    publishedLabel?: string | null
-    description?: string | null
-    type?: string
     order?: number
     published?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    description?: string | null
+    publishedLabel?: string | null
+    source?: string | null
+    type?: string
   }
 
   export type NewsItemUpdateManyMutationInput = {
@@ -25806,14 +25806,14 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
     newsLink?: StringFieldUpdateOperationsInput | string
-    source?: NullableStringFieldUpdateOperationsInput | string | null
-    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     published?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
   }
 
   export type NewsItemUncheckedUpdateManyInput = {
@@ -25821,14 +25821,14 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
     newsLink?: StringFieldUpdateOperationsInput | string
-    source?: NullableStringFieldUpdateOperationsInput | string | null
-    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     published?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    publishedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
   }
 
   export type PersonCreateInput = {
@@ -25960,225 +25960,225 @@ export namespace Prisma {
   export type PageSeoCreateInput = {
     id?: string
     path: string
-    url?: string | null
-    sourceFile?: string | null
-    pageTitle?: string | null
-    metaTitle?: string | null
-    metaDescription?: string | null
-    keywords?: string | null
-    h1Hero?: string | null
     canonical?: string | null
-    robotsMeta?: string | null
-    openGraph?: NullableJsonNullValueInput | InputJsonValue
-    twitter?: NullableJsonNullValueInput | InputJsonValue
-    jsonLd?: NullableJsonNullValueInput | InputJsonValue
-    metaPixelPresent?: boolean
-    metaPixelId?: string | null
-    googleTagManagerPresent?: boolean
-    googleTagManagerId?: string | null
-    googleAnalyticsPresent?: boolean
-    googleAnalyticsMeasurementId?: string | null
-    hotjarPresent?: boolean
-    hotjarSiteId?: string | null
-    metricoolPresent?: boolean
-    plausiblePresent?: boolean
-    sitemapInclude?: boolean
-    sitemapPriority?: number | null
-    sitemapChangefreq?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    keywords?: string | null
+    googleAnalyticsMeasurementId?: string | null
+    googleAnalyticsPresent?: boolean
+    googleTagManagerId?: string | null
+    googleTagManagerPresent?: boolean
+    h1Hero?: string | null
+    hotjarPresent?: boolean
+    hotjarSiteId?: string | null
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaDescription?: string | null
+    metaPixelId?: string | null
+    metaPixelPresent?: boolean
+    metaTitle?: string | null
+    metricoolPresent?: boolean
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    pageTitle?: string | null
+    plausiblePresent?: boolean
+    robotsMeta?: string | null
+    sitemapChangefreq?: string | null
+    sitemapInclude?: boolean
+    sitemapPriority?: number | null
+    sourceFile?: string | null
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    url?: string | null
   }
 
   export type PageSeoUncheckedCreateInput = {
     id?: string
     path: string
-    url?: string | null
-    sourceFile?: string | null
-    pageTitle?: string | null
-    metaTitle?: string | null
-    metaDescription?: string | null
-    keywords?: string | null
-    h1Hero?: string | null
     canonical?: string | null
-    robotsMeta?: string | null
-    openGraph?: NullableJsonNullValueInput | InputJsonValue
-    twitter?: NullableJsonNullValueInput | InputJsonValue
-    jsonLd?: NullableJsonNullValueInput | InputJsonValue
-    metaPixelPresent?: boolean
-    metaPixelId?: string | null
-    googleTagManagerPresent?: boolean
-    googleTagManagerId?: string | null
-    googleAnalyticsPresent?: boolean
-    googleAnalyticsMeasurementId?: string | null
-    hotjarPresent?: boolean
-    hotjarSiteId?: string | null
-    metricoolPresent?: boolean
-    plausiblePresent?: boolean
-    sitemapInclude?: boolean
-    sitemapPriority?: number | null
-    sitemapChangefreq?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    keywords?: string | null
+    googleAnalyticsMeasurementId?: string | null
+    googleAnalyticsPresent?: boolean
+    googleTagManagerId?: string | null
+    googleTagManagerPresent?: boolean
+    h1Hero?: string | null
+    hotjarPresent?: boolean
+    hotjarSiteId?: string | null
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaDescription?: string | null
+    metaPixelId?: string | null
+    metaPixelPresent?: boolean
+    metaTitle?: string | null
+    metricoolPresent?: boolean
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    pageTitle?: string | null
+    plausiblePresent?: boolean
+    robotsMeta?: string | null
+    sitemapChangefreq?: string | null
+    sitemapInclude?: boolean
+    sitemapPriority?: number | null
+    sourceFile?: string | null
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    url?: string | null
   }
 
   export type PageSeoUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
-    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
-    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    keywords?: NullableStringFieldUpdateOperationsInput | string | null
-    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
-    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
-    openGraph?: NullableJsonNullValueInput | InputJsonValue
-    twitter?: NullableJsonNullValueInput | InputJsonValue
-    jsonLd?: NullableJsonNullValueInput | InputJsonValue
-    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
-    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
-    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
-    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
-    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
-    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
-    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
-    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
-    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
-    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
-    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
-    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
-    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
+    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
+    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
+    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
+    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
+    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
+    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
+    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
+    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PageSeoUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
-    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
-    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    keywords?: NullableStringFieldUpdateOperationsInput | string | null
-    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
-    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
-    openGraph?: NullableJsonNullValueInput | InputJsonValue
-    twitter?: NullableJsonNullValueInput | InputJsonValue
-    jsonLd?: NullableJsonNullValueInput | InputJsonValue
-    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
-    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
-    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
-    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
-    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
-    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
-    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
-    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
-    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
-    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
-    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
-    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
-    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
+    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
+    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
+    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
+    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
+    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
+    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
+    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
+    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PageSeoCreateManyInput = {
     id?: string
     path: string
-    url?: string | null
-    sourceFile?: string | null
-    pageTitle?: string | null
-    metaTitle?: string | null
-    metaDescription?: string | null
-    keywords?: string | null
-    h1Hero?: string | null
     canonical?: string | null
-    robotsMeta?: string | null
-    openGraph?: NullableJsonNullValueInput | InputJsonValue
-    twitter?: NullableJsonNullValueInput | InputJsonValue
-    jsonLd?: NullableJsonNullValueInput | InputJsonValue
-    metaPixelPresent?: boolean
-    metaPixelId?: string | null
-    googleTagManagerPresent?: boolean
-    googleTagManagerId?: string | null
-    googleAnalyticsPresent?: boolean
-    googleAnalyticsMeasurementId?: string | null
-    hotjarPresent?: boolean
-    hotjarSiteId?: string | null
-    metricoolPresent?: boolean
-    plausiblePresent?: boolean
-    sitemapInclude?: boolean
-    sitemapPriority?: number | null
-    sitemapChangefreq?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    keywords?: string | null
+    googleAnalyticsMeasurementId?: string | null
+    googleAnalyticsPresent?: boolean
+    googleTagManagerId?: string | null
+    googleTagManagerPresent?: boolean
+    h1Hero?: string | null
+    hotjarPresent?: boolean
+    hotjarSiteId?: string | null
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaDescription?: string | null
+    metaPixelId?: string | null
+    metaPixelPresent?: boolean
+    metaTitle?: string | null
+    metricoolPresent?: boolean
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    pageTitle?: string | null
+    plausiblePresent?: boolean
+    robotsMeta?: string | null
+    sitemapChangefreq?: string | null
+    sitemapInclude?: boolean
+    sitemapPriority?: number | null
+    sourceFile?: string | null
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    url?: string | null
   }
 
   export type PageSeoUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
-    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
-    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    keywords?: NullableStringFieldUpdateOperationsInput | string | null
-    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
-    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
-    openGraph?: NullableJsonNullValueInput | InputJsonValue
-    twitter?: NullableJsonNullValueInput | InputJsonValue
-    jsonLd?: NullableJsonNullValueInput | InputJsonValue
-    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
-    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
-    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
-    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
-    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
-    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
-    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
-    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
-    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
-    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
-    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
-    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
-    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
+    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
+    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
+    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
+    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
+    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
+    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
+    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
+    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PageSeoUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
-    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
-    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    keywords?: NullableStringFieldUpdateOperationsInput | string | null
-    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
-    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
-    openGraph?: NullableJsonNullValueInput | InputJsonValue
-    twitter?: NullableJsonNullValueInput | InputJsonValue
-    jsonLd?: NullableJsonNullValueInput | InputJsonValue
-    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
-    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
-    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
-    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
-    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
-    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
-    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
-    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
-    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
-    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
-    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
-    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
-    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsMeasurementId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleAnalyticsPresent?: BoolFieldUpdateOperationsInput | boolean
+    googleTagManagerId?: NullableStringFieldUpdateOperationsInput | string | null
+    googleTagManagerPresent?: BoolFieldUpdateOperationsInput | boolean
+    h1Hero?: NullableStringFieldUpdateOperationsInput | string | null
+    hotjarPresent?: BoolFieldUpdateOperationsInput | boolean
+    hotjarSiteId?: NullableStringFieldUpdateOperationsInput | string | null
+    jsonLd?: NullableJsonNullValueInput | InputJsonValue
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelPresent?: BoolFieldUpdateOperationsInput | boolean
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metricoolPresent?: BoolFieldUpdateOperationsInput | boolean
+    openGraph?: NullableJsonNullValueInput | InputJsonValue
+    pageTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    plausiblePresent?: BoolFieldUpdateOperationsInput | boolean
+    robotsMeta?: NullableStringFieldUpdateOperationsInput | string | null
+    sitemapChangefreq?: NullableStringFieldUpdateOperationsInput | string | null
+    sitemapInclude?: BoolFieldUpdateOperationsInput | boolean
+    sitemapPriority?: NullableFloatFieldUpdateOperationsInput | number | null
+    sourceFile?: NullableStringFieldUpdateOperationsInput | string | null
+    twitter?: NullableJsonNullValueInput | InputJsonValue
+    url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TestimonialCreateInput = {
@@ -26189,12 +26189,12 @@ export namespace Prisma {
     quote: string
     rating?: number
     photoUrl?: string | null
-    source?: string
     featured?: boolean
     status?: string
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    source?: string
   }
 
   export type TestimonialUncheckedCreateInput = {
@@ -26205,12 +26205,12 @@ export namespace Prisma {
     quote: string
     rating?: number
     photoUrl?: string | null
-    source?: string
     featured?: boolean
     status?: string
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    source?: string
   }
 
   export type TestimonialUpdateInput = {
@@ -26221,12 +26221,12 @@ export namespace Prisma {
     quote?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    source?: StringFieldUpdateOperationsInput | string
     featured?: BoolFieldUpdateOperationsInput | boolean
     status?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    source?: StringFieldUpdateOperationsInput | string
   }
 
   export type TestimonialUncheckedUpdateInput = {
@@ -26237,12 +26237,12 @@ export namespace Prisma {
     quote?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    source?: StringFieldUpdateOperationsInput | string
     featured?: BoolFieldUpdateOperationsInput | boolean
     status?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    source?: StringFieldUpdateOperationsInput | string
   }
 
   export type TestimonialCreateManyInput = {
@@ -26253,12 +26253,12 @@ export namespace Prisma {
     quote: string
     rating?: number
     photoUrl?: string | null
-    source?: string
     featured?: boolean
     status?: string
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    source?: string
   }
 
   export type TestimonialUpdateManyMutationInput = {
@@ -26269,12 +26269,12 @@ export namespace Prisma {
     quote?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    source?: StringFieldUpdateOperationsInput | string
     featured?: BoolFieldUpdateOperationsInput | boolean
     status?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    source?: StringFieldUpdateOperationsInput | string
   }
 
   export type TestimonialUncheckedUpdateManyInput = {
@@ -26285,12 +26285,12 @@ export namespace Prisma {
     quote?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    source?: StringFieldUpdateOperationsInput | string
     featured?: BoolFieldUpdateOperationsInput | boolean
     status?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    source?: StringFieldUpdateOperationsInput | string
   }
 
   export type SiteSettingsCreateInput = {
@@ -26306,11 +26306,11 @@ export namespace Prisma {
     defaultSeoTitle?: string | null
     defaultSeoDescription?: string | null
     defaultOgImageUrl?: string | null
-    googleAnalyticsId?: string | null
-    metaPixelId?: string | null
     headerScripts?: string | null
     footerScripts?: string | null
     updatedAt?: Date | string
+    googleAnalyticsId?: string | null
+    metaPixelId?: string | null
   }
 
   export type SiteSettingsUncheckedCreateInput = {
@@ -26326,11 +26326,11 @@ export namespace Prisma {
     defaultSeoTitle?: string | null
     defaultSeoDescription?: string | null
     defaultOgImageUrl?: string | null
-    googleAnalyticsId?: string | null
-    metaPixelId?: string | null
     headerScripts?: string | null
     footerScripts?: string | null
     updatedAt?: Date | string
+    googleAnalyticsId?: string | null
+    metaPixelId?: string | null
   }
 
   export type SiteSettingsUpdateInput = {
@@ -26346,11 +26346,11 @@ export namespace Prisma {
     defaultSeoTitle?: NullableStringFieldUpdateOperationsInput | string | null
     defaultSeoDescription?: NullableStringFieldUpdateOperationsInput | string | null
     defaultOgImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    googleAnalyticsId?: NullableStringFieldUpdateOperationsInput | string | null
-    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
     headerScripts?: NullableStringFieldUpdateOperationsInput | string | null
     footerScripts?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    googleAnalyticsId?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SiteSettingsUncheckedUpdateInput = {
@@ -26366,11 +26366,11 @@ export namespace Prisma {
     defaultSeoTitle?: NullableStringFieldUpdateOperationsInput | string | null
     defaultSeoDescription?: NullableStringFieldUpdateOperationsInput | string | null
     defaultOgImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    googleAnalyticsId?: NullableStringFieldUpdateOperationsInput | string | null
-    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
     headerScripts?: NullableStringFieldUpdateOperationsInput | string | null
     footerScripts?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    googleAnalyticsId?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SiteSettingsCreateManyInput = {
@@ -26386,11 +26386,11 @@ export namespace Prisma {
     defaultSeoTitle?: string | null
     defaultSeoDescription?: string | null
     defaultOgImageUrl?: string | null
-    googleAnalyticsId?: string | null
-    metaPixelId?: string | null
     headerScripts?: string | null
     footerScripts?: string | null
     updatedAt?: Date | string
+    googleAnalyticsId?: string | null
+    metaPixelId?: string | null
   }
 
   export type SiteSettingsUpdateManyMutationInput = {
@@ -26406,11 +26406,11 @@ export namespace Prisma {
     defaultSeoTitle?: NullableStringFieldUpdateOperationsInput | string | null
     defaultSeoDescription?: NullableStringFieldUpdateOperationsInput | string | null
     defaultOgImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    googleAnalyticsId?: NullableStringFieldUpdateOperationsInput | string | null
-    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
     headerScripts?: NullableStringFieldUpdateOperationsInput | string | null
     footerScripts?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    googleAnalyticsId?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SiteSettingsUncheckedUpdateManyInput = {
@@ -26426,11 +26426,11 @@ export namespace Prisma {
     defaultSeoTitle?: NullableStringFieldUpdateOperationsInput | string | null
     defaultSeoDescription?: NullableStringFieldUpdateOperationsInput | string | null
     defaultOgImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    googleAnalyticsId?: NullableStringFieldUpdateOperationsInput | string | null
-    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
     headerScripts?: NullableStringFieldUpdateOperationsInput | string | null
     footerScripts?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    googleAnalyticsId?: NullableStringFieldUpdateOperationsInput | string | null
+    metaPixelId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -26618,9 +26618,10 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type CategoryNullableScalarRelationFilter = {
-    is?: CategoryWhereInput | null
-    isNot?: CategoryWhereInput | null
+  export type BlogTagListRelationFilter = {
+    every?: BlogTagWhereInput
+    some?: BlogTagWhereInput
+    none?: BlogTagWhereInput
   }
 
   export type AdminNullableScalarRelationFilter = {
@@ -26628,10 +26629,9 @@ export namespace Prisma {
     isNot?: AdminWhereInput | null
   }
 
-  export type BlogTagListRelationFilter = {
-    every?: BlogTagWhereInput
-    some?: BlogTagWhereInput
-    none?: BlogTagWhereInput
+  export type CategoryNullableScalarRelationFilter = {
+    is?: CategoryWhereInput | null
+    isNot?: CategoryWhereInput | null
   }
 
   export type PostSeoNullableScalarRelationFilter = {
@@ -26776,13 +26776,13 @@ export namespace Prisma {
     ogImage?: SortOrder
     canonical?: SortOrder
     noindex?: SortOrder
-    keywords?: SortOrder
     h1?: SortOrder
-    ogTitle?: SortOrder
+    keywords?: SortOrder
     ogDescription?: SortOrder
+    ogTitle?: SortOrder
     ogType?: SortOrder
-    twitterTitle?: SortOrder
     twitterDescription?: SortOrder
+    twitterTitle?: SortOrder
     schemaJsonLd?: SortOrder
   }
 
@@ -26794,13 +26794,13 @@ export namespace Prisma {
     ogImage?: SortOrder
     canonical?: SortOrder
     noindex?: SortOrder
-    keywords?: SortOrder
     h1?: SortOrder
-    ogTitle?: SortOrder
+    keywords?: SortOrder
     ogDescription?: SortOrder
+    ogTitle?: SortOrder
     ogType?: SortOrder
-    twitterTitle?: SortOrder
     twitterDescription?: SortOrder
+    twitterTitle?: SortOrder
   }
 
   export type PostSeoMinOrderByAggregateInput = {
@@ -26811,13 +26811,13 @@ export namespace Prisma {
     ogImage?: SortOrder
     canonical?: SortOrder
     noindex?: SortOrder
-    keywords?: SortOrder
     h1?: SortOrder
-    ogTitle?: SortOrder
+    keywords?: SortOrder
     ogDescription?: SortOrder
+    ogTitle?: SortOrder
     ogType?: SortOrder
-    twitterTitle?: SortOrder
     twitterDescription?: SortOrder
+    twitterTitle?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -27101,7 +27101,6 @@ export namespace Prisma {
   export type ServiceCountOrderByAggregateInput = {
     id?: SortOrder
     slug?: SortOrder
-    href?: SortOrder
     shortName?: SortOrder
     summary?: SortOrder
     cardImageSrc?: SortOrder
@@ -27111,6 +27110,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    href?: SortOrder
   }
 
   export type ServiceAvgOrderByAggregateInput = {
@@ -27120,7 +27120,6 @@ export namespace Prisma {
   export type ServiceMaxOrderByAggregateInput = {
     id?: SortOrder
     slug?: SortOrder
-    href?: SortOrder
     shortName?: SortOrder
     summary?: SortOrder
     cardImageSrc?: SortOrder
@@ -27129,12 +27128,12 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    href?: SortOrder
   }
 
   export type ServiceMinOrderByAggregateInput = {
     id?: SortOrder
     slug?: SortOrder
-    href?: SortOrder
     shortName?: SortOrder
     summary?: SortOrder
     cardImageSrc?: SortOrder
@@ -27143,6 +27142,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    href?: SortOrder
   }
 
   export type ServiceSumOrderByAggregateInput = {
@@ -27247,14 +27247,14 @@ export namespace Prisma {
     title?: SortOrder
     thumbnailUrl?: SortOrder
     newsLink?: SortOrder
-    source?: SortOrder
-    publishedLabel?: SortOrder
-    description?: SortOrder
-    type?: SortOrder
     order?: SortOrder
     published?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    description?: SortOrder
+    publishedLabel?: SortOrder
+    source?: SortOrder
+    type?: SortOrder
   }
 
   export type NewsItemAvgOrderByAggregateInput = {
@@ -27266,14 +27266,14 @@ export namespace Prisma {
     title?: SortOrder
     thumbnailUrl?: SortOrder
     newsLink?: SortOrder
-    source?: SortOrder
-    publishedLabel?: SortOrder
-    description?: SortOrder
-    type?: SortOrder
     order?: SortOrder
     published?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    description?: SortOrder
+    publishedLabel?: SortOrder
+    source?: SortOrder
+    type?: SortOrder
   }
 
   export type NewsItemMinOrderByAggregateInput = {
@@ -27281,14 +27281,14 @@ export namespace Prisma {
     title?: SortOrder
     thumbnailUrl?: SortOrder
     newsLink?: SortOrder
-    source?: SortOrder
-    publishedLabel?: SortOrder
-    description?: SortOrder
-    type?: SortOrder
     order?: SortOrder
     published?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    description?: SortOrder
+    publishedLabel?: SortOrder
+    source?: SortOrder
+    type?: SortOrder
   }
 
   export type NewsItemSumOrderByAggregateInput = {
@@ -27367,33 +27367,33 @@ export namespace Prisma {
   export type PageSeoCountOrderByAggregateInput = {
     id?: SortOrder
     path?: SortOrder
-    url?: SortOrder
-    sourceFile?: SortOrder
-    pageTitle?: SortOrder
-    metaTitle?: SortOrder
-    metaDescription?: SortOrder
-    keywords?: SortOrder
-    h1Hero?: SortOrder
     canonical?: SortOrder
-    robotsMeta?: SortOrder
-    openGraph?: SortOrder
-    twitter?: SortOrder
-    jsonLd?: SortOrder
-    metaPixelPresent?: SortOrder
-    metaPixelId?: SortOrder
-    googleTagManagerPresent?: SortOrder
-    googleTagManagerId?: SortOrder
-    googleAnalyticsPresent?: SortOrder
-    googleAnalyticsMeasurementId?: SortOrder
-    hotjarPresent?: SortOrder
-    hotjarSiteId?: SortOrder
-    metricoolPresent?: SortOrder
-    plausiblePresent?: SortOrder
-    sitemapInclude?: SortOrder
-    sitemapPriority?: SortOrder
-    sitemapChangefreq?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    keywords?: SortOrder
+    googleAnalyticsMeasurementId?: SortOrder
+    googleAnalyticsPresent?: SortOrder
+    googleTagManagerId?: SortOrder
+    googleTagManagerPresent?: SortOrder
+    h1Hero?: SortOrder
+    hotjarPresent?: SortOrder
+    hotjarSiteId?: SortOrder
+    jsonLd?: SortOrder
+    metaDescription?: SortOrder
+    metaPixelId?: SortOrder
+    metaPixelPresent?: SortOrder
+    metaTitle?: SortOrder
+    metricoolPresent?: SortOrder
+    openGraph?: SortOrder
+    pageTitle?: SortOrder
+    plausiblePresent?: SortOrder
+    robotsMeta?: SortOrder
+    sitemapChangefreq?: SortOrder
+    sitemapInclude?: SortOrder
+    sitemapPriority?: SortOrder
+    sourceFile?: SortOrder
+    twitter?: SortOrder
+    url?: SortOrder
   }
 
   export type PageSeoAvgOrderByAggregateInput = {
@@ -27403,59 +27403,59 @@ export namespace Prisma {
   export type PageSeoMaxOrderByAggregateInput = {
     id?: SortOrder
     path?: SortOrder
-    url?: SortOrder
-    sourceFile?: SortOrder
-    pageTitle?: SortOrder
-    metaTitle?: SortOrder
-    metaDescription?: SortOrder
-    keywords?: SortOrder
-    h1Hero?: SortOrder
     canonical?: SortOrder
-    robotsMeta?: SortOrder
-    metaPixelPresent?: SortOrder
-    metaPixelId?: SortOrder
-    googleTagManagerPresent?: SortOrder
-    googleTagManagerId?: SortOrder
-    googleAnalyticsPresent?: SortOrder
-    googleAnalyticsMeasurementId?: SortOrder
-    hotjarPresent?: SortOrder
-    hotjarSiteId?: SortOrder
-    metricoolPresent?: SortOrder
-    plausiblePresent?: SortOrder
-    sitemapInclude?: SortOrder
-    sitemapPriority?: SortOrder
-    sitemapChangefreq?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    keywords?: SortOrder
+    googleAnalyticsMeasurementId?: SortOrder
+    googleAnalyticsPresent?: SortOrder
+    googleTagManagerId?: SortOrder
+    googleTagManagerPresent?: SortOrder
+    h1Hero?: SortOrder
+    hotjarPresent?: SortOrder
+    hotjarSiteId?: SortOrder
+    metaDescription?: SortOrder
+    metaPixelId?: SortOrder
+    metaPixelPresent?: SortOrder
+    metaTitle?: SortOrder
+    metricoolPresent?: SortOrder
+    pageTitle?: SortOrder
+    plausiblePresent?: SortOrder
+    robotsMeta?: SortOrder
+    sitemapChangefreq?: SortOrder
+    sitemapInclude?: SortOrder
+    sitemapPriority?: SortOrder
+    sourceFile?: SortOrder
+    url?: SortOrder
   }
 
   export type PageSeoMinOrderByAggregateInput = {
     id?: SortOrder
     path?: SortOrder
-    url?: SortOrder
-    sourceFile?: SortOrder
-    pageTitle?: SortOrder
-    metaTitle?: SortOrder
-    metaDescription?: SortOrder
-    keywords?: SortOrder
-    h1Hero?: SortOrder
     canonical?: SortOrder
-    robotsMeta?: SortOrder
-    metaPixelPresent?: SortOrder
-    metaPixelId?: SortOrder
-    googleTagManagerPresent?: SortOrder
-    googleTagManagerId?: SortOrder
-    googleAnalyticsPresent?: SortOrder
-    googleAnalyticsMeasurementId?: SortOrder
-    hotjarPresent?: SortOrder
-    hotjarSiteId?: SortOrder
-    metricoolPresent?: SortOrder
-    plausiblePresent?: SortOrder
-    sitemapInclude?: SortOrder
-    sitemapPriority?: SortOrder
-    sitemapChangefreq?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    keywords?: SortOrder
+    googleAnalyticsMeasurementId?: SortOrder
+    googleAnalyticsPresent?: SortOrder
+    googleTagManagerId?: SortOrder
+    googleTagManagerPresent?: SortOrder
+    h1Hero?: SortOrder
+    hotjarPresent?: SortOrder
+    hotjarSiteId?: SortOrder
+    metaDescription?: SortOrder
+    metaPixelId?: SortOrder
+    metaPixelPresent?: SortOrder
+    metaTitle?: SortOrder
+    metricoolPresent?: SortOrder
+    pageTitle?: SortOrder
+    plausiblePresent?: SortOrder
+    robotsMeta?: SortOrder
+    sitemapChangefreq?: SortOrder
+    sitemapInclude?: SortOrder
+    sitemapPriority?: SortOrder
+    sourceFile?: SortOrder
+    url?: SortOrder
   }
 
   export type PageSeoSumOrderByAggregateInput = {
@@ -27486,12 +27486,12 @@ export namespace Prisma {
     quote?: SortOrder
     rating?: SortOrder
     photoUrl?: SortOrder
-    source?: SortOrder
     featured?: SortOrder
     status?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    source?: SortOrder
   }
 
   export type TestimonialAvgOrderByAggregateInput = {
@@ -27507,12 +27507,12 @@ export namespace Prisma {
     quote?: SortOrder
     rating?: SortOrder
     photoUrl?: SortOrder
-    source?: SortOrder
     featured?: SortOrder
     status?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    source?: SortOrder
   }
 
   export type TestimonialMinOrderByAggregateInput = {
@@ -27523,12 +27523,12 @@ export namespace Prisma {
     quote?: SortOrder
     rating?: SortOrder
     photoUrl?: SortOrder
-    source?: SortOrder
     featured?: SortOrder
     status?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    source?: SortOrder
   }
 
   export type TestimonialSumOrderByAggregateInput = {
@@ -27549,11 +27549,11 @@ export namespace Prisma {
     defaultSeoTitle?: SortOrder
     defaultSeoDescription?: SortOrder
     defaultOgImageUrl?: SortOrder
-    googleAnalyticsId?: SortOrder
-    metaPixelId?: SortOrder
     headerScripts?: SortOrder
     footerScripts?: SortOrder
     updatedAt?: SortOrder
+    googleAnalyticsId?: SortOrder
+    metaPixelId?: SortOrder
   }
 
   export type SiteSettingsMaxOrderByAggregateInput = {
@@ -27568,11 +27568,11 @@ export namespace Prisma {
     defaultSeoTitle?: SortOrder
     defaultSeoDescription?: SortOrder
     defaultOgImageUrl?: SortOrder
-    googleAnalyticsId?: SortOrder
-    metaPixelId?: SortOrder
     headerScripts?: SortOrder
     footerScripts?: SortOrder
     updatedAt?: SortOrder
+    googleAnalyticsId?: SortOrder
+    metaPixelId?: SortOrder
   }
 
   export type SiteSettingsMinOrderByAggregateInput = {
@@ -27587,11 +27587,11 @@ export namespace Prisma {
     defaultSeoTitle?: SortOrder
     defaultSeoDescription?: SortOrder
     defaultOgImageUrl?: SortOrder
-    googleAnalyticsId?: SortOrder
-    metaPixelId?: SortOrder
     headerScripts?: SortOrder
     footerScripts?: SortOrder
     updatedAt?: SortOrder
+    googleAnalyticsId?: SortOrder
+    metaPixelId?: SortOrder
   }
 
   export type PostCreateNestedManyWithoutAuthorInput = {
@@ -27648,10 +27648,11 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type CategoryCreateNestedOneWithoutPostsInput = {
-    create?: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutPostsInput
-    connect?: CategoryWhereUniqueInput
+  export type BlogTagCreateNestedManyWithoutPostInput = {
+    create?: XOR<BlogTagCreateWithoutPostInput, BlogTagUncheckedCreateWithoutPostInput> | BlogTagCreateWithoutPostInput[] | BlogTagUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: BlogTagCreateOrConnectWithoutPostInput | BlogTagCreateOrConnectWithoutPostInput[]
+    createMany?: BlogTagCreateManyPostInputEnvelope
+    connect?: BlogTagWhereUniqueInput | BlogTagWhereUniqueInput[]
   }
 
   export type AdminCreateNestedOneWithoutPostsInput = {
@@ -27660,11 +27661,10 @@ export namespace Prisma {
     connect?: AdminWhereUniqueInput
   }
 
-  export type BlogTagCreateNestedManyWithoutPostInput = {
-    create?: XOR<BlogTagCreateWithoutPostInput, BlogTagUncheckedCreateWithoutPostInput> | BlogTagCreateWithoutPostInput[] | BlogTagUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: BlogTagCreateOrConnectWithoutPostInput | BlogTagCreateOrConnectWithoutPostInput[]
-    createMany?: BlogTagCreateManyPostInputEnvelope
-    connect?: BlogTagWhereUniqueInput | BlogTagWhereUniqueInput[]
+  export type CategoryCreateNestedOneWithoutPostsInput = {
+    create?: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutPostsInput
+    connect?: CategoryWhereUniqueInput
   }
 
   export type PostSeoCreateNestedOneWithoutPostInput = {
@@ -27698,26 +27698,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type CategoryUpdateOneWithoutPostsNestedInput = {
-    create?: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutPostsInput
-    upsert?: CategoryUpsertWithoutPostsInput
-    disconnect?: CategoryWhereInput | boolean
-    delete?: CategoryWhereInput | boolean
-    connect?: CategoryWhereUniqueInput
-    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutPostsInput, CategoryUpdateWithoutPostsInput>, CategoryUncheckedUpdateWithoutPostsInput>
-  }
-
-  export type AdminUpdateOneWithoutPostsNestedInput = {
-    create?: XOR<AdminCreateWithoutPostsInput, AdminUncheckedCreateWithoutPostsInput>
-    connectOrCreate?: AdminCreateOrConnectWithoutPostsInput
-    upsert?: AdminUpsertWithoutPostsInput
-    disconnect?: AdminWhereInput | boolean
-    delete?: AdminWhereInput | boolean
-    connect?: AdminWhereUniqueInput
-    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutPostsInput, AdminUpdateWithoutPostsInput>, AdminUncheckedUpdateWithoutPostsInput>
-  }
-
   export type BlogTagUpdateManyWithoutPostNestedInput = {
     create?: XOR<BlogTagCreateWithoutPostInput, BlogTagUncheckedCreateWithoutPostInput> | BlogTagCreateWithoutPostInput[] | BlogTagUncheckedCreateWithoutPostInput[]
     connectOrCreate?: BlogTagCreateOrConnectWithoutPostInput | BlogTagCreateOrConnectWithoutPostInput[]
@@ -27730,6 +27710,26 @@ export namespace Prisma {
     update?: BlogTagUpdateWithWhereUniqueWithoutPostInput | BlogTagUpdateWithWhereUniqueWithoutPostInput[]
     updateMany?: BlogTagUpdateManyWithWhereWithoutPostInput | BlogTagUpdateManyWithWhereWithoutPostInput[]
     deleteMany?: BlogTagScalarWhereInput | BlogTagScalarWhereInput[]
+  }
+
+  export type AdminUpdateOneWithoutPostsNestedInput = {
+    create?: XOR<AdminCreateWithoutPostsInput, AdminUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutPostsInput
+    upsert?: AdminUpsertWithoutPostsInput
+    disconnect?: AdminWhereInput | boolean
+    delete?: AdminWhereInput | boolean
+    connect?: AdminWhereUniqueInput
+    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutPostsInput, AdminUpdateWithoutPostsInput>, AdminUncheckedUpdateWithoutPostsInput>
+  }
+
+  export type CategoryUpdateOneWithoutPostsNestedInput = {
+    create?: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutPostsInput
+    upsert?: CategoryUpsertWithoutPostsInput
+    disconnect?: CategoryWhereInput | boolean
+    delete?: CategoryWhereInput | boolean
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutPostsInput, CategoryUpdateWithoutPostsInput>, CategoryUncheckedUpdateWithoutPostsInput>
   }
 
   export type PostSeoUpdateOneWithoutPostNestedInput = {
@@ -28189,8 +28189,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     deletedAt?: Date | string | null
     readingTime?: number | null
-    category?: CategoryCreateNestedOneWithoutPostsInput
     tags?: BlogTagCreateNestedManyWithoutPostInput
+    category?: CategoryCreateNestedOneWithoutPostsInput
     seo?: PostSeoCreateNestedOneWithoutPostInput
   }
 
@@ -28260,23 +28260,22 @@ export namespace Prisma {
     authorId?: StringNullableFilter<"Post"> | string | null
   }
 
-  export type CategoryCreateWithoutPostsInput = {
-    id?: string
-    name: string
-    slug: string
-    createdAt?: Date | string
+  export type BlogTagCreateWithoutPostInput = {
+    tag: TagCreateNestedOneWithoutPostsInput
   }
 
-  export type CategoryUncheckedCreateWithoutPostsInput = {
-    id?: string
-    name: string
-    slug: string
-    createdAt?: Date | string
+  export type BlogTagUncheckedCreateWithoutPostInput = {
+    tagId: string
   }
 
-  export type CategoryCreateOrConnectWithoutPostsInput = {
-    where: CategoryWhereUniqueInput
-    create: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
+  export type BlogTagCreateOrConnectWithoutPostInput = {
+    where: BlogTagWhereUniqueInput
+    create: XOR<BlogTagCreateWithoutPostInput, BlogTagUncheckedCreateWithoutPostInput>
+  }
+
+  export type BlogTagCreateManyPostInputEnvelope = {
+    data: BlogTagCreateManyPostInput | BlogTagCreateManyPostInput[]
+    skipDuplicates?: boolean
   }
 
   export type AdminCreateWithoutPostsInput = {
@@ -28304,22 +28303,23 @@ export namespace Prisma {
     create: XOR<AdminCreateWithoutPostsInput, AdminUncheckedCreateWithoutPostsInput>
   }
 
-  export type BlogTagCreateWithoutPostInput = {
-    tag: TagCreateNestedOneWithoutPostsInput
+  export type CategoryCreateWithoutPostsInput = {
+    id?: string
+    name: string
+    slug: string
+    createdAt?: Date | string
   }
 
-  export type BlogTagUncheckedCreateWithoutPostInput = {
-    tagId: string
+  export type CategoryUncheckedCreateWithoutPostsInput = {
+    id?: string
+    name: string
+    slug: string
+    createdAt?: Date | string
   }
 
-  export type BlogTagCreateOrConnectWithoutPostInput = {
-    where: BlogTagWhereUniqueInput
-    create: XOR<BlogTagCreateWithoutPostInput, BlogTagUncheckedCreateWithoutPostInput>
-  }
-
-  export type BlogTagCreateManyPostInputEnvelope = {
-    data: BlogTagCreateManyPostInput | BlogTagCreateManyPostInput[]
-    skipDuplicates?: boolean
+  export type CategoryCreateOrConnectWithoutPostsInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
   }
 
   export type PostSeoCreateWithoutPostInput = {
@@ -28329,13 +28329,13 @@ export namespace Prisma {
     ogImage?: string | null
     canonical?: string | null
     noindex?: boolean
-    keywords?: string | null
     h1?: string | null
-    ogTitle?: string | null
+    keywords?: string | null
     ogDescription?: string | null
+    ogTitle?: string | null
     ogType?: string | null
-    twitterTitle?: string | null
     twitterDescription?: string | null
+    twitterTitle?: string | null
     schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -28346,13 +28346,13 @@ export namespace Prisma {
     ogImage?: string | null
     canonical?: string | null
     noindex?: boolean
-    keywords?: string | null
     h1?: string | null
-    ogTitle?: string | null
+    keywords?: string | null
     ogDescription?: string | null
+    ogTitle?: string | null
     ogType?: string | null
-    twitterTitle?: string | null
     twitterDescription?: string | null
+    twitterTitle?: string | null
     schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -28361,29 +28361,28 @@ export namespace Prisma {
     create: XOR<PostSeoCreateWithoutPostInput, PostSeoUncheckedCreateWithoutPostInput>
   }
 
-  export type CategoryUpsertWithoutPostsInput = {
-    update: XOR<CategoryUpdateWithoutPostsInput, CategoryUncheckedUpdateWithoutPostsInput>
-    create: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
-    where?: CategoryWhereInput
+  export type BlogTagUpsertWithWhereUniqueWithoutPostInput = {
+    where: BlogTagWhereUniqueInput
+    update: XOR<BlogTagUpdateWithoutPostInput, BlogTagUncheckedUpdateWithoutPostInput>
+    create: XOR<BlogTagCreateWithoutPostInput, BlogTagUncheckedCreateWithoutPostInput>
   }
 
-  export type CategoryUpdateToOneWithWhereWithoutPostsInput = {
-    where?: CategoryWhereInput
-    data: XOR<CategoryUpdateWithoutPostsInput, CategoryUncheckedUpdateWithoutPostsInput>
+  export type BlogTagUpdateWithWhereUniqueWithoutPostInput = {
+    where: BlogTagWhereUniqueInput
+    data: XOR<BlogTagUpdateWithoutPostInput, BlogTagUncheckedUpdateWithoutPostInput>
   }
 
-  export type CategoryUpdateWithoutPostsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type BlogTagUpdateManyWithWhereWithoutPostInput = {
+    where: BlogTagScalarWhereInput
+    data: XOR<BlogTagUpdateManyMutationInput, BlogTagUncheckedUpdateManyWithoutPostInput>
   }
 
-  export type CategoryUncheckedUpdateWithoutPostsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type BlogTagScalarWhereInput = {
+    AND?: BlogTagScalarWhereInput | BlogTagScalarWhereInput[]
+    OR?: BlogTagScalarWhereInput[]
+    NOT?: BlogTagScalarWhereInput | BlogTagScalarWhereInput[]
+    postId?: StringFilter<"BlogTag"> | string
+    tagId?: StringFilter<"BlogTag"> | string
   }
 
   export type AdminUpsertWithoutPostsInput = {
@@ -28417,28 +28416,29 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BlogTagUpsertWithWhereUniqueWithoutPostInput = {
-    where: BlogTagWhereUniqueInput
-    update: XOR<BlogTagUpdateWithoutPostInput, BlogTagUncheckedUpdateWithoutPostInput>
-    create: XOR<BlogTagCreateWithoutPostInput, BlogTagUncheckedCreateWithoutPostInput>
+  export type CategoryUpsertWithoutPostsInput = {
+    update: XOR<CategoryUpdateWithoutPostsInput, CategoryUncheckedUpdateWithoutPostsInput>
+    create: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
+    where?: CategoryWhereInput
   }
 
-  export type BlogTagUpdateWithWhereUniqueWithoutPostInput = {
-    where: BlogTagWhereUniqueInput
-    data: XOR<BlogTagUpdateWithoutPostInput, BlogTagUncheckedUpdateWithoutPostInput>
+  export type CategoryUpdateToOneWithWhereWithoutPostsInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutPostsInput, CategoryUncheckedUpdateWithoutPostsInput>
   }
 
-  export type BlogTagUpdateManyWithWhereWithoutPostInput = {
-    where: BlogTagScalarWhereInput
-    data: XOR<BlogTagUpdateManyMutationInput, BlogTagUncheckedUpdateManyWithoutPostInput>
+  export type CategoryUpdateWithoutPostsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BlogTagScalarWhereInput = {
-    AND?: BlogTagScalarWhereInput | BlogTagScalarWhereInput[]
-    OR?: BlogTagScalarWhereInput[]
-    NOT?: BlogTagScalarWhereInput | BlogTagScalarWhereInput[]
-    postId?: StringFilter<"BlogTag"> | string
-    tagId?: StringFilter<"BlogTag"> | string
+  export type CategoryUncheckedUpdateWithoutPostsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PostSeoUpsertWithoutPostInput = {
@@ -28459,13 +28459,13 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
-    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     h1?: NullableStringFieldUpdateOperationsInput | string | null
-    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -28476,13 +28476,13 @@ export namespace Prisma {
     ogImage?: NullableStringFieldUpdateOperationsInput | string | null
     canonical?: NullableStringFieldUpdateOperationsInput | string | null
     noindex?: BoolFieldUpdateOperationsInput | boolean
-    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     h1?: NullableStringFieldUpdateOperationsInput | string | null
-    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
     ogDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    ogTitle?: NullableStringFieldUpdateOperationsInput | string | null
     ogType?: NullableStringFieldUpdateOperationsInput | string | null
-    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     twitterDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterTitle?: NullableStringFieldUpdateOperationsInput | string | null
     schemaJsonLd?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -28500,9 +28500,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     deletedAt?: Date | string | null
     readingTime?: number | null
-    category?: CategoryCreateNestedOneWithoutPostsInput
-    author?: AdminCreateNestedOneWithoutPostsInput
     tags?: BlogTagCreateNestedManyWithoutPostInput
+    author?: AdminCreateNestedOneWithoutPostsInput
+    category?: CategoryCreateNestedOneWithoutPostsInput
   }
 
   export type PostUncheckedCreateWithoutSeoInput = {
@@ -28554,9 +28554,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     readingTime?: NullableIntFieldUpdateOperationsInput | number | null
-    category?: CategoryUpdateOneWithoutPostsNestedInput
-    author?: AdminUpdateOneWithoutPostsNestedInput
     tags?: BlogTagUpdateManyWithoutPostNestedInput
+    author?: AdminUpdateOneWithoutPostsNestedInput
+    category?: CategoryUpdateOneWithoutPostsNestedInput
   }
 
   export type PostUncheckedUpdateWithoutSeoInput = {
@@ -28592,8 +28592,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     deletedAt?: Date | string | null
     readingTime?: number | null
-    author?: AdminCreateNestedOneWithoutPostsInput
     tags?: BlogTagCreateNestedManyWithoutPostInput
+    author?: AdminCreateNestedOneWithoutPostsInput
     seo?: PostSeoCreateNestedOneWithoutPostInput
   }
 
@@ -28690,8 +28690,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     deletedAt?: Date | string | null
     readingTime?: number | null
-    category?: CategoryCreateNestedOneWithoutPostsInput
     author?: AdminCreateNestedOneWithoutPostsInput
+    category?: CategoryCreateNestedOneWithoutPostsInput
     seo?: PostSeoCreateNestedOneWithoutPostInput
   }
 
@@ -28763,8 +28763,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     readingTime?: NullableIntFieldUpdateOperationsInput | number | null
-    category?: CategoryUpdateOneWithoutPostsNestedInput
     author?: AdminUpdateOneWithoutPostsNestedInput
+    category?: CategoryUpdateOneWithoutPostsNestedInput
     seo?: PostSeoUpdateOneWithoutPostNestedInput
   }
 
@@ -28843,8 +28843,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     readingTime?: NullableIntFieldUpdateOperationsInput | number | null
-    category?: CategoryUpdateOneWithoutPostsNestedInput
     tags?: BlogTagUpdateManyWithoutPostNestedInput
+    category?: CategoryUpdateOneWithoutPostsNestedInput
     seo?: PostSeoUpdateOneWithoutPostNestedInput
   }
 
@@ -28931,8 +28931,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     readingTime?: NullableIntFieldUpdateOperationsInput | number | null
-    author?: AdminUpdateOneWithoutPostsNestedInput
     tags?: BlogTagUpdateManyWithoutPostNestedInput
+    author?: AdminUpdateOneWithoutPostsNestedInput
     seo?: PostSeoUpdateOneWithoutPostNestedInput
   }
 
