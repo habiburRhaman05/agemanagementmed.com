@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 
 import { ImageUploader } from '@/components/admin/ImageUploader'
+import { SchemaJsonEditor } from '@/components/admin/SchemaJsonEditor'
 import { editTreatmentSchema, type EditTreatmentValues } from '@/lib/validation/treatment'
 import { Button } from '../ui/Button'
 
@@ -552,19 +553,13 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           <input type="checkbox" checked={seoNoindex} onChange={(e) => setSeoNoindex(e.target.checked)} className="rounded border-canvas-300 text-sage-600 focus:ring-sage-600" />
           <span className="text-xs text-gray-600">No index</span>
         </label>
-        <div>
-          <label className="block text-xs font-medium text-gray-500">
-            Schema (JSON-LD) override <span className="font-normal text-gray-400">— optional, replaces the auto-generated schema</span>
-          </label>
-          <textarea
-            value={seoSchemaJsonLd}
-            onChange={(e) => setSeoSchemaJsonLd(e.target.value)}
-            rows={6}
-            placeholder='{"@context": "https://schema.org", "@type": "MedicalWebPage", ...}'
-            className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 font-mono text-xs focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
-          />
-          <FieldError message={seoSchemaError} />
-        </div>
+        <SchemaJsonEditor
+          value={seoSchemaJsonLd}
+          onChange={setSeoSchemaJsonLd}
+          hint="— optional, replaces the auto-generated schema"
+          placeholder='{"@context": "https://schema.org", "@type": "MedicalWebPage", ...}'
+          error={seoSchemaError}
+        />
       </div>
 
     </form>

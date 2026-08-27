@@ -5,7 +5,7 @@ import { TreatmentTemplate } from '@/components/templates/TreatmentTemplate'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import { getAllTreatments, getTreatmentByHref } from '@/content/treatments/main'
-import { buildFaqSchema, buildMetadata, buildTreatmentSchema, getSchemaOverride } from '@/lib/seo'
+import { buildFaqSchema, buildMetadata, buildTreatmentSchema, getSchemaOverride, schemaContainsType } from '@/lib/seo'
 import { WeightLossMaleLayout } from '@/components/sections/custom/templates-custom/WeightLossMaleLayout'
 import { WeightLossFeMaleLayout } from '@/components/sections/custom/templates-custom/WeightLossFemaleLayout'
 import { HairRestoreFemaleLayout } from '@/components/sections/custom/templates-custom/HairRestoreFemale'
@@ -139,7 +139,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
           })}
         />
       )}
-      {!schemaOverride && faqSchema ? <JsonLd data={faqSchema} /> : null}
+      {/*
+        A manual schema override used to unconditionally suppress the
+        auto-generated FAQ schema, even when the override had nothing to do
+        with FAQs (e.g. it only carried business/address facts scraped from
+        production). Now it only suppresses FAQ schema when the override
+        itself genuinely already contains a FAQPage block — otherwise the
+        real, current FAQ content still gets its schema, override or not.
+      */}
+      {faqSchema && !schemaContainsType(schemaOverride, 'FAQPage') ? <JsonLd data={faqSchema} /> : null}
       <Header overlay />
 
       {renderTemplate(treatment.slug)}

@@ -160,6 +160,31 @@ export async function getSchemaOverride(path: string): Promise<Record<string, un
 }
 
 /**
+ * Recursively checks a JSON-LD object (single schema or a `@graph` array of
+ * them) for a given `@type` — handles `@type` as either a string or an
+ * array, per the schema.org spec. Used so an admin-entered manual schema
+ * override only *suppresses* an auto-generated schema (e.g. FAQPage) when it
+ * genuinely already supplies one of its own, rather than an override for one
+ * thing (say, business/address facts) silently discarding an unrelated
+ * auto-generated schema (FAQ) that has nothing to do with it.
+ */
+export function schemaContainsType(schema: unknown, type: string): boolean {
+  if (!schema || typeof schema !== 'object') return false
+  if (Array.isArray(schema)) return schema.some((entry) => schemaContainsType(entry, type))
+
+  const obj = schema as Record<string, unknown>
+  const ownType = obj['@type']
+  const matchesOwnType = Array.isArray(ownType) ? ownType.includes(type) : ownType === type
+  if (matchesOwnType) return true
+
+  if (Array.isArray(obj['@graph'])) {
+    return (obj['@graph'] as unknown[]).some((entry) => schemaContainsType(entry, type))
+  }
+
+  return false
+}
+
+/**
  * Sitewide MedicalClinic (a LocalBusiness/MedicalBusiness subtype) schema —
  * rendered once, in the marketing layout, on every page. Matches the shape
  * already proven live on agemanagementmed.com (address, geo, hours,
