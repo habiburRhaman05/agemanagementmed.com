@@ -18,6 +18,7 @@ import { PatientSuccessStories } from '@/components/sections/PatientSuccessStori
 import { MaleHeroBanner } from '../compontents-custom/hormoneTherapy/MaleHeroBanner'
 import { PatientBenefitsSection } from '../compontents-custom/hormoneTherapy/PatientBenefitsSection'
 import { LegacyIncludedGrid } from '../compontents-custom/shared/LegacyIncludedGrid'
+import { pillars } from '@/content/treatments'
 
 interface TreatmentTemplateProps {
   treatment: Treatment
@@ -25,13 +26,25 @@ interface TreatmentTemplateProps {
 
 export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplateProps) {
   const testimonials = await getPublishedTestimonials()
+  const pillar = pillars[treatment.pillar]
 
   return (
     <>
-      <MaleHeroBanner
+      {/* <MaleHeroBanner
         title="Bioidentical Hormone Replacement Therapy (BHRT) For Men"
         lead="Optimize Testosterone. Restore Energy. Reclaim Your Edge."
         image={treatment.hero?.image}
+      /> */}
+      
+       <HeroEditorial
+        {...treatment.hero}
+        overideMinheight='min-h-[850px]!'
+       
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: pillar.label, href: pillar.href },
+          { label: treatment.shortName, href: treatment.href },
+        ]}
       />
 
       {treatment.symptoms ? (
