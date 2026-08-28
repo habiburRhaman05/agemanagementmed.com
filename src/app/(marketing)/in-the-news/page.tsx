@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/Header'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { ContentGrid } from '@/components/sections/ContentGrid'
 import { HeroCompact } from '@/components/sections/HeroCompact'
+import { PageSchema } from '@/components/seo/PageSchema'
 import { getNewsItems } from '@/actions/news'
 import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 import type { ContentSummary } from '@/types/content'
@@ -37,6 +38,7 @@ export default async function NewsPage() {
 
   return (
     <>
+      <PageSchema path="/in-the-news" />
       <Header overlay />
       <HeroCompact
         title={h1Override || 'In The News'}

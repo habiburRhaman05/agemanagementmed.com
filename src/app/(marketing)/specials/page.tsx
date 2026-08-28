@@ -5,6 +5,7 @@ import { SpecialsGrid } from '@/components/sections/SpecialsGrid'
 import { SpecialsClosingCTA } from '@/components/sections/custom/compontents-custom/specials/SpecialsClosingCTA'
 import { SpecialsHero } from '@/components/sections/custom/templates-custom/SpecialsHero'
 import { Reveal } from '@/components/shared/Reveal'
+import { PageSchema } from '@/components/seo/PageSchema'
 import type { Metadata } from 'next'
 
 import { specialsContent } from '@/content/pages/specials'
@@ -19,6 +20,7 @@ export default async function SpecialsPage() {
 
   return (
     <>
+      <PageSchema path="/specials" />
       <Header />
       <SpecialsHero
         {...specialsContent.hero}

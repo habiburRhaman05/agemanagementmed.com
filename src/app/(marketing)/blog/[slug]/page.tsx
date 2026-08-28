@@ -17,7 +17,14 @@ import { getPostBySlug, getPosts } from '@/actions/blog'
 import { site } from '@/content/site'
 import { fromPageSeoRow } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
-import { buildArticleSchema, buildBreadcrumbSchema, buildMetadata } from '@/lib/seo'
+import {
+  buildArticleSchema,
+  buildBreadcrumbSchema,
+  buildMetadata,
+  buildOrganizationSchema,
+  schemaContainsType,
+} from '@/lib/seo'
+import { getSiteSettings } from '@/lib/settings'
 import type { Metadata } from 'next'
 
 export const revalidate = 3600
@@ -426,26 +433,56 @@ export default async function BlogPostPage({ params }: Props) {
     notFound()
   }
 
+  // This post's own manual override (`PostSeo.schemaJsonLd`) — blog posts
+  // have no `PageSeo` row at all, so they need their own business-schema
+  // fallback here rather than `<PageSchema>` (which only looks up
+  // `PageSeo`). The override's `@graph` (seeded from production) typically
+  // already carries its own BlogPosting/BreadcrumbList blocks, so those two
+  // only render below when the override doesn't already supply that type —
+  // same "suppress only what's genuinely duplicated" rule used for the
+  // treatment pages' FAQ schema.
+  const rawSchemaOverride = post.seo?.schemaJsonLd
+  const schemaOverride =
+    rawSchemaOverride && typeof rawSchemaOverride === 'object' && !Array.isArray(rawSchemaOverride)
+      ? (rawSchemaOverride as Record<string, unknown>)
+      : null
+  const settings = await getSiteSettings()
+
   return (
     <>
       <JsonLd
-        data={buildArticleSchema({
-          title: post.title,
-          excerpt: post.excerpt,
-          image: post.seo?.ogImage || post.featuredImage,
-          publishedAt: post.publishedAt,
-          updatedAt: post.updatedAt,
-          authorName: post.author?.name,
-          href: `/blog/${post.slug}`,
-        })}
+        data={
+          schemaOverride ??
+          buildOrganizationSchema({
+            siteName: settings.siteName,
+            phone: settings.phone,
+            email: settings.email,
+            images: settings.logoUrl ? [new URL(settings.logoUrl, site.url).toString()] : undefined,
+          })
+        }
       />
-      <JsonLd
-        data={buildBreadcrumbSchema([
-          { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
-          { label: post.title, href: `/blog/${post.slug}` },
-        ])!}
-      />
+      {!schemaContainsType(schemaOverride, 'BlogPosting') ? (
+        <JsonLd
+          data={buildArticleSchema({
+            title: post.title,
+            excerpt: post.excerpt,
+            image: post.seo?.ogImage || post.featuredImage,
+            publishedAt: post.publishedAt,
+            updatedAt: post.updatedAt,
+            authorName: post.author?.name,
+            href: `/blog/${post.slug}`,
+          })}
+        />
+      ) : null}
+      {!schemaContainsType(schemaOverride, 'BreadcrumbList') ? (
+        <JsonLd
+          data={buildBreadcrumbSchema([
+            { label: 'Home', href: '/' },
+            { label: 'Blog', href: '/blog' },
+            { label: post.title, href: `/blog/${post.slug}` },
+          ])!}
+        />
+      ) : null}
       <Header overlay />
       <ReadingProgressBar />
 

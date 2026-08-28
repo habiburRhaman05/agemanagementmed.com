@@ -6,6 +6,7 @@ import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { NewsAndMediaSection } from '@/components/sections/NewsAndMediaSection'
 import { PeopleGrid } from '@/components/sections/PeopleGrid'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { PageSchema } from '@/components/seo/PageSchema'
 import { getNewsItems } from '@/actions/news'
 import { expertsContent } from '@/content/pages/experts'
 import { getAllPeople } from '@/content/people'
@@ -81,6 +82,7 @@ console.log(allNews);
 
   return (
     <>
+      <PageSchema path="/our-experts" />
       {people.map((person) => (
         <JsonLd key={person.slug} data={buildPersonSchema(person)} />
       ))}

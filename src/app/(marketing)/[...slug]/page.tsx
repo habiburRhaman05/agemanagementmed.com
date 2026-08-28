@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { Header } from '@/components/layout/Header'
 import { TreatmentTemplate } from '@/components/templates/TreatmentTemplate'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { PageSchema } from '@/components/seo/PageSchema'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import { getAllTreatments, getTreatmentByHref } from '@/content/treatments/main'
 import { buildFaqSchema, buildMetadata, buildTreatmentSchema, getSchemaOverride, schemaContainsType } from '@/lib/seo'
@@ -127,18 +128,21 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
 
   return (
     <>
-      {schemaOverride ? (
-        <JsonLd data={schemaOverride} />
-      ) : (
-        <JsonLd
-          data={buildTreatmentSchema({
-            name: treatment.name,
-            summary: treatment.summary,
-            href: treatment.href,
-            seo: treatment.seo,
-          })}
-        />
-      )}
+      <PageSchema path={href} />
+      {/*
+        Business/address schema (this page's manual override if the admin
+        set one, else the generic sitewide default) is rendered by
+        `PageSchema` above. This is the page-specific MedicalWebPage schema
+        alongside it — a different `@type`, safe to coexist.
+      */}
+      <JsonLd
+        data={buildTreatmentSchema({
+          name: treatment.name,
+          summary: treatment.summary,
+          href: treatment.href,
+          seo: treatment.seo,
+        })}
+      />
       {/*
         A manual schema override used to unconditionally suppress the
         auto-generated FAQ schema, even when the override had nothing to do

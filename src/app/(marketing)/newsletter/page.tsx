@@ -6,6 +6,7 @@ import { NewsletterForm } from '@/components/shared/NewsletterForm'
 import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
+import { PageSchema } from '@/components/seo/PageSchema'
 import type { Metadata } from 'next'
 
 import { getSiteSettings } from '@/lib/settings'
@@ -28,6 +29,7 @@ export default async function NewsletterPage() {
 
   return (
     <>
+      <PageSchema path="/newsletter" />
       <Header overlay />
 
       <Section background="page" spacing="none" className="relative isolate overflow-hidden">

@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type { Metadata } from 'next'
 
 import { Header } from '@/components/layout/Header'
+import { PageSchema } from '@/components/seo/PageSchema'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { Container } from '@/components/shared/Container'
 import { blogContent } from '@/content/pages/blog'
@@ -255,6 +256,7 @@ export default async function BlogIndexPage({
 
   return (
     <>
+      <PageSchema path="/blog" />
       <Header overlay />
 
       <BlogHero h1={h1Override || blogContent.hero.title} />

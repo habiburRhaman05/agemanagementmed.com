@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/Header'
 import { HeroCompact } from '@/components/sections/HeroCompact'
 import { LegalDocument } from '@/components/sections/LegalDocument'
+import { PageSchema } from '@/components/seo/PageSchema'
 import type { Metadata } from 'next'
 
 import { officePoliciesHtml } from '@/content/office-policies'
@@ -22,6 +23,7 @@ export default async function Page() {
 
   return (
     <>
+      <PageSchema path="/terms-and-conditions" />
       <Header />
       <HeroCompact
         eyebrow="Legal"

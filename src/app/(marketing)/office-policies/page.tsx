@@ -13,6 +13,7 @@ import { Container } from '@/components/shared/Container'
 import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { PageSchema } from '@/components/seo/PageSchema'
 import type { Metadata } from 'next'
 
 import { site } from '@/content/site'
@@ -36,6 +37,7 @@ export default async function OfficePolicyPage() {
 
   return (
     <>
+      <PageSchema path="/office-policies" />
       <Header />
       <TextHero title={h1Override || 'Office Policies'} />
 

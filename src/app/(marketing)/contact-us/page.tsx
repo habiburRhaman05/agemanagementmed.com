@@ -5,6 +5,7 @@ import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { ContactHero } from '@/components/sections/ContactHero'
 import { ContactInfoSection } from '@/components/sections/ContactInfoSection'
 import { ContactMapForm } from '@/components/sections/ContactMapForm'
+import { PageSchema } from '@/components/seo/PageSchema'
 import { contactContent } from '@/content/pages/contact'
 import { locations } from '@/content/site'
 import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
@@ -20,6 +21,7 @@ export default async function ContactPage() {
 
   return (
     <>
+      <PageSchema path="/contact-us" />
       <Header />
       <ContactHero
         title={h1Override || 'Connect with us at Savannah Age Management Medicine!'}

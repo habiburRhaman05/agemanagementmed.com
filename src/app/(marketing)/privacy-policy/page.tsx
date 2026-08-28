@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/Header';
 import TextHero from '@/components/sections/TextHero';
+import { PageSchema } from '@/components/seo/PageSchema';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
@@ -134,7 +135,7 @@ export default async function PrivacyPolicyPage() {
 
   return (
     <>
-      {/* <PageJsonLd route="/privacy-policy" /> */}
+      <PageSchema path="/privacy-policy" />
       <Header />
       <TextHero title={h1Override || 'Privacy Policy'} />
 

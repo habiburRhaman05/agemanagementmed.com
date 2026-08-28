@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/Header'
 import TextHero from '@/components/sections/TextHero'
+import { PageSchema } from '@/components/seo/PageSchema'
 import React from 'react'
 import type { Metadata } from 'next'
 import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
@@ -22,6 +23,7 @@ const FinancingOptions = async () => {
 
   return (
     <div>
+        <PageSchema path="/financing-options" />
         <Header />
         <TextHero
         title={h1Override || 'Financing Options'}

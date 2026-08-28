@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 import { Header } from '@/components/layout/Header'
 import { HomeTemplate } from '@/components/templates/HomeTemplate'
+import { PageSchema } from '@/components/seo/PageSchema'
 import { homeContent } from '@/content/pages/home'
 import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 
@@ -21,6 +22,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <PageSchema path="/" />
       <Header overlay />
       <HomeTemplate content={content} />
     </>
