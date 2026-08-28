@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation'
 import { Header } from '@/components/layout/Header'
 import { TreatmentTemplate } from '@/components/templates/TreatmentTemplate'
 import { JsonLd } from '@/components/seo/JsonLd'
-import { PageSchema } from '@/components/seo/PageSchema'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import { getAllTreatments, getTreatmentByHref } from '@/content/treatments/main'
 import { buildFaqSchema, buildMetadata, buildTreatmentSchema, getSchemaOverride, schemaContainsType } from '@/lib/seo'
@@ -128,12 +127,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
 
   return (
     <>
-      <PageSchema path={href} />
       {/*
-        Business/address schema (this page's manual override if the admin
-        set one, else the generic sitewide default) is rendered by
-        `PageSchema` above. This is the page-specific MedicalWebPage schema
-        alongside it — a different `@type`, safe to coexist.
+        The page's business/address schema (or its manual override, if the
+        admin set one) is rendered once, sitewide, by the marketing layout —
+        not here, to avoid two competing schema blocks on one page. This is
+        the page-specific MedicalWebPage schema on top of that, a different
+        `@type` so it never conflicts with whatever the layout rendered.
       */}
       <JsonLd
         data={buildTreatmentSchema({
