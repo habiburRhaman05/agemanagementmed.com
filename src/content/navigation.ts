@@ -15,7 +15,7 @@ export const primaryNav: NavLink[] = [
     href: '#',
     links: [
       { label: 'Hormone Therapy For Men', href: '/bioidentical-hormone-replacement-therapy/male' },
-      { label: 'Hair Restoration For Men', href: '/platelet-rich-plasma-hair/male' },
+      { label: 'Hair Restoration', href: '/platelet-rich-plasma-hair/male' },
       { label: 'Sexual Drive For Men', href: '/rejuvenation-enhancement/male' },
       { label: 'Concierge Medical Weight Loss', href: '/concierge-medical-weight-loss/male' },
       { label: 'GLP-1 Microdosing For Men', href: '/glp-1-microdosing/male' },
@@ -29,7 +29,7 @@ export const primaryNav: NavLink[] = [
     links: [
       { label: 'Hormone Therapy For Women', href: '/bioidentical-hormone-replacement-therapy/female' },
       { label: 'Perimenopause & Menopause', href: '/perimenopause-menopause' },
-      { label: 'Hair Restoration For Women', href: '/platelet-rich-plasma-hair/female' },
+      { label: 'Hair Restoration ', href: '/platelet-rich-plasma-hair/female' },
       { label: 'Sexual Satisfaction For Women', href: '/rejuvenation-enhancement/female' },
       { label: 'Concierge Medical Weight Loss', href: '/concierge-medical-weight-loss/female' },
       { label: 'GLP-1 Microdosing For Women', href: '/glp-1-microdosing/female' },
