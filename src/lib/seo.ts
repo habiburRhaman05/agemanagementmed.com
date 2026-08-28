@@ -152,11 +152,16 @@ export async function resolveStaticPageSeo(path: string, fallback: Seo): Promise
  * Admin can set a raw JSON-LD override per path (`PageSeo.jsonLd`).
  * Returns the object if set, else `null` so callers fall back to
  * auto-generated schema. Stored as a parsed `Json` column, not a string.
+ *
+ * `FAQPage` is stripped defensively here, at read time — not just at seed
+ * time — so a manually-pasted override (via the admin's raw JSON-LD
+ * textarea) can never reintroduce a stale/duplicate FAQ block, even if it
+ * somehow reached the DB with one still in it.
  */
 export async function getSchemaOverride(path: string): Promise<Record<string, unknown> | null> {
   const row = await prisma.pageSeo.findUnique({ where: { path }, select: { jsonLd: true } })
   if (!row?.jsonLd || typeof row.jsonLd !== 'object') return null
-  return row.jsonLd as Record<string, unknown>
+  return stripSchemaType(row.jsonLd, 'FAQPage')
 }
 
 /**
@@ -182,6 +187,118 @@ export function schemaContainsType(schema: unknown, type: string): boolean {
   }
 
   return false
+}
+
+/**
+ * Removes any entry of the given `@type` from a JSON-LD object — a
+ * top-level match returns `null` (nothing sensible left to keep), a match
+ * inside `@graph` is filtered out of that array. A `@graph` left with
+ * exactly one entry is unwrapped back to a plain object (no point keeping
+ * the wrapper for a single schema). Used to keep `PageSeo.jsonLd` /
+ * `PostSeo.schemaJsonLd` free of content-derived types (FAQPage, and
+ * elsewhere BreadcrumbList/BlogPosting) that are always rendered live
+ * instead — see the comment above `buildFaqSchema`'s call site in
+ * `[...slug]/page.tsx` for why a frozen copy of one of these causes a
+ * duplicate/stale JSON-LD block rather than just redundant data.
+ */
+export function stripSchemaType(schema: unknown, type: string): Record<string, unknown> | null {
+  if (!schema || typeof schema !== 'object' || Array.isArray(schema)) {
+    return (schema as Record<string, unknown>) ?? null
+  }
+
+  const obj = { ...(schema as Record<string, unknown>) }
+  const ownType = obj['@type']
+  const ownIsType = Array.isArray(ownType) ? ownType.includes(type) : ownType === type
+  if (ownIsType) return null
+
+  if (Array.isArray(obj['@graph'])) {
+    const graph = (obj['@graph'] as unknown[]).filter((entry) => !schemaContainsTypeAtTop(entry, type))
+    if (graph.length === 0) return null
+    if (graph.length === 1) return graph[0] as Record<string, unknown>
+    obj['@graph'] = graph
+  }
+
+  return obj
+}
+
+/**
+ * Canonical render order for JSON-LD blocks, broadest entity first:
+ * the business, then the page's place in the site, then the page itself,
+ * then its content. Mirrors the order production emits (MedicalClinic →
+ * BreadcrumbList → VideoObject → FAQPage) so the two are diffable, and —
+ * more importantly — makes the order *deterministic* rather than a
+ * side effect of whatever sequence entries happen to sit in inside a
+ * stored `@graph`. Types not listed here keep their relative order and
+ * sort after the known ones.
+ */
+const SCHEMA_TYPE_ORDER = [
+  'MedicalClinic',
+  'MedicalBusiness',
+  'LocalBusiness',
+  'Organization',
+  'BreadcrumbList',
+  'VideoObject',
+  'ImageObject',
+  'MedicalWebPage',
+  'WebPage',
+  'BlogPosting',
+  'Article',
+  'Person',
+  'FAQPage',
+]
+
+function schemaOrderIndex(schema: Record<string, unknown>): number {
+  const type = schema['@type']
+  const primary = Array.isArray(type) ? type[0] : type
+  const index = SCHEMA_TYPE_ORDER.indexOf(String(primary))
+  return index === -1 ? SCHEMA_TYPE_ORDER.length : index
+}
+
+/** Sorts JSON-LD blocks into `SCHEMA_TYPE_ORDER`. Stable — equal/unknown types keep their input order. */
+export function sortSchemas(schemas: Record<string, unknown>[]): Record<string, unknown>[] {
+  return schemas
+    .map((schema, index) => ({ schema, index }))
+    .sort((a, b) => schemaOrderIndex(a.schema) - schemaOrderIndex(b.schema) || a.index - b.index)
+    .map(({ schema }) => schema)
+}
+
+/**
+ * Unwraps a `@graph` wrapper into its individual schema objects, each
+ * carrying its own `@context`, so callers can render one
+ * `<script type="application/ld+json">` per schema rather than a single
+ * combined block.
+ *
+ * This matches how the production site emits its schema — one separate
+ * script tag per type (MedicalClinic, BreadcrumbList, VideoObject, …) —
+ * which is also the shape Google's own examples and the Rich Results Test
+ * present. A non-`@graph` object is returned as a single-item list, so
+ * callers can treat both shapes identically.
+ */
+export function splitSchemaGraph(schema: unknown): Record<string, unknown>[] {
+  if (!schema || typeof schema !== 'object') return []
+  if (Array.isArray(schema)) {
+    return schema.flatMap((entry) => splitSchemaGraph(entry))
+  }
+
+  const obj = schema as Record<string, unknown>
+  const graph = obj['@graph']
+  if (!Array.isArray(graph)) return [obj]
+
+  const parentContext = obj['@context'] ?? 'https://schema.org'
+
+  return graph
+    .filter((entry): entry is Record<string, unknown> => Boolean(entry) && typeof entry === 'object')
+    .map((entry) => ({
+      '@context': entry['@context'] ?? parentContext,
+      ...entry,
+    }))
+}
+
+/** `schemaContainsType`, but only checking the entry's own `@type` — not recursing into a nested `@graph` (an `@graph` entry never itself contains another `@graph`, so this is just the cheaper non-recursive half, kept private to this file). */
+function schemaContainsTypeAtTop(entry: unknown, type: string): boolean {
+  if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return false
+  const t = (entry as Record<string, unknown>)['@type']
+  return Array.isArray(t) ? t.includes(type) : t === type
 }
 
 /**

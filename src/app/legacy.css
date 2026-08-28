@@ -2734,7 +2734,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   border-radius: 10px;
   color: #fff;
   font-family: var(--font-display), 'Bodoni-72', serif;
-  font-size: 20px;
+  
   margin-bottom: 25px;
   padding: 18px 28px;
 }

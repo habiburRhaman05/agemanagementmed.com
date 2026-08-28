@@ -5,6 +5,28 @@ import { z } from 'zod'
 import { getCurrentAdmin } from '@/lib/auth'
 import { fromPageSeoRow, toPageSeoWrite } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
+import { stripSchemaType } from '@/lib/seo'
+
+/**
+ * FAQ schema is always rendered live from `treatment.data.faqs` (see
+ * `[...slug]/page.tsx`), never from this stored override — so an admin
+ * pasting/editing raw JSON-LD here that happens to include its own
+ * `FAQPage` block would otherwise reintroduce the exact duplicate/stale
+ * schema problem the seed script and `getSchemaOverride` already guard
+ * against. Strip it before it ever reaches the DB.
+ */
+function stripFaqFromSchemaJsonLd(schemaJsonLd: string | null | undefined): string | null | undefined {
+  if (!schemaJsonLd) return schemaJsonLd
+  try {
+    const parsed = JSON.parse(schemaJsonLd)
+    const stripped = stripSchemaType(parsed, 'FAQPage')
+    return stripped === null ? null : JSON.stringify(stripped)
+  } catch {
+    // Invalid JSON — leave as-is; toPageSeoWrite's own parse falls back to
+    // clearing the field rather than writing a string into a Json column.
+    return schemaJsonLd
+  }
+}
 
 /**
  * `data` is a *shallow merge* into the existing JSON blob — submitting
@@ -96,7 +118,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   })
 
   if (seo) {
-    const write = toPageSeoWrite(seo)
+    const write = toPageSeoWrite({ ...seo, schemaJsonLd: stripFaqFromSchemaJsonLd(seo.schemaJsonLd) })
     await prisma.pageSeo.upsert({
       where: { path: row.href },
       update: write,

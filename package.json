@@ -21,6 +21,7 @@
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
+    "seed:jsonld": "npx tsx prisma/seed-jsonld-only.ts",
     "postinstall": "prisma generate",
     "start:standalone": "PORT=3000 node .next/standalone/server.js"
   },

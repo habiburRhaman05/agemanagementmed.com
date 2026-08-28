@@ -72,7 +72,7 @@ export function FAQAccordion({ eyebrow, title, lead, items }: FAQAccordionProps)
                   style={groupIndex > 0 ? { marginTop: 40 } : undefined}
                 >
                   {group.category ? (
-                    <h3 className="faq-category">{group.category}</h3>
+                    <h3 className="faq-category text-[32px]">{group.category}</h3>
                   ) : null}
 
                   {group.items.map((item) => {

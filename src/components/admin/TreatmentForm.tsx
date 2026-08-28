@@ -1,6 +1,7 @@
 'use client'
 
 import { AlertCircle, ChevronDown, ChevronUp, Loader2, Plus, Save, Trash2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -77,6 +78,7 @@ function FieldError({ message }: { message?: string }) {
 }
 
 export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo: SeoData | null }) {
+  const router = useRouter()
   const [status, setStatus] = useState(treatment.status)
 
   const [heroCtas, setHeroCtas] = useState<Cta[]>(treatment.data.hero?.ctas ?? [])
@@ -223,6 +225,11 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
       if (!res.ok) throw new Error(json.error || 'Failed to save')
 
       toast.success('Saved — the live page updates now (or on next visit if cached).')
+      // Re-fetches this server-rendered page's props (treatment + seo) so the
+      // form reflects the confirmed DB state, not just what was typed — the
+      // save request and the page's own data were otherwise two disconnected
+      // sources of truth until a manual reload.
+      router.refresh()
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to save'
       setSubmitError(message)
