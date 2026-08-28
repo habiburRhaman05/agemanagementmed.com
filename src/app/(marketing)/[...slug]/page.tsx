@@ -3,9 +3,10 @@ import { notFound } from 'next/navigation'
 import { Header } from '@/components/layout/Header'
 import { TreatmentTemplate } from '@/components/templates/TreatmentTemplate'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { PageSchema } from '@/components/seo/PageSchema'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import { getAllTreatments, getTreatmentByHref } from '@/content/treatments/main'
-import { buildFaqSchema, buildMetadata, buildTreatmentSchema, getSchemaOverride, schemaContainsType } from '@/lib/seo'
+import { buildFaqSchema, buildMetadata, buildTreatmentSchema } from '@/lib/seo'
 import { WeightLossMaleLayout } from '@/components/sections/custom/templates-custom/WeightLossMaleLayout'
 import { WeightLossFeMaleLayout } from '@/components/sections/custom/templates-custom/WeightLossFemaleLayout'
 import { HairRestoreFemaleLayout } from '@/components/sections/custom/templates-custom/HairRestoreFemale'
@@ -64,7 +65,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
   const treatment = await getTreatmentByHref(href)
   if (!treatment) notFound()
 
-  const schemaOverride = await getSchemaOverride(href)
   const faqSchema = buildFaqSchema(treatment.faqs);
   const testimonials = await getPublishedTestimonials()
 
@@ -127,12 +127,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
 
   return (
     <>
+      <PageSchema path={href} />
       {/*
-        The page's business/address schema (or its manual override, if the
-        admin set one) is rendered once, sitewide, by the marketing layout —
-        not here, to avoid two competing schema blocks on one page. This is
-        the page-specific MedicalWebPage schema on top of that, a different
-        `@type` so it never conflicts with whatever the layout rendered.
+        Business/address schema (this page's manual override if the admin
+        set one, else the generic sitewide default) is rendered by
+        `PageSchema` above. This is the page-specific MedicalWebPage schema
+        alongside it — a different `@type`, safe to coexist.
       */}
       <JsonLd
         data={buildTreatmentSchema({
@@ -143,14 +143,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
         })}
       />
       {/*
-        A manual schema override used to unconditionally suppress the
-        auto-generated FAQ schema, even when the override had nothing to do
-        with FAQs (e.g. it only carried business/address facts scraped from
-        production). Now it only suppresses FAQ schema when the override
-        itself genuinely already contains a FAQPage block — otherwise the
-        real, current FAQ content still gets its schema, override or not.
+        FAQ schema is always generated live from `treatment.faqs` — never
+        read from (or suppressed by) the manual JSON-LD override. FAQ
+        content is admin-editable, and Google requires FAQPage schema to
+        match the page's real, current content — a frozen copy inside the
+        override would silently go stale the moment an admin edits the
+        FAQs. This can never go stale: it's recomputed from the same
+        content the page renders, every request.
       */}
-      {faqSchema && !schemaContainsType(schemaOverride, 'FAQPage') ? <JsonLd data={faqSchema} /> : null}
+      {faqSchema ? <JsonLd data={faqSchema} /> : null}
       <Header overlay />
 
       {renderTemplate(treatment.slug)}
