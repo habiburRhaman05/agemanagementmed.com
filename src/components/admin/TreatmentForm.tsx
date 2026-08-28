@@ -190,7 +190,10 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           data: {
             hero: {
               eyebrow: values.heroEyebrow || undefined,
-              title: values.heroTitle,
+              // Preserved as-is, not edited here — see the note in the Hero
+              // section. Kept so it still serves as the render-time fallback
+              // for any page that has no H1 override set.
+              title: treatment.data.hero?.title,
               lead: leadValue,
               image: { src: values.heroImageSrc, alt: values.heroImageAlt },
               ctas: heroCtas,
@@ -311,11 +314,14 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
           <label className="block text-xs font-medium text-gray-500">Eyebrow</label>
           <input {...register('heroEyebrow')} className={inputClass} />
         </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-500">Title</label>
-          <input {...register('heroTitle')} className={inputClass} />
-          <FieldError message={errors.heroTitle?.message} />
-        </div>
+        {/*
+          The hero's heading is edited as "Page heading (H1)" in the SEO
+          section below, not here. It used to be editable in both places —
+          but the H1 override always wins at render time
+          (`seo.h1 ?? hero.title` in content/treatments/main.ts), so edits
+          made here were silently invisible on the live page. One field,
+          one place, no confusion.
+        */}
         <div>
           <div className="flex items-center justify-between">
             <label className="block text-xs font-medium text-gray-500">Lead</label>
@@ -498,7 +504,13 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
 
       {/* SEO */}
       <div className="space-y-4 rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
-        <h2 className="text-sm font-semibold text-ink-950">SEO</h2>
+        <div>
+          <h2 className="text-sm font-semibold text-ink-950">SEO</h2>
+          <p className="mt-1 text-xs text-gray-500">
+            Everything search engines and social previews use for this page. This is the only
+            place it&apos;s edited — the Site&nbsp;pages&nbsp;SEO screen covers the rest of the site.
+          </p>
+        </div>
         <input {...register('seoTitle')} placeholder="Meta title" maxLength={70} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
         <FieldError message={errors.seoTitle?.message} />
         <textarea {...register('seoDescription')} placeholder="Meta description" maxLength={300} rows={2} className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20" />
@@ -515,9 +527,9 @@ export function TreatmentForm({ treatment, seo }: { treatment: TreatmentRow; seo
         </div>
         <div>
           <label className="block text-xs font-medium text-gray-500">
-            H1 override <span className="font-normal text-gray-400">— replaces the hero heading on the page itself, not just &lt;title&gt;</span>
+            Page heading (H1) <span className="font-normal text-gray-400">— the large heading shown at the top of the page</span>
           </label>
-          <input {...register('seoH1')} placeholder="Defaults to the hero title above" maxLength={120} className={inputClass} />
+          <input {...register('seoH1')} placeholder="e.g. PRP Hair Restoration for Men in Savannah, GA" maxLength={120} className={inputClass} />
           <FieldError message={errors.seoH1?.message} />
         </div>
         <div>

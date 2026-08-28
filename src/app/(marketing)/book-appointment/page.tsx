@@ -1,6 +1,7 @@
 import { type Metadata } from 'next'
 
 import { Header } from '@/components/layout/Header'
+import { PageSchema } from '@/components/seo/PageSchema'
 import { Container } from '@/components/shared/Container'
 import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Reveal } from '@/components/shared/Reveal'
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function BookPage() {
   return (
     <>
+      <PageSchema path="/book-appointment" />
       <Header overlay />
       <main className="bg-canvas-100">
         {/* Dark hero header */}

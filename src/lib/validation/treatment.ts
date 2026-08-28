@@ -14,7 +14,12 @@ export const treatmentCoreSchema = z.object({
   cardImageAlt: z.string().optional(),
   cardBenefits: z.string().optional(),
   heroEyebrow: z.string().optional(),
-  heroTitle: z.string().min(1, 'Hero title is required'),
+  // Only *required* when creating a treatment (see `newTreatmentSchema`),
+  // where it seeds the treatment's name. The edit form no longer exposes it
+  // at all — the H1 override is the single editable heading — and keeping it
+  // required here made pages with an empty stored hero title (e.g.
+  // /prp-offer) impossible to save from the admin at all.
+  heroTitle: z.string().optional(),
   // A single lead paragraph is entered here; when the admin switches to
   // "multiple paragraphs" mode the lead text instead comes from the form's
   // own `leadItems` array state (see TreatmentForm/NewTreatmentForm) — so
@@ -54,6 +59,9 @@ export const editTreatmentSchema = treatmentCoreSchema.extend({
 export type EditTreatmentValues = z.infer<typeof editTreatmentSchema>
 
 export const newTreatmentSchema = treatmentCoreSchema.extend({
+  // Required only here — the create form uses it to seed the new treatment's
+  // name, shortName, hero title and SEO title.
+  heroTitle: z.string().min(1, 'Hero title is required'),
   slug: z
     .string()
     .min(1, 'Slug is required')

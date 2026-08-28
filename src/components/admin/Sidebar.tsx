@@ -43,7 +43,7 @@ const navItems: NavItem[] = [
   { label: 'Testimonials', href: '/admin/testimonials', icon: Quote },
   { label: 'Newsletter', href: '/admin/newsletter', icon: Mail },
   { label: 'News', href: '/admin/news', icon: Newspaper },
-  { label: 'SEO', href: '/admin/seo', icon: Search },
+  { label: 'Site pages SEO', href: '/admin/seo', icon: Search },
   { label: 'Settings', href: '/admin/settings', icon: Settings },
   { label: 'Admins', href: '/admin/admins', icon: ShieldCheck, superadminOnly: true },
 ]

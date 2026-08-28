@@ -119,15 +119,24 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
 
   if (seo) {
     const write = toPageSeoWrite({ ...seo, schemaJsonLd: stripFaqFromSchemaJsonLd(seo.schemaJsonLd) })
+    // Fallbacks for a *new* row use the treatment's own name, never `row.href`
+    // — a path is not a title. Defaulting to the href silently shipped
+    // published pages whose `<title>` was literally "/prp-offer", which is
+    // both useless to a reader and actively bad for search results.
+    const treatmentName =
+      row.data && typeof row.data === 'object' && !Array.isArray(row.data)
+        ? ((row.data as Record<string, unknown>).name as string | undefined)
+        : undefined
+
     await prisma.pageSeo.upsert({
       where: { path: row.href },
       update: write,
       create: {
         path: row.href,
         ...write,
-        metaTitle: write.metaTitle ?? row.href,
+        metaTitle: write.metaTitle ?? treatmentName ?? null,
         metaDescription: write.metaDescription ?? '',
-        canonical: write.canonical ?? row.href,
+        canonical: write.canonical ?? null,
       },
     })
   }

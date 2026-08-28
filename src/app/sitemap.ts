@@ -32,26 +32,44 @@ const STATIC_ROUTES: Array<{ path: string; changeFrequency: MetadataRoute.Sitema
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = site.url.replace(/\/$/, '')
 
-  const [treatments, posts] = await Promise.all([
+  const [treatments, posts, seoRows] = await Promise.all([
     getAllTreatments(),
     prisma.post.findMany({
       where: { status: 'published', deletedAt: null },
       select: { slug: true, updatedAt: true },
       orderBy: { updatedAt: 'desc' },
     }),
+    prisma.pageSeo.findMany({ select: { path: true, robotsMeta: true, sitemapInclude: true } }),
   ])
 
-  const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
+  /**
+   * A page an admin has marked `noindex` (or excluded from the sitemap) must
+   * not still be listed here — submitting a noindexed URL is a contradictory
+   * signal that Search Console reports as an error. `PageSeo.sitemapInclude`
+   * existed as a column but nothing ever read it, so the two settings could
+   * silently disagree.
+   */
+  const excludedPaths = new Set(
+    seoRows
+      .filter((row) => row.sitemapInclude === false || /noindex/i.test(row.robotsMeta ?? ''))
+      .map((row) => row.path),
+  )
+
+  const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.filter(
+    (route) => !excludedPaths.has(route.path),
+  ).map((route) => ({
     url: `${baseUrl}${route.path}`,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }))
 
-  const treatmentEntries: MetadataRoute.Sitemap = treatments.map((treatment) => ({
-    url: `${baseUrl}${treatment.href}`,
-    changeFrequency: 'monthly',
-    priority: 0.9,
-  }))
+  const treatmentEntries: MetadataRoute.Sitemap = treatments
+    .filter((treatment) => !excludedPaths.has(treatment.href))
+    .map((treatment) => ({
+      url: `${baseUrl}${treatment.href}`,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    }))
 
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
