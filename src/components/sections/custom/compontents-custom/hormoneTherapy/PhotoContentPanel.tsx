@@ -36,17 +36,17 @@ export function PhotoContentPanel({
     >
       <div className="lg-max-width-1440">
         <div className="lg-container">
-          <div className="lg-grid lg-items-center">
+          <div className="lg-grid lg-items-center sm:gap-y-0 gap-y-8">
             <div className={`img lg-col-lg-6 lg-col-xl-5${isRight ? ' lg-order-lg-2' : ''}`}>
               <div
-                className="img-box"
+                className="img-box h-[100px]"
                 style={{ backgroundImage: `url('${image.src}')`, backgroundPosition: 'center top' }}
                 role="img"
                 aria-label={image.alt}
               />
             </div>
 
-            <div className={`content lg-col-lg-6 lg-col-xl-7${isRight ? ' lg-order-lg-1' : ''}`}>
+            <div className={`content lg-col-lg-6 lg-col-xl-7${isRight ? ' lg-order-lg-1' : ''} `}>
            <h2 className={`!ml-0 lg-title ${headingMaxWidth ? `lg-max-width-${headingMaxWidth}` : ''}`} style={{ color: '#0B2055' }}> {heading} </h2>
 
 

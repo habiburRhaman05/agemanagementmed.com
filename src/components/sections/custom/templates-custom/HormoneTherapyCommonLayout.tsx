@@ -46,7 +46,7 @@ export async function HormoneTherapyCommonLayout({ treatment }: TreatmentTemplat
 fullHeight
       />
 
-      <div className='sm:mt-20 mt-8'>
+      <div className='sm:mt-20 my-12'>
         <HubIntroBenefits />
       </div>
 

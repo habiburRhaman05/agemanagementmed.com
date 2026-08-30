@@ -462,4 +462,13 @@
   .hero-editorial-img {
     object-position: var(--hero-object-position-mobile, 85% center) !important;
   }
+
+  .photo-content-d .img-box {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    width: 100%;
+    height: 400px;
+}
 }
