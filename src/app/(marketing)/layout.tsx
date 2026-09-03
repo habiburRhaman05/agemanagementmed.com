@@ -1,6 +1,9 @@
+import { Suspense } from 'react'
+
 import { AutoRevealSections } from '@/components/layout/AutoRevealSections'
 import { Footer } from '@/components/layout/Footer'
 import { ScrollFeatures } from '@/components/layout/ScrollFeatures'
+import { PopupFormBridge } from '@/components/blog/PopupFormBridge'
 import { PageTransition } from '@/components/shared/PageTransition'
 
 // The sitewide organization/business schema used to render here,
@@ -21,8 +24,15 @@ export default async function MarketingLayout({ children }: { children: React.Re
       </a>
      
 
-        <main id="main">{children}</main>
-      
+        {/* Catches `.btn-arrow-right[href="#popup-form"]` CTAs anywhere on
+            the site (currently blog article content) and opens the booking
+            modal — mounted once here rather than per-page. */}
+        <Suspense fallback={<main id="main">{children}</main>}>
+          <PopupFormBridge>
+            <main id="main">{children}</main>
+          </PopupFormBridge>
+        </Suspense>
+
       <Footer />
     
       {/* <ScrollFeatures /> */}

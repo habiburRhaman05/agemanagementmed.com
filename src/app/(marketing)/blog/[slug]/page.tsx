@@ -301,6 +301,9 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
               )}
 
               {/* Content */}
+              {/* `.btn-arrow-right[href="#popup-form"]` CTAs embedded in this
+                  raw HTML are caught by `PopupFormBridge`, mounted once at
+                  the site layout level — nothing to wire here. */}
               {processedHtml ? (
                 <div
                   className={[
@@ -339,6 +342,14 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
                     '[&_.btn-arrow-right]:text-white [&_.btn-arrow-right]:no-underline',
                     '[&_.btn-arrow-right]:hover:bg-[#458785]',
                     '[&_.btn-arrow-right]:transition-colors [&_.btn-arrow-right]:duration-200',
+                    // The arrow itself — this class carries the padding/pill
+                    // styling above but production's actual arrow icon lives
+                    // on a differently-named class (`.lg-btn-arrow-right`)
+                    // used elsewhere in the app, not this one, so blog CTAs
+                    // were rendering as a plain pill with no arrow at all.
+                    '[&_.btn-arrow-right]:after:content-["→"] [&_.btn-arrow-right]:after:ml-2 [&_.btn-arrow-right]:after:inline-block',
+                    '[&_.btn-arrow-right]:after:transition-transform [&_.btn-arrow-right]:after:duration-200',
+                    '[&_.btn-arrow-right]:hover:after:translate-x-1',
                   ].join(' ')}
                   dangerouslySetInnerHTML={{ __html: processedHtml }}
                 />

@@ -43,9 +43,11 @@ import {
   Palette,
   Minus,
   CheckSquare,
+  MousePointerClick,
   type LucideIcon,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { CtaButton } from './tiptap-extensions/CtaButton'
 
 interface TipTapEditorProps {
   content: string
@@ -132,6 +134,7 @@ export function TipTapEditor({
       TaskList,
       TaskItem.configure({ nested: true }),
       CharacterCount,
+      CtaButton,
     ],
     content: content || '',
     onUpdate: ({ editor }) => {
@@ -182,6 +185,14 @@ export function TipTapEditor({
     const url = window.prompt('Enter image URL:')
     if (url && editor) {
       editor.chain().focus().setImage({ src: url }).run()
+    }
+  }, [editor])
+
+  const insertCtaButton = useCallback(() => {
+    if (!editor) return
+    const label = window.prompt('Button text:', 'Book Appointment')
+    if (label) {
+      editor.chain().focus().insertCtaButton(label).run()
     }
   }, [editor])
 
@@ -372,6 +383,12 @@ export function TipTapEditor({
           icon={Minus}
           onClick={() => editor.chain().focus().setHorizontalRule().run()}
           label="Horizontal rule"
+        />
+        <ToolbarButton
+          icon={MousePointerClick}
+          onClick={insertCtaButton}
+          active={editor.isActive('ctaButton')}
+          label="Insert CTA button (opens the booking form when clicked, live)"
         />
 
         {/* Color */}
