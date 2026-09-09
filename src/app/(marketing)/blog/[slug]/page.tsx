@@ -547,6 +547,7 @@ export default async function BlogPostPage({ params }: Props) {
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
         centered
         backgroundImage='/themes/default/assets/images/hero-16-bg.jpg'
+        textWidth='800px'
       />
     </>
   )
