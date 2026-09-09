@@ -82,12 +82,12 @@ function SelectField({
         className="w-full appearance-none bg-transparent pr-6 font-sans text-[13px] sm:text-[16px] text-white outline-none"
       >
         {placeholder && (
-          <option value="" className="bg-navy text-white">
+          <option value="" className="bg-navy text-black">
             {placeholder}
           </option>
         )}
         {options.map((option) => (
-          <option key={option} value={option} className="bg-navy text-white">
+          <option key={option} value={option} className="bg-navy text-black">
             {option}
           </option>
         ))}
