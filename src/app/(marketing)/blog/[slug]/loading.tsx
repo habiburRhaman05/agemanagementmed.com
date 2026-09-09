@@ -10,7 +10,7 @@ export default function BlogPostLoading() {
 
       {/* Hero skeleton */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-900 to-navy-900" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
 
         <div className="relative pt-28 pb-16 animate-pulse">

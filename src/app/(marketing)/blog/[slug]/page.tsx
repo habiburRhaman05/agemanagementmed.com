@@ -541,10 +541,12 @@ export default async function BlogPostPage({ params }: Props) {
       <ArticleContent post={post} />
 
       <ClosingCTA
-        title="Ready to transform your health?"
-        body="Take the first step towards a healthier, more vibrant you."
+        title="Ready to learn more or schedule an appointment?"
+        body="Contact us today to speak with our team.
+"
         cta={{ label: 'Schedule a consultation', href: '/book-appointment' }}
         centered
+        backgroundImage='/themes/default/assets/images/hero-16-bg.jpg'
       />
     </>
   )
