@@ -43,11 +43,11 @@ export async function generateMetadata(): Promise<Metadata> {
     description: settings.defaultSeoDescription ?? FALLBACK_DESCRIPTION,
     icons: { icon: settings.faviconUrl ?? '/favicon.ico' },
     robots: {
-      index: true,
-      follow: true,
+      index: false,
+      follow: false,
       googleBot: {
-        index: true,
-        follow: true,
+        index: false,
+        follow: false,
         'max-image-preview': 'large',
         'max-snippet': -1,
       },
