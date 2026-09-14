@@ -48,18 +48,24 @@ export function buildMetadata(
     description: seo.description,
     keywords: seo.keywords || options?.keywords || undefined,
     alternates: { canonical: url },
-    robots: seo.noindex
-      ? { index: false, follow: false }
-      : {
-          index: true,
-          follow: true,
-          googleBot: {
-            index: true,
-            follow: true,
-            'max-image-preview': 'large',
-            'max-snippet': -1,
-          },
-        },
+    // Site-wide noindex/nofollow override — every page routes through here,
+    // so this is the actual source of truth for the <meta name="robots">
+    // tag (a page's own generateMetadata fully replaces, not merges with,
+    // the root layout's `robots` key). Revert to the seo.noindex ternary
+    // below once the site is ready to be indexed again.
+    robots: { index: false, follow: false },
+    // robots: seo.noindex
+    //   ? { index: false, follow: false }
+    //   : {
+    //       index: true,
+    //       follow: true,
+    //       googleBot: {
+    //         index: true,
+    //         follow: true,
+    //         'max-image-preview': 'large',
+    //         'max-snippet': -1,
+    //       },
+    //     },
     openGraph: {
       title: ogTitle,
       description: ogDescription,
