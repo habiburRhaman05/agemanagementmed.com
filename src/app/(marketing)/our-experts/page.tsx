@@ -111,7 +111,7 @@ console.log(allNews);
         overRideWidth="max-w-3xl"
       />
 
-      <AwardsSection awards={expertsContent.awards} />
+      <AwardsSection  awards={expertsContent.awards} />
 
 
 

@@ -1,3 +1,4 @@
+import { bestOfSavannah2026 } from '@/content/awards'
 import type { Award, BenefitListData, ContentSummary, EditorialPairData, Seo } from '@/types/content'
 
 /** Copy extracted verbatim from /our-experts — see docs/00-AUDIT.md §2.2, §2.6. */
@@ -59,6 +60,7 @@ export const expertsContent = {
   } satisfies BenefitListData,
 
   awards: [
+    bestOfSavannah2026.seal,
     { src: '/images/award-11-img.png', alt: 'Best of Pooler 2025 Winner' },
     { src: '/images/award-12-img.png', alt: 'Best Awards of Savannah 2025' },
     { src: '/images/award-13-img.png', alt: 'Best Awards of Savannah 2024 Winner' },

@@ -6,9 +6,20 @@ import Link from 'next/link'
 
 import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
+import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Button } from '@/components/ui/Button'
+import { bestOfSavannah2026, findAwardHonoree } from '@/content/awards'
 import { cn } from '@/lib/utils'
 import type { Cta, Person } from '@/types/content'
+
+/** "2026 Winner · Hormone Specialist" pills for a provider, from the shared award data. */
+function getAwardBadges(name: string): string[] {
+  return (
+    findAwardHonoree(name)?.honors.map(
+      (honor) => `${bestOfSavannah2026.year} ${honor.placement} · ${honor.category}`,
+    ) ?? []
+  )
+}
 
 interface PeopleGridProps {
   eyebrow?: string
@@ -78,6 +89,8 @@ export function PeopleGrid({
               const imageAlt = person.portrait?.alt || person.name
               const isCollins = person.name.toLowerCase().includes('collins')
 
+              const awardBadges = getAwardBadges(person.name)
+
               const bioParagraphs = Array.isArray(person.bio)
                 ? person.bio
                 : typeof person.bio === 'string'
@@ -123,6 +136,16 @@ export function PeopleGrid({
                       <p className="text-xs sm:text-sm font-bold text-slate-300 tracking-wide uppercase mb-4 sm:mb-6">
                         {person.role}
                       </p>
+
+                      {awardBadges.length > 0 ? (
+                        <div className="mb-5 flex flex-wrap justify-center gap-2 md:justify-start">
+                          {awardBadges.map((badge) => (
+                            <Eyebrow key={badge} tone="inverse" className="text-[11px] normal-case">
+                              {badge}
+                            </Eyebrow>
+                          ))}
+                        </div>
+                      ) : null}
 
                       {/* Bio Paragraphs */}
                       <div className="space-y-3.5 text-base text-slate-200/90 font-normal leading-relaxed">

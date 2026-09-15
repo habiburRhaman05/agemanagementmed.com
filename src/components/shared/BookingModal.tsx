@@ -199,7 +199,11 @@ export default function BookingModal({
   // would otherwise become the containing block for this fixed overlay.
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/40 px-4 py-4 backdrop-blur-md sm:py-8"
+      // Phone screens: align to the top with room cleared above the panel
+      // instead of vertically centering — centered put the close button/title
+      // right where the header sits, reading as overlapping it. Unchanged
+      // (vertically centered) from `sm:` up, where there's headroom to spare.
+      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/40 px-4 pb-4 pt-24 backdrop-blur-md sm:items-center sm:py-8"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}

@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 
 import { AestheticsPromo } from '@/components/sections/AestheticsPromo'
+import { BestOfSavannahSection } from '@/components/sections/BestOfSavannahSection'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { CredentialStrip } from '@/components/sections/CredentialStrip'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
@@ -9,6 +10,7 @@ import { HeroImmersive } from '@/components/sections/HeroImmersive'
 import { HomeServices } from '@/components/sections/HomeServices'
 import { WelcomeVideo } from '@/components/sections/WelcomeVideo'
 import { expertsContent } from '@/content/pages/experts'
+import { getAllPeople } from '@/content/people'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import type { homeContent } from '@/content/pages/home'
 import { PatientJourney } from '../shared/PatientJourney'
@@ -22,7 +24,7 @@ const TestimonialSet = dynamic(() =>
  * (see download/_index_.html); the hero and FAQ stay as they were.
  */
 export async function HomeTemplate({ content }: { content: typeof homeContent }) {
-  const testimonials = await getPublishedTestimonials()
+  const [testimonials, people] = await Promise.all([getPublishedTestimonials(), getAllPeople()])
 
   return (
     <div className="bg-[#F7F8F2]">
@@ -39,6 +41,7 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
           'Savannah Age Management Medicine (SAMM) was founded in 2010 by Harry S. Collins, DO, FACOG, with a clear vision: to move beyond treating symptoms and focus on restoring energy, balance, and long-term health. Through his expertise in hormone therapy and modern wellness, Dr. Collins established SAMM as a trusted provider in Savannah and surrounding areas.',
           'His patient-centered approach continues to define the standard of care at SAMM today, shaping a practice rooted in intention, personalization, and lasting results.',
         ]}
+        highlight="Voted Best of Savannah 2026 for Functional Medicine & Hormone Therapy, as featured in Savannah Magazine."
         awards={expertsContent.awards}
       />
 
@@ -49,6 +52,10 @@ export async function HomeTemplate({ content }: { content: typeof homeContent })
         title="Your Best Life Starts Now"
         lead="At Savannah Age Management Medicine, we're committed to connecting you with the latest in bioidentical hormone therapy and other cutting-edge treatments designed to supercharge your well-being."
       />
+
+      <div className="lg-flexspace-100" />
+
+      <BestOfSavannahSection people={people} />
 
       <div className="lg-flexspace-100" />
 

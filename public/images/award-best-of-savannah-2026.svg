@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="236" height="256" viewBox="0 0 236 256" role="img" aria-label="Best of Savannah 2026, Savannah Magazine">
+  <!--
+    PLACEHOLDER seal, laid out like the existing award badges in
+    /public/images/award-12-img.png etc. (purple card, ribbon with the year
+    across its lower edge, green magazine wordmark underneath). Replace this
+    file with the official 2026 seal once Raechel sends it.
+  -->
+  <rect x="30" y="6" width="176" height="150" fill="#2C1B52" />
+
+  <text x="118" y="62" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="700" fill="#FFFFFF">BEST</text>
+  <text x="118" y="86" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic" fill="#FFFFFF">of</text>
+  <text x="118" y="118" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="25" font-weight="700" letter-spacing="1.5" fill="#FFFFFF">SAVANNAH</text>
+
+  <!-- Ribbon: folded tails behind, band in front -->
+  <polygon points="6,140 30,140 30,172 6,172 16,156" fill="#D9D4E6" />
+  <polygon points="230,140 206,140 206,172 230,172 220,156" fill="#D9D4E6" />
+  <polygon points="22,134 214,134 214,166 22,166" fill="#FFFFFF" stroke="#2C1B52" stroke-width="2" />
+  <text x="118" y="159" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="700" fill="#7C9A4A">2026</text>
+
+  <text x="118" y="214" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-style="italic" fill="#7C9A4A">Savannah</text>
+  <text x="118" y="238" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="11" font-weight="700" letter-spacing="4" fill="#7C9A4A">MAGAZINE</text>
+</svg>

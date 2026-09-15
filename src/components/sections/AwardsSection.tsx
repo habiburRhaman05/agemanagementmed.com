@@ -3,6 +3,7 @@
 import { m } from 'framer-motion'
 
 import { Container } from '@/components/shared/Container'
+import { Eyebrow } from '@/components/shared/Eyebrow'
 import { cn } from '@/lib/utils'
 
 export interface AwardLogo {
@@ -11,6 +12,7 @@ export interface AwardLogo {
 }
 
 export interface AwardsSectionProps {
+  eyebrow?: string
   title?: string
   lead?: string
   awards?: AwardLogo[]
@@ -39,6 +41,7 @@ const DEFAULT_AWARDS: AwardLogo[] = [
  * bottom) so it can be dropped in on its own, on any background.
  */
 export function AwardsSection({
+  eyebrow,
   title = 'Recognized For Excellence In Savannah & Beyond',
   lead = 'These recognitions reflect our commitment to delivering high-quality aesthetic and wellness services in the Savannah area.',
   awards = DEFAULT_AWARDS,
@@ -56,9 +59,13 @@ export function AwardsSection({
     >
       <Container className="mx-auto !max-w-[1292px]">
         <div
-     
+
           className="mx-auto mb-10 text-center sm:mb-14"
         >
+          {eyebrow ? (
+            <Eyebrow className="mb-4">{eyebrow}</Eyebrow>
+          ) : null}
+
           {title ? (
             <h2 className="font-display text-[32px] leading-tight font-medium tracking-tight text-[#1C274C] sm:text-[40px] lg:text-[48px]">
               {title}

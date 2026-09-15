@@ -1093,18 +1093,25 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   }
 }
 
+/* Desktop: every badge on a single line. With 10 badges the old 6-per-row
+   (992px) step wrapped, so from 992px up the row never wraps — items size to
+   their content and shrink together if the card gets tight, instead of one
+   badge dropping to a second line. */
 @media only screen and (min-width: 992px) {
-  #awards-b .award .item {
-    width: 16.666667%;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
   #awards-b .award .lg-grid {
+    --lg-gx: 6px;
+    flex-wrap: nowrap;
     justify-content: space-between;
   }
 
   #awards-b .award .item {
+    flex: 0 1 auto;
+    min-width: 0;
+    width: auto;
+  }
+
+  #awards-b .award .item img {
+    max-height: 80px;
     width: auto;
   }
 }
