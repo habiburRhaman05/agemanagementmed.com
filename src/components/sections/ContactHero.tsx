@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 interface ContactHeroProps {
   title: string
   lead?: string
@@ -12,14 +14,20 @@ interface ContactHeroProps {
  */
 export function ContactHero({ title, lead }: ContactHeroProps) {
   return (
-    <div
-      className="relative flex min-h-[700px] items-center bg-cover bg-no-repeat px-4 py-24 sm:min-h-[650px] sm:py-32 lg:min-h-[850px] lg:py-0"
-      style={{
-        backgroundImage:
-          "url('/themes/default/assets/images/banner-20-bg.jpg')",
-        backgroundPosition: '50% 75%',
-      }}
-    >
+    <div className="relative flex min-h-[700px] items-center overflow-hidden px-4 py-24 sm:min-h-[650px] sm:py-32 lg:min-h-[850px] lg:py-0">
+      {/* A CSS `background-image` here was invisible to the browser's
+          preload scanner and couldn't carry `fetchpriority` — the same LCP
+          gap as `HeroEditorial`'s and `HeroCompact`'s banners. */}
+      <Image
+        src="/themes/default/assets/images/banner-20-bg.jpg"
+        alt=""
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        className="object-cover object-[50%_75%]"
+      />
+
       <div aria-hidden className="absolute inset-0 bg-[#1111118c]/55" />
 
       <div className="relative mx-auto w-full max-w-[1440px] px-6 lg:px-12">

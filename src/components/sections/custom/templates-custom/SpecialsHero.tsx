@@ -1,6 +1,7 @@
 "use client";
 
 import { Play } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 import BookAppointmentButton from "@/components/shared/BookAppointmentButton";
@@ -122,16 +123,23 @@ export function SpecialsHero({
   return (
     <section
       id="specialBanner"
-      
-      style={
-    {
-      backgroundImage:`url(${image.src})`,
-      height:"450px",
-      padding:"0px"!
-    }
-      }
+      style={{ height: "450px", padding: "0px" }}
     >
-   
+      {/* Was a CSS `background-image` — invisible to the preload scanner and
+          ineligible for `fetchpriority`, the same LCP gap fixed on
+          `HeroEditorial`'s banner. `#specialBanner` is already
+          `position: relative` in legacy.css, so `fill` sizes against it
+          correctly. */}
+      <Image
+        src={image.src}
+        alt={image.alt}
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        className="object-cover object-[80%_top]"
+      />
+
       <div className={'mx-auto w-full max-w-[80rem] px-2 lg:px-12 relative z-20  lg-container'}>
         <div className={cn(`text-center mt-20 sm:text-left ${textWidth ? `max-w-${textWidth}px` : "max-w-[700px]"}`, heroDiv)}>
           <h1

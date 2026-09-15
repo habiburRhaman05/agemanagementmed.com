@@ -1,4 +1,5 @@
 import { ChevronRight } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { Container } from '@/components/shared/Container'
@@ -44,10 +45,17 @@ export function HeroCompact({
     <Section spacing="none" className="relative overflow-hidden pt-36 pb-10 lg:pt-44 lg:pb-12">
       {hasPhoto ? (
         <>
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${backgroundImage})` }}
-            aria-hidden
+          {/* A CSS `background-image` here was invisible to the browser's
+              preload scanner and couldn't carry `fetchpriority` — the same
+              LCP gap as `HeroEditorial`'s banner. */}
+          <Image
+            src={backgroundImage as string}
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-ink-900/40 to-ink-900/20" aria-hidden />
         </>

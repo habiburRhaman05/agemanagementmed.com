@@ -40,6 +40,7 @@ export function HeroImmersive({ title, lead, image, meta ,videoUrl}: HeroImmersi
           alt={image.alt}
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
           // Mobile portrait crops need the subject pulled more toward center;
           // the 60% offset was tuned for wide desktop frames.

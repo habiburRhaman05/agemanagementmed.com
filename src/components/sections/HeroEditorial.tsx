@@ -163,20 +163,26 @@ export function HeroEditorial({
     };
   }, [videoOpen]);
 
-  console.log(ctas);
-
-
   return (
-    <section
+    <section id="banner-d">
+      {/* Was a CSS `background-image` on the section — invisible to the
+          browser's preload scanner and ineligible for `fetchpriority`,
+          which is exactly why Lighthouse flagged this hero as missing
+          fetchpriority=high on the LCP request on every page that uses it
+          (every treatment page, /our-experts). A real `<Image priority>`
+          gets discovered immediately and optimized (AVIF/WebP), same as
+          the homepage hero. `#banner-d` is already `position: relative` in
+          legacy.css, so `fill` sizes against it correctly. */}
+      <Image
+        src={image.src}
+        alt={image.alt}
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        className="object-cover object-[80%_top]"
+      />
 
-      id="banner-d"
-
-      style={
-    {
-      backgroundImage:`url(${image.src})`
-    }
-      }
-    >
       <div className={'mx-auto w-full max-w-[80rem] px-2 lg:px-12 relative z-20  lg-container'}>
         <div className={cn(`text-center sm:text-left ${textWidth ? `max-w-${textWidth}px` : "max-w-[700px]"}`, heroDiv)}>
           <h1

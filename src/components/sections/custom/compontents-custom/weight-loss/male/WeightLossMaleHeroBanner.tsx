@@ -35,6 +35,7 @@ export function WeightLossMaleHeroBanner({
         alt={image.alt}
         fill
         priority
+        fetchPriority="high"
         sizes="100vw"
         className="object-cover"
         style={{ objectPosition: image.focalPoint ?? 'center' }}
