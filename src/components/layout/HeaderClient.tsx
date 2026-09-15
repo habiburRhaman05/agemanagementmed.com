@@ -276,7 +276,13 @@ export function HeaderClient({ overlay = false, logoUrl, siteName, phone }: Head
                 if (submenu.length === 0) {
                   return (
                     <li key={item.label} className="menu-li">
-                      <Link href={item.href}>{item.label}</Link>
+                      {/* The closed drawer is translated just off the right edge,
+                          which is close enough for Next's viewport prefetch — so
+                          every page load was downloading these routes' JS (~1 MB)
+                          for a menu nobody had opened. Prefetch only once it's open. */}
+                      <Link href={item.href} prefetch={navOpen ? null : false}>
+                        {item.label}
+                      </Link>
                     </li>
                   )
                 }

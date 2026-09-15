@@ -1,6 +1,20 @@
+import { getImageProps } from 'next/image'
 import Link from 'next/link'
 
 import type { Award } from '@/types/content'
+
+/**
+ * Optimized (WebP, resized) src/srcSet for a badge, for use on a plain
+ * `<img>`. The badges keep their own width/height attributes and legacy CSS,
+ * so the rendered size stays exactly as before. Only the file sent changes;
+ * several badge PNGs are ~40–975 KB at full size.
+ */
+function badgeSources(award: Award) {
+  // 96 → 96px (1x) / 256px (2x) candidates. Badges are ~1:1, so even the 1x
+  // file stays taller than the row's 80px max-height and renders at the same size.
+  const { props } = getImageProps({ src: award.src, alt: award.alt, width: 96, height: 96 })
+  return { src: props.src, srcSet: props.srcSet }
+}
 
 interface CredentialStripProps {
   /** Unused — kept for API compatibility with callers (see `foundingYear` below). */
@@ -59,7 +73,14 @@ export function CredentialStrip({
                       {/* Plain <img>: these are small fixed-size badges inside a
                           ported layout, matching the source markup exactly. */}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={award.src} alt={award.alt} width={84} height={80} loading="lazy" />
+                      <img
+                        {...badgeSources(award)}
+                        alt={award.alt}
+                        width={84}
+                        height={80}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </div>
                   ))}
                 </div>

@@ -2,21 +2,32 @@ import dynamic from 'next/dynamic'
 
 import { AestheticsPromo } from '@/components/sections/AestheticsPromo'
 import { BestOfSavannahSection } from '@/components/sections/BestOfSavannahSection'
-import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { CredentialStrip } from '@/components/sections/CredentialStrip'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroBand, TealStatementStrip } from '@/components/sections/HeroBand'
 import { HeroImmersive } from '@/components/sections/HeroImmersive'
 import { HomeServices } from '@/components/sections/HomeServices'
-import { WelcomeVideo } from '@/components/sections/WelcomeVideo'
 import { expertsContent } from '@/content/pages/experts'
 import { getAllPeople } from '@/content/people'
 import { getPublishedTestimonials } from '@/content/testimonials'
 import type { homeContent } from '@/content/pages/home'
-import { PatientJourney } from '../shared/PatientJourney'
 
+// Below-the-fold client components — dynamic() keeps `ssr: true` (the default),
+// so the server-rendered HTML output is identical to a static import; only
+// the hydration JS is split into its own chunk instead of shipping in the
+// page's main bundle. Same page, same pixels, less main-thread work
+// competing during the initial load window (Total Blocking Time).
 const TestimonialSet = dynamic(() =>
   import('@/components/sections/TestimonialSet').then((mod) => mod.TestimonialSet),
+)
+const WelcomeVideo = dynamic(() =>
+  import('@/components/sections/WelcomeVideo').then((mod) => mod.WelcomeVideo),
+)
+const PatientJourney = dynamic(() =>
+  import('@/components/shared/PatientJourney').then((mod) => mod.PatientJourney),
+)
+const ClosingCTA = dynamic(() =>
+  import('@/components/sections/ClosingCTA').then((mod) => mod.ClosingCTA),
 )
 
 /**

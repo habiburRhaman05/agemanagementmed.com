@@ -6,6 +6,7 @@ import type { CSSProperties } from 'react'
 
 import BookingModal from '@/components/shared/BookingModal'
 import { homeMedia } from '@/content/pages/home-media'
+import { optimizedBackgroundUrl } from '@/lib/optimized-image'
 import type { ClosingCtaData } from '@/types/content'
 import BookAppointmentButton from '../shared/BookAppointmentButton'
 
@@ -57,7 +58,7 @@ export function ClosingCTA({
   return (
     <div
       className={`hero-bg${className ? ` ${className}` : ''}`}
-      style={{ backgroundImage: `url('${backgroundImage}')`, backgroundPosition }}
+      style={{ backgroundImage: `url('${optimizedBackgroundUrl(backgroundImage)}')`, backgroundPosition }}
     >
       <div className="lg-max-width-1440">
         <div className="lg-container">

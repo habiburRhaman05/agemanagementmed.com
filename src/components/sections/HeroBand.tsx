@@ -1,6 +1,7 @@
 import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
 
 import { homeMedia } from '@/content/pages/home-media'
+import { optimizedBackgroundUrl } from '@/lib/optimized-image'
 
 interface HeroBandProps {
   eyebrow?: string
@@ -28,7 +29,7 @@ export function HeroBand({
   return (
     <div
       className={`hero-bg${centered ? ' centered-content' : ''}`}
-      style={{ backgroundImage: `url('${backgroundImage}')` }}
+      style={{ backgroundImage: `url('${optimizedBackgroundUrl(backgroundImage)}')` }}
     >
       <div className="lg-max-width-1440">
         <div className="lg-container">

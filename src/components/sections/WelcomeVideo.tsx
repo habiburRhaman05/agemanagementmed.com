@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import {
   Dialog,
@@ -26,6 +26,19 @@ function toPlayerUrl(href: string): string {
 }
 
 /**
+ * Cloudinary serves any uploaded GIF as an MP4 of the same animation by
+ * swapping the extension. The default poster is a 5.6 MB GIF; the MP4 is
+ * ~210 KB and plays identically as a muted, looping, inline video.
+ * Returns `null` for anything that isn't a Cloudinary GIF, so other poster
+ * URLs keep the original background-image rendering.
+ */
+function toCloudinaryMp4(url: string): string | null {
+  return /^https:\/\/res\.cloudinary\.com\/.+\/image\/upload\/.+\.gif$/i.test(url)
+    ? url.replace(/\.gif$/i, '.mp4')
+    : null
+}
+
+/**
  * The live site's welcome block — a heading and a wide 20px-radius video
  * poster with a centred play button, sitting on a pale blue band.
  * Clicking the video opens the video in a modal with a dark overlay.
@@ -37,6 +50,31 @@ export function WelcomeVideo({
 }: WelcomeVideoProps) {
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(true)
+  const posterVideo = toCloudinaryMp4(posterUrl)
+
+  // The poster sits far below the fold, so don't start downloading it until
+  // it's close to the viewport.
+  const posterRef = useRef<HTMLDivElement>(null)
+  const [posterNear, setPosterNear] = useState(false)
+  useEffect(() => {
+    const el = posterRef.current
+    if (!el || posterNear) return
+    if (!('IntersectionObserver' in window)) {
+      setPosterNear(true)
+      return
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setPosterNear(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '600px 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [posterNear])
 
   return (
     <div className="lg-welcome-band">
@@ -59,10 +97,27 @@ export function WelcomeVideo({
                   aria-label={`Play video: ${title}`}
                   className="box relative w-full cursor-pointer group border-none p-0 m-0 bg-transparent block"
                 >
-                  <div
-                    className="img"
-                    style={{ backgroundImage: `url('${posterUrl}')` }}
-                  />
+                  {posterVideo ? (
+                    <div ref={posterRef} className="img" aria-hidden>
+                      {posterNear ? (
+                        <video
+                          src={posterVideo}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="auto"
+                          className="h-full w-full object-cover"
+                        />
+                      ) : null}
+                    </div>
+                  ) : (
+                    <div
+                      ref={posterRef}
+                      className="img"
+                      style={posterNear ? { backgroundImage: `url('${posterUrl}')` } : undefined}
+                    />
+                  )}
                   <span className="flex items-center justify-center absolute inset-0">
                     <svg
                       className="play-icon w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 transition-transform duration-200 group-hover:scale-110"

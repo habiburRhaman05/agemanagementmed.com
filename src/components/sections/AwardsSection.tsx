@@ -1,6 +1,7 @@
 'use client'
 
 import { m } from 'framer-motion'
+import { getImageProps } from 'next/image'
 
 import { Container } from '@/components/shared/Container'
 import { Eyebrow } from '@/components/shared/Eyebrow'
@@ -94,11 +95,17 @@ export function AwardsSection({
               className="flex h-24 w-28 shrink-0 items-center justify-center sm:h-28 sm:w-32 md:h-32 md:w-36"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
+              {/* Optimized (WebP, resized) sources on the same plain <img>. The
+                  fixed-size cell + object-contain decide the rendered size, so
+                  only the file sent changes, not the layout. */}
               <img
-                src={award.src}
+                {...(({ src, srcSet }) => ({ src, srcSet }))(
+                  getImageProps({ src: award.src, alt: award.alt, width: 160, height: 160 }).props,
+                )}
                 alt={award.alt}
                 className="h-full w-full object-contain"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           ))}

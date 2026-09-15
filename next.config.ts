@@ -7,6 +7,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['76.13.183.180'],
+  // Barrel-file packages (many named exports, only a few used per page) —
+  // Next rewrites the imports to only pull in the specific modules actually
+  // used instead of the whole package, shrinking the client JS bundle. Pure
+  // build-time optimization: zero effect on rendered output.
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 2678400,

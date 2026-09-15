@@ -1,13 +1,9 @@
 'use client'
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import BookingModal from '@/components/shared/BookingModal'
-
-interface PopupFormBridgeProps {
-  children: React.ReactNode
-}
 
 /**
  * Sitewide bridge for raw HTML content (blog articles, rendered via
@@ -26,12 +22,19 @@ interface PopupFormBridgeProps {
  * is still kept in sync (via `router.replace`, non-blocking) purely so the
  * open modal survives a refresh and is shareable/back-button-friendly —
  * that part is decorative, not what makes the modal appear.
+ *
+ * Deliberately does NOT wrap the page. It reads `useSearchParams()`, which
+ * forces its Suspense boundary to render client-side; when it wrapped
+ * `{children}`, React threw away the server-rendered page after hydration
+ * and mounted the whole thing a second time. That doubled the rendering work
+ * and re-created the hero image ~2.4 s into the load (the LCP "render
+ * delay"). Listening on `document` instead means only the modal sits inside
+ * the boundary.
  */
-export function PopupFormBridge({ children }: PopupFormBridgeProps) {
+export function PopupFormBridge() {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const containerRef = useRef<HTMLDivElement>(null)
   const [open, setOpen] = useState(false)
 
   // Covers a direct/shared link landing with ?popup-form=true already set,
@@ -41,9 +44,6 @@ export function PopupFormBridge({ children }: PopupFormBridgeProps) {
   }, [searchParams])
 
   useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
-
     function onClick(event: MouseEvent) {
       const target = (event.target as HTMLElement).closest('a.btn-arrow-right[href="#popup-form"]')
       if (!target) return
@@ -58,8 +58,8 @@ export function PopupFormBridge({ children }: PopupFormBridgeProps) {
       router.replace(`${pathname}?${params.toString()}`, { scroll: false })
     }
 
-    container.addEventListener('click', onClick)
-    return () => container.removeEventListener('click', onClick)
+    document.addEventListener('click', onClick)
+    return () => document.removeEventListener('click', onClick)
   }, [router, pathname, searchParams])
 
   function handleClose() {
@@ -70,10 +70,5 @@ export function PopupFormBridge({ children }: PopupFormBridgeProps) {
     router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false })
   }
 
-  return (
-    <div ref={containerRef}>
-      {children}
-      <BookingModal open={open} onClose={handleClose} title="Schedule A Consultation" />
-    </div>
-  )
+  return <BookingModal open={open} onClose={handleClose} title="Schedule A Consultation" />
 }

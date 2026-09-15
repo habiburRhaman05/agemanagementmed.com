@@ -24,13 +24,16 @@ export default async function MarketingLayout({ children }: { children: React.Re
       </a>
      
 
+        <main id="main">{children}</main>
+
         {/* Catches `.btn-arrow-right[href="#popup-form"]` CTAs anywhere on
             the site (currently blog article content) and opens the booking
-            modal — mounted once here rather than per-page. */}
-        <Suspense fallback={<main id="main">{children}</main>}>
-          <PopupFormBridge>
-            <main id="main">{children}</main>
-          </PopupFormBridge>
+            modal — mounted once here rather than per-page. It sits beside
+            the page, not around it: it reads search params, so its Suspense
+            boundary renders on the client, and wrapping the page made React
+            re-mount everything after load. */}
+        <Suspense fallback={null}>
+          <PopupFormBridge />
         </Suspense>
 
       <Footer />

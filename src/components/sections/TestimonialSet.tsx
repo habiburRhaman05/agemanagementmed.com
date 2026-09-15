@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
 import { useState } from 'react'
 
 import { homeMedia } from '@/content/pages/home-media'
+import { optimizedBackgroundUrl } from '@/lib/optimized-image'
 import { cn } from '@/lib/utils'
 import type { Testimonial } from '@/types/content'
 
@@ -114,7 +115,7 @@ export function TestimonialSet({
         height ? height : 'sm:min-h-screen'
       )}
       style={{
-        backgroundImage: `url('${backgroundImage}')`,
+        backgroundImage: `url('${optimizedBackgroundUrl(backgroundImage)}')`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',

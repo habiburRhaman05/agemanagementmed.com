@@ -1,3 +1,4 @@
+import { getImageProps } from 'next/image'
 import Link from 'next/link'
 
 import { homeServices } from '@/content/pages/home-services'
@@ -42,12 +43,17 @@ export function HomeServices({ eyebrow, title, lead }: HomeServicesProps) {
                       {/* Fixed 150px circular badge inside a ported layout —
                           matches the source markup exactly. */}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
+                      {/* Optimized (WebP, resized) sources; the size is still fixed by
+                          the !important classes below, so layout is unchanged. */}
                       <img
-                        src={service.image}
+                        {...(({ src, srcSet }) => ({ src, srcSet }))(
+                          getImageProps({ src: service.image, alt: service.imageAlt, width: 150, height: 150 }).props,
+                        )}
                         alt={service.imageAlt}
                         width={150}
                         height={150}
                         loading="lazy"
+                        decoding="async"
                         className="w-40! h-40! min-[576px]:w-20! min-[576px]:h-20! min-[992px]:w-[150px]! min-[992px]:h-[150px]!"
                       />
                     </div>

@@ -45,8 +45,12 @@ export async function middleware(request: NextRequest) {
   const incomingHost = request.headers.get('x-forwarded-host') ?? request.headers.get('host') ?? request.nextUrl.host
   const canonicalHost = incomingHost === 'agemanagementmed.com' ? 'www.agemanagementmed.com' : incomingHost
   const isWrongHost = incomingHost !== canonicalHost
+  // A local production build (`npm run build && npm start`) has no TLS, so
+  // redirecting it to https://localhost just dead-ends in ERR_SSL_PROTOCOL_ERROR.
+  // Real traffic never arrives with a localhost Host header.
+  const isLocalhost = /^(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(incomingHost)
 
-  if (process.env.NODE_ENV === 'production' && (isInsecure || isWrongHost)) {
+  if (process.env.NODE_ENV === 'production' && !isLocalhost && (isInsecure || isWrongHost)) {
     const secureUrl = new URL(`${pathname}${request.nextUrl.search}`, `https://${canonicalHost}`)
     return NextResponse.redirect(secureUrl, 301)
   }
