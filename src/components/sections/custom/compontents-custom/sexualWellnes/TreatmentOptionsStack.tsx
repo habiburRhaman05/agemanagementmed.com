@@ -111,7 +111,7 @@ export function TreatmentOptionsStack({ eyebrow, title, lead, treatments }: Trea
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={service.image}
-                  
+                        alt={service.title}
                         width={150}
                         height={150}
                         loading="lazy"
@@ -124,7 +124,15 @@ export function TreatmentOptionsStack({ eyebrow, title, lead, treatments }: Trea
                         <h3
                           className={`lg-title ${service.title ? 'w-full' : ''} text-[30px]!`}
                         >
-                          <Link href={""}>{service.title}</Link>
+                          {/* Was `<Link href="">` — an empty href isn't a
+                              crawlable link and Lighthouse's SEO audit flags
+                              it. Only wrap in a link when there's a real
+                              destination. */}
+                          {service.cta?.href ? (
+                            <Link href={service.cta.href}>{service.title}</Link>
+                          ) : (
+                            service.title
+                          )}
                         </h3>
 
                         {service.description ? (

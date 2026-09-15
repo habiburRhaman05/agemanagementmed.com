@@ -119,7 +119,7 @@ export function BestOfSavannahSection({
           {/* <div className="mt-10 flex justify-center">
             <div className="inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 shadow-[0_3.8px_47.5px_0_rgba(0,0,0,0.05)]">
               <span className="font-display text-[32px] leading-none text-[#427f7d]">{categoryWins}</span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-600">
+              <span className="text-xs font-bold uppercase tracking-[0.14em] text-slate-600">
                 Category Wins
               </span>
             </div>
@@ -148,14 +148,14 @@ export function BestOfSavannahSection({
                     <span aria-hidden className="absolute -right-12 -top-14 h-40 w-40 rounded-full bg-white/40" />
                     <span
                       className={cn(
-                        'absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] shadow-sm',
+                        'absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] shadow-sm',
                         tone.chip,
                       )}
                     >
                       <StarIcon />
                       {headline.text}
                     </span>
-                    <span className="absolute right-5 top-6 text-[11px] font-bold tracking-[0.2em] text-[#14214b]/55">
+                    <span className="absolute right-5 top-6 text-xs font-bold tracking-[0.2em] text-[#14214b]/55">
                       {year}
                     </span>
                   </div>
@@ -208,7 +208,7 @@ export function BestOfSavannahSection({
                               </p>
                               <p
                                 className={cn(
-                                  'mt-0.5 text-[11px] font-bold uppercase tracking-[0.14em]',
+                                  'mt-0.5 text-xs font-bold uppercase tracking-[0.14em]',
                                   honorTone.label,
                                 )}
                               >
@@ -220,7 +220,7 @@ export function BestOfSavannahSection({
                       })}
                     </ul>
 
-                    <p className="mt-6 border-t border-[#14214b]/10 pt-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    <p className="mt-6 border-t border-[#14214b]/10 pt-4 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
                       Savannah Magazine · Best of Doctors
                     </p>
                   </div>

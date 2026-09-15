@@ -140,7 +140,7 @@ export function PeopleGrid({
                       {awardBadges.length > 0 ? (
                         <div className="mb-5 flex flex-wrap justify-center gap-2 md:justify-start">
                           {awardBadges.map((badge) => (
-                            <Eyebrow key={badge} tone="inverse" className="text-[11px] normal-case">
+                            <Eyebrow key={badge} tone="inverse" className="text-xs normal-case">
                               {badge}
                             </Eyebrow>
                           ))}
