@@ -14,10 +14,12 @@ interface ContactHeroProps {
  */
 export function ContactHero({ title, lead }: ContactHeroProps) {
   return (
-    <div className="relative flex min-h-[700px] items-center overflow-hidden px-4 py-24 sm:min-h-[650px] sm:py-32 lg:min-h-[850px] lg:py-0">
+    <div className="relative flex min-h-[700px] items-center overflow-hidden bg-ink-900 px-4 py-24 sm:min-h-[650px] sm:py-32 lg:min-h-[850px] lg:py-0">
       {/* A CSS `background-image` here was invisible to the browser's
           preload scanner and couldn't carry `fetchpriority` — the same LCP
-          gap as `HeroEditorial`'s and `HeroCompact`'s banners. */}
+          gap as `HeroEditorial`'s and `HeroCompact`'s banners. The container's
+          own `bg-ink-900` above shows through until the photo paints, instead
+          of the page's white/ivory background behind white hero text. */}
       <Image
         src="/themes/default/assets/images/banner-20-bg.jpg"
         alt=""

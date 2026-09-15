@@ -4596,6 +4596,14 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 #banner-d {
+    /* Fallback behind the real <Image> (see HeroEditorial.tsx) for the gap
+       before it paints — most visibly on the very first request for a given
+       photo after a deploy, when Next has to generate that file on demand.
+       Without this, white hero text sits on the page's plain white/ivory
+       background and is unreadable until the photo loads. Matches the two
+       heroes elsewhere that never had this problem (HeroImmersive,
+       WeightLossMaleHeroBanner) because they already had a dark background. */
+    background-color: #14214b;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -4608,6 +4616,8 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     background-position:80% top
 }
 #specialBanner {
+    /* Same fallback as #banner-d above, same reason. */
+    background-color: #14214b;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

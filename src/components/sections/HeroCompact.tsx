@@ -42,12 +42,18 @@ export function HeroCompact({
   const hasPhoto = Boolean(backgroundImage)
 
   return (
-    <Section spacing="none" className="relative overflow-hidden pt-36 pb-10 lg:pt-44 lg:pb-12">
+    <Section
+      spacing="none"
+      className={`relative overflow-hidden pt-36 pb-10 lg:pt-44 lg:pb-12 ${hasPhoto ? 'bg-ink-900' : ''}`}
+    >
       {hasPhoto ? (
         <>
           {/* A CSS `background-image` here was invisible to the browser's
               preload scanner and couldn't carry `fetchpriority` — the same
-              LCP gap as `HeroEditorial`'s banner. */}
+              LCP gap as `HeroEditorial`'s banner. The section's own
+              `bg-ink-900` above shows through until the photo paints, so
+              white text over it never sits directly on a white/ivory
+              background waiting on the image. */}
           <Image
             src={backgroundImage as string}
             alt=""
