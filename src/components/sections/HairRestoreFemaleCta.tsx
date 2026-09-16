@@ -3,7 +3,6 @@ import type { CSSProperties } from 'react'
 
 import { homeMedia } from '@/content/pages/home-media'
 import type { ClosingCtaData } from '@/types/content'
-import BookAppointmentButton from '../shared/BookAppointmentButton'
 
 interface ClosingCTAProps extends ClosingCtaData {
   /** Background photo for the band; defaults to the shared placeholder. */
@@ -58,13 +57,9 @@ export function HairRestoreFemaleCta({
               className="cta flex justify-center lg:justify-start"
               style={centered ? { display: 'flex', justifyContent: 'center' } : undefined}
             >
-              {/* <LegacyCtaLink href={cta.href} className="lg-btn ">
+              <LegacyCtaLink href={cta.href} className="lg-btn ">
                 {cta.label}
-              </LegacyCtaLink> */}
-              <BookAppointmentButton>
-                {cta.label}
-
-              </BookAppointmentButton>
+              </LegacyCtaLink>
             </div>
 
             {note ? (
