@@ -48,6 +48,8 @@ interface Props {
       ogType: string | null
       twitterTitle: string | null
       twitterDescription: string | null
+      /** Prisma `Json?` — a parsed object/array, or null; never a raw string. */
+      schemaJsonLd: unknown
     } | null
   }
   categories: CategoryType[]
@@ -96,6 +98,9 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
         ogType: post?.seo?.ogType || '',
         twitterTitle: post?.seo?.twitterTitle || '',
         twitterDescription: post?.seo?.twitterDescription || '',
+        schemaJsonLd: post?.seo?.schemaJsonLd
+          ? JSON.stringify(post.seo.schemaJsonLd, null, 2)
+          : '',
       },
     },
   })
@@ -148,6 +153,10 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
         ogType: data.seo.ogType || null,
         twitterTitle: data.seo.twitterTitle || null,
         twitterDescription: data.seo.twitterDescription || null,
+        // Already validated as parseable JSON by the zod `.refine()` above —
+        // parse here so the server action (and Prisma's `Json` column)
+        // receive the real object, not the textarea's raw text.
+        schemaJsonLd: data.seo.schemaJsonLd?.trim() ? JSON.parse(data.seo.schemaJsonLd) : null,
       },
     }
 
@@ -538,6 +547,28 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                       className="block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
                     />
                     <FieldError message={errors.seo?.twitterDescription?.message} />
+                  </div>
+                </div>
+
+                <div className="border-t border-canvas-200 pt-3">
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                    Structured Data (JSON-LD){' '}
+                    <span className="font-normal normal-case text-gray-400">
+                      — optional raw schema.org object; overrides the auto-generated Article schema for this post
+                    </span>
+                  </h4>
+                  <div className="mt-2">
+                    <textarea
+                      {...register('seo.schemaJsonLd')}
+                      placeholder={'{\n  "@context": "https://schema.org",\n  "@type": "Article",\n  ...\n}'}
+                      rows={8}
+                      spellCheck={false}
+                      className="block w-full rounded-lg border border-canvas-300 px-3 py-2 font-mono text-xs text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+                    />
+                    <p className="mt-0.5 text-xs text-gray-400">
+                      Leave blank to use the site's automatic Article schema. Must be valid JSON.
+                    </p>
+                    <FieldError message={errors.seo?.schemaJsonLd?.message} />
                   </div>
                 </div>
 

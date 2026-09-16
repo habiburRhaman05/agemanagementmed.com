@@ -32,6 +32,27 @@ export const blogFormSchema = z.object({
       .string()
       .max(300, 'Twitter description must be 300 characters or fewer')
       .optional(),
+    // Raw JSON text as typed in the admin textarea — validated for JSON
+    // syntax here, parsed into the actual object in BlogForm's onValid
+    // right before it's sent, same two-step split the rest of the form
+    // already uses (react-hook-form owns the string, the submit handler
+    // shapes the payload).
+    schemaJsonLd: z
+      .string()
+      .max(20000, 'JSON-LD must be 20,000 characters or fewer')
+      .optional()
+      .refine(
+        (value) => {
+          if (!value || !value.trim()) return true
+          try {
+            JSON.parse(value)
+            return true
+          } catch {
+            return false
+          }
+        },
+        { message: 'Must be valid JSON' },
+      ),
   }),
 })
 

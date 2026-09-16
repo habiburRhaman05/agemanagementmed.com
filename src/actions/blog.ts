@@ -1,6 +1,7 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
+import { Prisma } from '@/lib/generated/prisma'
 import { getCurrentAdmin } from '@/lib/auth'
 import { z } from 'zod'
 import { revalidatePath } from 'next/cache'
@@ -34,6 +35,10 @@ const PostSchema = z.object({
       ogType: z.string().max(50).optional().nullable(),
       twitterTitle: z.string().max(70).optional().nullable(),
       twitterDescription: z.string().max(300).optional().nullable(),
+      // Already a parsed object/array by the time it gets here — BlogForm
+      // parses the admin's JSON-LD textarea before sending, so this just
+      // needs to be a valid `Json` value for Prisma, not the raw string.
+      schemaJsonLd: z.union([z.record(z.string(), z.unknown()), z.array(z.unknown())]).optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -48,6 +53,32 @@ function generateSlug(title: string): string {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
+}
+
+/**
+ * Prisma's `Json?` columns reject a plain JS `null` — it has to be the
+ * `Prisma.JsonNull` sentinel to mean "clear this field" (a bare `null`
+ * is ambiguous between "SQL NULL" and "the JSON value null"). `seo` comes
+ * back from `PostSchema` with `schemaJsonLd` as a real `null` whenever the
+ * admin's JSON-LD textarea is empty, so it needs this conversion right
+ * before it reaches `prisma.post.create`/`update` — same fix already
+ * applied for `PageSeo.jsonLd` in `lib/pageSeoAdmin.ts`.
+ */
+function seoForWrite(
+  seo: NonNullable<z.infer<typeof PostSchema>['seo']> | null | undefined,
+): Prisma.PostSeoCreateWithoutPostInput | undefined {
+  if (!seo) return undefined
+  // The explicit `Prisma.PostSeoCreateWithoutPostInput` return type above is
+  // load-bearing, not decoration — spreading `seo` and overriding
+  // `schemaJsonLd` inline at the call site left TypeScript checking the
+  // *original* zod-inferred type (which allows a plain `null`) instead of
+  // this narrower one, so the `Prisma.JsonNull` conversion silently didn't
+  // count for type-checking purposes.
+  return {
+    ...seo,
+    schemaJsonLd:
+      seo.schemaJsonLd === null ? Prisma.JsonNull : (seo.schemaJsonLd as Prisma.InputJsonValue | undefined),
+  }
 }
 
 function calculateReadingTime(html?: string | null): number {
@@ -192,7 +223,7 @@ export async function createPost(
         },
         seo: seo
           ? {
-              create: seo,
+              create: seoForWrite(seo),
             }
           : undefined,
       },
@@ -257,7 +288,7 @@ export async function updatePost(
         },
         seo: seo
           ? {
-              create: seo,
+              create: seoForWrite(seo),
             }
           : undefined,
       },

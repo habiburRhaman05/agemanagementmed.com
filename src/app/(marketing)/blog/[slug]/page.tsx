@@ -69,21 +69,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-/* ── Reading progress bar ─────────────────────────────────────────── */
-
-function ReadingProgressBar() {
-  return (
-    <div className="fixed left-0 right-0 top-0 z-50 h-1 bg-gray-100">
-      <div
-        className="h-full bg-[#519B99] transition-all duration-150"
-        style={{ width: '0%' }}
-        id="reading-progress"
-        suppressHydrationWarning
-      />
-    </div>
-  )
-}
-
 /* ── Article content with heading IDs ─────────────────────────────── */
 
 function processArticleHtml(html: string): string {
@@ -495,47 +480,6 @@ export default async function BlogPostPage({ params }: Props) {
         />
       ) : null}
       <Header overlay />
-      <ReadingProgressBar />
-
-
-      {/* Progress bar script */}
-      {/* Progress bar script — reads scrollHeight only on resize (not per scroll tick),
-          throttles via requestAnimationFrame, and uses a passive listener to avoid
-          forced reflows during scrolling. */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function () {
-              var bar = document.getElementById('reading-progress')
-              if (!bar) return
-              var docHeight = 0
-              var ticking = false
-
-              function measure() {
-                docHeight = document.documentElement.scrollHeight - window.innerHeight
-              }
-
-              function update() {
-                ticking = false
-                var scrollTop = window.scrollY
-                var progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0
-                bar.style.width = progress + '%'
-              }
-
-              function onScroll() {
-                if (ticking) return
-                ticking = true
-                requestAnimationFrame(update)
-              }
-
-              measure()
-              window.addEventListener('resize', measure, { passive: true })
-              window.addEventListener('load', measure, { passive: true })
-              window.addEventListener('scroll', onScroll, { passive: true })
-            })()
-          `,
-        }}
-      />
 
       {/* Main article content (includes the "More Articles" sidebar, streamed via Suspense) */}
       <ArticleContent post={post} />
