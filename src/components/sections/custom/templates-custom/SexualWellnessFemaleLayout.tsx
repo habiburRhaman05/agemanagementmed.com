@@ -24,6 +24,7 @@ export async function SexualWellnessFemaleLayout({ treatment }: TreatmentTemplat
         image={{ ...treatment.hero.image, src: '/images/banner-30-bg.jpg' }}
         fullHeight
         centerUntilTablet
+        mobileFocalPoint="80% center"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

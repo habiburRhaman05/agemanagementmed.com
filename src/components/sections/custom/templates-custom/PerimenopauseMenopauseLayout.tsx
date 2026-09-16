@@ -52,6 +52,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
       <HeroEditorial
         {...treatment.hero}
         fullHeight
+        mobileFocalPoint="64% center"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

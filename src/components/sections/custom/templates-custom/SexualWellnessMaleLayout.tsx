@@ -22,6 +22,7 @@ export async function SexualWellnessMaleLayout({ treatment }: TreatmentTemplateP
       <HeroEditorial
         {...treatment.hero}
         fullHeight
+        mobileFocalPoint="77% center"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

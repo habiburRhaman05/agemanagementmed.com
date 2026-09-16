@@ -26,7 +26,7 @@ export async function WeightLossFeMaleLayout({ treatment }: TreatmentTemplatePro
         fullHeight
         centerUntilTablet
         containerOverride="py-24 md:py-50 lg:py-60"
-        mobileFocalPoint="70% center"
+        mobileFocalPoint="73% center"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

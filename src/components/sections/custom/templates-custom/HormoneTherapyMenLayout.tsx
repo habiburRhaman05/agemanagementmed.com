@@ -39,7 +39,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
        <HeroEditorial
         {...treatment.hero}
         overideMinheight='min-h-[850px]!'
-       
+        mobileFocalPoint="57% center"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },

@@ -44,6 +44,7 @@ export async function HormoneTherapyCommonLayout({ treatment }: TreatmentTemplat
     {...treatment.hero}
 
 fullHeight
+mobileFocalPoint="80% center"
       />
 
       <div className='sm:mt-20 my-12'>

@@ -22,7 +22,7 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
       <HeroEditorial
         {...treatment.hero}
         image={{ ...treatment.hero.image, src: '/images/banner-24-bg.jpg' }}
-        mobileFocalPoint="75% center"
+        mobileFocalPoint="69% center"
         fullHeight
         centerUntilTablet
         actions={{

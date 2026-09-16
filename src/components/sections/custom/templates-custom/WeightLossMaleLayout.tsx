@@ -25,6 +25,7 @@ export async function WeightLossMaleLayout({ treatment }: TreatmentTemplateProps
         {...treatment.hero}
         fullHeight
         textWidth='900'
+        mobileFocalPoint="79% center"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: pillar.label, href: pillar.href },
