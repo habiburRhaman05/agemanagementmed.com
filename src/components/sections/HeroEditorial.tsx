@@ -180,13 +180,19 @@ export function HeroEditorial({
         `mobileFocalPoint` was declared and destructured but never actually
         applied here — the image always used the desktop `80% top` crop, even
         on phones, which is why the subject (face/hair) fell outside the
-        frame on narrow viewports. Tailwind's arbitrary `object-[...]` classes
-        can't take a runtime string and stay responsive at the same time (the
-        JIT compiler only picks up literal class names it can see at build
-        time), so the position swap is done in scoped CSS instead: mobile
-        defaults to a plain center crop (this component's own centered-subject
-        ask) unless a caller opts into a specific `mobileFocalPoint`, then
-        reverts to the original `80% top` desktop crop from `sm:` up.
+        frame on narrow viewports. `styled-jsx` doesn't work for this: under
+        this project's Next.js 16 + Turbopack dev server it emits no <style>
+        tag at all (confirmed — not just a scoping issue), so runtime values
+        can't reach a `<style jsx>` block here at all.
+        `globals.css` already has the real fix built and waiting
+        (`.hero-editorial-img` / `--hero-object-position-mobile`, under
+        `max-width: 639.98px`), just never wired to an actual element — same
+        as `mobileFocalPoint` itself. The desktop position flows through the
+        plain inline `objectPosition` (this is also `image.focalPoint`, the
+        same per-photo CSS object-position field IconGridCard/ChecklistCard
+        already read off `Media`); the CSS custom property only exists to
+        give the mobile media query something to override it with, since
+        inline `style` can't itself express a breakpoint.
       */}
       <Image
         src={image.src}
@@ -195,18 +201,14 @@ export function HeroEditorial({
         priority
         fetchPriority="high"
         sizes="100vw"
-        className="object-cover hero-banner-bg-image"
+        className="object-cover hero-editorial-img"
+        style={
+          {
+            objectPosition: image.focalPoint ?? "80% top",
+            "--hero-object-position-mobile": mobileFocalPoint ?? "center",
+          } as React.CSSProperties
+        }
       />
-      <style jsx>{`
-        .hero-banner-bg-image {
-          object-position: ${mobileFocalPoint ?? "center"};
-        }
-        @media (min-width: 640px) {
-          .hero-banner-bg-image {
-            object-position: 80% top;
-          }
-        }
-      `}</style>
 
       <div className={'mx-auto w-full max-w-[80rem] px-2 lg:px-12 relative z-20  lg-container'}>
         <div className={cn(`text-center sm:text-left ${textWidth ? `max-w-${textWidth}px` : "max-w-[700px]"}`, heroDiv)}>
