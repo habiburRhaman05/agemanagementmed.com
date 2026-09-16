@@ -136,11 +136,12 @@ export function HeroEditorial({
   // Smaller, non‑full‑width CTA on mobile; the "lg" size (via the `size` prop) still applies from `sm:` up.
   const ctaSizeClass =
     "h-11 px-6 text-body-sm font-bold uppercase tracking-wide sm:h-14 sm:px-9 sm:text-body";
-  // Same sizing, without text classes — BookAppointmentButton fixes its own font‑size/weight at 14px/700 on every device.
+  // Same sizing, without text classes — BookAppointmentButton fixes its own
+  // font-size/weight at 14px/700, and its own `h-14`, on every device now.
   // `max-[379px]:w-full` gives the shrunk label (see BookAppointmentButton)
   // the full column width to fit in on the narrowest phones, instead of the
   // button staying content-sized and crowding the label against its own edges.
-  const bookingCtaSizeClass = "h-11 px-6 sm:h-14 sm:px-9 max-[379px]:w-full";
+  const bookingCtaSizeClass = "px-6 sm:px-9 max-[379px]:w-full";
 
   // When the video dialog opens, show a loading spinner until the iframe loads.
   useEffect(() => {

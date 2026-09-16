@@ -91,10 +91,12 @@ export function SpecialsHero({
   const isLeadForm = actions?.formSource === "lead";
 
   // Smaller, non‑full‑width CTA on mobile; the "lg" size (via the `size` prop) still applies from `sm:` up.
-  const ctaSizeClass =
-    "h-11 px-6 text-body-sm font-bold uppercase tracking-wide sm:h-14 sm:px-9 sm:text-body";
+  const bookingCtaSizeClass =
+    "h-14 px-6 text-body-sm font-bold uppercase tracking-wide sm:h-14 sm:px-9 sm:text-body";
   // Same sizing, without text classes — BookAppointmentButton fixes its own font‑size/weight at 14px/700 on every device.
-  const bookingCtaSizeClass = "h-11 px-6 sm:h-14 sm:px-9";
+  // Height comes from BookAppointmentButton's own `h-14` default now (same on
+  // every breakpoint), so only horizontal padding needs to vary here.
+  
 
   // When the video dialog opens, show a loading spinner until the iframe loads.
   useEffect(() => {

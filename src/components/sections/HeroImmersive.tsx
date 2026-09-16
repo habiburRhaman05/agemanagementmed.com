@@ -66,7 +66,7 @@ export function HeroImmersive({ title, lead, image, meta ,videoUrl}: HeroImmersi
           {/* Booking Modal */}
           <BookAppointmentButton
             variant="teal"
-            className="h-12 w-auto px-6 sm:h-14 sm:px-8"
+            className="w-auto px-6 sm:px-8"
             modalTitle="Schedule A Consultation"
           >
             START TODAY
