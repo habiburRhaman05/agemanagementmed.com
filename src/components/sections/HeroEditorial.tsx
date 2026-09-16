@@ -137,7 +137,10 @@ export function HeroEditorial({
   const ctaSizeClass =
     "h-11 px-6 text-body-sm font-bold uppercase tracking-wide sm:h-14 sm:px-9 sm:text-body";
   // Same sizing, without text classes — BookAppointmentButton fixes its own font‑size/weight at 14px/700 on every device.
-  const bookingCtaSizeClass = "h-11 px-6 sm:h-14 sm:px-9";
+  // `max-[379px]:w-full` gives the shrunk label (see BookAppointmentButton)
+  // the full column width to fit in on the narrowest phones, instead of the
+  // button staying content-sized and crowding the label against its own edges.
+  const bookingCtaSizeClass = "h-11 px-6 sm:h-14 sm:px-9 max-[379px]:w-full";
 
   // When the video dialog opens, show a loading spinner until the iframe loads.
   useEffect(() => {
@@ -173,6 +176,18 @@ export function HeroEditorial({
           gets discovered immediately and optimized (AVIF/WebP), same as
           the homepage hero. `#banner-d` is already `position: relative` in
           legacy.css, so `fill` sizes against it correctly. */}
+      {/*
+        `mobileFocalPoint` was declared and destructured but never actually
+        applied here — the image always used the desktop `80% top` crop, even
+        on phones, which is why the subject (face/hair) fell outside the
+        frame on narrow viewports. Tailwind's arbitrary `object-[...]` classes
+        can't take a runtime string and stay responsive at the same time (the
+        JIT compiler only picks up literal class names it can see at build
+        time), so the position swap is done in scoped CSS instead: mobile
+        defaults to a plain center crop (this component's own centered-subject
+        ask) unless a caller opts into a specific `mobileFocalPoint`, then
+        reverts to the original `80% top` desktop crop from `sm:` up.
+      */}
       <Image
         src={image.src}
         alt={image.alt}
@@ -180,8 +195,18 @@ export function HeroEditorial({
         priority
         fetchPriority="high"
         sizes="100vw"
-        className="object-cover object-[80%_top]"
+        className="object-cover hero-banner-bg-image"
       />
+      <style jsx>{`
+        .hero-banner-bg-image {
+          object-position: ${mobileFocalPoint ?? "center"};
+        }
+        @media (min-width: 640px) {
+          .hero-banner-bg-image {
+            object-position: 80% top;
+          }
+        }
+      `}</style>
 
       <div className={'mx-auto w-full max-w-[80rem] px-2 lg:px-12 relative z-20  lg-container'}>
         <div className={cn(`text-center sm:text-left ${textWidth ? `max-w-${textWidth}px` : "max-w-[700px]"}`, heroDiv)}>

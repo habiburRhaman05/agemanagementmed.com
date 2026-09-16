@@ -52,7 +52,10 @@ export default function BookAppointmentButton({
           setOpen(true);
         }}
         className={cn(
-          'group inline-flex items-center cursor-pointer justify-center gap-3 rounded-full px-[32px] py-[16px] font-bold font-sans text-[14px] uppercase tracking-[0.15em] transition-colors duration-300',
+          // Below 380px the fixed 14px/0.15em-tracking label wraps to two
+          // lines inside the button — `whitespace-nowrap` plus a shrunk
+          // size/tracking/padding at that width keeps it on one line instead.
+          'group inline-flex items-center cursor-pointer justify-center gap-3 whitespace-nowrap rounded-full px-[32px] py-[16px] font-bold font-sans text-[14px] uppercase tracking-[0.15em] transition-colors duration-300 max-[379px]:gap-2 max-[379px]:px-5 max-[379px]:py-3 max-[379px]:text-[11px] max-[379px]:tracking-[0.06em]',
           variants[variant],
           className,
         )}
