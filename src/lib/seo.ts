@@ -18,7 +18,21 @@ export function buildMetadata(
     keywords?: string
   }
 ): Metadata {
-  const url = new URL(seo.canonical, site.url).toString()
+  // Every route on this site is served without a trailing slash, but ~29 of
+  // 31 `PageSeo.canonical` values in the DB have one (inherited from the old
+  // site's URL structure when the SEO data was scraped/seeded). A canonical
+  // tag pointing at a URL other than the one actually being served is exactly
+  // what Google Search Console flags as "Alternate page with proper canonical
+  // tag" — the real page gets excluded from the index in favor of a URL that
+  // isn't the one search/users actually land on. Normalizing here, at the one
+  // place every canonical/OG url is built, fixes every page's rendered output
+  // immediately regardless of what's stored, and can't regress even if a
+  // future admin edit or reseed reintroduces a trailing slash.
+  const canonicalUrl = new URL(seo.canonical, site.url)
+  if (canonicalUrl.pathname !== '/' && canonicalUrl.pathname.endsWith('/')) {
+    canonicalUrl.pathname = canonicalUrl.pathname.slice(0, -1)
+  }
+  const url = canonicalUrl.toString()
   const ogImages = seo.ogImage
     ? [{ url: seo.ogImage.src, alt: seo.ogImage.alt }]
     : options?.additionalImages ?? []
