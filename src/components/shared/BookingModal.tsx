@@ -10,7 +10,7 @@ import { bookAppointment } from '@/actions/appointment';
 const LOCATIONS = ['Pooler / Savannah', 'Statesboro'];
 
 /**
- * HighLevel webhook
+ * HighLevel Inbound Webhook
  */
 const GHL_WEBHOOK_URL =
   'https://services.leadconnectorhq.com/hooks/TCgWNSOqArBjmBL22qrU/webhook-trigger/92b8b77f-2205-41e5-b434-459a7829b9d0';
@@ -21,8 +21,14 @@ const GHL_WEBHOOK_URL =
 const WEBSITE_NAME = 'Age Management';
 const WEBSITE_DOMAIN = 'agemanagementmed.com';
 
-/** Maps a LocationSlug to this modal's display label. */
-const LOCATION_LABELS: Record<'savannah-pooler' | 'statesboro', string> = {
+/**
+ * Maps a LocationSlug (as used elsewhere in the app)
+ * to this modal's display label.
+ */
+const LOCATION_LABELS: Record<
+  'savannah-pooler' | 'statesboro',
+  string
+> = {
   'savannah-pooler': 'Pooler / Savannah',
   statesboro: 'Statesboro',
 };
@@ -32,10 +38,14 @@ type BookingModalProps = {
   onClose: () => void;
   title?: string;
 
-  /** Pre-selects the location dropdown. */
+  /**
+   * Pre-selects the location dropdown.
+   */
   defaultLocation?: 'savannah-pooler' | 'statesboro';
 
-  /** Pre-selects the service and tags the request. */
+  /**
+   * Pre-selects the service dropdown and tags the request.
+   */
   defaultService?: string;
 };
 
@@ -95,7 +105,9 @@ function SelectField({
         id={id}
         name={id}
         required
-        defaultValue={defaultValue ?? (placeholder ? '' : options[0])}
+        defaultValue={
+          defaultValue ?? (placeholder ? '' : options[0])
+        }
         className="w-full appearance-none bg-transparent pr-6 font-sans text-[13px] sm:text-[16px] text-white outline-none"
       >
         {placeholder && (
@@ -126,14 +138,18 @@ function SelectField({
 /**
  * Get visitor public IP.
  *
- * This is best-effort. If the IP lookup fails, the form still submits.
+ * Best effort only.
+ * If this request fails, the main form still works.
  */
 async function getVisitorIp(): Promise<string> {
   try {
-    const response = await fetch('https://api.ipify.org?format=json', {
-      method: 'GET',
-      cache: 'no-store',
-    });
+    const response = await fetch(
+      'https://api.ipify.org?format=json',
+      {
+        method: 'GET',
+        cache: 'no-store',
+      },
+    );
 
     if (!response.ok) {
       return 'Unavailable';
@@ -144,13 +160,17 @@ async function getVisitorIp(): Promise<string> {
     };
 
     return data.ip || 'Unavailable';
-  } catch {
+  } catch (error) {
+    console.warn('Unable to determine visitor IP:', error);
+
     return 'Unavailable';
   }
 }
 
 /**
- * Send lead information to HighLevel.
+ * Send the submitted lead to HighLevel.
+ *
+ * HighLevel Inbound Webhook expects a JSON object.
  */
 async function sendToHighLevel({
   name,
@@ -170,68 +190,147 @@ async function sendToHighLevel({
   pageUrl: string;
   referrer: string;
   ipAddress: string;
-}) {
+}): Promise<boolean> {
+  /**
+   * Build a plain JSON object.
+   *
+   * Keep keys simple with no spaces so they can easily be
+   * mapped inside HighLevel.
+   */
   const payload = {
+    /**
+     * Contact fields
+     */
     name,
+    full_name: name,
     email,
     phone,
 
+    /**
+     * Form fields
+     */
     location,
     service,
 
+    /**
+     * Website information
+     */
     website: WEBSITE_NAME,
+    website_name: WEBSITE_NAME,
     website_domain: WEBSITE_DOMAIN,
 
-    source: 'Website Booking Modal',
+    /**
+     * Lead/source information
+     */
+    source: 'Age Management Website',
+    lead_source: 'Website Booking Modal',
     source_type: 'booking_modal',
     form_name: 'Book Appointment',
-    form_source: WEBSITE_DOMAIN,
+    form_type: 'appointment_request',
 
+    /**
+     * Page tracking
+     */
     page_url: pageUrl,
     landing_page_url: pageUrl,
+    current_page_url: pageUrl,
+
+    /**
+     * Referrer
+     */
     referrer_url: referrer,
+    referrer,
 
+    /**
+     * Visitor information
+     */
     ip_address: ipAddress,
+    visitor_ip: ipAddress,
 
+    /**
+     * Browser information
+     */
     user_agent:
       typeof navigator !== 'undefined'
         ? navigator.userAgent
         : '',
 
-    language:
+    browser_language:
       typeof navigator !== 'undefined'
         ? navigator.language
         : '',
 
+    /**
+     * Screen information
+     */
     screen_width:
       typeof window !== 'undefined'
         ? window.screen.width
-        : '',
+        : null,
 
     screen_height:
       typeof window !== 'undefined'
         ? window.screen.height
-        : '',
+        : null,
 
+    /**
+     * Submission timestamp
+     */
     submitted_at: new Date().toISOString(),
+
+    /**
+     * Website identifier
+     */
+    form_source: WEBSITE_DOMAIN,
   };
 
   try {
-    /**
-     * HighLevel webhook expects a POST request.
-     */
-    await fetch(GHL_WEBHOOK_URL, {
+    console.log(
+      '[HighLevel] Sending webhook payload:',
+      payload,
+    );
+
+    const response = await fetch(GHL_WEBHOOK_URL, {
       method: 'POST',
-      mode: 'no-cors',
+
       headers: {
-        'Content-Type': 'text/plain;charset=UTF-8',
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
+
       body: JSON.stringify(payload),
     });
 
+    /**
+     * Log the actual HTTP status.
+     */
+    console.log(
+      '[HighLevel] Webhook response:',
+      response.status,
+      response.statusText,
+    );
+
+    if (!response.ok) {
+      const responseText = await response
+        .text()
+        .catch(() => '');
+
+      console.error(
+        '[HighLevel] Webhook rejected:',
+        response.status,
+        responseText,
+      );
+
+      return false;
+    }
+
     return true;
   } catch (error) {
-    console.error('HighLevel webhook error:', error);
+    console.error(
+      '[HighLevel] Webhook request failed:',
+      error,
+    );
+
     return false;
   }
 }
@@ -275,19 +374,29 @@ export default function BookingModal({
 
       if (e.key !== 'Tab') return;
 
-      const focusable = panelRef.current?.querySelectorAll<HTMLElement>(
-        'button, input, select, textarea, a[href]',
-      );
+      /**
+       * Keep focus inside the dialog.
+       */
+      const focusable =
+        panelRef.current?.querySelectorAll<HTMLElement>(
+          'button, input, select, textarea, a[href]',
+        );
 
       if (!focusable?.length) return;
 
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
 
-      if (e.shiftKey && document.activeElement === first) {
+      if (
+        e.shiftKey &&
+        document.activeElement === first
+      ) {
         e.preventDefault();
         last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
+      } else if (
+        !e.shiftKey &&
+        document.activeElement === last
+      ) {
         e.preventDefault();
         first.focus();
       }
@@ -302,7 +411,7 @@ export default function BookingModal({
   }, [open, onClose]);
 
   /**
-   * Start clean every time the dialog is reopened.
+   * Start clean each time the dialog is reopened.
    */
   useEffect(() => {
     if (!open) {
@@ -311,9 +420,13 @@ export default function BookingModal({
     }
   }, [open]);
 
-  if (!open || !mounted) return null;
+  if (!open || !mounted) {
+    return null;
+  }
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    event: FormEvent<HTMLFormElement>,
+  ) => {
     event.preventDefault();
 
     const form = new FormData(event.currentTarget);
@@ -321,16 +434,40 @@ export default function BookingModal({
     setError(null);
     setSubmitting(true);
 
-    const name = String(form.get('name') || '');
-    const email = String(form.get('email') || '');
-    const phone = String(form.get('phone') || '');
-    const location = String(form.get('location') || '');
+    /**
+     * Form values
+     */
+    const name = String(
+      form.get('name') || '',
+    ).trim();
 
-    const service =
-      defaultService?.trim() || 'General Consultation';
+    const email = String(
+      form.get('email') || '',
+    ).trim();
+
+    const phone = String(
+      form.get('phone') || '',
+    ).trim();
+
+    const location = String(
+      form.get('location') || '',
+    ).trim();
 
     /**
-     * Current page where the modal was submitted.
+     * Service is not visible in this modal.
+     *
+     * It can still be passed from the button/modal caller.
+     */
+    const service =
+      defaultService?.trim() ||
+      'General Consultation';
+
+    /**
+     * Current page URL.
+     *
+     * Example:
+     *
+     * https://agemanagementmed.com/specials
      */
     const pageUrl =
       typeof window !== 'undefined'
@@ -338,7 +475,7 @@ export default function BookingModal({
         : `https://${WEBSITE_DOMAIN}`;
 
     /**
-     * Previous page/referrer.
+     * Referrer.
      */
     const referrer =
       typeof document !== 'undefined'
@@ -351,23 +488,34 @@ export default function BookingModal({
     const ipAddress = await getVisitorIp();
 
     /**
-     * Existing appointment submission.
+     * ---------------------------------------------------------
+     * EXISTING APPOINTMENT SUBMISSION
+     * ---------------------------------------------------------
      *
-     * This is kept exactly as part of the existing flow.
+     * This keeps your original appointment system working.
      */
     const data = new FormData();
 
     data.append('name', name);
     data.append('email', email);
     data.append('phone', phone);
+
     data.append('service', service);
 
-    data.append('message', `Location: ${location}`);
+    data.append(
+      'message',
+      `Location: ${location}`,
+    );
 
-    const result = await bookAppointment(null, data);
+    const result = await bookAppointment(
+      null,
+      data,
+    );
 
     /**
-     * Send lead to HighLevel.
+     * ---------------------------------------------------------
+     * HIGHLEVEL WEBHOOK
+     * ---------------------------------------------------------
      */
     const ghlResult = await sendToHighLevel({
       name,
@@ -383,17 +531,21 @@ export default function BookingModal({
     setSubmitting(false);
 
     /**
-     * Existing appointment result controls the UI.
-     *
-     * If HighLevel fails, the existing appointment submission
-     * is not considered failed.
+     * Existing appointment result determines the
+     * success/error UI.
      */
     if (result.success) {
       setSent(true);
 
       if (!ghlResult) {
+        /**
+         * Do not show an error to the user because the
+         * existing appointment was successfully submitted.
+         *
+         * But log it for developer debugging.
+         */
         console.warn(
-          'Appointment submitted successfully, but the HighLevel webhook request failed.',
+          '[BookingModal] Appointment succeeded, but HighLevel webhook failed.',
         );
       }
     } else {
@@ -402,8 +554,11 @@ export default function BookingModal({
   };
 
   /**
-   * Portalled to <body>: hero/reveal ancestors carry a CSS transform,
-   * which would otherwise become the containing block for this fixed overlay.
+   * Portalled to <body>.
+   *
+   * Hero/reveal ancestors may carry CSS transforms, which
+   * would otherwise become the containing block for this
+   * fixed overlay.
    */
   return createPortal(
     <div
@@ -441,14 +596,15 @@ export default function BookingModal({
         {sent ? (
           <div className="mt-6 text-center">
             <p className="text-[16px] leading-[1.8] text-white">
-              Thank you — your request has been received. Our team will contact
-              you shortly to confirm your appointment.
+              Thank you — your request has been received.
+              Our team will contact you shortly to confirm
+              your appointment.
             </p>
 
             <button
               type="button"
               onClick={onClose}
-              className="mt-6 w-full rounded-full bg-[#519B99] px-8 py-3 font-sans text-[14px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-[#458785] sm:py-4"
+              className="mt-6 w-full rounded-full bg-[#519B99] px-8 py-3 sm:py-4 font-sans text-[14px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-[#458785]"
             >
               Close
             </button>
@@ -485,7 +641,9 @@ export default function BookingModal({
                 options={LOCATIONS}
                 defaultValue={
                   defaultLocation
-                    ? LOCATION_LABELS[defaultLocation]
+                    ? LOCATION_LABELS[
+                        defaultLocation
+                      ]
                     : undefined
                 }
               />
@@ -505,7 +663,9 @@ export default function BookingModal({
               disabled={submitting}
               className="!mt-3 w-full rounded-full bg-[#519B99] px-8 py-2.5 font-sans text-[13px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-[#458785] disabled:opacity-60 sm:!mt-4 sm:py-3.5 sm:text-[15px]"
             >
-              {submitting ? 'Sending…' : 'Submit'}
+              {submitting
+                ? 'Sending…'
+                : 'Submit'}
             </button>
           </form>
         )}
@@ -513,17 +673,22 @@ export default function BookingModal({
         <hr className="mt-8 border-white/25" />
 
         <p className="mt-4 font-sans text-[10px] uppercase leading-[1.10] tracking-[0.01em] text-white/70">
-          By completing and submitting this form, I hereby provide explicit
-          written consent to receive communications through text messages and
-          phone calls, including those to wireless numbers or numbers
-          registered on an internal do not call registry. I acknowledge that
-          these communications may be initiated through telephone calls,
-          prerecorded voicemails, or postal mail, and may pertain to marketing
-          services. I understand that such communications might involve
-          automated software. Additionally, I affirm my understanding and
-          acceptance of the privacy policy and terms and conditions. I am aware
-          that I can opt out of these communications at any time by replying
-          with &ldquo;stop&rdquo;. Standard message and data rates may apply.
+          By completing and submitting this form, I
+          hereby provide explicit written consent to
+          receive communications through text messages
+          and phone calls, including those to wireless
+          numbers or numbers registered on an internal
+          do not call registry. I acknowledge that these
+          communications may be initiated through
+          telephone calls, prerecorded voicemails, or
+          postal mail, and may pertain to marketing
+          services. I understand that such communications
+          might involve automated software. Additionally,
+          I affirm my understanding and acceptance of the
+          privacy policy and terms and conditions. I am
+          aware that I can opt out of these communications
+          at any time by replying with &ldquo;stop&rdquo;.
+          Standard message and data rates may apply.
         </p>
       </div>
     </div>,
