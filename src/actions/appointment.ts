@@ -68,10 +68,105 @@ export async function bookAppointment(
       },
     })
 
+    // Best-effort — a GHL outage or webhook error must never fail the
+    // appointment itself, since it's already saved above. Only fields the
+    // browser actually appended (pageUrl, referrer, ipAddress, userAgent,
+    // etc. — all values only `window`/`navigator`/`document` can read) go
+    // through; anything missing (e.g. a call site that doesn't collect them)
+    // is just omitted from the GHL payload rather than failing.
+    await sendToGoHighLevel({
+      name: parsed.data.name,
+      email: parsed.data.email,
+      phone: parsed.data.phone ?? null,
+      service: parsed.data.service ?? null,
+      location: formData.get('location') as string | null,
+      pageUrl: formData.get('pageUrl') as string | null,
+      referrer: formData.get('referrer') as string | null,
+      ipAddress: formData.get('ipAddress') as string | null,
+      userAgent: formData.get('userAgent') as string | null,
+      browserLanguage: formData.get('browserLanguage') as string | null,
+      screenWidth: formData.get('screenWidth') as string | null,
+      screenHeight: formData.get('screenHeight') as string | null,
+    }).catch((error) => {
+      console.error('GoHighLevel booking webhook failed:', error)
+    })
+
     return { success: true, data: { id: appointment.id } }
   } catch (error) {
     console.error('Book appointment error:', error)
     return { success: false, error: 'Failed to book appointment' }
+  }
+}
+
+/**
+ * Forwards a new appointment request to the GoHighLevel inbound webhook.
+ *
+ * Runs server-side (this file is `'use server'`) — the POST used to live in
+ * `BookingModal.tsx` (a client component) as `sendToHighLevel()`, where the
+ * browser's own CORS restrictions silently dropped it: leadconnectorhq.com
+ * doesn't return `Access-Control-Allow-Origin` for cross-origin browser
+ * requests, so the webhook looked valid but never actually delivered data
+ * from a real visitor's browser.
+ */
+async function sendToGoHighLevel(data: {
+  name: string
+  email: string
+  phone: string | null
+  service: string | null
+  location: string | null
+  pageUrl: string | null
+  referrer: string | null
+  ipAddress: string | null
+  userAgent: string | null
+  browserLanguage: string | null
+  screenWidth: string | null
+  screenHeight: string | null
+}) {
+  const webhookUrl = process.env.GHL_BOOKING_WEBHOOK_URL
+  if (!webhookUrl) {
+    console.error('GHL_BOOKING_WEBHOOK_URL is not configured')
+    return
+  }
+
+  const payload = {
+    name: data.name,
+    full_name: data.name,
+    email: data.email,
+    phone: data.phone ?? '',
+    location: data.location ?? '',
+    service: data.service ?? '',
+    website: 'Age Management',
+    website_name: 'Age Management',
+    website_domain: 'agemanagementmed.com',
+    source: 'Age Management Website',
+    lead_source: 'Website Booking Modal',
+    source_type: 'booking_modal',
+    form_name: 'Book Appointment',
+    form_type: 'appointment_request',
+    page_url: data.pageUrl ?? '',
+    landing_page_url: data.pageUrl ?? '',
+    current_page_url: data.pageUrl ?? '',
+    referrer_url: data.referrer ?? '',
+    referrer: data.referrer ?? '',
+    ip_address: data.ipAddress ?? '',
+    visitor_ip: data.ipAddress ?? '',
+    user_agent: data.userAgent ?? '',
+    browser_language: data.browserLanguage ?? '',
+    screen_width: data.screenWidth ? Number(data.screenWidth) : null,
+    screen_height: data.screenHeight ? Number(data.screenHeight) : null,
+    submitted_at: new Date().toISOString(),
+    form_source: 'agemanagementmed.com',
+    tag: 'website-leads',
+  }
+
+  const response = await fetch(webhookUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(payload),
+  })
+
+  if (!response.ok) {
+    console.error('GoHighLevel booking webhook rejected:', response.status, await response.text())
   }
 }
 

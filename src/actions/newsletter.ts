@@ -46,10 +46,49 @@ export async function subscribeNewsletter(
 
     const subscriber = await prisma.newsletterSubscriber.create({ data: parsed.data })
 
+    // Best-effort — a GHL outage or webhook error must never fail the
+    // subscription itself, since the subscriber is already saved above.
+    await sendToGoHighLevel(parsed.data).catch((error) => {
+      console.error('GoHighLevel newsletter webhook failed:', error)
+    })
+
     return { success: true, data: { id: subscriber.id } }
   } catch (error) {
     console.error('Subscribe newsletter error:', error)
     return { success: false, error: 'Failed to subscribe. Please try again.' }
+  }
+}
+
+/**
+ * Forwards a new subscriber to the GoHighLevel inbound webhook.
+ *
+ * Runs server-side (this file is `'use server'`) — the same POST used to
+ * live in `NewsletterForm.tsx` (a client component), where the browser's own
+ * CORS restrictions silently dropped it: leadconnectorhq.com doesn't return
+ * `Access-Control-Allow-Origin` for cross-origin browser requests, so the
+ * request looked fine locally/via curl but never actually reached GHL from a
+ * real visitor's browser.
+ */
+async function sendToGoHighLevel(data: { firstName: string; lastName: string; email: string }) {
+  const webhookUrl = process.env.GHL_NEWSLETTER_WEBHOOK_URL
+  if (!webhookUrl) {
+    console.error('GHL_NEWSLETTER_WEBHOOK_URL is not configured')
+    return
+  }
+
+  const response = await fetch(webhookUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      first_name: data.firstName,
+      last_name: data.lastName,
+      email: data.email,
+      source: 'Age Management Website',
+    }),
+  })
+
+  if (!response.ok) {
+    console.error('GoHighLevel newsletter webhook rejected:', response.status, await response.text())
   }
 }
 

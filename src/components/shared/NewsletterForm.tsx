@@ -25,9 +25,6 @@ const darkInputClass =
 
 const darkLabelClass = 'text-canvas-50/80'
 
-const GOHIGHLEVEL_WEBHOOK_URL =
-  'https://services.leadconnectorhq.com/hooks/TCgWNSOqArBjmBL22qrU/webhook-trigger/04d68c44-13f8-4210-8a2a-93ebf04f5a85'
-
 export function NewsletterForm() {
   const {
     register,
@@ -63,50 +60,17 @@ export function NewsletterForm() {
       noValidate
       onSubmit={handleSubmit(async (data) => {
         try {
-          // Existing newsletter submission
           const formData = new FormData()
 
           formData.append('firstName', data.firstName)
           formData.append('lastName', data.lastName)
           formData.append('email', data.email)
 
+          // Also forwards to GoHighLevel server-side — see subscribeNewsletter.
           const res = await subscribeNewsletter(null, formData)
 
-          if (!res.success) {
-            setResult(res)
-            return
-          }
-
-          // Send subscriber data to GoHighLevel
-          const ghlPayload = {
-            first_name: data.firstName,
-            last_name: data.lastName,
-            email: data.email,
-            source: 'Age Management Website'
-          }
-
-          const ghlResponse = await fetch(GOHIGHLEVEL_WEBHOOK_URL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-            },
-            body: JSON.stringify(ghlPayload),
-          })
-
-          if (!ghlResponse.ok) {
-            console.error(
-              'GoHighLevel webhook failed:',
-              ghlResponse.status,
-              await ghlResponse.text(),
-            )
-
-            // The newsletter was successfully saved, so we don't
-            // show the user a newsletter failure.
-          }
-
           setResult(res)
-          reset()
+          if (res.success) reset()
         } catch (error) {
           console.error('Newsletter submission error:', error)
 
