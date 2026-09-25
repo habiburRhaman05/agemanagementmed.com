@@ -26,7 +26,7 @@ const darkInputClass =
 const darkLabelClass = 'text-canvas-50/80'
 
 const GOHIGHLEVEL_WEBHOOK_URL =
-  'https://services.leadconnectorhq.com/hooks/TCgWNSOqArBjmBL22qrU/webhook-trigger/04d68c44-13f8-4210-8a2a-93eb04f5a85'
+  'https://services.leadconnectorhq.com/hooks/TCgWNSOqArBjmBL22qrU/webhook-trigger/04d68c44-13f8-4210-8a2a-93ebf04f5a85'
 
 export function NewsletterForm() {
   const {
@@ -82,7 +82,7 @@ export function NewsletterForm() {
             first_name: data.firstName,
             last_name: data.lastName,
             email: data.email,
-            source: 'Age Management Website',
+            source: 'Age Management Website'
           }
 
           const ghlResponse = await fetch(GOHIGHLEVEL_WEBHOOK_URL, {
