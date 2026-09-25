@@ -10,8 +10,15 @@ import { bookAppointment } from '@/actions/appointment';
 const LOCATIONS = ['Pooler / Savannah', 'Statesboro'];
 
 /**
+ * HighLevel Inbound Webhook
+ */
+const GHL_WEBHOOK_URL =
+  'https://services.leadconnectorhq.com/hooks/TCgWNSOqArBjmBL22qrU/webhook-trigger/92b8b77f-2205-41e5-b434-459a7829b9d0';
+
+/**
  * Website information
  */
+const WEBSITE_NAME = 'Age Management';
 const WEBSITE_DOMAIN = 'agemanagementmed.com';
 
 /**
@@ -157,6 +164,176 @@ async function getVisitorIp(): Promise<string> {
     console.warn('Unable to determine visitor IP:', error);
 
     return 'Unavailable';
+  }
+}
+
+/**
+ * Send the submitted lead to HighLevel.
+ *
+ * HighLevel Inbound Webhook expects a JSON object.
+ */
+async function sendToHighLevel({
+  name,
+  email,
+  phone,
+  location,
+  service,
+  pageUrl,
+  referrer,
+  ipAddress,
+}: {
+  name: string;
+  email: string;
+  phone: string;
+  location: string;
+  service: string;
+  pageUrl: string;
+  referrer: string;
+  ipAddress: string;
+}): Promise<boolean> {
+  /**
+   * Build a plain JSON object.
+   *
+   * Keep keys simple with no spaces so they can easily be
+   * mapped inside HighLevel.
+   */
+  const payload = {
+    /**
+     * Contact fields
+     */
+    name,
+    full_name: name,
+    email,
+    phone,
+
+    /**
+     * Form fields
+     */
+    location,
+    service,
+
+    /**
+     * Website information
+     */
+    website: WEBSITE_NAME,
+    website_name: WEBSITE_NAME,
+    website_domain: WEBSITE_DOMAIN,
+
+    /**
+     * Lead/source information
+     */
+    source: 'Age Management Website',
+    lead_source: 'Website Booking Modal',
+    source_type: 'booking_modal',
+    form_name: 'Book Appointment',
+    form_type: 'appointment_request',
+
+    /**
+     * Page tracking
+     */
+    page_url: pageUrl,
+    landing_page_url: pageUrl,
+    current_page_url: pageUrl,
+
+    /**
+     * Referrer
+     */
+    referrer_url: referrer,
+    referrer,
+
+    /**
+     * Visitor information
+     */
+    ip_address: ipAddress,
+    visitor_ip: ipAddress,
+
+    /**
+     * Browser information
+     */
+    user_agent:
+      typeof navigator !== 'undefined'
+        ? navigator.userAgent
+        : '',
+
+    browser_language:
+      typeof navigator !== 'undefined'
+        ? navigator.language
+        : '',
+
+    /**
+     * Screen information
+     */
+    screen_width:
+      typeof window !== 'undefined'
+        ? window.screen.width
+        : null,
+
+    screen_height:
+      typeof window !== 'undefined'
+        ? window.screen.height
+        : null,
+
+    /**
+     * Submission timestamp
+     */
+    submitted_at: new Date().toISOString(),
+
+    /**
+     * Website identifier
+     */
+    form_source: WEBSITE_DOMAIN,
+    tag:"website-leads"
+  
+  };
+
+  try {
+    console.log(
+      '[HighLevel] Sending webhook payload:',
+      payload,
+    );
+
+    const response = await fetch(GHL_WEBHOOK_URL, {
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+
+      body: JSON.stringify(payload),
+    });
+
+    /**
+     * Log the actual HTTP status.
+     */
+    console.log(
+      '[HighLevel] Webhook response:',
+      response.status,
+      response.statusText,
+    );
+
+    if (!response.ok) {
+      const responseText = await response
+        .text()
+        .catch(() => '');
+
+      console.error(
+        '[HighLevel] Webhook rejected:',
+        response.status,
+        responseText,
+      );
+
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error(
+      '[HighLevel] Webhook request failed:',
+      error,
+    );
+
+    return false;
   }
 }
 
@@ -313,49 +490,66 @@ export default function BookingModal({
     const ipAddress = await getVisitorIp();
 
     /**
-     * Everything below (name/email/phone/service/location, plus the
-     * browser-only fields ipify/window/navigator/document just collected
-     * above) goes to `bookAppointment`, which saves the appointment AND
-     * forwards to the GoHighLevel webhook — server-side now, not from here.
-     * A direct client-side POST to GHL used to live in this file
-     * (`sendToHighLevel`), but leadconnectorhq.com doesn't return
-     * Access-Control-Allow-Origin for cross-origin browser requests, so it
-     * silently never delivered from a real visitor's browser.
+     * ---------------------------------------------------------
+     * EXISTING APPOINTMENT SUBMISSION
+     * ---------------------------------------------------------
+     *
+     * This keeps your original appointment system working.
      */
     const data = new FormData();
 
     data.append('name', name);
     data.append('email', email);
     data.append('phone', phone);
+
     data.append('service', service);
-    data.append('message', `Location: ${location}`);
-    data.append('location', location);
-    data.append('pageUrl', pageUrl);
-    data.append('referrer', referrer);
-    data.append('ipAddress', ipAddress);
+
     data.append(
-      'userAgent',
-      typeof navigator !== 'undefined' ? navigator.userAgent : '',
-    );
-    data.append(
-      'browserLanguage',
-      typeof navigator !== 'undefined' ? navigator.language : '',
-    );
-    data.append(
-      'screenWidth',
-      typeof window !== 'undefined' ? String(window.screen.width) : '',
-    );
-    data.append(
-      'screenHeight',
-      typeof window !== 'undefined' ? String(window.screen.height) : '',
+      'message',
+      `Location: ${location}`,
     );
 
-    const result = await bookAppointment(null, data);
+    const result = await bookAppointment(
+      null,
+      data,
+    );
+
+    /**
+     * ---------------------------------------------------------
+     * HIGHLEVEL WEBHOOK
+     * ---------------------------------------------------------
+     */
+    const ghlResult = await sendToHighLevel({
+      name,
+      email,
+      phone,
+      location,
+      service,
+      pageUrl,
+      referrer,
+      ipAddress,
+    });
 
     setSubmitting(false);
 
+    /**
+     * Existing appointment result determines the
+     * success/error UI.
+     */
     if (result.success) {
       setSent(true);
+
+      if (!ghlResult) {
+        /**
+         * Do not show an error to the user because the
+         * existing appointment was successfully submitted.
+         *
+         * But log it for developer debugging.
+         */
+        console.warn(
+          '[BookingModal] Appointment succeeded, but HighLevel webhook failed.',
+        );
+      }
     } else {
       setError(result.error);
     }
