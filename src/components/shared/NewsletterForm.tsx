@@ -1,3 +1,4 @@
+
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -21,7 +22,11 @@ type FormValues = z.infer<typeof schema>
 
 const darkInputClass =
   'border-white/20 bg-white/5 text-white placeholder:text-white/40 focus:border-sage-400 focus-visible:outline-sage-400'
+
 const darkLabelClass = 'text-canvas-50/80'
+
+const GOHIGHLEVEL_WEBHOOK_URL =
+  'https://services.leadconnectorhq.com/hooks/TCgWNSOqArBjmBL22qrU/webhook-trigger/04d68c44-13f8-4210-8a2a-93eb04f5a85'
 
 export function NewsletterForm() {
   const {
@@ -29,7 +34,9 @@ export function NewsletterForm() {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<FormValues>({ resolver: zodResolver(schema) })
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
+  })
 
   const [result, setResult] = useState<ActionResult | null>(null)
 
@@ -39,7 +46,11 @@ export function NewsletterForm() {
         <span className="flex size-12 items-center justify-center rounded-full bg-sage-400/15 text-sage-300">
           <CheckCircle2 className="size-6" aria-hidden />
         </span>
-        <h3 className="font-display text-title-md text-white">You&apos;re on the list!</h3>
+
+        <h3 className="font-display text-title-md text-white">
+          You&apos;re on the list!
+        </h3>
+
         <p className="max-w-sm text-body-sm text-canvas-50/70">
           Thanks for joining Savannah&apos;s Wellness Insiders — watch your inbox for updates.
         </p>
@@ -51,14 +62,59 @@ export function NewsletterForm() {
     <form
       noValidate
       onSubmit={handleSubmit(async (data) => {
-        const formData = new FormData()
-        formData.append('firstName', data.firstName)
-        formData.append('lastName', data.lastName)
-        formData.append('email', data.email)
+        try {
+          // Existing newsletter submission
+          const formData = new FormData()
 
-        const res = await subscribeNewsletter(null, formData)
-        setResult(res)
-        if (res.success) reset()
+          formData.append('firstName', data.firstName)
+          formData.append('lastName', data.lastName)
+          formData.append('email', data.email)
+
+          const res = await subscribeNewsletter(null, formData)
+
+          if (!res.success) {
+            setResult(res)
+            return
+          }
+
+          // Send subscriber data to GoHighLevel
+          const ghlPayload = {
+            first_name: data.firstName,
+            last_name: data.lastName,
+            email: data.email,
+            source: 'Age Management Website',
+          }
+
+          const ghlResponse = await fetch(GOHIGHLEVEL_WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify(ghlPayload),
+          })
+
+          if (!ghlResponse.ok) {
+            console.error(
+              'GoHighLevel webhook failed:',
+              ghlResponse.status,
+              await ghlResponse.text(),
+            )
+
+            // The newsletter was successfully saved, so we don't
+            // show the user a newsletter failure.
+          }
+
+          setResult(res)
+          reset()
+        } catch (error) {
+          console.error('Newsletter submission error:', error)
+
+          setResult({
+            success: false,
+            error: 'Something went wrong. Please try again.',
+          })
+        }
       })}
       className="space-y-5"
     >
@@ -74,17 +130,25 @@ export function NewsletterForm() {
           <Label htmlFor="firstName" className={darkLabelClass}>
             First name
           </Label>
+
           <Input
             id="firstName"
             autoComplete="given-name"
             placeholder="First Name"
             className={`mt-2 ${darkInputClass}`}
             aria-invalid={Boolean(errors.firstName)}
-            aria-describedby={errors.firstName ? 'firstName-error' : undefined}
+            aria-describedby={
+              errors.firstName ? 'firstName-error' : undefined
+            }
             {...register('firstName')}
           />
+
           {errors.firstName ? (
-            <p id="firstName-error" role="alert" className="mt-1.5 text-body-sm text-rose-300">
+            <p
+              id="firstName-error"
+              role="alert"
+              className="mt-1.5 text-body-sm text-rose-300"
+            >
               {errors.firstName.message}
             </p>
           ) : null}
@@ -94,17 +158,25 @@ export function NewsletterForm() {
           <Label htmlFor="lastName" className={darkLabelClass}>
             Last name
           </Label>
+
           <Input
             id="lastName"
             autoComplete="family-name"
             placeholder="Last Name"
             className={`mt-2 ${darkInputClass}`}
             aria-invalid={Boolean(errors.lastName)}
-            aria-describedby={errors.lastName ? 'lastName-error' : undefined}
+            aria-describedby={
+              errors.lastName ? 'lastName-error' : undefined
+            }
             {...register('lastName')}
           />
+
           {errors.lastName ? (
-            <p id="lastName-error" role="alert" className="mt-1.5 text-body-sm text-rose-300">
+            <p
+              id="lastName-error"
+              role="alert"
+              className="mt-1.5 text-body-sm text-rose-300"
+            >
               {errors.lastName.message}
             </p>
           ) : null}
@@ -115,6 +187,7 @@ export function NewsletterForm() {
         <Label htmlFor="email" className={darkLabelClass}>
           Email
         </Label>
+
         <Input
           id="email"
           type="email"
@@ -125,14 +198,24 @@ export function NewsletterForm() {
           aria-describedby={errors.email ? 'email-error' : undefined}
           {...register('email')}
         />
+
         {errors.email ? (
-          <p id="email-error" role="alert" className="mt-1.5 text-body-sm text-rose-300">
+          <p
+            id="email-error"
+            role="alert"
+            className="mt-1.5 text-body-sm text-rose-300"
+          >
             {errors.email.message}
           </p>
         ) : null}
       </div>
 
-      <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:w-auto">
+      <Button
+        type="submit"
+        size="lg"
+        disabled={isSubmitting}
+        className="w-full sm:w-auto"
+      >
         {isSubmitting ? 'Joining…' : 'Join today!'}
       </Button>
     </form>
