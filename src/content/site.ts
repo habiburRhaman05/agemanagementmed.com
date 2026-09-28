@@ -33,6 +33,29 @@ export const site = {
     smsConsent:
       'By submitting, I consent to receive calls and text messages from SAMM regarding my inquiry and related services. I agree to the Privacy Policy and Terms. Reply STOP to opt out. Msg/data rates may apply.',
   },
+  /**
+   * Analytics and advertising IDs.
+   *
+   * These are deliberately hardcoded rather than read only from the database.
+   * Reporting was flatlining because the tags were rendered from a DB-backed
+   * `SiteSettings` row behind a 1-hour cache — a missing field, a stale cache
+   * entry or an unreachable database meant the tag simply never reached the
+   * page. The static value here is the guaranteed source of truth: it renders
+   * on every route, and an admin-entered `SiteSettings` value only overrides
+   * it when non-empty. See `components/shared/TrackingScripts.tsx`.
+   */
+  tracking: {
+    /** GA4 measurement ID. */
+    googleAnalyticsId: 'G-5M5JLG845',
+    /**
+     * GTM container ID (`GTM-XXXXXXX`). Empty because no container exists yet —
+     * paste one here and the loader picks it up with no other change. Leaving
+     * it blank renders nothing rather than an invalid tag.
+     */
+    googleTagManagerId: '',
+    /** Meta (Facebook) Pixel ID. */
+    metaPixelId: '1113520899741041',
+  },
 } as const
 
 export const locations: Location[] = [

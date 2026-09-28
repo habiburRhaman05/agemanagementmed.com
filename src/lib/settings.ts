@@ -51,7 +51,15 @@ const FALLBACK: SiteSettingsData = {
 
 export const getSiteSettings = unstable_cache(
   async (): Promise<SiteSettingsData> => {
-    const row = await prisma.siteSettings.findUnique({ where: { id: 'singleton' } })
+    // A database outage used to throw straight out of the root layout and take
+    // every page down with it — analytics tags included. Falling back to the
+    // static defaults keeps the site (and its tracking) rendering instead.
+    const row = await prisma.siteSettings
+      .findUnique({ where: { id: 'singleton' } })
+      .catch((error) => {
+        console.error('[settings] SiteSettings read failed; using static fallbacks:', error)
+        return null
+      })
     if (!row) return FALLBACK
 
     return {

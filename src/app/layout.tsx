@@ -3,7 +3,7 @@ import { Bodoni_Moda, Manrope } from 'next/font/google'
 
 import './globals.css'
 
-import { DeferredTrackers } from '@/components/shared/DeferredTrackers'
+import { TrackingScripts } from '@/components/shared/TrackingScripts'
 import { site } from '@/content/site'
 import { optimizedFaviconUrl } from '@/lib/optimized-image'
 import { getSiteSettings } from '@/lib/settings'
@@ -93,8 +93,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           UI but never actually rendered anywhere — real IDs, zero effect on
           the page, which is why tag-inspector tools found nothing installed.
         */}
-        {/* Loaded on first interaction, not during page load; see DeferredTrackers. */}
-        <DeferredTrackers
+        {/*
+          GA4 + Google Tag Manager + Meta Pixel on every route, eagerly. The
+          IDs are hardcoded in `content/site.ts` (`site.tracking`) so the tags
+          render even when the database is unreachable or a settings field was
+          never filled in — an admin `SiteSettings` value only overrides them
+          when non-empty. See TrackingScripts for why the earlier
+          first-interaction-only loading must not come back.
+        */}
+        <TrackingScripts
           googleAnalyticsId={settings.googleAnalyticsId}
           metaPixelId={settings.metaPixelId}
         />

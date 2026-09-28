@@ -152,12 +152,14 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
   const [bookingState, setBookingState] = useState<ActionResult | null>(null)
 
   /**
-   * Track form submission to GA4 and Meta Pixel before sending data to HighLevel.
-   * This ensures lead events fire even if the tracking scripts are still loading.
+   * Report a confirmed booking as a lead to GA4 and the Meta Pixel.
    *
-   * Issue fixed: Lead tracking was lost because GA4 only loads on first interaction,
-   * but the form submission could complete before GA4 initialized. By queuing events
-   * in dataLayer, they're captured and sent once GA4 finishes loading.
+   * Called only after the server action succeeds, so a submission that fails to
+   * save is no longer counted as a lead.
+   *
+   * GA4 loads eagerly in the root layout and its inline snippet defines global
+   * `gtag` synchronously, so this event queues in `dataLayer` and is delivered
+   * once gtag.js finishes loading rather than being dropped mid-flight.
    */
   const trackLeadEvent = (data: FormValues) => {
     try {
@@ -192,9 +194,6 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
     // Clear any error left over from a previous attempt.
     setBookingState(null)
 
-    // Track the lead event immediately
-    trackLeadEvent(data)
-
     const locationLabel = LOCATION_LABELS[data.location]
     const formData = new FormData()
     formData.append('name', data.name)
@@ -207,6 +206,9 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
 
     const result = await bookAppointment(null, formData)
     if (result.success) {
+      // Fired after the appointment is actually stored — counting on submit
+      // inflated leads with submissions that never reached the database.
+      trackLeadEvent(data)
       router.push('/thank-you')
     } else {
       setBookingState(result)
