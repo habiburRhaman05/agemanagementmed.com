@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { site } from '@/content/site'
+import { trackLead } from '@/lib/analytics'
 import { cn } from '@/lib/utils'
 
 const schema = z.object({
@@ -80,6 +81,7 @@ export function ContactForm({ submitLabel, variant = 'light' }: ContactFormProps
           const result = await bookAppointment(null, formData)
 
           if (result.success) {
+            trackLead({ form: 'contact-form', service: 'General Consultation' })
             // Shows the modal instead of redirecting
             setShowThankYou(true)
           } else {

@@ -16,6 +16,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { site } from '@/content/site'
+import { trackLead } from '@/lib/analytics'
 import { cn } from '@/lib/utils'
 import type { LocationSlug } from '@/types/content'
 
@@ -151,45 +152,6 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
 
   const [bookingState, setBookingState] = useState<ActionResult | null>(null)
 
-  /**
-   * Report a confirmed booking as a lead to GA4 and the Meta Pixel.
-   *
-   * Called only after the server action succeeds, so a submission that fails to
-   * save is no longer counted as a lead.
-   *
-   * GA4 loads eagerly in the root layout and its inline snippet defines global
-   * `gtag` synchronously, so this event queues in `dataLayer` and is delivered
-   * once gtag.js finishes loading rather than being dropped mid-flight.
-   */
-  const trackLeadEvent = (data: FormValues) => {
-    try {
-      // GA4 tracking
-      if (typeof window.gtag !== 'undefined') {
-        window.gtag('event', 'generate_lead', {
-          event_category: 'lead_acquisition',
-          event_label: 'booking_form_submission',
-          value: 1,
-          currency: 'USD',
-          lead_type: 'appointment_request',
-          location: LOCATION_LABELS[data.location],
-        })
-      }
-
-      // Meta Pixel tracking
-      if (typeof window.fbq !== 'undefined') {
-        window.fbq('track', 'Lead', {
-          content_name: 'Consultation Request',
-          content_category: 'booking',
-          value: 1.0,
-          currency: 'USD',
-        })
-      }
-    } catch (error) {
-      console.warn('[Analytics] Failed to track lead event:', error)
-      // Don't fail the form submission if tracking fails
-    }
-  }
-
   const onSubmit = async (data: FormValues) => {
     // Clear any error left over from a previous attempt.
     setBookingState(null)
@@ -208,7 +170,11 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
     if (result.success) {
       // Fired after the appointment is actually stored — counting on submit
       // inflated leads with submissions that never reached the database.
-      trackLeadEvent(data)
+      trackLead({
+        form: 'booking-form',
+        location: data.location,
+        service: `Consultation at ${locationLabel}`,
+      })
       router.push('/thank-you')
     } else {
       setBookingState(result)
@@ -481,13 +447,4 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
       </div>
     </form>
   )
-}
-
-// Extend window types for gtag and fbq
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void
-    fbq?: (...args: any[]) => void
-    dataLayer?: any[]
-  }
 }

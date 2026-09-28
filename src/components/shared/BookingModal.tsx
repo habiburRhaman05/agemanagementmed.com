@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { X } from 'lucide-react';
 
 import { bookAppointment } from '@/actions/appointment';
+import { trackLead } from '@/lib/analytics';
 
 const LOCATIONS = ['Pooler / Savannah', 'Statesboro'];
 
@@ -538,6 +539,18 @@ export default function BookingModal({
      */
     if (result.success) {
       setSent(true);
+
+      /**
+       * Report the lead only once the appointment is actually
+       * stored. `location` here is the modal's display label
+       * ("Pooler / Savannah"), which trackLead passes through
+       * as-is since it isn't a location slug.
+       */
+      trackLead({
+        form: 'booking-modal',
+        location,
+        service,
+      });
 
       if (!ghlResult) {
         /**

@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { FieldError } from '@/components/shared/FieldError'
+import { trackLead } from '@/lib/analytics'
 import type { LocationSlug } from '@/types/content'
 
 const schema = z.object({
@@ -99,6 +100,11 @@ export function BookingForm({
           const result = await bookAppointment(null, formData)
 
           if (result.success) {
+            trackLead({
+              form: 'get-connected-form',
+              location: data.location,
+              service: serviceLabel,
+            })
             setShowThankYou(true)
           } else {
             setBookingState(result)

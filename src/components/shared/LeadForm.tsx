@@ -14,6 +14,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { site } from '@/content/site'
+import { trackLead } from '@/lib/analytics'
 
 const schema = z.object({
   name: z.string().min(2, 'Enter your full name'),
@@ -58,6 +59,7 @@ export function LeadForm() {
         const result = await submitLead(null, formData)
 
         if (result.success) {
+          trackLead({ form: 'lead-form', leadType: 'contact_request' })
           router.push('/thank-you')
         } else {
           setState(result)

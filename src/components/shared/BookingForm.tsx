@@ -14,6 +14,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { site } from '@/content/site'
+import { trackLead } from '@/lib/analytics'
 import type { LocationSlug } from '@/types/content'
 
 const schema = z.object({
@@ -72,6 +73,11 @@ export function BookingForm({ defaultLocation, serviceLabel, submitLabel, varian
         const result = await bookAppointment(null, formData)
 
         if (result.success) {
+          trackLead({
+            form: 'booking-form',
+            location: data.location,
+            service: serviceLabel,
+          })
           router.push('/thank-you')
         } else {
           setBookingState(result)
