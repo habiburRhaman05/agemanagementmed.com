@@ -79,7 +79,6 @@ function FieldError({ id, message }: { id: string; message?: string }) {
   )
 }
 
-/* ── Step label ────────────────────────────────────────────────────────── [...]
 
 function StepLabel({ icon: Icon, children }: { icon: React.ElementType; children: React.ReactNode }) {
   return (
