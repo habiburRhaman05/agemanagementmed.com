@@ -3,7 +3,7 @@
 import { bookAppointment, type ActionResult } from '@/actions/appointment'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { format } from 'date-fns'
-import { AlertCircle, Calendar as CalendarIcon, CheckCircle2, Clock, MapPin, User } from 'lucide-react'
+import { AlertCircle, Calendar as CalendarIcon, Clock, MapPin, User } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -41,8 +41,12 @@ const schema = z.object({
     }
   ),
 
-  date: z.coerce.date({
-    message: "Please select a date",
+  // `z.coerce.date()` widens the *input* type to `unknown`, which made the
+  // resolver incompatible with the form's value type and forced an `as any`
+  // cast on `zodResolver`. The picker already hands us a real Date, so a plain
+  // `z.date()` keeps the schema (and the resolver) fully typed.
+  date: z.date({
+    error: "Please select a date",
   }),
 
   time: z
@@ -59,7 +63,13 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>
 
-/* ── Time slots ────────────────────────────────────────────────────────── [...]
+/** Human-readable clinic names, keyed by the value stored on the appointment. */
+const LOCATION_LABELS: Record<LocationSlug, string> = {
+  'savannah-pooler': 'Savannah/Pooler',
+  statesboro: 'Statesboro',
+}
+
+/* ── Time slots ────────────────────────────────────────────────────────── */
 
 const timeSlots = [
   '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM',
@@ -112,7 +122,7 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
     watch,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
-    resolver: zodResolver(schema as any),
+    resolver: zodResolver(schema),
     defaultValues: { location: defaultLocation ?? 'savannah-pooler' },
   })
 
@@ -149,7 +159,7 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
    * but the form submission could complete before GA4 initialized. By queuing events
    * in dataLayer, they're captured and sent once GA4 finishes loading.
    */
-  const trackLeadEvent = () => {
+  const trackLeadEvent = (data: FormValues) => {
     try {
       // GA4 tracking
       if (typeof window.gtag !== 'undefined') {
@@ -159,7 +169,7 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
           value: 1,
           currency: 'USD',
           lead_type: 'appointment_request',
-          location: watch('location') === 'savannah-pooler' ? 'Savannah/Pooler' : 'Statesboro',
+          location: LOCATION_LABELS[data.location],
         })
       }
 
@@ -172,30 +182,28 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
           currency: 'USD',
         })
       }
-
-      console.log('[Analytics] Lead event tracked:', {
-        name: watch('name'),
-        email: watch('email'),
-        location: watch('location'),
-      })
     } catch (error) {
       console.warn('[Analytics] Failed to track lead event:', error)
       // Don't fail the form submission if tracking fails
     }
   }
 
-  const onSubmit = async () => {
-    // Track the lead event immediately
-    trackLeadEvent()
+  const onSubmit = async (data: FormValues) => {
+    // Clear any error left over from a previous attempt.
+    setBookingState(null)
 
+    // Track the lead event immediately
+    trackLeadEvent(data)
+
+    const locationLabel = LOCATION_LABELS[data.location]
     const formData = new FormData()
-    formData.append('name', watch('name'))
-    formData.append('email', watch('email'))
-    formData.append('phone', watch('phone'))
-    formData.append('service', `Consultation at ${watch('location') === 'savannah-pooler' ? 'Savannah/Pooler' : 'Statesboro'}`)
-    formData.append('preferredDate', watch('date')?.toISOString() || '')
-    formData.append('preferredTime', watch('time'))
-    formData.append('message', `Location: ${watch('location') === 'savannah-pooler' ? 'Savannah/Pooler' : 'Statesboro'}`)
+    formData.append('name', data.name)
+    formData.append('email', data.email)
+    formData.append('phone', data.phone)
+    formData.append('service', `Consultation at ${locationLabel}`)
+    formData.append('preferredDate', data.date.toISOString())
+    formData.append('preferredTime', data.time)
+    formData.append('message', `Location: ${locationLabel}`)
 
     const result = await bookAppointment(null, formData)
     if (result.success) {
@@ -320,7 +328,8 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
                         checked={field.value ?? false}
                         onCheckedChange={field.onChange}
                         aria-invalid={Boolean(errors.consent)}
-                        aria-describedby="consent-text consent-error"
+                        aria-describedby={errors.consent ? 'consent-text consent-error' : 'consent-text'}
+                        ref={field.ref}
                       />
                     )}
                   />
@@ -344,7 +353,7 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
             <div className="space-y-6">
               {/* Date picker */}
               <div>
-                <Label className="flex items-center gap-1.5 mb-2">
+                <Label htmlFor="date-picker" className="flex items-center gap-1.5 mb-2">
                   <CalendarIcon className="size-3.5 text-sage-600" />
                   Select Date <span className="text-rose-600">*</span>
                 </Label>
@@ -356,6 +365,7 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
                       <PopoverTrigger asChild>
                         <button
                           ref={dateButtonRef}
+                          id="date-picker"
                           type="button"
                           className={cn(
                             'flex h-14 w-full items-center gap-3 rounded-xl border px-4 text-body transition-colors duration-200',
@@ -407,7 +417,7 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
                   role="radiogroup"
                   aria-labelledby="time-slot-label"
                   aria-describedby={errors.time ? 'time-error' : undefined}
-                  className="grid grid-cols-3 gap-2 sm:grid-cols-4 focus:outline-none"
+                  className="grid grid-cols-3 gap-2 rounded-xl focus:outline-2 focus:outline-offset-4 focus:outline-sage-600 sm:grid-cols-4"
                 >
                   {timeSlots.map((slot) => (
                     <button
