@@ -24,9 +24,25 @@ const INTERACTION_EVENTS = ['pointerdown', 'touchstart', 'keydown', 'scroll', 'w
  * Tradeoff: a visitor who leaves without ever scrolling, tapping, moving the
  * mouse or pressing a key isn't counted. Nearly every real visit does at
  * least one of those.
+ *
+ * UPDATE (Sept 28): Initialize dataLayer immediately to queue events before
+ * GA4 script loads. This prevents lead events from being lost if form
+ * submission happens before the tracking scripts load on first interaction.
  */
 export function DeferredTrackers({ googleAnalyticsId, metaPixelId }: DeferredTrackersProps) {
   const [interacted, setInteracted] = useState(false)
+
+  // Initialize dataLayer immediately so events can queue before GA4 loads
+  useEffect(() => {
+    if (!window.dataLayer) {
+      window.dataLayer = []
+    }
+    if (typeof window.gtag === 'undefined') {
+      window.gtag = function (...args: any[]) {
+        window.dataLayer?.push(arguments)
+      }
+    }
+  }, [])
 
   useEffect(() => {
     if (interacted || (!googleAnalyticsId && !metaPixelId)) return
@@ -74,4 +90,12 @@ export function DeferredTrackers({ googleAnalyticsId, metaPixelId }: DeferredTra
       ) : null}
     </>
   )
+}
+
+// Extend window types to support gtag
+declare global {
+  interface Window {
+    dataLayer?: any[]
+    gtag?: (...args: any[]) => void
+  }
 }
