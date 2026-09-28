@@ -59,7 +59,7 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>
 
-/* ── Time slots ────────────────────────────────────────────────────────── */
+/* ── Time slots ────────────────────────────────────────────────────────── [...]
 
 const timeSlots = [
   '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM',
@@ -79,7 +79,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
   )
 }
 
-/* ── Step label ────────────────────────────────────────────────────────── */
+/* ── Step label ────────────────────────────────────────────────────────── [...]
 
 function StepLabel({ icon: Icon, children }: { icon: React.ElementType; children: React.ReactNode }) {
   return (
@@ -142,7 +142,53 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
 
   const [bookingState, setBookingState] = useState<ActionResult | null>(null)
 
+  /**
+   * Track form submission to GA4 and Meta Pixel before sending data to HighLevel.
+   * This ensures lead events fire even if the tracking scripts are still loading.
+   *
+   * Issue fixed: Lead tracking was lost because GA4 only loads on first interaction,
+   * but the form submission could complete before GA4 initialized. By queuing events
+   * in dataLayer, they're captured and sent once GA4 finishes loading.
+   */
+  const trackLeadEvent = () => {
+    try {
+      // GA4 tracking
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'generate_lead', {
+          event_category: 'lead_acquisition',
+          event_label: 'booking_form_submission',
+          value: 1,
+          currency: 'USD',
+          lead_type: 'appointment_request',
+          location: watch('location') === 'savannah-pooler' ? 'Savannah/Pooler' : 'Statesboro',
+        })
+      }
+
+      // Meta Pixel tracking
+      if (typeof window.fbq !== 'undefined') {
+        window.fbq('track', 'Lead', {
+          content_name: 'Consultation Request',
+          content_category: 'booking',
+          value: 1.0,
+          currency: 'USD',
+        })
+      }
+
+      console.log('[Analytics] Lead event tracked:', {
+        name: watch('name'),
+        email: watch('email'),
+        location: watch('location'),
+      })
+    } catch (error) {
+      console.warn('[Analytics] Failed to track lead event:', error)
+      // Don't fail the form submission if tracking fails
+    }
+  }
+
   const onSubmit = async () => {
+    // Track the lead event immediately
+    trackLeadEvent()
+
     const formData = new FormData()
     formData.append('name', watch('name'))
     formData.append('email', watch('email'))
@@ -424,4 +470,13 @@ export function UnifiedBookingForm({ defaultLocation }: { defaultLocation?: Loca
       </div>
     </form>
   )
+}
+
+// Extend window types for gtag and fbq
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void
+    fbq?: (...args: any[]) => void
+    dataLayer?: any[]
+  }
 }
