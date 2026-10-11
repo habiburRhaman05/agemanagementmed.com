@@ -1,11 +1,11 @@
 "use client"
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { AnimatePresence, m } from 'framer-motion'
 
-import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
@@ -24,6 +24,48 @@ const LOCATION_TABS: LocationTab[] = [
   { id: 'statesboro', label: 'Statesboro' },
   { id: 'savannah-pooler', label: 'Pooler' },
 ]
+
+/** Same pill shape/style as `BookAppointmentButton`, but a real link that always goes to the card's CTA URL instead of opening the booking modal. */
+function SpecialCta({ special }: { special: Special }) {
+  const href = special.ctaHref || '/book-appointment'
+  const isExternal = /^https?:\/\//i.test(href)
+
+  const className =
+    'group inline-flex h-14 w-full items-center cursor-pointer justify-center gap-3 whitespace-nowrap rounded-full bg-[#427f7d] px-[32px] py-5 font-bold font-sans text-[15px] uppercase tracking-[0.15em] text-white transition-colors duration-300 hover:opacity-90 max-[379px]:gap-2 max-[379px]:px-5 max-[379px]:py-3 max-[379px]:text-[11px] max-[379px]:tracking-[0.06em] mt-6'
+
+  const arrow = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="22"
+      height="12"
+      viewBox="0 0 22 12"
+      fill="none"
+      className="transition-transform duration-300 ease-out group-hover:translate-x-2"
+      aria-hidden
+    >
+      <path
+        d="M1 5.6059C0.585786 5.6059 0.25 5.94168 0.25 6.3559C0.25 6.77011 0.585786 7.1059 1 7.1059V5.6059ZM21.5303 6.88623C21.8232 6.59333 21.8232 6.11846 21.5303 5.82557L16.7574 1.0526C16.4645 0.759702 15.9896 0.759702 15.6967 1.0526C15.4038 1.34549 15.4038 1.82036 15.6967 2.11326L19.9393 6.3559L15.6967 10.5985C15.4038 10.8914 15.4038 11.3663 15.6967 11.6592C15.9896 11.9521 16.4645 11.9521 16.7574 11.6592L21.5303 6.88623ZM1 7.1059H21V5.6059H1V7.1059Z"
+        fill="white"
+      />
+    </svg>
+  )
+
+  if (isExternal) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+        {special.ctaLabel ?? 'Claim'}
+        {arrow}
+      </a>
+    )
+  }
+
+  return (
+    <Link href={href} className={className}>
+      {special.ctaLabel ?? 'Claim'}
+      {arrow}
+    </Link>
+  )
+}
 
 function SpecialCard({ special }: { special: Special }) {
   return (
@@ -45,16 +87,7 @@ function SpecialCard({ special }: { special: Special }) {
         <h3 className="mt-2 font-display text-title-lg text-ink-950">{special.title}</h3>
         <p className="mt-3 flex-1 text-body-sm leading-relaxed text-canvas-600">{special.description}</p>
 
-        <BookAppointmentButton
-          variant="teal"
-          className="mt-6 w-full py-5 text-[15px]"
-          modalTitle={`Claim Wellness Special`}
-
-          defaultLocation={special.locations[0]}
-          defaultService={`Wellness special — ${special.title}`}
-        >
-          {special.ctaLabel ?? 'Claim'}
-        </BookAppointmentButton>
+        <SpecialCta special={special} />
       </div>
     </div>
   )

@@ -10,7 +10,20 @@ export interface Special {
   image: Media
   locations: SpecialLocation[]
   ctaLabel?: string
+  /**
+   * Where the card's CTA goes. Every special card is a plain link now, not a
+   * button that opens the booking modal — an external URL (e.g. a direct
+   * Optimantra scheduling link for one specific service) opens in a new tab;
+   * anything else is treated as an internal path. Defaults to
+   * `/book-appointment` when omitted, so every card always "redirects to the
+   * CTA link" even for offers that don't have their own dedicated page.
+   */
+  ctaHref?: string
 }
+
+/** Shared booking link for all current specials — same Optimantra scheduling page for every card's CTA. */
+const SPECIALS_BOOKING_LINK =
+  'https://www.optimantra.com/optimus/patient/patientaccess/practsNslotsNEW?sid=Ky9kZjNveGZ1VmFOM3hWbXJma1U5UT09&unCryptedSid=1513432673&pid=Skc0Sko0WXBHZm9BZUNLL0VzbTNzdz09&lid=Q3lobDJJcVp0OXBteUpCQ1ovbUVLUT09&addOnSids=&clienttzoffset=240'
 
 /** Copy migrated from the live /specials/ page — real offers, not invented. */
 export const specialsContent = {
@@ -33,14 +46,54 @@ export const specialsContent = {
 
   specials: [
     {
-      id: 'sharing-caring',
-      window: 'April-June:',
-      title: 'Sharing Is Caring!',
+      id: 'cuddle-season-support',
+      window: 'Nov 1 – Dec 31:',
+      title: 'Cuddle Season Support',
       description:
-        'DOUBLE The Referral Rewards! All Patients Who Refer Other Patients Will Receive $100 Instead Of $50 To Their Account, Through The End Of June.',
+        'Book a Sexual Health Consultation and receive 15% off your choice of Laser Vaginal Rejuvenation or Plasma Shots — for men and women.',
       image: {
-        src: '/images/grid-3-img.jpg',
-        alt: 'Sharing Is Caring!',
+        src: '/themes/default/assets/images/specials/Cuddle Season Support.png',
+        alt: 'A couple embracing warmly in bed',
+      },
+      locations: ['savannah-pooler', 'statesboro'],
+      ctaLabel: 'Book a Consultation',
+      ctaHref: SPECIALS_BOOKING_LINK,
+    },
+    {
+      id: 'refresh-and-restore',
+      window: 'Nov 1 – Dec 31:',
+      title: 'Refresh and Restore',
+      description:
+        'Microneedling, a syringe of filler, and 50 units of tox — $1,250 (originally $1,600).',
+      image: {
+        src: '/themes/default/assets/images/specials/Refresh and Restore.png',
+        alt: 'Refresh and Restore holiday special',
+      },
+      locations: ['savannah-pooler', 'statesboro'],
+      ctaLabel: 'Claim',
+    },
+    {
+      id: 'glow-and-smooth',
+      window: 'Nov 1 – Dec 31:',
+      title: 'Glow and Smooth',
+      description:
+        'Photofacial, DiamondGlow, and Laser Hair Removal — $629 (originally $740).',
+      image: {
+        src: '/themes/default/assets/images/specials/Glow and Smooth.png',
+        alt: 'Glow and Smooth holiday special',
+      },
+      locations: ['savannah-pooler', 'statesboro'],
+      ctaLabel: 'Claim',
+    },
+    {
+      id: 'full-hair-by-xtresse',
+      window: 'Nov 1 – Dec 31:',
+      title: 'Full Hair by Xtresse',
+      description:
+        'One in-office Xvie™ treatment, one bottle of FR Concentrate serum, and 3 months of Xtressé Hair Growth Gummies — $1,400 (originally $1,696).',
+      image: {
+        src: '/themes/default/assets/images/specials/Full Hair by Xtresse.png',
+        alt: 'Full Hair by Xtresse holiday special',
       },
       locations: ['savannah-pooler', 'statesboro'],
       ctaLabel: 'Claim',
