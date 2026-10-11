@@ -172,12 +172,15 @@ describe('ProviderPage — article list', () => {
     expect(html).toMatch(/href="https:\/\/magazine\.example\/piece"[^>]*data-external="true"/)
   })
 
-  it('hides the articles section entirely when there is nothing to list', async () => {
+  it('shows an empty state (not a hidden section) when there is nothing to list', async () => {
     const html = await render()
 
+    // The section and its heading always render, so the feature reads as
+    // present-but-empty rather than missing — no cards, but a real message.
+    expect(html).toContain('From Jane')
+    expect(html).toContain('assign Jane as the author on a blog post')
     expect(html).not.toContain('SAMM Blog')
     expect(html).not.toContain('Guest editorial')
-    expect(html).not.toContain('From Jane')
     // The rest of the page still renders.
     expect(html).toContain('First paragraph.')
   })

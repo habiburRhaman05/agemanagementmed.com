@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 
 import { ImageUploader } from '@/components/admin/ImageUploader'
+import { type SocialLink, SocialLinksEditor } from '@/components/admin/SocialLinksEditor'
 import { personFormSchema, type PersonFormValues } from '@/lib/validation/person'
 import { createPerson, updatePerson } from '@/actions/people'
 
@@ -56,6 +57,7 @@ export function PersonForm({ mode, person }: Props) {
   const router = useRouter()
   const [submitError, setSubmitError] = useState('')
   const [autoSlug, setAutoSlug] = useState(!person?.slug)
+  const [socialLinks, setSocialLinks] = useState<SocialLink[]>(person?.socialLinks ?? [])
 
   const {
     register,
@@ -76,7 +78,6 @@ export function PersonForm({ mode, person }: Props) {
       summary: person?.summary ?? '',
       bio: person?.bio?.join('\n\n') ?? '',
       specialties: person?.specialties?.join(', ') ?? '',
-      socialLinks: person?.socialLinks?.map((s) => `${s.platform}: ${s.url}`).join('\n') ?? '',
       externalArticles:
         person?.externalArticles
           ?.map((a) => `${a.title} | ${a.url}${a.publication ? ` | ${a.publication}` : ''}`)
@@ -114,15 +115,7 @@ export function PersonForm({ mode, person }: Props) {
         .split(',')
         .map((s) => s.trim())
         .filter(Boolean),
-      socialLinks: (data.socialLinks ?? '')
-        .split('\n')
-        .map((line) => line.trim())
-        .filter(Boolean)
-        .map((line) => {
-          const [platform, ...rest] = line.split(':')
-          return { platform: platform.trim(), url: rest.join(':').trim() }
-        })
-        .filter((s) => s.platform && s.url),
+      socialLinks,
       externalArticles: (data.externalArticles ?? '')
         .split('\n')
         .map((line) => line.trim())
@@ -256,13 +249,8 @@ export function PersonForm({ mode, person }: Props) {
 
       <div className={cardClass}>
         <h2 className="text-sm font-semibold text-ink-950">Social links (optional)</h2>
-        <p className="text-xs text-gray-500">One per line, as "Platform: URL". Shown on their provider page.</p>
-        <textarea
-          {...register('socialLinks')}
-          rows={3}
-          placeholder={'LinkedIn: https://linkedin.com/in/...\nInstagram: https://instagram.com/...'}
-          className={`${inputClass} font-mono`}
-        />
+        <p className="text-xs text-gray-500">Shown on their provider page.</p>
+        <SocialLinksEditor value={socialLinks} onChange={setSocialLinks} />
       </div>
 
       <div className={cardClass}>

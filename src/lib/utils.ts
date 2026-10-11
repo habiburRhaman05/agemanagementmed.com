@@ -32,3 +32,15 @@ const twMerge = extendTailwindMerge({
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+/**
+ * A URL missing its scheme (e.g. an admin pastes "linkedin.com/in/jane"
+ * instead of "https://linkedin.com/in/jane") is relative, not absolute —
+ * `<a href>` resolves it against the *current* page, silently turning an
+ * external social link into "oursite.com/linkedin.com/in/jane" instead of
+ * actually leaving the site. This guarantees a real external link either way.
+ */
+export function ensureAbsoluteUrl(url: string): string {
+  const trimmed = url.trim()
+  return /^[a-z][a-z0-9+.-]*:/i.test(trimmed) ? trimmed : `https://${trimmed}`
+}

@@ -2,15 +2,16 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/re
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 /**
- * The "Social links" and "Guest editorials" fields are plain textareas whose
- * free text is parsed into the structured `socialLinks` / `externalArticles`
- * JSON on submit (same convention as `bio` and `specialties`). That parser is
- * the only place a typo can silently produce broken data, so it gets the
- * edge-case coverage here: colons inside URLs, blank/whitespace lines, rows
- * missing half of their data, and optional fields left off.
+ * "Social links" is structured state edited via `SocialLinksEditor`'s "Add
+ * link" dialog (a predefined platform dropdown + URL field), not a textarea
+ * — covered here are adding, removing, and the custom "Other" platform path.
+ * "Guest editorials" is still a plain textarea whose free text is parsed
+ * into `externalArticles` on submit (same convention as `bio`/`specialties`),
+ * so it keeps its parser edge-case coverage: blank lines, rows missing half
+ * their data, optional fields left off.
  *
  * The form is exercised through the real react-hook-form + zod pipeline and
- * the mocked server action, so this also proves the parsed shape actually
+ * the mocked server action, so this also proves the submitted shape actually
  * reaches the action payload.
  */
 const { createPersonMock, updatePersonMock, pushMock, refreshMock, toastMock } = vi.hoisted(() => ({
@@ -88,12 +89,11 @@ afterEach(() => {
 })
 
 describe('PersonForm — defaults round-trip', () => {
-  it('renders stored social links and guest editorials into the textareas', () => {
+  it('renders the stored social link in the list, and guest editorials into the textarea', () => {
     const { container } = render(<PersonForm mode="edit" person={PERSON} />)
 
-    expect(textarea(container, 'socialLinks').value).toBe(
-      'LinkedIn: https://www.linkedin.com/in/jane-doe',
-    )
+    expect(screen.getByText('LinkedIn')).toBeInTheDocument()
+    expect(screen.getByText('https://www.linkedin.com/in/jane-doe')).toBeInTheDocument()
     expect(textarea(container, 'externalArticles').value).toBe(
       'Feature | https://magazine.example/x | Savannah Magazine',
     )
@@ -126,62 +126,67 @@ describe('PersonForm — defaults round-trip', () => {
     expect(textarea(container, 'externalArticles').value).toBe('Bare | https://example.com/bare')
   })
 
-  it('renders empty textareas when the person has no social links or articles', () => {
+  it('shows the empty-state message and an empty guest-editorials textarea when the person has neither', () => {
     const { container } = render(
       <PersonForm mode="edit" person={{ ...PERSON, socialLinks: null, externalArticles: null }} />,
     )
 
-    expect(textarea(container, 'socialLinks').value).toBe('')
+    expect(screen.getByText('No social links added yet.')).toBeInTheDocument()
     expect(textarea(container, 'externalArticles').value).toBe('')
   })
 })
 
-describe('PersonForm — social links parsing', () => {
-  async function submitSocialLinks(value: string) {
+describe('PersonForm — social links dialog', () => {
+  it('adds a link via the dialog and includes it alongside the existing one on submit', async () => {
     const rendered = render(<PersonForm mode="edit" person={PERSON} />)
-    fireEvent.change(textarea(rendered.container, 'socialLinks'), { target: { value } })
+
+    fireEvent.click(screen.getByRole('button', { name: /add link/i }))
+    fireEvent.change(screen.getByLabelText('Platform'), { target: { value: 'Instagram' } })
+    fireEvent.change(screen.getByLabelText('Link'), { target: { value: 'https://instagram.com/jane' } })
+    fireEvent.click(screen.getByRole('button', { name: /^add$/i }))
+
+    // Dialog closes and the new link shows up in the list immediately.
+    expect(screen.getByText('Instagram')).toBeInTheDocument()
+    expect(screen.getByText('https://instagram.com/jane')).toBeInTheDocument()
+
     const payload = await submit(rendered)
-    return payload.socialLinks
-  }
-
-  it('parses multiple lines, trims whitespace and drops blank lines', async () => {
-    const links = await submitSocialLinks(
-      '  LinkedIn:  https://a.example  \n\n   \nInstagram: https://b.example\n',
-    )
-
-    expect(links).toEqual([
-      { platform: 'LinkedIn', url: 'https://a.example' },
-      { platform: 'Instagram', url: 'https://b.example' },
+    expect(payload.socialLinks).toEqual([
+      { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/jane-doe' },
+      { platform: 'Instagram', url: 'https://instagram.com/jane' },
     ])
   })
 
-  it('keeps colons that are part of the URL (scheme, port, query)', async () => {
-    const links = await submitSocialLinks('Website: https://example.com:8443/path?q=1&x=2')
+  it('supports a custom platform via "Other"', async () => {
+    const rendered = render(<PersonForm mode="edit" person={{ ...PERSON, socialLinks: [] }} />)
 
-    expect(links).toEqual([{ platform: 'Website', url: 'https://example.com:8443/path?q=1&x=2' }])
+    fireEvent.click(screen.getByRole('button', { name: /add link/i }))
+    fireEvent.change(screen.getByLabelText('Platform'), { target: { value: 'Other' } })
+    fireEvent.change(screen.getByLabelText('Platform name'), { target: { value: 'Vagaro' } })
+    fireEvent.change(screen.getByLabelText('Link'), { target: { value: 'https://vagaro.com/jane' } })
+    fireEvent.click(screen.getByRole('button', { name: /^add$/i }))
+
+    const payload = await submit(rendered)
+    expect(payload.socialLinks).toEqual([{ platform: 'Vagaro', url: 'https://vagaro.com/jane' }])
   })
 
-  it('drops a line with no colon at all', async () => {
-    expect(await submitSocialLinks('JustSomeText')).toEqual([])
+  it('removes an existing link via its remove button', async () => {
+    const rendered = render(<PersonForm mode="edit" person={PERSON} />)
+
+    fireEvent.click(screen.getByRole('button', { name: /remove linkedin link/i }))
+    expect(screen.getByText('No social links added yet.')).toBeInTheDocument()
+
+    const payload = await submit(rendered)
+    expect(payload.socialLinks).toEqual([])
   })
 
-  it('drops a line whose URL is empty', async () => {
-    expect(await submitSocialLinks('LinkedIn:')).toEqual([])
-  })
+  it('disables the dialog\'s Add button until a URL is entered', () => {
+    render(<PersonForm mode="edit" person={{ ...PERSON, socialLinks: [] }} />)
 
-  it('drops a line whose platform is empty', async () => {
-    expect(await submitSocialLinks(': https://example.com')).toEqual([])
-  })
+    fireEvent.click(screen.getByRole('button', { name: /add link/i }))
+    expect(screen.getByRole('button', { name: /^add$/i })).toBeDisabled()
 
-  it('keeps the valid rows when one row is malformed', async () => {
-    const links = await submitSocialLinks('BadLine\nLinkedIn: https://good.example')
-
-    expect(links).toEqual([{ platform: 'LinkedIn', url: 'https://good.example' }])
-  })
-
-  it('treats an empty textarea as no social links', async () => {
-    expect(await submitSocialLinks('')).toEqual([])
-    expect(await submitSocialLinks('   \n  ')).toEqual([])
+    fireEvent.change(screen.getByLabelText('Link'), { target: { value: 'https://example.com' } })
+    expect(screen.getByRole('button', { name: /^add$/i })).not.toBeDisabled()
   })
 })
 

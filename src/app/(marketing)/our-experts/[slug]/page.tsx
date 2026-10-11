@@ -17,6 +17,7 @@ import { getPostsByPerson } from '@/actions/blog'
 import { getAllPeople, getPersonBySlug } from '@/content/people'
 import { buildBreadcrumbSchema } from '@/lib/breadcrumb-schema'
 import { buildMetadata, buildPersonSchema } from '@/lib/seo'
+import { ensureAbsoluteUrl } from '@/lib/utils'
 import type { ContentSummary } from '@/types/content'
 
 // Belt-and-suspenders fallback on top of the explicit revalidatePath calls
@@ -97,13 +98,17 @@ export default async function ProviderPage({ params }: Props) {
       <PageSchema path={`/our-experts/${person.slug}`} />
       <JsonLd data={buildPersonSchema(person)} />
       <JsonLd data={buildBreadcrumbSchema(breadcrumbs)!} />
-      <Header />
+      <Header overlay />
 
+      {/* Solid navy (same `bg-ink-900` used across the site), not the
+          provider's photo — `tone="dark"` gets the same white-text
+          treatment as a photo background without rendering one. */}
       <HeroCompact
         eyebrow={person.role}
         title={`${person.name}${person.credentials ? `, ${person.credentials}` : ''}`}
         lead={person.summary}
         breadcrumbs={breadcrumbs}
+        tone="dark"
       />
 
       <Section spacing="lg">
@@ -142,7 +147,7 @@ export default async function ProviderPage({ params }: Props) {
                     {person.socialLinks.map((social) => (
                       <a
                         key={social.url}
-                        href={social.url}
+                        href={ensureAbsoluteUrl(social.url)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 rounded-full border border-canvas-300 px-4 py-2 text-body-sm font-medium text-canvas-700 transition-colors hover:border-sage-600 hover:text-sage-700"
@@ -165,22 +170,31 @@ export default async function ProviderPage({ params }: Props) {
         </Container>
       </Section>
 
-      {articles.length ? (
-        <Section background="alt" spacing="lg">
-          <Container>
-            <SectionHeader
-              eyebrow="Articles"
-              title={`From ${person.name.split(' ')[0]}`}
-              lead="SAMM blog posts and published guest editorials."
-            />
+      {/* Always rendered, even with zero articles — this list is populated
+          by assigning the provider to a post in the blog editor, so an
+          empty state here is expected for anyone not yet assigned to one,
+          not a sign the feature is broken or missing. */}
+      <Section background="alt" spacing="lg">
+        <Container>
+          <SectionHeader
+            eyebrow="Articles"
+            title={`From ${person.name.split(' ')[0]}`}
+            lead="SAMM blog posts and published guest editorials."
+          />
+          {articles.length ? (
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {articles.map((article) => (
                 <ContentCard key={article.href} item={article} />
               ))}
             </div>
-          </Container>
-        </Section>
-      ) : null}
+          ) : (
+            <p className="mt-10 text-body text-canvas-600">
+              No articles yet — assign {person.name.split(' ')[0]} as the author on a blog post to see it
+              here automatically.
+            </p>
+          )}
+        </Container>
+      </Section>
 
       <ClosingCTA
         title="Ready to schedule a consultation?"

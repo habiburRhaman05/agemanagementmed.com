@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { locations, organizationSchemaFacts, site } from '@/content/site'
 import { fromPageSeoRow } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
+import { ensureAbsoluteUrl } from '@/lib/utils'
 import type { FaqItem, Person, Seo } from '@/types/content'
 
 /**
@@ -450,7 +451,9 @@ export function buildPersonSchema(person: Person, url?: string) {
     description: person.summary || undefined,
     image: person.portrait?.src || undefined,
     url: url ?? new URL(`/our-experts/${person.slug}`, site.url).toString(),
-    sameAs: person.socialLinks?.length ? person.socialLinks.map((s) => s.url) : undefined,
+    sameAs: person.socialLinks?.length
+      ? person.socialLinks.map((s) => ensureAbsoluteUrl(s.url))
+      : undefined,
     worksFor: {
       '@type': 'MedicalClinic',
       name: site.name,

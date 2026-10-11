@@ -27,6 +27,14 @@ interface HeroCompactProps {
    * dark overlay for contrast; omit to keep the existing light-gradient look.
    */
   backgroundImage?: string
+  /**
+   * `'dark'` gets the same white-text treatment as `backgroundImage` but as
+   * a flat `bg-ink-900` fill instead of a photo — for a page that wants the
+   * dark band without a background image at all. Implied automatically when
+   * `backgroundImage` is set; only needed standalone. Defaults to `'light'`
+   * (the existing pale mesh-gradient look).
+   */
+  tone?: 'light' | 'dark'
 }
 
 export function HeroCompact({
@@ -37,14 +45,16 @@ export function HeroCompact({
   compact,
   align = 'left',
   backgroundImage,
+  tone,
 }: HeroCompactProps) {
   const isCentered = align === 'center'
   const hasPhoto = Boolean(backgroundImage)
+  const isDark = hasPhoto || tone === 'dark'
 
   return (
     <Section
       spacing="none"
-      className={`relative overflow-hidden pt-36 pb-10 lg:pt-44 lg:pb-12 ${hasPhoto ? 'bg-ink-900' : ''}`}
+      className={`relative overflow-hidden pt-36 pb-10 lg:pt-44 lg:pb-12 ${isDark ? 'bg-ink-900' : ''}`}
     >
       {hasPhoto ? (
         <>
@@ -65,7 +75,7 @@ export function HeroCompact({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-ink-900/40 to-ink-900/20" aria-hidden />
         </>
-      ) : (
+      ) : isDark ? null : (
         <div className="absolute inset-0 bg-mesh-warm" aria-hidden />
       )}
       <Container className="relative">
@@ -83,18 +93,18 @@ export function HeroCompact({
               <ol
                 className={`
                   flex flex-wrap items-center gap-1.5 text-body-sm
-                  ${hasPhoto ? 'text-white/75' : 'text-canvas-600'}
+                  ${isDark ? 'text-white/75' : 'text-canvas-600'}
                   ${isCentered ? 'justify-center' : ''}
                 `}
               >
                 {breadcrumbs.map((crumb, i) => (
                   <li key={crumb.href} className="flex items-center gap-1.5">
                     {i > 0 ? (
-                      <ChevronRight className={`size-3.5 ${hasPhoto ? 'text-white/40' : 'text-canvas-300'}`} aria-hidden />
+                      <ChevronRight className={`size-3.5 ${isDark ? 'text-white/40' : 'text-canvas-300'}`} aria-hidden />
                     ) : null}
                     <Link
                       href={crumb.href}
-                      className={`transition-colors ${hasPhoto ? 'hover:text-white' : 'hover:text-sage-700'}`}
+                      className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-sage-700'}`}
                     >
                       {crumb.label}
                     </Link>
@@ -111,14 +121,14 @@ export function HeroCompact({
           ) : null}
 
           <h1
-            className={`${compact ? 'text-display-md' : 'text-display-md lg:text-display-lg'} ${hasPhoto ? 'text-white' : ''}`}
+            className={`${compact ? 'text-display-md' : 'text-display-md lg:text-display-lg'} ${isDark ? 'text-white' : ''}`}
           >
             {title}
           </h1>
 
           {lead ? (
             <p
-              className={`mt-5 text-body-lg ${hasPhoto ? 'text-white/85' : 'text-canvas-600'} ${isCentered ? 'mx-auto max-w-prose' : ''}`}
+              className={`mt-5 text-body-lg ${isDark ? 'text-white/85' : 'text-canvas-600'} ${isCentered ? 'mx-auto max-w-prose' : ''}`}
             >
               {lead}
             </p>
