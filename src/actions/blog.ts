@@ -20,6 +20,7 @@ const PostSchema = z.object({
   featuredImage: z.string().optional().nullable(),
   status: z.enum(['draft', 'published', 'archived']).default('draft'),
   categoryId: z.string().optional().nullable(),
+  personId: z.string().optional().nullable(),
   tagIds: z.array(z.string()).optional().default([]),
   seo: z
     .object({
@@ -79,6 +80,23 @@ function seoForWrite(
     schemaJsonLd:
       seo.schemaJsonLd === null ? Prisma.JsonNull : (seo.schemaJsonLd as Prisma.InputJsonValue | undefined),
   }
+}
+
+/**
+ * A provider's `/our-experts/[slug]` article list is DB-driven (`getPostsByPerson`),
+ * but the page is still subject to the normal page cache — in production that's
+ * `s-maxage=3600` (verified on the live site), not instant. Assigning a post to
+ * a provider in the blog editor should show up on their page right away, not
+ * within the hour, so every write that can change `personId` explicitly
+ * revalidates the affected provider page(s). Takes both the old and new
+ * `personId` so a reassignment (not just a fresh assignment) updates both the
+ * provider who gained the post and the one who lost it.
+ */
+async function revalidateProviderPages(personIds: Array<string | null | undefined>) {
+  const ids = [...new Set(personIds.filter((id): id is string => Boolean(id)))]
+  if (!ids.length) return
+  const people = await prisma.person.findMany({ where: { id: { in: ids } }, select: { slug: true } })
+  for (const person of people) revalidatePath(`/our-experts/${person.slug}`)
 }
 
 function calculateReadingTime(html?: string | null): number {
@@ -178,9 +196,26 @@ export async function getPostBySlug(slug: string) {
       include: {
         category: { select: { name: true, slug: true } },
         author: { select: { name: true } },
+        person: { select: { slug: true, name: true, credentials: true, role: true, portraitSrc: true, portraitAlt: true } },
         tags: { include: { tag: { select: { name: true, slug: true } } } },
         seo: true,
       },
+    }),
+  )
+}
+
+/**
+ * Published posts credited to a provider, newest first — powers the
+ * auto-updating article list on their `/our-experts/[slug]` page. No manual
+ * upkeep: a post shows up here the moment it's assigned to this provider
+ * (and published) in the blog editor, and drops off if unassigned.
+ */
+export async function getPostsByPerson(personId: string) {
+  return withRetry(() =>
+    prisma.post.findMany({
+      where: { personId, status: 'published', deletedAt: null },
+      select: { title: true, slug: true, excerpt: true, featuredImage: true, publishedAt: true },
+      orderBy: { publishedAt: 'desc' },
     }),
   )
 }
@@ -231,6 +266,7 @@ export async function createPost(
 
     revalidatePath('/admin/blog')
     revalidatePath('/blog')
+    await revalidateProviderPages([postData.personId])
 
     return { success: true, data: { id: post.id } }
   } catch (error) {
@@ -266,6 +302,10 @@ export async function updatePost(
 
     const { tagIds, seo, ...postData } = parsed.data
 
+    // Needed only to know which provider page(s) to revalidate below — the
+    // post may be moving from one provider to another, not just gaining one.
+    const previous = await prisma.post.findUnique({ where: { id }, select: { personId: true } })
+
     // Delete existing tags and SEO then recreate
     await prisma.blogTag.deleteMany({ where: { postId: id } })
     if (seo) {
@@ -297,6 +337,7 @@ export async function updatePost(
     revalidatePath('/admin/blog')
     revalidatePath(`/blog/${post.slug}`)
     revalidatePath('/blog')
+    await revalidateProviderPages([previous?.personId, postData.personId])
 
     return { success: true, data: { id: post.id } }
   } catch (error) {
@@ -311,13 +352,17 @@ export async function deletePost(id: string): Promise<ActionResult> {
     if (!admin) return { success: false, error: 'Not authenticated' }
 
     // Soft delete
-    await prisma.post.update({
+    const post = await prisma.post.update({
       where: { id },
       data: { deletedAt: new Date(), status: 'archived' },
+      select: { personId: true },
     })
 
     revalidatePath('/admin/blog')
     revalidatePath('/blog')
+    // Archiving drops the post off the provider's article list without
+    // touching personId, so it needs the same revalidation as a reassignment.
+    await revalidateProviderPages([post.personId])
 
     return { success: true }
   } catch (error) {
@@ -334,16 +379,20 @@ export async function togglePostStatus(
     const admin = await getCurrentAdmin()
     if (!admin) return { success: false, error: 'Not authenticated' }
 
-    await prisma.post.update({
+    const post = await prisma.post.update({
       where: { id },
       data: {
         status,
         publishedAt: status === 'published' ? new Date() : null,
       },
+      select: { personId: true },
     })
 
     revalidatePath('/admin/blog')
     revalidatePath('/blog')
+    // A status change (e.g. published -> draft) adds or drops the post from
+    // the provider's article list without touching personId.
+    await revalidateProviderPages([post.personId])
 
     return { success: true }
   } catch (error) {

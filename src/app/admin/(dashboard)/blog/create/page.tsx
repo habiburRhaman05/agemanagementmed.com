@@ -1,10 +1,12 @@
 import { getCategories, getTags } from '@/actions/blog'
+import { getPeople } from '@/actions/people'
 import { BlogForm } from '@/components/admin/BlogForm'
 
 export default async function CreateBlogPage() {
-  const [categories, tags] = await Promise.all([
+  const [categories, tags, people] = await Promise.all([
     getCategories(),
     getTags(),
+    getPeople(),
   ])
 
   return (
@@ -12,6 +14,7 @@ export default async function CreateBlogPage() {
       mode="create"
       categories={categories}
       tags={tags}
+      people={people}
     />
   )
 }

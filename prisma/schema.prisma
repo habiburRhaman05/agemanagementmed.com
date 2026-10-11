@@ -44,10 +44,17 @@ model Post {
   readingTime   Int?
   categoryId    String?
   authorId      String?
+  /**
+   * The provider shown in the public author box / credited on their `/our-experts/[slug]` page — distinct from `authorId` (the CMS login that wrote it). Optional: existing posts predate this field.
+   */
+  personId      String?
   tags          BlogTag[]
   author        Admin?    @relation(fields: [authorId], references: [id])
   category      Category? @relation(fields: [categoryId], references: [id])
+  person        Person?   @relation(fields: [personId], references: [id])
   seo           PostSeo?
+
+  @@index([personId, status])
 }
 
 model PostSeo {
@@ -189,21 +196,33 @@ model NewsItem {
 }
 
 model Person {
-  id          String   @id @default(cuid())
-  slug        String   @unique
-  name        String
-  credentials String?
-  role        String
-  portraitSrc String
-  portraitAlt String
-  summary     String
-  bio         Json
-  specialties Json?
-  featured    Boolean  @default(false)
-  status      String   @default("published")
-  order       Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  name             String
+  credentials      String?
+  role             String
+  portraitSrc      String
+  portraitAlt      String
+  summary          String
+  bio              Json
+  specialties      Json?
+  featured         Boolean  @default(false)
+  status           String   @default("published")
+  order            Int      @default(0)
+  /**
+   * `[{ platform: "linkedin" | "instagram" | "facebook" | ..., url: string }]` — shown on the provider's `/our-experts/[slug]` page.
+   */
+  socialLinks      Json?
+  /**
+   * Guest editorials / press the provider has written that live outside this
+   * CMS (e.g. a magazine feature) — can't be auto-detected like SAMM blog
+   * posts, so this is the one manually-maintained list on the page.
+   * `[{ title: string, url: string, publication?: string, date?: string }]`.
+   */
+  externalArticles Json?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  posts            Post[]
 
   @@index([status, order])
 }

@@ -22,6 +22,12 @@ interface TagType {
   name: string
 }
 
+interface PersonOption {
+  id: string
+  name: string
+  role: string
+}
+
 interface Props {
   mode: 'create' | 'edit'
   post?: {
@@ -34,6 +40,7 @@ interface Props {
     featuredImage: string | null
     status: string
     categoryId: string | null
+    personId: string | null
     tags: { tag: { id: string; name: string; slug: string } }[]
     seo: {
       metaTitle: string | null
@@ -54,6 +61,7 @@ interface Props {
   }
   categories: CategoryType[]
   tags: TagType[]
+  people: PersonOption[]
 }
 
 function FieldError({ message }: { message?: string }) {
@@ -61,7 +69,7 @@ function FieldError({ message }: { message?: string }) {
   return <p className="mt-1 text-xs text-red-600">{message}</p>
 }
 
-export function BlogForm({ mode, post, categories, tags }: Props) {
+export function BlogForm({ mode, post, categories, tags, people }: Props) {
   const router = useRouter()
   const [autoSlug, setAutoSlug] = useState(!post?.slug)
   const [contentHtml, setContentHtml] = useState(post?.contentHtml || '')
@@ -84,6 +92,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
       featuredImage: post?.featuredImage || '',
       status: (post?.status as BlogFormValues['status']) || 'draft',
       categoryId: post?.categoryId || '',
+      personId: post?.personId || '',
       tagIds: post?.tags.map((t) => t.tag.id) || [],
       seo: {
         metaTitle: post?.seo?.metaTitle || '',
@@ -139,6 +148,7 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
       featuredImage: data.featuredImage || null,
       status: data.status,
       categoryId: data.categoryId || null,
+      personId: data.personId || null,
       tagIds: data.tagIds,
       seo: {
         metaTitle: data.seo.metaTitle || null,
@@ -379,6 +389,31 @@ export function BlogForm({ mode, post, categories, tags }: Props) {
                 {categories.map((cat) => (
                   <option key={cat.id} value={cat.id}>
                     {cat.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Provider — who the public author box credits and links to, separate from the CMS login that published it */}
+            <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_16px_36px_-20px_rgba(15,23,42,0.18)] ring-1 ring-ink-950/[0.06]">
+              <label
+                htmlFor="person"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Provider (author box)
+              </label>
+              <p className="mt-0.5 text-xs text-gray-400">
+                Shown on the public post with their photo, linking to their provider page.
+              </p>
+              <select
+                id="person"
+                {...register('personId')}
+                className="mt-1 block w-full rounded-lg border border-canvas-300 px-3 py-2 text-sm text-ink-950 transition-colors focus:border-sage-600 focus:outline-none focus:ring-2 focus:ring-sage-600/20"
+              >
+                <option value="">No provider assigned</option>
+                {people.map((person) => (
+                  <option key={person.id} value={person.id}>
+                    {person.name} — {person.role}
                   </option>
                 ))}
               </select>

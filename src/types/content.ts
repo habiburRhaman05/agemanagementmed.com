@@ -223,7 +223,20 @@ export interface ClosingCtaData {
 
 export type LocationSlug = 'savannah-pooler' | 'statesboro'
 
+export interface PersonSocialLink {
+  platform: string
+  url: string
+}
+
+export interface PersonExternalArticle {
+  title: string
+  url: string
+  publication?: string
+}
+
 export interface Person {
+  /** DB id — used to look up posts credited to this provider (`getPostsByPerson`). */
+  id: string
   slug: string
   name: string
   credentials?: string
@@ -232,6 +245,8 @@ export interface Person {
   summary: string
   bio: string[]
   specialties?: string[]
+  socialLinks?: PersonSocialLink[]
+  externalArticles?: PersonExternalArticle[]
 }
 
 export interface Testimonial {

@@ -154,7 +154,8 @@ exports.Prisma.PostScalarFieldEnum = {
   deletedAt: 'deletedAt',
   readingTime: 'readingTime',
   categoryId: 'categoryId',
-  authorId: 'authorId'
+  authorId: 'authorId',
+  personId: 'personId'
 };
 
 exports.Prisma.PostSeoScalarFieldEnum = {
@@ -298,6 +299,8 @@ exports.Prisma.PersonScalarFieldEnum = {
   featured: 'featured',
   status: 'status',
   order: 'order',
+  socialLinks: 'socialLinks',
+  externalArticles: 'externalArticles',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

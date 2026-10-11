@@ -33,6 +33,8 @@ interface PersonRecord {
   summary: string
   bio: string[]
   specialties: string[] | null
+  socialLinks: { platform: string; url: string }[] | null
+  externalArticles: { title: string; url: string; publication?: string }[] | null
   featured: boolean
   status: string
   order: number
@@ -74,6 +76,11 @@ export function PersonForm({ mode, person }: Props) {
       summary: person?.summary ?? '',
       bio: person?.bio?.join('\n\n') ?? '',
       specialties: person?.specialties?.join(', ') ?? '',
+      socialLinks: person?.socialLinks?.map((s) => `${s.platform}: ${s.url}`).join('\n') ?? '',
+      externalArticles:
+        person?.externalArticles
+          ?.map((a) => `${a.title} | ${a.url}${a.publication ? ` | ${a.publication}` : ''}`)
+          .join('\n') ?? '',
       featured: person?.featured ?? false,
       status: (person?.status as 'draft' | 'published') ?? 'published',
       order: person?.order ?? 0,
@@ -107,6 +114,24 @@ export function PersonForm({ mode, person }: Props) {
         .split(',')
         .map((s) => s.trim())
         .filter(Boolean),
+      socialLinks: (data.socialLinks ?? '')
+        .split('\n')
+        .map((line) => line.trim())
+        .filter(Boolean)
+        .map((line) => {
+          const [platform, ...rest] = line.split(':')
+          return { platform: platform.trim(), url: rest.join(':').trim() }
+        })
+        .filter((s) => s.platform && s.url),
+      externalArticles: (data.externalArticles ?? '')
+        .split('\n')
+        .map((line) => line.trim())
+        .filter(Boolean)
+        .map((line) => {
+          const [title, url, publication] = line.split('|').map((part) => part.trim())
+          return { title, url, publication: publication || undefined }
+        })
+        .filter((a) => a.title && a.url),
       featured: data.featured,
       status: data.status,
       order: data.order,
@@ -227,6 +252,31 @@ export function PersonForm({ mode, person }: Props) {
         <h2 className="text-sm font-semibold text-ink-950">Specialties (optional)</h2>
         <p className="text-xs text-gray-500">Comma-separated.</p>
         <input {...register('specialties')} placeholder="Bioidentical hormone optimization, Age management medicine" className={inputClass} />
+      </div>
+
+      <div className={cardClass}>
+        <h2 className="text-sm font-semibold text-ink-950">Social links (optional)</h2>
+        <p className="text-xs text-gray-500">One per line, as "Platform: URL". Shown on their provider page.</p>
+        <textarea
+          {...register('socialLinks')}
+          rows={3}
+          placeholder={'LinkedIn: https://linkedin.com/in/...\nInstagram: https://instagram.com/...'}
+          className={`${inputClass} font-mono`}
+        />
+      </div>
+
+      <div className={cardClass}>
+        <h2 className="text-sm font-semibold text-ink-950">Guest editorials (optional)</h2>
+        <p className="text-xs text-gray-500">
+          One per line, as "Title | URL | Publication". Articles published outside this site — SAMM blog
+          posts assigned to this provider are listed automatically and don't need to be added here.
+        </p>
+        <textarea
+          {...register('externalArticles')}
+          rows={3}
+          placeholder="5 Signs It's Time for a Hormone Check | https://... | Savannah Magazine"
+          className={`${inputClass} font-mono`}
+        />
       </div>
 
       <div className={cardClass}>

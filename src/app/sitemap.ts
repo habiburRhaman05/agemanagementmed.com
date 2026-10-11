@@ -32,12 +32,16 @@ const STATIC_ROUTES: Array<{ path: string; changeFrequency: MetadataRoute.Sitema
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = site.url.replace(/\/$/, '')
 
-  const [treatments, posts, seoRows] = await Promise.all([
+  const [treatments, posts, people, seoRows] = await Promise.all([
     getAllTreatments(),
     prisma.post.findMany({
       where: { status: 'published', deletedAt: null },
       select: { slug: true, updatedAt: true },
       orderBy: { updatedAt: 'desc' },
+    }),
+    prisma.person.findMany({
+      where: { status: 'published' },
+      select: { slug: true, updatedAt: true },
     }),
     prisma.pageSeo.findMany({ select: { path: true, robotsMeta: true, sitemapInclude: true } }),
   ])
@@ -78,5 +82,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
-  return [...staticEntries, ...treatmentEntries, ...postEntries]
+  const providerEntries: MetadataRoute.Sitemap = people
+    .filter((person) => !excludedPaths.has(`/our-experts/${person.slug}`))
+    .map((person) => ({
+      url: `${baseUrl}/our-experts/${person.slug}`,
+      lastModified: person.updatedAt,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    }))
+
+  return [...staticEntries, ...treatmentEntries, ...postEntries, ...providerEntries]
 }

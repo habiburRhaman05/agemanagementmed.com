@@ -108,7 +108,10 @@ export function PeopleGrid({
                   {/* Person Row Container */}
                   <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12! lg:gap-[110px]!">
                     {/* Circular Portrait Image */}
-                    <div className="relative w-40 h-40 sm:w-72 sm:h-72 md:w-80 md:h-80 shrink-0 rounded-full overflow-hidden border-2 border-slate-700/50 shadow-2xl bg-slate-800">
+                    <Link
+                      href={`/our-experts/${person.slug}`}
+                      className="relative w-40 h-40 sm:w-72 sm:h-72 md:w-80 md:h-80 shrink-0 rounded-full overflow-hidden border-2 border-slate-700/50 shadow-2xl bg-slate-800"
+                    >
                       {imageSrc ? (
                         <Image
                           src={imageSrc}
@@ -118,7 +121,7 @@ export function PeopleGrid({
                           className="object-cover object-top"
                         />
                       ) : null}
-                    </div>
+                    </Link>
 
                     {/* Text Details */}
                     <div className="flex-1 text-center md:text-left text-white">
@@ -127,10 +130,11 @@ export function PeopleGrid({
                           "font-medium leading-tight text-white mb-1.5 font-display",
                           isCollins ? "text-[32px] md:text-[50px]" : "text-[32px] md:text-[40px]"
                         )}
-                        
                       >
-                        {person.name}
-                        {person.credentials ? `, ${person.credentials}` : ''}
+                        <Link href={`/our-experts/${person.slug}`} className="transition-opacity hover:opacity-80">
+                          {person.name}
+                          {person.credentials ? `, ${person.credentials}` : ''}
+                        </Link>
                       </h3>
 
                       <p className="text-xs sm:text-sm font-bold text-slate-300 tracking-wide uppercase mb-4 sm:mb-6">

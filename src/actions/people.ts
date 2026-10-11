@@ -22,6 +22,16 @@ const PersonSchema = z.object({
   summary: z.string().min(1, 'Summary is required'),
   bio: z.array(z.string()).min(1, 'At least one bio paragraph is required'),
   specialties: z.array(z.string()).default([]),
+  /** Shown on the provider's `/our-experts/[slug]` page. */
+  socialLinks: z.array(z.object({ platform: z.string(), url: z.string() })).default([]),
+  /**
+   * Guest editorials / press published outside this CMS — can't be
+   * auto-detected the way SAMM blog posts are (see `Post.personId`), so
+   * this is the one manually-maintained list on the provider's page.
+   */
+  externalArticles: z
+    .array(z.object({ title: z.string(), url: z.string(), publication: z.string().optional() }))
+    .default([]),
   featured: z.boolean().default(false),
   status: z.enum(['draft', 'published']).default('published'),
   order: z.number().int().default(0),

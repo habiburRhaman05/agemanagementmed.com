@@ -31,6 +31,10 @@ export default async function EditPersonPage({ params }: { params: Promise<{ id:
           summary: row.summary,
           bio: row.bio as string[],
           specialties: row.specialties as string[] | null,
+          socialLinks: row.socialLinks as { platform: string; url: string }[] | null,
+          externalArticles: row.externalArticles as
+            | { title: string; url: string; publication?: string }[]
+            | null,
           featured: row.featured,
           status: row.status,
           order: row.order,

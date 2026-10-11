@@ -2,7 +2,7 @@ import { unstable_cache } from 'next/cache'
 import { cache } from 'react'
 
 import { prisma } from '@/lib/prisma'
-import type { Person } from '@/types/content'
+import type { Person, PersonExternalArticle, PersonSocialLink } from '@/types/content'
 
 /**
  * Providers and staff — now backed by Postgres (`Person` table) instead of a
@@ -16,6 +16,7 @@ import type { Person } from '@/types/content'
  */
 
 interface PersonRow {
+  id: string
   slug: string
   name: string
   credentials: string | null
@@ -25,10 +26,13 @@ interface PersonRow {
   summary: string
   bio: unknown
   specialties: unknown
+  socialLinks?: unknown
+  externalArticles?: unknown
 }
 
 function toPerson(row: PersonRow): Person {
   return {
+    id: row.id,
     slug: row.slug,
     name: row.name,
     credentials: row.credentials ?? undefined,
@@ -37,6 +41,8 @@ function toPerson(row: PersonRow): Person {
     summary: row.summary,
     bio: (row.bio as string[] | null) ?? [],
     specialties: (row.specialties as string[] | null) ?? undefined,
+    socialLinks: (row.socialLinks as PersonSocialLink[] | null) ?? undefined,
+    externalArticles: (row.externalArticles as PersonExternalArticle[] | null) ?? undefined,
   }
 }
 

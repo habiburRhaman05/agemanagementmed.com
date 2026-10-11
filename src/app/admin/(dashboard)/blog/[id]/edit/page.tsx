@@ -1,4 +1,5 @@
 import { getPost, getCategories, getTags } from '@/actions/blog'
+import { getPeople } from '@/actions/people'
 import { notFound } from 'next/navigation'
 import { BlogForm } from '@/components/admin/BlogForm'
 
@@ -8,10 +9,11 @@ interface Props {
 
 export default async function EditBlogPage({ params }: Props) {
   const { id } = await params
-  const [post, categories, tags] = await Promise.all([
+  const [post, categories, tags, people] = await Promise.all([
     getPost(id),
     getCategories(),
     getTags(),
+    getPeople(),
   ])
 
   if (!post) {
@@ -31,11 +33,13 @@ export default async function EditBlogPage({ params }: Props) {
         featuredImage: post.featuredImage,
         status: post.status,
         categoryId: post.categoryId,
+        personId: post.personId,
         tags: post.tags,
         seo: post.seo,
       }}
       categories={categories}
       tags={tags}
+      people={people}
     />
   )
 }

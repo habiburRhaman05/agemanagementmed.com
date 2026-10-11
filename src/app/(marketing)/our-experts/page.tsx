@@ -5,12 +5,11 @@ import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
 import { NewsAndMediaSection } from '@/components/sections/NewsAndMediaSection'
 import { PeopleGrid } from '@/components/sections/PeopleGrid'
-import { JsonLd } from '@/components/seo/JsonLd'
 import { PageSchema } from '@/components/seo/PageSchema'
 import { getNewsItems } from '@/actions/news'
 import { expertsContent } from '@/content/pages/experts'
 import { getAllPeople } from '@/content/people'
-import { buildMetadata, buildPersonSchema, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
+import { buildMetadata, getPageH1, resolveStaticPageSeo } from '@/lib/seo'
 import type { ContentSummary } from '@/types/content'
 import type { VideoThumbnailItem } from '@/components/features/VideoThumbnailGrid'
 import { TransformHealthBanner } from '@/components/sections/TransformHealthBanner'
@@ -52,7 +51,6 @@ export default async function ExpertsPage() {
   // PageSeo.h1 for '/our-experts' — this page never fetched PageSeo before,
   // so an admin setting an H1 override here had zero effect.
   const h1Override = await getPageH1('/our-experts')
-console.log(allNews);
 
   const news: ContentSummary[] = FEATURED_NEWS_LINKS.map(
     ({ match, eyebrow, href, image }): ContentSummary | null => {
@@ -83,9 +81,8 @@ console.log(allNews);
   return (
     <>
       <PageSchema path="/our-experts" />
-      {people.map((person) => (
-        <JsonLd key={person.slug} data={buildPersonSchema(person)} />
-      ))}
+      {/* Each provider's Person schema now lives on their own
+          /our-experts/[slug] page instead of being repeated here. */}
       <Header overlay />
       <HeroEditorial
         {...expertsContent.hero}

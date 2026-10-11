@@ -15,6 +15,11 @@ export const personFormSchema = z.object({
   summary: z.string().min(1, 'Summary is required'),
   bio: z.string().min(1, 'At least one bio paragraph is required'), // textarea, one paragraph per line
   specialties: z.string().optional(), // comma-separated
+  // Both textareas, one entry per line — same "plain text, parsed on submit"
+  // convention as `bio` (one paragraph per line) and `specialties` (comma-
+  // separated) above, rather than a dynamic repeatable-field UI.
+  socialLinks: z.string().optional(), // "Platform: URL" per line
+  externalArticles: z.string().optional(), // "Title | URL | Publication" per line
   featured: z.boolean(),
   status: z.enum(['draft', 'published']),
   order: z.number().int(),

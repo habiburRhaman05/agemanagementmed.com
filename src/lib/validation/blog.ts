@@ -15,6 +15,8 @@ export const blogFormSchema = z.object({
   featuredImage: z.string().optional(),
   status: z.enum(['draft', 'published', 'archived']),
   categoryId: z.string().optional(),
+  /** The provider credited as this post's author on the public site — distinct from who's logged into the CMS. */
+  personId: z.string().optional(),
   tagIds: z.array(z.string()),
   seo: z.object({
     metaTitle: z.string().max(70, 'Meta title must be 70 characters or fewer').optional(),

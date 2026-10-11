@@ -434,8 +434,13 @@ export function buildArticleSchema(post: {
   }
 }
 
-/** Person schema for a provider/staff profile — links back to the practice via `worksFor`. */
-export function buildPersonSchema(person: Person) {
+/**
+ * Person schema for a provider/staff profile — links back to the practice
+ * via `worksFor`. `url` defaults to the provider's own `/our-experts/[slug]`
+ * page now that those exist; pass an override only for a context where that
+ * page genuinely isn't the right URL (there isn't one today).
+ */
+export function buildPersonSchema(person: Person, url?: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -444,7 +449,8 @@ export function buildPersonSchema(person: Person) {
     jobTitle: person.role,
     description: person.summary || undefined,
     image: person.portrait?.src || undefined,
-    url: new URL('/our-experts', site.url).toString(),
+    url: url ?? new URL(`/our-experts/${person.slug}`, site.url).toString(),
+    sameAs: person.socialLinks?.length ? person.socialLinks.map((s) => s.url) : undefined,
     worksFor: {
       '@type': 'MedicalClinic',
       name: site.name,

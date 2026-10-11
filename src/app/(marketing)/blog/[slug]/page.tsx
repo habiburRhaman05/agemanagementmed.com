@@ -167,7 +167,10 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
     ? format(new Date(post.publishedAt), 'MMMM d, yyyy')
     : ''
 
-  const authorName = post.author?.name || 'SAMM Team'
+  // The credited provider (Post.personId) — real name/title/headshot, linked
+  // to their page — wins over `post.author` (the CMS login that published
+  // it, not necessarily who it should be credited to).
+  const authorName = post.person?.name || post.author?.name || 'SAMM Team'
   const processedHtml = post.contentHtml
     ? processArticleHtml(post.contentHtml)
     : ''
@@ -349,16 +352,39 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
               {/* Article footer */}
               <div className="mt-12 border-t border-gray-100 pt-8">
                 <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-                  {/* Author */}
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#519B99] text-sm font-bold text-white">
-                      {authorName.charAt(0)}
+                  {/* Author — the credited provider (real photo, title, linked to
+                      their page) when one's assigned in the blog editor;
+                      otherwise the same generic initial-avatar box as before. */}
+                  {post.person ? (
+                    <Link href={`/our-experts/${post.person.slug}`} className="group flex items-center gap-4">
+                      <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full bg-[#519B99]">
+                        <Image
+                          src={post.person.portraitSrc}
+                          alt={post.person.portraitAlt}
+                          fill
+                          sizes="48px"
+                          className="object-cover object-top"
+                        />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-[#15224c] group-hover:underline">
+                          {post.person.name}
+                          {post.person.credentials ? `, ${post.person.credentials}` : ''}
+                        </p>
+                        <p className="text-xs text-[#15224c]/50">{post.person.role}</p>
+                      </div>
+                    </Link>
+                  ) : (
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#519B99] text-sm font-bold text-white">
+                        {authorName.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-[#15224c]">{authorName}</p>
+                        <p className="text-xs text-[#15224c]/50">Clinical Expert</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm font-semibold text-[#15224c]">{authorName}</p>
-                      <p className="text-xs text-[#15224c]/50">Clinical Expert</p>
-                    </div>
-                  </div>
+                  )}
 
                   {/* Share */}
                   <ShareButton title={post.title} url={canonicalUrl} />
@@ -465,7 +491,7 @@ export default async function BlogPostPage({ params }: Props) {
             image: post.seo?.ogImage || post.featuredImage,
             publishedAt: post.publishedAt,
             updatedAt: post.updatedAt,
-            authorName: post.author?.name,
+            authorName: post.person?.name || post.author?.name,
             href: `/blog/${post.slug}`,
           })}
         />
