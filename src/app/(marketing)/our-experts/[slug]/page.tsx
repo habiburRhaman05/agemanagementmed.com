@@ -178,7 +178,7 @@ export default async function ProviderPage({ params }: Props) {
         <Container>
           <SectionHeader
             eyebrow="Articles"
-            title={`From ${person.name.split(' ')[0]}`}
+            title={`From ${person.name}`}
             lead="SAMM blog posts and published guest editorials."
           />
           {articles.length ? (
