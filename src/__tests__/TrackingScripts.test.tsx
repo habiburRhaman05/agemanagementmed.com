@@ -43,7 +43,7 @@ vi.mock('next/script', () => ({
 describe('resolveTrackingIds', () => {
   it('falls back to the static IDs when nothing is supplied', () => {
     expect(resolveTrackingIds()).toEqual({
-      googleAnalyticsId: 'G-5M5JLG845',
+      googleAnalyticsId: 'G-5M5JLGB845',
       googleTagManagerId: '',
       metaPixelId: '1113520899741041',
     })
@@ -78,8 +78,8 @@ describe('TrackingScripts', () => {
   it('renders GA4, the Meta Pixel and their noscript fallbacks from static IDs', () => {
     const html = renderToStaticMarkup(<TrackingScripts />)
 
-    expect(html).toContain('googletagmanager.com/gtag/js?id=G-5M5JLG845')
-    expect(html).toContain("gtag('config', 'G-5M5JLG845')")
+    expect(html).toContain('googletagmanager.com/gtag/js?id=G-5M5JLGB845')
+    expect(html).toContain("gtag('config', 'G-5M5JLGB845')")
     expect(html).toContain('connect.facebook.net/en_US/fbevents.js')
     expect(html).toContain("fbq('init', '1113520899741041')")
     expect(html).toContain("fbq('track', 'PageView')")
@@ -91,7 +91,7 @@ describe('TrackingScripts', () => {
       <TrackingScripts googleAnalyticsId={null} googleTagManagerId="" metaPixelId={null} />,
     )
 
-    expect(html).toContain('G-5M5JLG845')
+    expect(html).toContain('G-5M5JLGB845')
     expect(html).toContain('1113520899741041')
   })
 
@@ -101,7 +101,7 @@ describe('TrackingScripts', () => {
     )
 
     expect(html).toContain('G-OVERRIDE123')
-    expect(html).not.toContain('G-5M5JLG845')
+    expect(html).not.toContain('G-5M5JLGB845')
     expect(html).toContain('9999999999')
     expect(html).not.toContain('1113520899741041')
   })

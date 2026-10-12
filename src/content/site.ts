@@ -45,8 +45,15 @@ export const site = {
    * it when non-empty. See `components/shared/TrackingScripts.tsx`.
    */
   tracking: {
-    /** GA4 measurement ID. */
-    googleAnalyticsId: 'G-5M5JLG845',
+    /**
+     * GA4 measurement ID. Was 'G-5M5JLG845' — missing the 'B' before '845',
+     * a typo from whenever this was hand-copied in. That ID doesn't exist,
+     * so every `gtag('config', ...)` call since this was hardcoded (see git
+     * blame) sent data to nowhere — GA4 has very likely recorded nothing
+     * for that whole window. Verified correct against the live production
+     * SiteSettings row before fixing, not guessed.
+     */
+    googleAnalyticsId: 'G-5M5JLGB845',
     /**
      * GTM container ID (`GTM-XXXXXXX`). Empty because no container exists yet —
      * paste one here and the loader picks it up with no other change. Leaving

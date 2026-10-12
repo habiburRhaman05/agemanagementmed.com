@@ -86,25 +86,17 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       ) : null}
       <body className="font-sans antialiased">
         {/*
-          `googleAnalyticsId`/`metaPixelId` are structured admin fields, distinct
-          from the raw-HTML `headerScripts`/`footerScripts` fields above (which
-          stay free for GTM containers or any other custom snippet). Until this
-          fix, those two IDs were saved in SiteSettings and shown in the admin
-          UI but never actually rendered anywhere — real IDs, zero effect on
-          the page, which is why tag-inspector tools found nothing installed.
+          GA4 + Google Tag Manager + Meta Pixel on every route, eagerly, from
+          the static IDs hardcoded in `content/site.ts` (`site.tracking`) —
+          no props passed here on purpose. This used to accept a `SiteSettings`
+          override, which meant a tag inspector's result depended on a
+          successful DB read on top of everything else; given that one of
+          those "overrides" turned out to be masking a typo'd static ID for
+          two weeks (see site.ts), the DB is no longer consulted for these at
+          all. See TrackingScripts for why the earlier
+          first-interaction-only loading must not come back either.
         */}
-        {/*
-          GA4 + Google Tag Manager + Meta Pixel on every route, eagerly. The
-          IDs are hardcoded in `content/site.ts` (`site.tracking`) so the tags
-          render even when the database is unreachable or a settings field was
-          never filled in — an admin `SiteSettings` value only overrides them
-          when non-empty. See TrackingScripts for why the earlier
-          first-interaction-only loading must not come back.
-        */}
-        <TrackingScripts
-          googleAnalyticsId={settings.googleAnalyticsId}
-          metaPixelId={settings.metaPixelId}
-        />
+        <TrackingScripts />
 
         {children}
         {settings.footerScripts ? (
