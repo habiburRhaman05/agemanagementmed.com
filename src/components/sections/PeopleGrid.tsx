@@ -10,6 +10,7 @@ import { Eyebrow } from '@/components/shared/Eyebrow'
 import { Button } from '@/components/ui/Button'
 import { bestOfSavannah2026, findAwardHonoree } from '@/content/awards'
 import { cn } from '@/lib/utils'
+import { getPersonPortraitAlt } from '@/lib/person-display'
 import type { Cta, Person } from '@/types/content'
 
 /** "2026 Winner · Hormone Specialist" pills for a provider, from the shared award data. */
@@ -86,18 +87,12 @@ export function PeopleGrid({
           <div className="flex flex-col gap-12 sm:gap-16">
             {people.map((person, index) => {
               const imageSrc = person.portrait?.src || ''
-              const imageAlt = person.portrait?.alt || person.name
+              const imageAlt = getPersonPortraitAlt(person)
               const isCollins = person.name.toLowerCase().includes('collins')
 
               const awardBadges = getAwardBadges(person.name)
-
-              const bioParagraphs = Array.isArray(person.bio)
-                ? person.bio
-                : typeof person.bio === 'string'
-                ? [person.bio]
-                : person.summary
-                ? [person.summary]
-                : []
+              const firstName = person.name.trim().split(/\s+/)[0]
+              const bioLinkName = `${firstName}${firstName.endsWith('s') ? '’' : '’s'}`
 
               return (
                 <div
@@ -151,12 +146,20 @@ export function PeopleGrid({
                         </div>
                       ) : null}
 
-                      {/* Bio Paragraphs */}
-                      <div className="space-y-3.5 text-base text-slate-200/90 font-normal leading-relaxed">
-                        {bioParagraphs.map((paragraph, pIdx) => (
-                          <p key={pIdx}>{paragraph}</p>
-                        ))}
-                      </div>
+                      {/* Short bio summary; the complete bio lives on the provider page. */}
+                      <p className="text-base text-slate-200/90 font-normal leading-relaxed">
+                        {person.summary}
+                      </p>
+
+                      <Button
+                        asChild
+                        size="sm"
+                        className="mt-5 h-auto min-h-10 bg-[#427f7d] px-5 py-2.5 text-sm normal-case text-white shadow-none hover:bg-[#386d6b] hover:shadow-none"
+                      >
+                        <Link href={`/our-experts/${person.slug}`}>
+                          Read {bioLinkName} full bio →
+                        </Link>
+                      </Button>
                     </div>
                   </div>
 

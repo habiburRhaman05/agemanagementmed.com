@@ -14,10 +14,12 @@ import { SectionHeader } from '@/components/shared/SectionHeader'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { PageSchema } from '@/components/seo/PageSchema'
 import { getPostsByPerson } from '@/actions/blog'
+import { bestOfSavannah2026, findAwardHonoree } from '@/content/awards'
 import { getAllPeople, getPersonBySlug } from '@/content/people'
 import { buildBreadcrumbSchema } from '@/lib/breadcrumb-schema'
 import { buildMetadata, buildPersonSchema } from '@/lib/seo'
 import { ensureAbsoluteUrl } from '@/lib/utils'
+import { getPersonPortraitAlt } from '@/lib/person-display'
 import type { ContentSummary } from '@/types/content'
 
 // Belt-and-suspenders fallback on top of the explicit revalidatePath calls
@@ -59,6 +61,7 @@ export default async function ProviderPage({ params }: Props) {
   if (!person) notFound()
 
   const posts = await getPostsByPerson(person.id)
+  const awardHonoree = findAwardHonoree(person.name)
 
   const articles: ContentSummary[] = [
     ...posts.map(
@@ -109,64 +112,95 @@ export default async function ProviderPage({ params }: Props) {
         lead={person.summary}
         breadcrumbs={breadcrumbs}
         tone="dark"
+        media={(
+          <div className="relative mx-auto aspect-square w-full max-w-[420px] overflow-hidden rounded-full border-4 border-white/15 bg-ink-800 shadow-2xl">
+            <Image
+              src={person.portrait.src}
+              alt={getPersonPortraitAlt(person)}
+              fill
+              priority
+              sizes="(min-width: 1024px) 420px, 80vw"
+              className="object-cover object-top"
+            />
+          </div>
+        )}
       />
 
       <Section spacing="lg">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[320px_1fr] lg:gap-16">
-            <div>
-              <div className="relative aspect-square w-full overflow-hidden rounded-[24px] bg-canvas-100">
-                <Image
-                  src={person.portrait.src}
-                  alt={person.portrait.alt}
-                  fill
-                  sizes="(min-width: 1024px) 320px, 100vw"
-                  className="object-cover object-top"
-                />
-              </div>
-
-              {person.specialties?.length ? (
-                <div className="mt-6">
-                  <p className="text-label font-semibold uppercase tracking-wide text-canvas-500">
-                    Specialties
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {person.specialties.map((specialty) => (
-                      <Eyebrow key={specialty} className="normal-case">
-                        {specialty}
-                      </Eyebrow>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
-              {person.socialLinks?.length ? (
-                <div className="mt-6">
-                  <p className="text-label font-semibold uppercase tracking-wide text-canvas-500">Follow</p>
-                  <div className="mt-3 flex flex-wrap gap-3">
-                    {person.socialLinks.map((social) => (
-                      <a
-                        key={social.url}
-                        href={ensureAbsoluteUrl(social.url)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-canvas-300 px-4 py-2 text-body-sm font-medium text-canvas-700 transition-colors hover:border-sage-600 hover:text-sage-700"
-                      >
-                        {social.platform}
-                        <ExternalLink className="size-3.5" aria-hidden />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-            </div>
-
-            <div className="space-y-5 text-body-lg leading-relaxed text-canvas-700">
+          <article className="mx-auto max-w-4xl">
+            <h2 className="text-display-sm text-ink-900">{person.name} Biography</h2>
+            <div className="mt-8 space-y-5 text-body-lg leading-relaxed text-canvas-700">
               {person.bio.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
-          </div>
+
+            {person.specialties?.length ? (
+              <div className="mt-8">
+                <p className="text-label font-semibold uppercase tracking-wide text-canvas-500">
+                  Specialties
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {person.specialties.map((specialty) => (
+                    <Eyebrow key={specialty} className="normal-case">
+                      {specialty}
+                    </Eyebrow>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+
+            {awardHonoree ? (
+              <section aria-labelledby="provider-awards" className="mt-10 border-t border-canvas-300 pt-8">
+                <h3 id="provider-awards" className="font-display text-title-md font-medium text-ink-900">
+                  Awards
+                </h3>
+                <div className="mt-4 flex flex-wrap items-center gap-3 sm:gap-4">
+                  <Image
+                    src={bestOfSavannah2026.seal.src}
+                    alt={bestOfSavannah2026.seal.alt}
+                    width={52}
+                    height={52}
+                    className="size-12 object-contain"
+                  />
+                  <p className="text-body-sm font-medium text-ink-900">
+                    Best of Savannah {bestOfSavannah2026.year}
+                  </p>
+                  {awardHonoree.honors.map((honor) => (
+                    <Eyebrow
+                      key={`${honor.placement}-${honor.category}`}
+                      className="normal-case tracking-[0.12em]"
+                    >
+                      {honor.placement} · {honor.category}
+                    </Eyebrow>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {person.socialLinks?.length ? (
+              <section aria-labelledby="provider-social-links" className="mt-8 border-t border-canvas-300 pt-8">
+                <h3 id="provider-social-links" className="font-display text-title-md font-medium text-ink-900">
+                  Social links
+                </h3>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {person.socialLinks.map((social) => (
+                    <a
+                      key={social.url}
+                      href={ensureAbsoluteUrl(social.url)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-canvas-300 px-4 py-2 text-body-sm font-medium text-canvas-700 transition-colors hover:border-sage-600 hover:text-sage-700"
+                    >
+                      {social.platform}
+                      <ExternalLink className="size-3.5" aria-hidden />
+                    </a>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+          </article>
         </Container>
       </Section>
 

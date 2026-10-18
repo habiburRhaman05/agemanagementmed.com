@@ -37,6 +37,7 @@ interface FooterClientProps {
 export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: FooterClientProps) {
   const phoneHref = toTelHref(phone)
   const emailHref = toMailtoHref(email)
+  const footerSiteName = siteName.replace(/\s*-\s*dev\s*$/i, '')
 
   return (
     <footer className=" bg-white text-ink-900">
@@ -165,7 +166,7 @@ export function FooterClient({ logoUrl, socialLinks, siteName, phone, email }: F
         <div className=" flex items-center flex-col sm:flex-row gap-y-2 justify-between border-t border-canvas-300 py-6 text-center text-[14px] uppercase tracking-wide text-[#111214]">
      <div className='flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5'>
            <span>
-            Copyright &copy; {new Date().getFullYear()} {site.name}
+            Copyright &copy; {new Date().getFullYear()} {footerSiteName || site.name}
           </span>
           <span className="hidden sm:inline" aria-hidden>
             |

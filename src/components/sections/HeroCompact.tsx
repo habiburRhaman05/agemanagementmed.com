@@ -1,6 +1,7 @@
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 
 import { Container } from '@/components/shared/Container'
 import { Eyebrow } from '@/components/shared/Eyebrow'
@@ -35,6 +36,8 @@ interface HeroCompactProps {
    * (the existing pale mesh-gradient look).
    */
   tone?: 'light' | 'dark'
+  /** Optional supporting media rendered beside the hero copy on wide screens. */
+  media?: ReactNode
 }
 
 export function HeroCompact({
@@ -46,6 +49,7 @@ export function HeroCompact({
   align = 'left',
   backgroundImage,
   tone,
+  media,
 }: HeroCompactProps) {
   const isCentered = align === 'center'
   const hasPhoto = Boolean(backgroundImage)
@@ -81,7 +85,13 @@ export function HeroCompact({
       <Container className="relative">
         <div
           className={`
+            ${media ? 'grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.8fr)] lg:gap-16' : ''}
+          `}
+        >
+        <div
+          className={`
             ${isCentered ? 'mx-auto max-w-2xl text-center' : 'max-w-3xl'}
+            ${media ? 'max-w-none' : ''}
           `}
         >
           {breadcrumbs?.length ? (
@@ -133,6 +143,8 @@ export function HeroCompact({
               {lead}
             </p>
           ) : null}
+        </div>
+        {media ? <div className="mx-auto w-full max-w-md lg:max-w-none">{media}</div> : null}
         </div>
       </Container>
     </Section>

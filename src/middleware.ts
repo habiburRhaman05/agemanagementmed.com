@@ -23,6 +23,9 @@ const PATH_REDIRECTS: Record<string, string> = {
   '/bhrt-male': '/bioidentical-hormone-replacement-therapy/male',
   '/bhrt-female': '/bioidentical-hormone-replacement-therapy/female',
   '/platelet-rich-plasma-therapy': '/platelet-rich-plasma-hair',
+  '/sexual-drive-men': '/rejuvenation-enhancement/male',
+  '/sexual-satisfaction-women': '/rejuvenation-enhancement/female',
+  '/sexual-wellness-men': '/rejuvenation-enhancement/male',
 }
 
 export async function middleware(request: NextRequest) {
