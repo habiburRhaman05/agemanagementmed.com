@@ -120,7 +120,7 @@ export default async function ProviderPage({ params }: Props) {
               fill
               priority
               sizes="(min-width: 1024px) 420px, 80vw"
-              className="object-cover object-top"
+              className="-translate-y-[3%] scale-[1.05] object-cover object-top"
             />
           </div>
         )}
