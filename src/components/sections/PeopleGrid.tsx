@@ -123,7 +123,7 @@ export function PeopleGrid({
                       <h3
                         className={cn(
                           "font-medium leading-tight text-white mb-1.5 font-display",
-                          isCollins ? "text-[32px] md:text-[50px]" : "text-[32px] md:text-[40px]"
+                          isCollins ? "text-[32px] md:text-[45px]" : "text-[32px] md:text-[40px]"
                         )}
                       >
                         <Link href={`/our-experts/${person.slug}`} className="transition-opacity hover:opacity-80">

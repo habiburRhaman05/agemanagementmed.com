@@ -89,7 +89,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
           'Symptom changes',
           'Lifestyle, training, or health changes',
         ]}
-        closingParagraph="Follow-up cadence and lab intervals will be confirmed with the clinical team prior to publishing final timelines."
+        closingParagraph=""
       />
       <SafetyAndCandidacy
         bg=""
