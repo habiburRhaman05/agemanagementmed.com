@@ -165,7 +165,7 @@ export async function PerimenopauseMenopauseLayout({ treatment }: TreatmentTempl
             icon: causesIcons[3],
             title: 'Low Libido And Sexual Health Changes',
             description:
-              'Reduced hormone levels can affect sexual desire, comfort, arousal, and intimacy. Vaginal dryness and discomfort may also become more noticeable during menopause.',
+              'Reduced hormone levels can affect sexual desire, comfort, arousal, and intimacy. Vaginal dryness and discomfort may also become more noticeable during menopause. Learn more about the link between [menopause and sex drive](/blog/menopause-and-libido), including the often-overlooked role of testosterone.',
           },
         ]}
       />

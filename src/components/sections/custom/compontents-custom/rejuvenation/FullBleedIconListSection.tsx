@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { InlineLinks } from '@/lib/inlineLinks'
 import type { ComponentType, SVGProps } from 'react'
 
 import type { Media } from '@/types/content'
@@ -75,7 +76,7 @@ export function FullBleedIconListSection({
 
       {closingParagraphs?.map((paragraph) => (
         <p key={paragraph} className="mt-5 max-w-[60ch] text-[15px] leading-relaxed text-canvas-50/75 sm:text-[16px]">
-          {paragraph}
+          <InlineLinks text={paragraph} />
         </p>
       ))}
 

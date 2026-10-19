@@ -58,7 +58,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
           {
             heading: 'Hormone Replacement Therapy (HRT)',
             paragraph:
-              'An umbrella term referring to the broader approach to hormonal balance that addresses various hormonal needs across different life stages. This approach may or may not be bioidentical.',
+              'An umbrella term referring to the broader approach to hormonal balance that addresses various hormonal needs across different life stages. This approach may or may not be bioidentical. For a side-by-side look at [bioidentical hormones vs hormone replacement](/blog/bioidentical-hormones-pros-and-cons) using non-bioidentical formulations, including benefits and safety considerations, read our guide.',
             image: {
               src: '/themes/default/assets/images/photo-content-22-img_t5x05r.jpg',
               alt: 'A woman reviewing paperwork at home',
@@ -68,7 +68,7 @@ export async function BhrtHrtLayout({ treatment }: TreatmentTemplateProps) {
           {
             heading: 'Testosterone Replacement Therapy (TRT)',
             paragraph:
-              'Testosterone replacement therapy (TRT) is designed for individuals experiencing low testosterone and can significantly improve quality of life. However, for men, a protocol that includes only testosterone is often incomplete, as proper hormone balance typically requires addressing other key hormones as well. Similarly, for women, a hormone optimization plan that excludes testosterone may not fully support overall well-being. A truly effective approach considers the broader hormonal picture to ensure optimal health and symptom relief.',
+              'Testosterone replacement therapy (TRT) is designed for individuals experiencing low testosterone and can significantly improve quality of life. In men, low testosterone is often tied to andropause (sometimes called “[manopause](/blog/andropause-symptoms)”), the gradual hormone decline that comes with age. However, for men, a protocol that includes only testosterone is often incomplete, as proper hormone balance typically requires addressing other key hormones as well. Similarly, for women, a hormone optimization plan that excludes testosterone may not fully support overall well-being. That\'s especially relevant for women asking, “[does menopause affect libido](/blog/menopause-and-libido)?”, since testosterone plays a meaningful role in female desire. A truly effective approach considers the broader hormonal picture to ensure optimal health and symptom relief.',
             image: {
               src: '/themes/default/assets/images/bhrt-therapy-2_a6fw5h.jpg',
               alt: 'A man being active outdoors in the mountains',

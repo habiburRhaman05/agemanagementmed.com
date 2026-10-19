@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import { InlineLinks } from '@/lib/inlineLinks'
 import { cn } from '@/lib/utils'
 import type { FaqItem } from '@/types/content'
 
@@ -114,7 +115,7 @@ export function FAQAccordion({ eyebrow, title, lead, items }: FAQAccordionProps)
                         >
                           <div className="box">
                             <div>
-                              <p>{item.answer}</p>
+                              <p><InlineLinks text={item.answer} /></p>
                             </div>
                           </div>
                         </div>

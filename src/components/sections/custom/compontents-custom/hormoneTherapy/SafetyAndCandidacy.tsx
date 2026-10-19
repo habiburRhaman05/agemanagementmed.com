@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 import { Container } from '@/components/shared/Container'
 import { cn } from '@/lib/utils'
+import { InlineLinks } from '@/lib/inlineLinks'
 import type { Media } from '@/types/content'
 
 export interface SafetyAndCandidacyProps {
@@ -103,7 +104,7 @@ export function SafetyAndCandidacy({
       {/* Closing Paragraph */}
       {closingParagraph ? (
         <p className="text-[16px] text-[#111214] font-normal leading-relaxed mb-4 italic">
-          {closingParagraph}
+          <InlineLinks text={closingParagraph} />
         </p>
       ) : null}
 

@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { HeroEditorial } from '@/components/sections/HeroEditorial'
@@ -40,7 +42,20 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
         primaryCtaLabel='Start Today'
       />
 
-      <SymptomsAndHowItWorks />
+      <SymptomsAndHowItWorks
+        introExtra={
+          <>
+            Both estrogen and testosterone influence{' '}
+            <Link
+              className="text-sage-600 underline underline-offset-2 hover:text-sage-700"
+              href="/blog/menopause-and-libido"
+            >
+              menopause and sexual desire
+            </Link>
+            , which is why low libido is often part of a broader hormone evaluation.
+          </>
+        }
+      />
 
 <div className='pt-12'>
         <PhotoContentPanel
@@ -76,7 +91,14 @@ export async function HormoneTherapyWomenLayout({ treatment }: TreatmentTemplate
           <>
             Patients often ask about breast cancer risk, fertility considerations, and family history factors. These
             concerns are addressed through individualized consultations, risk screening, and evidence-based treatment
-            planning.
+            planning. For an overview of common{' '}
+            <Link
+              className="text-sage-600 underline underline-offset-2 hover:text-sage-700"
+              href="/blog/bioidentical-hormones-pros-and-cons"
+            >
+              side effects of bioidentical hormones
+            </Link>{' '}
+            (including progesterone), who may not be a good candidate, and what newer research says about safety, read our guide.
           </>,
           'BHRT is always prescribed and monitored by licensed medical professionals.',
           <em key="disclaimer">

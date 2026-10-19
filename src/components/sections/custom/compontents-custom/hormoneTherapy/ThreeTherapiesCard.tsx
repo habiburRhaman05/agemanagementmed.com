@@ -8,6 +8,7 @@ import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import type { Media } from '@/types/content'
+import { InlineLinks } from '@/lib/inlineLinks'
 
 export interface TherapyRow {
   image: Media
@@ -48,7 +49,7 @@ export function ThreeTherapiesCard({ title, rows, cta }: ThreeTherapiesCardProps
                 const textBlock = (
                   <div className="flex flex-col justify-center sm:h-full">
                     <h3 className="font-display text-[26px] leading-[42px] sm:text-[38px] text-canvas-50">{row.heading}</h3>
-                    <p className="mt-3 text-body-sm leading-relaxed text-canvas-50/70">{row.paragraph}</p>
+                    <p className="mt-3 text-body-sm leading-relaxed text-canvas-50/70"><InlineLinks text={row.paragraph} /></p>
                   </div>
                 )
 

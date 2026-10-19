@@ -61,6 +61,7 @@ export async function LaserTreatMentLayout({ treatment }: TreatmentTemplateProps
 
       <SymptomsOutcomesGrid
         title="Symptoms Treated by Laser Vaginal Therapy"
+        lead="Vaginal dryness and discomfort are common contributors to low [menopause libido](/blog/menopause-and-libido), since discomfort can make intimacy less appealing even when desire is present."
         items={[
           {
             icon: laserIcons[0],

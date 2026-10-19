@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { locations, organizationSchemaFacts, site } from '@/content/site'
+import { stripInlineLinkSyntax } from '@/lib/inlineLinks'
 import { fromPageSeoRow } from '@/lib/pageSeoAdmin'
 import { prisma } from '@/lib/prisma'
 import { ensureAbsoluteUrl } from '@/lib/utils'
@@ -394,7 +395,7 @@ function parseHoursRange(time: string): { opens: string; closes: string } | Reco
   const to24h = (t?: string) => {
     const match = t?.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i)
     if (!match) return undefined
-    let [, h, m, period] = match
+    const [, h, m, period] = match
     let hour = Number(h)
     if (period.toUpperCase() === 'PM' && hour !== 12) hour += 12
     if (period.toUpperCase() === 'AM' && hour === 12) hour = 0
@@ -472,7 +473,7 @@ export function buildFaqSchema(faqs: FaqItem[] | undefined) {
     mainEntity: faqs.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
-      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      acceptedAnswer: { '@type': 'Answer', text: stripInlineLinkSyntax(faq.answer) },
     })),
   }
 }

@@ -229,7 +229,7 @@ export const treatments: Treatment[] = [
       {
         question: 'What is BHRT?',
         answer:
-          'Bioidentical Hormone Replacement Therapy (BHRT) uses hormones that are chemically identical to the ones your body naturally produces. It is designed to restore balance and relieve symptoms of hormone deficiencies or imbalances, particularly during aging or andropause.',
+          'Bioidentical Hormone Replacement Therapy (BHRT) uses hormones that are chemically identical to the ones your body naturally produces. It is designed to restore balance and relieve symptoms of hormone deficiencies or imbalances, particularly during aging or [andropause](/blog/andropause-symptoms).',
       },
       {
         question: 'What is the difference between BHRT, HRT, and TRT?',
@@ -269,7 +269,7 @@ export const treatments: Treatment[] = [
       {
         question: 'Do you offer pellets?',
         answer:
-          'No. In our experience, pellets are invasive, difficult to manage, and do not evenly deliver hormones.',
+          "No. In our experience, pellets are invasive, difficult to manage, and do not evenly deliver hormones. If you're researching BHRT pellets side effects or comparing delivery methods, our guide to [bioidentical hormones pros and cons](/blog/bioidentical-hormones-pros-and-cons) is a helpful place to start.",
       },
       {
         question: 'Can your office serve as my primary care physician?',
@@ -2256,7 +2256,7 @@ treatmentsPorcess:
       {
         question: 'Is hormone therapy safe?',
         answer:
-          'Hormone therapy may be safe and effective for many women when carefully monitored by a qualified medical provider. Treatment plans should always be personalized based on medical history, symptoms, and labwork.',
+          "Hormone therapy may be safe and effective for many women when carefully monitored by a qualified medical provider. Treatment plans should always be personalized based on medical history, symptoms, and labwork. Learn more about [HRT pros and cons](/blog/bioidentical-hormones-pros-and-cons), including what newer research says about the Women's Health Initiative findings.",
       },
       {
         question: 'Do I need lab testing before treatment?',
