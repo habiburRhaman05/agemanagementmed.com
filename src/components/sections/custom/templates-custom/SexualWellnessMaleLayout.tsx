@@ -100,7 +100,7 @@ export async function SexualWellnessMaleLayout({ treatment }: TreatmentTemplateP
             image: '/themes/default/assets/images/column-box-8-img_cwog8d.png',
             title: 'Bioidentical Hormone Replacement Therapy (BHRT)',
             description:
-              'Low testosterone can significantly impact libido, energy, mood, and erectile function. Bioidentical Hormone Replacement Therapy helps restore hormonal balance and optimize testosterone levels.',
+              'Low testosterone can significantly impact libido, energy, mood, and erectile function. This gradual, age-related decline is sometimes called [male menopause](/blog/andropause-symptoms), or andropause. Bioidentical Hormone Replacement Therapy helps restore hormonal balance and optimize testosterone levels.',
             label: 'BHRT may help:',
             bullets: [
               'Increase libido and sexual desire',

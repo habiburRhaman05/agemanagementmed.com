@@ -1,4 +1,5 @@
 import { LegacyCtaLink } from '@/components/shared/LegacyCtaLink'
+import type { ReactNode } from 'react'
 
 import { bhrtIcons } from './bhrt-icons'
 import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
@@ -77,12 +78,20 @@ const supports: { icon: string; label: string }[] = [
   { icon: bhrtIcons.supportMetabolicBalance, label: 'Metabolic Balance and Body Composition' },
 ]
 
-const cardBody = (card: SymptomCard) => (
+const cardBody = (card: SymptomCard, introExtra?: ReactNode) => (
   <>
     <h3 className="lg-title">{card.title}</h3>
 
     <div className="lg-text">
-      <p>{card.paragraph}</p>
+      <p>
+        {card.title === 'Sexual Health And Intimacy' && introExtra ? (
+          <>
+            Hormones play a major role in sexual wellness and comfort. {introExtra} Symptoms may include:
+          </>
+        ) : (
+          card.paragraph
+        )}
+      </p>
 
       <div className="lg-list-arrow-right">
         <ul>
@@ -97,7 +106,7 @@ const cardBody = (card: SymptomCard) => (
 
 /** The 4 quadrant cards stack icon-then-content vertically; the wide 5th
  * (menstrual) card instead lays icon and content side by side in a row. */
-function SymptomBox({ card, wide = false }: { card: SymptomCard; wide?: boolean }) {
+function SymptomBox({ card, wide = false, introExtra }: { card: SymptomCard; wide?: boolean; introExtra?: ReactNode }) {
   if (wide) {
     return (
       <div className="lg-col-lg-10">
@@ -105,7 +114,7 @@ function SymptomBox({ card, wide = false }: { card: SymptomCard; wide?: boolean 
           <div className="lg-grid">
             <div className="icon lg-col-lg-auto" dangerouslySetInnerHTML={{ __html: card.icon }} />
 
-            <div className="content lg-col-lg">{cardBody(card)}</div>
+            <div className="content lg-col-lg">{cardBody(card, introExtra)}</div>
           </div>
         </div>
       </div>
@@ -117,7 +126,7 @@ function SymptomBox({ card, wide = false }: { card: SymptomCard; wide?: boolean 
       <div className="box">
         <div className="icon" dangerouslySetInnerHTML={{ __html: card.icon }} />
 
-        <div className="content">{cardBody(card)}</div>
+        <div className="content">{cardBody(card, introExtra)}</div>
       </div>
     </div>
   )
@@ -131,7 +140,7 @@ function SymptomBox({ card, wide = false }: { card: SymptomCard; wide?: boolean 
  * (`.column-box-ib-group` / `#column-box-ib` / `#column-icon-d`); styling
  * lives in src/app/legacy.css.
  */
-export function SymptomsAndHowItWorks() {
+export function SymptomsAndHowItWorks({ introExtra }: { introExtra?: ReactNode }) {
   return (
     <div className="column-box-ib-group pt-24">
       <div className="radial-gradient" aria-hidden />
@@ -162,7 +171,11 @@ export function SymptomsAndHowItWorks() {
               <div id="column-box-ib">
                 <div className="lg-grid lg-justify-center">
                   {quadrants.map((card) => (
-                    <SymptomBox card={card} key={card.title} />
+                    <SymptomBox
+                      card={card}
+                      introExtra={card.title === 'Sexual Health And Intimacy' ? introExtra : undefined}
+                      key={card.title}
+                    />
                   ))}
                   <SymptomBox card={menstrual} wide />
 

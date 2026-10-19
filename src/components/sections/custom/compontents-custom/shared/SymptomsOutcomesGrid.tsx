@@ -1,3 +1,5 @@
+import { InlineLinks } from '@/lib/inlineLinks'
+
 export interface SymptomOutcomeItem {
   /** Raw SVG markup — see each treatment's own -icons.ts file. */
   icon: string
@@ -44,7 +46,7 @@ export function SymptomsOutcomesGrid({
             </h2>
             {lead ? (
               <div className="lg-text lg-max-width-925" style={align === 'left' ? { marginLeft: 0 } : undefined}>
-                <p>{lead}</p>
+                <p><InlineLinks text={lead} /></p>
               </div>
             ) : null}
           </div>
@@ -71,13 +73,13 @@ export function SymptomsOutcomesGrid({
                         {titleAs === 'heading' ? (
                           <>
                             <h3>{item.title}</h3>
-                            <p>{item.description}</p>
+                            <p><InlineLinks text={item.description} /></p>
                           </>
                         ) : (
                           <p>
                             <strong>{item.title}</strong>
                             <br />
-                            {item.description}
+                            <InlineLinks text={item.description} />
                           </p>
                         )}
                       </div>

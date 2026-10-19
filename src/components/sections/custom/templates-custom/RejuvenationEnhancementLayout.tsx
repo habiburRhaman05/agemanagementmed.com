@@ -187,7 +187,9 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
           { icon: PerformanceHourglassIcon, label: 'Low Testosterone' },
           { icon: LowLibidoIcon, label: 'Decreased Libido' },
         ]}
-        closingParagraphs={['These symptoms are often tied to hormone levels, circulation, or overall health.']}
+        closingParagraphs={[
+          'These symptoms are often tied to hormone levels, circulation, or overall health. If you\'ve ever wondered, “[can men go through menopause](/blog/andropause-symptoms)?” Not in the same way women do, but gradual testosterone decline with age can affect libido, energy, and performance.',
+        ]}
         cta={{
           label: 'Explore male sexual health treatment options',
           href: '/rejuvenation-enhancement/male',

@@ -6,6 +6,7 @@ import { Reveal } from '@/components/shared/Reveal'
 import { Section } from '@/components/shared/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
 import { cn } from '@/lib/utils'
+import { InlineLinks } from '@/lib/inlineLinks'
 
 export interface TreatmentOptionCard {
   image: string
@@ -74,7 +75,7 @@ function TreatmentCard({ service }: { service: TreatmentOptionCard }) {
 
                         {service.description ? (
                           <div className="lg-text">
-                            <p>{service.description}</p>
+                            <p><InlineLinks text={service.description} /></p>
                           </div>
                         ) : null}
                       </div>
@@ -103,7 +104,7 @@ export function TreatmentOptionsStack({ eyebrow, title, lead, treatments }: Trea
           <div className="lg-container">
             <div className="lg-grid">
               {treatments.map((service) => (
-                <div className="lg-col-lg-6" >
+                <div className="lg-col-lg-6" key={service.title}>
                   <div className="box">
                     <div className="img">
                       {/* Fixed 150px circular badge inside a ported layout —
@@ -137,7 +138,7 @@ export function TreatmentOptionsStack({ eyebrow, title, lead, treatments }: Trea
 
                         {service.description ? (
                           <div className="lg-text">
-                            <p>{service.description}</p>
+                          <p><InlineLinks text={service.description} /></p>
                           </div>
                         ) : null}
 
