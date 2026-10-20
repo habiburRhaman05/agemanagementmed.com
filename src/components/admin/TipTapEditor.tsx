@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
 import { mergeAttributes } from '@tiptap/core'
+import { DOMParser as ProseMirrorDOMParser } from '@tiptap/pm/model'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
@@ -20,7 +21,7 @@ import TaskList from '@tiptap/extension-task-list'
 import TaskItem from '@tiptap/extension-task-item'
 import CharacterCount from '@tiptap/extension-character-count'
 import Typography from '@tiptap/extension-typography'
-import Table from '@tiptap/extension-table'
+import {Table} from '@tiptap/extension-table'
 import TableRow from '@tiptap/extension-table-row'
 import TableCell from '@tiptap/extension-table-cell'
 import TableHeader from '@tiptap/extension-table-header'
@@ -180,6 +181,25 @@ export function TipTapEditor({
       onChange(html, json as Record<string, unknown>)
     },
     editorProps: {
+      handlePaste: (view, event) => {
+        const plainText = event.clipboardData?.getData('text/plain') ?? ''
+
+        // Pasting copied HTML source (for example, `<table>...</table>` from
+        // a code editor) normally inserts it as literal text. Parse it through
+        // the editor schema so the table becomes editable table nodes.
+        if (!/<table\b[\s\S]*?<\/table\s*>/i.test(plainText)) return false
+
+        const container = view.dom.ownerDocument.createElement('div')
+        container.innerHTML = plainText
+        const slice = ProseMirrorDOMParser.fromSchema(view.state.schema).parseSlice(
+          container,
+          { preserveWhitespace: true },
+        )
+        if (slice.content.size === 0) return false
+
+        view.dispatch(view.state.tr.replaceSelection(slice).scrollIntoView())
+        return true
+      },
       attributes: {
         class:
           'prose prose-sm max-w-none focus:outline-none min-h-[400px] px-4 py-4 [&_table]:my-6 [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-gray-300 [&_th]:bg-gray-50 [&_th]:px-3 [&_th]:py-2 [&_td]:border [&_td]:border-gray-300 [&_td]:px-3 [&_td]:py-2',
