@@ -7,6 +7,7 @@ import { Tag, ArrowLeft, Phone } from 'lucide-react'
 
 import { Header } from '@/components/layout/Header'
 import { ShareButton } from '@/components/blog/ShareButton'
+import { ArticleBody } from '@/components/blog/ArticleBody'
 import { TableOfContents } from '@/components/blog/TableOfContents'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
@@ -293,9 +294,10 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
                   raw HTML are caught by `PopupFormBridge`, mounted once at
                   the site layout level — nothing to wire here. */}
               {processedHtml ? (
-                <div
+                <ArticleBody
+                  html={processedHtml}
                   className={[
-                    'prose prose-lg mt-6 max-w-none',
+                    'prose prose-lg max-w-none',
                     // Headings
                     'prose-headings:font-display prose-headings:font-semibold prose-headings:text-[#15224c] prose-headings:scroll-mt-24',
                     'prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4',
@@ -339,7 +341,6 @@ function ArticleContent({ post }: { post: NonNullable<Awaited<ReturnType<typeof 
                     '[&_.btn-arrow-right]:after:transition-transform [&_.btn-arrow-right]:after:duration-200',
                     '[&_.btn-arrow-right]:hover:after:translate-x-1',
                   ].join(' ')}
-                  dangerouslySetInnerHTML={{ __html: processedHtml }}
                 />
               ) : (
                 <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-8 text-center">

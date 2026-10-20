@@ -59,7 +59,7 @@ export function FullBleedIconListSection({
 
       {lead ? (
         <p className="mt-4 max-w-[60ch] text-[15px] font-normal leading-relaxed text-canvas-50/75 sm:text-[16px]">
-          {lead}
+          <InlineLinks text={lead} />
         </p>
       ) : null}
 

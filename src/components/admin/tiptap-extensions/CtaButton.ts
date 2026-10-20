@@ -7,7 +7,7 @@ import { CtaButtonView } from './CtaButtonView'
  * The "Insert CTA Button" toolbar button in `TipTapEditor` inserts one of
  * these at the cursor. It always renders as exactly
  * `<a class="btn btn-arrow-right" href="#popup-form" target="_blank"
- * rel="noopener noreferrer nofollow">{label}</a>` — the precise markup
+ * rel="noopener noreferrer">{label}</a>` — the precise markup
  * `PopupFormBridge` (mounted sitewide, see src/app/(marketing)/layout.tsx)
  * already intercepts and turns into the real booking modal on click. There
  * is no live React component embedded in saved article HTML — this is that
@@ -56,7 +56,7 @@ export const CtaButton = Node.create({
         class: 'btn btn-arrow-right',
         href: '#popup-form',
         target: '_blank',
-        rel: 'noopener noreferrer nofollow',
+        rel: 'noopener noreferrer',
       }),
       node.attrs.label,
     ]
