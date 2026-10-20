@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { InlineLinks } from '@/lib/inlineLinks'
 
 export interface TreatmentOptionCard {
   image: string
@@ -27,7 +28,7 @@ const treatments: TreatmentOptionCard[] = [
     image: '/images/column-box-12-img.png',
     imageAlt: 'Woman Happy',
     title: 'Bioidentical Hormone Replacement Therapy (BHRT)',
-    description: 'Hormonal fluctuations during perimenopause and menopause can impact libido, energy levels, and vaginal health.',
+    description: "Hormonal fluctuations during perimenopause and menopause can impact libido, energy levels, and vaginal health. If your [sex drive during menopause](/blog/menopause-and-libido) has faded, you're not alone, and it's often treatable once the underlying cause is identified.",
     bulletsLabel: 'BHRT may help:',
     bullets: ['Improve libido and sexual desire', 'Restore hormonal balance', 'Reduce vaginal dryness', 'Improve mood, sleep, and energy'],
   },
@@ -76,7 +77,7 @@ export function TreatmentOptionsColumnBox() {
                 <h3 className={`lg-title${card.featured ? ' lg-white-txt' : ''}`}>{card.title}</h3>
 
                 <div className={`lg-text${card.featured ? ' lg-white-txt' : ''}`}>
-                  <p>{card.description}</p>
+                  <p><InlineLinks text={card.description} /></p>
 
                   <div className="lg-list-arrow-right lg-two-col">
                     <h5

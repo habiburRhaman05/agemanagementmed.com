@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
+import { mergeAttributes } from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
@@ -19,6 +20,10 @@ import TaskList from '@tiptap/extension-task-list'
 import TaskItem from '@tiptap/extension-task-item'
 import CharacterCount from '@tiptap/extension-character-count'
 import Typography from '@tiptap/extension-typography'
+import Table from '@tiptap/extension-table'
+import TableRow from '@tiptap/extension-table-row'
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
 import {
   Bold,
   Italic,
@@ -44,6 +49,7 @@ import {
   Minus,
   CheckSquare,
   MousePointerClick,
+  Table as TableIcon,
   type LucideIcon,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -114,12 +120,43 @@ export function TipTapEditor({
         orderedList: { keepMarks: true },
       }),
       Image.configure({ inline: false }),
-      Link.configure({
+      Link.extend({
+        renderHTML({ HTMLAttributes }) {
+          const href = String(HTMLAttributes.href ?? '')
+          const isPathInternal = href.startsWith('/')
+          let isCanonicalInternal = false
+
+          try {
+            const url = new URL(href)
+            isCanonicalInternal = url.protocol === 'https:' && url.hostname === 'www.agemanagementmed.com'
+          } catch {
+            // Relative, fragment, and invalid URLs get no external-link attributes.
+          }
+
+          const attrs = { ...HTMLAttributes }
+          if (isPathInternal || isCanonicalInternal) {
+            delete attrs.target
+            delete attrs.rel
+          } else if (/^https?:\/\//i.test(href)) {
+            attrs.target = '_blank'
+            attrs.rel = 'noopener noreferrer nofollow'
+          } else {
+            delete attrs.target
+            delete attrs.rel
+          }
+
+          return ['a', mergeAttributes(this.options.HTMLAttributes, attrs), 0]
+        },
+      }).configure({
         openOnClick: true,
         HTMLAttributes: {
           class: 'text-sage-600 underline underline-offset-2 hover:text-sage-700',
         },
       }),
+      Table.configure({ resizable: true }),
+      TableRow,
+      TableHeader,
+      TableCell,
       Placeholder.configure({ placeholder }),
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
       Underline,
@@ -145,7 +182,7 @@ export function TipTapEditor({
     editorProps: {
       attributes: {
         class:
-          'prose prose-sm max-w-none focus:outline-none min-h-[400px] px-4 py-4',
+          'prose prose-sm max-w-none focus:outline-none min-h-[400px] px-4 py-4 [&_table]:my-6 [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-gray-300 [&_th]:bg-gray-50 [&_th]:px-3 [&_th]:py-2 [&_td]:border [&_td]:border-gray-300 [&_td]:px-3 [&_td]:py-2',
       },
     },
     immediatelyRender: false,
@@ -194,6 +231,10 @@ export function TipTapEditor({
     if (label) {
       editor.chain().focus().insertCtaButton(label).run()
     }
+  }, [editor])
+
+  const insertTable = useCallback(() => {
+    editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()
   }, [editor])
 
   const setLink = useCallback(() => {
@@ -373,6 +414,11 @@ export function TipTapEditor({
           onClick={setLink}
           active={editor.isActive('link')}
           label="Link"
+        />
+        <ToolbarButton
+          icon={TableIcon}
+          onClick={insertTable}
+          label="Insert 3-column table"
         />
         <ToolbarButton
           icon={ImageIcon}

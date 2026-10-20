@@ -51,7 +51,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
         <SymptomsHeroCard
           image={{...treatment.hero.image,src:"/images/treatments/bioidentical-hormone-replacement-therapy/male/photo-content-73-img.jpg"}}
           heading={treatment.symptoms.title}
-          lead={treatment.symptoms.lead ?? ''}
+          lead={`${treatment.symptoms.lead ?? ''} Many men start by asking, "[do men go through menopause](/blog/andropause-symptoms)?" Not exactly, but the gradual, age-related testosterone decline known as andropause can cause many of the symptoms below.`}
           groups={treatment.symptoms.items}
           closingNote="Diminished hormone levels can slow you down physically and mentally, keeping you from enjoying the activities and lifestyle you once loved. You don't have to accept this as “normal aging.”"
         />
@@ -109,7 +109,7 @@ export async function HormoneTherapyMenLayout({ treatment }: TreatmentTemplatePr
           'Could BHRT affect fertility?',
           'Who may not be a good candidate for therapy?',
         ]}
-        closingParagraph="Men with certain medical conditions may require additional evaluation or alternative approaches. Your safety is our priority, and treatment decisions are made collaboratively with you."
+        closingParagraph="Men with certain medical conditions may require additional evaluation or alternative approaches. Your safety is our priority, and treatment decisions are made collaboratively with you. To understand the potential benefits, risks, and side effects before you start, read our overview of the [pros and cons of bioidentical hormone replacement](/blog/bioidentical-hormones-pros-and-cons)."
         disclaimer="BHRT is a medical treatment and should only be initiated under the supervision of a qualified healthcare provider. Individual results vary, and hormone therapy is not intended to diagnose, treat, cure, or prevent disease."
       />
 

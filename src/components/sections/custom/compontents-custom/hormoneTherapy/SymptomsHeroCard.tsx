@@ -13,6 +13,7 @@ import {
 import { DocumentIcon, BrainIcon, NetworkIcon, ShieldSafeIcon, AwardBadgeIcon, GearOptimizeIcon } from '@/components/ui/icons/treatment-icons'
 import BookAppointmentButton from '@/components/shared/BookAppointmentButton'
 import { Container } from '@/components/shared/Container'
+import { InlineLinks } from '@/lib/inlineLinks'
 import type { BenefitItem, Media } from '@/types/content'
 
 export interface SymptomsHeroCardProps {
@@ -115,7 +116,7 @@ export function SymptomsHeroCard({
 
                 {lead ? (
                   <p className="text-base text-slate-300 font-normal leading-relaxed mb-6">
-                    {lead}
+                    <InlineLinks text={lead} />
                   </p>
                 ) : null}
 

@@ -214,7 +214,7 @@ export async function RejuvenationEnhancementLayout({ treatment }: TreatmentTemp
         }}
         imageSide="left"
         heading="Sexual Wellness for Women"
-        lead="For women, sexual health can be affected by hormone changes, especially during and after menopause."
+        lead={'For women, sexual health can be affected by hormone changes, especially during and after menopause. Many women ask, "[does menopause affect sex drive](/blog/menopause-and-libido)?" The answer is yes, often through hormonal, physical, and emotional changes at the same time.'}
         itemsLabel="Common concerns include:"
         items={[
           { icon: LowLibidoIcon, label: 'Low Libido' },
